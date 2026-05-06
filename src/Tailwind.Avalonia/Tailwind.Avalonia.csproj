@@ -1,0 +1,22 @@
+﻿<Project
+   Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>Tailwind.Avalonia</PackageId>
+    <Description>Tailwind-style spacing resources and utility parsing for Avalonia.</Description>
+    <PackageTags>avalonia;tailwind;styles;spacing;xaml</PackageTags>
+    <IsPackable>true</IsPackable>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference
+       Include="Avalonia"
+       Version="12.0.2"/>
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource
+       Include="Themes\**"/>
+  </ItemGroup>
+</Project>
