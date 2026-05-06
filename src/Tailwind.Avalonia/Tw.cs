@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using System.Globalization;
 using System.Reflection;
 using Avalonia;
 using Avalonia.Data;
@@ -11,8 +12,12 @@ public class Tw : AvaloniaObject
 {
     private const int MarginMask = 1;
     private const int PaddingMask = 2;
+    private const int BackgroundMask = 4;
+    private const int ForegroundMask = 8;
+    private const int BorderBrushMask = 16;
 
     private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> ThicknessPropertyCache = new();
+    private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> BrushPropertyCache = new();
 
     public static readonly AttachedProperty<string?> ClassProperty =
         AvaloniaProperty.RegisterAttached<Tw, AvaloniaObject, string?>(
@@ -56,38 +61,67 @@ public class Tw : AvaloniaObject
 
         var hasMargin = false;
         var hasPadding = false;
+        var hasBackground = false;
+        var hasForeground = false;
+        var hasBorderBrush = false;
         var margin = default(Thickness);
         var padding = default(Thickness);
+        IBrush? background = null;
+        IBrush? foreground = null;
+        IBrush? borderBrush = null;
 
         if (!string.IsNullOrWhiteSpace(classList))
         {
             foreach (var token in classList.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries))
             {
-                if (!TryParseUtility(token, out var utility))
+                if (TryParseSpacingUtility(token, out var spacingUtility))
+                {
+                    switch (spacingUtility.Target)
+                    {
+                        case SpacingTarget.Margin:
+                            if (!hasMargin)
+                            {
+                                margin = default;
+                                hasMargin = true;
+                            }
+
+                            margin = ApplyEdge(margin, spacingUtility.Edge, spacingUtility.Pixels, element);
+                            break;
+
+                        case SpacingTarget.Padding:
+                            if (!hasPadding)
+                            {
+                                padding = default;
+                                hasPadding = true;
+                            }
+
+                            padding = ApplyEdge(padding, spacingUtility.Edge, spacingUtility.Pixels, element);
+                            break;
+                    }
+
+                    continue;
+                }
+
+                if (!TryParseBrushUtility(token, out var brushUtility))
                 {
                     continue;
                 }
 
-                switch (utility.Target)
+                switch (brushUtility.Target)
                 {
-                    case SpacingTarget.Margin:
-                        if (!hasMargin)
-                        {
-                            margin = default;
-                            hasMargin = true;
-                        }
-
-                        margin = ApplyEdge(margin, utility.Edge, utility.Pixels, element);
+                    case BrushTarget.Background:
+                        background = brushUtility.Brush;
+                        hasBackground = true;
                         break;
 
-                    case SpacingTarget.Padding:
-                        if (!hasPadding)
-                        {
-                            padding = default;
-                            hasPadding = true;
-                        }
+                    case BrushTarget.Foreground:
+                        foreground = brushUtility.Brush;
+                        hasForeground = true;
+                        break;
 
-                        padding = ApplyEdge(padding, utility.Edge, utility.Pixels, element);
+                    case BrushTarget.BorderBrush:
+                        borderBrush = brushUtility.Brush;
+                        hasBorderBrush = true;
                         break;
                 }
             }
@@ -109,6 +143,33 @@ public class Tw : AvaloniaObject
         else if ((previousMask & PaddingMask) != 0)
         {
             ClearThickness(element, "Padding");
+        }
+
+        if (hasBackground && TrySetBrush(element, "Background", background))
+        {
+            newMask |= BackgroundMask;
+        }
+        else if ((previousMask & BackgroundMask) != 0)
+        {
+            ClearBrush(element, "Background");
+        }
+
+        if (hasForeground && TrySetBrush(element, "Foreground", foreground))
+        {
+            newMask |= ForegroundMask;
+        }
+        else if ((previousMask & ForegroundMask) != 0)
+        {
+            ClearBrush(element, "Foreground");
+        }
+
+        if (hasBorderBrush && TrySetBrush(element, "BorderBrush", borderBrush))
+        {
+            newMask |= BorderBrushMask;
+        }
+        else if ((previousMask & BorderBrushMask) != 0)
+        {
+            ClearBrush(element, "BorderBrush");
         }
 
         element.SetValue(AppliedMaskProperty, newMask);
@@ -137,7 +198,7 @@ public class Tw : AvaloniaObject
         };
     }
 
-    private static bool TryParseUtility(string token, out SpacingUtility utility)
+    private static bool TryParseSpacingUtility(string token, out SpacingUtility utility)
     {
         utility = default;
 
@@ -182,6 +243,89 @@ public class Tw : AvaloniaObject
         return false;
     }
 
+    private static bool TryParseBrushUtility(string token, out BrushUtility utility)
+    {
+        utility = default;
+
+        if (token.StartsWith("-", StringComparison.Ordinal) ||
+            token.Contains(':') ||
+            token.Contains('[') ||
+            token.Contains('('))
+        {
+            return false;
+        }
+
+        foreach (var descriptor in BrushUtilityDescriptors.All)
+        {
+            if (!token.StartsWith(descriptor.Prefix, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var colorToken = token[descriptor.Prefix.Length..];
+
+            if (!TryResolveUtilityColor(colorToken, out var color))
+            {
+                return false;
+            }
+
+            utility = new BrushUtility(descriptor.Target, new SolidColorBrush(color));
+            return true;
+        }
+
+        return false;
+    }
+
+    private static bool TryResolveUtilityColor(string token, out Color color)
+    {
+        color = default;
+
+        var separatorIndex = token.IndexOf('/');
+        var colorToken = separatorIndex >= 0 ? token[..separatorIndex] : token;
+
+        if (colorToken.Length == 0 || !TailwindColorPalette.TryGetColor(colorToken, out color))
+        {
+            return false;
+        }
+
+        if (separatorIndex < 0)
+        {
+            return true;
+        }
+
+        var opacityToken = token[(separatorIndex + 1)..];
+
+        if (!TryParseOpacity(opacityToken, out var opacity))
+        {
+            return false;
+        }
+
+        color = ApplyOpacity(color, opacity);
+        return true;
+    }
+
+    private static bool TryParseOpacity(string token, out double opacity)
+    {
+        opacity = default;
+
+        if (token.Length == 0 ||
+            !double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out var percent) ||
+            percent < 0 ||
+            percent > 100)
+        {
+            return false;
+        }
+
+        opacity = percent / 100d;
+        return true;
+    }
+
+    private static Color ApplyOpacity(Color color, double opacity)
+    {
+        var alpha = (byte)Math.Clamp((int)Math.Round(color.A * opacity), 0, byte.MaxValue);
+        return Color.FromArgb(alpha, color.R, color.G, color.B);
+    }
+
     private static bool ContainsLogicalUtilities(string classList)
     {
         foreach (var token in classList.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries))
@@ -223,6 +367,29 @@ public class Tw : AvaloniaObject
         }
     }
 
+    private static bool TrySetBrush(AvaloniaObject element, string propertyName, IBrush? value)
+    {
+        var property = FindBrushProperty(element.GetType(), propertyName);
+
+        if (property is null)
+        {
+            return false;
+        }
+
+        element.SetValue(property, value);
+        return true;
+    }
+
+    private static void ClearBrush(AvaloniaObject element, string propertyName)
+    {
+        var property = FindBrushProperty(element.GetType(), propertyName);
+
+        if (property is not null)
+        {
+            element.ClearValue(property);
+        }
+    }
+
     private static AvaloniaProperty? FindThicknessProperty(Type type, string propertyName)
     {
         return ThicknessPropertyCache.GetOrAdd((type, propertyName), static key =>
@@ -246,14 +413,46 @@ public class Tw : AvaloniaObject
         });
     }
 
+    private static AvaloniaProperty? FindBrushProperty(Type type, string propertyName)
+    {
+        return BrushPropertyCache.GetOrAdd((type, propertyName), static key =>
+        {
+            var (candidateType, candidatePropertyName) = key;
+            var fieldName = $"{candidatePropertyName}Property";
+
+            while (candidateType is not null)
+            {
+                var field = candidateType.GetField(fieldName, BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+
+                if (field?.GetValue(null) is AvaloniaProperty property && typeof(IBrush).IsAssignableFrom(property.PropertyType))
+                {
+                    return property;
+                }
+
+                candidateType = candidateType.BaseType;
+            }
+
+            return null;
+        });
+    }
+
     private readonly record struct SpacingUtility(SpacingTarget Target, SpacingEdge Edge, double Pixels);
+    private readonly record struct BrushUtility(BrushTarget Target, IBrush Brush);
 
     private readonly record struct UtilityDescriptor(string Prefix, SpacingTarget Target, SpacingEdge Edge);
+    private readonly record struct BrushUtilityDescriptor(string Prefix, BrushTarget Target);
 
     private enum SpacingTarget
     {
         Margin,
         Padding,
+    }
+
+    private enum BrushTarget
+    {
+        Background,
+        Foreground,
+        BorderBrush,
     }
 
     private enum SpacingEdge
@@ -297,6 +496,16 @@ public class Tw : AvaloniaObject
             new("pl-", SpacingTarget.Padding, SpacingEdge.Left),
             new("m-", SpacingTarget.Margin, SpacingEdge.All),
             new("p-", SpacingTarget.Padding, SpacingEdge.All),
+        };
+    }
+
+    private static class BrushUtilityDescriptors
+    {
+        public static readonly BrushUtilityDescriptor[] All =
+        {
+            new("bg-", BrushTarget.Background),
+            new("text-", BrushTarget.Foreground),
+            new("border-", BrushTarget.BorderBrush),
         };
     }
 }

@@ -25,4 +25,4 @@ Avalonia has strong styling and resource systems, but it does not offer a Tailwi
 - Library now also exposes Tailwind v4.2 palette tokens as `Color*` and `Brush*` resources.
 
 ## Next UX Priority After MVP
-Color utilities and semantic theme layering should be the next major target so the new palette can be applied through Tailwind-like APIs and dark/light themes.
+Decide whether directional border color needs a custom rendering layer, then broaden remaining color utility gaps and layer semantic aliases and dark/light theme composition on top.

@@ -1,47 +1,47 @@
 <Window
-     xmlns="https://github.com/avaloniaui"
-     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-     xmlns:tw="using:Tailwind.Avalonia"
-     mc:Ignorable="d"
-     d:DesignWidth="800"
-     d:DesignHeight="450"
-     x:Class="Tailwind.Avalonia.Sample.MainWindow"
-     Title="{StaticResource SampleWindowTitle}">
-    <ScrollViewer>
-        <StackPanel
-             Margin="{StaticResource Margin8}"
-             Spacing="{StaticResource SampleShowcaseSpacing}">
-            <TextBlock
-                 FontSize="{StaticResource SampleTitleFontSize}"
-                 FontWeight="Bold"
-                 Text="{StaticResource SampleShowcaseTitle}"/>
-            <Border
-                 Background="{StaticResource BrushBlue700}"
-                 CornerRadius="{StaticResource SampleCardCornerRadius}"
-                 Padding="{StaticResource Padding4}">
-                <TextBlock
-                     Foreground="{StaticResource BrushWhite}"
-                     Text="{StaticResource SampleStaticSpacingDescription}"/>
-            </Border>
-            <Border
-                 Background="{StaticResource BrushGreen800}"
-                 CornerRadius="{StaticResource SampleCardCornerRadius}"
-                 tw:Tw.Class="{StaticResource SampleUtilitySpacingClass}">
-                <TextBlock
-                     Foreground="{StaticResource BrushWhite}"
-                     Text="{StaticResource SampleUtilitySpacingDescription}"/>
-            </Border>
-            <Border
-                 Background="{StaticResource BrushOrange800}"
-                 CornerRadius="{StaticResource SampleCardCornerRadius}"
-                 FlowDirection="RightToLeft"
-                 tw:Tw.Class="{StaticResource SampleLogicalSpacingClass}">
-                <TextBlock
-                     Foreground="{StaticResource BrushWhite}"
-                     Text="{StaticResource SampleLogicalSpacingDescription}"/>
-            </Border>
-        </StackPanel>
-    </ScrollViewer>
+      xmlns="https://github.com/avaloniaui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:tw="using:Tailwind.Avalonia"
+      mc:Ignorable="d"
+      d:DesignWidth="800"
+      d:DesignHeight="450"
+      x:Class="Tailwind.Avalonia.Sample.MainWindow"
+      Title="{StaticResource SampleWindowTitle}">
+     <ScrollViewer>
+          <StackPanel
+                Margin="{StaticResource Margin8}"
+                Spacing="{StaticResource SampleShowcaseSpacing}">
+               <TextBlock
+                     FontSize="{StaticResource SampleTitleFontSize}"
+                     FontWeight="Bold"
+                     Text="{StaticResource SampleShowcaseTitle}"/>
+               <Border
+                     Background="{StaticResource BrushBlue700}"
+                     CornerRadius="{StaticResource SampleCardCornerRadius}"
+                     Padding="{StaticResource Padding4}">
+                    <TextBlock
+                          Foreground="{StaticResource BrushWhite}"
+                          Text="{StaticResource SampleStaticSpacingDescription}"/>
+               </Border>
+               <Border
+                     BorderThickness="{StaticResource SampleCardBorderThickness}"
+                     CornerRadius="{StaticResource SampleCardCornerRadius}"
+                     tw:Tw.Class="{StaticResource SampleUtilitySpacingClass}">
+                    <TextBlock
+                          tw:Tw.Class="{StaticResource SampleUtilityTextClass}"
+                          Text="{StaticResource SampleUtilitySpacingDescription}"/>
+               </Border>
+               <Border
+                     BorderThickness="{StaticResource SampleCardBorderThickness}"
+                     CornerRadius="{StaticResource SampleCardCornerRadius}"
+                     FlowDirection="RightToLeft"
+                     tw:Tw.Class="{StaticResource SampleLogicalSpacingClass}">
+                    <TextBlock
+                          tw:Tw.Class="{StaticResource SampleLogicalTextClass}"
+                          Text="{StaticResource SampleLogicalSpacingDescription}"/>
+               </Border>
+          </StackPanel>
+     </ScrollViewer>
 </Window>

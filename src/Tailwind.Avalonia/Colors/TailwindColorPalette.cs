@@ -16,6 +16,29 @@ internal static class TailwindColorPalette
 
     public static IReadOnlyList<TailwindColorToken> Tokens => tokens;
 
+    internal static bool TryGetColor(string tokenName, out Color color)
+    {
+        if (string.Equals(tokenName, "transparent", StringComparison.Ordinal))
+        {
+            color = Colors.Transparent;
+            return true;
+        }
+
+        var resourceSuffix = ToResourceSuffix(tokenName);
+
+        foreach (var token in tokens)
+        {
+            if (string.Equals(token.ResourceSuffix, resourceSuffix, StringComparison.Ordinal))
+            {
+                color = token.Color;
+                return true;
+            }
+        }
+
+        color = default;
+        return false;
+    }
+
     private static IReadOnlyList<TailwindColorToken> LoadTokens()
     {
         var results = new List<TailwindColorToken>();

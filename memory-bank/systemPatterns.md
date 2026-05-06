@@ -16,7 +16,7 @@ Primary public API should be an attached property parser plus generated static r
 2. `SpacingResourceDictionary` emits stable keys such as `Padding4`, `Padding0_5`, `MarginX2`, and `NegativeMarginX2`.
 3. `TailwindColorPalette` stores the official Tailwind v4.2 palette reference and `TailwindCssColorParser` converts OKLCH values into Avalonia `Color` instances.
 4. `ColorResourceDictionary` emits stable keys such as `ColorBlue500`, `BrushBlue500`, `ColorWhite`, and `BrushWhite`.
-5. `tw:Tw.Class="p-4 mx-2"` parses spacing tokens and applies them to Avalonia `Padding` and `Margin` properties.
+5. `tw:Tw.Class="p-4 mx-2 bg-blue-700/80 text-white/90 border-green-400/65"` parses spacing and whole-property color tokens and applies them to Avalonia `Padding`, `Margin`, `Background`, `Foreground`, and `BorderBrush` properties when those properties exist on the target control.
 6. Package entry resource dictionary currently lives at `avares://Tailwind.Avalonia/Themes/Tailwind.axaml`.
 7. Sample app currently loads the package entry with `ResourceInclude`; runtime loading works, while compile-time `MergeResourceInclude` did not resolve the project-reference asset during local build.
 
@@ -35,6 +35,7 @@ Primary public API should be an attached property parser plus generated static r
 Spacing MVP currently covers these utility families:
 - Padding: `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`, `ps`, `pe`, `pbs`, `pbe`
 - Margin: `m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`, `ms`, `me`, `mbs`, `mbe`
+- Colors: `bg-*`, `text-*`, `border-*` for whole-property color application, plus `transparent` and `/opacity`
 
 Static resources currently cover physical padding/margin directions plus negative physical margins. Logical directions are parser-only in this first pass.
 
@@ -44,5 +45,6 @@ Static resources currently cover physical padding/margin directions plus negativ
 - Custom-property syntax
 - Responsive variants
 - State variants
-- Color utility parsing families
+- Directional border color utilities, blocked for generic controls by missing native per-side brush properties in Avalonia `Border`
+- `current` and `inherit` color utilities
 - Other non-spacing utility families
