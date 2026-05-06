@@ -25,6 +25,7 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 - `SpacingResourceDictionary` for generated spacing tokens.
 - `ColorResourceDictionary` for generated `Color*` and `Brush*` tokens.
 - `Tw.Class` attached property for utility-string parsing.
+- `Tailwind.Avalonia.Tests` xUnit test project for automated validation.
 - Sample app for build and startup verification.
 
 ## Color Baseline
@@ -32,7 +33,10 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 - Avalonia 12 `Color.Parse` does not support `oklch(...)`, so package code must convert those values before emitting resources.
 
 ## Current Constraint
-- No automated tests exist yet for spacing parsing, color conversion, or resource coverage.
 - Cross-assembly sample consumption currently uses `ResourceInclude` instead of compile-time merged include.
 - Static resources currently cover physical directions only; logical spacing is parser-driven.
 - Color tokens exist as resources only; `tw:Tw.Class` does not yet apply color utilities.
+
+## Test Coverage Baseline
+- `dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj` currently passes with 18 tests.
+- Coverage currently includes spacing scale lookup/suffix rules, spacing parser application/clear behavior, achromatic OKLCH parsing, palette token count/family presence, and color/brush resource pair emission.

@@ -12,6 +12,9 @@ Build on the new spacing and colors foundation with utilities, tests, and semant
 - Added a colors source-of-truth based on the official Tailwind v4.2 palette reference.
 - Added `ColorResourceDictionary` and an internal OKLCH-to-Avalonia conversion path because Avalonia 12 does not parse `oklch(...)` values directly.
 - Updated the sample app to consume package brush tokens instead of local hardcoded brushes.
+- Added `Tailwind.Avalonia.Tests` as an xUnit test project and wired it into the solution.
+- Added focused unit coverage for `SpacingScale`, `tw:Tw.Class`, `TailwindCssColorParser`, `TailwindColorPalette`, and `ColorResourceDictionary`.
+- Validated the new test project with `dotnet test` and 18 passing tests.
 
 ## Active Decisions
 - Hybrid API remains the chosen direction: stable resource keys plus utility parsing.
@@ -19,8 +22,8 @@ Build on the new spacing and colors foundation with utilities, tests, and semant
 - Official Tailwind docs values remain the source of truth for colors; the package converts those OKLCH values to Avalonia `Color` and `SolidColorBrush` instances at runtime.
 
 ## Immediate Next Steps
-1. Add automated tests around spacing coverage, colors coverage, and `tw:Tw.Class` parsing behavior.
-2. Extend `tw:Tw.Class` with the first color utility families such as `bg-*`, `text-*`, and `border-*`.
+1. Extend `tw:Tw.Class` with the first color utility families such as `bg-*`, `text-*`, and `border-*`.
+2. Add more regression coverage around palette conversion edge cases if the color conversion strategy changes.
 3. Start semantic alias and dark/light theme layering on top of the concrete Tailwind palette.
 
 ## Open Questions
