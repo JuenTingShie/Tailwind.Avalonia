@@ -22,17 +22,18 @@ Spacing foundation is implemented and locally validated. Planning-only state is 
 ## What Is Left
 - Validate package/publish consumption beyond the local project-reference sample.
 - Decide whether compile-time merged include support is needed after packaging.
-- Decide whether directional border-color support needs custom rendering, then expand remaining color utility coverage and semantic/dark-light theme layering.
+- Expand semantic/dark-light theme layering and remaining non-border utility coverage.
+- Decide whether directional border colors should be explicitly documented as unsupported under the no-custom-component constraint.
 
 ## Known Risks
 - Avalonia selector syntax differs from Tailwind token syntax.
 - Some utility semantics may not map 1:1 across all control types.
 - Parser application currently relies on reflected `PaddingProperty` / `MarginProperty` discovery.
 - Color utility application currently relies on reflected `BackgroundProperty` / `ForegroundProperty` / `BorderBrushProperty` discovery.
-- Tailwind directional border-color semantics cannot be mapped honestly on generic Avalonia `Border` with current native property surface.
+- Tailwind directional border-color semantics still cannot be mapped onto generic Avalonia `Border` under the no-custom-component constraint.
 - Logical spacing resources are not yet exposed as dedicated static keys.
 - Runtime `ResourceInclude` works locally, but packaged-consumer behavior still needs explicit verification.
 - Color tokens currently depend on runtime OKLCH conversion; current tests cover stable invariants but do not yet assert browser-gamut-mapped hex outputs for chromatic palette colors.
 
 ## Estimated Stage
-90%: spacing and color token foundations plus whole-property color utilities, transparent/opacity support, sample demo refresh, and core automated tests are in place, with directional-border strategy and semantic theme layering still remaining.
+90%: spacing and color token foundations plus whole-property color utilities, sample demo refresh, and core automated tests are in place, with semantic theme layering, packaging validation, and directional-border scope decisions still remaining.

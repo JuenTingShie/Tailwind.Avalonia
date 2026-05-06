@@ -45,6 +45,6 @@ Static resources currently cover physical padding/margin directions plus negativ
 - Custom-property syntax
 - Responsive variants
 - State variants
-- Directional border color utilities, blocked for generic controls by missing native per-side brush properties in Avalonia `Border`
+- Directional border color utilities, blocked for generic controls by missing native per-side brush properties and the no-custom-component constraint
 - `current` and `inherit` color utilities
 - Other non-spacing utility families

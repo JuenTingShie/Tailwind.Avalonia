@@ -36,7 +36,7 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 - Cross-assembly sample consumption currently uses `ResourceInclude` instead of compile-time merged include.
 - Static resources currently cover physical directions only; logical spacing is parser-driven.
 - `tw:Tw.Class` now applies whole-property `bg-*`, `text-*`, and `border-*` utilities, including `transparent` and `/opacity`, but it does not yet support directional border colors or variant prefixes.
-- Avalonia `Border` exposes `BorderBrushProperty` but not per-side border brush properties, so Tailwind directional border-color semantics do not currently have a native generic target.
+- Avalonia `Border` exposes `BorderBrushProperty` but not per-side border brush properties, and user constraint disallows custom components.
 
 ## Test Coverage Baseline
 - `dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj` currently passes with 21 tests.

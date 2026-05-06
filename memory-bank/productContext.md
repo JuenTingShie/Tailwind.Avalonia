@@ -23,6 +23,7 @@ Avalonia has strong styling and resource systems, but it does not offer a Tailwi
 - Library currently exposes positive padding/margin resources plus negative margin resources.
 - Logical spacing (`ps`, `pe`, `ms`, `me`, `pbs`, `pbe`, `mbs`, `mbe`) is supported through the parser surface.
 - Library now also exposes Tailwind v4.2 palette tokens as `Color*` and `Brush*` resources.
+- Whole-property color utilities now work on generic controls.
 
 ## Next UX Priority After MVP
-Decide whether directional border color needs a custom rendering layer, then broaden remaining color utility gaps and layer semantic aliases and dark/light theme composition on top.
+Under the no-custom-component constraint, directional border color remains deferred, so next UX priority is semantic aliases and dark/light theme composition on top of the concrete Tailwind palette.
