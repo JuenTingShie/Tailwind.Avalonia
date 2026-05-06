@@ -5,8 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Tailwind.Avalonia</PackageId>
-    <Description>Tailwind-style spacing resources and utility parsing for Avalonia.</Description>
-    <PackageTags>avalonia;tailwind;styles;spacing;xaml</PackageTags>
+    <Description>Tailwind-style color and spacing resources plus utility parsing for Avalonia.</Description>
+    <PackageTags>avalonia;tailwind;styles;spacing;colors;xaml</PackageTags>
     <IsPackable>true</IsPackable>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>

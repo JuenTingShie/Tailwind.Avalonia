@@ -22,6 +22,7 @@ Avalonia has strong styling and resource systems, but it does not offer a Tailwi
 - Sample app consumes package resources through `ResourceInclude` and uses `tw:Tw.Class` for composed spacing.
 - Library currently exposes positive padding/margin resources plus negative margin resources.
 - Logical spacing (`ps`, `pe`, `ms`, `me`, `pbs`, `pbe`, `mbs`, `mbe`) is supported through the parser surface.
+- Library now also exposes Tailwind v4.2 palette tokens as `Color*` and `Brush*` resources.
 
 ## Next UX Priority After MVP
-Colors should be the next major target because they unlock theme expression, dark/light behavior, and stronger Tailwind identity.
+Color utilities and semantic theme layering should be the next major target so the new palette can be applied through Tailwind-like APIs and dark/light themes.

@@ -14,9 +14,16 @@ Primary public API should be an attached property parser plus generated static r
 ## Current Layers
 1. `SpacingScale` is the current source of truth for the spacing scale.
 2. `SpacingResourceDictionary` emits stable keys such as `Padding4`, `Padding0_5`, `MarginX2`, and `NegativeMarginX2`.
-3. `tw:Tw.Class="p-4 mx-2"` parses spacing tokens and applies them to Avalonia `Padding` and `Margin` properties.
-4. Package entry resource dictionary currently lives at `avares://Tailwind.Avalonia/Themes/Tailwind.axaml`.
-5. Sample app currently loads the package entry with `ResourceInclude`; runtime loading works, while compile-time `MergeResourceInclude` did not resolve the project-reference asset during local build.
+3. `TailwindColorPalette` stores the official Tailwind v4.2 palette reference and `TailwindCssColorParser` converts OKLCH values into Avalonia `Color` instances.
+4. `ColorResourceDictionary` emits stable keys such as `ColorBlue500`, `BrushBlue500`, `ColorWhite`, and `BrushWhite`.
+5. `tw:Tw.Class="p-4 mx-2"` parses spacing tokens and applies them to Avalonia `Padding` and `Margin` properties.
+6. Package entry resource dictionary currently lives at `avares://Tailwind.Avalonia/Themes/Tailwind.axaml`.
+7. Sample app currently loads the package entry with `ResourceInclude`; runtime loading works, while compile-time `MergeResourceInclude` did not resolve the project-reference asset during local build.
+
+## Color Rules
+- Use the official Tailwind docs palette as the package source of truth instead of copying approximate hex values.
+- Convert OKLCH to Avalonia `Color` in code because Avalonia 12 parsing supports RGB/HSL/HSV but not OKLCH.
+- Emit both `Color*` and `Brush*` resources so consumers can use tokens in XAML properties without wrapping values manually.
 
 ## Resolution Rules
 - Later utility token wins when multiple tokens target same property.
@@ -37,4 +44,5 @@ Static resources currently cover physical padding/margin directions plus negativ
 - Custom-property syntax
 - Responsive variants
 - State variants
-- Non-spacing utility families
+- Color utility parsing families
+- Other non-spacing utility families

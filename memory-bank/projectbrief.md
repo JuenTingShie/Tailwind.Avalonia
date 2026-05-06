@@ -29,4 +29,5 @@ Build an AvaloniaUI package library that brings Tailwind CSS philosophy into Ava
 ## Current Reality
 - Repository now contains a solution, a packable `Tailwind.Avalonia` library, and a sample Avalonia app.
 - Spacing MVP is implemented with generated `StaticResource` keys plus the `tw:Tw.Class` attached-property parser.
+- Colors token foundation is implemented with generated `Color*` and `Brush*` resources sourced from the official Tailwind v4.2 palette.
 - Package resource entry currently lives at `avares://Tailwind.Avalonia/Themes/Tailwind.axaml`.

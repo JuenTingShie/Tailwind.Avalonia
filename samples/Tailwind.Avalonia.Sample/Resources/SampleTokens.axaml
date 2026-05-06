@@ -4,33 +4,21 @@
     <x:String
          x:Key="SampleWindowTitle">Tailwind.Avalonia.Sample</x:String>
     <x:String
-         x:Key="SampleShowcaseTitle">Tailwind.Avalonia spacing MVP</x:String>
+         x:Key="SampleShowcaseTitle">Tailwind.Avalonia spacing + color tokens</x:String>
     <x:String
-         x:Key="SampleStaticSpacingDescription">StaticResource: Padding4 + Margin8</x:String>
+         x:Key="SampleStaticSpacingDescription">StaticResource: Padding4 + BrushBlue700</x:String>
     <x:String
          x:Key="SampleUtilitySpacingClass">p-6 mx-4 py-4</x:String>
     <x:String
-         x:Key="SampleUtilitySpacingDescription">tw:Tw.Class=&apos;p-6 mx-4 py-4&apos;</x:String>
+         x:Key="SampleUtilitySpacingDescription">tw:Tw.Class=&apos;p-6 mx-4 py-4&apos; + BrushGreen800</x:String>
     <x:String
          x:Key="SampleLogicalSpacingClass">ps-6 pe-2 py-4</x:String>
     <x:String
-         x:Key="SampleLogicalSpacingDescription">Logical parser: ps-6 pe-2 py-4 (RTL)</x:String>
+         x:Key="SampleLogicalSpacingDescription">Logical parser: ps-6 pe-2 py-4 (RTL) + BrushOrange800</x:String>
     <x:Double
          x:Key="SampleShowcaseSpacing">20</x:Double>
     <x:Double
          x:Key="SampleTitleFontSize">24</x:Double>
     <CornerRadius
          x:Key="SampleCardCornerRadius">12</CornerRadius>
-    <SolidColorBrush
-         x:Key="SampleOnAccentBrush"
-         Color="White"/>
-    <SolidColorBrush
-         x:Key="SamplePrimarySurfaceBrush"
-         Color="#1D4ED8"/>
-    <SolidColorBrush
-         x:Key="SampleSuccessSurfaceBrush"
-         Color="#166534"/>
-    <SolidColorBrush
-         x:Key="SampleWarningSurfaceBrush"
-         Color="#9A3412"/>
 </ResourceDictionary>
