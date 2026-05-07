@@ -29,6 +29,9 @@ public class Tw : AvaloniaObject
     private static readonly AttachedProperty<int> AppliedMaskProperty =
         AvaloniaProperty.RegisterAttached<Tw, AvaloniaObject, int>("AppliedMask");
 
+    private static readonly AttachedProperty<bool> AttachHandlerRegisteredProperty =
+        AvaloniaProperty.RegisterAttached<Tw, AvaloniaObject, bool>("AttachHandlerRegistered");
+
     static Tw()
     {
         ClassProperty.Changed.AddClassHandler<AvaloniaObject>(HandleClassChanged);
@@ -41,6 +44,11 @@ public class Tw : AvaloniaObject
 
     private static void HandleClassChanged(AvaloniaObject element, AvaloniaPropertyChangedEventArgs args)
     {
+        if (element is Visual visual)
+        {
+            EnsureAttachHandlerRegistered(visual);
+        }
+
         ApplyUtilities(element, args.GetNewValue<string?>());
     }
 
@@ -52,6 +60,32 @@ public class Tw : AvaloniaObject
         {
             ApplyUtilities(visual, classList);
         }
+    }
+
+    private static void HandleAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs args)
+    {
+        if (sender is not Visual visual)
+        {
+            return;
+        }
+
+        var classList = GetClass(visual);
+
+        if (!string.IsNullOrWhiteSpace(classList) && ContainsLogicalUtilities(classList))
+        {
+            ApplyUtilities(visual, classList);
+        }
+    }
+
+    private static void EnsureAttachHandlerRegistered(Visual visual)
+    {
+        if (visual.GetValue(AttachHandlerRegisteredProperty))
+        {
+            return;
+        }
+
+        visual.AttachedToVisualTree += HandleAttachedToVisualTree;
+        visual.SetValue(AttachHandlerRegisteredProperty, true);
     }
 
     private static void ApplyUtilities(AvaloniaObject element, string? classList)
@@ -488,6 +522,8 @@ public class Tw : AvaloniaObject
             new("ml-", SpacingTarget.Margin, SpacingEdge.Left),
             new("px-", SpacingTarget.Padding, SpacingEdge.X),
             new("py-", SpacingTarget.Padding, SpacingEdge.Y),
+            new("psv-", SpacingTarget.Padding, SpacingEdge.Left),
+            new("pev-", SpacingTarget.Padding, SpacingEdge.Right),
             new("ps-", SpacingTarget.Padding, SpacingEdge.Start),
             new("pe-", SpacingTarget.Padding, SpacingEdge.End),
             new("pt-", SpacingTarget.Padding, SpacingEdge.Top),

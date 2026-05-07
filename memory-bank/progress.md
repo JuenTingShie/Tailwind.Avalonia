@@ -14,6 +14,10 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - The `Padding` and `Margin` tab content is now split into dedicated `UserControl` files under `samples/Tailwind.Avalonia.Sample/Spacing/`, keeping `MainWindow.axaml` focused on shell resources and tab wiring.
 - The spacing `UserControl` files now merge sample/package resources and include a shared `SpacingDocsStyles.axaml` file locally, so they render correctly even when developed outside the `MainWindow` shell.
 - The sample no longer uses `SampleTokens.axaml`; demo-only copy, layout values, and tab labels are inlined where they are used, while shared presentation rules stay in `SpacingDocsStyles.axaml`.
+- The RTL logical padding docs preview now cancels Avalonia's visual RTL mirror transform on the showcased target, so `ps-8` and `pe-8` display the physical side selected by the real utility while still using live `tw:Tw.Class` behavior.
+- The logical padding docs now distinguish between real RTL rendering and a separate visualized side-mapping preview, with an explicit teaching note that the transform-based version is for explanation only.
+- `tw:Tw.Class` now also supports `psv-*` and `pev-*` as padding-only visual start/end aliases, letting sample and app code target final rendered sides without changing existing logical `ps-*` and `pe-*` semantics.
+- The padding docs page now includes dedicated `psv-8` / `pev-8` previews plus actual-usage examples for both LTR and RTL.
 - Sample app still visibly demonstrates `bg-*`, `text-*`, and `border-*` utility strings in XAML through the support cards embedded in the docs layout.
 - `dotnet build` succeeds for the full solution.
 - Sample app startup was exercised with no immediate runtime exception output.
@@ -38,6 +42,7 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - Logical spacing resources are not yet exposed as dedicated static keys.
 - Runtime `ResourceInclude` works locally, but packaged-consumer behavior still needs explicit verification.
 - Color tokens currently depend on runtime OKLCH conversion; current tests cover stable invariants but do not yet assert browser-gamut-mapped hex outputs for chromatic palette colors.
+- Other RTL logical docs previews, especially margin, may need the same mirror-cancel presentation pattern if the goal is to show physical side effects instead of Avalonia's mirrored chrome.
 
 ## Estimated Stage
 92%: spacing and color token foundations plus whole-property color utilities, docs-style sample coverage for spacing, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.

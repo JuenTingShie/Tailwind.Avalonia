@@ -31,6 +31,114 @@ public class TwTests
     }
 
     [Fact]
+    public void SetClass_Reapplies_Logical_Spacing_When_FlowDirection_Changes()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "ps-6 pe-2 py-4");
+
+        Assert.Equal(new Thickness(24, 16, 8, 16), border.Padding);
+
+        border.FlowDirection = FlowDirection.RightToLeft;
+
+        Assert.Equal(new Thickness(8, 16, 24, 16), border.Padding);
+    }
+
+    [Fact]
+    public void SetClass_Arranges_Logical_Padding_On_Expected_Rtl_Side()
+    {
+        var psChild = new Canvas();
+        var psBorder = new Border
+        {
+            Child = psChild,
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+
+        Tw.SetClass(psBorder, "ps-6");
+        psBorder.Measure(new Size(100, 20));
+        psBorder.Arrange(new Rect(0, 0, 100, 20));
+
+        Assert.Equal(new Rect(0, 0, 76, 20), psChild.Bounds);
+
+        var peChild = new Canvas();
+        var peBorder = new Border
+        {
+            Child = peChild,
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+
+        Tw.SetClass(peBorder, "pe-2");
+        peBorder.Measure(new Size(100, 20));
+        peBorder.Arrange(new Rect(0, 0, 100, 20));
+
+        Assert.Equal(new Rect(8, 0, 92, 20), peChild.Bounds);
+    }
+
+    [Fact]
+    public void SetClass_Uses_Physical_Left_For_Visual_Start_Padding()
+    {
+        var ltrChild = new Canvas();
+        var ltrBorder = new Border
+        {
+            Child = ltrChild,
+            FlowDirection = FlowDirection.LeftToRight,
+        };
+
+        var rtlChild = new Canvas();
+        var rtlBorder = new Border
+        {
+            Child = rtlChild,
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+
+        Tw.SetClass(ltrBorder, "psv-6");
+        Tw.SetClass(rtlBorder, "psv-6");
+
+        Assert.Equal(new Thickness(24, 0, 0, 0), ltrBorder.Padding);
+        Assert.Equal(new Thickness(24, 0, 0, 0), rtlBorder.Padding);
+
+        ltrBorder.Measure(new Size(100, 20));
+        ltrBorder.Arrange(new Rect(0, 0, 100, 20));
+        rtlBorder.Measure(new Size(100, 20));
+        rtlBorder.Arrange(new Rect(0, 0, 100, 20));
+
+        Assert.Equal(new Rect(24, 0, 76, 20), ltrChild.Bounds);
+        Assert.Equal(new Rect(24, 0, 76, 20), rtlChild.Bounds);
+    }
+
+    [Fact]
+    public void SetClass_Uses_Physical_Right_For_Visual_End_Padding()
+    {
+        var ltrChild = new Canvas();
+        var ltrBorder = new Border
+        {
+            Child = ltrChild,
+            FlowDirection = FlowDirection.LeftToRight,
+        };
+
+        var rtlChild = new Canvas();
+        var rtlBorder = new Border
+        {
+            Child = rtlChild,
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+
+        Tw.SetClass(ltrBorder, "pev-6");
+        Tw.SetClass(rtlBorder, "pev-6");
+
+        Assert.Equal(new Thickness(0, 0, 24, 0), ltrBorder.Padding);
+        Assert.Equal(new Thickness(0, 0, 24, 0), rtlBorder.Padding);
+
+        ltrBorder.Measure(new Size(100, 20));
+        ltrBorder.Arrange(new Rect(0, 0, 100, 20));
+        rtlBorder.Measure(new Size(100, 20));
+        rtlBorder.Arrange(new Rect(0, 0, 100, 20));
+
+        Assert.Equal(new Rect(0, 0, 76, 20), ltrChild.Bounds);
+        Assert.Equal(new Rect(0, 0, 76, 20), rtlChild.Bounds);
+    }
+
+    [Fact]
     public void SetClass_Clears_Previously_Applied_Spacing_When_Class_Removed()
     {
         var border = new Border();

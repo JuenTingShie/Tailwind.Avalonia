@@ -1,6 +1,7 @@
 <UserControl
       xmlns="https://github.com/avaloniaui"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:media="clr-namespace:Avalonia.Media;assembly=Avalonia.Base"
       xmlns:tw="using:Tailwind.Avalonia"
       x:Class="Tailwind.Avalonia.Sample.Spacing.Padding">
      <UserControl.Resources>
@@ -26,29 +27,13 @@
                           Spacing="10">
                          <TextBlock
                                Classes="docs-library"
-                               Text="TAILWIND.AVALONIA"/>
+                               Text="SPACING"/>
                          <TextBlock
                                Classes="docs-pageTitle"
                                Text="Padding"/>
                          <TextBlock
                                Classes="docs-body"
-                               Text="Utilities for controlling an element&apos;s padding. This page mirrors the padding subset currently implemented in Tailwind.Avalonia and keeps the examples focused on real tw:Tw.Class usage."/>
-                         <Border
-                               Classes="docs-note"
-                               BorderThickness="2"
-                               tw:Tw.Class="bg-sky-950/35 border-sky-400/60">
-                              <StackPanel
-                                    Spacing="6">
-                                   <TextBlock
-                                         Classes="docs-noteTitle"
-                                         tw:Tw.Class="text-sky-50"
-                                         Text="Implemented in this sample"/>
-                                   <TextBlock
-                                         Classes="docs-noteBody"
-                                         tw:Tw.Class="text-sky-100/85"
-                                         Text="Supported now: p, px, py, pt, pr, pb, pl, ps, pe, pbs, and pbe. Arbitrary values and responsive variants are intentionally left out until the parser supports them."/>
-                              </StackPanel>
-                         </Border>
+                               Text="Utilities for controlling an element&apos;s padding."/>
                     </StackPanel>
                     <StackPanel
                           Spacing="18">
@@ -98,7 +83,7 @@
                                               Padding="20,16">
                                              <TextBlock
                                                    Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;p-8&quot;"/>
+                                                   Text="&lt;Border tw:Tw.Class=&quot;p-8&quot; /&gt;"/>
                                         </Border>
                                    </StackPanel>
                               </Border>
@@ -195,9 +180,21 @@
                                               BorderBrush="{StaticResource BrushSlate800}"
                                               BorderThickness="0,1,0,0"
                                               Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;pt-6 pr-4 pb-8 pl-2&quot;"/>
+                                             <StackPanel
+                                                   Spacing="4">
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border tw:Tw.Class=&quot;pt-6&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border tw:Tw.Class=&quot;pr-4&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border tw:Tw.Class=&quot;pb-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border tw:Tw.Class=&quot;pl-2&quot; /&gt;"/>
+                                             </StackPanel>
                                         </Border>
                                    </StackPanel>
                               </Border>
@@ -262,9 +259,15 @@
                                               BorderBrush="{StaticResource BrushSlate800}"
                                               BorderThickness="0,1,0,0"
                                               Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;px-8&quot;    tw:Tw.Class=&quot;py-8&quot;"/>
+                                             <StackPanel
+                                                   Spacing="4">
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border tw:Tw.Class=&quot;px-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border tw:Tw.Class=&quot;py-8&quot; /&gt;"/>
+                                             </StackPanel>
                                         </Border>
                                    </StackPanel>
                               </Border>
@@ -276,153 +279,517 @@
                                     Text="Using logical properties"/>
                               <TextBlock
                                     Classes="docs-body"
-                                    Text="Use ps-&lt;number&gt;, pe-&lt;number&gt;, pbs-&lt;number&gt;, and pbe-&lt;number&gt; utilities to map padding based on text direction and writing mode."/>
+                                    Text="Use ps-&lt;number&gt;, pe-&lt;number&gt;, pbs-&lt;number&gt;, and pbe-&lt;number&gt; utilities to map padding based on text direction and writing mode. In Avalonia RTL, logical layout is resolved first from FlowDirection, then the final rendered result is mirrored, so the screen side can differ from the physical thickness side. Use psv-&lt;number&gt; and pev-&lt;number&gt; when you want padding to stay on the final visual start or end side after Avalonia mirrors RTL content."/>
+                              <Border
+                                    Classes="docs-note"
+                                    BorderThickness="2"
+                                    tw:Tw.Class="bg-sky-950/35 border-sky-400/60">
+                                   <StackPanel
+                                         Spacing="6">
+                                        <TextBlock
+                                              Classes="docs-noteTitle"
+                                              tw:Tw.Class="text-sky-50"
+                                              Text="Teaching note"/>
+                                        <TextBlock
+                                              Classes="docs-noteBody"
+                                              tw:Tw.Class="text-sky-100/85"
+                                              Text="The visualized side-mapping demo below adds ScaleTransform only to cancel Avalonia&apos;s automatic RTL mirror for teaching. In the real RTL demo, layout logic is applied first, then Avalonia&apos;s mirror changes the final rendered side. Real app usage is the unmodified RTL rendering demo and the code examples below."/>
+                                   </StackPanel>
+                              </Border>
                               <Border
                                     Classes="docs-surface">
                                    <StackPanel
                                          Spacing="0">
                                         <Border
                                               Background="{StaticResource BrushSlate950}"
-                                              Height="208"
                                               Padding="24">
-                                             <Grid
-                                                   ColumnDefinitions="*,*"
-                                                   ColumnSpacing="20">
-                                                  <Border
-                                                        Classes="docs-inset">
-                                                       <StackPanel
-                                                             Spacing="12">
-                                                            <TextBlock
-                                                                  Classes="docs-miniTitle"
-                                                                  Text="Left-to-right"/>
-                                                            <StackPanel
-                                                                  Orientation="Horizontal"
-                                                                  FlowDirection="LeftToRight"
-                                                                  Spacing="14">
-                                                                 <Border
-                                                                       Classes="docs-paddingShell"
-                                                                       tw:Tw.Class="ps-8">
-                                                                      <Border
-                                                                            Classes="docs-paddingCore">
-                                                                           <Grid
-                                                                                 MinWidth="88"
-                                                                                 MinHeight="48">
-                                                                                <TextBlock
-                                                                                      Classes="docs-chip"
-                                                                                      HorizontalAlignment="Center"
-                                                                                      VerticalAlignment="Center"
-                                                                                      Text="ps-8"/>
-                                                                           </Grid>
-                                                                      </Border>
-                                                                 </Border>
-                                                                 <Border
-                                                                       Classes="docs-paddingShell"
-                                                                       tw:Tw.Class="pe-8">
-                                                                      <Border
-                                                                            Classes="docs-paddingCore">
-                                                                           <Grid
-                                                                                 MinWidth="88"
-                                                                                 MinHeight="48">
-                                                                                <TextBlock
-                                                                                      Classes="docs-chip"
-                                                                                      HorizontalAlignment="Center"
-                                                                                      VerticalAlignment="Center"
-                                                                                      Text="pe-8"/>
-                                                                           </Grid>
-                                                                      </Border>
-                                                                 </Border>
-                                                            </StackPanel>
+                                             <StackPanel
+                                                   Spacing="24">
+                                                  <StackPanel
+                                                        Spacing="16">
+                                                       <TextBlock
+                                                             Classes="docs-miniTitle"
+                                                             Text="Real RTL rendering"/>
+                                                       <TextBlock
+                                                             Classes="docs-noteBody"
+                                                             Text="This preview shows the actual Avalonia result when FlowDirection changes. It uses tw:Tw.Class and FlowDirection only, with no extra transforms. Under RTL, the logical padding is calculated first, then Avalonia mirrors the rendered output."/>
+                                                       <Grid
+                                                             ColumnDefinitions="*,*"
+                                                             ColumnSpacing="20">
                                                             <Border
-                                                                  Classes="docs-paddingShell"
-                                                                  HorizontalAlignment="Left"
-                                                                  tw:Tw.Class="pbs-8">
-                                                                 <Border
-                                                                       Classes="docs-paddingCore">
-                                                                      <Grid
-                                                                            MinWidth="88"
-                                                                            MinHeight="48">
-                                                                           <TextBlock
-                                                                                 Classes="docs-chip"
-                                                                                 HorizontalAlignment="Center"
-                                                                                 VerticalAlignment="Center"
-                                                                                 Text="pbs-8"/>
-                                                                      </Grid>
-                                                                 </Border>
+                                                                  Grid.Column="0"
+                                                                  Classes="docs-inset">
+                                                                 <StackPanel
+                                                                       Spacing="12">
+                                                                      <TextBlock
+                                                                            Classes="docs-miniTitle"
+                                                                            Text="Left-to-right"/>
+                                                                      <StackPanel
+                                                                            Orientation="Vertical"
+                                                                            Spacing="12">
+                                                                           <Grid
+                                                                                 ColumnDefinitions="Auto,*,Auto"
+                                                                                 ColumnSpacing="10">
+                                                                                <TextBlock
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="start -&gt;"/>
+                                                                                <Border
+                                                                                      Grid.Column="1"
+                                                                                      Classes="docs-paddingShell"
+                                                                                      FlowDirection="LeftToRight"
+                                                                                      tw:Tw.Class="ps-8">
+                                                                                     <Border
+                                                                                           Classes="docs-paddingCore">
+                                                                                          <Grid
+                                                                                                MinWidth="88"
+                                                                                                MinHeight="48">
+                                                                                               <TextBlock
+                                                                                                     Classes="docs-chip"
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     VerticalAlignment="Center"
+                                                                                                     Text="ps-8"/>
+                                                                                          </Grid>
+                                                                                     </Border>
+                                                                                </Border>
+                                                                                <TextBlock
+                                                                                      Grid.Column="2"
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="&lt;- end"/>
+                                                                           </Grid>
+                                                                           <Grid
+                                                                                 ColumnDefinitions="Auto,*,Auto"
+                                                                                 ColumnSpacing="10">
+                                                                                <TextBlock
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="start -&gt;"/>
+                                                                                <Border
+                                                                                      Grid.Column="1"
+                                                                                      Classes="docs-paddingShell"
+                                                                                      FlowDirection="LeftToRight"
+                                                                                      tw:Tw.Class="pe-8">
+                                                                                     <Border
+                                                                                           Classes="docs-paddingCore">
+                                                                                          <Grid
+                                                                                                MinWidth="88"
+                                                                                                MinHeight="48">
+                                                                                               <TextBlock
+                                                                                                     Classes="docs-chip"
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     VerticalAlignment="Center"
+                                                                                                     Text="pe-8"/>
+                                                                                          </Grid>
+                                                                                     </Border>
+                                                                                </Border>
+                                                                                <TextBlock
+                                                                                      Grid.Column="2"
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="&lt;- end"/>
+                                                                           </Grid>
+                                                                      </StackPanel>
+                                                                 </StackPanel>
                                                             </Border>
-                                                       </StackPanel>
-                                                  </Border>
-                                                  <Border
-                                                        Classes="docs-inset">
-                                                       <StackPanel
-                                                             Spacing="12">
-                                                            <TextBlock
-                                                                  Classes="docs-miniTitle"
-                                                                  Text="Right-to-left"/>
-                                                            <StackPanel
-                                                                  Orientation="Horizontal"
-                                                                  FlowDirection="RightToLeft"
-                                                                  Spacing="14">
-                                                                 <Border
-                                                                       Classes="docs-paddingShell"
-                                                                       tw:Tw.Class="ps-8">
-                                                                      <Border
-                                                                            Classes="docs-paddingCore">
-                                                                           <Grid
-                                                                                 MinWidth="88"
-                                                                                 MinHeight="48">
-                                                                                <TextBlock
-                                                                                      Classes="docs-chip"
-                                                                                      HorizontalAlignment="Center"
-                                                                                      VerticalAlignment="Center"
-                                                                                      Text="ps-8"/>
-                                                                           </Grid>
-                                                                      </Border>
-                                                                 </Border>
-                                                                 <Border
-                                                                       Classes="docs-paddingShell"
-                                                                       tw:Tw.Class="pe-8">
-                                                                      <Border
-                                                                            Classes="docs-paddingCore">
-                                                                           <Grid
-                                                                                 MinWidth="88"
-                                                                                 MinHeight="48">
-                                                                                <TextBlock
-                                                                                      Classes="docs-chip"
-                                                                                      HorizontalAlignment="Center"
-                                                                                      VerticalAlignment="Center"
-                                                                                      Text="pe-8"/>
-                                                                           </Grid>
-                                                                      </Border>
-                                                                 </Border>
-                                                            </StackPanel>
                                                             <Border
-                                                                  Classes="docs-paddingShell"
-                                                                  HorizontalAlignment="Left"
-                                                                  tw:Tw.Class="pbs-8">
-                                                                 <Border
-                                                                       Classes="docs-paddingCore">
-                                                                      <Grid
-                                                                            MinWidth="88"
-                                                                            MinHeight="48">
-                                                                           <TextBlock
-                                                                                 Classes="docs-chip"
-                                                                                 HorizontalAlignment="Center"
-                                                                                 VerticalAlignment="Center"
-                                                                                 Text="pbs-8"/>
-                                                                      </Grid>
-                                                                 </Border>
+                                                                  Grid.Column="1"
+                                                                  Classes="docs-inset">
+                                                                 <StackPanel
+                                                                       Spacing="12">
+                                                                      <TextBlock
+                                                                            Classes="docs-miniTitle"
+                                                                            Text="Right-to-left"/>
+                                                                      <StackPanel
+                                                                            Orientation="Vertical"
+                                                                            Spacing="12">
+                                                                           <Grid
+                                                                                 ColumnDefinitions="Auto,*,Auto"
+                                                                                 ColumnSpacing="10">
+                                                                                <TextBlock
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="end -&gt;"/>
+                                                                                <Border
+                                                                                      Grid.Column="1"
+                                                                                      Classes="docs-paddingShell"
+                                                                                      FlowDirection="RightToLeft"
+                                                                                      tw:Tw.Class="ps-8">
+                                                                                     <Border
+                                                                                           Classes="docs-paddingCore">
+                                                                                          <Grid
+                                                                                                MinWidth="88"
+                                                                                                MinHeight="48">
+                                                                                               <TextBlock
+                                                                                                     Classes="docs-chip"
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     VerticalAlignment="Center"
+                                                                                                     Text="ps-8"/>
+                                                                                          </Grid>
+                                                                                     </Border>
+                                                                                </Border>
+                                                                                <TextBlock
+                                                                                      Grid.Column="2"
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="&lt;- start"/>
+                                                                           </Grid>
+                                                                           <Grid
+                                                                                 ColumnDefinitions="Auto,*,Auto"
+                                                                                 ColumnSpacing="10">
+                                                                                <TextBlock
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="end -&gt;"/>
+                                                                                <Border
+                                                                                      Grid.Column="1"
+                                                                                      Classes="docs-paddingShell"
+                                                                                      FlowDirection="RightToLeft"
+                                                                                      tw:Tw.Class="pe-8">
+                                                                                     <Border
+                                                                                           Classes="docs-paddingCore">
+                                                                                          <Grid
+                                                                                                MinWidth="88"
+                                                                                                MinHeight="48">
+                                                                                               <TextBlock
+                                                                                                     Classes="docs-chip"
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     VerticalAlignment="Center"
+                                                                                                     Text="pe-8"/>
+                                                                                          </Grid>
+                                                                                     </Border>
+                                                                                </Border>
+                                                                                <TextBlock
+                                                                                      Grid.Column="2"
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="&lt;- start"/>
+                                                                           </Grid>
+                                                                      </StackPanel>
+                                                                 </StackPanel>
                                                             </Border>
-                                                       </StackPanel>
-                                                  </Border>
-                                             </Grid>
+                                                       </Grid>
+                                                  </StackPanel>
+                                                  <StackPanel
+                                                        Spacing="16">
+                                                       <TextBlock
+                                                             Classes="docs-miniTitle"
+                                                             Text="Visualized side mapping"/>
+                                                       <TextBlock
+                                                             Classes="docs-noteBody"
+                                                             Text="This teaching preview cancels Avalonia&apos;s RTL mirror so the physical start/end side is easier to inspect side-by-side."/>
+                                                       <Grid
+                                                             ColumnDefinitions="*,*"
+                                                             ColumnSpacing="20">
+                                                            <Border
+                                                                  Grid.Column="0"
+                                                                  Classes="docs-inset">
+                                                                 <StackPanel
+                                                                       Spacing="12">
+                                                                      <TextBlock
+                                                                            Classes="docs-miniTitle"
+                                                                            Text="Left-to-right"/>
+                                                                      <StackPanel
+                                                                            Orientation="Vertical"
+                                                                            Spacing="12">
+                                                                           <Border
+                                                                                 Classes="docs-paddingShell"
+                                                                                 FlowDirection="LeftToRight"
+                                                                                 tw:Tw.Class="ps-8">
+                                                                                <Border
+                                                                                      Classes="docs-paddingCore">
+                                                                                     <Grid
+                                                                                           MinWidth="88"
+                                                                                           MinHeight="48">
+                                                                                          <TextBlock
+                                                                                                Classes="docs-chip"
+                                                                                                HorizontalAlignment="Center"
+                                                                                                VerticalAlignment="Center"
+                                                                                                Text="ps-8"/>
+                                                                                     </Grid>
+                                                                                </Border>
+                                                                           </Border>
+                                                                           <Border
+                                                                                 Classes="docs-paddingShell"
+                                                                                 FlowDirection="LeftToRight"
+                                                                                 tw:Tw.Class="pe-8">
+                                                                                <Border
+                                                                                      Classes="docs-paddingCore">
+                                                                                     <Grid
+                                                                                           MinWidth="88"
+                                                                                           MinHeight="48">
+                                                                                          <TextBlock
+                                                                                                Classes="docs-chip"
+                                                                                                HorizontalAlignment="Center"
+                                                                                                VerticalAlignment="Center"
+                                                                                                Text="pe-8"/>
+                                                                                     </Grid>
+                                                                                </Border>
+                                                                           </Border>
+                                                                      </StackPanel>
+                                                                 </StackPanel>
+                                                            </Border>
+                                                            <Border
+                                                                  Grid.Column="1"
+                                                                  Classes="docs-inset">
+                                                                 <StackPanel
+                                                                       Spacing="12">
+                                                                      <TextBlock
+                                                                            Classes="docs-miniTitle"
+                                                                            Text="Right-to-left"/>
+                                                                      <StackPanel
+                                                                            Orientation="Vertical"
+                                                                            Spacing="12">
+                                                                           <Border
+                                                                                 Classes="docs-paddingShell"
+                                                                                 FlowDirection="RightToLeft"
+                                                                                 RenderTransformOrigin="50%, 50%"
+                                                                                 tw:Tw.Class="ps-8">
+                                                                                <Border.RenderTransform>
+                                                                                     <media:ScaleTransform
+                                                                                           ScaleX="-1"/>
+                                                                                </Border.RenderTransform>
+                                                                                <Border
+                                                                                      Classes="docs-paddingCore">
+                                                                                     <Grid
+                                                                                           MinWidth="88"
+                                                                                           MinHeight="48">
+                                                                                          <TextBlock
+                                                                                                Classes="docs-chip"
+                                                                                                HorizontalAlignment="Center"
+                                                                                                VerticalAlignment="Center"
+                                                                                                Text="ps-8"/>
+                                                                                     </Grid>
+                                                                                </Border>
+                                                                           </Border>
+                                                                           <Border
+                                                                                 Classes="docs-paddingShell"
+                                                                                 FlowDirection="RightToLeft"
+                                                                                 RenderTransformOrigin="50%, 50%"
+                                                                                 tw:Tw.Class="pe-8">
+                                                                                <Border.RenderTransform>
+                                                                                     <media:ScaleTransform
+                                                                                           ScaleX="-1"/>
+                                                                                </Border.RenderTransform>
+                                                                                <Border
+                                                                                      Classes="docs-paddingCore">
+                                                                                     <Grid
+                                                                                           MinWidth="88"
+                                                                                           MinHeight="48">
+                                                                                          <TextBlock
+                                                                                                Classes="docs-chip"
+                                                                                                HorizontalAlignment="Center"
+                                                                                                VerticalAlignment="Center"
+                                                                                                Text="pe-8"/>
+                                                                                     </Grid>
+                                                                                </Border>
+                                                                           </Border>
+                                                                      </StackPanel>
+                                                                 </StackPanel>
+                                                            </Border>
+                                                       </Grid>
+                                                  </StackPanel>
+                                                  <StackPanel
+                                                        Spacing="16">
+                                                       <TextBlock
+                                                             Classes="docs-miniTitle"
+                                                             Text="Visual start and end aliases"/>
+                                                       <TextBlock
+                                                             Classes="docs-noteBody"
+                                                             Text="psv-8 follows the final rendered start side, and pev-8 follows the final rendered end side. In RTL they intentionally write physical left and right padding so Avalonia&apos;s mirror lands the spacing on the expected visual side."/>
+                                                       <Grid
+                                                             ColumnDefinitions="*,*"
+                                                             ColumnSpacing="20">
+                                                            <Border
+                                                                  Grid.Column="0"
+                                                                  Classes="docs-inset">
+                                                                 <StackPanel
+                                                                       Spacing="12">
+                                                                      <TextBlock
+                                                                            Classes="docs-miniTitle"
+                                                                            Text="Left-to-right"/>
+                                                                      <StackPanel
+                                                                            Orientation="Vertical"
+                                                                            Spacing="12">
+                                                                           <Grid
+                                                                                 ColumnDefinitions="Auto,*,Auto"
+                                                                                 ColumnSpacing="10">
+                                                                                <TextBlock
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="start -&gt;"/>
+                                                                                <Border
+                                                                                      Grid.Column="1"
+                                                                                      Classes="docs-paddingShell"
+                                                                                      FlowDirection="LeftToRight"
+                                                                                      tw:Tw.Class="psv-8">
+                                                                                     <Border
+                                                                                           Classes="docs-paddingCore">
+                                                                                          <Grid
+                                                                                                MinWidth="88"
+                                                                                                MinHeight="48">
+                                                                                               <TextBlock
+                                                                                                     Classes="docs-chip"
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     VerticalAlignment="Center"
+                                                                                                     Text="psv-8"/>
+                                                                                          </Grid>
+                                                                                     </Border>
+                                                                                </Border>
+                                                                                <TextBlock
+                                                                                      Grid.Column="2"
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="&lt;- end"/>
+                                                                           </Grid>
+                                                                           <Grid
+                                                                                 ColumnDefinitions="Auto,*,Auto"
+                                                                                 ColumnSpacing="10">
+                                                                                <TextBlock
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="start -&gt;"/>
+                                                                                <Border
+                                                                                      Grid.Column="1"
+                                                                                      Classes="docs-paddingShell"
+                                                                                      FlowDirection="LeftToRight"
+                                                                                      tw:Tw.Class="pev-8">
+                                                                                     <Border
+                                                                                           Classes="docs-paddingCore">
+                                                                                          <Grid
+                                                                                                MinWidth="88"
+                                                                                                MinHeight="48">
+                                                                                               <TextBlock
+                                                                                                     Classes="docs-chip"
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     VerticalAlignment="Center"
+                                                                                                     Text="pev-8"/>
+                                                                                          </Grid>
+                                                                                     </Border>
+                                                                                </Border>
+                                                                                <TextBlock
+                                                                                      Grid.Column="2"
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="&lt;- end"/>
+                                                                           </Grid>
+                                                                      </StackPanel>
+                                                                 </StackPanel>
+                                                            </Border>
+                                                            <Border
+                                                                  Grid.Column="1"
+                                                                  Classes="docs-inset">
+                                                                 <StackPanel
+                                                                       Spacing="12">
+                                                                      <TextBlock
+                                                                            Classes="docs-miniTitle"
+                                                                            Text="Right-to-left"/>
+                                                                      <StackPanel
+                                                                            Orientation="Vertical"
+                                                                            Spacing="12">
+                                                                           <Grid
+                                                                                 ColumnDefinitions="Auto,*,Auto"
+                                                                                 ColumnSpacing="10">
+                                                                                <TextBlock
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="end -&gt;"/>
+                                                                                <Border
+                                                                                      Grid.Column="1"
+                                                                                      Classes="docs-paddingShell"
+                                                                                      FlowDirection="RightToLeft"
+                                                                                      tw:Tw.Class="psv-8">
+                                                                                     <Border
+                                                                                           Classes="docs-paddingCore">
+                                                                                          <Grid
+                                                                                                MinWidth="88"
+                                                                                                MinHeight="48">
+                                                                                               <TextBlock
+                                                                                                     Classes="docs-chip"
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     VerticalAlignment="Center"
+                                                                                                     Text="psv-8"/>
+                                                                                          </Grid>
+                                                                                     </Border>
+                                                                                </Border>
+                                                                                <TextBlock
+                                                                                      Grid.Column="2"
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="&lt;- start"/>
+                                                                           </Grid>
+                                                                           <Grid
+                                                                                 ColumnDefinitions="Auto,*,Auto"
+                                                                                 ColumnSpacing="10">
+                                                                                <TextBlock
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="end -&gt;"/>
+                                                                                <Border
+                                                                                      Grid.Column="1"
+                                                                                      Classes="docs-paddingShell"
+                                                                                      FlowDirection="RightToLeft"
+                                                                                      tw:Tw.Class="pev-8">
+                                                                                     <Border
+                                                                                           Classes="docs-paddingCore">
+                                                                                          <Grid
+                                                                                                MinWidth="88"
+                                                                                                MinHeight="48">
+                                                                                               <TextBlock
+                                                                                                     Classes="docs-chip"
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     VerticalAlignment="Center"
+                                                                                                     Text="pev-8"/>
+                                                                                          </Grid>
+                                                                                     </Border>
+                                                                                </Border>
+                                                                                <TextBlock
+                                                                                      Grid.Column="2"
+                                                                                      Classes="docs-miniTitle"
+                                                                                      VerticalAlignment="Center"
+                                                                                      Text="&lt;- start"/>
+                                                                           </Grid>
+                                                                      </StackPanel>
+                                                                 </StackPanel>
+                                                            </Border>
+                                                       </Grid>
+                                                  </StackPanel>
+                                             </StackPanel>
                                         </Border>
                                         <Border
                                               BorderBrush="{StaticResource BrushSlate800}"
                                               BorderThickness="0,1,0,0"
                                               Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;ps-8 pe-8 pbs-8&quot;"/>
+                                             <StackPanel
+                                                   Spacing="6">
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Actual usage"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;ps-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pe-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;ps-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pe-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;psv-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;psv-8&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;"/>
+                                             </StackPanel>
                                         </Border>
                                    </StackPanel>
                               </Border>

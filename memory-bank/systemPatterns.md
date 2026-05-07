@@ -33,7 +33,7 @@ Primary public API should be an attached property parser plus generated static r
 
 ## Implemented Feature Boundary
 Spacing MVP currently covers these utility families:
-- Padding: `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`, `ps`, `pe`, `pbs`, `pbe`
+- Padding: `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`, `ps`, `psv`, `pe`, `pev`, `pbs`, `pbe`
 - Margin: `m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`, `ms`, `me`, `mbs`, `mbe`
 - Colors: `bg-*`, `text-*`, `border-*` for whole-property color application, plus `transparent` and `/opacity`
 
