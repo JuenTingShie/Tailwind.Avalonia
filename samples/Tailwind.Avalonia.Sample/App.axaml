@@ -8,8 +8,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude
                      Source="avares://Tailwind.Avalonia/Themes/Tailwind.axaml"/>
-                <MergeResourceInclude
-                     Source="/Resources/SampleTokens.axaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

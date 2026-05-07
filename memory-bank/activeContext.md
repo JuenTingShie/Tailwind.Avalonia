@@ -25,6 +25,9 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - Added sectioned sample content for basic, one-side, axis, logical, and negative-margin spacing examples.
 - Kept whole-property `bg-*`, `text-*`, and `border-*` utilities visible in the support cards so the docs sample still advertises current color capability.
 - Revalidated the sample project build after the docs-page redesign.
+- Split the `Padding` and `Margin` tab bodies out of `MainWindow.axaml` into `samples/Tailwind.Avalonia.Sample/Spacing/Padding.axaml` and `samples/Tailwind.Avalonia.Sample/Spacing/Margin.axaml` as standalone `UserControl` views.
+- Moved the docs page styles plus the striped padding brush out of `MainWindow.axaml` into `samples/Tailwind.Avalonia.Sample/Spacing/SpacingDocsStyles.axaml`, and each spacing `UserControl` now merges its own resources/styles so the views can be opened and compared standalone in the designer.
+- Removed `samples/Tailwind.Avalonia.Sample/Resources/SampleTokens.axaml`; sample-only copy, dimensions, and tab labels are now inlined directly in `MainWindow.axaml`, `Padding.axaml`, and `Margin.axaml`, while shared visual styles stay in `SpacingDocsStyles.axaml`.
 
 ## Active Decisions
 - Hybrid API remains the chosen direction: stable resource keys plus utility parsing.
@@ -34,6 +37,9 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - `transparent` and `/opacity` are in scope for whole-property color utilities.
 - Custom components are off-limits for this project direction.
 - Generic `Border` stays whole-property only because Avalonia `Border` exposes only `BorderBrushProperty` and sealed rendering leaves no honest no-custom-component path for directional border colors.
+- `MainWindow.axaml` now owns shared docs resources and styles, while the spacing page bodies live in dedicated child `UserControl` files under `samples/Tailwind.Avalonia.Sample/Spacing/`.
+- `MainWindow.axaml` now owns only the tab shell styles; spacing-page presentation styles are loaded locally by the child `UserControl` files.
+- The sample app no longer carries a separate sample token dictionary; only package theme resources remain merged, and demo-local text/metrics live next to the sample markup that uses them.
 
 ## Immediate Next Steps
 1. Start semantic alias and dark/light theme layering on top of the concrete Tailwind palette.

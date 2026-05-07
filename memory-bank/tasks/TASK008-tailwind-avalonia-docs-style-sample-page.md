@@ -2,7 +2,7 @@
 
 **Status:** Completed  
 **Added:** 2026-05-06  
-**Updated:** 2026-05-06
+**Updated:** 2026-05-08
 
 ## Original Request
 重作sample頁面，左邊有tab，一個tab一個分類，如 Padding / Margin，每一個tab會有該功能的詳細使用方法，模仿 tailwind 的說明文件頁面。
@@ -41,3 +41,10 @@
 - Added structured `Padding` and `Margin` walkthroughs with preview cards and code strings.
 - Restored explicit `bg-*`, `text-*`, and `border-*` visibility inside the support cards so the new layout did not regress earlier sample coverage.
 - Validated the sample by rebuilding `samples/Tailwind.Avalonia.Sample/Tailwind.Avalonia.Sample.csproj` successfully.
+
+### 2026-05-08
+- Moved the `Padding` and `Margin` `TabItem` bodies out of `MainWindow.axaml` into dedicated `UserControl` files at `samples/Tailwind.Avalonia.Sample/Spacing/Padding.axaml` and `samples/Tailwind.Avalonia.Sample/Spacing/Margin.axaml`.
+- Kept `MainWindow.axaml` responsible only for shared docs resources, styles, and tab shell wiring by replacing the tab bodies with namespaced control references.
+- Added minimal code-behind files for the two spacing views and revalidated the sample build after clearing a transient `.NET Host` file lock on the output DLL.
+- Followed up by extracting shared docs styles into `samples/Tailwind.Avalonia.Sample/Spacing/SpacingDocsStyles.axaml` and letting each spacing `UserControl` merge local resources/styles, so the views can be opened standalone in the designer without depending on `MainWindow.axaml` style scope.
+- Removed `samples/Tailwind.Avalonia.Sample/Resources/SampleTokens.axaml` after deciding the sample should not resourceize demo-only strings and dimensions; those values now live inline in `MainWindow.axaml`, `Padding.axaml`, and `Margin.axaml`, and the sample build still passes after clearing transient file locks.

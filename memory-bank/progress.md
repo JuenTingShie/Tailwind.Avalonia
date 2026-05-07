@@ -11,6 +11,9 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - `tw:Tw.Class` applies spacing utilities for padding and margin, including logical parser support.
 - `tw:Tw.Class` now also applies whole-property color utilities for `bg-*`, `text-*`, and `border-*`, including `transparent` and `/opacity`, on controls that expose the matching Avalonia brush properties.
 - Sample app now presents a docs-style left-tab browser for `Padding` and `Margin`, with detailed example sections mapped to the currently supported spacing subset.
+- The `Padding` and `Margin` tab content is now split into dedicated `UserControl` files under `samples/Tailwind.Avalonia.Sample/Spacing/`, keeping `MainWindow.axaml` focused on shell resources and tab wiring.
+- The spacing `UserControl` files now merge sample/package resources and include a shared `SpacingDocsStyles.axaml` file locally, so they render correctly even when developed outside the `MainWindow` shell.
+- The sample no longer uses `SampleTokens.axaml`; demo-only copy, layout values, and tab labels are inlined where they are used, while shared presentation rules stay in `SpacingDocsStyles.axaml`.
 - Sample app still visibly demonstrates `bg-*`, `text-*`, and `border-*` utility strings in XAML through the support cards embedded in the docs layout.
 - `dotnet build` succeeds for the full solution.
 - Sample app startup was exercised with no immediate runtime exception output.
