@@ -1,7 +1,7 @@
 # Progress
 
 ## Current Status
-Spacing foundation is implemented and locally validated. Planning-only state is finished.
+Spacing and color foundations are implemented, locally validated, and now documented through a docs-style sample surface.
 
 ## What Works
 - Solution and project scaffold exists.
@@ -10,8 +10,8 @@ Spacing foundation is implemented and locally validated. Planning-only state is 
 - Color resources are generated through `ColorResourceDictionary` using the official Tailwind v4.2 palette reference.
 - `tw:Tw.Class` applies spacing utilities for padding and margin, including logical parser support.
 - `tw:Tw.Class` now also applies whole-property color utilities for `bg-*`, `text-*`, and `border-*`, including `transparent` and `/opacity`, on controls that expose the matching Avalonia brush properties.
-- Sample app demonstrates both `StaticResource` and utility-string consumption.
-- Sample app now visibly demonstrates `bg-*`, `text-*`, and `border-*` utility strings in XAML.
+- Sample app now presents a docs-style left-tab browser for `Padding` and `Margin`, with detailed example sections mapped to the currently supported spacing subset.
+- Sample app still visibly demonstrates `bg-*`, `text-*`, and `border-*` utility strings in XAML through the support cards embedded in the docs layout.
 - `dotnet build` succeeds for the full solution.
 - Sample app startup was exercised with no immediate runtime exception output.
 - Sample app now consumes package `Brush*` color tokens instead of local hardcoded brush values.
@@ -23,6 +23,7 @@ Spacing foundation is implemented and locally validated. Planning-only state is 
 - Validate package/publish consumption beyond the local project-reference sample.
 - Decide whether compile-time merged include support is needed after packaging.
 - Expand semantic/dark-light theme layering and remaining non-border utility coverage.
+- Decide whether the docs-style sample should expand beyond spacing into dedicated color utility tabs.
 - Decide whether directional border colors should be explicitly documented as unsupported under the no-custom-component constraint.
 
 ## Known Risks
@@ -36,4 +37,4 @@ Spacing foundation is implemented and locally validated. Planning-only state is 
 - Color tokens currently depend on runtime OKLCH conversion; current tests cover stable invariants but do not yet assert browser-gamut-mapped hex outputs for chromatic palette colors.
 
 ## Estimated Stage
-90%: spacing and color token foundations plus whole-property color utilities, sample demo refresh, and core automated tests are in place, with semantic theme layering, packaging validation, and directional-border scope decisions still remaining.
+92%: spacing and color token foundations plus whole-property color utilities, docs-style sample coverage for spacing, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.

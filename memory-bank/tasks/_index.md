@@ -13,7 +13,7 @@
 - [TASK004] Tailwind Avalonia first color utility parsing - `tw:Tw.Class` now applies `bg-*`, `text-*`, and `border-*`, with 20 passing tests.
 - [TASK005] Tailwind Avalonia color opacity and sample refresh - `transparent` and `/opacity` support added, sample updated, directional border-color deferred with documented rationale.
 - [TASK007] Tailwind Avalonia no-custom-component rollback - Removed `TwBorder`, restored whole-border semantics, tests and sample updated.
+- [TASK008] Tailwind Avalonia docs-style sample page - Sample rebuilt into left-tab `Padding` / `Margin` docs layout and sample build revalidated.
 
 ## Abandoned
 - [TASK006] Tailwind Avalonia directional border rendering layer - Reverted after user constraint disallowed custom components.
-- None yet.

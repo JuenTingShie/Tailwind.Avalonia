@@ -20,6 +20,7 @@ Avalonia has strong styling and resource systems, but it does not offer a Tailwi
 
 ## Current MVP Delivery
 - Sample app consumes package resources through `ResourceInclude` and uses `tw:Tw.Class` for composed spacing.
+- Sample app now also acts as a docs-style browser with left-side tabs for supported spacing categories.
 - Library currently exposes positive padding/margin resources plus negative margin resources.
 - Logical spacing (`ps`, `pe`, `ms`, `me`, `pbs`, `pbe`, `mbs`, `mbe`) is supported through the parser surface.
 - Library now also exposes Tailwind v4.2 palette tokens as `Color*` and `Brush*` resources.

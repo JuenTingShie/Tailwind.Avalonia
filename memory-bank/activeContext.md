@@ -1,7 +1,7 @@
 # Active Context
 
 ## Current Focus
-Build on the new spacing and colors foundation with semantic theme composition and package validation, under the no-custom-component constraint.
+With the sample docs refresh complete, build on the spacing and colors foundation with semantic theme composition and package validation, under the no-custom-component constraint.
 
 ## Recent Changes
 - Scaffolded the solution, library project, and sample app.
@@ -21,6 +21,10 @@ Build on the new spacing and colors foundation with semantic theme composition a
 - Removed the `TwBorder` experiment because user constraint now disallows custom components.
 - Reverted directional border-color parsing and sample usage back to honest whole-property border color behavior.
 - Validated the sample build and the test project with 21 passing tests.
+- Rebuilt the sample app into a Tailwind-docs-inspired layout using a standard Avalonia `TabControl` with left-side `Padding` and `Margin` tabs.
+- Added sectioned sample content for basic, one-side, axis, logical, and negative-margin spacing examples.
+- Kept whole-property `bg-*`, `text-*`, and `border-*` utilities visible in the support cards so the docs sample still advertises current color capability.
+- Revalidated the sample project build after the docs-page redesign.
 
 ## Active Decisions
 - Hybrid API remains the chosen direction: stable resource keys plus utility parsing.
@@ -33,7 +37,7 @@ Build on the new spacing and colors foundation with semantic theme composition a
 
 ## Immediate Next Steps
 1. Start semantic alias and dark/light theme layering on top of the concrete Tailwind palette.
-2. Add more regression coverage around palette conversion edge cases if the color conversion strategy changes.
+2. Decide whether the sample should gain additional docs tabs for `Background`, `Text`, and `Border Color` utilities.
 3. Validate package/publish consumption beyond the local project-reference sample.
 
 ## Open Questions
