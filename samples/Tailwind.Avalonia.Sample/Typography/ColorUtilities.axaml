@@ -117,7 +117,19 @@
                                               Text="&lt;TextBlock Foreground=&quot;{StaticResource BrushSky300}&quot; /&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="&lt;TextBlock&gt;&lt;TextBlock.Foreground&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorRose300}&quot; Opacity=&quot;0.8&quot; /&gt;&lt;/TextBlock.Foreground&gt;&lt;/TextBlock&gt;"/>
+                                              Text="&lt;TextBlock&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;TextBlock.Foreground&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="    &lt;SolidColorBrush Color=&quot;{StaticResource ColorRose300}&quot; Opacity=&quot;0.8&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;/TextBlock.Foreground&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;/TextBlock&gt;"/>
                                      </StackPanel>
                                  </Border>
                             </StackPanel>
@@ -193,10 +205,31 @@
                                               Text="StaticResource version"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="&lt;Button Background=&quot;{StaticResource BrushEmerald500}&quot; Foreground=&quot;{StaticResource BrushSlate950}&quot; BorderBrush=&quot;{StaticResource BrushEmerald300}&quot; /&gt;"/>
+                                              Text="&lt;Button"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="&lt;Button&gt;&lt;Button.Background&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber400}&quot; Opacity=&quot;0.2&quot; /&gt;&lt;/Button.Background&gt;&lt;Button.Foreground&gt;&lt;StaticResource ResourceKey=&quot;BrushAmber100&quot; /&gt;&lt;/Button.Foreground&gt;&lt;Button.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber300}&quot; Opacity=&quot;0.45&quot; /&gt;&lt;/Button.BorderBrush&gt;&lt;/Button&gt;"/>
+                                              Text="  Background=&quot;{StaticResource BrushEmerald500}&quot;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  Foreground=&quot;{StaticResource BrushSlate950}&quot;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  BorderBrush=&quot;{StaticResource BrushEmerald300}&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Button&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;Button.Background&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber400}&quot; Opacity=&quot;0.2&quot; /&gt;&lt;/Button.Background&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;Button.Foreground&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber100}&quot; /&gt;&lt;/Button.Foreground&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;Button.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber300}&quot; Opacity=&quot;0.45&quot; /&gt;&lt;/Button.BorderBrush&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;/Button&gt;"/>
                                          <TextBlock
                                               Classes="docs-noteBody"
                                               Text="Unsupported: bg-transparent has no StaticResource-only equivalent today because ColorResourceDictionary only emits Tailwind palette Brush*/Color* keys and does not generate BrushTransparent. Treat this as the current resource-surface limit rather than a hidden supported case."/>
@@ -274,10 +307,25 @@
                                               Text="StaticResource version"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="&lt;Border BorderThickness=&quot;3&quot; BorderBrush=&quot;{StaticResource BrushCyan400}&quot; Background=&quot;{StaticResource BrushSlate900}&quot; /&gt;"/>
+                                              Text="&lt;Border"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="&lt;Border BorderThickness=&quot;3&quot; Background=&quot;{StaticResource BrushSlate900}&quot;&gt;&lt;Border.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorRose400}&quot; Opacity=&quot;0.65&quot; /&gt;&lt;/Border.BorderBrush&gt;&lt;/Border&gt;"/>
+                                              Text="  BorderThickness=&quot;3&quot;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  BorderBrush=&quot;{StaticResource BrushCyan400}&quot;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  Background=&quot;{StaticResource BrushSlate900}&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Border BorderThickness=&quot;3&quot; Background=&quot;{StaticResource BrushSlate900}&quot;&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;Border.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorRose400}&quot; Opacity=&quot;0.65&quot; /&gt;&lt;/Border.BorderBrush&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;/Border&gt;"/>
                                      </StackPanel>
                                  </Border>
                             </StackPanel>
