@@ -201,6 +201,9 @@
                                               Classes="docs-code"
                                               Text="&lt;Button tw:Tw.Class=&quot;bg-transparent text-sky-200 border-sky-400&quot; /&gt;"/>
                                          <TextBlock
+                                              Classes="docs-noteBody"
+                                              Text="Unsupported StaticResource equivalent: bg-transparent has no generated BrushTransparent key today because ColorResourceDictionary only emits Tailwind palette Brush*/Color* resources."/>
+                                         <TextBlock
                                               Classes="docs-miniTitle"
                                               Text="StaticResource version"/>
                                          <TextBlock
@@ -248,11 +251,8 @@
                                          <TextBlock
                                               Classes="docs-code"
                                               Text="&lt;/Button&gt;"/>
-                                         <TextBlock
-                                              Classes="docs-noteBody"
-                                              Text="Unsupported: bg-transparent has no StaticResource-only equivalent today because ColorResourceDictionary only emits Tailwind palette Brush*/Color* keys and does not generate BrushTransparent. Treat this as the current resource-surface limit rather than a hidden supported case."/>
                                      </StackPanel>
-                                 </Border>
+                                  </Border>
                             </StackPanel>
                         </Border>
                     </StackPanel>
