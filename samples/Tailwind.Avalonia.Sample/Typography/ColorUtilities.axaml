@@ -199,7 +199,7 @@
                                               Text="&lt;Button&gt;&lt;Button.Background&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber400}&quot; Opacity=&quot;0.2&quot; /&gt;&lt;/Button.Background&gt;&lt;Button.Foreground&gt;&lt;StaticResource ResourceKey=&quot;BrushAmber100&quot; /&gt;&lt;/Button.Foreground&gt;&lt;Button.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber300}&quot; Opacity=&quot;0.45&quot; /&gt;&lt;/Button.BorderBrush&gt;&lt;/Button&gt;"/>
                                          <TextBlock
                                               Classes="docs-noteBody"
-                                              Text="Unsupported: bg-transparent has no generated BrushTransparent StaticResource today, so that exact transparent utility still has no StaticResource-only equivalent."/>
+                                              Text="Unsupported: bg-transparent has no StaticResource-only equivalent today because ColorResourceDictionary only emits Tailwind palette Brush*/Color* keys and does not generate BrushTransparent. Treat this as the current resource-surface limit rather than a hidden supported case."/>
                                      </StackPanel>
                                  </Border>
                             </StackPanel>
