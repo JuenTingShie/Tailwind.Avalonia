@@ -94,20 +94,32 @@
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>
-                                <Border
-                                     BorderBrush="{StaticResource BrushSlate800}"
-                                     BorderThickness="0,1,0,0"
-                                     Padding="20,16">
-                                    <StackPanel
-                                         Spacing="4">
-                                        <TextBlock
-                                             Classes="docs-code"
-                                             Text="&lt;TextBlock tw:Tw.Class=&quot;text-sky-300&quot; /&gt;"/>
-                                        <TextBlock
-                                             Classes="docs-code"
-                                             Text="&lt;TextBlock tw:Tw.Class=&quot;text-rose-300/80&quot; /&gt;"/>
-                                    </StackPanel>
-                                </Border>
+                                 <Border
+                                      BorderBrush="{StaticResource BrushSlate800}"
+                                      BorderThickness="0,1,0,0"
+                                      Padding="20,16">
+                                     <StackPanel
+                                          Spacing="6">
+                                         <TextBlock
+                                              Classes="docs-miniTitle"
+                                              Text="Utility version"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;TextBlock tw:Tw.Class=&quot;text-sky-300&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;TextBlock tw:Tw.Class=&quot;text-rose-300/80&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-miniTitle"
+                                              Text="StaticResource version"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;TextBlock Foreground=&quot;{StaticResource BrushSky300}&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;TextBlock&gt;&lt;TextBlock.Foreground&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorRose300}&quot; Opacity=&quot;0.8&quot; /&gt;&lt;/TextBlock.Foreground&gt;&lt;/TextBlock&gt;"/>
+                                     </StackPanel>
+                                 </Border>
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -161,20 +173,35 @@
                                              Content="border-violet-300/55"/>
                                     </Grid>
                                 </Border>
-                                <Border
-                                     BorderBrush="{StaticResource BrushSlate800}"
-                                     BorderThickness="0,1,0,0"
-                                     Padding="20,16">
-                                    <StackPanel
-                                         Spacing="4">
-                                        <TextBlock
-                                             Classes="docs-code"
-                                             Text="&lt;Button tw:Tw.Class=&quot;bg-emerald-500 text-slate-950 border-emerald-300&quot; /&gt;"/>
-                                        <TextBlock
-                                             Classes="docs-code"
-                                             Text="&lt;Button tw:Tw.Class=&quot;bg-transparent text-sky-200 border-sky-400&quot; /&gt;"/>
-                                    </StackPanel>
-                                </Border>
+                                 <Border
+                                      BorderBrush="{StaticResource BrushSlate800}"
+                                      BorderThickness="0,1,0,0"
+                                      Padding="20,16">
+                                     <StackPanel
+                                          Spacing="6">
+                                         <TextBlock
+                                              Classes="docs-miniTitle"
+                                              Text="Utility version"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Button tw:Tw.Class=&quot;bg-emerald-500 text-slate-950 border-emerald-300&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Button tw:Tw.Class=&quot;bg-transparent text-sky-200 border-sky-400&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-miniTitle"
+                                              Text="StaticResource version"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Button Background=&quot;{StaticResource BrushEmerald500}&quot; Foreground=&quot;{StaticResource BrushSlate950}&quot; BorderBrush=&quot;{StaticResource BrushEmerald300}&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Button&gt;&lt;Button.Background&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber400}&quot; Opacity=&quot;0.2&quot; /&gt;&lt;/Button.Background&gt;&lt;Button.Foreground&gt;&lt;StaticResource ResourceKey=&quot;BrushAmber100&quot; /&gt;&lt;/Button.Foreground&gt;&lt;Button.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber300}&quot; Opacity=&quot;0.45&quot; /&gt;&lt;/Button.BorderBrush&gt;&lt;/Button&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-noteBody"
+                                              Text="Unsupported: bg-transparent has no generated BrushTransparent StaticResource today, so that exact transparent utility still has no StaticResource-only equivalent."/>
+                                     </StackPanel>
+                                 </Border>
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -230,14 +257,29 @@
                                         </Border>
                                     </Grid>
                                 </Border>
-                                <Border
-                                     BorderBrush="{StaticResource BrushSlate800}"
-                                     BorderThickness="0,1,0,0"
-                                     Padding="20,16">
-                                    <TextBlock
-                                         Classes="docs-code"
-                                         Text="&lt;Border BorderThickness=&quot;3&quot; tw:Tw.Class=&quot;border-cyan-400&quot; /&gt;"/>
-                                </Border>
+                                 <Border
+                                      BorderBrush="{StaticResource BrushSlate800}"
+                                      BorderThickness="0,1,0,0"
+                                      Padding="20,16">
+                                     <StackPanel
+                                          Spacing="6">
+                                         <TextBlock
+                                              Classes="docs-miniTitle"
+                                              Text="Utility version"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Border BorderThickness=&quot;3&quot; tw:Tw.Class=&quot;border-cyan-400&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-miniTitle"
+                                              Text="StaticResource version"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Border BorderThickness=&quot;3&quot; BorderBrush=&quot;{StaticResource BrushCyan400}&quot; Background=&quot;{StaticResource BrushSlate900}&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="&lt;Border BorderThickness=&quot;3&quot; Background=&quot;{StaticResource BrushSlate900}&quot;&gt;&lt;Border.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorRose400}&quot; Opacity=&quot;0.65&quot; /&gt;&lt;/Border.BorderBrush&gt;&lt;/Border&gt;"/>
+                                     </StackPanel>
+                                 </Border>
                             </StackPanel>
                         </Border>
                     </StackPanel>

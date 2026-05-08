@@ -95,14 +95,26 @@
                                                   </Border>
                                              </Grid>
                                         </Border>
-                                        <Border
-                                              BorderBrush="{StaticResource BrushSlate800}"
-                                              BorderThickness="0,1,0,0"
-                                              Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;m-8&quot;"/>
-                                        </Border>
+                                         <Border
+                                               BorderBrush="{StaticResource BrushSlate800}"
+                                               BorderThickness="0,1,0,0"
+                                               Padding="20,16">
+                                             <StackPanel
+                                                   Spacing="6">
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Utility version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="tw:Tw.Class=&quot;m-8&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="StaticResource version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="Margin=&quot;{StaticResource Margin8}&quot;"/>
+                                             </StackPanel>
+                                         </Border>
                                    </StackPanel>
                               </Border>
                          </StackPanel>
@@ -197,14 +209,35 @@
                                                   </Grid>
                                              </Grid>
                                         </Border>
-                                        <Border
-                                              BorderBrush="{StaticResource BrushSlate800}"
-                                              BorderThickness="0,1,0,0"
-                                              Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;mt-6 mr-4 mb-8 ml-2&quot;"/>
-                                        </Border>
+                                         <Border
+                                               BorderBrush="{StaticResource BrushSlate800}"
+                                               BorderThickness="0,1,0,0"
+                                               Padding="20,16">
+                                             <StackPanel
+                                                   Spacing="6">
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Utility version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="tw:Tw.Class=&quot;mt-6 mr-4 mb-8 ml-2&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="StaticResource version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="Margin=&quot;{StaticResource MarginTop6}&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="Margin=&quot;{StaticResource MarginRight4}&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="Margin=&quot;{StaticResource MarginBottom8}&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="Margin=&quot;{StaticResource MarginLeft2}&quot;"/>
+                                             </StackPanel>
+                                         </Border>
                                    </StackPanel>
                               </Border>
                          </StackPanel>
@@ -262,14 +295,32 @@
                                                   </StackPanel>
                                              </Grid>
                                         </Border>
-                                        <Border
-                                              BorderBrush="{StaticResource BrushSlate800}"
-                                              BorderThickness="0,1,0,0"
-                                              Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;mx-8&quot;    tw:Tw.Class=&quot;my-8&quot;"/>
-                                        </Border>
+                                         <Border
+                                               BorderBrush="{StaticResource BrushSlate800}"
+                                               BorderThickness="0,1,0,0"
+                                               Padding="20,16">
+                                             <StackPanel
+                                                   Spacing="6">
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Utility version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="tw:Tw.Class=&quot;mx-8&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="tw:Tw.Class=&quot;my-8&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="StaticResource version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="Margin=&quot;{StaticResource MarginX8}&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="Margin=&quot;{StaticResource MarginY8}&quot;"/>
+                                             </StackPanel>
+                                         </Border>
                                    </StackPanel>
                               </Border>
                          </StackPanel>
@@ -322,14 +373,26 @@
                                                   </Border>
                                              </Grid>
                                         </Border>
-                                        <Border
-                                              BorderBrush="{StaticResource BrushSlate800}"
-                                              BorderThickness="0,1,0,0"
-                                              Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;-mt-8&quot;"/>
-                                        </Border>
+                                         <Border
+                                               BorderBrush="{StaticResource BrushSlate800}"
+                                               BorderThickness="0,1,0,0"
+                                               Padding="20,16">
+                                             <StackPanel
+                                                   Spacing="6">
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Utility version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="tw:Tw.Class=&quot;-mt-8&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="StaticResource version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="Margin=&quot;{StaticResource NegativeMarginTop8}&quot;"/>
+                                             </StackPanel>
+                                         </Border>
                                    </StackPanel>
                               </Border>
                          </StackPanel>
@@ -496,14 +559,26 @@
                                                   </Border>
                                              </Grid>
                                         </Border>
-                                        <Border
-                                              BorderBrush="{StaticResource BrushSlate800}"
-                                              BorderThickness="0,1,0,0"
-                                              Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="tw:Tw.Class=&quot;ms-8 me-8 mbs-8&quot;"/>
-                                        </Border>
+                                         <Border
+                                               BorderBrush="{StaticResource BrushSlate800}"
+                                               BorderThickness="0,1,0,0"
+                                               Padding="20,16">
+                                             <StackPanel
+                                                   Spacing="6">
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Utility version"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="tw:Tw.Class=&quot;ms-8 me-8 mbs-8&quot;"/>
+                                                  <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="StaticResource version"/>
+                                                  <TextBlock
+                                                        Classes="docs-noteBody"
+                                                        Text="Unsupported: generated StaticResource margin keys only cover physical directions plus negative physical margins (Margin*, MarginX*, MarginY*, MarginTop*, MarginRight*, MarginBottom*, MarginLeft*, and NegativeMargin*). Logical ms-/me-/mbs-/mbe- keys are still parser-only."/>
+                                             </StackPanel>
+                                         </Border>
                                    </StackPanel>
                               </Border>
                          </StackPanel>
