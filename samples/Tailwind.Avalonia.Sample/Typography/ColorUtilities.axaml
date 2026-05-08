@@ -114,7 +114,10 @@
                                               Text="StaticResource version"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="&lt;TextBlock Foreground=&quot;{StaticResource BrushSky300}&quot; /&gt;"/>
+                                              Text="&lt;TextBlock"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  Foreground=&quot;{StaticResource BrushSky300}&quot; /&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
                                               Text="&lt;TextBlock&gt;"/>
@@ -337,7 +340,13 @@
                                               Text="  Background=&quot;{StaticResource BrushSlate900}&quot; /&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="&lt;Border BorderThickness=&quot;3&quot; Background=&quot;{StaticResource BrushSlate900}&quot;&gt;"/>
+                                              Text="&lt;Border"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  BorderThickness=&quot;3&quot;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  Background=&quot;{StaticResource BrushSlate900}&quot;&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
                                               Text="  &lt;Border.BorderBrush&gt;"/>

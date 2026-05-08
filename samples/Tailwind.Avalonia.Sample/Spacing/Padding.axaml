@@ -94,7 +94,10 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="&lt;Border Padding=&quot;{StaticResource Padding8}&quot; /&gt;"/>
+                                                        Text="&lt;Border"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="  Padding=&quot;{StaticResource Padding8}&quot; /&gt;"/>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>
@@ -209,21 +212,33 @@
                                                    <TextBlock
                                                          Classes="docs-code"
                                                          Text="&lt;Border tw:Tw.Class=&quot;pl-2&quot; /&gt;"/>
-                                                   <TextBlock
-                                                         Classes="docs-miniTitle"
-                                                         Text="StaticResource version"/>
-                                                   <TextBlock
-                                                         Classes="docs-code"
-                                                         Text="&lt;Border Padding=&quot;{StaticResource PaddingTop6}&quot; /&gt;"/>
-                                                   <TextBlock
-                                                         Classes="docs-code"
-                                                         Text="&lt;Border Padding=&quot;{StaticResource PaddingRight4}&quot; /&gt;"/>
-                                                   <TextBlock
-                                                         Classes="docs-code"
-                                                         Text="&lt;Border Padding=&quot;{StaticResource PaddingBottom8}&quot; /&gt;"/>
-                                                   <TextBlock
-                                                         Classes="docs-code"
-                                                         Text="&lt;Border Padding=&quot;{StaticResource PaddingLeft2}&quot; /&gt;"/>
+                                                    <TextBlock
+                                                          Classes="docs-miniTitle"
+                                                          Text="StaticResource version"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="&lt;Border"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="  Padding=&quot;{StaticResource PaddingTop6}&quot; /&gt;"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="&lt;Border"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="  Padding=&quot;{StaticResource PaddingRight4}&quot; /&gt;"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="&lt;Border"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="  Padding=&quot;{StaticResource PaddingBottom8}&quot; /&gt;"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="&lt;Border"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="  Padding=&quot;{StaticResource PaddingLeft2}&quot; /&gt;"/>
                                               </StackPanel>
                                          </Border>
                                    </StackPanel>
@@ -300,15 +315,21 @@
                                                    <TextBlock
                                                          Classes="docs-code"
                                                          Text="&lt;Border tw:Tw.Class=&quot;py-8&quot; /&gt;"/>
-                                                   <TextBlock
-                                                         Classes="docs-miniTitle"
-                                                         Text="StaticResource version"/>
-                                                   <TextBlock
-                                                         Classes="docs-code"
-                                                         Text="&lt;Border Padding=&quot;{StaticResource PaddingX8}&quot; /&gt;"/>
-                                                   <TextBlock
-                                                         Classes="docs-code"
-                                                         Text="&lt;Border Padding=&quot;{StaticResource PaddingY8}&quot; /&gt;"/>
+                                                    <TextBlock
+                                                          Classes="docs-miniTitle"
+                                                          Text="StaticResource version"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="&lt;Border"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="  Padding=&quot;{StaticResource PaddingX8}&quot; /&gt;"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="&lt;Border"/>
+                                                    <TextBlock
+                                                          Classes="docs-code"
+                                                          Text="  Padding=&quot;{StaticResource PaddingY8}&quot; /&gt;"/>
                                               </StackPanel>
                                          </Border>
                                    </StackPanel>

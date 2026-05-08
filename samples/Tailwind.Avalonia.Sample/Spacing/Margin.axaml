@@ -112,7 +112,10 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="Margin=&quot;{StaticResource Margin8}&quot;"/>
+                                                        Text="&lt;Border"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="  Margin=&quot;{StaticResource Margin8}&quot; /&gt;"/>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>
@@ -226,16 +229,28 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="Margin=&quot;{StaticResource MarginTop6}&quot;"/>
+                                                        Text="&lt;Border"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="Margin=&quot;{StaticResource MarginRight4}&quot;"/>
+                                                        Text="  Margin=&quot;{StaticResource MarginTop6}&quot; /&gt;"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="Margin=&quot;{StaticResource MarginBottom8}&quot;"/>
+                                                        Text="&lt;Border"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="Margin=&quot;{StaticResource MarginLeft2}&quot;"/>
+                                                        Text="  Margin=&quot;{StaticResource MarginRight4}&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="  Margin=&quot;{StaticResource MarginBottom8}&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="  Margin=&quot;{StaticResource MarginLeft2}&quot; /&gt;"/>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>
@@ -312,10 +327,16 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="Margin=&quot;{StaticResource MarginX8}&quot;"/>
+                                                        Text="&lt;Border"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="Margin=&quot;{StaticResource MarginY8}&quot;"/>
+                                                        Text="  Margin=&quot;{StaticResource MarginX8}&quot; /&gt;"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="&lt;Border"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="  Margin=&quot;{StaticResource MarginY8}&quot; /&gt;"/>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>
@@ -387,7 +408,10 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="Margin=&quot;{StaticResource NegativeMarginTop8}&quot;"/>
+                                                        Text="&lt;Border"/>
+                                                  <TextBlock
+                                                        Classes="docs-code"
+                                                        Text="  Margin=&quot;{StaticResource NegativeMarginTop8}&quot; /&gt;"/>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>
