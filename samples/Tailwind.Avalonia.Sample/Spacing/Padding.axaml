@@ -48,45 +48,105 @@
                               <TextBlock
                                     Classes="docs-body"
                                     Text="Use p-&lt;number&gt; utilities like p-4 and p-8 to control padding on all sides of an element."/>
-                              <Border
-                                    Classes="docs-surface">
-                                   <StackPanel
-                                         Spacing="0">
-                                        <Border
-                                              Background="{StaticResource BrushSlate950}"
-                                              Height="208"
-                                              Padding="28">
-                                             <Grid>
-                                                  <Border
-                                                        Classes="docs-paddingShell"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        tw:Tw.Class="p-8">
-                                                       <Border
-                                                             Classes="docs-paddingCore">
-                                                            <Grid
-                                                                  MinWidth="96"
-                                                                  MinHeight="56">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       Text="p-8"/>
-                                                            </Grid>
-                                                       </Border>
-                                                  </Border>
-                                             </Grid>
-                                        </Border>
-                                        <Border
-                                              BorderBrush="{StaticResource BrushSlate800}"
-                                              BorderThickness="0,1,0,0"
-                                              Padding="20,16">
-                                             <TextBlock
-                                                   Classes="docs-code"
-                                                   Text="&lt;Border tw:Tw.Class=&quot;p-8&quot; /&gt;"/>
-                                        </Border>
-                                   </StackPanel>
-                              </Border>
+                               <Border
+                                     Classes="docs-surface">
+                                    <TabControl
+                                          Classes="docs-exampleTabs">
+                                         <TabItem
+                                               Classes="docs-exampleTab"
+                                               Header="Utility">
+                                              <StackPanel
+                                                    Spacing="0">
+                                                   <Border
+                                                         Background="{StaticResource BrushSlate950}"
+                                                         Height="208"
+                                                         Padding="28">
+                                                        <Grid>
+                                                             <Border
+                                                                   Classes="docs-paddingShell"
+                                                                   HorizontalAlignment="Center"
+                                                                   VerticalAlignment="Center"
+                                                                   tw:Tw.Class="p-8">
+                                                                  <Border
+                                                                        Classes="docs-paddingCore">
+                                                                       <Grid
+                                                                             MinWidth="96"
+                                                                             MinHeight="56">
+                                                                            <TextBlock
+                                                                                  Classes="docs-chip"
+                                                                                  HorizontalAlignment="Center"
+                                                                                  VerticalAlignment="Center"
+                                                                                  Text="p-8"/>
+                                                                       </Grid>
+                                                                  </Border>
+                                                             </Border>
+                                                        </Grid>
+                                                   </Border>
+                                                    <Border
+                                                          BorderBrush="{StaticResource BrushSlate800}"
+                                                          BorderThickness="0,1,0,0"
+                                                          Padding="20,16">
+                                                        <StackPanel
+                                                              Spacing="6">
+                                                             <TextBlock
+                                                                   Classes="docs-miniTitle"
+                                                                   Text="AXAML"/>
+                                                             <TextBlock
+                                                                   Classes="docs-code"
+                                                                   Text="&lt;Border tw:Tw.Class=&quot;p-8&quot; /&gt;"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                              </StackPanel>
+                                         </TabItem>
+                                         <TabItem
+                                               Classes="docs-exampleTab"
+                                               Header="StaticResource">
+                                              <StackPanel
+                                                    Spacing="0">
+                                                   <Border
+                                                         Background="{StaticResource BrushSlate950}"
+                                                         Height="208"
+                                                         Padding="28">
+                                                        <Grid>
+                                                             <Border
+                                                                   Classes="docs-paddingShell"
+                                                                   HorizontalAlignment="Center"
+                                                                   VerticalAlignment="Center"
+                                                                   Padding="{StaticResource Padding8}">
+                                                                  <Border
+                                                                        Classes="docs-paddingCore">
+                                                                       <Grid
+                                                                             MinWidth="96"
+                                                                             MinHeight="56">
+                                                                            <TextBlock
+                                                                                  Classes="docs-chip"
+                                                                                  HorizontalAlignment="Center"
+                                                                                  VerticalAlignment="Center"
+                                                                                  Text="Padding8"/>
+                                                                       </Grid>
+                                                                  </Border>
+                                                             </Border>
+                                                        </Grid>
+                                                   </Border>
+                                                    <Border
+                                                          BorderBrush="{StaticResource BrushSlate800}"
+                                                          BorderThickness="0,1,0,0"
+                                                          Padding="20,16">
+                                                        <StackPanel
+                                                              Spacing="6">
+                                                             <TextBlock
+                                                                   Classes="docs-miniTitle"
+                                                                   Text="AXAML"/>
+                                                             <TextBlock
+                                                                   Classes="docs-code"
+                                                                   xml:space="preserve">&lt;Border
+  Padding=&quot;{StaticResource Padding8}&quot; /&gt;</TextBlock>
+                                                        </StackPanel>
+                                                    </Border>
+                                              </StackPanel>
+                                         </TabItem>
+                                    </TabControl>
+                               </Border>
                          </StackPanel>
                          <StackPanel
                                Spacing="16">
@@ -96,108 +156,228 @@
                               <TextBlock
                                     Classes="docs-body"
                                     Text="Use pt-&lt;number&gt;, pr-&lt;number&gt;, pb-&lt;number&gt;, and pl-&lt;number&gt; utilities like pt-6 and pr-4 to control padding on one side of an element."/>
-                              <Border
-                                    Classes="docs-surface">
-                                   <StackPanel
-                                         Spacing="0">
-                                        <Border
-                                              Background="{StaticResource BrushSlate950}"
-                                              Height="176"
-                                              Padding="24">
-                                             <Grid>
-                                                  <StackPanel
-                                                        Orientation="Horizontal"
-                                                        HorizontalAlignment="Center"
-                                                        Spacing="18">
-                                                       <Border
-                                                             Classes="docs-paddingShell"
-                                                             tw:Tw.Class="pt-6">
-                                                            <Border
-                                                                  Classes="docs-paddingCore">
-                                                                 <Grid
-                                                                       MinWidth="84"
-                                                                       MinHeight="52">
-                                                                      <TextBlock
-                                                                            Classes="docs-chip"
-                                                                            HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="pt-6"/>
-                                                                 </Grid>
-                                                            </Border>
-                                                       </Border>
-                                                       <Border
-                                                             Classes="docs-paddingShell"
-                                                             tw:Tw.Class="pr-4">
-                                                            <Border
-                                                                  Classes="docs-paddingCore">
-                                                                 <Grid
-                                                                       MinWidth="84"
-                                                                       MinHeight="52">
-                                                                      <TextBlock
-                                                                            Classes="docs-chip"
-                                                                            HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="pr-4"/>
-                                                                 </Grid>
-                                                            </Border>
-                                                       </Border>
-                                                       <Border
-                                                             Classes="docs-paddingShell"
-                                                             tw:Tw.Class="pb-8">
-                                                            <Border
-                                                                  Classes="docs-paddingCore">
-                                                                 <Grid
-                                                                       MinWidth="84"
-                                                                       MinHeight="52">
-                                                                      <TextBlock
-                                                                            Classes="docs-chip"
-                                                                            HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="pb-8"/>
-                                                                 </Grid>
-                                                            </Border>
-                                                       </Border>
-                                                       <Border
-                                                             Classes="docs-paddingShell"
-                                                             tw:Tw.Class="pl-2">
-                                                            <Border
-                                                                  Classes="docs-paddingCore">
-                                                                 <Grid
-                                                                       MinWidth="84"
-                                                                       MinHeight="52">
-                                                                      <TextBlock
-                                                                            Classes="docs-chip"
-                                                                            HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="pl-2"/>
-                                                                 </Grid>
-                                                            </Border>
-                                                       </Border>
-                                                  </StackPanel>
-                                             </Grid>
-                                        </Border>
-                                        <Border
-                                              BorderBrush="{StaticResource BrushSlate800}"
-                                              BorderThickness="0,1,0,0"
-                                              Padding="20,16">
-                                             <StackPanel
-                                                   Spacing="4">
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border tw:Tw.Class=&quot;pt-6&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border tw:Tw.Class=&quot;pr-4&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border tw:Tw.Class=&quot;pb-8&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border tw:Tw.Class=&quot;pl-2&quot; /&gt;"/>
-                                             </StackPanel>
-                                        </Border>
-                                   </StackPanel>
-                              </Border>
+                               <Border
+                                     Classes="docs-surface">
+                                    <TabControl
+                                          Classes="docs-exampleTabs">
+                                         <TabItem
+                                               Classes="docs-exampleTab"
+                                               Header="Utility">
+                                              <StackPanel
+                                                    Spacing="0">
+                                                   <Border
+                                                         Background="{StaticResource BrushSlate950}"
+                                                         Height="176"
+                                                         Padding="24">
+                                                        <Grid>
+                                                             <StackPanel
+                                                                   Orientation="Horizontal"
+                                                                   HorizontalAlignment="Center"
+                                                                   Spacing="18">
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        tw:Tw.Class="pt-6">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="84"
+                                                                                  MinHeight="52">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="pt-6"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        tw:Tw.Class="pr-4">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="84"
+                                                                                  MinHeight="52">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="pr-4"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        tw:Tw.Class="pb-8">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="84"
+                                                                                  MinHeight="52">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="pb-8"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        tw:Tw.Class="pl-2">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="84"
+                                                                                  MinHeight="52">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="pl-2"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                             </StackPanel>
+                                                        </Grid>
+                                                   </Border>
+                                                    <Border
+                                                          BorderBrush="{StaticResource BrushSlate800}"
+                                                          BorderThickness="0,1,0,0"
+                                                          Padding="20,16">
+                                                         <StackPanel
+                                                               Spacing="6">
+                                                              <TextBlock
+                                                                    Classes="docs-miniTitle"
+                                                                    Text="AXAML"/>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    Text="&lt;Border tw:Tw.Class=&quot;pt-6&quot; /&gt;"/>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    Text="&lt;Border tw:Tw.Class=&quot;pr-4&quot; /&gt;"/>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    Text="&lt;Border tw:Tw.Class=&quot;pb-8&quot; /&gt;"/>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    Text="&lt;Border tw:Tw.Class=&quot;pl-2&quot; /&gt;"/>
+                                                         </StackPanel>
+                                                    </Border>
+                                              </StackPanel>
+                                         </TabItem>
+                                         <TabItem
+                                               Classes="docs-exampleTab"
+                                               Header="StaticResource">
+                                              <StackPanel
+                                                    Spacing="0">
+                                                   <Border
+                                                         Background="{StaticResource BrushSlate950}"
+                                                         Height="176"
+                                                         Padding="24">
+                                                        <Grid>
+                                                             <StackPanel
+                                                                   Orientation="Horizontal"
+                                                                   HorizontalAlignment="Center"
+                                                                   Spacing="18">
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        Padding="{StaticResource PaddingTop6}">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="84"
+                                                                                  MinHeight="52">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="PaddingTop6"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        Padding="{StaticResource PaddingRight4}">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="84"
+                                                                                  MinHeight="52">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="PaddingRight4"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        Padding="{StaticResource PaddingBottom8}">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="84"
+                                                                                  MinHeight="52">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="PaddingBottom8"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        Padding="{StaticResource PaddingLeft2}">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="84"
+                                                                                  MinHeight="52">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="PaddingLeft2"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                             </StackPanel>
+                                                        </Grid>
+                                                   </Border>
+                                                    <Border
+                                                          BorderBrush="{StaticResource BrushSlate800}"
+                                                          BorderThickness="0,1,0,0"
+                                                          Padding="20,16">
+                                                         <StackPanel
+                                                               Spacing="6">
+                                                              <TextBlock
+                                                                    Classes="docs-miniTitle"
+                                                                    Text="AXAML"/>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    xml:space="preserve">&lt;Border
+  Padding=&quot;{StaticResource PaddingTop6}&quot; /&gt;</TextBlock>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    xml:space="preserve">&lt;Border
+  Padding=&quot;{StaticResource PaddingRight4}&quot; /&gt;</TextBlock>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    xml:space="preserve">&lt;Border
+  Padding=&quot;{StaticResource PaddingBottom8}&quot; /&gt;</TextBlock>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    xml:space="preserve">&lt;Border
+  Padding=&quot;{StaticResource PaddingLeft2}&quot; /&gt;</TextBlock>
+                                                         </StackPanel>
+                                                    </Border>
+                                              </StackPanel>
+                                         </TabItem>
+                                    </TabControl>
+                               </Border>
                          </StackPanel>
                          <StackPanel
                                Spacing="16">
@@ -207,70 +387,150 @@
                               <TextBlock
                                     Classes="docs-body"
                                     Text="Use px-&lt;number&gt; and py-&lt;number&gt; utilities like px-8 and py-8 to control axis-specific padding."/>
-                              <Border
-                                    Classes="docs-surface">
-                                   <StackPanel
-                                         Spacing="0">
-                                        <Border
-                                              Background="{StaticResource BrushSlate950}"
-                                              Height="176"
-                                              Padding="24">
-                                             <Grid>
-                                                  <StackPanel
-                                                        Orientation="Horizontal"
-                                                        HorizontalAlignment="Center"
-                                                        Spacing="24">
-                                                       <Border
-                                                             Classes="docs-paddingShell"
-                                                             tw:Tw.Class="px-8">
-                                                            <Border
-                                                                  Classes="docs-paddingCore">
-                                                                 <Grid
-                                                                       MinWidth="92"
-                                                                       MinHeight="56">
-                                                                      <TextBlock
-                                                                            Classes="docs-chip"
-                                                                            HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="px-8"/>
-                                                                 </Grid>
-                                                            </Border>
-                                                       </Border>
-                                                       <Border
-                                                             Classes="docs-paddingShell"
-                                                             tw:Tw.Class="py-8">
-                                                            <Border
-                                                                  Classes="docs-paddingCore">
-                                                                 <Grid
-                                                                       MinWidth="92"
-                                                                       MinHeight="56">
-                                                                      <TextBlock
-                                                                            Classes="docs-chip"
-                                                                            HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="py-8"/>
-                                                                 </Grid>
-                                                            </Border>
-                                                       </Border>
-                                                  </StackPanel>
-                                             </Grid>
-                                        </Border>
-                                        <Border
-                                              BorderBrush="{StaticResource BrushSlate800}"
-                                              BorderThickness="0,1,0,0"
-                                              Padding="20,16">
-                                             <StackPanel
-                                                   Spacing="4">
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border tw:Tw.Class=&quot;px-8&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border tw:Tw.Class=&quot;py-8&quot; /&gt;"/>
-                                             </StackPanel>
-                                        </Border>
-                                   </StackPanel>
-                              </Border>
+                               <Border
+                                     Classes="docs-surface">
+                                    <TabControl
+                                          Classes="docs-exampleTabs">
+                                         <TabItem
+                                               Classes="docs-exampleTab"
+                                               Header="Utility">
+                                              <StackPanel
+                                                    Spacing="0">
+                                                   <Border
+                                                         Background="{StaticResource BrushSlate950}"
+                                                         Height="176"
+                                                         Padding="24">
+                                                        <Grid>
+                                                             <StackPanel
+                                                                   Orientation="Horizontal"
+                                                                   HorizontalAlignment="Center"
+                                                                   Spacing="24">
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        tw:Tw.Class="px-8">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="92"
+                                                                                  MinHeight="56">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="px-8"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        tw:Tw.Class="py-8">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="92"
+                                                                                  MinHeight="56">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="py-8"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                             </StackPanel>
+                                                        </Grid>
+                                                   </Border>
+                                                    <Border
+                                                          BorderBrush="{StaticResource BrushSlate800}"
+                                                          BorderThickness="0,1,0,0"
+                                                          Padding="20,16">
+                                                         <StackPanel
+                                                               Spacing="6">
+                                                              <TextBlock
+                                                                    Classes="docs-miniTitle"
+                                                                    Text="AXAML"/>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    Text="&lt;Border tw:Tw.Class=&quot;px-8&quot; /&gt;"/>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    Text="&lt;Border tw:Tw.Class=&quot;py-8&quot; /&gt;"/>
+                                                         </StackPanel>
+                                                    </Border>
+                                              </StackPanel>
+                                         </TabItem>
+                                         <TabItem
+                                               Classes="docs-exampleTab"
+                                               Header="StaticResource">
+                                              <StackPanel
+                                                    Spacing="0">
+                                                   <Border
+                                                         Background="{StaticResource BrushSlate950}"
+                                                         Height="176"
+                                                         Padding="24">
+                                                        <Grid>
+                                                             <StackPanel
+                                                                   Orientation="Horizontal"
+                                                                   HorizontalAlignment="Center"
+                                                                   Spacing="24">
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        Padding="{StaticResource PaddingX8}">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="92"
+                                                                                  MinHeight="56">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="PaddingX8"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                                  <Border
+                                                                        Classes="docs-paddingShell"
+                                                                        Padding="{StaticResource PaddingY8}">
+                                                                       <Border
+                                                                             Classes="docs-paddingCore">
+                                                                            <Grid
+                                                                                  MinWidth="92"
+                                                                                  MinHeight="56">
+                                                                                 <TextBlock
+                                                                                       Classes="docs-chip"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       VerticalAlignment="Center"
+                                                                                       Text="PaddingY8"/>
+                                                                            </Grid>
+                                                                       </Border>
+                                                                  </Border>
+                                                             </StackPanel>
+                                                        </Grid>
+                                                   </Border>
+                                                    <Border
+                                                          BorderBrush="{StaticResource BrushSlate800}"
+                                                          BorderThickness="0,1,0,0"
+                                                          Padding="20,16">
+                                                         <StackPanel
+                                                               Spacing="6">
+                                                              <TextBlock
+                                                                    Classes="docs-miniTitle"
+                                                                    Text="AXAML"/>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    xml:space="preserve">&lt;Border
+  Padding=&quot;{StaticResource PaddingX8}&quot; /&gt;</TextBlock>
+                                                              <TextBlock
+                                                                    Classes="docs-code"
+                                                                    xml:space="preserve">&lt;Border
+  Padding=&quot;{StaticResource PaddingY8}&quot; /&gt;</TextBlock>
+                                                         </StackPanel>
+                                                    </Border>
+                                              </StackPanel>
+                                         </TabItem>
+                                    </TabControl>
+                               </Border>
                          </StackPanel>
                          <StackPanel
                                Spacing="16">
@@ -296,10 +556,15 @@
                                               Text="The visualized side-mapping demo below adds ScaleTransform only to cancel Avalonia&apos;s automatic RTL mirror for teaching. In the real RTL demo, layout logic is applied first, then Avalonia&apos;s mirror changes the final rendered side. Real app usage is the unmodified RTL rendering demo and the code examples below."/>
                                    </StackPanel>
                               </Border>
-                              <Border
-                                    Classes="docs-surface">
-                                   <StackPanel
-                                         Spacing="0">
+                               <Border
+                                     Classes="docs-surface">
+                                    <TabControl
+                                          Classes="docs-exampleTabs">
+                                         <TabItem
+                                               Classes="docs-exampleTab"
+                                               Header="Utility">
+                                              <StackPanel
+                                                    Spacing="0">
                                         <Border
                                               Background="{StaticResource BrushSlate950}"
                                               Padding="24">
@@ -783,16 +1048,29 @@
                                                   <TextBlock
                                                         Classes="docs-code"
                                                         Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;psv-8&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;"/>
-                                             </StackPanel>
-                                        </Border>
-                                   </StackPanel>
-                              </Border>
+                                                   <TextBlock
+                                                         Classes="docs-code"
+                                                         Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;psv-8&quot; /&gt;"/>
+                                                   <TextBlock
+                                                         Classes="docs-code"
+                                                         Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;"/>
+                                               </StackPanel>
+                                          </Border>
+                                              </StackPanel>
+                                         </TabItem>
+                                         <TabItem
+                                               Classes="docs-exampleTab"
+                                               Header="StaticResource">
+                                              <Border
+                                                    Background="{StaticResource BrushSlate950}"
+                                                    Padding="24">
+                                                   <TextBlock
+                                                         Classes="docs-noteBody"
+                                                         Text="Unsupported: generated StaticResource padding keys only cover physical directions (Padding*, PaddingX*, PaddingY*, PaddingTop*, PaddingRight*, PaddingBottom*, and PaddingLeft*). Logical ps-/pe-/pbs-/pbe- and visual psv-/pev- aliases are still parser-only."/>
+                                              </Border>
+                                         </TabItem>
+                                    </TabControl>
+                               </Border>
                          </StackPanel>
                     </StackPanel>
                </StackPanel>

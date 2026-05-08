@@ -34,6 +34,10 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - Added `psv-<number>` and `pev-<number>` as padding-only parser aliases for visual start/end, mapping to physical left/right padding so Avalonia's RTL mirror places the spacing on the final rendered side.
 - Updated the padding docs page with dedicated `psv-8` / `pev-8` demos and actual-usage examples, then revalidated the focused `TwTests` file and the sample build.
 - Added `samples/Tailwind.Avalonia.Sample/Typography/ColorUtilities.axaml` as a standalone `UserControl`, wired it into a new `Colors` tab, and moved color-utility docs into a dedicated sample page instead of leaving them only as spacing-page support notes.
+- Updated the `Padding`, `Margin`, and `Colors` sample pages so every example section now shows a `StaticResource` version when possible, with explicit unsupported notes for parser-only logical spacing and for `bg-transparent`, which still has no generated brush resource.
+- Reformatted the StaticResource sample snippets across `Padding`, `Margin`, and `Colors` so the docs-code examples now read as clearer multi-line AXAML blocks instead of compact one-line fragments.
+- Reworked those multi-line StaticResource snippets to use single `TextBlock` elements with `xml:space="preserve"` so indentation is preserved without stacking one control per line.
+- Reworked the sample example sections again so nested tabs now switch both the live preview and the AXAML snippet between `Utility` and `StaticResource` variants, while unsupported cases keep their honest explanatory note in the `StaticResource` tab.
 
 ## Active Decisions
 - Hybrid API remains the chosen direction: stable resource keys plus utility parsing.
@@ -47,6 +51,10 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - `MainWindow.axaml` now owns only the tab shell styles; spacing-page presentation styles are loaded locally by the child `UserControl` files.
 - The sample docs shell now hosts a dedicated color-utility page from `samples/Tailwind.Avalonia.Sample/Typography/ColorUtilities.axaml`, while still keeping each page locally responsible for including package resources and shared docs styles.
 - The sample app no longer carries a separate sample token dictionary; only package theme resources remain merged, and demo-local text/metrics live next to the sample markup that uses them.
+- Sample docs pages should pair `tw:Tw.Class` examples with `StaticResource` equivalents whenever the package emits a matching resource key; when the current resource surface cannot express the same behavior, the page should say so explicitly instead of implying support.
+- When a sample page shows a `StaticResource` version, the docs-code snippet should be formatted like readable multi-line AXAML rather than compressed into a single-line fragment.
+- For multi-line docs-code snippets, prefer a single `TextBlock` with `xml:space="preserve"` over separate `TextBlock` elements per line.
+- Sample docs example sections should use nested tabs to switch preview and code between `Utility` and `StaticResource`; unsupported StaticResource behavior should live in the `StaticResource` tab as an explicit note.
 - Docs-style RTL logical spacing previews may need visual mirror cancellation on the preview target when the goal is to show the physical side chosen by the utility rather than Avalonia's mirrored overall control.
 - When docs need both truthful behavior and easier pedagogy, the sample should present them as separate demos instead of hiding transform-based teaching aids inside the only example.
 - `ps-*` and `pe-*` remain logical spacing utilities; `psv-*` and `pev-*` are now the explicit parser surface for final visual start/end padding under Avalonia's mirror model.
