@@ -65,67 +65,122 @@
                              Text="Apply text-* directly on controls that expose Foreground. Each line below uses the real tw:Tw.Class surface on the actual text element."/>
                         <Border
                              Classes="docs-surface">
-                            <StackPanel
-                                 Spacing="0">
-                                <Border
-                                     Background="{StaticResource BrushSlate950}"
-                                     Padding="24">
+                            <TabControl
+                                 Classes="docs-exampleTabs"
+                                 SelectedIndex="0">
+                                <TabItem
+                                     Classes="docs-exampleTab"
+                                     Header="Utility">
                                     <StackPanel
-                                         Spacing="16">
-                                        <TextBlock
-                                             Classes="docs-miniTitle"
-                                             Text="Live preview"/>
-                                        <StackPanel
-                                             Spacing="10">
-                                            <TextBlock
-                                                 FontSize="28"
-                                                 FontWeight="Bold"
-                                                 tw:Tw.Class="text-sky-300"
-                                                 Text="text-sky-300"/>
-                                            <TextBlock
-                                                 FontSize="20"
-                                                 FontWeight="SemiBold"
-                                                 tw:Tw.Class="text-rose-300/80"
-                                                 Text="text-rose-300/80"/>
-                                            <TextBlock
-                                                 FontSize="16"
-                                                 tw:Tw.Class="text-slate-200"
-                                                 Text="text-slate-200 keeps longer copy readable on dark surfaces."/>
-                                        </StackPanel>
+                                         Spacing="0">
+                                        <Border
+                                             Background="{StaticResource BrushSlate950}"
+                                             Padding="24">
+                                            <StackPanel
+                                                 Spacing="16">
+                                                <TextBlock
+                                                     Classes="docs-miniTitle"
+                                                     Text="Live preview"/>
+                                                <StackPanel
+                                                     Spacing="10">
+                                                    <TextBlock
+                                                         FontSize="28"
+                                                         FontWeight="Bold"
+                                                         tw:Tw.Class="text-sky-300"
+                                                         Text="text-sky-300"/>
+                                                    <TextBlock
+                                                         FontSize="20"
+                                                         FontWeight="SemiBold"
+                                                         tw:Tw.Class="text-rose-300/80"
+                                                         Text="text-rose-300/80"/>
+                                                    <TextBlock
+                                                         FontSize="16"
+                                                         tw:Tw.Class="text-slate-200"
+                                                         Text="text-slate-200 keeps longer copy readable on dark surfaces."/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                         <Border
+                                              BorderBrush="{StaticResource BrushSlate800}"
+                                              BorderThickness="0,1,0,0"
+                                              Padding="20,16">
+                                             <StackPanel
+                                                  Spacing="6">
+                                                 <TextBlock
+                                                      Classes="docs-miniTitle"
+                                                      Text="AXAML"/>
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      Text="&lt;TextBlock tw:Tw.Class=&quot;text-sky-300&quot; /&gt;"/>
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      Text="&lt;TextBlock tw:Tw.Class=&quot;text-rose-300/80&quot; /&gt;"/>
+                                             </StackPanel>
+                                         </Border>
                                     </StackPanel>
-                                </Border>
-                                 <Border
-                                      BorderBrush="{StaticResource BrushSlate800}"
-                                      BorderThickness="0,1,0,0"
-                                      Padding="20,16">
-                                     <StackPanel
-                                          Spacing="6">
-                                         <TextBlock
-                                              Classes="docs-miniTitle"
-                                              Text="Utility version"/>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              Text="&lt;TextBlock tw:Tw.Class=&quot;text-sky-300&quot; /&gt;"/>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              Text="&lt;TextBlock tw:Tw.Class=&quot;text-rose-300/80&quot; /&gt;"/>
-                                         <TextBlock
-                                              Classes="docs-miniTitle"
-                                              Text="StaticResource version"/>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              xml:space="preserve">&lt;TextBlock
+                                </TabItem>
+                                <TabItem
+                                     Classes="docs-exampleTab"
+                                     Header="StaticResource">
+                                    <StackPanel
+                                         Spacing="0">
+                                        <Border
+                                             Background="{StaticResource BrushSlate950}"
+                                             Padding="24">
+                                            <StackPanel
+                                                 Spacing="16">
+                                                <TextBlock
+                                                     Classes="docs-miniTitle"
+                                                     Text="Live preview"/>
+                                                <StackPanel
+                                                     Spacing="10">
+                                                    <TextBlock
+                                                         FontSize="28"
+                                                         FontWeight="Bold"
+                                                         Foreground="{StaticResource BrushSky300}"
+                                                         Text="BrushSky300"/>
+                                                    <TextBlock
+                                                         FontSize="20"
+                                                         FontWeight="SemiBold"
+                                                         Text="text-rose-300/80 via ColorRose300">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush
+                                                                 Color="{StaticResource ColorRose300}"
+                                                                 Opacity="0.8"/>
+                                                        </TextBlock.Foreground>
+                                                    </TextBlock>
+                                                    <TextBlock
+                                                         FontSize="16"
+                                                         Foreground="{StaticResource BrushSlate200}"
+                                                         Text="BrushSlate200 keeps longer copy readable on dark surfaces."/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                         <Border
+                                              BorderBrush="{StaticResource BrushSlate800}"
+                                              BorderThickness="0,1,0,0"
+                                              Padding="20,16">
+                                             <StackPanel
+                                                  Spacing="6">
+                                                 <TextBlock
+                                                      Classes="docs-miniTitle"
+                                                      Text="AXAML"/>
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      xml:space="preserve">&lt;TextBlock
   Foreground=&quot;{StaticResource BrushSky300}&quot; /&gt;</TextBlock>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              xml:space="preserve">&lt;TextBlock&gt;
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      xml:space="preserve">&lt;TextBlock&gt;
   &lt;TextBlock.Foreground&gt;
     &lt;SolidColorBrush Color=&quot;{StaticResource ColorRose300}&quot; Opacity=&quot;0.8&quot; /&gt;
   &lt;/TextBlock.Foreground&gt;
 &lt;/TextBlock&gt;</TextBlock>
-                                     </StackPanel>
-                                 </Border>
-                            </StackPanel>
+                                             </StackPanel>
+                                         </Border>
+                                    </StackPanel>
+                                </TabItem>
+                            </TabControl>
                         </Border>
                     </StackPanel>
                     <StackPanel
@@ -138,76 +193,160 @@
                              Text="Apply bg-* and border-* on controls that expose Background and BorderBrush. This demo keeps the utility on the live target control instead of painting a fake wrapper."/>
                         <Border
                              Classes="docs-surface">
-                            <StackPanel
-                                 Spacing="0">
-                                <Border
-                                     Background="{StaticResource BrushSlate950}"
-                                     Padding="24">
-                                    <Grid
-                                         ColumnDefinitions="*,*"
-                                         ColumnSpacing="20"
-                                         RowDefinitions="Auto,Auto"
-                                         RowSpacing="16">
-                                        <Button
-                                             Grid.Column="0"
-                                             Grid.Row="0"
-                                             Padding="18,14"
-                                             BorderThickness="2"
-                                             tw:Tw.Class="bg-emerald-500 text-slate-950 border-emerald-300"
-                                             Content="bg-emerald-500"/>
-                                        <Button
-                                             Grid.Column="1"
-                                             Grid.Row="0"
-                                             Padding="18,14"
-                                             BorderThickness="2"
-                                             tw:Tw.Class="bg-amber-400/20 text-amber-100 border-amber-300/45"
-                                             Content="bg-amber-400/20 border-amber-300/45"/>
-                                        <Button
-                                             Grid.Column="0"
-                                             Grid.Row="1"
-                                             Padding="18,14"
-                                             BorderThickness="2"
-                                             tw:Tw.Class="bg-transparent text-sky-200 border-sky-400"
-                                             Content="bg-transparent"/>
-                                        <Button
-                                             Grid.Column="1"
-                                             Grid.Row="1"
-                                             Padding="18,14"
-                                             BorderThickness="2"
-                                             tw:Tw.Class="bg-violet-500/20 text-violet-100 border-violet-300/55"
-                                             Content="border-violet-300/55"/>
-                                    </Grid>
-                                </Border>
-                                 <Border
-                                      BorderBrush="{StaticResource BrushSlate800}"
-                                      BorderThickness="0,1,0,0"
-                                      Padding="20,16">
-                                     <StackPanel
-                                          Spacing="6">
-                                         <TextBlock
-                                              Classes="docs-miniTitle"
-                                              Text="Utility version"/>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              Text="&lt;Button tw:Tw.Class=&quot;bg-emerald-500 text-slate-950 border-emerald-300&quot; /&gt;"/>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              Text="&lt;Button tw:Tw.Class=&quot;bg-transparent text-sky-200 border-sky-400&quot; /&gt;"/>
-                                         <TextBlock
-                                              Classes="docs-noteBody"
-                                              Text="Unsupported StaticResource equivalent: bg-transparent has no generated BrushTransparent key today because ColorResourceDictionary only emits Tailwind palette Brush*/Color* resources."/>
-                                         <TextBlock
-                                              Classes="docs-miniTitle"
-                                              Text="StaticResource version"/>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              xml:space="preserve">&lt;Button
+                            <TabControl
+                                 Classes="docs-exampleTabs"
+                                 SelectedIndex="0">
+                                <TabItem
+                                     Classes="docs-exampleTab"
+                                     Header="Utility">
+                                    <StackPanel
+                                         Spacing="0">
+                                        <Border
+                                             Background="{StaticResource BrushSlate950}"
+                                             Padding="24">
+                                            <Grid
+                                                 ColumnDefinitions="*,*"
+                                                 ColumnSpacing="20"
+                                                 RowDefinitions="Auto,Auto"
+                                                 RowSpacing="16">
+                                                <Button
+                                                     Grid.Column="0"
+                                                     Grid.Row="0"
+                                                     Padding="18,14"
+                                                     BorderThickness="2"
+                                                     tw:Tw.Class="bg-emerald-500 text-slate-950 border-emerald-300"
+                                                     Content="bg-emerald-500"/>
+                                                <Button
+                                                     Grid.Column="1"
+                                                     Grid.Row="0"
+                                                     Padding="18,14"
+                                                     BorderThickness="2"
+                                                     tw:Tw.Class="bg-amber-400/20 text-amber-100 border-amber-300/45"
+                                                     Content="bg-amber-400/20 border-amber-300/45"/>
+                                                <Button
+                                                     Grid.Column="0"
+                                                     Grid.Row="1"
+                                                     Padding="18,14"
+                                                     BorderThickness="2"
+                                                     tw:Tw.Class="bg-transparent text-sky-200 border-sky-400"
+                                                     Content="bg-transparent"/>
+                                                <Button
+                                                     Grid.Column="1"
+                                                     Grid.Row="1"
+                                                     Padding="18,14"
+                                                     BorderThickness="2"
+                                                     tw:Tw.Class="bg-violet-500/20 text-violet-100 border-violet-300/55"
+                                                     Content="border-violet-300/55"/>
+                                            </Grid>
+                                        </Border>
+                                         <Border
+                                              BorderBrush="{StaticResource BrushSlate800}"
+                                              BorderThickness="0,1,0,0"
+                                              Padding="20,16">
+                                             <StackPanel
+                                                  Spacing="6">
+                                                 <TextBlock
+                                                      Classes="docs-miniTitle"
+                                                      Text="AXAML"/>
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      Text="&lt;Button tw:Tw.Class=&quot;bg-emerald-500 text-slate-950 border-emerald-300&quot; /&gt;"/>
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      Text="&lt;Button tw:Tw.Class=&quot;bg-transparent text-sky-200 border-sky-400&quot; /&gt;"/>
+                                             </StackPanel>
+                                         </Border>
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem
+                                     Classes="docs-exampleTab"
+                                     Header="StaticResource">
+                                    <StackPanel
+                                         Spacing="0">
+                                        <Border
+                                             Background="{StaticResource BrushSlate950}"
+                                             Padding="24">
+                                            <Grid
+                                                 ColumnDefinitions="*,*"
+                                                 ColumnSpacing="20"
+                                                 RowDefinitions="Auto,Auto"
+                                                 RowSpacing="16">
+                                                <Button
+                                                     Grid.Column="0"
+                                                     Grid.Row="0"
+                                                     Padding="18,14"
+                                                     BorderThickness="2"
+                                                     Background="{StaticResource BrushEmerald500}"
+                                                     Foreground="{StaticResource BrushSlate950}"
+                                                     BorderBrush="{StaticResource BrushEmerald300}"
+                                                     Content="BrushEmerald500"/>
+                                                <Button
+                                                     Grid.Column="1"
+                                                     Grid.Row="0"
+                                                     Padding="18,14"
+                                                     BorderThickness="2"
+                                                     Foreground="{StaticResource BrushAmber100}"
+                                                     Content="ColorAmber400 + ColorAmber300">
+                                                    <Button.Background>
+                                                        <SolidColorBrush
+                                                             Color="{StaticResource ColorAmber400}"
+                                                             Opacity="0.2"/>
+                                                    </Button.Background>
+                                                    <Button.BorderBrush>
+                                                        <SolidColorBrush
+                                                             Color="{StaticResource ColorAmber300}"
+                                                             Opacity="0.45"/>
+                                                    </Button.BorderBrush>
+                                                </Button>
+                                                <Border
+                                                     Grid.Column="0"
+                                                     Grid.Row="1"
+                                                     Classes="docs-note">
+                                                    <TextBlock
+                                                         Classes="docs-noteBody"
+                                                         Text="Unsupported StaticResource equivalent: bg-transparent has no generated BrushTransparent key today because ColorResourceDictionary only emits Tailwind palette Brush*/Color* resources."/>
+                                                </Border>
+                                                <Button
+                                                     Grid.Column="1"
+                                                     Grid.Row="1"
+                                                     Padding="18,14"
+                                                     BorderThickness="2"
+                                                     Foreground="{StaticResource BrushViolet100}"
+                                                     Content="ColorViolet500 + ColorViolet300">
+                                                    <Button.Background>
+                                                        <SolidColorBrush
+                                                             Color="{StaticResource ColorViolet500}"
+                                                             Opacity="0.2"/>
+                                                    </Button.Background>
+                                                    <Button.BorderBrush>
+                                                        <SolidColorBrush
+                                                             Color="{StaticResource ColorViolet300}"
+                                                             Opacity="0.55"/>
+                                                    </Button.BorderBrush>
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                         <Border
+                                              BorderBrush="{StaticResource BrushSlate800}"
+                                              BorderThickness="0,1,0,0"
+                                              Padding="20,16">
+                                             <StackPanel
+                                                  Spacing="6">
+                                                 <TextBlock
+                                                      Classes="docs-miniTitle"
+                                                      Text="AXAML"/>
+                                                 <TextBlock
+                                                      Classes="docs-noteBody"
+                                                      Text="Unsupported StaticResource equivalent: bg-transparent has no generated BrushTransparent key today because ColorResourceDictionary only emits Tailwind palette Brush*/Color* resources."/>
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      xml:space="preserve">&lt;Button
   Background=&quot;{StaticResource BrushEmerald500}&quot;
   Foreground=&quot;{StaticResource BrushSlate950}&quot;
   BorderBrush=&quot;{StaticResource BrushEmerald300}&quot; /&gt;</TextBlock>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              xml:space="preserve">&lt;Button&gt;
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      xml:space="preserve">&lt;Button&gt;
   &lt;Button.Background&gt;
     &lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber400}&quot; Opacity=&quot;0.2&quot; /&gt;
   &lt;/Button.Background&gt;
@@ -218,9 +357,11 @@
     &lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber300}&quot; Opacity=&quot;0.45&quot; /&gt;
   &lt;/Button.BorderBrush&gt;
 &lt;/Button&gt;</TextBlock>
-                                     </StackPanel>
-                                  </Border>
-                            </StackPanel>
+                                             </StackPanel>
+                                         </Border>
+                                    </StackPanel>
+                                </TabItem>
+                            </TabControl>
                         </Border>
                     </StackPanel>
                     <StackPanel
@@ -233,81 +374,150 @@
                              Text="Current border color support sets BorderBrush on the target control. Each sample below colors the whole outline, which matches the implemented parser boundary."/>
                         <Border
                              Classes="docs-surface">
-                            <StackPanel
-                                 Spacing="0">
-                                <Border
-                                     Background="{StaticResource BrushSlate950}"
-                                     Padding="24">
-                                    <Grid
-                                         ColumnDefinitions="*,*"
-                                         ColumnSpacing="20">
+                            <TabControl
+                                 Classes="docs-exampleTabs"
+                                 SelectedIndex="0">
+                                <TabItem
+                                     Classes="docs-exampleTab"
+                                     Header="Utility">
+                                    <StackPanel
+                                         Spacing="0">
                                         <Border
-                                             Grid.Column="0"
-                                             Padding="18"
-                                             CornerRadius="16"
-                                             BorderThickness="3"
-                                             tw:Tw.Class="border-cyan-400 bg-slate-900">
-                                            <StackPanel
-                                                 Spacing="8">
-                                                <TextBlock
-                                                     Classes="docs-miniTitle"
-                                                     Text="border-cyan-400"/>
-                                                <TextBlock
-                                                     Classes="docs-noteBody"
-                                                     Text="Whole outline changes together."/>
-                                            </StackPanel>
+                                             Background="{StaticResource BrushSlate950}"
+                                             Padding="24">
+                                            <Grid
+                                                 ColumnDefinitions="*,*"
+                                                 ColumnSpacing="20">
+                                                <Border
+                                                     Grid.Column="0"
+                                                     Padding="18"
+                                                     CornerRadius="16"
+                                                     BorderThickness="3"
+                                                     tw:Tw.Class="border-cyan-400 bg-slate-900">
+                                                    <StackPanel
+                                                         Spacing="8">
+                                                        <TextBlock
+                                                             Classes="docs-miniTitle"
+                                                             Text="border-cyan-400"/>
+                                                        <TextBlock
+                                                             Classes="docs-noteBody"
+                                                             Text="Whole outline changes together."/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border
+                                                     Grid.Column="1"
+                                                     Padding="18"
+                                                     CornerRadius="16"
+                                                     BorderThickness="3"
+                                                     tw:Tw.Class="border-rose-400/65 bg-slate-900">
+                                                    <StackPanel
+                                                         Spacing="8">
+                                                        <TextBlock
+                                                             Classes="docs-miniTitle"
+                                                             Text="border-rose-400/65"/>
+                                                        <TextBlock
+                                                             Classes="docs-noteBody"
+                                                             Text="Directional border colors are still out of scope here."/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </Grid>
                                         </Border>
+                                         <Border
+                                              BorderBrush="{StaticResource BrushSlate800}"
+                                              BorderThickness="0,1,0,0"
+                                              Padding="20,16">
+                                             <StackPanel
+                                                  Spacing="6">
+                                                 <TextBlock
+                                                      Classes="docs-miniTitle"
+                                                      Text="AXAML"/>
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      Text="&lt;Border BorderThickness=&quot;3&quot; tw:Tw.Class=&quot;border-cyan-400&quot; /&gt;"/>
+                                             </StackPanel>
+                                         </Border>
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem
+                                     Classes="docs-exampleTab"
+                                     Header="StaticResource">
+                                    <StackPanel
+                                         Spacing="0">
                                         <Border
-                                             Grid.Column="1"
-                                             Padding="18"
-                                             CornerRadius="16"
-                                             BorderThickness="3"
-                                             tw:Tw.Class="border-rose-400/65 bg-slate-900">
-                                            <StackPanel
-                                                 Spacing="8">
-                                                <TextBlock
-                                                     Classes="docs-miniTitle"
-                                                     Text="border-rose-400/65"/>
-                                                <TextBlock
-                                                     Classes="docs-noteBody"
-                                                     Text="Directional border colors are still out of scope here."/>
-                                            </StackPanel>
+                                             Background="{StaticResource BrushSlate950}"
+                                             Padding="24">
+                                            <Grid
+                                                 ColumnDefinitions="*,*"
+                                                 ColumnSpacing="20">
+                                                <Border
+                                                     Grid.Column="0"
+                                                     Padding="18"
+                                                     CornerRadius="16"
+                                                     BorderThickness="3"
+                                                     BorderBrush="{StaticResource BrushCyan400}"
+                                                     Background="{StaticResource BrushSlate900}">
+                                                    <StackPanel
+                                                         Spacing="8">
+                                                        <TextBlock
+                                                             Classes="docs-miniTitle"
+                                                             Text="BrushCyan400"/>
+                                                        <TextBlock
+                                                             Classes="docs-noteBody"
+                                                             Text="Whole outline changes together."/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border
+                                                     Grid.Column="1"
+                                                     Padding="18"
+                                                     CornerRadius="16"
+                                                     BorderThickness="3"
+                                                     Background="{StaticResource BrushSlate900}">
+                                                    <Border.BorderBrush>
+                                                        <SolidColorBrush
+                                                             Color="{StaticResource ColorRose400}"
+                                                             Opacity="0.65"/>
+                                                    </Border.BorderBrush>
+                                                    <StackPanel
+                                                         Spacing="8">
+                                                        <TextBlock
+                                                             Classes="docs-miniTitle"
+                                                             Text="ColorRose400 @ 65%"/>
+                                                        <TextBlock
+                                                             Classes="docs-noteBody"
+                                                             Text="Directional border colors are still out of scope here."/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </Grid>
                                         </Border>
-                                    </Grid>
-                                </Border>
-                                 <Border
-                                      BorderBrush="{StaticResource BrushSlate800}"
-                                      BorderThickness="0,1,0,0"
-                                      Padding="20,16">
-                                     <StackPanel
-                                          Spacing="6">
-                                         <TextBlock
-                                              Classes="docs-miniTitle"
-                                              Text="Utility version"/>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              Text="&lt;Border BorderThickness=&quot;3&quot; tw:Tw.Class=&quot;border-cyan-400&quot; /&gt;"/>
-                                         <TextBlock
-                                              Classes="docs-miniTitle"
-                                              Text="StaticResource version"/>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              xml:space="preserve">&lt;Border
+                                         <Border
+                                              BorderBrush="{StaticResource BrushSlate800}"
+                                              BorderThickness="0,1,0,0"
+                                              Padding="20,16">
+                                             <StackPanel
+                                                  Spacing="6">
+                                                 <TextBlock
+                                                      Classes="docs-miniTitle"
+                                                      Text="AXAML"/>
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      xml:space="preserve">&lt;Border
   BorderThickness=&quot;3&quot;
   BorderBrush=&quot;{StaticResource BrushCyan400}&quot;
   Background=&quot;{StaticResource BrushSlate900}&quot; /&gt;</TextBlock>
-                                         <TextBlock
-                                              Classes="docs-code"
-                                              xml:space="preserve">&lt;Border
+                                                 <TextBlock
+                                                      Classes="docs-code"
+                                                      xml:space="preserve">&lt;Border
   BorderThickness=&quot;3&quot;
   Background=&quot;{StaticResource BrushSlate900}&quot;&gt;
   &lt;Border.BorderBrush&gt;
     &lt;SolidColorBrush Color=&quot;{StaticResource ColorRose400}&quot; Opacity=&quot;0.65&quot; /&gt;
   &lt;/Border.BorderBrush&gt;
 &lt;/Border&gt;</TextBlock>
-                                     </StackPanel>
-                                 </Border>
-                            </StackPanel>
+                                             </StackPanel>
+                                         </Border>
+                                    </StackPanel>
+                                </TabItem>
+                            </TabControl>
                         </Border>
                     </StackPanel>
                 </StackPanel>
