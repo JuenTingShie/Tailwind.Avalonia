@@ -4,6 +4,12 @@
 Spacing and color foundations are implemented, locally validated, and now documented through a docs-style sample surface.
 
 ## What Works
+- The spacing sample reference tables now use lightweight `ItemsControl` rows instead of `DataGrid`, so expanding the list shows every supported row without any inner scrollbar behavior.
+- The spacing sample pages now keep compiled bindings enabled while still supporting the docs reference `DataGrid` sections through typed row `DataTemplate` bindings plus code-behind-managed row state.
+- The `Padding` sample page now includes a top-of-page reference `DataGrid` that maps supported numeric padding utility families to AXAML `Padding="..."` equivalents.
+- That reference table now mimics the Tailwind docs interaction pattern with a compact initial row set plus a working `SHOW MORE` / `CLOSE` toggle for the extra logical and visual alias rows.
+- The `Padding` and `Margin` sample pages now both include explicit unsupported-row notes alongside their reference tables so omitted Tailwind syntax stays visible and honest.
+- The `Margin` sample page now also includes a top-of-page reference `DataGrid` for positive, negative, and logical margin utility families mapped to AXAML `Margin="..."` equivalents.
 - Solution and project scaffold exists.
 - `Tailwind.Avalonia` library builds on .NET 10 with Avalonia 12.0.2.
 - Spacing resources are generated through `SpacingResourceDictionary`.
@@ -50,4 +56,4 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - Other RTL logical docs previews, especially margin, may need the same mirror-cancel presentation pattern if the goal is to show physical side effects instead of Avalonia's mirrored chrome.
 
 ## Estimated Stage
-94%: spacing and color token foundations plus whole-property color utilities, dedicated docs-style sample coverage for spacing and colors, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.
+95%: spacing and color token foundations plus whole-property color utilities, docs-style sample coverage now including compiled-binding-safe reference tables for padding and margin families, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.

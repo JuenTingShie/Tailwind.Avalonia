@@ -20,6 +20,8 @@
 - [TASK012] Tailwind Avalonia StaticResource docs-code formatting - Reformatted StaticResource snippets into clearer multi-line AXAML blocks and revalidated sample build plus tests.
 - [TASK013] Tailwind Avalonia xml:space docs-code formatting - Collapsed multi-line StaticResource snippets into single `xml:space="preserve"` TextBlocks and revalidated sample build plus tests.
 - [TASK014] Tailwind Avalonia tabbed sample version switcher - Added nested example tabs that switch preview and AXAML between utility and StaticResource variants, while keeping unsupported notes honest.
+- [TASK015] Tailwind Avalonia padding class reference table - Added a Tailwind-docs-style padding reference DataGrid with AXAML mappings and a show-more toggle.
+- [TASK016] Tailwind Avalonia compiled-binding-safe spacing reference sync - Removed the padding root compiled-binding fallback, added unsupported-row notes, and brought the same reference-table pattern to Margin.
 
 ## Abandoned
 - [TASK006] Tailwind Avalonia directional border rendering layer - Reverted after user constraint disallowed custom components.

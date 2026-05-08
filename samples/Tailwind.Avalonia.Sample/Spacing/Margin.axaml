@@ -1,880 +1,950 @@
 <UserControl
-      xmlns="https://github.com/avaloniaui"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:tw="using:Tailwind.Avalonia"
-      x:Class="Tailwind.Avalonia.Sample.Spacing.Margin">
-     <UserControl.Resources>
-          <ResourceDictionary>
-               <ResourceDictionary.MergedDictionaries>
-                    <ResourceInclude
-                          Source="avares://Tailwind.Avalonia/Themes/Tailwind.axaml"/>
-               </ResourceDictionary.MergedDictionaries>
-          </ResourceDictionary>
-     </UserControl.Resources>
-     <UserControl.Styles>
-          <StyleInclude
-                Source="/Spacing/SpacingDocsStyles.axaml"/>
-     </UserControl.Styles>
-     <Border
-           Background="{StaticResource BrushSlate950}">
-          <ScrollViewer
-                HorizontalScrollBarVisibility="Disabled">
-               <StackPanel
-                     Margin="28,24,40,32"
-                     Spacing="40">
-                    <StackPanel
-                          Spacing="10">
-                         <TextBlock
-                               Classes="docs-library"
-                               Text="TAILWIND.AVALONIA"/>
-                         <TextBlock
-                               Classes="docs-pageTitle"
-                               Text="Margin"/>
-                         <TextBlock
-                               Classes="docs-body"
-                               Text="Utilities for controlling the space around elements. This page focuses on the margin utilities that Tailwind.Avalonia already parses, including negative and logical variants."/>
-                         <Border
-                               Classes="docs-note"
-                               BorderThickness="2"
-                               tw:Tw.Class="bg-sky-950/35 border-sky-400/60">
-                              <StackPanel
-                                    Spacing="6">
-                                   <TextBlock
-                                         Classes="docs-noteTitle"
-                                         tw:Tw.Class="text-sky-50"
-                                         Text="Implemented in this sample"/>
-                                   <TextBlock
-                                         Classes="docs-noteBody"
-                                         tw:Tw.Class="text-sky-100/85"
-                                         Text="Supported now: m, mx, my, mt, mr, mb, ml, ms, me, mbs, and mbe, plus negative margin values. Auto margins, arbitrary values, and responsive variants are still outside the current parser scope."/>
-                              </StackPanel>
-                         </Border>
-                    </StackPanel>
-                    <StackPanel
-                          Spacing="18">
-                         <TextBlock
-                               Classes="docs-eyebrow"
-                               Text="EXAMPLES"/>
-                         <StackPanel
+       xmlns="https://github.com/avaloniaui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:sample="using:Tailwind.Avalonia.Sample.Spacing"
+       xmlns:tw="using:Tailwind.Avalonia"
+       x:Class="Tailwind.Avalonia.Sample.Spacing.Margin">
+      <UserControl.Resources>
+            <ResourceDictionary>
+                  <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude
+                               Source="avares://Tailwind.Avalonia/Themes/Tailwind.axaml"/>
+                  </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+      </UserControl.Resources>
+      <UserControl.Styles>
+            <StyleInclude
+                   Source="/Spacing/SpacingDocsStyles.axaml"/>
+      </UserControl.Styles>
+      <Border
+             Background="{StaticResource BrushSlate950}">
+            <ScrollViewer
+                   HorizontalScrollBarVisibility="Disabled">
+                  <StackPanel
+                         Margin="28,24,40,32"
+                         Spacing="40">
+                        <StackPanel
+                               Spacing="10">
+                              <TextBlock
+                                     Classes="docs-library"
+                                     Text="SPACING"/>
+                              <TextBlock
+                                     Classes="docs-pageTitle"
+                                     Text="Margin"/>
+                              <TextBlock
+                                     Classes="docs-body"
+                                     Text="Utilities for controlling an element&apos;s margin."/>
+                        </StackPanel>
+                        <StackPanel
                                Spacing="16">
-                              <TextBlock
-                                    Classes="docs-sectionTitle"
-                                    Text="Basic example"/>
-                              <TextBlock
-                                    Classes="docs-body"
-                                    Text="Use m-&lt;number&gt; utilities like m-4 and m-8 to control the outer space on all sides of an element."/>
-                               <Border
+                              <Border
                                      Classes="docs-surface">
-                                    <TabControl
-                                          Classes="docs-exampleTabs">
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="Utility">
-                                              <StackPanel
-                                                    Spacing="0">
-                                         <Border
-                                               Background="{StaticResource BrushSlate950}"
-                                               Height="208"
-                                               Padding="28">
-                                              <Grid>
-                                                  <Border
-                                                        Classes="docs-marginShell"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center">
-                                                       <Grid
-                                                             Width="280"
-                                                             Height="120">
+                                    <StackPanel
+                                           Spacing="0">
+                                          <Border
+                                                 Classes="docs-referenceHeader">
+                                                <Grid
+                                                       Classes="docs-referenceColumns"
+                                                       ColumnDefinitions="1.45*,3.15*">
+                                                      <TextBlock
+                                                             Classes="docs-referenceHeading"
+                                                             Text="Class"/>
+                                                      <TextBlock
+                                                             Grid.Column="1"
+                                                             Classes="docs-referenceHeading"
+                                                             Text="Styles"/>
+                                                </Grid>
+                                          </Border>
+                                          <ItemsControl
+                                                 x:Name="MarginUtilityRows"
+                                                 Classes="docs-referenceList">
+                                                <ItemsControl.ItemTemplate>
+                                                      <DataTemplate
+                                                             DataType="sample:SpacingUtilityReferenceRow">
                                                             <Border
-                                                                  Background="{StaticResource BrushSky500}"
-                                                                  CornerRadius="12"
-                                                                  HorizontalAlignment="Stretch"
-                                                                  VerticalAlignment="Stretch"
-                                                                  tw:Tw.Class="m-8">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       Text="m-8"/>
-                                                            </Border>
-                                                       </Grid>
-                                                  </Border>
-                                             </Grid>
-                                        </Border>
-                                           <Border
-                                                 BorderBrush="{StaticResource BrushSlate800}"
-                                                 BorderThickness="0,1,0,0"
-                                                 Padding="20,16">
-                                               <StackPanel
-                                                     Spacing="6">
-                                                    <TextBlock
-                                                          Classes="docs-miniTitle"
-                                                          Text="AXAML"/>
-                                                    <TextBlock
-                                                          Classes="docs-code"
-                                                          Text="tw:Tw.Class=&quot;m-8&quot;"/>
-                                               </StackPanel>
-                                           </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="StaticResource">
-                                              <StackPanel
-                                                    Spacing="0">
-                                                   <Border
-                                                         Background="{StaticResource BrushSlate950}"
-                                                         Height="208"
-                                                         Padding="28">
-                                                        <Grid>
-                                                             <Border
-                                                                   Classes="docs-marginShell"
-                                                                   HorizontalAlignment="Center"
-                                                                   VerticalAlignment="Center">
+                                                                   Classes="docs-referenceRow">
                                                                   <Grid
-                                                                        Width="280"
-                                                                        Height="120">
-                                                                       <Border
-                                                                             Background="{StaticResource BrushSky500}"
-                                                                             CornerRadius="12"
-                                                                             HorizontalAlignment="Stretch"
-                                                                             VerticalAlignment="Stretch"
-                                                                             Margin="{StaticResource Margin8}">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  VerticalAlignment="Center"
-                                                                                  Text="Margin8"/>
-                                                                       </Border>
+                                                                         Classes="docs-referenceColumns"
+                                                                         ColumnDefinitions="1.45*,3.15*">
+                                                                        <TextBlock
+                                                                               Classes="docs-tableClass"
+                                                                               Text="{CompiledBinding ClassName}"
+                                                                               VerticalAlignment="Center"/>
+                                                                        <TextBlock
+                                                                               Grid.Column="1"
+                                                                               Classes="docs-tableStyle"
+                                                                               Text="{CompiledBinding AxamlStyle}"
+                                                                               VerticalAlignment="Center"/>
                                                                   </Grid>
-                                                             </Border>
-                                                        </Grid>
-                                                   </Border>
-                                                    <Border
-                                                          BorderBrush="{StaticResource BrushSlate800}"
-                                                          BorderThickness="0,1,0,0"
-                                                          Padding="20,16">
-                                                         <StackPanel
-                                                               Spacing="6">
-                                                              <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="AXAML"/>
-                                                              <TextBlock
-                                                                    Classes="docs-code"
-                                                                    xml:space="preserve">&lt;Border
-  Margin=&quot;{StaticResource Margin8}&quot; /&gt;</TextBlock>
-                                                         </StackPanel>
-                                                    </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                    </TabControl>
-                               </Border>
-                         </StackPanel>
-                         <StackPanel
-                               Spacing="16">
-                              <TextBlock
-                                    Classes="docs-sectionTitle"
-                                    Text="Adding margin to one side"/>
-                              <TextBlock
-                                    Classes="docs-body"
-                                    Text="Use mt-&lt;number&gt;, mr-&lt;number&gt;, mb-&lt;number&gt;, and ml-&lt;number&gt; utilities like mt-6 and mr-4 to control margin on one side of an element."/>
-                               <Border
-                                     Classes="docs-surface">
-                                    <TabControl
-                                          Classes="docs-exampleTabs">
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="Utility">
-                                              <StackPanel
-                                                    Spacing="0">
-                                        <Border
-                                              Background="{StaticResource BrushSlate950}"
-                                              Height="176"
-                                              Padding="24">
-                                             <Grid>
-                                                  <Grid
-                                                        Width="620"
-                                                        Height="112">
-                                                       <Border
-                                                             Classes="docs-marginShell"
-                                                             HorizontalAlignment="Left"
-                                                             VerticalAlignment="Center">
-                                                            <Border
-                                                                  Background="{StaticResource BrushViolet500}"
-                                                                  CornerRadius="12"
-                                                                  Width="64"
-                                                                  Height="56"
-                                                                  tw:Tw.Class="ml-2">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       Text="ml-2"/>
                                                             </Border>
-                                                       </Border>
-                                                       <Border
-                                                             Classes="docs-marginShell"
-                                                             HorizontalAlignment="Right"
-                                                             VerticalAlignment="Center">
-                                                            <Border
-                                                                  Background="{StaticResource BrushViolet500}"
-                                                                  CornerRadius="12"
-                                                                  Width="64"
-                                                                  Height="56"
-                                                                  tw:Tw.Class="mr-4">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       Text="mr-4"/>
-                                                            </Border>
-                                                       </Border>
-                                                       <Border
-                                                             Classes="docs-marginShell"
-                                                             HorizontalAlignment="Center"
-                                                             VerticalAlignment="Top">
-                                                            <Border
-                                                                  Background="{StaticResource BrushViolet500}"
-                                                                  CornerRadius="12"
-                                                                  Width="68"
-                                                                  Height="56"
-                                                                  tw:Tw.Class="mt-6">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       Text="mt-6"/>
-                                                            </Border>
-                                                       </Border>
-                                                       <Border
-                                                             Classes="docs-marginShell"
-                                                             HorizontalAlignment="Center"
-                                                             VerticalAlignment="Bottom">
-                                                            <Border
-                                                                  Background="{StaticResource BrushViolet500}"
-                                                                  CornerRadius="12"
-                                                                  Width="68"
-                                                                  Height="56"
-                                                                  tw:Tw.Class="mb-8">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       Text="mb-8"/>
-                                                            </Border>
-                                                       </Border>
-                                                  </Grid>
-                                             </Grid>
-                                        </Border>
-                                           <Border
+                                                      </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                          </ItemsControl>
+                                          <Border
+                                                 Background="{StaticResource BrushSlate900}"
                                                  BorderBrush="{StaticResource BrushSlate800}"
-                                                 BorderThickness="0,1,0,0"
-                                                 Padding="20,16">
-                                               <StackPanel
-                                                     Spacing="6">
-                                                    <TextBlock
-                                                          Classes="docs-miniTitle"
-                                                          Text="AXAML"/>
-                                                    <TextBlock
-                                                          Classes="docs-code"
-                                                          Text="tw:Tw.Class=&quot;mt-6 mr-4 mb-8 ml-2&quot;"/>
-                                               </StackPanel>
-                                           </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="StaticResource">
-                                              <StackPanel
-                                                    Spacing="0">
-                                                   <Border
-                                                         Background="{StaticResource BrushSlate950}"
-                                                         Height="176"
-                                                         Padding="24">
-                                                        <Grid>
-                                                             <Grid
-                                                                   Width="620"
-                                                                   Height="112">
-                                                                  <Border
-                                                                        Classes="docs-marginShell"
-                                                                        HorizontalAlignment="Left"
-                                                                        VerticalAlignment="Center">
-                                                                       <Border
-                                                                             Background="{StaticResource BrushViolet500}"
-                                                                             CornerRadius="12"
-                                                                             Width="64"
-                                                                             Height="56"
-                                                                             Margin="{StaticResource MarginLeft2}">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  VerticalAlignment="Center"
-                                                                                  Text="MarginLeft2"/>
-                                                                       </Border>
-                                                                  </Border>
-                                                                  <Border
-                                                                        Classes="docs-marginShell"
-                                                                        HorizontalAlignment="Right"
-                                                                        VerticalAlignment="Center">
-                                                                       <Border
-                                                                             Background="{StaticResource BrushViolet500}"
-                                                                             CornerRadius="12"
-                                                                             Width="64"
-                                                                             Height="56"
-                                                                             Margin="{StaticResource MarginRight4}">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  VerticalAlignment="Center"
-                                                                                  Text="MarginRight4"/>
-                                                                       </Border>
-                                                                  </Border>
-                                                                  <Border
-                                                                        Classes="docs-marginShell"
-                                                                        HorizontalAlignment="Center"
-                                                                        VerticalAlignment="Top">
-                                                                       <Border
-                                                                             Background="{StaticResource BrushViolet500}"
-                                                                             CornerRadius="12"
-                                                                             Width="68"
-                                                                             Height="56"
-                                                                             Margin="{StaticResource MarginTop6}">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  VerticalAlignment="Center"
-                                                                                  Text="MarginTop6"/>
-                                                                       </Border>
-                                                                  </Border>
-                                                                  <Border
-                                                                        Classes="docs-marginShell"
-                                                                        HorizontalAlignment="Center"
-                                                                        VerticalAlignment="Bottom">
-                                                                       <Border
-                                                                             Background="{StaticResource BrushViolet500}"
-                                                                             CornerRadius="12"
-                                                                             Width="68"
-                                                                             Height="56"
-                                                                             Margin="{StaticResource MarginBottom8}">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  VerticalAlignment="Center"
-                                                                                  Text="MarginBottom8"/>
-                                                                       </Border>
-                                                                  </Border>
-                                                             </Grid>
-                                                        </Grid>
-                                                   </Border>
-                                                    <Border
-                                                          BorderBrush="{StaticResource BrushSlate800}"
-                                                          BorderThickness="0,1,0,0"
-                                                          Padding="20,16">
-                                                         <StackPanel
-                                                               Spacing="6">
-                                                              <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="AXAML"/>
-                                                              <TextBlock
-                                                                    Classes="docs-code"
-                                                                    xml:space="preserve">&lt;Border
-  Margin=&quot;{StaticResource MarginTop6}&quot; /&gt;</TextBlock>
-                                                              <TextBlock
-                                                                    Classes="docs-code"
-                                                                    xml:space="preserve">&lt;Border
-  Margin=&quot;{StaticResource MarginRight4}&quot; /&gt;</TextBlock>
-                                                              <TextBlock
-                                                                    Classes="docs-code"
-                                                                    xml:space="preserve">&lt;Border
-  Margin=&quot;{StaticResource MarginBottom8}&quot; /&gt;</TextBlock>
-                                                              <TextBlock
-                                                                    Classes="docs-code"
-                                                                    xml:space="preserve">&lt;Border
-  Margin=&quot;{StaticResource MarginLeft2}&quot; /&gt;</TextBlock>
-                                                         </StackPanel>
-                                                    </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                    </TabControl>
-                               </Border>
-                         </StackPanel>
-                         <StackPanel
-                               Spacing="16">
+                                                 Padding="0,12"
+                                                 Classes="docs-showMoreShell"
+                                                 HorizontalAlignment="Center">
+                                                <Button
+                                                       x:Name="MarginUtilityToggleButton"
+                                                       Classes="docs-showMoreButton"
+                                                       Click="ToggleUtilityRows"
+                                                       Content="SHOW MORE"/>
+                                          </Border>
+                                    </StackPanel>
+                              </Border>
+                              <Border
+                                     Classes="docs-note"
+                                     BorderThickness="2"
+                                     tw:Tw.Class="bg-amber-950/30 border-amber-400/50">
+                                    <StackPanel
+                                           Spacing="8">
+                                          <TextBlock
+                                                 Classes="docs-noteTitle"
+                                                 tw:Tw.Class="text-amber-50"
+                                                 Text="Unsupported rows"/>
+                                          <TextBlock
+                                                 Classes="docs-noteBody"
+                                                 tw:Tw.Class="text-amber-100/85"
+                                                 Text="These Tailwind margin rows stay out of the reference table until the parser supports them directly."/>
+                                          <TextBlock
+                                                 Classes="docs-tableClass"
+                                                 Text="m-auto / mx-auto / my-auto / ms-auto / me-auto"/>
+                                          <TextBlock
+                                                 Classes="docs-tableClass"
+                                                 Text="m-[&lt;value&gt;] / mx-[&lt;value&gt;] / my-[&lt;value&gt;] / mt-[&lt;value&gt;] / mr-[&lt;value&gt;] / mb-[&lt;value&gt;] / ml-[&lt;value&gt;]"/>
+                                          <TextBlock
+                                                 Classes="docs-tableClass"
+                                                 Text="m-(&lt;custom-property&gt;) / mx-(&lt;custom-property&gt;) / my-(&lt;custom-property&gt;) / mt-(&lt;custom-property&gt;) / mr-(&lt;custom-property&gt;) / mb-(&lt;custom-property&gt;) / ml-(&lt;custom-property&gt;)"/>
+                                    </StackPanel>
+                              </Border>
+                        </StackPanel>
+                        <StackPanel
+                               Spacing="18">
                               <TextBlock
-                                    Classes="docs-sectionTitle"
-                                    Text="Adding horizontal and vertical margin"/>
-                              <TextBlock
-                                    Classes="docs-body"
-                                    Text="Use mx-&lt;number&gt; and my-&lt;number&gt; utilities like mx-8 and my-8 to control axis-specific margin."/>
-                               <Border
-                                     Classes="docs-surface">
-                                    <TabControl
-                                          Classes="docs-exampleTabs">
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="Utility">
-                                              <StackPanel
-                                                    Spacing="0">
-                                        <Border
-                                              Background="{StaticResource BrushSlate950}"
-                                              Height="176"
-                                              Padding="24">
-                                             <Grid>
-                                                  <StackPanel
-                                                        Orientation="Horizontal"
-                                                        HorizontalAlignment="Center"
-                                                        Spacing="24">
-                                                       <Border
-                                                             Classes="docs-marginShell">
-                                                            <Border
-                                                                  Background="{StaticResource BrushAmber500}"
-                                                                  CornerRadius="12"
-                                                                  Width="156"
-                                                                  Height="64"
-                                                                  tw:Tw.Class="mx-8">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       Text="mx-8"/>
-                                                            </Border>
-                                                       </Border>
-                                                       <Border
-                                                             Classes="docs-marginShell">
-                                                            <Border
-                                                                  Background="{StaticResource BrushRose500}"
-                                                                  CornerRadius="12"
-                                                                  Width="72"
-                                                                  Height="56"
-                                                                  tw:Tw.Class="my-8">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       Text="my-8"/>
-                                                            </Border>
-                                                       </Border>
-                                                  </StackPanel>
-                                             </Grid>
-                                        </Border>
-                                           <Border
-                                                 BorderBrush="{StaticResource BrushSlate800}"
-                                                 BorderThickness="0,1,0,0"
-                                                 Padding="20,16">
-                                               <StackPanel
-                                                     Spacing="6">
-                                                    <TextBlock
-                                                          Classes="docs-miniTitle"
-                                                          Text="AXAML"/>
-                                                    <TextBlock
-                                                          Classes="docs-code"
-                                                          Text="tw:Tw.Class=&quot;mx-8&quot;    tw:Tw.Class=&quot;my-8&quot;"/>
-                                               </StackPanel>
-                                           </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="StaticResource">
-                                              <StackPanel
-                                                    Spacing="0">
-                                                   <Border
-                                                         Background="{StaticResource BrushSlate950}"
-                                                         Height="176"
-                                                         Padding="24">
-                                                        <Grid>
-                                                             <StackPanel
-                                                                   Orientation="Horizontal"
-                                                                   HorizontalAlignment="Center"
-                                                                   Spacing="24">
-                                                                  <Border
-                                                                        Classes="docs-marginShell">
-                                                                       <Border
-                                                                             Background="{StaticResource BrushAmber500}"
-                                                                             CornerRadius="12"
-                                                                             Width="156"
-                                                                             Height="64"
-                                                                             Margin="{StaticResource MarginX8}">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  VerticalAlignment="Center"
-                                                                                  Text="MarginX8"/>
-                                                                       </Border>
-                                                                  </Border>
-                                                                  <Border
-                                                                        Classes="docs-marginShell">
-                                                                       <Border
-                                                                             Background="{StaticResource BrushRose500}"
-                                                                             CornerRadius="12"
-                                                                             Width="72"
-                                                                             Height="56"
-                                                                             Margin="{StaticResource MarginY8}">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  VerticalAlignment="Center"
-                                                                                  Text="MarginY8"/>
-                                                                       </Border>
-                                                                  </Border>
-                                                             </StackPanel>
-                                                        </Grid>
-                                                   </Border>
-                                                    <Border
-                                                          BorderBrush="{StaticResource BrushSlate800}"
-                                                          BorderThickness="0,1,0,0"
-                                                          Padding="20,16">
-                                                         <StackPanel
-                                                               Spacing="6">
-                                                              <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="AXAML"/>
-                                                              <TextBlock
-                                                                    Classes="docs-code"
-                                                                    xml:space="preserve">&lt;Border
-  Margin=&quot;{StaticResource MarginX8}&quot; /&gt;</TextBlock>
-                                                              <TextBlock
-                                                                    Classes="docs-code"
-                                                                    xml:space="preserve">&lt;Border
-  Margin=&quot;{StaticResource MarginY8}&quot; /&gt;</TextBlock>
-                                                         </StackPanel>
-                                                    </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                    </TabControl>
-                               </Border>
-                         </StackPanel>
-                         <StackPanel
-                               Spacing="16">
-                              <TextBlock
-                                    Classes="docs-sectionTitle"
-                                    Text="Using negative values"/>
-                              <TextBlock
-                                    Classes="docs-body"
-                                    Text="Prefix a margin utility with a leading minus sign, like -mt-8, when you need elements to intentionally overlap."/>
-                               <Border
-                                     Classes="docs-surface">
-                                    <TabControl
-                                          Classes="docs-exampleTabs">
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="Utility">
-                                              <StackPanel
-                                                    Spacing="0">
-                                        <Border
-                                              Background="{StaticResource BrushSlate950}"
-                                              Height="208"
-                                              Padding="28">
-                                             <Grid>
-                                                  <Border
-                                                        Classes="docs-marginShell"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center">
-                                                       <StackPanel
+                                     Classes="docs-eyebrow"
+                                     Text="EXAMPLES"/>
+                              <StackPanel
+                                     Spacing="16">
+                                    <TextBlock
+                                           Classes="docs-sectionTitle"
+                                           Text="Basic example"/>
+                                    <TextBlock
+                                           Classes="docs-body"
+                                           Text="Use m-&lt;number&gt; utilities like m-4 and m-8 to control the outer space on all sides of an element."/>
+                                    <Border
+                                           Classes="docs-surface">
+                                          <TabControl
+                                                 Classes="docs-exampleTabs">
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="Utility">
+                                                      <StackPanel
                                                              Spacing="0">
                                                             <Border
-                                                                  Background="{StaticResource BrushSky400}"
-                                                                  CornerRadius="12"
-                                                                  Width="240"
-                                                                  Padding="16">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       Text="base block"/>
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   Height="208"
+                                                                   Padding="28">
+                                                                  <Grid>
+                                                                        <Border
+                                                                               Classes="docs-marginShell"
+                                                                               HorizontalAlignment="Center"
+                                                                               VerticalAlignment="Center">
+                                                                              <Grid
+                                                                                     Width="280"
+                                                                                     Height="120">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushSky500}"
+                                                                                           CornerRadius="12"
+                                                                                           HorizontalAlignment="Stretch"
+                                                                                           VerticalAlignment="Stretch"
+                                                                                           tw:Tw.Class="m-8">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="m-8"/>
+                                                                                    </Border>
+                                                                              </Grid>
+                                                                        </Border>
+                                                                  </Grid>
                                                             </Border>
                                                             <Border
-                                                                  Background="{StaticResource BrushBlue500}"
-                                                                  CornerRadius="12"
-                                                                  Width="188"
-                                                                  Padding="16"
-                                                                  HorizontalAlignment="Center"
-                                                                  tw:Tw.Class="-mt-8">
-                                                                 <TextBlock
-                                                                       Classes="docs-chip"
-                                                                       HorizontalAlignment="Center"
-                                                                       Text="-mt-8"/>
-                                                            </Border>
-                                                       </StackPanel>
-                                                  </Border>
-                                             </Grid>
-                                        </Border>
-                                           <Border
-                                                 BorderBrush="{StaticResource BrushSlate800}"
-                                                 BorderThickness="0,1,0,0"
-                                                 Padding="20,16">
-                                               <StackPanel
-                                                     Spacing="6">
-                                                    <TextBlock
-                                                          Classes="docs-miniTitle"
-                                                          Text="AXAML"/>
-                                                    <TextBlock
-                                                          Classes="docs-code"
-                                                          Text="tw:Tw.Class=&quot;-mt-8&quot;"/>
-                                               </StackPanel>
-                                           </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="StaticResource">
-                                              <StackPanel
-                                                    Spacing="0">
-                                                   <Border
-                                                         Background="{StaticResource BrushSlate950}"
-                                                         Height="208"
-                                                         Padding="28">
-                                                        <Grid>
-                                                             <Border
-                                                                   Classes="docs-marginShell"
-                                                                   HorizontalAlignment="Center"
-                                                                   VerticalAlignment="Center">
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
                                                                   <StackPanel
-                                                                        Spacing="0">
-                                                                       <Border
-                                                                             Background="{StaticResource BrushSky400}"
-                                                                             CornerRadius="12"
-                                                                             Width="240"
-                                                                             Padding="16">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  Text="base block"/>
-                                                                       </Border>
-                                                                       <Border
-                                                                             Background="{StaticResource BrushBlue500}"
-                                                                             CornerRadius="12"
-                                                                             Width="188"
-                                                                             Padding="16"
-                                                                             HorizontalAlignment="Center"
-                                                                             Margin="{StaticResource NegativeMarginTop8}">
-                                                                            <TextBlock
-                                                                                  Classes="docs-chip"
-                                                                                  HorizontalAlignment="Center"
-                                                                                  Text="NegativeMarginTop8"/>
-                                                                       </Border>
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               Text="tw:Tw.Class=&quot;m-8&quot;"/>
                                                                   </StackPanel>
-                                                             </Border>
-                                                        </Grid>
-                                                   </Border>
-                                                    <Border
-                                                          BorderBrush="{StaticResource BrushSlate800}"
-                                                          BorderThickness="0,1,0,0"
-                                                          Padding="20,16">
-                                                         <StackPanel
-                                                               Spacing="6">
-                                                              <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="AXAML"/>
-                                                              <TextBlock
-                                                                    Classes="docs-code"
-                                                                    xml:space="preserve">&lt;Border
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="StaticResource">
+                                                      <StackPanel
+                                                             Spacing="0">
+                                                            <Border
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   Height="208"
+                                                                   Padding="28">
+                                                                  <Grid>
+                                                                        <Border
+                                                                               Classes="docs-marginShell"
+                                                                               HorizontalAlignment="Center"
+                                                                               VerticalAlignment="Center">
+                                                                              <Grid
+                                                                                     Width="280"
+                                                                                     Height="120">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushSky500}"
+                                                                                           CornerRadius="12"
+                                                                                           HorizontalAlignment="Stretch"
+                                                                                           VerticalAlignment="Stretch"
+                                                                                           Margin="{StaticResource Margin8}">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="Margin8"/>
+                                                                                    </Border>
+                                                                              </Grid>
+                                                                        </Border>
+                                                                  </Grid>
+                                                            </Border>
+                                                            <Border
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
+                                                                  <StackPanel
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource Margin8}&quot; /&gt;</TextBlock>
+                                                                  </StackPanel>
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                          </TabControl>
+                                    </Border>
+                              </StackPanel>
+                              <StackPanel
+                                     Spacing="16">
+                                    <TextBlock
+                                           Classes="docs-sectionTitle"
+                                           Text="Adding margin to one side"/>
+                                    <TextBlock
+                                           Classes="docs-body"
+                                           Text="Use mt-&lt;number&gt;, mr-&lt;number&gt;, mb-&lt;number&gt;, and ml-&lt;number&gt; utilities like mt-6 and mr-4 to control margin on one side of an element."/>
+                                    <Border
+                                           Classes="docs-surface">
+                                          <TabControl
+                                                 Classes="docs-exampleTabs">
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="Utility">
+                                                      <StackPanel
+                                                             Spacing="0">
+                                                            <Border
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   Height="176"
+                                                                   Padding="24">
+                                                                  <Grid>
+                                                                        <Grid
+                                                                               Width="620"
+                                                                               Height="112">
+                                                                              <Border
+                                                                                     Classes="docs-marginShell"
+                                                                                     HorizontalAlignment="Left"
+                                                                                     VerticalAlignment="Center">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushViolet500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="64"
+                                                                                           Height="56"
+                                                                                           tw:Tw.Class="ml-2">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="ml-2"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                              <Border
+                                                                                     Classes="docs-marginShell"
+                                                                                     HorizontalAlignment="Right"
+                                                                                     VerticalAlignment="Center">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushViolet500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="64"
+                                                                                           Height="56"
+                                                                                           tw:Tw.Class="mr-4">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="mr-4"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                              <Border
+                                                                                     Classes="docs-marginShell"
+                                                                                     HorizontalAlignment="Center"
+                                                                                     VerticalAlignment="Top">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushViolet500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="68"
+                                                                                           Height="56"
+                                                                                           tw:Tw.Class="mt-6">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="mt-6"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                              <Border
+                                                                                     Classes="docs-marginShell"
+                                                                                     HorizontalAlignment="Center"
+                                                                                     VerticalAlignment="Bottom">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushViolet500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="68"
+                                                                                           Height="56"
+                                                                                           tw:Tw.Class="mb-8">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="mb-8"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                        </Grid>
+                                                                  </Grid>
+                                                            </Border>
+                                                            <Border
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
+                                                                  <StackPanel
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               Text="tw:Tw.Class=&quot;mt-6 mr-4 mb-8 ml-2&quot;"/>
+                                                                  </StackPanel>
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="StaticResource">
+                                                      <StackPanel
+                                                             Spacing="0">
+                                                            <Border
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   Height="176"
+                                                                   Padding="24">
+                                                                  <Grid>
+                                                                        <Grid
+                                                                               Width="620"
+                                                                               Height="112">
+                                                                              <Border
+                                                                                     Classes="docs-marginShell"
+                                                                                     HorizontalAlignment="Left"
+                                                                                     VerticalAlignment="Center">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushViolet500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="64"
+                                                                                           Height="56"
+                                                                                           Margin="{StaticResource MarginLeft2}">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="MarginLeft2"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                              <Border
+                                                                                     Classes="docs-marginShell"
+                                                                                     HorizontalAlignment="Right"
+                                                                                     VerticalAlignment="Center">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushViolet500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="64"
+                                                                                           Height="56"
+                                                                                           Margin="{StaticResource MarginRight4}">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="MarginRight4"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                              <Border
+                                                                                     Classes="docs-marginShell"
+                                                                                     HorizontalAlignment="Center"
+                                                                                     VerticalAlignment="Top">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushViolet500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="68"
+                                                                                           Height="56"
+                                                                                           Margin="{StaticResource MarginTop6}">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="MarginTop6"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                              <Border
+                                                                                     Classes="docs-marginShell"
+                                                                                     HorizontalAlignment="Center"
+                                                                                     VerticalAlignment="Bottom">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushViolet500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="68"
+                                                                                           Height="56"
+                                                                                           Margin="{StaticResource MarginBottom8}">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="MarginBottom8"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                        </Grid>
+                                                                  </Grid>
+                                                            </Border>
+                                                            <Border
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
+                                                                  <StackPanel
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginTop6}&quot; /&gt;</TextBlock>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginRight4}&quot; /&gt;</TextBlock>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginBottom8}&quot; /&gt;</TextBlock>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginLeft2}&quot; /&gt;</TextBlock>
+                                                                  </StackPanel>
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                          </TabControl>
+                                    </Border>
+                              </StackPanel>
+                              <StackPanel
+                                     Spacing="16">
+                                    <TextBlock
+                                           Classes="docs-sectionTitle"
+                                           Text="Adding horizontal and vertical margin"/>
+                                    <TextBlock
+                                           Classes="docs-body"
+                                           Text="Use mx-&lt;number&gt; and my-&lt;number&gt; utilities like mx-8 and my-8 to control axis-specific margin."/>
+                                    <Border
+                                           Classes="docs-surface">
+                                          <TabControl
+                                                 Classes="docs-exampleTabs">
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="Utility">
+                                                      <StackPanel
+                                                             Spacing="0">
+                                                            <Border
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   Height="176"
+                                                                   Padding="24">
+                                                                  <Grid>
+                                                                        <StackPanel
+                                                                               Orientation="Horizontal"
+                                                                               HorizontalAlignment="Center"
+                                                                               Spacing="24">
+                                                                              <Border
+                                                                                     Classes="docs-marginShell">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushAmber500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="156"
+                                                                                           Height="64"
+                                                                                           tw:Tw.Class="mx-8">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="mx-8"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                              <Border
+                                                                                     Classes="docs-marginShell">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushRose500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="72"
+                                                                                           Height="56"
+                                                                                           tw:Tw.Class="my-8">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="my-8"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                        </StackPanel>
+                                                                  </Grid>
+                                                            </Border>
+                                                            <Border
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
+                                                                  <StackPanel
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               Text="tw:Tw.Class=&quot;mx-8&quot;    tw:Tw.Class=&quot;my-8&quot;"/>
+                                                                  </StackPanel>
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="StaticResource">
+                                                      <StackPanel
+                                                             Spacing="0">
+                                                            <Border
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   Height="176"
+                                                                   Padding="24">
+                                                                  <Grid>
+                                                                        <StackPanel
+                                                                               Orientation="Horizontal"
+                                                                               HorizontalAlignment="Center"
+                                                                               Spacing="24">
+                                                                              <Border
+                                                                                     Classes="docs-marginShell">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushAmber500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="156"
+                                                                                           Height="64"
+                                                                                           Margin="{StaticResource MarginX8}">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="MarginX8"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                              <Border
+                                                                                     Classes="docs-marginShell">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushRose500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="72"
+                                                                                           Height="56"
+                                                                                           Margin="{StaticResource MarginY8}">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 VerticalAlignment="Center"
+                                                                                                 Text="MarginY8"/>
+                                                                                    </Border>
+                                                                              </Border>
+                                                                        </StackPanel>
+                                                                  </Grid>
+                                                            </Border>
+                                                            <Border
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
+                                                                  <StackPanel
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginX8}&quot; /&gt;</TextBlock>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginY8}&quot; /&gt;</TextBlock>
+                                                                  </StackPanel>
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                          </TabControl>
+                                    </Border>
+                              </StackPanel>
+                              <StackPanel
+                                     Spacing="16">
+                                    <TextBlock
+                                           Classes="docs-sectionTitle"
+                                           Text="Using negative values"/>
+                                    <TextBlock
+                                           Classes="docs-body"
+                                           Text="Prefix a margin utility with a leading minus sign, like -mt-8, when you need elements to intentionally overlap."/>
+                                    <Border
+                                           Classes="docs-surface">
+                                          <TabControl
+                                                 Classes="docs-exampleTabs">
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="Utility">
+                                                      <StackPanel
+                                                             Spacing="0">
+                                                            <Border
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   Height="208"
+                                                                   Padding="28">
+                                                                  <Grid>
+                                                                        <Border
+                                                                               Classes="docs-marginShell"
+                                                                               HorizontalAlignment="Center"
+                                                                               VerticalAlignment="Center">
+                                                                              <StackPanel
+                                                                                     Spacing="0">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushSky400}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="240"
+                                                                                           Padding="16">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 Text="base block"/>
+                                                                                    </Border>
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushBlue500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="188"
+                                                                                           Padding="16"
+                                                                                           HorizontalAlignment="Center"
+                                                                                           tw:Tw.Class="-mt-8">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 Text="-mt-8"/>
+                                                                                    </Border>
+                                                                              </StackPanel>
+                                                                        </Border>
+                                                                  </Grid>
+                                                            </Border>
+                                                            <Border
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
+                                                                  <StackPanel
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               Text="tw:Tw.Class=&quot;-mt-8&quot;"/>
+                                                                  </StackPanel>
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="StaticResource">
+                                                      <StackPanel
+                                                             Spacing="0">
+                                                            <Border
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   Height="208"
+                                                                   Padding="28">
+                                                                  <Grid>
+                                                                        <Border
+                                                                               Classes="docs-marginShell"
+                                                                               HorizontalAlignment="Center"
+                                                                               VerticalAlignment="Center">
+                                                                              <StackPanel
+                                                                                     Spacing="0">
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushSky400}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="240"
+                                                                                           Padding="16">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 Text="base block"/>
+                                                                                    </Border>
+                                                                                    <Border
+                                                                                           Background="{StaticResource BrushBlue500}"
+                                                                                           CornerRadius="12"
+                                                                                           Width="188"
+                                                                                           Padding="16"
+                                                                                           HorizontalAlignment="Center"
+                                                                                           Margin="{StaticResource NegativeMarginTop8}">
+                                                                                          <TextBlock
+                                                                                                 Classes="docs-chip"
+                                                                                                 HorizontalAlignment="Center"
+                                                                                                 Text="NegativeMarginTop8"/>
+                                                                                    </Border>
+                                                                              </StackPanel>
+                                                                        </Border>
+                                                                  </Grid>
+                                                            </Border>
+                                                            <Border
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
+                                                                  <StackPanel
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               xml:space="preserve">&lt;Border
   Margin=&quot;{StaticResource NegativeMarginTop8}&quot; /&gt;</TextBlock>
-                                                         </StackPanel>
-                                                    </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                    </TabControl>
-                               </Border>
-                         </StackPanel>
-                         <StackPanel
-                               Spacing="16">
-                              <TextBlock
-                                    Classes="docs-sectionTitle"
-                                    Text="Using logical properties"/>
-                              <TextBlock
-                                    Classes="docs-body"
-                                    Text="Use ms-&lt;number&gt;, me-&lt;number&gt;, mbs-&lt;number&gt;, and mbe-&lt;number&gt; utilities when margin should follow the current text direction or writing mode."/>
-                               <Border
-                                     Classes="docs-surface">
-                                    <TabControl
-                                          Classes="docs-exampleTabs">
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="Utility">
-                                              <StackPanel
-                                                    Spacing="0">
-                                        <Border
-                                              Background="{StaticResource BrushSlate950}"
-                                              MinHeight="352"
-                                              Padding="24">
-                                             <Grid
-                                                   ColumnDefinitions="*,*"
-                                                   ColumnSpacing="20">
-                                                  <Border
-                                                        Classes="docs-inset">
-                                                       <StackPanel
-                                                             Spacing="12">
+                                                                  </StackPanel>
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                          </TabControl>
+                                    </Border>
+                              </StackPanel>
+                              <StackPanel
+                                     Spacing="16">
+                                    <TextBlock
+                                           Classes="docs-sectionTitle"
+                                           Text="Using logical properties"/>
+                                    <TextBlock
+                                           Classes="docs-body"
+                                           Text="Use ms-&lt;number&gt;, me-&lt;number&gt;, mbs-&lt;number&gt;, and mbe-&lt;number&gt; utilities when margin should follow the current text direction or writing mode."/>
+                                    <Border
+                                           Classes="docs-surface">
+                                          <TabControl
+                                                 Classes="docs-exampleTabs">
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="Utility">
+                                                      <StackPanel
+                                                             Spacing="0">
+                                                            <Border
+                                                                   Background="{StaticResource BrushSlate950}"
+                                                                   MinHeight="352"
+                                                                   Padding="24">
+                                                                  <Grid
+                                                                         ColumnDefinitions="*,*"
+                                                                         ColumnSpacing="20">
+                                                                        <Border
+                                                                               Classes="docs-inset">
+                                                                              <StackPanel
+                                                                                     Spacing="12">
+                                                                                    <TextBlock
+                                                                                           Classes="docs-miniTitle"
+                                                                                           Text="Left-to-right"/>
+                                                                                    <Grid
+                                                                                           Width="280"
+                                                                                           Height="120"
+                                                                                           FlowDirection="LeftToRight">
+                                                                                          <Border
+                                                                                                 Background="{StaticResource BrushLime500}"
+                                                                                                 CornerRadius="12"
+                                                                                                 HorizontalAlignment="Stretch"
+                                                                                                 VerticalAlignment="Stretch"
+                                                                                                 tw:Tw.Class="ms-8">
+                                                                                                <TextBlock
+                                                                                                       Classes="docs-chip"
+                                                                                                       HorizontalAlignment="Center"
+                                                                                                       VerticalAlignment="Center"
+                                                                                                       Text="ms-8"/>
+                                                                                          </Border>
+                                                                                    </Grid>
+                                                                                    <StackPanel
+                                                                                           Orientation="Horizontal"
+                                                                                           FlowDirection="LeftToRight"
+                                                                                           Spacing="14">
+                                                                                          <Border
+                                                                                                 Classes="docs-marginShell"
+                                                                                                 Padding="0">
+                                                                                                <Grid
+                                                                                                       Width="128"
+                                                                                                       Height="80">
+                                                                                                      <Border
+                                                                                                             Background="{StaticResource BrushCyan500}"
+                                                                                                             CornerRadius="12"
+                                                                                                             HorizontalAlignment="Stretch"
+                                                                                                             VerticalAlignment="Stretch"
+                                                                                                             tw:Tw.Class="me-8">
+                                                                                                            <TextBlock
+                                                                                                                   Classes="docs-chip"
+                                                                                                                   HorizontalAlignment="Center"
+                                                                                                                   VerticalAlignment="Center"
+                                                                                                                   Text="me-8"/>
+                                                                                                      </Border>
+                                                                                                </Grid>
+                                                                                          </Border>
+                                                                                          <Border
+                                                                                                 Classes="docs-marginShell"
+                                                                                                 Padding="0">
+                                                                                                <Grid
+                                                                                                       Width="128"
+                                                                                                       Height="80">
+                                                                                                      <Border
+                                                                                                             Background="{StaticResource BrushFuchsia500}"
+                                                                                                             CornerRadius="12"
+                                                                                                             HorizontalAlignment="Stretch"
+                                                                                                             VerticalAlignment="Stretch"
+                                                                                                             tw:Tw.Class="mbs-8">
+                                                                                                            <TextBlock
+                                                                                                                   Classes="docs-chip"
+                                                                                                                   HorizontalAlignment="Center"
+                                                                                                                   VerticalAlignment="Center"
+                                                                                                                   Text="mbs-8"/>
+                                                                                                      </Border>
+                                                                                                </Grid>
+                                                                                          </Border>
+                                                                                    </StackPanel>
+                                                                              </StackPanel>
+                                                                        </Border>
+                                                                        <Border
+                                                                               Classes="docs-inset">
+                                                                              <StackPanel
+                                                                                     Spacing="12">
+                                                                                    <TextBlock
+                                                                                           Classes="docs-miniTitle"
+                                                                                           Text="Right-to-left"/>
+                                                                                    <Grid
+                                                                                           Width="280"
+                                                                                           Height="120"
+                                                                                           FlowDirection="RightToLeft">
+                                                                                          <Border
+                                                                                                 Background="{StaticResource BrushLime500}"
+                                                                                                 CornerRadius="12"
+                                                                                                 HorizontalAlignment="Stretch"
+                                                                                                 VerticalAlignment="Stretch"
+                                                                                                 tw:Tw.Class="ms-8">
+                                                                                                <TextBlock
+                                                                                                       Classes="docs-chip"
+                                                                                                       HorizontalAlignment="Center"
+                                                                                                       VerticalAlignment="Center"
+                                                                                                       Text="ms-8"/>
+                                                                                          </Border>
+                                                                                    </Grid>
+                                                                                    <StackPanel
+                                                                                           Orientation="Horizontal"
+                                                                                           FlowDirection="RightToLeft"
+                                                                                           Spacing="14">
+                                                                                          <Border
+                                                                                                 Classes="docs-marginShell"
+                                                                                                 Padding="0">
+                                                                                                <Grid
+                                                                                                       Width="128"
+                                                                                                       Height="80">
+                                                                                                      <Border
+                                                                                                             Background="{StaticResource BrushCyan500}"
+                                                                                                             CornerRadius="12"
+                                                                                                             HorizontalAlignment="Stretch"
+                                                                                                             VerticalAlignment="Stretch"
+                                                                                                             tw:Tw.Class="me-8">
+                                                                                                            <TextBlock
+                                                                                                                   Classes="docs-chip"
+                                                                                                                   HorizontalAlignment="Center"
+                                                                                                                   VerticalAlignment="Center"
+                                                                                                                   Text="me-8"/>
+                                                                                                      </Border>
+                                                                                                </Grid>
+                                                                                          </Border>
+                                                                                          <Border
+                                                                                                 Classes="docs-marginShell"
+                                                                                                 Padding="0">
+                                                                                                <Grid
+                                                                                                       Width="128"
+                                                                                                       Height="80">
+                                                                                                      <Border
+                                                                                                             Background="{StaticResource BrushFuchsia500}"
+                                                                                                             CornerRadius="12"
+                                                                                                             HorizontalAlignment="Stretch"
+                                                                                                             VerticalAlignment="Stretch"
+                                                                                                             tw:Tw.Class="mbs-8">
+                                                                                                            <TextBlock
+                                                                                                                   Classes="docs-chip"
+                                                                                                                   HorizontalAlignment="Center"
+                                                                                                                   VerticalAlignment="Center"
+                                                                                                                   Text="mbs-8"/>
+                                                                                                      </Border>
+                                                                                                </Grid>
+                                                                                          </Border>
+                                                                                    </StackPanel>
+                                                                              </StackPanel>
+                                                                        </Border>
+                                                                  </Grid>
+                                                            </Border>
+                                                            <Border
+                                                                   BorderBrush="{StaticResource BrushSlate800}"
+                                                                   BorderThickness="0,1,0,0"
+                                                                   Padding="20,16">
+                                                                  <StackPanel
+                                                                         Spacing="6">
+                                                                        <TextBlock
+                                                                               Classes="docs-miniTitle"
+                                                                               Text="AXAML"/>
+                                                                        <TextBlock
+                                                                               Classes="docs-code"
+                                                                               Text="tw:Tw.Class=&quot;ms-8 me-8 mbs-8&quot;"/>
+                                                                  </StackPanel>
+                                                            </Border>
+                                                      </StackPanel>
+                                                </TabItem>
+                                                <TabItem
+                                                       Classes="docs-exampleTab"
+                                                       Header="StaticResource">
+                                                      <Border
+                                                             Background="{StaticResource BrushSlate950}"
+                                                             Padding="24">
                                                             <TextBlock
-                                                                  Classes="docs-miniTitle"
-                                                                  Text="Left-to-right"/>
-                                                            <Grid
-                                                                  Width="280"
-                                                                  Height="120"
-                                                                  FlowDirection="LeftToRight">
-                                                                 <Border
-                                                                       Background="{StaticResource BrushLime500}"
-                                                                       CornerRadius="12"
-                                                                       HorizontalAlignment="Stretch"
-                                                                       VerticalAlignment="Stretch"
-                                                                       tw:Tw.Class="ms-8">
-                                                                      <TextBlock
-                                                                            Classes="docs-chip"
-                                                                            HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="ms-8"/>
-                                                                 </Border>
-                                                            </Grid>
-                                                            <StackPanel
-                                                                  Orientation="Horizontal"
-                                                                  FlowDirection="LeftToRight"
-                                                                  Spacing="14">
-                                                                 <Border
-                                                                       Classes="docs-marginShell"
-                                                                       Padding="0">
-                                                                      <Grid
-                                                                            Width="128"
-                                                                            Height="80">
-                                                                           <Border
-                                                                                 Background="{StaticResource BrushCyan500}"
-                                                                                 CornerRadius="12"
-                                                                                 HorizontalAlignment="Stretch"
-                                                                                 VerticalAlignment="Stretch"
-                                                                                 tw:Tw.Class="me-8">
-                                                                                <TextBlock
-                                                                                      Classes="docs-chip"
-                                                                                      HorizontalAlignment="Center"
-                                                                                      VerticalAlignment="Center"
-                                                                                      Text="me-8"/>
-                                                                           </Border>
-                                                                      </Grid>
-                                                                 </Border>
-                                                                 <Border
-                                                                       Classes="docs-marginShell"
-                                                                       Padding="0">
-                                                                      <Grid
-                                                                            Width="128"
-                                                                            Height="80">
-                                                                           <Border
-                                                                                 Background="{StaticResource BrushFuchsia500}"
-                                                                                 CornerRadius="12"
-                                                                                 HorizontalAlignment="Stretch"
-                                                                                 VerticalAlignment="Stretch"
-                                                                                 tw:Tw.Class="mbs-8">
-                                                                                <TextBlock
-                                                                                      Classes="docs-chip"
-                                                                                      HorizontalAlignment="Center"
-                                                                                      VerticalAlignment="Center"
-                                                                                      Text="mbs-8"/>
-                                                                           </Border>
-                                                                      </Grid>
-                                                                 </Border>
-                                                            </StackPanel>
-                                                       </StackPanel>
-                                                  </Border>
-                                                  <Border
-                                                        Classes="docs-inset">
-                                                       <StackPanel
-                                                             Spacing="12">
-                                                            <TextBlock
-                                                                  Classes="docs-miniTitle"
-                                                                  Text="Right-to-left"/>
-                                                            <Grid
-                                                                  Width="280"
-                                                                  Height="120"
-                                                                  FlowDirection="RightToLeft">
-                                                                 <Border
-                                                                       Background="{StaticResource BrushLime500}"
-                                                                       CornerRadius="12"
-                                                                       HorizontalAlignment="Stretch"
-                                                                       VerticalAlignment="Stretch"
-                                                                       tw:Tw.Class="ms-8">
-                                                                      <TextBlock
-                                                                            Classes="docs-chip"
-                                                                            HorizontalAlignment="Center"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="ms-8"/>
-                                                                 </Border>
-                                                            </Grid>
-                                                            <StackPanel
-                                                                  Orientation="Horizontal"
-                                                                  FlowDirection="RightToLeft"
-                                                                  Spacing="14">
-                                                                 <Border
-                                                                       Classes="docs-marginShell"
-                                                                       Padding="0">
-                                                                      <Grid
-                                                                            Width="128"
-                                                                            Height="80">
-                                                                           <Border
-                                                                                 Background="{StaticResource BrushCyan500}"
-                                                                                 CornerRadius="12"
-                                                                                 HorizontalAlignment="Stretch"
-                                                                                 VerticalAlignment="Stretch"
-                                                                                 tw:Tw.Class="me-8">
-                                                                                <TextBlock
-                                                                                      Classes="docs-chip"
-                                                                                      HorizontalAlignment="Center"
-                                                                                      VerticalAlignment="Center"
-                                                                                      Text="me-8"/>
-                                                                           </Border>
-                                                                      </Grid>
-                                                                 </Border>
-                                                                 <Border
-                                                                       Classes="docs-marginShell"
-                                                                       Padding="0">
-                                                                      <Grid
-                                                                            Width="128"
-                                                                            Height="80">
-                                                                           <Border
-                                                                                 Background="{StaticResource BrushFuchsia500}"
-                                                                                 CornerRadius="12"
-                                                                                 HorizontalAlignment="Stretch"
-                                                                                 VerticalAlignment="Stretch"
-                                                                                 tw:Tw.Class="mbs-8">
-                                                                                <TextBlock
-                                                                                      Classes="docs-chip"
-                                                                                      HorizontalAlignment="Center"
-                                                                                      VerticalAlignment="Center"
-                                                                                      Text="mbs-8"/>
-                                                                           </Border>
-                                                                      </Grid>
-                                                                 </Border>
-                                                            </StackPanel>
-                                                       </StackPanel>
-                                                  </Border>
-                                             </Grid>
-                                        </Border>
-                                           <Border
-                                                 BorderBrush="{StaticResource BrushSlate800}"
-                                                 BorderThickness="0,1,0,0"
-                                                 Padding="20,16">
-                                               <StackPanel
-                                                     Spacing="6">
-                                                    <TextBlock
-                                                          Classes="docs-miniTitle"
-                                                          Text="AXAML"/>
-                                                    <TextBlock
-                                                          Classes="docs-code"
-                                                          Text="tw:Tw.Class=&quot;ms-8 me-8 mbs-8&quot;"/>
-                                               </StackPanel>
-                                           </Border>
-                                              </StackPanel>
-                                         </TabItem>
-                                         <TabItem
-                                               Classes="docs-exampleTab"
-                                               Header="StaticResource">
-                                              <Border
-                                                    Background="{StaticResource BrushSlate950}"
-                                                    Padding="24">
-                                                   <TextBlock
-                                                         Classes="docs-noteBody"
-                                                         Text="Unsupported: generated StaticResource margin keys only cover physical directions plus negative physical margins (Margin*, MarginX*, MarginY*, MarginTop*, MarginRight*, MarginBottom*, MarginLeft*, and NegativeMargin*). Logical ms-/me-/mbs-/mbe- keys are still parser-only."/>
-                                              </Border>
-                                         </TabItem>
-                                    </TabControl>
-                               </Border>
-                         </StackPanel>
-                    </StackPanel>
-               </StackPanel>
-          </ScrollViewer>
-     </Border>
+                                                                   Classes="docs-noteBody"
+                                                                   Text="Unsupported: generated StaticResource margin keys only cover physical directions plus negative physical margins (Margin*, MarginX*, MarginY*, MarginTop*, MarginRight*, MarginBottom*, MarginLeft*, and NegativeMargin*). Logical ms-/me-/mbs-/mbe- keys are still parser-only."/>
+                                                      </Border>
+                                                </TabItem>
+                                          </TabControl>
+                                    </Border>
+                              </StackPanel>
+                        </StackPanel>
+                  </StackPanel>
+            </ScrollViewer>
+      </Border>
 </UserControl>

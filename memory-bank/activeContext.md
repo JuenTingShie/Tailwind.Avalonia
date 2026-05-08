@@ -4,6 +4,13 @@
 With the sample docs refresh complete, build on the spacing and colors foundation with semantic theme composition and package validation, under the no-custom-component constraint.
 
 ## Recent Changes
+- Replaced the sample spacing reference tables' `DataGrid` shell with a lightweight header-plus-`ItemsControl` layout so `SHOW MORE` expands to the full row set without relying on manual height math or internal grid scroll behavior.
+- Removed the temporary `x:CompileBindings="False"` escape hatch from `samples/Tailwind.Avalonia.Sample/Spacing/Padding.axaml`; the padding reference `DataGrid` now stays compatible with compiled bindings by giving each `DataTemplate` an explicit row `DataType` and keeping the row list/toggle state in code-behind.
+- Added explicit unsupported-row note blocks for the padding reference section so omitted Tailwind rows like `p-px`, arbitrary values, and custom-property syntax are called out instead of silently disappearing.
+- Added the same Tailwind-docs-style collapsible reference table pattern to `samples/Tailwind.Avalonia.Sample/Spacing/Margin.axaml`, including negative and logical margin mappings plus a matching unsupported-row note.
+- Extracted the shared `SpacingUtilityReferenceRow` and `SpacingUtilityReferenceTablePresenter` helper into the sample spacing folder so `Padding` and `Margin` keep one consistent expand/collapse implementation.
+- Filled the empty top-of-page placeholder in `samples/Tailwind.Avalonia.Sample/Spacing/Padding.axaml` with a Tailwind-docs-inspired `DataGrid` reference table for supported numeric padding utility families, expressed as AXAML `Padding="..."` equivalents.
+- Added `SHOW MORE` / `CLOSE` behavior for that padding reference table, driven by lightweight `Padding.axaml.cs` state and a local `x:CompileBindings="False"` override so the sample can use simple runtime bindings inside `DataGridTemplateColumn` cells without introducing a separate view model.
 - Scaffolded the solution, library project, and sample app.
 - Added `SpacingScale` as the spacing source of truth.
 - Added `SpacingResourceDictionary` and package theme entry `Themes/Tailwind.axaml`.
@@ -40,6 +47,11 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - Reworked the sample example sections again so nested tabs now switch both the live preview and the AXAML snippet between `Utility` and `StaticResource` variants, while unsupported cases keep their honest explanatory note in the `StaticResource` tab.
 
 ## Active Decisions
+- For short docs reference tables on the sample pages, prefer a custom header row plus `ItemsControl` over `DataGrid`; it is lighter, expands naturally, and avoids internal scrollbars/clipping when the row count changes.
+- Sample docs pages should not disable compiled bindings at the root just to support a small `DataGrid` reference table; keep compiled bindings on, give the row `DataTemplate` an explicit `DataType`, and drive table state from code-behind.
+- Reference sections should include an explicit unsupported-row block when the official Tailwind table contains parser features the sample does not implement yet, so omissions stay honest.
+- The padding reference table on the sample page should list only currently supported numeric utility families instead of echoing unsupported Tailwind rows like `p-px`, arbitrary values, or custom-property syntax.
+- The table's `Styles` column should use AXAML-facing `Padding="..."` examples, and logical `ps-*` / `pe-*` rows should spell out both LTR and RTL outcomes explicitly.
 - Hybrid API remains the chosen direction: stable resource keys plus utility parsing.
 - Package resource entry is kept, but sample consumption currently uses `ResourceInclude` instead of `MergeResourceInclude` because compile-time flattening did not resolve the project-reference resource during build.
 - Official Tailwind docs values remain the source of truth for colors; the package converts those OKLCH values to Avalonia `Color` and `SolidColorBrush` instances at runtime.

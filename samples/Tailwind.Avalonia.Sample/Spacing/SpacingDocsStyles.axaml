@@ -1,36 +1,36 @@
 <Styles
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+     xmlns="https://github.com/avaloniaui"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <x:Double
-            x:Key="DocsExampleTabMinWidth">112</x:Double>
+             x:Key="DocsExampleTabMinWidth">112</x:Double>
         <DrawingBrush
-            x:Key="SamplePaddingStripeBrush"
-            DestinationRect="0,0,24,24"
-            Stretch="None"
-            TileMode="Tile">
+             x:Key="SamplePaddingStripeBrush"
+             DestinationRect="0,0,24,24"
+             Stretch="None"
+             TileMode="Tile">
             <DrawingBrush.Drawing>
                 <DrawingGroup>
                     <GeometryDrawing
-                        Brush="{StaticResource BrushViolet400}"
-                        Geometry="M0,0 H24 V24 H0 Z" />
+                         Brush="{StaticResource BrushViolet400}"
+                         Geometry="M0,0 H24 V24 H0 Z"/>
                     <GeometryDrawing>
                         <GeometryDrawing.Pen>
                             <Pen
-                                Brush="#55FFFFFF"
-                                Thickness="2" />
+                                 Brush="#55FFFFFF"
+                                 Thickness="2"/>
                         </GeometryDrawing.Pen>
                         <GeometryDrawing.Geometry>
                             <GeometryGroup>
                                 <LineGeometry
-                                    StartPoint="-6,18"
-                                    EndPoint="18,-6" />
+                                     StartPoint="-6,18"
+                                     EndPoint="18,-6"/>
                                 <LineGeometry
-                                    StartPoint="0,24"
-                                    EndPoint="24,0" />
+                                     StartPoint="0,24"
+                                     EndPoint="24,0"/>
                                 <LineGeometry
-                                    StartPoint="6,30"
-                                    EndPoint="30,6" />
+                                     StartPoint="6,30"
+                                     EndPoint="30,6"/>
                             </GeometryGroup>
                         </GeometryDrawing.Geometry>
                     </GeometryDrawing>
@@ -39,285 +39,417 @@
         </DrawingBrush>
     </Styles.Resources>
     <Style
-        Selector="TextBlock.docs-library">
+         Selector="TextBlock.docs-library">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushSlate500}" />
+             Property="Foreground"
+             Value="{StaticResource BrushSlate500}"/>
         <Setter
-            Property="FontSize"
-            Value="12" />
+             Property="FontSize"
+             Value="12"/>
         <Setter
-            Property="FontWeight"
-            Value="SemiBold" />
+             Property="FontWeight"
+             Value="SemiBold"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-pageTitle">
+         Selector="TextBlock.docs-pageTitle">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushWhite}" />
+             Property="Foreground"
+             Value="{StaticResource BrushWhite}"/>
         <Setter
-            Property="FontSize"
-            Value="34" />
+             Property="FontSize"
+             Value="34"/>
         <Setter
-            Property="FontWeight"
-            Value="Bold" />
+             Property="FontWeight"
+             Value="Bold"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-eyebrow">
+         Selector="TextBlock.docs-eyebrow">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushSlate400}" />
+             Property="Foreground"
+             Value="{StaticResource BrushSlate400}"/>
         <Setter
-            Property="FontSize"
-            Value="12" />
+             Property="FontSize"
+             Value="12"/>
         <Setter
-            Property="FontWeight"
-            Value="SemiBold" />
+             Property="FontWeight"
+             Value="SemiBold"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-body">
+         Selector="TextBlock.docs-body">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushSlate300}" />
+             Property="Foreground"
+             Value="{StaticResource BrushSlate300}"/>
         <Setter
-            Property="FontSize"
-            Value="16" />
+             Property="FontSize"
+             Value="16"/>
         <Setter
-            Property="TextWrapping"
-            Value="Wrap" />
+             Property="TextWrapping"
+             Value="Wrap"/>
         <Setter
-            Property="MaxWidth"
-            Value="900" />
+             Property="MaxWidth"
+             Value="900"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-sectionTitle">
+         Selector="TextBlock.docs-sectionTitle">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushWhite}" />
+             Property="Foreground"
+             Value="{StaticResource BrushWhite}"/>
         <Setter
-            Property="FontSize"
-            Value="24" />
+             Property="FontSize"
+             Value="24"/>
         <Setter
-            Property="FontWeight"
-            Value="SemiBold" />
+             Property="FontWeight"
+             Value="SemiBold"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-noteTitle">
+         Selector="TextBlock.docs-noteTitle">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushWhite}" />
+             Property="Foreground"
+             Value="{StaticResource BrushWhite}"/>
         <Setter
-            Property="FontSize"
-            Value="14" />
+             Property="FontSize"
+             Value="14"/>
         <Setter
-            Property="FontWeight"
-            Value="SemiBold" />
+             Property="FontWeight"
+             Value="SemiBold"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-noteBody">
+         Selector="TextBlock.docs-noteBody">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushSlate300}" />
+             Property="Foreground"
+             Value="{StaticResource BrushSlate300}"/>
         <Setter
-            Property="FontSize"
-            Value="14" />
+             Property="FontSize"
+             Value="14"/>
         <Setter
-            Property="TextWrapping"
-            Value="Wrap" />
+             Property="TextWrapping"
+             Value="Wrap"/>
         <Setter
-            Property="MaxWidth"
-            Value="900" />
+             Property="MaxWidth"
+             Value="900"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-miniTitle">
+         Selector="TextBlock.docs-miniTitle">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushSlate200}" />
+             Property="Foreground"
+             Value="{StaticResource BrushSlate200}"/>
         <Setter
-            Property="FontSize"
-            Value="13" />
+             Property="FontSize"
+             Value="13"/>
         <Setter
-            Property="FontWeight"
-            Value="SemiBold" />
+             Property="FontWeight"
+             Value="SemiBold"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-code">
+         Selector="TextBlock.docs-code">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushSlate200}" />
+             Property="Foreground"
+             Value="{StaticResource BrushSlate200}"/>
         <Setter
-            Property="FontSize"
-            Value="14" />
+             Property="FontSize"
+             Value="14"/>
         <Setter
-            Property="TextWrapping"
-            Value="Wrap" />
+             Property="TextWrapping"
+             Value="Wrap"/>
         <Setter
-            Property="FontFamily"
-            Value="Cascadia Mono, Consolas" />
+             Property="FontFamily"
+             Value="Cascadia Mono, Consolas"/>
     </Style>
     <Style
-        Selector="TextBlock.docs-chip">
+         Selector="TextBlock.docs-chip">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushWhite}" />
+             Property="Foreground"
+             Value="{StaticResource BrushWhite}"/>
         <Setter
-            Property="FontSize"
-            Value="14" />
+             Property="FontSize"
+             Value="14"/>
         <Setter
-            Property="FontWeight"
-            Value="Bold" />
+             Property="FontWeight"
+             Value="Bold"/>
     </Style>
     <Style
-        Selector="TabControl.docs-exampleTabs">
+         Selector="TabControl.docs-exampleTabs">
         <Setter
-            Property="Background"
-            Value="Transparent" />
+             Property="Background"
+             Value="Transparent"/>
         <Setter
-            Property="BorderBrush"
-            Value="Transparent" />
+             Property="BorderBrush"
+             Value="Transparent"/>
         <Setter
-            Property="BorderThickness"
-            Value="0" />
+             Property="BorderThickness"
+             Value="0"/>
     </Style>
     <Style
-        Selector="TabItem.docs-exampleTab">
+         Selector="TabItem.docs-exampleTab">
         <Setter
-            Property="MinWidth"
-            Value="{StaticResource DocsExampleTabMinWidth}" />
+             Property="MinWidth"
+             Value="{StaticResource DocsExampleTabMinWidth}"/>
         <Setter
-            Property="Margin"
-            Value="0,0,8,0" />
+             Property="Margin"
+             Value="0,0,8,0"/>
         <Setter
-            Property="Padding"
-            Value="14,10" />
+             Property="Padding"
+             Value="14,10"/>
         <Setter
-            Property="FontSize"
-            Value="13" />
+             Property="FontSize"
+             Value="13"/>
         <Setter
-            Property="FontWeight"
-            Value="SemiBold" />
+             Property="FontWeight"
+             Value="SemiBold"/>
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushSlate300}" />
+             Property="Foreground"
+             Value="{StaticResource BrushSlate300}"/>
         <Setter
-            Property="Background"
-            Value="{StaticResource BrushSlate950}" />
+             Property="Background"
+             Value="{StaticResource BrushSlate950}"/>
         <Setter
-            Property="BorderBrush"
-            Value="{StaticResource BrushSlate800}" />
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate800}"/>
         <Setter
-            Property="BorderThickness"
-            Value="1" />
+             Property="BorderThickness"
+             Value="1"/>
         <Setter
-            Property="HorizontalContentAlignment"
-            Value="Center" />
+             Property="HorizontalContentAlignment"
+             Value="Center"/>
     </Style>
     <Style
-        Selector="TabItem.docs-exampleTab:selected">
+         Selector="TabItem.docs-exampleTab:selected">
         <Setter
-            Property="Foreground"
-            Value="{StaticResource BrushWhite}" />
+             Property="Foreground"
+             Value="{StaticResource BrushWhite}"/>
         <Setter
-            Property="Background"
-            Value="{StaticResource BrushSlate800}" />
+             Property="Background"
+             Value="{StaticResource BrushSlate800}"/>
         <Setter
-            Property="BorderBrush"
-            Value="{StaticResource BrushSlate700}" />
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate700}"/>
     </Style>
     <Style
-        Selector="Border.docs-surface">
+         Selector="Border.docs-surface">
         <Setter
-            Property="Background"
-            Value="{StaticResource BrushSlate900}" />
+             Property="Background"
+             Value="{StaticResource BrushSlate900}"/>
         <Setter
-            Property="BorderBrush"
-            Value="{StaticResource BrushSlate800}" />
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate800}"/>
         <Setter
-            Property="BorderThickness"
-            Value="1" />
+             Property="BorderThickness"
+             Value="1"/>
         <Setter
-            Property="CornerRadius"
-            Value="20" />
+             Property="CornerRadius"
+             Value="20"/>
         <Setter
-            Property="ClipToBounds"
-            Value="True" />
+             Property="ClipToBounds"
+             Value="True"/>
     </Style>
     <Style
-        Selector="Border.docs-note">
+         Selector="Border.docs-note">
         <Setter
-            Property="Background"
-            Value="{StaticResource BrushSlate900}" />
+             Property="Background"
+             Value="{StaticResource BrushSlate900}"/>
         <Setter
-            Property="BorderBrush"
-            Value="{StaticResource BrushSlate800}" />
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate800}"/>
         <Setter
-            Property="BorderThickness"
-            Value="1" />
+             Property="BorderThickness"
+             Value="1"/>
         <Setter
-            Property="CornerRadius"
-            Value="16" />
+             Property="CornerRadius"
+             Value="16"/>
         <Setter
-            Property="Padding"
-            Value="18" />
+             Property="Padding"
+             Value="18"/>
     </Style>
     <Style
-        Selector="Border.docs-inset">
+         Selector="Border.docs-inset">
         <Setter
-            Property="Background"
-            Value="{StaticResource BrushSlate800}" />
+             Property="Background"
+             Value="{StaticResource BrushSlate800}"/>
         <Setter
-            Property="BorderBrush"
-            Value="{StaticResource BrushSlate700}" />
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate700}"/>
         <Setter
-            Property="BorderThickness"
-            Value="1" />
+             Property="BorderThickness"
+             Value="1"/>
         <Setter
-            Property="CornerRadius"
-            Value="16" />
+             Property="CornerRadius"
+             Value="16"/>
         <Setter
-            Property="Padding"
-            Value="16" />
+             Property="Padding"
+             Value="16"/>
     </Style>
     <Style
-        Selector="Border.docs-paddingShell">
+         Selector="Border.docs-paddingShell">
         <Setter
-            Property="Background"
-            Value="{StaticResource SamplePaddingStripeBrush}" />
+             Property="Background"
+             Value="{StaticResource SamplePaddingStripeBrush}"/>
         <Setter
-            Property="CornerRadius"
-            Value="12" />
+             Property="CornerRadius"
+             Value="12"/>
         <Setter
-            Property="ClipToBounds"
-            Value="True" />
+             Property="ClipToBounds"
+             Value="True"/>
     </Style>
     <Style
-        Selector="Border.docs-paddingCore">
+         Selector="Border.docs-paddingCore">
         <Setter
-            Property="Background"
-            Value="{StaticResource BrushViolet600}" />
+             Property="Background"
+             Value="{StaticResource BrushViolet600}"/>
         <Setter
-            Property="CornerRadius"
-            Value="12" />
+             Property="CornerRadius"
+             Value="12"/>
     </Style>
     <Style
-        Selector="Border.docs-marginShell">
+         Selector="Border.docs-marginShell">
         <Setter
-            Property="Background"
-            Value="{StaticResource SamplePaddingStripeBrush}" />
+             Property="Background"
+             Value="{StaticResource SamplePaddingStripeBrush}"/>
         <Setter
-            Property="BorderBrush"
-            Value="{StaticResource BrushSlate700}" />
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate700}"/>
         <Setter
-            Property="BorderThickness"
-            Value="1" />
+             Property="BorderThickness"
+             Value="1"/>
         <Setter
-            Property="CornerRadius"
-            Value="16" />
+             Property="CornerRadius"
+             Value="16"/>
         <Setter
-            Property="Padding"
-            Value="0" />
+             Property="Padding"
+             Value="0"/>
         <Setter
-            Property="ClipToBounds"
-            Value="True" />
+             Property="ClipToBounds"
+             Value="True"/>
+    </Style>
+    <Style
+         Selector="Border.docs-referenceHeader">
+        <Setter
+             Property="Background"
+             Value="{StaticResource BrushSlate900}"/>
+        <Setter
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate800}"/>
+        <Setter
+             Property="BorderThickness"
+             Value="0,0,0,1"/>
+        <Setter
+             Property="Padding"
+             Value="18,14"/>
+    </Style>
+    <Style
+         Selector="ItemsControl.docs-referenceList">
+        <Setter
+             Property="HorizontalAlignment"
+             Value="Stretch"/>
+    </Style>
+    <Style
+         Selector="Border.docs-referenceRow">
+        <Setter
+             Property="Background"
+             Value="{StaticResource BrushSlate950}"/>
+        <Setter
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate800}"/>
+        <Setter
+             Property="BorderThickness"
+             Value="0,0,0,1"/>
+        <Setter
+             Property="Padding"
+             Value="18,14"/>
+    </Style>
+    <Style
+         Selector="Grid.docs-referenceColumns">
+        <Setter
+             Property="ColumnSpacing"
+             Value="24"/>
+    </Style>
+    <Style
+         Selector="TextBlock.docs-referenceHeading">
+        <Setter
+             Property="Foreground"
+             Value="{StaticResource BrushWhite}"/>
+        <Setter
+             Property="FontSize"
+             Value="15"/>
+        <Setter
+             Property="FontWeight"
+             Value="SemiBold"/>
+    </Style>
+    <Style
+         Selector="TextBlock.docs-tableClass">
+        <Setter
+             Property="Foreground"
+             Value="{StaticResource BrushSky400}"/>
+        <Setter
+             Property="FontFamily"
+             Value="Cascadia Mono, Consolas"/>
+        <Setter
+             Property="FontSize"
+             Value="14"/>
+        <Setter
+             Property="FontWeight"
+             Value="SemiBold"/>
+        <Setter
+             Property="TextWrapping"
+             Value="Wrap"/>
+    </Style>
+    <Style
+         Selector="TextBlock.docs-tableStyle">
+        <Setter
+             Property="Foreground"
+             Value="{StaticResource BrushViolet300}"/>
+        <Setter
+             Property="FontFamily"
+             Value="Cascadia Mono, Consolas"/>
+        <Setter
+             Property="FontSize"
+             Value="13"/>
+        <Setter
+             Property="TextWrapping"
+             Value="Wrap"/>
+    </Style>
+    <Style
+         Selector="Button.docs-showMoreButton">
+        <Setter
+             Property="BorderBrush"
+             Value="{StaticResource BrushSlate600}"/>
+        <Setter
+             Property="Background"
+             Value="{StaticResource BrushSlate700}"/>
+        <Setter
+             Property="BorderThickness"
+             Value="1"/>
+        <Setter
+             Property="Foreground"
+             Value="{StaticResource BrushWhite}"/>
+        <Setter
+             Property="FontSize"
+             Value="12"/>
+        <Setter
+             Property="FontWeight"
+             Value="Bold"/>
+        <Setter
+             Property="HorizontalContentAlignment"
+             Value="Center"/>
+        <Setter
+             Property="MinWidth"
+             Value="132"/>
+        <Setter
+             Property="Padding"
+             Value="18,10"/>
+        <Setter
+             Property="CornerRadius"
+             Value="3"/>
+    </Style>
+    <Style
+         Selector="Button.docs-showMoreButton:pointerover">
+        <Setter
+             Property="Opacity"
+             Value="0.92"/>
+    </Style>
+    <Style
+         Selector="Button.docs-showMoreButton:pressed">
+        <Setter
+             Property="Opacity"
+             Value="0.8"/>
     </Style>
 </Styles>
