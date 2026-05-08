@@ -514,6 +514,8 @@ public class Tw : AvaloniaObject
             new("pbe-", SpacingTarget.Padding, SpacingEdge.BlockEnd),
             new("mx-", SpacingTarget.Margin, SpacingEdge.X),
             new("my-", SpacingTarget.Margin, SpacingEdge.Y),
+            new("msv-", SpacingTarget.Margin, SpacingEdge.Left),
+            new("mev-", SpacingTarget.Margin, SpacingEdge.Right),
             new("ms-", SpacingTarget.Margin, SpacingEdge.Start),
             new("me-", SpacingTarget.Margin, SpacingEdge.End),
             new("mt-", SpacingTarget.Margin, SpacingEdge.Top),

@@ -139,6 +139,126 @@ public class TwTests
     }
 
     [Fact]
+    public void SetClass_Applies_Block_Padding_Utilities_Independent_Of_FlowDirection()
+    {
+        var ltrBorder = new Border
+        {
+            FlowDirection = FlowDirection.LeftToRight,
+        };
+
+        var rtlBorder = new Border
+        {
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+
+        Tw.SetClass(ltrBorder, "pbs-6 pbe-2");
+        Tw.SetClass(rtlBorder, "pbs-6 pbe-2");
+
+        Assert.Equal(new Thickness(0, 24, 0, 8), ltrBorder.Padding);
+        Assert.Equal(new Thickness(0, 24, 0, 8), rtlBorder.Padding);
+    }
+
+    [Fact]
+    public void SetClass_Uses_Physical_Left_For_Visual_Start_Margin()
+    {
+        var ltrChild = new Border
+        {
+            FlowDirection = FlowDirection.LeftToRight,
+        };
+        var ltrHost = new Grid
+        {
+            Width = 100,
+            Height = 20,
+            Children = { ltrChild },
+        };
+
+        var rtlChild = new Border
+        {
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+        var rtlHost = new Grid
+        {
+            Width = 100,
+            Height = 20,
+            Children = { rtlChild },
+        };
+
+        Tw.SetClass(ltrChild, "msv-6");
+        Tw.SetClass(rtlChild, "msv-6");
+
+        Assert.Equal(new Thickness(24, 0, 0, 0), ltrChild.Margin);
+        Assert.Equal(new Thickness(24, 0, 0, 0), rtlChild.Margin);
+
+        ltrHost.Measure(new Size(100, 20));
+        ltrHost.Arrange(new Rect(0, 0, 100, 20));
+        rtlHost.Measure(new Size(100, 20));
+        rtlHost.Arrange(new Rect(0, 0, 100, 20));
+
+        Assert.Equal(new Rect(24, 0, 76, 20), ltrChild.Bounds);
+        Assert.Equal(new Rect(24, 0, 76, 20), rtlChild.Bounds);
+    }
+
+    [Fact]
+    public void SetClass_Uses_Physical_Right_For_Visual_End_Margin()
+    {
+        var ltrChild = new Border
+        {
+            FlowDirection = FlowDirection.LeftToRight,
+        };
+        var ltrHost = new Grid
+        {
+            Width = 100,
+            Height = 20,
+            Children = { ltrChild },
+        };
+
+        var rtlChild = new Border
+        {
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+        var rtlHost = new Grid
+        {
+            Width = 100,
+            Height = 20,
+            Children = { rtlChild },
+        };
+
+        Tw.SetClass(ltrChild, "mev-6");
+        Tw.SetClass(rtlChild, "mev-6");
+
+        Assert.Equal(new Thickness(0, 0, 24, 0), ltrChild.Margin);
+        Assert.Equal(new Thickness(0, 0, 24, 0), rtlChild.Margin);
+
+        ltrHost.Measure(new Size(100, 20));
+        ltrHost.Arrange(new Rect(0, 0, 100, 20));
+        rtlHost.Measure(new Size(100, 20));
+        rtlHost.Arrange(new Rect(0, 0, 100, 20));
+
+        Assert.Equal(new Rect(0, 0, 76, 20), ltrChild.Bounds);
+        Assert.Equal(new Rect(0, 0, 76, 20), rtlChild.Bounds);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Block_Margin_Utilities_Independent_Of_FlowDirection()
+    {
+        var ltrBorder = new Border
+        {
+            FlowDirection = FlowDirection.LeftToRight,
+        };
+
+        var rtlBorder = new Border
+        {
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+
+        Tw.SetClass(ltrBorder, "mbs-6 mbe-2");
+        Tw.SetClass(rtlBorder, "mbs-6 mbe-2");
+
+        Assert.Equal(new Thickness(0, 24, 0, 8), ltrBorder.Margin);
+        Assert.Equal(new Thickness(0, 24, 0, 8), rtlBorder.Margin);
+    }
+
+    [Fact]
     public void SetClass_Clears_Previously_Applied_Spacing_When_Class_Removed()
     {
         var border = new Border();

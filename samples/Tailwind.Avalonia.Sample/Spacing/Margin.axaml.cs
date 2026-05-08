@@ -20,6 +20,8 @@ public partial class Margin : UserControl
         new("me-<number>", "LTR <Border Margin=\"0,0,<number>,0\" />; RTL <Border Margin=\"<number>,0,0,0\" />"),
         new("mbs-<number>", "<Border Margin=\"0,<number>,0,0\" />"),
         new("mbe-<number>", "<Border Margin=\"0,0,0,<number>\" />"),
+        new("msv-<number>", "<Border Margin=\"<number>,0,0,0\" />"),
+        new("mev-<number>", "<Border Margin=\"0,0,<number>,0\" />"),
         new("-m-<number>", "<Border Margin=\"-<number>\" />"),
         new("-mx-<number>", "<Border Margin=\"-<number>,0,-<number>,0\" />"),
         new("-my-<number>", "<Border Margin=\"0,-<number>,0,-<number>\" />"),
