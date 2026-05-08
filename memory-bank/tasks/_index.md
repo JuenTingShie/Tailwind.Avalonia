@@ -19,6 +19,7 @@
 - [TASK011] Tailwind Avalonia StaticResource sample code - Added StaticResource code variants or explicit unsupported notes to all sample pages and revalidated sample build plus tests.
 - [TASK012] Tailwind Avalonia StaticResource docs-code formatting - Reformatted StaticResource snippets into clearer multi-line AXAML blocks and revalidated sample build plus tests.
 - [TASK013] Tailwind Avalonia xml:space docs-code formatting - Collapsed multi-line StaticResource snippets into single `xml:space="preserve"` TextBlocks and revalidated sample build plus tests.
+- [TASK014] Tailwind Avalonia tabbed sample version switcher - Added nested example tabs that switch preview and AXAML between utility and StaticResource variants, while keeping unsupported notes honest.
 
 ## Abandoned
 - [TASK006] Tailwind Avalonia directional border rendering layer - Reverted after user constraint disallowed custom components.

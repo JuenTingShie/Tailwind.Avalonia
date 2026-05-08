@@ -2,6 +2,8 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
+        <x:Double
+            x:Key="DocsExampleTabMinWidth">112</x:Double>
         <DrawingBrush
             x:Key="SamplePaddingStripeBrush"
             DestinationRect="0,0,24,24"
@@ -181,7 +183,7 @@
         Selector="TabItem.docs-exampleTab">
         <Setter
             Property="MinWidth"
-            Value="112" />
+            Value="{StaticResource DocsExampleTabMinWidth}" />
         <Setter
             Property="Margin"
             Value="0,0,8,0" />

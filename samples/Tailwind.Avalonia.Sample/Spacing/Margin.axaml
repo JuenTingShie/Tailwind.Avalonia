@@ -66,8 +66,7 @@
                                <Border
                                      Classes="docs-surface">
                                     <TabControl
-                                          Classes="docs-exampleTabs"
-                                          SelectedIndex="0">
+                                          Classes="docs-exampleTabs">
                                          <TabItem
                                                Classes="docs-exampleTab"
                                                Header="Utility">
@@ -181,8 +180,7 @@
                                <Border
                                      Classes="docs-surface">
                                     <TabControl
-                                          Classes="docs-exampleTabs"
-                                          SelectedIndex="0">
+                                          Classes="docs-exampleTabs">
                                          <TabItem
                                                Classes="docs-exampleTab"
                                                Header="Utility">
@@ -410,8 +408,7 @@
                                <Border
                                      Classes="docs-surface">
                                     <TabControl
-                                          Classes="docs-exampleTabs"
-                                          SelectedIndex="0">
+                                          Classes="docs-exampleTabs">
                                          <TabItem
                                                Classes="docs-exampleTab"
                                                Header="Utility">
@@ -557,8 +554,7 @@
                                <Border
                                      Classes="docs-surface">
                                     <TabControl
-                                          Classes="docs-exampleTabs"
-                                          SelectedIndex="0">
+                                          Classes="docs-exampleTabs">
                                          <TabItem
                                                Classes="docs-exampleTab"
                                                Header="Utility">
@@ -690,8 +686,7 @@
                                <Border
                                      Classes="docs-surface">
                                     <TabControl
-                                          Classes="docs-exampleTabs"
-                                          SelectedIndex="0">
+                                          Classes="docs-exampleTabs">
                                          <TabItem
                                                Classes="docs-exampleTab"
                                                Header="Utility">
