@@ -15,6 +15,7 @@
 - [TASK007] Tailwind Avalonia no-custom-component rollback - Removed `TwBorder`, restored whole-border semantics, tests and sample updated.
 - [TASK008] Tailwind Avalonia docs-style sample page - Sample rebuilt into left-tab `Padding` / `Margin` docs layout and sample build revalidated.
 - [TASK009] Tailwind Avalonia visual padding aliases - Added `psv-*` and `pev-*`, updated padding docs, and revalidated focused tests plus sample build.
+- [TASK010] Tailwind Avalonia color utility sample user control - Added standalone `Typography/ColorUtilities` docs page, wired a `Colors` tab, and revalidated the sample build.
 
 ## Abandoned
 - [TASK006] Tailwind Avalonia directional border rendering layer - Reverted after user constraint disallowed custom components.

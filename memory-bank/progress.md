@@ -13,6 +13,7 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - Sample app now presents a docs-style left-tab browser for `Padding` and `Margin`, with detailed example sections mapped to the currently supported spacing subset.
 - The `Padding` and `Margin` tab content is now split into dedicated `UserControl` files under `samples/Tailwind.Avalonia.Sample/Spacing/`, keeping `MainWindow.axaml` focused on shell resources and tab wiring.
 - The spacing `UserControl` files now merge sample/package resources and include a shared `SpacingDocsStyles.axaml` file locally, so they render correctly even when developed outside the `MainWindow` shell.
+- Sample app now also exposes a dedicated `Colors` tab backed by `samples/Tailwind.Avalonia.Sample/Typography/ColorUtilities.axaml`, demonstrating `bg-*`, `text-*`, `border-*`, `transparent`, and `/opacity` on real controls instead of only mentioning color support inside spacing notes.
 - The sample no longer uses `SampleTokens.axaml`; demo-only copy, layout values, and tab labels are inlined where they are used, while shared presentation rules stay in `SpacingDocsStyles.axaml`.
 - The RTL logical padding docs preview now cancels Avalonia's visual RTL mirror transform on the showcased target, so `ps-8` and `pe-8` display the physical side selected by the real utility while still using live `tw:Tw.Class` behavior.
 - The logical padding docs now distinguish between real RTL rendering and a separate visualized side-mapping preview, with an explicit teaching note that the transform-based version is for explanation only.
@@ -30,7 +31,7 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - Validate package/publish consumption beyond the local project-reference sample.
 - Decide whether compile-time merged include support is needed after packaging.
 - Expand semantic/dark-light theme layering and remaining non-border utility coverage.
-- Decide whether the docs-style sample should expand beyond spacing into dedicated color utility tabs.
+- Decide whether the combined color-utility docs page should remain a single tab or split by utility family.
 - Decide whether directional border colors should be explicitly documented as unsupported under the no-custom-component constraint.
 
 ## Known Risks
@@ -45,4 +46,4 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - Other RTL logical docs previews, especially margin, may need the same mirror-cancel presentation pattern if the goal is to show physical side effects instead of Avalonia's mirrored chrome.
 
 ## Estimated Stage
-92%: spacing and color token foundations plus whole-property color utilities, docs-style sample coverage for spacing, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.
+94%: spacing and color token foundations plus whole-property color utilities, dedicated docs-style sample coverage for spacing and colors, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.

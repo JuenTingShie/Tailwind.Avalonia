@@ -1,0 +1,248 @@
+<UserControl
+     xmlns="https://github.com/avaloniaui"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:tw="using:Tailwind.Avalonia"
+     x:Class="Tailwind.Avalonia.Sample.Typography.ColorUtilities">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude
+                     Source="avares://Tailwind.Avalonia/Themes/Tailwind.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <StyleInclude
+             Source="/Spacing/SpacingDocsStyles.axaml"/>
+    </UserControl.Styles>
+    <Border
+         Background="{StaticResource BrushSlate950}">
+        <ScrollViewer
+             HorizontalScrollBarVisibility="Disabled">
+            <StackPanel
+                 Margin="28,24,40,32"
+                 Spacing="40">
+                <StackPanel
+                     Spacing="10">
+                    <TextBlock
+                         Classes="docs-library"
+                         Text="TAILWIND.AVALONIA"/>
+                    <TextBlock
+                         Classes="docs-pageTitle"
+                         Text="Color utilities"/>
+                    <TextBlock
+                         Classes="docs-body"
+                         Text="Use bg-*, text-*, and border-* to apply whole-property Tailwind palette colors on Avalonia controls. This page focuses on the utility families already implemented in tw:Tw.Class, including transparent and /opacity variants."/>
+                    <Border
+                         Classes="docs-note"
+                         BorderThickness="2"
+                         tw:Tw.Class="bg-sky-950/35 border-sky-400/60">
+                        <StackPanel
+                             Spacing="6">
+                            <TextBlock
+                                 Classes="docs-noteTitle"
+                                 tw:Tw.Class="text-sky-50"
+                                 Text="Implemented in this sample"/>
+                            <TextBlock
+                                 Classes="docs-noteBody"
+                                 tw:Tw.Class="text-sky-100/85"
+                                 Text="Supported now: bg-*, text-*, and border-* with Tailwind palette tokens, transparent, and /opacity. Border utilities apply to the whole BorderBrush property; per-side border colors remain outside the current no-custom-component scope."/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                     Spacing="18">
+                    <TextBlock
+                         Classes="docs-eyebrow"
+                         Text="EXAMPLES"/>
+                    <StackPanel
+                         Spacing="16">
+                        <TextBlock
+                             Classes="docs-sectionTitle"
+                             Text="Text color"/>
+                        <TextBlock
+                             Classes="docs-body"
+                             Text="Apply text-* directly on controls that expose Foreground. Each line below uses the real tw:Tw.Class surface on the actual text element."/>
+                        <Border
+                             Classes="docs-surface">
+                            <StackPanel
+                                 Spacing="0">
+                                <Border
+                                     Background="{StaticResource BrushSlate950}"
+                                     Padding="24">
+                                    <StackPanel
+                                         Spacing="16">
+                                        <TextBlock
+                                             Classes="docs-miniTitle"
+                                             Text="Live preview"/>
+                                        <StackPanel
+                                             Spacing="10">
+                                            <TextBlock
+                                                 FontSize="28"
+                                                 FontWeight="Bold"
+                                                 tw:Tw.Class="text-sky-300"
+                                                 Text="text-sky-300"/>
+                                            <TextBlock
+                                                 FontSize="20"
+                                                 FontWeight="SemiBold"
+                                                 tw:Tw.Class="text-rose-300/80"
+                                                 Text="text-rose-300/80"/>
+                                            <TextBlock
+                                                 FontSize="16"
+                                                 tw:Tw.Class="text-slate-200"
+                                                 Text="text-slate-200 keeps longer copy readable on dark surfaces."/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                                <Border
+                                     BorderBrush="{StaticResource BrushSlate800}"
+                                     BorderThickness="0,1,0,0"
+                                     Padding="20,16">
+                                    <StackPanel
+                                         Spacing="4">
+                                        <TextBlock
+                                             Classes="docs-code"
+                                             Text="&lt;TextBlock tw:Tw.Class=&quot;text-sky-300&quot; /&gt;"/>
+                                        <TextBlock
+                                             Classes="docs-code"
+                                             Text="&lt;TextBlock tw:Tw.Class=&quot;text-rose-300/80&quot; /&gt;"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                         Spacing="16">
+                        <TextBlock
+                             Classes="docs-sectionTitle"
+                             Text="Background and border color"/>
+                        <TextBlock
+                             Classes="docs-body"
+                             Text="Apply bg-* and border-* on controls that expose Background and BorderBrush. This demo keeps the utility on the live target control instead of painting a fake wrapper."/>
+                        <Border
+                             Classes="docs-surface">
+                            <StackPanel
+                                 Spacing="0">
+                                <Border
+                                     Background="{StaticResource BrushSlate950}"
+                                     Padding="24">
+                                    <Grid
+                                         ColumnDefinitions="*,*"
+                                         ColumnSpacing="20"
+                                         RowDefinitions="Auto,Auto"
+                                         RowSpacing="16">
+                                        <Button
+                                             Grid.Column="0"
+                                             Grid.Row="0"
+                                             Padding="18,14"
+                                             BorderThickness="2"
+                                             tw:Tw.Class="bg-emerald-500 text-slate-950 border-emerald-300"
+                                             Content="bg-emerald-500"/>
+                                        <Button
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             Padding="18,14"
+                                             BorderThickness="2"
+                                             tw:Tw.Class="bg-amber-400/20 text-amber-100 border-amber-300/45"
+                                             Content="bg-amber-400/20 border-amber-300/45"/>
+                                        <Button
+                                             Grid.Column="0"
+                                             Grid.Row="1"
+                                             Padding="18,14"
+                                             BorderThickness="2"
+                                             tw:Tw.Class="bg-transparent text-sky-200 border-sky-400"
+                                             Content="bg-transparent"/>
+                                        <Button
+                                             Grid.Column="1"
+                                             Grid.Row="1"
+                                             Padding="18,14"
+                                             BorderThickness="2"
+                                             tw:Tw.Class="bg-violet-500/20 text-violet-100 border-violet-300/55"
+                                             Content="border-violet-300/55"/>
+                                    </Grid>
+                                </Border>
+                                <Border
+                                     BorderBrush="{StaticResource BrushSlate800}"
+                                     BorderThickness="0,1,0,0"
+                                     Padding="20,16">
+                                    <StackPanel
+                                         Spacing="4">
+                                        <TextBlock
+                                             Classes="docs-code"
+                                             Text="&lt;Button tw:Tw.Class=&quot;bg-emerald-500 text-slate-950 border-emerald-300&quot; /&gt;"/>
+                                        <TextBlock
+                                             Classes="docs-code"
+                                             Text="&lt;Button tw:Tw.Class=&quot;bg-transparent text-sky-200 border-sky-400&quot; /&gt;"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                         Spacing="16">
+                        <TextBlock
+                             Classes="docs-sectionTitle"
+                             Text="Whole-property border scope"/>
+                        <TextBlock
+                             Classes="docs-body"
+                             Text="Current border color support sets BorderBrush on the target control. Each sample below colors the whole outline, which matches the implemented parser boundary."/>
+                        <Border
+                             Classes="docs-surface">
+                            <StackPanel
+                                 Spacing="0">
+                                <Border
+                                     Background="{StaticResource BrushSlate950}"
+                                     Padding="24">
+                                    <Grid
+                                         ColumnDefinitions="*,*"
+                                         ColumnSpacing="20">
+                                        <Border
+                                             Grid.Column="0"
+                                             Padding="18"
+                                             CornerRadius="16"
+                                             BorderThickness="3"
+                                             tw:Tw.Class="border-cyan-400 bg-slate-900">
+                                            <StackPanel
+                                                 Spacing="8">
+                                                <TextBlock
+                                                     Classes="docs-miniTitle"
+                                                     Text="border-cyan-400"/>
+                                                <TextBlock
+                                                     Classes="docs-noteBody"
+                                                     Text="Whole outline changes together."/>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                             Grid.Column="1"
+                                             Padding="18"
+                                             CornerRadius="16"
+                                             BorderThickness="3"
+                                             tw:Tw.Class="border-rose-400/65 bg-slate-900">
+                                            <StackPanel
+                                                 Spacing="8">
+                                                <TextBlock
+                                                     Classes="docs-miniTitle"
+                                                     Text="border-rose-400/65"/>
+                                                <TextBlock
+                                                     Classes="docs-noteBody"
+                                                     Text="Directional border colors are still out of scope here."/>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <Border
+                                     BorderBrush="{StaticResource BrushSlate800}"
+                                     BorderThickness="0,1,0,0"
+                                     Padding="20,16">
+                                    <TextBlock
+                                         Classes="docs-code"
+                                         Text="&lt;Border BorderThickness=&quot;3&quot; tw:Tw.Class=&quot;border-cyan-400&quot; /&gt;"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</UserControl>

@@ -33,6 +33,7 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - Reworked the logical padding docs section so it now separates honest `FlowDirection`-only RTL rendering from a second, explicitly labeled teaching visualization that uses `ScaleTransform` only to cancel Avalonia mirroring for side-mapping explanation.
 - Added `psv-<number>` and `pev-<number>` as padding-only parser aliases for visual start/end, mapping to physical left/right padding so Avalonia's RTL mirror places the spacing on the final rendered side.
 - Updated the padding docs page with dedicated `psv-8` / `pev-8` demos and actual-usage examples, then revalidated the focused `TwTests` file and the sample build.
+- Added `samples/Tailwind.Avalonia.Sample/Typography/ColorUtilities.axaml` as a standalone `UserControl`, wired it into a new `Colors` tab, and moved color-utility docs into a dedicated sample page instead of leaving them only as spacing-page support notes.
 
 ## Active Decisions
 - Hybrid API remains the chosen direction: stable resource keys plus utility parsing.
@@ -44,6 +45,7 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - Generic `Border` stays whole-property only because Avalonia `Border` exposes only `BorderBrushProperty` and sealed rendering leaves no honest no-custom-component path for directional border colors.
 - `MainWindow.axaml` now owns shared docs resources and styles, while the spacing page bodies live in dedicated child `UserControl` files under `samples/Tailwind.Avalonia.Sample/Spacing/`.
 - `MainWindow.axaml` now owns only the tab shell styles; spacing-page presentation styles are loaded locally by the child `UserControl` files.
+- The sample docs shell now hosts a dedicated color-utility page from `samples/Tailwind.Avalonia.Sample/Typography/ColorUtilities.axaml`, while still keeping each page locally responsible for including package resources and shared docs styles.
 - The sample app no longer carries a separate sample token dictionary; only package theme resources remain merged, and demo-local text/metrics live next to the sample markup that uses them.
 - Docs-style RTL logical spacing previews may need visual mirror cancellation on the preview target when the goal is to show the physical side chosen by the utility rather than Avalonia's mirrored overall control.
 - When docs need both truthful behavior and easier pedagogy, the sample should present them as separate demos instead of hiding transform-based teaching aids inside the only example.
@@ -51,7 +53,7 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 
 ## Immediate Next Steps
 1. Start semantic alias and dark/light theme layering on top of the concrete Tailwind palette.
-2. Decide whether the sample should gain additional docs tabs for `Background`, `Text`, and `Border Color` utilities.
+2. Decide whether the new combined `Colors` page should stay unified or split further into dedicated `Background`, `Text`, and `Border Color` tabs.
 3. Validate package/publish consumption beyond the local project-reference sample.
 
 ## Open Questions
