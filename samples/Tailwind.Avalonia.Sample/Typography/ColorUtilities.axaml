@@ -220,13 +220,31 @@
                                               Text="&lt;Button&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="  &lt;Button.Background&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber400}&quot; Opacity=&quot;0.2&quot; /&gt;&lt;/Button.Background&gt;"/>
+                                              Text="  &lt;Button.Background&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="  &lt;Button.Foreground&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber100}&quot; /&gt;&lt;/Button.Foreground&gt;"/>
+                                              Text="    &lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber400}&quot; Opacity=&quot;0.2&quot; /&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="  &lt;Button.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber300}&quot; Opacity=&quot;0.45&quot; /&gt;&lt;/Button.BorderBrush&gt;"/>
+                                              Text="  &lt;/Button.Background&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;Button.Foreground&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="    &lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber100}&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;/Button.Foreground&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;Button.BorderBrush&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="    &lt;SolidColorBrush Color=&quot;{StaticResource ColorAmber300}&quot; Opacity=&quot;0.45&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;/Button.BorderBrush&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
                                               Text="&lt;/Button&gt;"/>
@@ -322,7 +340,13 @@
                                               Text="&lt;Border BorderThickness=&quot;3&quot; Background=&quot;{StaticResource BrushSlate900}&quot;&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
-                                              Text="  &lt;Border.BorderBrush&gt;&lt;SolidColorBrush Color=&quot;{StaticResource ColorRose400}&quot; Opacity=&quot;0.65&quot; /&gt;&lt;/Border.BorderBrush&gt;"/>
+                                              Text="  &lt;Border.BorderBrush&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="    &lt;SolidColorBrush Color=&quot;{StaticResource ColorRose400}&quot; Opacity=&quot;0.65&quot; /&gt;"/>
+                                         <TextBlock
+                                              Classes="docs-code"
+                                              Text="  &lt;/Border.BorderBrush&gt;"/>
                                          <TextBlock
                                               Classes="docs-code"
                                               Text="&lt;/Border&gt;"/>

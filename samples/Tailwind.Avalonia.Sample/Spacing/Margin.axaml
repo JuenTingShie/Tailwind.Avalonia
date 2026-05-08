@@ -306,10 +306,7 @@
                                                         Text="Utility version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="tw:Tw.Class=&quot;mx-8&quot;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="tw:Tw.Class=&quot;my-8&quot;"/>
+                                                        Text="tw:Tw.Class=&quot;mx-8&quot;    tw:Tw.Class=&quot;my-8&quot;"/>
                                                   <TextBlock
                                                         Classes="docs-miniTitle"
                                                         Text="StaticResource version"/>
