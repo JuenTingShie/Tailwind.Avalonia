@@ -112,10 +112,8 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="&lt;Border"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="  Margin=&quot;{StaticResource Margin8}&quot; /&gt;"/>
+                                                        xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource Margin8}&quot; /&gt;</TextBlock>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>
@@ -229,28 +227,20 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="&lt;Border"/>
+                                                        xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginTop6}&quot; /&gt;</TextBlock>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="  Margin=&quot;{StaticResource MarginTop6}&quot; /&gt;"/>
+                                                        xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginRight4}&quot; /&gt;</TextBlock>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="&lt;Border"/>
+                                                        xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginBottom8}&quot; /&gt;</TextBlock>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="  Margin=&quot;{StaticResource MarginRight4}&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="  Margin=&quot;{StaticResource MarginBottom8}&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="  Margin=&quot;{StaticResource MarginLeft2}&quot; /&gt;"/>
+                                                        xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginLeft2}&quot; /&gt;</TextBlock>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>
@@ -327,16 +317,12 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="&lt;Border"/>
+                                                        xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginX8}&quot; /&gt;</TextBlock>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="  Margin=&quot;{StaticResource MarginX8}&quot; /&gt;"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="&lt;Border"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="  Margin=&quot;{StaticResource MarginY8}&quot; /&gt;"/>
+                                                        xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource MarginY8}&quot; /&gt;</TextBlock>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>
@@ -408,10 +394,8 @@
                                                         Text="StaticResource version"/>
                                                   <TextBlock
                                                         Classes="docs-code"
-                                                        Text="&lt;Border"/>
-                                                  <TextBlock
-                                                        Classes="docs-code"
-                                                        Text="  Margin=&quot;{StaticResource NegativeMarginTop8}&quot; /&gt;"/>
+                                                        xml:space="preserve">&lt;Border
+  Margin=&quot;{StaticResource NegativeMarginTop8}&quot; /&gt;</TextBlock>
                                              </StackPanel>
                                          </Border>
                                    </StackPanel>

@@ -16,6 +16,7 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - Sample app now also exposes a dedicated `Colors` tab backed by `samples/Tailwind.Avalonia.Sample/Typography/ColorUtilities.axaml`, demonstrating `bg-*`, `text-*`, `border-*`, `transparent`, and `/opacity` on real controls instead of only mentioning color support inside spacing notes.
 - Sample docs pages now also include `StaticResource` code variants for implemented physical spacing, negative margin, and whole-property color examples, while explicitly calling out unsupported StaticResource equivalents for logical spacing aliases and `bg-transparent`.
 - Those StaticResource docs-code samples are now reformatted as clearer multi-line AXAML blocks across the spacing and color pages.
+- Those multi-line docs-code samples now preserve indentation with `xml:space="preserve"` on a single `TextBlock` per snippet.
 - The sample no longer uses `SampleTokens.axaml`; demo-only copy, layout values, and tab labels are inlined where they are used, while shared presentation rules stay in `SpacingDocsStyles.axaml`.
 - The RTL logical padding docs preview now cancels Avalonia's visual RTL mirror transform on the showcased target, so `ps-8` and `pe-8` display the physical side selected by the real utility while still using live `tw:Tw.Class` behavior.
 - The logical padding docs now distinguish between real RTL rendering and a separate visualized side-mapping preview, with an explicit teaching note that the transform-based version is for explanation only.

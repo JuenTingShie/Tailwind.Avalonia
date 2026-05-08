@@ -36,6 +36,7 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - Added `samples/Tailwind.Avalonia.Sample/Typography/ColorUtilities.axaml` as a standalone `UserControl`, wired it into a new `Colors` tab, and moved color-utility docs into a dedicated sample page instead of leaving them only as spacing-page support notes.
 - Updated the `Padding`, `Margin`, and `Colors` sample pages so every example section now shows a `StaticResource` version when possible, with explicit unsupported notes for parser-only logical spacing and for `bg-transparent`, which still has no generated brush resource.
 - Reformatted the StaticResource sample snippets across `Padding`, `Margin`, and `Colors` so the docs-code examples now read as clearer multi-line AXAML blocks instead of compact one-line fragments.
+- Reworked those multi-line StaticResource snippets to use single `TextBlock` elements with `xml:space="preserve"` so indentation is preserved without stacking one control per line.
 
 ## Active Decisions
 - Hybrid API remains the chosen direction: stable resource keys plus utility parsing.
@@ -51,6 +52,7 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - The sample app no longer carries a separate sample token dictionary; only package theme resources remain merged, and demo-local text/metrics live next to the sample markup that uses them.
 - Sample docs pages should pair `tw:Tw.Class` examples with `StaticResource` equivalents whenever the package emits a matching resource key; when the current resource surface cannot express the same behavior, the page should say so explicitly instead of implying support.
 - When a sample page shows a `StaticResource` version, the docs-code snippet should be formatted like readable multi-line AXAML rather than compressed into a single-line fragment.
+- For multi-line docs-code snippets, prefer a single `TextBlock` with `xml:space="preserve"` over separate `TextBlock` elements per line.
 - Docs-style RTL logical spacing previews may need visual mirror cancellation on the preview target when the goal is to show the physical side chosen by the utility rather than Avalonia's mirrored overall control.
 - When docs need both truthful behavior and easier pedagogy, the sample should present them as separate demos instead of hiding transform-based teaching aids inside the only example.
 - `ps-*` and `pe-*` remain logical spacing utilities; `psv-*` and `pev-*` are now the explicit parser surface for final visual start/end padding under Avalonia's mirror model.
