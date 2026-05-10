@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Tailwind.Avalonia;
 
 internal static class SpacingScale

@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Concurrent;
-using System.Globalization;
-using System.Reflection;
 using Avalonia;
 using Avalonia.Data;
 using Avalonia.Media;
+
+using System.Collections.Concurrent;
+using System.Globalization;
+using System.Reflection;
 
 namespace Tailwind.Avalonia;
 

@@ -1,6 +1,6 @@
-using System;
-using System.Globalization;
 using Avalonia.Media;
+
+using System.Globalization;
 
 namespace Tailwind.Avalonia;
 
