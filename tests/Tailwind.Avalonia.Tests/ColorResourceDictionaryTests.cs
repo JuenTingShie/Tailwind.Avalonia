@@ -1,4 +1,3 @@
-using System.Linq;
 using Avalonia.Media;
 
 namespace Tailwind.Avalonia.Tests;
