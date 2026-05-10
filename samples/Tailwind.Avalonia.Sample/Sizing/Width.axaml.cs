@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+
 using Tailwind.Avalonia.Sample.Spacing;
 
 namespace Tailwind.Avalonia.Sample.Sizing;

@@ -1,5 +1,6 @@
-using System;
 using Avalonia.Controls;
+
+using System;
 
 namespace Tailwind.Avalonia.Sample.Spacing;
 
