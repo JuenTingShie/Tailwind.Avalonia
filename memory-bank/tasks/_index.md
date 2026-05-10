@@ -22,6 +22,9 @@
 - [TASK014] Tailwind Avalonia tabbed sample version switcher - Added nested example tabs that switch preview and AXAML between utility and StaticResource variants, while keeping unsupported notes honest.
 - [TASK015] Tailwind Avalonia padding class reference table - Added a Tailwind-docs-style padding reference DataGrid with AXAML mappings and a show-more toggle.
 - [TASK016] Tailwind Avalonia compiled-binding-safe spacing reference sync - Removed the padding root compiled-binding fallback, added unsupported-row notes, and brought the same reference-table pattern to Margin.
+- [TASK017] Tailwind Avalonia sizing utility sample - Added numeric sizing parsing for width/min/max width and height/min/max height, docs-style sample pages, and focused sizing tests.
+- [TASK018] Tailwind Avalonia sizing StaticResource parity - Added generated sizing resource keys, converted sizing sample tabs to real StaticResource examples, and recorded the new-feature parity rule.
+- [TASK019] Tailwind Avalonia sizing docs example coverage sync - Expanded sizing sample pages to mirror official Tailwind example headings while keeping unsupported examples explicit.
 
 ## Abandoned
 - [TASK006] Tailwind Avalonia directional border rendering layer - Reverted after user constraint disallowed custom components.

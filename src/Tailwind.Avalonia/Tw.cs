@@ -15,9 +15,16 @@ public class Tw : AvaloniaObject
     private const int BackgroundMask = 4;
     private const int ForegroundMask = 8;
     private const int BorderBrushMask = 16;
+    private const int WidthMask = 32;
+    private const int MinWidthMask = 64;
+    private const int MaxWidthMask = 128;
+    private const int HeightMask = 256;
+    private const int MinHeightMask = 512;
+    private const int MaxHeightMask = 1024;
 
     private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> ThicknessPropertyCache = new();
     private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> BrushPropertyCache = new();
+    private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> DoublePropertyCache = new();
 
     public static readonly AttachedProperty<string?> ClassProperty =
         AvaloniaProperty.RegisterAttached<Tw, AvaloniaObject, string?>(
@@ -98,11 +105,23 @@ public class Tw : AvaloniaObject
         var hasBackground = false;
         var hasForeground = false;
         var hasBorderBrush = false;
+        var hasWidth = false;
+        var hasMinWidth = false;
+        var hasMaxWidth = false;
+        var hasHeight = false;
+        var hasMinHeight = false;
+        var hasMaxHeight = false;
         var margin = default(Thickness);
         var padding = default(Thickness);
         IBrush? background = null;
         IBrush? foreground = null;
         IBrush? borderBrush = null;
+        var width = default(double);
+        var minWidth = default(double);
+        var maxWidth = default(double);
+        var height = default(double);
+        var minHeight = default(double);
+        var maxHeight = default(double);
 
         if (!string.IsNullOrWhiteSpace(classList))
         {
@@ -130,6 +149,44 @@ public class Tw : AvaloniaObject
                             }
 
                             padding = ApplyEdge(padding, spacingUtility.Edge, spacingUtility.Pixels, element);
+                            break;
+                    }
+
+                    continue;
+                }
+
+                if (TryParseSizingUtility(token, out var sizingUtility))
+                {
+                    switch (sizingUtility.Target)
+                    {
+                        case SizingTarget.Width:
+                            width = sizingUtility.Pixels;
+                            hasWidth = true;
+                            break;
+
+                        case SizingTarget.MinWidth:
+                            minWidth = sizingUtility.Pixels;
+                            hasMinWidth = true;
+                            break;
+
+                        case SizingTarget.MaxWidth:
+                            maxWidth = sizingUtility.Pixels;
+                            hasMaxWidth = true;
+                            break;
+
+                        case SizingTarget.Height:
+                            height = sizingUtility.Pixels;
+                            hasHeight = true;
+                            break;
+
+                        case SizingTarget.MinHeight:
+                            minHeight = sizingUtility.Pixels;
+                            hasMinHeight = true;
+                            break;
+
+                        case SizingTarget.MaxHeight:
+                            maxHeight = sizingUtility.Pixels;
+                            hasMaxHeight = true;
                             break;
                     }
 
@@ -204,6 +261,60 @@ public class Tw : AvaloniaObject
         else if ((previousMask & BorderBrushMask) != 0)
         {
             ClearBrush(element, "BorderBrush");
+        }
+
+        if (hasWidth && TrySetDouble(element, "Width", width))
+        {
+            newMask |= WidthMask;
+        }
+        else if ((previousMask & WidthMask) != 0)
+        {
+            ClearDouble(element, "Width");
+        }
+
+        if (hasMinWidth && TrySetDouble(element, "MinWidth", minWidth))
+        {
+            newMask |= MinWidthMask;
+        }
+        else if ((previousMask & MinWidthMask) != 0)
+        {
+            ClearDouble(element, "MinWidth");
+        }
+
+        if (hasMaxWidth && TrySetDouble(element, "MaxWidth", maxWidth))
+        {
+            newMask |= MaxWidthMask;
+        }
+        else if ((previousMask & MaxWidthMask) != 0)
+        {
+            ClearDouble(element, "MaxWidth");
+        }
+
+        if (hasHeight && TrySetDouble(element, "Height", height))
+        {
+            newMask |= HeightMask;
+        }
+        else if ((previousMask & HeightMask) != 0)
+        {
+            ClearDouble(element, "Height");
+        }
+
+        if (hasMinHeight && TrySetDouble(element, "MinHeight", minHeight))
+        {
+            newMask |= MinHeightMask;
+        }
+        else if ((previousMask & MinHeightMask) != 0)
+        {
+            ClearDouble(element, "MinHeight");
+        }
+
+        if (hasMaxHeight && TrySetDouble(element, "MaxHeight", maxHeight))
+        {
+            newMask |= MaxHeightMask;
+        }
+        else if ((previousMask & MaxHeightMask) != 0)
+        {
+            ClearDouble(element, "MaxHeight");
         }
 
         element.SetValue(AppliedMaskProperty, newMask);
@@ -304,6 +415,44 @@ public class Tw : AvaloniaObject
             }
 
             utility = new BrushUtility(descriptor.Target, new SolidColorBrush(color));
+            return true;
+        }
+
+        return false;
+    }
+
+    private static bool TryParseSizingUtility(string token, out SizingUtility utility)
+    {
+        utility = default;
+
+        if (token.StartsWith("-", StringComparison.Ordinal) ||
+            token.Contains(':') ||
+            token.Contains('[') ||
+            token.Contains('('))
+        {
+            return false;
+        }
+
+        foreach (var descriptor in SizingUtilityDescriptors.All)
+        {
+            if (!token.StartsWith(descriptor.Prefix, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var scaleToken = token[descriptor.Prefix.Length..];
+
+            if (scaleToken.Length == 0)
+            {
+                return false;
+            }
+
+            if (!SpacingScale.TryGetPixels(scaleToken, out var pixels))
+            {
+                return false;
+            }
+
+            utility = new SizingUtility(descriptor.Target, pixels);
             return true;
         }
 
@@ -424,6 +573,29 @@ public class Tw : AvaloniaObject
         }
     }
 
+    private static bool TrySetDouble(AvaloniaObject element, string propertyName, double value)
+    {
+        var property = FindDoubleProperty(element.GetType(), propertyName);
+
+        if (property is null)
+        {
+            return false;
+        }
+
+        element.SetValue(property, value);
+        return true;
+    }
+
+    private static void ClearDouble(AvaloniaObject element, string propertyName)
+    {
+        var property = FindDoubleProperty(element.GetType(), propertyName);
+
+        if (property is not null)
+        {
+            element.ClearValue(property);
+        }
+    }
+
     private static AvaloniaProperty? FindThicknessProperty(Type type, string propertyName)
     {
         return ThicknessPropertyCache.GetOrAdd((type, propertyName), static key =>
@@ -470,11 +642,36 @@ public class Tw : AvaloniaObject
         });
     }
 
+    private static AvaloniaProperty? FindDoubleProperty(Type type, string propertyName)
+    {
+        return DoublePropertyCache.GetOrAdd((type, propertyName), static key =>
+        {
+            var (candidateType, candidatePropertyName) = key;
+            var fieldName = $"{candidatePropertyName}Property";
+
+            while (candidateType is not null)
+            {
+                var field = candidateType.GetField(fieldName, BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+
+                if (field?.GetValue(null) is AvaloniaProperty property && property.PropertyType == typeof(double))
+                {
+                    return property;
+                }
+
+                candidateType = candidateType.BaseType;
+            }
+
+            return null;
+        });
+    }
+
     private readonly record struct SpacingUtility(SpacingTarget Target, SpacingEdge Edge, double Pixels);
     private readonly record struct BrushUtility(BrushTarget Target, IBrush Brush);
+    private readonly record struct SizingUtility(SizingTarget Target, double Pixels);
 
     private readonly record struct UtilityDescriptor(string Prefix, SpacingTarget Target, SpacingEdge Edge);
     private readonly record struct BrushUtilityDescriptor(string Prefix, BrushTarget Target);
+    private readonly record struct SizingUtilityDescriptor(string Prefix, SizingTarget Target);
 
     private enum SpacingTarget
     {
@@ -487,6 +684,16 @@ public class Tw : AvaloniaObject
         Background,
         Foreground,
         BorderBrush,
+    }
+
+    private enum SizingTarget
+    {
+        Width,
+        MinWidth,
+        MaxWidth,
+        Height,
+        MinHeight,
+        MaxHeight,
     }
 
     private enum SpacingEdge
@@ -544,6 +751,19 @@ public class Tw : AvaloniaObject
             new("bg-", BrushTarget.Background),
             new("text-", BrushTarget.Foreground),
             new("border-", BrushTarget.BorderBrush),
+        };
+    }
+
+    private static class SizingUtilityDescriptors
+    {
+        public static readonly SizingUtilityDescriptor[] All =
+        {
+            new("min-w-", SizingTarget.MinWidth),
+            new("max-w-", SizingTarget.MaxWidth),
+            new("min-h-", SizingTarget.MinHeight),
+            new("max-h-", SizingTarget.MaxHeight),
+            new("w-", SizingTarget.Width),
+            new("h-", SizingTarget.Height),
         };
     }
 }

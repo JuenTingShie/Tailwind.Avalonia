@@ -1,9 +1,17 @@
 # Active Context
 
 ## Current Focus
-With the sample docs refresh complete, build on the spacing and colors foundation with semantic theme composition and package validation, under the no-custom-component constraint.
+With the sample docs refresh complete, build on the spacing, colors, and first-pass sizing foundation with semantic theme composition and package validation, under the no-custom-component constraint.
 
 ## Recent Changes
+- Expanded `samples/Tailwind.Avalonia.Sample/Sizing/Width.axaml` and `samples/Tailwind.Avalonia.Sample/Sizing/Height.axaml` so they now mirror the official Tailwind docs example headings more closely, keeping live demos for supported numeric sizing and explicit note sections for unsupported percentage, viewport, container, custom-value, size, and responsive examples.
+- Extended `SpacingResourceDictionary` so numeric sizing tokens now also emit generated `Width*`, `MinWidth*`, `MaxWidth*`, `Height*`, `MinHeight*`, and `MaxHeight*` `StaticResource` keys.
+- Reworked the `Width` and `Height` sample pages so their `StaticResource` tabs now show real sizing examples instead of unsupported placeholders.
+- Added focused resource-dictionary coverage for the new sizing `StaticResource` keys and revalidated both the sizing tests and the sample build.
+- Extended `tw:Tw.Class` with first-pass numeric sizing utilities for `w-*`, `min-w-*`, `max-w-*`, `h-*`, `min-h-*`, and `max-h-*`, all driven by the existing spacing scale.
+- Added focused `TwTests` coverage for sizing utility application, last-token-wins behavior, and clearing previously applied width/height constraints.
+- Added `samples/Tailwind.Avalonia.Sample/Sizing/Width.axaml` and `samples/Tailwind.Avalonia.Sample/Sizing/Height.axaml` as standalone docs-style `UserControl` pages covering width/min/max width and height/min/max height.
+- Wired those new sizing pages into the sample shell under a dedicated `SIZING` tab with nested `Width` and `Height` tabs.
 - Replaced the sample spacing reference tables' `DataGrid` shell with a lightweight header-plus-`ItemsControl` layout so `SHOW MORE` expands to the full row set without relying on manual height math or internal grid scroll behavior.
 - Removed the temporary `x:CompileBindings="False"` escape hatch from `samples/Tailwind.Avalonia.Sample/Spacing/Padding.axaml`; the padding reference `DataGrid` now stays compatible with compiled bindings by giving each `DataTemplate` an explicit row `DataType` and keeping the row list/toggle state in code-behind.
 - Added explicit unsupported-row note blocks for the padding reference section so omitted Tailwind rows like `p-px`, arbitrary values, and custom-property syntax are called out instead of silently disappearing.
@@ -47,6 +55,10 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 - Reworked the sample example sections again so nested tabs now switch both the live preview and the AXAML snippet between `Utility` and `StaticResource` variants, while unsupported cases keep their honest explanatory note in the `StaticResource` tab.
 
 ## Active Decisions
+- New utility families should gain generated `StaticResource` parity at the same time whenever the behavior maps honestly onto shared Avalonia resources; do not defer that parity to a later cleanup pass.
+- Numeric sizing utilities now have generated `StaticResource` parity through `Width*`, `MinWidth*`, `MaxWidth*`, `Height*`, `MinHeight*`, and `MaxHeight*` keys, so sample pages should demonstrate both utility and StaticResource variants just like spacing pages do.
+- When sample pages mimic official Tailwind docs, include the official example headings even when current package support is partial; supported sections should stay live, unsupported sections should be explicit note blocks instead of being silently omitted.
+- First-pass sizing support is intentionally limited to spacing-scale numeric tokens for width/min-width/max-width/height/min-height/max-height; fractions, viewport keywords, container widths, `auto`, `full`, `none`, `px`, arbitrary values, and `size-*` remain out of scope for now.
 - For short docs reference tables on the sample pages, prefer a custom header row plus `ItemsControl` over `DataGrid`; it is lighter, expands naturally, and avoids internal scrollbars/clipping when the row count changes.
 - Sample docs pages should not disable compiled bindings at the root just to support a small `DataGrid` reference table; keep compiled bindings on, give the row `DataTemplate` an explicit `DataType`, and drive table state from code-behind.
 - Reference sections should include an explicit unsupported-row block when the official Tailwind table contains parser features the sample does not implement yet, so omissions stay honest.
@@ -73,7 +85,7 @@ With the sample docs refresh complete, build on the spacing and colors foundatio
 
 ## Immediate Next Steps
 1. Start semantic alias and dark/light theme layering on top of the concrete Tailwind palette.
-2. Decide whether the new combined `Colors` page should stay unified or split further into dedicated `Background`, `Text`, and `Border Color` tabs.
+2. Decide which non-numeric sizing families should be added next, now that numeric sizing already has `StaticResource` parity.
 3. Validate package/publish consumption beyond the local project-reference sample.
 
 ## Open Questions

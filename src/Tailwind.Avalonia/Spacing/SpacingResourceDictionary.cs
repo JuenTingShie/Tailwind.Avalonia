@@ -15,8 +15,9 @@ public sealed class SpacingResourceDictionary : ResourceDictionary
 
             AddPaddingResources(suffix, pixels);
             AddMarginResources(suffix, pixels);
+            AddSizingResources(suffix, pixels);
 
-            if (pixels != 0)
+            if (pixels > 0)
             {
                 AddNegativeMarginResources(suffix, pixels);
             }
@@ -43,6 +44,16 @@ public sealed class SpacingResourceDictionary : ResourceDictionary
         Add($"MarginRight{suffix}", new Thickness(0, 0, pixels, 0));
         Add($"MarginBottom{suffix}", new Thickness(0, 0, 0, pixels));
         Add($"MarginLeft{suffix}", new Thickness(pixels, 0, 0, 0));
+    }
+
+    private void AddSizingResources(string suffix, double pixels)
+    {
+        Add($"Width{suffix}", pixels);
+        Add($"MinWidth{suffix}", pixels);
+        Add($"MaxWidth{suffix}", pixels);
+        Add($"Height{suffix}", pixels);
+        Add($"MinHeight{suffix}", pixels);
+        Add($"MaxHeight{suffix}", pixels);
     }
 
     private void AddNegativeMarginResources(string suffix, double pixels)

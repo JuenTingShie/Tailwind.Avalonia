@@ -16,7 +16,7 @@ Primary public API should be an attached property parser plus generated static r
 2. `SpacingResourceDictionary` emits stable keys such as `Padding4`, `Padding0_5`, `MarginX2`, and `NegativeMarginX2`.
 3. `TailwindColorPalette` stores the official Tailwind v4.2 palette reference and `TailwindCssColorParser` converts OKLCH values into Avalonia `Color` instances.
 4. `ColorResourceDictionary` emits stable keys such as `ColorBlue500`, `BrushBlue500`, `ColorWhite`, and `BrushWhite`.
-5. `tw:Tw.Class="p-4 mx-2 bg-blue-700/80 text-white/90 border-green-400/65"` parses spacing and whole-property color tokens and applies them to Avalonia `Padding`, `Margin`, `Background`, `Foreground`, and `BorderBrush` properties when those properties exist on the target control.
+5. `tw:Tw.Class="p-4 mx-2 w-24 min-w-16 max-w-32 h-12 min-h-8 max-h-20 bg-blue-700/80 text-white/90 border-green-400/65"` parses spacing, first-pass numeric sizing, and whole-property color tokens and applies them to Avalonia `Padding`, `Margin`, `Width`, `MinWidth`, `MaxWidth`, `Height`, `MinHeight`, `MaxHeight`, `Background`, `Foreground`, and `BorderBrush` properties when those properties exist on the target control.
 6. Package entry resource dictionary currently lives at `avares://Tailwind.Avalonia/Themes/Tailwind.axaml`.
 7. Sample app currently loads the package entry with `ResourceInclude`; runtime loading works, while compile-time `MergeResourceInclude` did not resolve the project-reference asset during local build.
 
@@ -39,10 +39,15 @@ Spacing MVP currently covers these utility families:
 
 Static resources currently cover physical padding/margin directions plus negative physical margins. Logical directions are parser-only in this first pass.
 
+Sizing currently covers these parser-only utility families:
+- `w`, `min-w`, `max-w`, `h`, `min-h`, `max-h` with spacing-scale numeric suffixes
+
 ## Deferred Items
 - `auto` margin semantics
 - Arbitrary values
 - Custom-property syntax
+- Fractions, viewport keywords, container sizes, `auto`, `full`, `none`, and `px` for sizing utilities
+- Generated sizing `StaticResource` keys
 - Responsive variants
 - State variants
 - Directional border color utilities, blocked for generic controls by missing native per-side brush properties and the no-custom-component constraint

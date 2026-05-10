@@ -292,6 +292,52 @@ public class TwTests
     }
 
     [Fact]
+    public void SetClass_Applies_Sizing_Utilities()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "w-24 min-w-16 max-w-32 h-12 min-h-8 max-h-20");
+
+        Assert.Equal(96d, border.Width);
+        Assert.Equal(64d, border.MinWidth);
+        Assert.Equal(128d, border.MaxWidth);
+        Assert.Equal(48d, border.Height);
+        Assert.Equal(32d, border.MinHeight);
+        Assert.Equal(80d, border.MaxHeight);
+    }
+
+    [Fact]
+    public void SetClass_Uses_Last_Sizing_Utility_For_Each_Property()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "w-16 w-24 min-w-8 min-w-12 max-w-40 max-w-32 h-10 h-12 min-h-4 min-h-6 max-h-24 max-h-20");
+
+        Assert.Equal(96d, border.Width);
+        Assert.Equal(48d, border.MinWidth);
+        Assert.Equal(128d, border.MaxWidth);
+        Assert.Equal(48d, border.Height);
+        Assert.Equal(24d, border.MinHeight);
+        Assert.Equal(80d, border.MaxHeight);
+    }
+
+    [Fact]
+    public void SetClass_Clears_Previously_Applied_Sizing_When_Class_Removed()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "w-24 min-w-16 max-w-32 h-12 min-h-8 max-h-20");
+        Tw.SetClass(border, null);
+
+        Assert.True(double.IsNaN(border.Width));
+        Assert.Equal(0d, border.MinWidth);
+        Assert.True(double.IsPositiveInfinity(border.MaxWidth));
+        Assert.True(double.IsNaN(border.Height));
+        Assert.Equal(0d, border.MinHeight);
+        Assert.True(double.IsPositiveInfinity(border.MaxHeight));
+    }
+
+    [Fact]
     public void SetClass_Clears_Previously_Applied_Color_Utilities_When_Class_Removed()
     {
         var border = new Border();

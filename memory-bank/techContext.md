@@ -24,7 +24,7 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 - Runtime OKLCH-to-sRGB conversion for Avalonia color resources.
 - `SpacingResourceDictionary` for generated spacing tokens.
 - `ColorResourceDictionary` for generated `Color*` and `Brush*` tokens.
-- `Tw.Class` attached property for utility-string parsing.
+- `Tw.Class` attached property for spacing, numeric sizing, and whole-property color utility-string parsing.
 - `Tailwind.Avalonia.Tests` xUnit test project for automated validation.
 - Sample app for build and startup verification.
 
@@ -35,9 +35,10 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 ## Current Constraint
 - Cross-assembly sample consumption currently uses `ResourceInclude` instead of compile-time merged include.
 - Static resources currently cover physical directions only; logical spacing is parser-driven.
+- Sizing utilities currently cover only spacing-scale numeric tokens and do not emit dedicated `StaticResource` keys.
 - `tw:Tw.Class` now applies whole-property `bg-*`, `text-*`, and `border-*` utilities, including `transparent` and `/opacity`, but it does not yet support directional border colors or variant prefixes.
 - Avalonia `Border` exposes `BorderBrushProperty` but not per-side border brush properties, and user constraint disallows custom components.
 
 ## Test Coverage Baseline
 - `dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj` currently passes with 21 tests.
-- Coverage currently includes spacing scale lookup/suffix rules, spacing parser application/clear behavior, whole-property color utility application/clear behavior, transparent and opacity parsing behavior, achromatic OKLCH parsing, palette token count/family presence, and color/brush resource pair emission.
+- Coverage currently includes spacing scale lookup/suffix rules, spacing parser application/clear behavior, sizing utility application/overwrite/clear behavior, whole-property color utility application/clear behavior, transparent and opacity parsing behavior, achromatic OKLCH parsing, palette token count/family presence, and color/brush resource pair emission.

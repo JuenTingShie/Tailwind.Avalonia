@@ -1,9 +1,15 @@
 # Progress
 
 ## Current Status
-Spacing and color foundations are implemented, locally validated, and now documented through a docs-style sample surface.
+Spacing, color, and first-pass sizing foundations are implemented, locally validated, and now documented through a docs-style sample surface.
 
 ## What Works
+- `tw:Tw.Class` now applies numeric sizing utilities for `w-*`, `min-w-*`, `max-w-*`, `h-*`, `min-h-*`, and `max-h-*` on controls that expose the corresponding Avalonia layout properties.
+- Focused `TwTests` now cover sizing utility application, last-token-wins behavior, and clearing previously applied width/height constraints.
+- Sample app now exposes a dedicated `SIZING` area with `Width` and `Height` docs pages under `samples/Tailwind.Avalonia.Sample/Sizing/`, each showing width/min/max width and height/min/max height examples with the same docs-style surface used by spacing pages.
+- `SpacingResourceDictionary` now also emits generated sizing resource keys for numeric scale tokens: `Width*`, `MinWidth*`, `MaxWidth*`, `Height*`, `MinHeight*`, and `MaxHeight*`.
+- Those sizing sample pages now show real `StaticResource` previews and AXAML snippets for width/min/max width and height/min/max height instead of fallback unsupported notes.
+- Those sizing sample pages now also mirror official Tailwind example coverage more closely by keeping supported numeric examples live and surfacing unsupported official examples as explicit sections rather than omitting them.
 - The spacing sample reference tables now use lightweight `ItemsControl` rows instead of `DataGrid`, so expanding the list shows every supported row without any inner scrollbar behavior.
 - The spacing sample pages now keep compiled bindings enabled while still supporting the docs reference `DataGrid` sections through typed row `DataTemplate` bindings plus code-behind-managed row state.
 - The `Padding` sample page now includes a top-of-page reference `DataGrid` that maps supported numeric padding utility families to AXAML `Padding="..."` equivalents.
@@ -41,6 +47,7 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - Validate package/publish consumption beyond the local project-reference sample.
 - Decide whether compile-time merged include support is needed after packaging.
 - Expand semantic/dark-light theme layering and remaining non-border utility coverage.
+- Decide which non-numeric sizing families should be added next, while keeping the new-feature-equals-StaticResource-parity rule.
 - Decide whether the combined color-utility docs page should remain a single tab or split by utility family.
 - Decide whether directional border colors should be explicitly documented as unsupported under the no-custom-component constraint.
 
@@ -48,12 +55,14 @@ Spacing and color foundations are implemented, locally validated, and now docume
 - Avalonia selector syntax differs from Tailwind token syntax.
 - Some utility semantics may not map 1:1 across all control types.
 - Parser application currently relies on reflected `PaddingProperty` / `MarginProperty` discovery.
+- Sizing utility application now also relies on reflected `WidthProperty` / `MinWidthProperty` / `MaxWidthProperty` / `HeightProperty` / `MinHeightProperty` / `MaxHeightProperty` discovery.
 - Color utility application currently relies on reflected `BackgroundProperty` / `ForegroundProperty` / `BorderBrushProperty` discovery.
 - Tailwind directional border-color semantics still cannot be mapped onto generic Avalonia `Border` under the no-custom-component constraint.
 - Logical spacing resources are not yet exposed as dedicated static keys.
+- Sizing now exposes generated static keys for numeric scale tokens, but still does not cover fractions, viewport/container keywords, or arbitrary/custom values.
 - Runtime `ResourceInclude` works locally, but packaged-consumer behavior still needs explicit verification.
 - Color tokens currently depend on runtime OKLCH conversion; current tests cover stable invariants but do not yet assert browser-gamut-mapped hex outputs for chromatic palette colors.
 - Other RTL logical docs previews, especially margin, may need the same mirror-cancel presentation pattern if the goal is to show physical side effects instead of Avalonia's mirrored chrome.
 
 ## Estimated Stage
-95%: spacing and color token foundations plus whole-property color utilities, docs-style sample coverage now including compiled-binding-safe reference tables for padding and margin families, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.
+97%: spacing, color, and first-pass sizing token foundations plus whole-property color utilities, docs-style sample coverage now including compiled-binding-safe reference tables for spacing and sizing families, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.
