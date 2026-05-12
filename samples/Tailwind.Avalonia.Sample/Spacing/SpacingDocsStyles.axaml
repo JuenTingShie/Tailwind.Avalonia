@@ -1,6 +1,7 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sample="using:Tailwind.Avalonia.Sample">
     <Styles.Resources>
         <x:Double
             x:Key="DocsExampleTabMinWidth">112</x:Double>
@@ -154,6 +155,9 @@
         <Setter
             Property="FontFamily"
             Value="Cascadia Mono, Consolas" />
+        <Setter
+            Property="sample:DocsCodeTextBehavior.NormalizeIndent"
+            Value="True" />
     </Style>
     <Style
         Selector="TextBlock.docs-chip">

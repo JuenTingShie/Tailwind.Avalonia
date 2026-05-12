@@ -1,6 +1,7 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:spacing="using:Tailwind.Avalonia.Sample.Spacing"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Typography.ColorUtilities">
     <UserControl.Resources>
@@ -32,7 +33,7 @@
                         Text="Color utilities" />
                     <TextBlock
                         Classes="docs-body"
-                        Text="Use bg-*, text-*, and border-* to apply whole-property Tailwind palette colors on Avalonia controls. This page focuses on the utility families already implemented in tw:Tw.Class, including transparent and /opacity variants." />
+                        Text="Use bg-*, text-*, and border-* to apply whole-property Tailwind palette colors on Avalonia controls. This page focuses on the utility families already implemented in tw:Tw.Class, including transparent, /opacity, and arbitrary hex bracket values." />
                     <Border
                         Classes="docs-note"
                         BorderThickness="2"
@@ -46,7 +47,64 @@
                             <TextBlock
                                 Classes="docs-noteBody"
                                 tw:Tw.Class="text-sky-100/85"
-                                Text="Supported now: bg-*, text-*, and border-* with Tailwind palette tokens, transparent, and /opacity. Border utilities apply to the whole BorderBrush property; per-side border colors remain outside the current no-custom-component scope." />
+                                Text="Supported now: bg-*, text-*, and border-* with Tailwind palette tokens, transparent, /opacity, and arbitrary hex bracket values. Border utilities apply to the whole BorderBrush property; per-side border colors remain outside the current no-custom-component scope." />
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Classes="docs-surface">
+                        <StackPanel
+                            Spacing="0">
+                            <Border
+                                Classes="docs-referenceHeader">
+                                <Grid
+                                    Classes="docs-referenceColumns"
+                                    ColumnDefinitions="1.45*,3.15*">
+                                    <TextBlock
+                                        Classes="docs-referenceHeading"
+                                        Text="Class" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Classes="docs-referenceHeading"
+                                        Text="Styles" />
+                                </Grid>
+                            </Border>
+                            <ItemsControl
+                                x:Name="ColorUtilityRows"
+                                Classes="docs-referenceList">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate
+                                        DataType="spacing:SpacingUtilityReferenceRow">
+                                        <Border
+                                            Classes="docs-referenceRow">
+                                            <Grid
+                                                Classes="docs-referenceColumns"
+                                                ColumnDefinitions="1.45*,3.15*">
+                                                <TextBlock
+                                                    Classes="docs-tableClass"
+                                                    Text="{CompiledBinding ClassName}"
+                                                    VerticalAlignment="Center" />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Classes="docs-tableStyle"
+                                                    Text="{CompiledBinding AxamlStyle}"
+                                                    VerticalAlignment="Center" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Border
+                                Background="{StaticResource BrushSlate900}"
+                                BorderBrush="{StaticResource BrushSlate800}"
+                                Padding="0,12"
+                                Classes="docs-showMoreShell"
+                                HorizontalAlignment="Center">
+                                <Button
+                                    x:Name="ColorUtilityToggleButton"
+                                    Classes="docs-showMoreButton"
+                                    Click="ToggleUtilityRows"
+                                    Content="SHOW MORE" />
+                            </Border>
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -166,8 +224,7 @@
                                                     Text="AXAML" />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;TextBlock
-                                                Foreground=&quot;{StaticResource BrushSky300}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;TextBlock Foreground=&quot;{StaticResource BrushSky300}&quot; /&gt;" />
                                                 <TextBlock
                                                     Classes="docs-code"
                                                     xml:space="preserve">&lt;TextBlock&gt;
@@ -338,10 +395,7 @@
                                                     Text="Unsupported StaticResource equivalent: bg-transparent has no generated BrushTransparent key because ColorResourceDictionary only emits Tailwind palette Brush*/Color* resources." />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;Button
-                                                    Background=&quot;{StaticResource BrushEmerald500}&quot;
-                                                    Foreground=&quot;{StaticResource BrushSlate950}&quot;
-                                                BorderBrush=&quot;{StaticResource BrushEmerald300}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;Button Background=&quot;{StaticResource BrushEmerald500}&quot; Foreground=&quot;{StaticResource BrushSlate950}&quot; BorderBrush=&quot;{StaticResource BrushEmerald300}&quot; /&gt;" />
                                                 <TextBlock
                                                     Classes="docs-code"
                                                     xml:space="preserve">&lt;Button&gt;
@@ -497,10 +551,7 @@
                                                     Text="AXAML" />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;Border
-                                                    BorderThickness=&quot;3&quot;
-                                                    BorderBrush=&quot;{StaticResource BrushCyan400}&quot;
-                                                Background=&quot;{StaticResource BrushSlate900}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;Border BorderThickness=&quot;3&quot; BorderBrush=&quot;{StaticResource BrushCyan400}&quot; Background=&quot;{StaticResource BrushSlate900}&quot; /&gt;" />
                                                 <TextBlock
                                                     Classes="docs-code"
                                                     xml:space="preserve">&lt;Border
@@ -510,6 +561,172 @@
                                                     &lt;SolidColorBrush Color=&quot;{StaticResource ColorRose400}&quot; Opacity=&quot;0.65&quot; /&gt;
                                                     &lt;/Border.BorderBrush&gt;
                                                 &lt;/Border&gt;</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </TabItem>
+                            </TabControl>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="Arbitrary color values" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Use bracket syntax like text-[#ff6b6b] for direct arbitrary values. The two tabs below compare parser usage with an equivalent local Avalonia StaticResource sample." />
+                        <Border
+                            Classes="docs-note">
+                            <StackPanel
+                                Spacing="8">
+                                <TextBlock
+                                    Classes="docs-noteTitle"
+                                    Text="Arbitrary color notes" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="#rrggbb / #rrggbbaa / [#hex]/opacity" />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="Hex is case-insensitive. Arbitrary color values are parser-only and do not generate dedicated package keys, so the StaticResource tab uses local brush resources." />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="Current parser only supports bracket arbitrary syntax. bg-(&lt;custom-property&gt;), text-(&lt;custom-property&gt;), and border-(&lt;custom-property&gt;) remain unsupported." />
+                            </StackPanel>
+                        </Border>
+                        <Border
+                            Classes="docs-surface">
+                            <TabControl
+                                Classes="docs-exampleTabs">
+                                <TabItem
+                                    Classes="docs-exampleTab"
+                                    Header="Utility">
+                                    <StackPanel
+                                        Spacing="0">
+                                        <Border
+                                            Background="{StaticResource BrushSlate950}"
+                                            Padding="24">
+                                            <StackPanel
+                                                Spacing="16">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="Live preview" />
+                                                <StackPanel
+                                                    Spacing="10">
+                                                    <TextBlock
+                                                        FontSize="24"
+                                                        FontWeight="Bold"
+                                                        tw:Tw.Class="text-[#ff6b6b]"
+                                                        Text="text-[#ff6b6b]" />
+                                                    <TextBlock
+                                                        FontSize="20"
+                                                        FontWeight="SemiBold"
+                                                        tw:Tw.Class="text-[#4ecdc4]/70"
+                                                        Text="text-[#4ecdc4]/70" />
+                                                    <Button
+                                                        Padding="12,8"
+                                                        BorderThickness="2"
+                                                        tw:Tw.Class="bg-[#95e1d3] text-[#38ada9] border-[#1abc9c]"
+                                                        Content="bg / text / border arbitrary" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                            BorderBrush="{StaticResource BrushSlate800}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="20,16">
+                                            <StackPanel
+                                                Spacing="6">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="AXAML" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-[#ff6b6b]&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-[#4ecdc4]/70&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;Button tw:Tw.Class=&quot;bg-[#95e1d3] text-[#38ada9] border-[#1abc9c]&quot; /&gt;" />
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem
+                                    Classes="docs-exampleTab"
+                                    Header="StaticResource">
+                                    <StackPanel
+                                        Spacing="0">
+                                        <StackPanel.Resources>
+                                            <SolidColorBrush x:Key="ArbitraryTextCoralBrush" Color="#ff6b6b" />
+                                            <SolidColorBrush x:Key="ArbitraryTextTeal70Brush" Color="#4ecdc4" Opacity="0.7" />
+                                            <SolidColorBrush x:Key="ArbitraryBackgroundMintBrush" Color="#95e1d3" />
+                                            <SolidColorBrush x:Key="ArbitraryTextGreenBrush" Color="#38ada9" />
+                                            <SolidColorBrush x:Key="ArbitraryBorderTealBrush" Color="#1abc9c" />
+                                        </StackPanel.Resources>
+                                        <Border
+                                            Background="{StaticResource BrushSlate950}"
+                                            Padding="24">
+                                            <StackPanel
+                                                Spacing="16">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="Live preview" />
+                                                <StackPanel
+                                                    Spacing="10">
+                                                    <TextBlock
+                                                        FontSize="24"
+                                                        FontWeight="Bold"
+                                                        Foreground="{StaticResource ArbitraryTextCoralBrush}"
+                                                        Text="Foreground resource #ff6b6b" />
+                                                    <TextBlock
+                                                        FontSize="20"
+                                                        FontWeight="SemiBold"
+                                                        Foreground="{StaticResource ArbitraryTextTeal70Brush}"
+                                                        Text="Foreground resource #4ecdc4 at 70%" />
+                                                    <Button
+                                                        Padding="12,8"
+                                                        BorderThickness="2"
+                                                        Background="{StaticResource ArbitraryBackgroundMintBrush}"
+                                                        Foreground="{StaticResource ArbitraryTextGreenBrush}"
+                                                        BorderBrush="{StaticResource ArbitraryBorderTealBrush}"
+                                                        Content="local brush resources" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                            BorderBrush="{StaticResource BrushSlate800}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="20,16">
+                                            <StackPanel
+                                                Spacing="6">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="AXAML" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;SolidColorBrush x:Key=&quot;ArbitraryTextCoralBrush&quot; Color=&quot;#ff6b6b&quot; /&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;TextBlock Foreground=&quot;{StaticResource ArbitraryTextCoralBrush}&quot; /&gt;</TextBlock>
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;SolidColorBrush x:Key=&quot;ArbitraryTextTeal70Brush&quot; Color=&quot;#4ecdc4&quot; Opacity=&quot;0.7&quot; /&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;TextBlock Foreground=&quot;{StaticResource ArbitraryTextTeal70Brush}&quot; /&gt;</TextBlock>
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;SolidColorBrush x:Key=&quot;ArbitraryBackgroundMintBrush&quot; Color=&quot;#95e1d3&quot; /&gt;
+                                                    &lt;SolidColorBrush x:Key=&quot;ArbitraryTextGreenBrush&quot; Color=&quot;#38ada9&quot; /&gt;
+                                                    &lt;SolidColorBrush x:Key=&quot;ArbitraryBorderTealBrush&quot; Color=&quot;#1abc9c&quot; /&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;Button
+                                                    Background=&quot;{StaticResource ArbitraryBackgroundMintBrush}&quot;
+                                                    Foreground=&quot;{StaticResource ArbitraryTextGreenBrush}&quot;
+                                                    BorderBrush=&quot;{StaticResource ArbitraryBorderTealBrush}&quot; /&gt;</TextBlock>
                                             </StackPanel>
                                         </Border>
                                     </StackPanel>

@@ -1,10 +1,9 @@
-using Avalonia;
-using Avalonia.Data;
-using Avalonia.Media;
-
 using System.Collections.Concurrent;
 using System.Globalization;
 using System.Reflection;
+using Avalonia;
+using Avalonia.Data;
+using Avalonia.Media;
 
 namespace Tailwind.Avalonia;
 
@@ -348,7 +347,6 @@ public class Tw : AvaloniaObject
         utility = default;
 
         if (token.Contains(':') ||
-            token.Contains('[') ||
             token.Contains('('))
         {
             return false;
@@ -376,13 +374,19 @@ public class Tw : AvaloniaObject
                 return false;
             }
 
-            if (!SpacingScale.TryGetPixels(scaleToken, out var pixels))
+            // Try to parse as a scale token first
+            if (SpacingScale.TryGetPixels(scaleToken, out var pixels))
             {
-                return false;
+                utility = new SpacingUtility(descriptor.Target, descriptor.Edge, negative ? -pixels : pixels);
+                return true;
             }
 
-            utility = new SpacingUtility(descriptor.Target, descriptor.Edge, negative ? -pixels : pixels);
-            return true;
+            // Try to parse as an arbitrary value (e.g., p-[1.5rem], m-[20px])
+            if (TryParseArbitraryDouble(scaleToken, out var arbitraryPixels))
+            {
+                utility = new SpacingUtility(descriptor.Target, descriptor.Edge, negative ? -arbitraryPixels : arbitraryPixels);
+                return true;
+            }
         }
 
         return false;
@@ -394,7 +398,6 @@ public class Tw : AvaloniaObject
 
         if (token.StartsWith("-", StringComparison.Ordinal) ||
             token.Contains(':') ||
-            token.Contains('[') ||
             token.Contains('('))
         {
             return false;
@@ -427,7 +430,6 @@ public class Tw : AvaloniaObject
 
         if (token.StartsWith("-", StringComparison.Ordinal) ||
             token.Contains(':') ||
-            token.Contains('[') ||
             token.Contains('('))
         {
             return false;
@@ -447,13 +449,19 @@ public class Tw : AvaloniaObject
                 return false;
             }
 
-            if (!SpacingScale.TryGetPixels(scaleToken, out var pixels))
+            // Try to parse as a scale token first
+            if (SpacingScale.TryGetPixels(scaleToken, out var pixels))
             {
-                return false;
+                utility = new SizingUtility(descriptor.Target, pixels);
+                return true;
             }
 
-            utility = new SizingUtility(descriptor.Target, pixels);
-            return true;
+            // Try to parse as an arbitrary value (e.g., w-[100px], h-[50%])
+            if (TryParseArbitraryDouble(scaleToken, out var arbitraryPixels))
+            {
+                utility = new SizingUtility(descriptor.Target, arbitraryPixels);
+                return true;
+            }
         }
 
         return false;
@@ -466,9 +474,19 @@ public class Tw : AvaloniaObject
         var separatorIndex = token.IndexOf('/');
         var colorToken = separatorIndex >= 0 ? token[..separatorIndex] : token;
 
-        if (colorToken.Length == 0 || !TailwindColorPalette.TryGetColor(colorToken, out color))
+        if (colorToken.Length == 0)
         {
             return false;
+        }
+
+        // Try to resolve from Tailwind palette first
+        if (!TailwindColorPalette.TryGetColor(colorToken, out color))
+        {
+            // Try to parse as an arbitrary color (e.g., bg-[#ff0000], text-[#123456])
+            if (!TryParseArbitraryColor(colorToken, out color))
+            {
+                return false;
+            }
         }
 
         if (separatorIndex < 0)
@@ -507,6 +525,145 @@ public class Tw : AvaloniaObject
     {
         var alpha = (byte)Math.Clamp((int)Math.Round(color.A * opacity), 0, byte.MaxValue);
         return Color.FromArgb(alpha, color.R, color.G, color.B);
+    }
+
+    private static bool TryParseArbitraryDouble(string token, out double value)
+    {
+        value = default;
+
+        // Must be enclosed in square brackets
+        if (!token.StartsWith('[') || !token.EndsWith(']'))
+        {
+            return false;
+        }
+
+        var contentWithUnit = token[1..^1].Trim();
+
+        if (contentWithUnit.Length == 0)
+        {
+            return false;
+        }
+
+        // Extract numeric and unit parts
+        var index = 0;
+        var hasDecimal = false;
+
+        if (contentWithUnit[index] == '-')
+        {
+            index++;
+        }
+
+        var digitStart = index;
+
+        while (index < contentWithUnit.Length)
+        {
+            var ch = contentWithUnit[index];
+
+            if (char.IsDigit(ch))
+            {
+                index++;
+            }
+            else if (ch == '.' && !hasDecimal)
+            {
+                hasDecimal = true;
+                index++;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (index == digitStart)
+        {
+            return false;
+        }
+
+        var numericPart = contentWithUnit[..index];
+        var unitPart = contentWithUnit[index..].Trim();
+
+        if (!double.TryParse(numericPart, NumberStyles.Float, CultureInfo.InvariantCulture, out var numericValue))
+        {
+            return false;
+        }
+
+        // Convert based on unit
+        value = unitPart switch
+        {
+            "px" => numericValue,
+            "rem" => numericValue * 16.0, // 1rem = 16px
+            "em" => numericValue * 16.0,  // Treat em as rem for simplicity
+            "%" => numericValue,            // Percentage values used as-is
+            "" => numericValue,             // Unitless (treated as px)
+            _ => default,
+        };
+
+        return unitPart switch
+        {
+            "px" or "rem" or "em" or "%" or "" => true,
+            _ => false,
+        };
+    }
+
+    private static bool TryParseArbitraryColor(string token, out Color color)
+    {
+        color = default;
+
+        // Must be enclosed in square brackets
+        if (!token.StartsWith('[') || !token.EndsWith(']'))
+        {
+            return false;
+        }
+
+        var colorValue = token[1..^1].Trim();
+
+        if (colorValue.Length == 0)
+        {
+            return false;
+        }
+
+        // Try to parse hex color (#rrggbb or #rrggbbaa)
+        if (colorValue.StartsWith('#'))
+        {
+            return TryParseHexColor(colorValue, out color);
+        }
+
+        // Could be extended to support rgb(), hsl(), etc. in the future
+        return false;
+    }
+
+    private static bool TryParseHexColor(string hexColor, out Color color)
+    {
+        color = default;
+
+        // Remove the # prefix
+        if (!hexColor.StartsWith('#'))
+        {
+            return false;
+        }
+
+        var hex = hexColor[1..];
+
+        // Support #rrggbb (6 chars) and #rrggbbaa (8 chars)
+        if (hex.Length != 6 && hex.Length != 8)
+        {
+            return false;
+        }
+
+        try
+        {
+            var r = byte.Parse(hex[..2], System.Globalization.NumberStyles.HexNumber);
+            var g = byte.Parse(hex[2..4], System.Globalization.NumberStyles.HexNumber);
+            var b = byte.Parse(hex[4..6], System.Globalization.NumberStyles.HexNumber);
+            var a = hex.Length == 8 ? byte.Parse(hex[6..8], System.Globalization.NumberStyles.HexNumber) : (byte)255;
+
+            color = Color.FromArgb(a, r, g, b);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private static bool ContainsLogicalUtilities(string classList)

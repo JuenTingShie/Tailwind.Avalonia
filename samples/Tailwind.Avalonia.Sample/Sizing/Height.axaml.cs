@@ -7,13 +7,16 @@ namespace Tailwind.Avalonia.Sample.Sizing;
 
 public partial class Height : UserControl
 {
-    private const int CollapsedUtilityRowCount = 2;
+    private const int CollapsedUtilityRowCount = 4;
 
     private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
     [
         new("h-<number>", "<Border Height=\"<number>\" />"),
+        new("h-[<value>]", "<Border Height=\"<parsed value>\" />"),
         new("min-h-<number>", "<Border MinHeight=\"<number>\" />"),
+        new("min-h-[<value>]", "<Border MinHeight=\"<parsed value>\" />"),
         new("max-h-<number>", "<Border MaxHeight=\"<number>\" />"),
+        new("max-h-[<value>]", "<Border MaxHeight=\"<parsed value>\" />"),
     ];
 
     private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;

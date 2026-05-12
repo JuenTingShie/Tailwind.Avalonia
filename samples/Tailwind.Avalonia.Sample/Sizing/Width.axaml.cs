@@ -7,13 +7,16 @@ namespace Tailwind.Avalonia.Sample.Sizing;
 
 public partial class Width : UserControl
 {
-    private const int CollapsedUtilityRowCount = 2;
+    private const int CollapsedUtilityRowCount = 4;
 
     private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
     [
         new("w-<number>", "<Border Width=\"<number>\" />"),
+        new("w-[<value>]", "<Border Width=\"<parsed value>\" />"),
         new("min-w-<number>", "<Border MinWidth=\"<number>\" />"),
+        new("min-w-[<value>]", "<Border MinWidth=\"<parsed value>\" />"),
         new("max-w-<number>", "<Border MaxWidth=\"<number>\" />"),
+        new("max-w-[<value>]", "<Border MaxWidth=\"<parsed value>\" />"),
     ];
 
     private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;

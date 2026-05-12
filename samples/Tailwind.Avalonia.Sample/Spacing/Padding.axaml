@@ -108,13 +108,10 @@
                             <TextBlock
                                 Classes="docs-noteBody"
                                 tw:Tw.Class="text-amber-100/85"
-                                Text="These Tailwind padding rows are intentionally omitted until the parser grows direct support." />
+                                Text="These Tailwind padding rows remain outside the current parser surface." />
                             <TextBlock
                                 Classes="docs-tableClass"
                                 Text="p-px / px-px / py-px / pt-px / pr-px / pb-px / pl-px / ps-px / pe-px / pbs-px / pbe-px" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="p-[&lt;value&gt;] / px-[&lt;value&gt;] / py-[&lt;value&gt;] / pt-[&lt;value&gt;] / pr-[&lt;value&gt;] / pb-[&lt;value&gt;] / pl-[&lt;value&gt;]" />
                             <TextBlock
                                 Classes="docs-tableClass"
                                 Text="p-(&lt;custom-property&gt;) / px-(&lt;custom-property&gt;) / py-(&lt;custom-property&gt;) / pt-(&lt;custom-property&gt;) / pr-(&lt;custom-property&gt;) / pb-(&lt;custom-property&gt;) / pl-(&lt;custom-property&gt;)" />
@@ -444,20 +441,16 @@
                                                     Text="AXAML" />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;Border
-                                                Padding=&quot;{StaticResource PaddingTop6}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;Border Padding=&quot;{StaticResource PaddingTop6}&quot; /&gt;" />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;Border
-                                                Padding=&quot;{StaticResource PaddingRight4}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;Border Padding=&quot;{StaticResource PaddingRight4}&quot; /&gt;" />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;Border
-                                                Padding=&quot;{StaticResource PaddingBottom8}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;Border Padding=&quot;{StaticResource PaddingBottom8}&quot; /&gt;" />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;Border
-                                                Padding=&quot;{StaticResource PaddingLeft2}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;Border Padding=&quot;{StaticResource PaddingLeft2}&quot; /&gt;" />
                                             </StackPanel>
                                         </Border>
                                     </StackPanel>
@@ -605,12 +598,10 @@
                                                     Text="AXAML" />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;Border
-                                                Padding=&quot;{StaticResource PaddingX8}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;Border Padding=&quot;{StaticResource PaddingX8}&quot; /&gt;" />
                                                 <TextBlock
                                                     Classes="docs-code"
-                                                    xml:space="preserve">&lt;Border
-                                                Padding=&quot;{StaticResource PaddingY8}&quot; /&gt;</TextBlock>
+                                                    Text="&lt;Border Padding=&quot;{StaticResource PaddingY8}&quot; /&gt;" />
                                             </StackPanel>
                                         </Border>
                                     </StackPanel>
@@ -1335,6 +1326,229 @@
                                             Classes="docs-noteBody"
                                             Text="Unsupported: generated StaticResource padding keys only cover physical directions (Padding*, PaddingX*, PaddingY*, PaddingTop*, PaddingRight*, PaddingBottom*, and PaddingLeft*). Logical ps-/pe-/pbs-/pbe- and visual psv-/pev- aliases are still parser-only." />
                                     </Border>
+                                </TabItem>
+                            </TabControl>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="Arbitrary padding values" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Use bracket syntax like p-[12px] for direct arbitrary values. The two tabs below compare parser usage with an equivalent local Avalonia StaticResource sample." />
+                        <Border
+                            Classes="docs-note">
+                            <StackPanel
+                                Spacing="8">
+                                <TextBlock
+                                    Classes="docs-noteTitle"
+                                    Text="Arbitrary padding notes" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="px / rem / em / % / unitless" />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="Arbitrary padding values are parser-only and do not emit generated package keys, so the StaticResource tab uses local sample resources." />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="rem and em use 16px base. Unitless values are treated as px." />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="Current parser only supports bracket arbitrary syntax. p-(&lt;custom-property&gt;) remains unsupported." />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="% tokens are currently parsed as numeric values, not CSS percentage layout." />
+                            </StackPanel>
+                        </Border>
+                        <Border
+                            Classes="docs-surface">
+                            <TabControl
+                                Classes="docs-exampleTabs">
+                                <TabItem
+                                    Classes="docs-exampleTab"
+                                    Header="Utility">
+                                    <StackPanel
+                                        Spacing="0">
+                                        <Border
+                                            Background="{StaticResource BrushSlate950}"
+                                            Padding="24">
+                                            <StackPanel
+                                                Spacing="12">
+                                                <Border
+                                                    Classes="docs-paddingShell"
+                                                    HorizontalAlignment="Center"
+                                                    tw:Tw.Class="p-[12px]">
+                                                    <Border
+                                                        Classes="docs-paddingCore">
+                                                        <Grid
+                                                            MinWidth="96"
+                                                            MinHeight="56">
+                                                            <TextBlock
+                                                                Classes="docs-chip"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Text="p-[12px]" />
+                                                        </Grid>
+                                                    </Border>
+                                                </Border>
+                                                <Border
+                                                    Classes="docs-paddingShell"
+                                                    HorizontalAlignment="Center"
+                                                    tw:Tw.Class="px-[20px] py-[10px]">
+                                                    <Border
+                                                        Classes="docs-paddingCore">
+                                                        <Grid
+                                                            MinWidth="96"
+                                                            MinHeight="56">
+                                                            <TextBlock
+                                                                Classes="docs-chip"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Text="px-[20px] py-[10px]" />
+                                                        </Grid>
+                                                    </Border>
+                                                </Border>
+                                                <Border
+                                                    Classes="docs-paddingShell"
+                                                    HorizontalAlignment="Center"
+                                                    tw:Tw.Class="pt-[8px] pr-[12px] pb-[16px] pl-[20px]">
+                                                    <Border
+                                                        Classes="docs-paddingCore">
+                                                        <Grid
+                                                            MinWidth="120"
+                                                            MinHeight="56">
+                                                            <TextBlock
+                                                                Classes="docs-chip"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Text="pt/pr/pb/pl" />
+                                                        </Grid>
+                                                    </Border>
+                                                </Border>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                            BorderBrush="{StaticResource BrushSlate800}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="20,16">
+                                            <StackPanel
+                                                Spacing="6">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="AXAML" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;Border tw:Tw.Class=&quot;p-[12px]&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;Border tw:Tw.Class=&quot;px-[20px] py-[10px]&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;Border tw:Tw.Class=&quot;pt-[8px] pr-[12px] pb-[16px] pl-[20px]&quot; /&gt;" />
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem
+                                    Classes="docs-exampleTab"
+                                    Header="StaticResource">
+                                    <StackPanel
+                                        Spacing="0">
+                                        <StackPanel.Resources>
+                                            <Thickness x:Key="ArbitraryPadding12">12</Thickness>
+                                            <Thickness x:Key="ArbitraryPaddingAxis">20,10,20,10</Thickness>
+                                            <Thickness x:Key="ArbitraryPaddingEdges">20,8,12,16</Thickness>
+                                        </StackPanel.Resources>
+                                        <Border
+                                            Background="{StaticResource BrushSlate950}"
+                                            Padding="24">
+                                            <StackPanel
+                                                Spacing="12">
+                                                <Border
+                                                    Classes="docs-paddingShell"
+                                                    HorizontalAlignment="Center"
+                                                    Padding="{StaticResource ArbitraryPadding12}">
+                                                    <Border
+                                                        Classes="docs-paddingCore">
+                                                        <Grid
+                                                            MinWidth="96"
+                                                            MinHeight="56">
+                                                            <TextBlock
+                                                                Classes="docs-chip"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Text="Padding=12" />
+                                                        </Grid>
+                                                    </Border>
+                                                </Border>
+                                                <Border
+                                                    Classes="docs-paddingShell"
+                                                    HorizontalAlignment="Center"
+                                                    Padding="{StaticResource ArbitraryPaddingAxis}">
+                                                    <Border
+                                                        Classes="docs-paddingCore">
+                                                        <Grid
+                                                            MinWidth="96"
+                                                            MinHeight="56">
+                                                            <TextBlock
+                                                                Classes="docs-chip"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Text="Padding X/Y" />
+                                                        </Grid>
+                                                    </Border>
+                                                </Border>
+                                                <Border
+                                                    Classes="docs-paddingShell"
+                                                    HorizontalAlignment="Center"
+                                                    Padding="{StaticResource ArbitraryPaddingEdges}">
+                                                    <Border
+                                                        Classes="docs-paddingCore">
+                                                        <Grid
+                                                            MinWidth="120"
+                                                            MinHeight="56">
+                                                            <TextBlock
+                                                                Classes="docs-chip"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Text="Padding L/T/R/B" />
+                                                        </Grid>
+                                                    </Border>
+                                                </Border>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                            BorderBrush="{StaticResource BrushSlate800}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="20,16">
+                                            <StackPanel
+                                                Spacing="6">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="AXAML" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;Thickness x:Key=&quot;ArbitraryPadding12&quot;&gt;12&lt;/Thickness&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;Border Padding=&quot;{StaticResource ArbitraryPadding12}&quot; /&gt;</TextBlock>
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;Thickness x:Key=&quot;ArbitraryPaddingAxis&quot;&gt;20,10,20,10&lt;/Thickness&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;Border Padding=&quot;{StaticResource ArbitraryPaddingAxis}&quot; /&gt;</TextBlock>
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;Thickness x:Key=&quot;ArbitraryPaddingEdges&quot;&gt;20,8,12,16&lt;/Thickness&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;Border Padding=&quot;{StaticResource ArbitraryPaddingEdges}&quot; /&gt;</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
                                 </TabItem>
                             </TabControl>
                         </Border>
