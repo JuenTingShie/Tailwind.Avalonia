@@ -15,6 +15,7 @@ Avalonia has strong styling and resource systems, but it does not offer a Tailwi
 
 ## MVP Experience
 - Consumer can use static keys like `Padding4` and `MarginX2`.
+- Consumer can now also use static keys like `FontSizeBase` and `FontSize2xl` for shared typography sizing.
 - Consumer can optionally use a Tailwind-like utility string API for composition.
 - First supported utility areas are spacing, whole-property colors, and first-pass numeric sizing.
 
@@ -24,6 +25,7 @@ Avalonia has strong styling and resource systems, but it does not offer a Tailwi
 - Library currently exposes positive padding/margin resources plus negative margin resources.
 - Logical spacing (`ps`, `pe`, `ms`, `me`, `pbs`, `pbe`, `mbs`, `mbe`) is supported through the parser surface.
 - Library now also exposes Tailwind v4.2 palette tokens as `Color*` and `Brush*` resources.
+- Library now also exposes Tailwind font-size tokens as `FontSize*` resources and parses `text-xs` through `text-9xl` plus `text-[<value>]` onto Avalonia `FontSize`.
 - Whole-property color utilities now work on generic controls.
 - Numeric sizing utilities now work through `tw:Tw.Class` for width/min-width/max-width/height/min-height/max-height.
 

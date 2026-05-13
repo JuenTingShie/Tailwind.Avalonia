@@ -21,10 +21,12 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 ## Delivery Mechanics
 - Checked-in spacing source-of-truth in C#.
 - Checked-in Tailwind v4.2 color palette reference in C#.
+- Checked-in Tailwind font-size scale reference in C#.
 - Runtime OKLCH-to-sRGB conversion for Avalonia color resources.
 - `SpacingResourceDictionary` for generated spacing tokens.
 - `ColorResourceDictionary` for generated `Color*` and `Brush*` tokens.
-- `Tw.Class` attached property for spacing, numeric sizing, and whole-property color utility-string parsing.
+- `FontSizeResourceDictionary` for generated `FontSize*` typography tokens.
+- `Tw.Class` attached property for spacing, numeric sizing, font-size, and whole-property color utility-string parsing.
 - `Tailwind.Avalonia.Tests` xUnit test project for automated validation.
 - Sample app for build and startup verification.
 
@@ -36,9 +38,10 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 - Cross-assembly sample consumption currently uses `ResourceInclude` instead of compile-time merged include.
 - Static resources currently cover physical directions only; logical spacing is parser-driven.
 - Sizing utilities currently cover only spacing-scale numeric tokens and do not emit dedicated `StaticResource` keys.
+- Font-size utilities currently cover predefined `text-xs` through `text-9xl` tokens plus absolute bracket arbitrary values, but they do not yet support slash line-height modifiers, responsive variants, percentages, or custom-property shorthand.
 - `tw:Tw.Class` now applies whole-property `bg-*`, `text-*`, and `border-*` utilities, including `transparent` and `/opacity`, but it does not yet support directional border colors or variant prefixes.
 - Avalonia `Border` exposes `BorderBrushProperty` but not per-side border brush properties, and user constraint disallows custom components.
 
 ## Test Coverage Baseline
-- `dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj` currently passes with 21 tests.
-- Coverage currently includes spacing scale lookup/suffix rules, spacing parser application/clear behavior, sizing utility application/overwrite/clear behavior, whole-property color utility application/clear behavior, transparent and opacity parsing behavior, achromatic OKLCH parsing, palette token count/family presence, and color/brush resource pair emission.
+- `dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj` currently passes with 78 tests.
+- Coverage currently includes spacing scale lookup/suffix rules, spacing parser application/clear behavior, sizing utility application/overwrite/clear behavior, font-size scale/resource lookup, font-size parser application/disambiguation/clear behavior, arbitrary font-size unit handling, whole-property color utility application/clear behavior, transparent and opacity parsing behavior, achromatic OKLCH parsing, palette token count/family presence, and color/brush resource pair emission.

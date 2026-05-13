@@ -169,6 +169,31 @@ public class TwArbitraryValuesTests
         Assert.Equal(120d, border.MaxHeight);
     }
 
+    [Theory]
+    [InlineData("text-[14px]", 14d)]
+    [InlineData("text-[1.5rem]", 24d)]
+    [InlineData("text-[2em]", 32d)]
+    [InlineData("text-[18]", 18d)]
+    public void SetClass_Applies_Arbitrary_Font_Size_With_Supported_Units(string className, double expectedFontSize)
+    {
+        var textBlock = new TextBlock();
+
+        Tw.SetClass(textBlock, className);
+
+        Assert.Equal(expectedFontSize, textBlock.FontSize);
+    }
+
+    [Fact]
+    public void SetClass_Ignores_Arbitrary_Font_Size_With_Percentage()
+    {
+        var textBlock = new TextBlock();
+        var defaultFontSize = textBlock.FontSize;
+
+        Tw.SetClass(textBlock, "text-[120%]");
+
+        Assert.Equal(defaultFontSize, textBlock.FontSize);
+    }
+
     [Fact]
     public void SetClass_Ignores_CustomProperty_Shorthand_For_Sizing()
     {

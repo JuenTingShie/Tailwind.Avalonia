@@ -20,6 +20,7 @@ public class Tw : AvaloniaObject
     private const int HeightMask = 256;
     private const int MinHeightMask = 512;
     private const int MaxHeightMask = 1024;
+    private const int FontSizeMask = 2048;
 
     private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> ThicknessPropertyCache = new();
     private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> BrushPropertyCache = new();
@@ -110,6 +111,7 @@ public class Tw : AvaloniaObject
         var hasHeight = false;
         var hasMinHeight = false;
         var hasMaxHeight = false;
+        var hasFontSize = false;
         var margin = default(Thickness);
         var padding = default(Thickness);
         IBrush? background = null;
@@ -121,6 +123,7 @@ public class Tw : AvaloniaObject
         var height = default(double);
         var minHeight = default(double);
         var maxHeight = default(double);
+        var fontSize = default(double);
 
         if (!string.IsNullOrWhiteSpace(classList))
         {
@@ -189,6 +192,13 @@ public class Tw : AvaloniaObject
                             break;
                     }
 
+                    continue;
+                }
+
+                if (TryParseFontSizeUtility(token, out var fontSizeUtility))
+                {
+                    fontSize = fontSizeUtility.Pixels;
+                    hasFontSize = true;
                     continue;
                 }
 
@@ -314,6 +324,15 @@ public class Tw : AvaloniaObject
         else if ((previousMask & MaxHeightMask) != 0)
         {
             ClearDouble(element, "MaxHeight");
+        }
+
+        if (hasFontSize && TrySetDouble(element, "FontSize", fontSize))
+        {
+            newMask |= FontSizeMask;
+        }
+        else if ((previousMask & FontSizeMask) != 0)
+        {
+            ClearDouble(element, "FontSize");
         }
 
         element.SetValue(AppliedMaskProperty, newMask);
@@ -467,6 +486,39 @@ public class Tw : AvaloniaObject
         return false;
     }
 
+    private static bool TryParseFontSizeUtility(string token, out FontSizeUtility utility)
+    {
+        utility = default;
+
+        if (!token.StartsWith("text-", StringComparison.Ordinal) ||
+            token.Contains(':') ||
+            token.Contains('('))
+        {
+            return false;
+        }
+
+        var sizeToken = token["text-".Length..];
+
+        if (sizeToken.Length == 0)
+        {
+            return false;
+        }
+
+        if (FontSizeScale.TryGetPixels(sizeToken, out var pixels))
+        {
+            utility = new FontSizeUtility(pixels);
+            return true;
+        }
+
+        if (TryParseArbitraryFontSize(sizeToken, out var arbitraryPixels))
+        {
+            utility = new FontSizeUtility(arbitraryPixels);
+            return true;
+        }
+
+        return false;
+    }
+
     private static bool TryResolveUtilityColor(string token, out Color color)
     {
         color = default;
@@ -603,6 +655,19 @@ public class Tw : AvaloniaObject
             "px" or "rem" or "em" or "%" or "" => true,
             _ => false,
         };
+    }
+
+    private static bool TryParseArbitraryFontSize(string token, out double value)
+    {
+        value = default;
+
+        if (token.StartsWith("[%", StringComparison.Ordinal) ||
+            token.EndsWith("%]", StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        return TryParseArbitraryDouble(token, out value) && value >= 0;
     }
 
     private static bool TryParseArbitraryColor(string token, out Color color)
@@ -825,6 +890,7 @@ public class Tw : AvaloniaObject
     private readonly record struct SpacingUtility(SpacingTarget Target, SpacingEdge Edge, double Pixels);
     private readonly record struct BrushUtility(BrushTarget Target, IBrush Brush);
     private readonly record struct SizingUtility(SizingTarget Target, double Pixels);
+    private readonly record struct FontSizeUtility(double Pixels);
 
     private readonly record struct UtilityDescriptor(string Prefix, SpacingTarget Target, SpacingEdge Edge);
     private readonly record struct BrushUtilityDescriptor(string Prefix, BrushTarget Target);

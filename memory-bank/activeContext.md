@@ -4,6 +4,10 @@
 With the sample docs refresh complete, build on the spacing, colors, and first-pass sizing foundation with semantic theme composition and package validation, under the no-custom-component constraint.
 
 ## Recent Changes
+- Added `FontSizeScale` and `FontSizeResourceDictionary`, then merged those typography sizing tokens into `Themes/Tailwind.axaml` so package consumers now get generated `FontSizeXs` through `FontSize9xl` `StaticResource` keys alongside the existing spacing, sizing, and color surfaces.
+- Extended `tw:Tw.Class` so recognized `text-*` size tokens now set Avalonia `FontSize` for `text-xs` through `text-9xl` plus bracket arbitrary values like `text-[14px]`, while palette and arbitrary color tokens such as `text-sky-300` and `text-[#ff6b6b]` still fall through to the existing `Foreground` parser.
+- Added focused font-size coverage in the test project for token lookup, resource generation, parser application, arbitrary units, clear behavior, and the shared `text-*` namespace disambiguation between font size and text color.
+- Added `samples/Tailwind.Avalonia.Sample/Typography/FontSize.axaml` as a standalone docs-style `UserControl`, wired it into the `TYPOGRAPHY` tab, and mirrored the official Tailwind font-size docs structure with live basic/custom-value demos plus explicit unsupported notes for line-height modifiers and responsive variants.
 - Expanded `samples/Tailwind.Avalonia.Sample/Sizing/Width.axaml` and `samples/Tailwind.Avalonia.Sample/Sizing/Height.axaml` so they now mirror the official Tailwind docs example headings more closely, keeping live demos for supported numeric sizing and explicit note sections for unsupported percentage, viewport, container, custom-value, size, and responsive examples.
 - Extended `SpacingResourceDictionary` so numeric sizing tokens now also emit generated `Width*`, `MinWidth*`, `MaxWidth*`, `Height*`, `MinHeight*`, and `MaxHeight*` `StaticResource` keys.
 - Reworked the `Width` and `Height` sample pages so their `StaticResource` tabs now show real sizing examples instead of unsupported placeholders.
@@ -55,6 +59,8 @@ With the sample docs refresh complete, build on the spacing, colors, and first-p
 - Reworked the sample example sections again so nested tabs now switch both the live preview and the AXAML snippet between `Utility` and `StaticResource` variants, while unsupported cases keep their honest explanatory note in the `StaticResource` tab.
 
 ## Active Decisions
+- `text-*` is now a split namespace: known font-size tokens and numeric arbitrary values claim `FontSize` first, and any remaining `text-*` token still flows to the existing text-color parser.
+- Generated typography sizing keys follow the established property-prefix naming pattern: `FontSizeXs`, `FontSizeBase`, `FontSize2xl`, and so on.
 - New utility families should gain generated `StaticResource` parity at the same time whenever the behavior maps honestly onto shared Avalonia resources; do not defer that parity to a later cleanup pass.
 - Numeric sizing utilities now have generated `StaticResource` parity through `Width*`, `MinWidth*`, `MaxWidth*`, `Height*`, `MinHeight*`, and `MaxHeight*` keys, so sample pages should demonstrate both utility and StaticResource variants just like spacing pages do.
 - When sample pages mimic official Tailwind docs, include the official example headings even when current package support is partial; supported sections should stay live, unsupported sections should be explicit note blocks instead of being silently omitted.
@@ -85,10 +91,12 @@ With the sample docs refresh complete, build on the spacing, colors, and first-p
 
 ## Immediate Next Steps
 1. Start semantic alias and dark/light theme layering on top of the concrete Tailwind palette.
-2. Decide which non-numeric sizing families should be added next, now that numeric sizing already has `StaticResource` parity.
-3. Validate package/publish consumption beyond the local project-reference sample.
+2. Decide whether typography should add Tailwind-style line-height modifiers (`text-sm/6`) or keep font-size and line-height as separate future utility families.
+3. Decide which non-numeric sizing families should be added next, now that numeric sizing already has `StaticResource` parity.
+4. Validate package/publish consumption beyond the local project-reference sample.
 
 ## Open Questions
+- Whether Tailwind's default line-height behavior for `text-*` should eventually map onto Avalonia `LineHeight`, or remain intentionally out of scope.
 - Whether logical start/end spacing should gain dedicated `StaticResource` keys or remain parser-only.
 - Whether spacing generation should remain checked-in C# or move to a generator pipeline.
 - Whether color conversion should stay as runtime code or move to generated, precomputed sRGB values later.

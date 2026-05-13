@@ -25,6 +25,7 @@
 - [TASK017] Tailwind Avalonia sizing utility sample - Added numeric sizing parsing for width/min/max width and height/min/max height, docs-style sample pages, and focused sizing tests.
 - [TASK018] Tailwind Avalonia sizing StaticResource parity - Added generated sizing resource keys, converted sizing sample tabs to real StaticResource examples, and recorded the new-feature parity rule.
 - [TASK019] Tailwind Avalonia sizing docs example coverage sync - Expanded sizing sample pages to mirror official Tailwind example headings while keeping unsupported examples explicit.
+- [TASK020] Tailwind Avalonia font size utility and sample - Added `FontSize*` resources, `text-*` font-size parsing with text-color disambiguation, and a Typography font-size docs page.
 
 ## Abandoned
 - [TASK006] Tailwind Avalonia directional border rendering layer - Reverted after user constraint disallowed custom components.

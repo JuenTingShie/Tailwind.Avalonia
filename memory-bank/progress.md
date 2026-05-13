@@ -1,9 +1,12 @@
 # Progress
 
 ## Current Status
-Spacing, color, and first-pass sizing foundations are implemented, locally validated, and now documented through a docs-style sample surface.
+Spacing, color, font-size, and first-pass sizing foundations are implemented, locally validated, and now documented through a docs-style sample surface.
 
 ## What Works
+- `FontSizeScale` and `FontSizeResourceDictionary` now expose Tailwind font-size tokens as generated `FontSizeXs` through `FontSize9xl` `StaticResource` keys.
+- `tw:Tw.Class` now applies `text-xs` through `text-9xl` plus bracket arbitrary absolute values like `text-[14px]` onto Avalonia `FontSize`, while keeping existing `text-sky-300` / `text-[#hex]` foreground color parsing intact.
+- Sample app now exposes a dedicated `Typography/Font size` docs page with Tailwind-docs-inspired basic/custom-value demos plus explicit unsupported notes for line-height modifiers and responsive variants.
 - `tw:Tw.Class` now applies numeric sizing utilities for `w-*`, `min-w-*`, `max-w-*`, `h-*`, `min-h-*`, and `max-h-*` on controls that expose the corresponding Avalonia layout properties.
 - Focused `TwTests` now cover sizing utility application, last-token-wins behavior, and clearing previously applied width/height constraints.
 - Sample app now exposes a dedicated `SIZING` area with `Width` and `Height` docs pages under `samples/Tailwind.Avalonia.Sample/Sizing/`, each showing width/min/max width and height/min/max height examples with the same docs-style surface used by spacing pages.
@@ -47,6 +50,7 @@ Spacing, color, and first-pass sizing foundations are implemented, locally valid
 - Validate package/publish consumption beyond the local project-reference sample.
 - Decide whether compile-time merged include support is needed after packaging.
 - Expand semantic/dark-light theme layering and remaining non-border utility coverage.
+- Decide whether typography should add Tailwind-style slash line-height modifiers or keep font size as a standalone first-pass utility family.
 - Decide which non-numeric sizing families should be added next, while keeping the new-feature-equals-StaticResource-parity rule.
 - Decide whether the combined color-utility docs page should remain a single tab or split by utility family.
 - Decide whether directional border colors should be explicitly documented as unsupported under the no-custom-component constraint.
@@ -56,6 +60,7 @@ Spacing, color, and first-pass sizing foundations are implemented, locally valid
 - Some utility semantics may not map 1:1 across all control types.
 - Parser application currently relies on reflected `PaddingProperty` / `MarginProperty` discovery.
 - Sizing utility application now also relies on reflected `WidthProperty` / `MinWidthProperty` / `MaxWidthProperty` / `HeightProperty` / `MinHeightProperty` / `MaxHeightProperty` discovery.
+- Font-size utility application now also relies on reflected `FontSizeProperty` discovery, and future typography tokens sharing the `text-*` namespace will need to preserve the current size-before-color disambiguation rule.
 - Color utility application currently relies on reflected `BackgroundProperty` / `ForegroundProperty` / `BorderBrushProperty` discovery.
 - Tailwind directional border-color semantics still cannot be mapped onto generic Avalonia `Border` under the no-custom-component constraint.
 - Logical spacing resources are not yet exposed as dedicated static keys.
@@ -65,4 +70,4 @@ Spacing, color, and first-pass sizing foundations are implemented, locally valid
 - Other RTL logical docs previews, especially margin, may need the same mirror-cancel presentation pattern if the goal is to show physical side effects instead of Avalonia's mirrored chrome.
 
 ## Estimated Stage
-97%: spacing, color, and first-pass sizing token foundations plus whole-property color utilities, docs-style sample coverage now including compiled-binding-safe reference tables for spacing and sizing families, and core automated tests are in place, with semantic theme layering, packaging validation, and longer-term docs/theme scope decisions still remaining.
+98%: spacing, color, font-size, and first-pass sizing token foundations plus whole-property color utilities, docs-style sample coverage now including typography sizing and compiled-binding-safe reference tables, and core automated tests are in place, with semantic theme layering, package validation, and deeper typography/theme scope decisions still remaining.

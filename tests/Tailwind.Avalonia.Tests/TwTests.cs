@@ -375,4 +375,52 @@ public class TwTests
         Assert.Equal(orange800.G, foreground.G);
         Assert.Equal(orange800.B, foreground.B);
     }
+
+    [Fact]
+    public void SetClass_Applies_Font_Size_Utilities_And_Preserves_Text_Color_Parsing()
+    {
+        var resources = new ColorResourceDictionary();
+        var textBlock = new TextBlock();
+
+        Tw.SetClass(textBlock, "text-base text-sky-300");
+
+        Assert.Equal(16d, textBlock.FontSize);
+        Assert.Equal(
+            Assert.IsType<SolidColorBrush>(resources["BrushSky300"]).Color,
+            Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Font_Size_Without_Changing_Foreground_When_No_Color_Utility_Is_Present()
+    {
+        var textBlock = new TextBlock();
+        var originalForeground = textBlock.Foreground;
+
+        Tw.SetClass(textBlock, "text-4xl");
+
+        Assert.Equal(36d, textBlock.FontSize);
+        Assert.Equal(originalForeground, textBlock.Foreground);
+    }
+
+    [Fact]
+    public void SetClass_Uses_Last_Font_Size_Utility()
+    {
+        var textBlock = new TextBlock();
+
+        Tw.SetClass(textBlock, "text-sm text-2xl text-lg");
+
+        Assert.Equal(18d, textBlock.FontSize);
+    }
+
+    [Fact]
+    public void SetClass_Clears_Previously_Applied_Font_Size_When_Class_Removed()
+    {
+        var textBlock = new TextBlock();
+        var defaultFontSize = textBlock.FontSize;
+
+        Tw.SetClass(textBlock, "text-7xl");
+        Tw.SetClass(textBlock, null);
+
+        Assert.Equal(defaultFontSize, textBlock.FontSize);
+    }
 }

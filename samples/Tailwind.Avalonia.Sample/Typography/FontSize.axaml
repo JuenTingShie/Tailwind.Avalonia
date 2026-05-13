@@ -1,0 +1,458 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:spacing="using:Tailwind.Avalonia.Sample.Spacing"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Typography.FontSize">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude
+                    Source="avares://Tailwind.Avalonia/Themes/Tailwind.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <StyleInclude
+            Source="/Spacing/SpacingDocsStyles.axaml" />
+    </UserControl.Styles>
+    <Border
+        Background="{StaticResource BrushSlate950}">
+        <ScrollViewer
+            HorizontalScrollBarVisibility="Disabled">
+            <StackPanel
+                Margin="28,24,40,32"
+                Spacing="40">
+                <StackPanel
+                    Spacing="10">
+                    <TextBlock
+                        Classes="docs-library"
+                        Text="TYPOGRAPHY" />
+                    <TextBlock
+                        Classes="docs-pageTitle"
+                        Text="Font size" />
+                    <TextBlock
+                        Classes="docs-body"
+                        Text="Utilities for controlling the font size of an element. Recognized size tokens now set FontSize, while palette tokens like text-sky-300 continue to target Foreground on the same tw:Tw.Class surface." />
+                    <Border
+                        Classes="docs-note"
+                        BorderThickness="2"
+                        tw:Tw.Class="bg-sky-950/35 border-sky-400/60">
+                        <StackPanel
+                            Spacing="6">
+                            <TextBlock
+                                Classes="docs-noteTitle"
+                                tw:Tw.Class="text-sky-50"
+                                Text="Implemented in this sample" />
+                            <TextBlock
+                                Classes="docs-noteBody"
+                                tw:Tw.Class="text-sky-100/85"
+                                Text="Supported now: text-xs through text-9xl and bracket arbitrary values like text-[14px], text-[1.5rem], and text-[18]. text-sm/6 line-height modifiers, text-(length:&lt;custom-property&gt;) shorthand, and responsive variants remain out of scope for now." />
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Classes="docs-surface">
+                        <StackPanel
+                            Spacing="0">
+                            <Border
+                                Classes="docs-referenceHeader">
+                                <Grid
+                                    Classes="docs-referenceColumns"
+                                    ColumnDefinitions="1.45*,3.15*">
+                                    <TextBlock
+                                        Classes="docs-referenceHeading"
+                                        Text="Class" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Classes="docs-referenceHeading"
+                                        Text="Styles" />
+                                </Grid>
+                            </Border>
+                            <ItemsControl
+                                x:Name="FontSizeUtilityRows"
+                                Classes="docs-referenceList">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate
+                                        DataType="spacing:SpacingUtilityReferenceRow">
+                                        <Border
+                                            Classes="docs-referenceRow">
+                                            <Grid
+                                                Classes="docs-referenceColumns"
+                                                ColumnDefinitions="1.45*,3.15*">
+                                                <TextBlock
+                                                    Classes="docs-tableClass"
+                                                    Text="{CompiledBinding ClassName}"
+                                                    VerticalAlignment="Center" />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Classes="docs-tableStyle"
+                                                    Text="{CompiledBinding AxamlStyle}"
+                                                    VerticalAlignment="Center" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Border
+                                Background="{StaticResource BrushSlate900}"
+                                BorderBrush="{StaticResource BrushSlate800}"
+                                Padding="0,12"
+                                Classes="docs-showMoreShell"
+                                HorizontalAlignment="Center">
+                                <Button
+                                    x:Name="FontSizeUtilityToggleButton"
+                                    Classes="docs-showMoreButton"
+                                    Click="ToggleUtilityRows"
+                                    Content="SHOW MORE" />
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Classes="docs-note"
+                        BorderThickness="2"
+                        tw:Tw.Class="bg-amber-950/30 border-amber-400/50">
+                        <StackPanel
+                            Spacing="8">
+                            <TextBlock
+                                Classes="docs-noteTitle"
+                                tw:Tw.Class="text-amber-50"
+                                Text="Unsupported rows" />
+                            <TextBlock
+                                Classes="docs-noteBody"
+                                tw:Tw.Class="text-amber-100/85"
+                                Text="These Tailwind font-size rows remain outside the current parser surface." />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="text-sm/6 / text-sm/7 / text-sm/8 / text-lg/7" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="text-(length:&lt;custom-property&gt;) / md:text-base" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                    Spacing="18">
+                    <TextBlock
+                        Classes="docs-eyebrow"
+                        Text="EXAMPLES" />
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="Basic example" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Use utilities like text-sm and text-2xl to set the font size of an element. This demo keeps the real tw:Tw.Class token on each previewed TextBlock." />
+                        <Border
+                            Classes="docs-surface">
+                            <TabControl
+                                Classes="docs-exampleTabs">
+                                <TabItem
+                                    Classes="docs-exampleTab"
+                                    Header="Utility">
+                                    <StackPanel
+                                        Spacing="0">
+                                        <Border
+                                            Background="{StaticResource BrushSlate950}"
+                                            Padding="24">
+                                            <StackPanel
+                                                Spacing="10">
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    tw:Tw.Class="text-xs"
+                                                    Text="The quick brown fox jumps over the lazy dog." />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    tw:Tw.Class="text-base"
+                                                    Text="The quick brown fox jumps over the lazy dog." />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    FontWeight="SemiBold"
+                                                    tw:Tw.Class="text-2xl"
+                                                    Text="The quick brown fox." />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate50}"
+                                                    FontWeight="Bold"
+                                                    tw:Tw.Class="text-5xl"
+                                                    Text="Quick fox" />
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                            BorderBrush="{StaticResource BrushSlate800}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="20,16">
+                                            <StackPanel
+                                                Spacing="6">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="AXAML" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-xs&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-base&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-2xl&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-5xl&quot; /&gt;" />
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem
+                                    Classes="docs-exampleTab"
+                                    Header="StaticResource">
+                                    <StackPanel
+                                        Spacing="0">
+                                        <Border
+                                            Background="{StaticResource BrushSlate950}"
+                                            Padding="24">
+                                            <StackPanel
+                                                Spacing="10">
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    FontSize="{StaticResource FontSizeXs}"
+                                                    Text="The quick brown fox jumps over the lazy dog." />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    FontSize="{StaticResource FontSizeBase}"
+                                                    Text="The quick brown fox jumps over the lazy dog." />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    FontSize="{StaticResource FontSize2xl}"
+                                                    FontWeight="SemiBold"
+                                                    Text="The quick brown fox." />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate50}"
+                                                    FontSize="{StaticResource FontSize5xl}"
+                                                    FontWeight="Bold"
+                                                    Text="Quick fox" />
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                            BorderBrush="{StaticResource BrushSlate800}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="20,16">
+                                            <StackPanel
+                                                Spacing="6">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="AXAML" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock FontSize=&quot;{StaticResource FontSizeXs}&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock FontSize=&quot;{StaticResource FontSizeBase}&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock FontSize=&quot;{StaticResource FontSize2xl}&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock FontSize=&quot;{StaticResource FontSize5xl}&quot; /&gt;" />
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </TabItem>
+                            </TabControl>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="Setting the line-height" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Tailwind also supports text-sm/6 style tokens that set font size and line-height together. The current parser only maps FontSize, so slash line-height modifiers stay explicitly documented as unsupported." />
+                        <Border
+                            Classes="docs-note">
+                            <StackPanel
+                                Spacing="8">
+                                <TextBlock
+                                    Classes="docs-noteTitle"
+                                    Text="Official examples not implemented yet" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="text-sm/6 / text-sm/7 / text-sm/8 / text-lg/7" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="Using a custom value" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Use bracket syntax like text-[14px] to set the font size based on a custom absolute value. The two tabs below compare parser usage with an equivalent local Avalonia StaticResource sample." />
+                        <Border
+                            Classes="docs-note">
+                            <StackPanel
+                                Spacing="8">
+                                <TextBlock
+                                    Classes="docs-noteTitle"
+                                    Text="Arbitrary font-size notes" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="px / rem / em / unitless" />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="Arbitrary font-size values are parser-only and do not emit generated package keys, so the StaticResource tab uses local sample resources." />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="rem and em use 16px base. Unitless values are treated as px." />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="% values and text-(length:&lt;custom-property&gt;) remain unsupported because Avalonia FontSize is modeled as an absolute double." />
+                            </StackPanel>
+                        </Border>
+                        <Border
+                            Classes="docs-surface">
+                            <TabControl
+                                Classes="docs-exampleTabs">
+                                <TabItem
+                                    Classes="docs-exampleTab"
+                                    Header="Utility">
+                                    <StackPanel
+                                        Spacing="0">
+                                        <Border
+                                            Background="{StaticResource BrushSlate950}"
+                                            Padding="24">
+                                            <StackPanel
+                                                Spacing="10">
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    tw:Tw.Class="text-[14px]"
+                                                    Text="text-[14px]" />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    FontWeight="SemiBold"
+                                                    tw:Tw.Class="text-[1.5rem]"
+                                                    Text="text-[1.5rem]" />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate50}"
+                                                    FontWeight="Bold"
+                                                    tw:Tw.Class="text-[2em]"
+                                                    Text="text-[2em]" />
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                            BorderBrush="{StaticResource BrushSlate800}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="20,16">
+                                            <StackPanel
+                                                Spacing="6">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="AXAML" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-[14px]&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-[1.5rem]&quot; /&gt;" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    Text="&lt;TextBlock tw:Tw.Class=&quot;text-[2em]&quot; /&gt;" />
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem
+                                    Classes="docs-exampleTab"
+                                    Header="StaticResource">
+                                    <StackPanel
+                                        Spacing="0">
+                                        <StackPanel.Resources>
+                                            <x:Double x:Key="ArbitraryFontSize14">14</x:Double>
+                                            <x:Double x:Key="ArbitraryFontSize24">24</x:Double>
+                                            <x:Double x:Key="ArbitraryFontSize32">32</x:Double>
+                                        </StackPanel.Resources>
+                                        <Border
+                                            Background="{StaticResource BrushSlate950}"
+                                            Padding="24">
+                                            <StackPanel
+                                                Spacing="10">
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    FontSize="{StaticResource ArbitraryFontSize14}"
+                                                    Text="FontSize=14" />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate100}"
+                                                    FontSize="{StaticResource ArbitraryFontSize24}"
+                                                    FontWeight="SemiBold"
+                                                    Text="FontSize=24" />
+                                                <TextBlock
+                                                    Foreground="{StaticResource BrushSlate50}"
+                                                    FontSize="{StaticResource ArbitraryFontSize32}"
+                                                    FontWeight="Bold"
+                                                    Text="FontSize=32" />
+                                            </StackPanel>
+                                        </Border>
+                                        <Border
+                                            BorderBrush="{StaticResource BrushSlate800}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="20,16">
+                                            <StackPanel
+                                                Spacing="6">
+                                                <TextBlock
+                                                    Classes="docs-miniTitle"
+                                                    Text="AXAML" />
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;x:Double x:Key=&quot;ArbitraryFontSize14&quot;&gt;14&lt;/x:Double&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;TextBlock FontSize=&quot;{StaticResource ArbitraryFontSize14}&quot; /&gt;</TextBlock>
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;x:Double x:Key=&quot;ArbitraryFontSize24&quot;&gt;24&lt;/x:Double&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;TextBlock FontSize=&quot;{StaticResource ArbitraryFontSize24}&quot; /&gt;</TextBlock>
+                                                <TextBlock
+                                                    Classes="docs-code"
+                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
+                                                    &lt;x:Double x:Key=&quot;ArbitraryFontSize32&quot;&gt;32&lt;/x:Double&gt;
+                                                &lt;/StackPanel.Resources&gt;
+                                                &lt;TextBlock FontSize=&quot;{StaticResource ArbitraryFontSize32}&quot; /&gt;</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </TabItem>
+                            </TabControl>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="Responsive design" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Tailwind&apos;s font-size docs also show breakpoint-prefixed examples like md:text-base. Variant prefixes remain unsupported across the current utility parser surface, so the docs call them out directly instead of implying support." />
+                        <Border
+                            Classes="docs-note">
+                            <StackPanel
+                                Spacing="8">
+                                <TextBlock
+                                    Classes="docs-noteTitle"
+                                    Text="Official examples not implemented yet" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="text-sm md:text-base" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="text-base lg:text-2xl" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</UserControl>
