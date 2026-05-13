@@ -1,3 +1,5 @@
+using System;
+
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -19,13 +21,25 @@ public partial class App : Application
         }
         else if (ApplicationLifetime is IActivityApplicationLifetime activityApplicationLifetime)
         {
-            activityApplicationLifetime.MainViewFactory = () => new SampleShell();
+            activityApplicationLifetime.MainViewFactory = CreateSampleShell;
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            singleViewPlatform.MainView = new SampleShell();
+            singleViewPlatform.MainView = CreateSampleShell();
         }
 
         base.OnFrameworkInitializationCompleted();
+    }
+
+    private static SampleShell CreateSampleShell()
+    {
+        try
+        {
+            return new SampleShell();
+        }
+        catch (Exception exception)
+        {
+            throw new InvalidOperationException($"Failed to initialize {nameof(SampleShell)}.{Environment.NewLine}{exception}", exception);
+        }
     }
 }

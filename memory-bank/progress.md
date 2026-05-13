@@ -4,6 +4,11 @@
 Spacing, color, font-size, and first-pass sizing foundations are implemented, and the repo now also contains a browser-hostable sample plus a GitHub Pages deployment workflow; only local WebAssembly validation remains blocked by this machine's workload-install state.
 
 ## What Works
+- `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` is now friendlier to Avalonia's desktop previewer runtime compiler: `TabStrip` event hookups happen in code-behind, and the simple header item templates now use reflection binding instead of designer-sensitive compiled bindings over local descriptor helper types.
+- Integrated-browser benchmarking now confirms the lazy `SampleShell` tradeoff in real browser runtime: first uncached jumps into `SIZING/Width` and `Height` are slightly slower at roughly 600ms and 540ms because creation cost is deferred, but cached tab revisits dropped from roughly 404-545ms in the old eager shell to roughly 49-51ms in the lazy shell.
+- The browser sample no longer throws the startup `NullReferenceException` that previously blanked the page after the canvas appeared; `SampleShell` now ignores the early `SelectionChanged` signal that Avalonia can raise during XAML initialization before the named controls are ready.
+- The browser splash now clears within the focused runtime check window after the Avalonia canvas/native host is attached, instead of lingering until the fallback timeout path.
+- `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` now uses a two-level `TabStrip` plus a lazy cached page host instead of eager nested `TabControl` content, reducing browser-side tab-switch overhead for the heavy docs pages while preserving per-page state after first load.
 - The sample surface is now split into a shared `SampleShell` plus thin desktop/browser hosts, so the same docs UI can run both as a native desktop app and as an Avalonia Browser app.
 - `samples/Tailwind.Avalonia.Sample.Browser` now contains browser entrypoint code, relative-path `wwwroot` assets, and a checked-in `.nojekyll` marker so the publish output is GitHub Pages friendly.
 - `.github/workflows/sample-browser-pages.yml` now restores the browser workload in CI, publishes the browser host, uploads `publish/wwwroot`, and deploys it to GitHub Pages using pinned, Node24-compatible actions.
@@ -66,6 +71,7 @@ Spacing, color, font-size, and first-pass sizing foundations are implemented, an
 - Decide whether directional border colors should be explicitly documented as unsupported under the no-custom-component constraint.
 
 ## Known Risks
+- Desktop previewer validation is still partially environment-coupled because the active previewer process locks the Debug output DLLs; if a local Debug build is needed while the designer is open, close or restart the previewer first.
 - Avalonia selector syntax differs from Tailwind token syntax.
 - Some utility semantics may not map 1:1 across all control types.
 - Local browser build/publish validation currently depends on `dotnet workload install wasm-tools`, and the current Windows machine has already shown a pending-reboot/MSI-cancel failure mode for that step.

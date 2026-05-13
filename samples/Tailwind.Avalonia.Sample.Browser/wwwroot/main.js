@@ -4,6 +4,7 @@ const isBrowser = globalThis.window !== undefined
 const splash = isBrowser ? globalThis.document.querySelector('.tailwind-avalonia-splash') : null
 const splashTitle = splash?.querySelector('.tailwind-avalonia-splash__title')
 const splashBody = splash?.querySelector('.tailwind-avalonia-splash__body')
+const splashContainer = isBrowser ? globalThis.document.getElementById('out') : null
 
 if (!isBrowser) {
     throw new Error('Expected Tailwind.Avalonia.Sample.Browser to run in a browser environment.')
@@ -24,50 +25,73 @@ function hideSplash() {
 }
 
 function showStartupError(error) {
-    if (!splash) {
+    const splashElement = ensureSplash()
+    if (!splashElement) {
         return
     }
 
-    splash.classList.remove('tailwind-avalonia-splash--hidden')
-    splash.classList.add('tailwind-avalonia-splash--error')
+    const titleElement = splashElement.querySelector('.tailwind-avalonia-splash__title')
+    const bodyElement = splashElement.querySelector('.tailwind-avalonia-splash__body')
 
-    if (splashTitle) {
-        splashTitle.textContent = 'Browser sample failed to start'
+    splashElement.classList.remove('tailwind-avalonia-splash--hidden')
+    splashElement.classList.add('tailwind-avalonia-splash--error')
+
+    if (titleElement) {
+        titleElement.textContent = 'Browser sample failed to start'
     }
 
-    if (splashBody) {
-        const message = error instanceof Error ? error.message : String(error)
-        splashBody.textContent = message
+    if (bodyElement) {
+        const message = error instanceof Error
+            ? [error.message, error.stack].filter(Boolean).join('\n\n')
+            : String(error)
+        bodyElement.textContent = message
     }
 }
+
+function ensureSplash() {
+    if (!splashContainer) {
+        return null
+    }
+
+    const currentSplash = splashContainer.querySelector('.tailwind-avalonia-splash')
+    if (currentSplash) {
+        return currentSplash
+    }
+
+    const restoredSplash = globalThis.document.createElement('div')
+    restoredSplash.className = 'tailwind-avalonia-splash tailwind-avalonia-splash--error'
+    restoredSplash.innerHTML = `
+        <p class="tailwind-avalonia-splash__eyebrow">Tailwind.Avalonia</p>
+        <h1 class="tailwind-avalonia-splash__title">Browser sample failed to start</h1>
+        <p class="tailwind-avalonia-splash__body"></p>
+    `
+
+    splashContainer.appendChild(restoredSplash)
+    return restoredSplash
+}
+
+globalThis.addEventListener('error', event => {
+    showStartupError(event.error ?? event.message ?? 'Unknown browser startup error.')
+})
+
+globalThis.addEventListener('unhandledrejection', event => {
+    showStartupError(event.reason ?? 'Unhandled promise rejection during browser startup.')
+})
 
 async function waitForCanvas(container) {
     if (!container) {
         return
     }
 
-    if (container.querySelector('canvas')) {
+    const timeoutAt = (globalThis.performance?.now() ?? 0) + 15000
+
+    while (!container.querySelector('canvas') && !container.querySelector('.avalonia-native-host')) {
+        if ((globalThis.performance?.now() ?? timeoutAt) >= timeoutAt) {
+            break
+        }
+
         await nextFrame()
-        await nextFrame()
-        return
     }
-
-    await new Promise(resolve => {
-        const observer = new MutationObserver(() => {
-            if (!container.querySelector('canvas')) {
-                return
-            }
-
-            observer.disconnect()
-            resolve()
-        })
-
-        observer.observe(container, { childList: true, subtree: true })
-        globalThis.setTimeout(() => {
-            observer.disconnect()
-            resolve()
-        }, 15000)
-    })
 
     await nextFrame()
     await nextFrame()

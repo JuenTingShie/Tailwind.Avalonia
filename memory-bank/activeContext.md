@@ -4,6 +4,10 @@
 With the desktop/browser sample split now in place, finish browser runtime validation on a machine that can install the WebAssembly workload, then return to semantic theme composition and package-validation work under the no-custom-component constraint.
 
 ## Recent Changes
+- Followed up on a desktop previewer regression in `SampleShell` by moving the `TabStrip` `SelectionChanged` wiring out of XAML and into code-behind, and by replacing the item-template compiled bindings with reflection bindings because Avalonia's runtime preview compiler could not resolve the shared shell's string event handlers or non-public local descriptor types.
+- Fixed the browser sample's post-canvas blank screen by making `SampleShell` tab-selection event handlers initialization-safe; Avalonia was firing `SelectionChanged` during XAML `EndInit` before the named `TabStrip` fields were reliably available.
+- Tightened the browser splash bootstrap so it now polls per frame for the Avalonia canvas/native host and drops the splash promptly once the browser surface is ready, instead of waiting on the slower observer timeout path.
+- Reworked `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` from nested eager `TabControl` content into a two-level `TabStrip` plus lazy cached page host so the browser sample no longer instantiates every heavy docs page up front and revisiting tabs only toggles visibility.
 - Extracted the existing sample UI out of `MainWindow` into a reusable `SampleShell` so the same docs-style surface can be hosted both as a desktop window and as a browser single-view app without duplicating sample pages.
 - Converted `samples/Tailwind.Avalonia.Sample` into the shared Avalonia app assembly, then added thin `samples/Tailwind.Avalonia.Sample.Desktop` and `samples/Tailwind.Avalonia.Sample.Browser` host projects following Avalonia's official cross-platform hosting pattern.
 - Added browser-specific `wwwroot` assets with relative paths plus a checked-in `.nojekyll` marker so the published WebAssembly output is compatible with GitHub Pages project-site hosting.
