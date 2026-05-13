@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 using Avalonia;
@@ -22,9 +23,9 @@ public class Tw : AvaloniaObject
     private const int MaxHeightMask = 1024;
     private const int FontSizeMask = 2048;
 
-    private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> ThicknessPropertyCache = new();
-    private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> BrushPropertyCache = new();
-    private static readonly ConcurrentDictionary<(Type Type, string PropertyName), AvaloniaProperty?> DoublePropertyCache = new();
+    private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> ThicknessPropertyCache = new();
+    private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> BrushPropertyCache = new();
+    private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> DoublePropertyCache = new();
 
     public static readonly AttachedProperty<string?> ClassProperty =
         AvaloniaProperty.RegisterAttached<Tw, AvaloniaObject, string?>(
@@ -820,77 +821,48 @@ public class Tw : AvaloniaObject
 
     private static AvaloniaProperty? FindThicknessProperty(Type type, string propertyName)
     {
-        return ThicknessPropertyCache.GetOrAdd((type, propertyName), static key =>
+        return ThicknessPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key =>
         {
-            var (candidateType, candidatePropertyName) = key;
-            var fieldName = $"{candidatePropertyName}Property";
-
-            while (candidateType is not null)
-            {
-                var field = candidateType.GetField(fieldName, BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-
-                if (field?.GetValue(null) is AvaloniaProperty property && property.PropertyType == typeof(Thickness))
-                {
-                    return property;
-                }
-
-                candidateType = candidateType.BaseType;
-            }
-
-            return null;
+            var property = FindPropertyField(key);
+            return property?.PropertyType == typeof(Thickness) ? property : null;
         });
     }
 
     private static AvaloniaProperty? FindBrushProperty(Type type, string propertyName)
     {
-        return BrushPropertyCache.GetOrAdd((type, propertyName), static key =>
+        return BrushPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key =>
         {
-            var (candidateType, candidatePropertyName) = key;
-            var fieldName = $"{candidatePropertyName}Property";
-
-            while (candidateType is not null)
-            {
-                var field = candidateType.GetField(fieldName, BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-
-                if (field?.GetValue(null) is AvaloniaProperty property && typeof(IBrush).IsAssignableFrom(property.PropertyType))
-                {
-                    return property;
-                }
-
-                candidateType = candidateType.BaseType;
-            }
-
-            return null;
+            var property = FindPropertyField(key);
+            return property is not null && typeof(IBrush).IsAssignableFrom(property.PropertyType) ? property : null;
         });
     }
 
     private static AvaloniaProperty? FindDoubleProperty(Type type, string propertyName)
     {
-        return DoublePropertyCache.GetOrAdd((type, propertyName), static key =>
+        return DoublePropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key =>
         {
-            var (candidateType, candidatePropertyName) = key;
-            var fieldName = $"{candidatePropertyName}Property";
-
-            while (candidateType is not null)
-            {
-                var field = candidateType.GetField(fieldName, BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-
-                if (field?.GetValue(null) is AvaloniaProperty property && property.PropertyType == typeof(double))
-                {
-                    return property;
-                }
-
-                candidateType = candidateType.BaseType;
-            }
-
-            return null;
+            var property = FindPropertyField(key);
+            return property?.PropertyType == typeof(double) ? property : null;
         });
+    }
+
+    private static AvaloniaProperty? FindPropertyField(PropertyLookupKey key)
+    {
+        var field = key.Type.GetField(
+            $"{key.PropertyName}Property",
+            BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+
+        return field?.GetValue(null) as AvaloniaProperty;
     }
 
     private readonly record struct SpacingUtility(SpacingTarget Target, SpacingEdge Edge, double Pixels);
     private readonly record struct BrushUtility(BrushTarget Target, IBrush Brush);
     private readonly record struct SizingUtility(SizingTarget Target, double Pixels);
     private readonly record struct FontSizeUtility(double Pixels);
+
+    private readonly record struct PropertyLookupKey(
+        [property: DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] Type Type,
+        string PropertyName);
 
     private readonly record struct UtilityDescriptor(string Prefix, SpacingTarget Target, SpacingEdge Edge);
     private readonly record struct BrushUtilityDescriptor(string Prefix, BrushTarget Target);

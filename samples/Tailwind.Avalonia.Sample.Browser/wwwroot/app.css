@@ -1,0 +1,52 @@
+html,
+body,
+#out {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #020617;
+    color: #e2e8f0;
+    font-family: Inter, Segoe UI, sans-serif;
+}
+
+.tailwind-avalonia-splash {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+    padding: 32px;
+    background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 40%),
+        linear-gradient(180deg, #0f172a 0%, #020617 100%);
+    text-align: center;
+}
+
+.tailwind-avalonia-splash__eyebrow {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.tailwind-avalonia-splash__title {
+    margin: 0;
+    color: #f8fafc;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+}
+
+.tailwind-avalonia-splash__body {
+    max-width: 640px;
+    margin: 0;
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.6;
+}

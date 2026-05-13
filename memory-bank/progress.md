@@ -1,9 +1,16 @@
 # Progress
 
 ## Current Status
-Spacing, color, font-size, and first-pass sizing foundations are implemented, locally validated, and now documented through a docs-style sample surface.
+Spacing, color, font-size, and first-pass sizing foundations are implemented, and the repo now also contains a browser-hostable sample plus a GitHub Pages deployment workflow; only local WebAssembly validation remains blocked by this machine's workload-install state.
 
 ## What Works
+- The sample surface is now split into a shared `SampleShell` plus thin desktop/browser hosts, so the same docs UI can run both as a native desktop app and as an Avalonia Browser app.
+- `samples/Tailwind.Avalonia.Sample.Browser` now contains browser entrypoint code, relative-path `wwwroot` assets, and a checked-in `.nojekyll` marker so the publish output is GitHub Pages friendly.
+- `.github/workflows/sample-browser-pages.yml` now restores the browser workload in CI, publishes the browser host, uploads `publish/wwwroot`, and deploys it to GitHub Pages using pinned actions.
+- `samples/Tailwind.Avalonia.Sample.Browser/README.md` now documents the local `wasm-tools` prerequisite, browser run/publish commands, and the exact static output path.
+- `Tw.cs` still uses reflected Avalonia `*Property` field lookup, but the cache key is now trim-aware so browser publish cleanup no longer depends on the unstable `AvaloniaPropertyRegistry` path that broke `TwTests`.
+- `dotnet build samples/Tailwind.Avalonia.Sample.Desktop/Tailwind.Avalonia.Sample.Desktop.csproj` succeeds after the browser-host refactor.
+- `dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj` passes with 78 green tests after the property-lookup regression fix.
 - `FontSizeScale` and `FontSizeResourceDictionary` now expose Tailwind font-size tokens as generated `FontSizeXs` through `FontSize9xl` `StaticResource` keys.
 - `tw:Tw.Class` now applies `text-xs` through `text-9xl` plus bracket arbitrary absolute values like `text-[14px]` onto Avalonia `FontSize`, while keeping existing `text-sky-300` / `text-[#hex]` foreground color parsing intact.
 - Sample app now exposes a dedicated `Typography/Font size` docs page with Tailwind-docs-inspired basic/custom-value demos plus explicit unsupported notes for line-height modifiers and responsive variants.
@@ -47,6 +54,9 @@ Spacing, color, font-size, and first-pass sizing foundations are implemented, lo
 - Automated tests now also cover transparent and opacity parsing behavior.
 
 ## What Is Left
+- Rerun browser publish and a real browser smoke test after `wasm-tools` can be installed successfully on a machine without the current pending-reboot/MSI-cancel condition.
+- Decide whether to keep the current shared-app-project architecture or introduce a separate shared project and restore the original sample project name to the desktop executable.
+- Enable GitHub Pages for the repository and confirm the first workflow deployment completes end to end.
 - Validate package/publish consumption beyond the local project-reference sample.
 - Decide whether compile-time merged include support is needed after packaging.
 - Expand semantic/dark-light theme layering and remaining non-border utility coverage.
@@ -58,6 +68,8 @@ Spacing, color, font-size, and first-pass sizing foundations are implemented, lo
 ## Known Risks
 - Avalonia selector syntax differs from Tailwind token syntax.
 - Some utility semantics may not map 1:1 across all control types.
+- Local browser build/publish validation currently depends on `dotnet workload install wasm-tools`, and the current Windows machine has already shown a pending-reboot/MSI-cancel failure mode for that step.
+- The GitHub Pages workflow is ready, but the actual repository-level Pages setting still has to be enabled and exercised once in GitHub.
 - Parser application currently relies on reflected `PaddingProperty` / `MarginProperty` discovery.
 - Sizing utility application now also relies on reflected `WidthProperty` / `MinWidthProperty` / `MaxWidthProperty` / `HeightProperty` / `MinHeightProperty` / `MaxHeightProperty` discovery.
 - Font-size utility application now also relies on reflected `FontSizeProperty` discovery, and future typography tokens sharing the `text-*` namespace will need to preserve the current size-before-color disambiguation rule.
@@ -70,4 +82,4 @@ Spacing, color, font-size, and first-pass sizing foundations are implemented, lo
 - Other RTL logical docs previews, especially margin, may need the same mirror-cancel presentation pattern if the goal is to show physical side effects instead of Avalonia's mirrored chrome.
 
 ## Estimated Stage
-98%: spacing, color, font-size, and first-pass sizing token foundations plus whole-property color utilities, docs-style sample coverage now including typography sizing and compiled-binding-safe reference tables, and core automated tests are in place, with semantic theme layering, package validation, and deeper typography/theme scope decisions still remaining.
+99%: the library foundations, docs-style sample surface, browser-hostable sample, Pages workflow, and automated tests are in place; only environment-blocked browser validation plus a small architecture follow-up decision remain before this slice is fully closed.

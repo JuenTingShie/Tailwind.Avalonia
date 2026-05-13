@@ -1,9 +1,16 @@
 # Active Context
 
 ## Current Focus
-With the sample docs refresh complete, build on the spacing, colors, and first-pass sizing foundation with semantic theme composition and package validation, under the no-custom-component constraint.
+With the desktop/browser sample split now in place, finish browser runtime validation on a machine that can install the WebAssembly workload, then return to semantic theme composition and package-validation work under the no-custom-component constraint.
 
 ## Recent Changes
+- Extracted the existing sample UI out of `MainWindow` into a reusable `SampleShell` so the same docs-style surface can be hosted both as a desktop window and as a browser single-view app without duplicating sample pages.
+- Converted `samples/Tailwind.Avalonia.Sample` into the shared Avalonia app assembly, then added thin `samples/Tailwind.Avalonia.Sample.Desktop` and `samples/Tailwind.Avalonia.Sample.Browser` host projects following Avalonia's official cross-platform hosting pattern.
+- Added browser-specific `wwwroot` assets with relative paths plus a checked-in `.nojekyll` marker so the published WebAssembly output is compatible with GitHub Pages project-site hosting.
+- Added `.github/workflows/sample-browser-pages.yml` with pinned GitHub Actions to restore the browser workload, publish the browser sample, upload `publish/wwwroot`, and deploy it to GitHub Pages.
+- Added `samples/Tailwind.Avalonia.Sample.Browser/README.md` covering local `wasm-tools` prerequisites, local run/publish commands, Pages output path, and the checked-in `.nojekyll` behavior.
+- Replaced the temporary `AvaloniaPropertyRegistry` property lookup attempt in `Tw.cs` with trim-aware reflected field lookup keyed by a custom annotated cache struct, because the registry path triggered a duplicate-key runtime failure in `TwTests` while the browser publish motivation was only to fix trimming analysis on the cached tuple path.
+- Revalidated the desktop host build and the full test project; browser publish remains blocked only by the current Windows machine failing `dotnet workload install wasm-tools` while a pending reboot/MSI cancellation state is active.
 - Added `FontSizeScale` and `FontSizeResourceDictionary`, then merged those typography sizing tokens into `Themes/Tailwind.axaml` so package consumers now get generated `FontSizeXs` through `FontSize9xl` `StaticResource` keys alongside the existing spacing, sizing, and color surfaces.
 - Extended `tw:Tw.Class` so recognized `text-*` size tokens now set Avalonia `FontSize` for `text-xs` through `text-9xl` plus bracket arbitrary values like `text-[14px]`, while palette and arbitrary color tokens such as `text-sky-300` and `text-[#ff6b6b]` still fall through to the existing `Foreground` parser.
 - Added focused font-size coverage in the test project for token lookup, resource generation, parser application, arbitrary units, clear behavior, and the shared `text-*` namespace disambiguation between font size and text color.
@@ -59,6 +66,10 @@ With the sample docs refresh complete, build on the spacing, colors, and first-p
 - Reworked the sample example sections again so nested tabs now switch both the live preview and the AXAML snippet between `Utility` and `StaticResource` variants, while unsupported cases keep their honest explanatory note in the `StaticResource` tab.
 
 ## Active Decisions
+- Browser hosting uses a shared app assembly plus thin desktop/browser host projects, matching Avalonia's official pattern rather than duplicating the sample UI across two app projects.
+- GitHub Pages deployment should publish the browser host's generated `publish/wwwroot` folder directly; relative asset paths plus `.nojekyll` are sufficient for project-site hosting under `/<repository-name>/`.
+- Browser-oriented trim cleanup in `Tw.cs` should keep the existing reflected Avalonia `*Property` field discovery model rather than rely on `AvaloniaPropertyRegistry`, because the registry path is not stable for the current control/test surface.
+- Local browser validation now depends on a successful `wasm-tools` workload install for the active .NET 10 SDK band; if the machine has a pending reboot after SDK changes, finish the reboot before retrying the workload install.
 - `text-*` is now a split namespace: known font-size tokens and numeric arbitrary values claim `FontSize` first, and any remaining `text-*` token still flows to the existing text-color parser.
 - Generated typography sizing keys follow the established property-prefix naming pattern: `FontSizeXs`, `FontSizeBase`, `FontSize2xl`, and so on.
 - New utility families should gain generated `StaticResource` parity at the same time whenever the behavior maps honestly onto shared Avalonia resources; do not defer that parity to a later cleanup pass.
@@ -90,12 +101,14 @@ With the sample docs refresh complete, build on the spacing, colors, and first-p
 - `ps-*` and `pe-*` remain logical spacing utilities; `psv-*` and `pev-*` are now the explicit parser surface for final visual start/end padding under Avalonia's mirror model.
 
 ## Immediate Next Steps
-1. Start semantic alias and dark/light theme layering on top of the concrete Tailwind palette.
-2. Decide whether typography should add Tailwind-style line-height modifiers (`text-sm/6`) or keep font-size and line-height as separate future utility families.
-3. Decide which non-numeric sizing families should be added next, now that numeric sizing already has `StaticResource` parity.
-4. Validate package/publish consumption beyond the local project-reference sample.
+1. Reboot the current Windows machine, install `wasm-tools`, and rerun browser publish plus an actual browser smoke test to close the remaining environment-only validation gap.
+2. Decide whether `samples/Tailwind.Avalonia.Sample` should stay as the shared app assembly or whether the repo should introduce a separate shared project and restore the original sample project name to the desktop executable.
+3. Enable GitHub Pages in the repository settings and verify the first `sample-browser-pages` workflow deployment end to end.
+4. Return to semantic alias and dark/light theme layering once browser-hosting validation is closed.
 
 ## Open Questions
+- Whether the shared-app-project architecture should remain as-is, or whether the repo should preserve `Tailwind.Avalonia.Sample` as the desktop executable and move shared app code into a new project.
+- Whether browser-targeted publish checks should become part of regular CI beyond the new Pages workflow.
 - Whether Tailwind's default line-height behavior for `text-*` should eventually map onto Avalonia `LineHeight`, or remain intentionally out of scope.
 - Whether logical start/end spacing should gain dedicated `StaticResource` keys or remain parser-only.
 - Whether spacing generation should remain checked-in C# or move to a generator pipeline.

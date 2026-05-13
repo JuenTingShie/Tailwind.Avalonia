@@ -3,6 +3,10 @@
      Name="/samples/">
     <Project
        Path="samples/Tailwind.Avalonia.Sample/Tailwind.Avalonia.Sample.csproj"/>
+    <Project
+       Path="samples/Tailwind.Avalonia.Sample.Desktop/Tailwind.Avalonia.Sample.Desktop.csproj"/>
+    <Project
+       Path="samples/Tailwind.Avalonia.Sample.Browser/Tailwind.Avalonia.Sample.Browser.csproj"/>
   </Folder>
   <Folder
      Name="/src/">

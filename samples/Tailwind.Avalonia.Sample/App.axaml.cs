@@ -17,6 +17,14 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow();
         }
+        else if (ApplicationLifetime is IActivityApplicationLifetime activityApplicationLifetime)
+        {
+            activityApplicationLifetime.MainViewFactory = () => new SampleShell();
+        }
+        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
+        {
+            singleViewPlatform.MainView = new SampleShell();
+        }
 
         base.OnFrameworkInitializationCompleted();
     }

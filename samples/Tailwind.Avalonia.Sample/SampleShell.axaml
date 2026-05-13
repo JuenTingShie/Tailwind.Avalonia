@@ -1,0 +1,113 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sizing="using:Tailwind.Avalonia.Sample.Sizing"
+    xmlns:spacing="using:Tailwind.Avalonia.Sample.Spacing"
+    xmlns:typography="using:Tailwind.Avalonia.Sample.Typography"
+    mc:Ignorable="d"
+    d:DesignWidth="1440"
+    d:DesignHeight="920"
+    x:Class="Tailwind.Avalonia.Sample.SampleShell">
+    <UserControl.Styles>
+        <Style
+            Selector="TabItem">
+            <Setter
+                Property="MinWidth"
+                Value="176" />
+            <Setter
+                Property="Margin"
+                Value="0,0,16,8" />
+            <Setter
+                Property="Padding"
+                Value="18,16" />
+            <Setter
+                Property="FontSize"
+                Value="15" />
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold" />
+            <Setter
+                Property="Foreground"
+                Value="{StaticResource BrushSlate400}" />
+            <Setter
+                Property="Background"
+                Value="{StaticResource BrushSlate900}" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSlate800}" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Left" />
+        </Style>
+        <Style
+            Selector="TabItem:selected">
+            <Setter
+                Property="Foreground"
+                Value="{StaticResource BrushWhite}" />
+            <Setter
+                Property="Background"
+                Value="{StaticResource BrushSlate800}" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSlate700}" />
+        </Style>
+    </UserControl.Styles>
+    <Grid
+        Background="{StaticResource BrushSlate950}">
+        <TabControl
+            Margin="28"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            SelectedIndex="0"
+            TabStripPlacement="Left">
+            <TabItem
+                Header="SPACING">
+                <TabControl
+                    TabStripPlacement="Left">
+                    <TabItem
+                        Header="Padding">
+                        <spacing:Padding />
+                    </TabItem>
+                    <TabItem
+                        Header="Margin">
+                        <spacing:Margin />
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem
+                Header="SIZING">
+                <TabControl
+                    TabStripPlacement="Left">
+                    <TabItem
+                        Header="Width">
+                        <sizing:Width />
+                    </TabItem>
+                    <TabItem
+                        Header="Height">
+                        <sizing:Height />
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem
+                Header="TYPOGRAPHY">
+                <TabControl
+                    TabStripPlacement="Left">
+                    <TabItem
+                        Header="Font size">
+                        <typography:FontSize />
+                    </TabItem>
+                    <TabItem
+                        Header="Colors">
+                        <typography:ColorUtilities />
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
