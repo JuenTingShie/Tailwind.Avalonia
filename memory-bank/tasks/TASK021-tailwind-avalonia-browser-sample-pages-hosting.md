@@ -2,7 +2,7 @@
 
 **Status:** Completed  
 **Added:** 2026-05-13  
-**Updated:** 2026-05-13
+**Updated:** 2026-05-14
 
 ## Original Request
 create a sample.browser project that is thesame as sample but can host on github page and browsing by browser
@@ -38,6 +38,11 @@ create a sample.browser project that is thesame as sample but can host on github
 | 1.7 | Revalidate locally | Complete | 2026-05-13 | Desktop build and full tests passed; local browser workload install failed only because the current machine is in a pending-reboot/MSI-cancel state. |
 
 ## Progress Log
+### 2026-05-14
+- Refreshed `.github/workflows/sample-browser-pages.yml` to Node24-compatible pinned action SHAs after GitHub's Node 20 deprecation warning surfaced in CI.
+- Updated `actions/checkout` to `v6.0.2`, `actions/configure-pages` to `v6.0.0`, and `actions/upload-pages-artifact` to `v5.0.0`, which now pulls in `actions/upload-artifact` v7 internally.
+- Revalidated the workflow file with editor diagnostics and confirmed no YAML errors after the SHA refresh.
+
 ### 2026-05-13
 - Re-read the official Avalonia Browser guidance plus GitHub Pages custom workflow docs to confirm the expected host split, publish flow, and Pages deployment job shape.
 - Extracted the shared sample content into `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` and updated `App.axaml.cs` so desktop and browser lifetimes both point at the same UI.
