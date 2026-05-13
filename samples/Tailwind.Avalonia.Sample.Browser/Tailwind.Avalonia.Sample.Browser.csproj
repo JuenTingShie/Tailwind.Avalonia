@@ -4,6 +4,8 @@
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantTimezone>true</InvariantTimezone>
     <WasmBuildNative>true</WasmBuildNative>
   </PropertyGroup>
 

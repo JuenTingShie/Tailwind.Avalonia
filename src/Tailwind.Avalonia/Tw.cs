@@ -819,6 +819,7 @@ public class Tw : AvaloniaObject
         }
     }
 
+    [UnconditionalSuppressMessage("Trimming", "IL2067", Justification = "Avalonia property lookup intentionally inspects runtime control types for public static *Property fields on the supported control surface.")]
     private static AvaloniaProperty? FindThicknessProperty(Type type, string propertyName)
     {
         return ThicknessPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key =>
@@ -828,6 +829,7 @@ public class Tw : AvaloniaObject
         });
     }
 
+    [UnconditionalSuppressMessage("Trimming", "IL2067", Justification = "Avalonia property lookup intentionally inspects runtime control types for public static *Property fields on the supported control surface.")]
     private static AvaloniaProperty? FindBrushProperty(Type type, string propertyName)
     {
         return BrushPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key =>
@@ -837,6 +839,7 @@ public class Tw : AvaloniaObject
         });
     }
 
+    [UnconditionalSuppressMessage("Trimming", "IL2067", Justification = "Avalonia property lookup intentionally inspects runtime control types for public static *Property fields on the supported control surface.")]
     private static AvaloniaProperty? FindDoubleProperty(Type type, string propertyName)
     {
         return DoublePropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key =>
@@ -860,9 +863,21 @@ public class Tw : AvaloniaObject
     private readonly record struct SizingUtility(SizingTarget Target, double Pixels);
     private readonly record struct FontSizeUtility(double Pixels);
 
-    private readonly record struct PropertyLookupKey(
-        [property: DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] Type Type,
-        string PropertyName);
+    private readonly record struct PropertyLookupKey
+    {
+        public PropertyLookupKey(
+            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] Type type,
+            string propertyName)
+        {
+            Type = type;
+            PropertyName = propertyName;
+        }
+
+        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
+        public Type Type { get; }
+
+        public string PropertyName { get; }
+    }
 
     private readonly record struct UtilityDescriptor(string Prefix, SpacingTarget Target, SpacingEdge Edge);
     private readonly record struct BrushUtilityDescriptor(string Prefix, BrushTarget Target);

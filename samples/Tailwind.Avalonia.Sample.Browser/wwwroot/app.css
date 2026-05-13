@@ -25,6 +25,19 @@ body {
         radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 40%),
         linear-gradient(180deg, #0f172a 0%, #020617 100%);
     text-align: center;
+    transition: opacity 180ms ease, visibility 0s linear 180ms;
+}
+
+.tailwind-avalonia-splash--hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.tailwind-avalonia-splash--error {
+    background:
+        radial-gradient(circle at top, rgba(248, 113, 113, 0.22), transparent 40%),
+        linear-gradient(180deg, #450a0a 0%, #111827 100%);
 }
 
 .tailwind-avalonia-splash__eyebrow {
@@ -49,4 +62,12 @@ body {
     color: #cbd5e1;
     font-size: 1rem;
     line-height: 1.6;
+}
+
+.tailwind-avalonia-splash--error .tailwind-avalonia-splash__title {
+    color: #fee2e2;
+}
+
+.tailwind-avalonia-splash--error .tailwind-avalonia-splash__body {
+    color: #fecaca;
 }
