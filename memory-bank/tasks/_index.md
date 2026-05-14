@@ -7,6 +7,8 @@
 - None yet.
 
 ## Completed
+- [TASK024] Tailwind Avalonia sample shell visual polish - Applied card-based shell styling, stronger selected states, and richer header/pane chrome to the shared responsive sample shell, then revalidated desktop/browser host builds.
+- [TASK023] Tailwind Avalonia sample shell responsive navigation - Reworked `SampleShell` into a collapsible vertical `SplitView` navigation shell with mobile-friendly narrow-width behavior and revalidated desktop/browser host builds.
 - [TASK001] Tailwind Avalonia spacing foundation - Solution scaffolded, spacing resources/parser implemented, sample build and startup validated.
 - [TASK002] Tailwind Avalonia colors token foundation - Official Tailwind v4.2 palette resources added, sample build validated, and runtime startup smoke-tested.
 - [TASK003] Tailwind Avalonia automated test foundation - xUnit project added, spacing and color tests implemented, `dotnet test` passing.

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Interactivity;
 
 namespace Tailwind.Avalonia.Sample;
 
@@ -12,8 +13,14 @@ namespace Tailwind.Avalonia.Sample;
 /// </summary>
 public partial class SampleShell : UserControl
 {
+    private const double NarrowLayoutBreakpoint = 960;
+    private const double NarrowPaneLength = 304;
+    private const double WidePaneLength = 336;
+
     private readonly Dictionary<SampleShellPageDescriptor, Control> pageCache = new();
     private readonly SampleShellSectionDescriptor[] sections;
+    private bool isNarrowLayout;
+    private bool reopenPaneWhenWide = true;
     private SampleShellSectionDescriptor? selectedSection;
 
     /// <summary>
@@ -25,8 +32,11 @@ public partial class SampleShell : UserControl
 
         // Wire events in code-behind so the designer runtime compiler doesn't need
         // to resolve string-based event handlers from XAML for this shared shell.
+        PaneCloseButton.Click += NavigationToggleClicked;
+        PaneToggleButton.Click += NavigationToggleClicked;
         SectionTabStrip.SelectionChanged += SectionSelectionChanged;
         PageTabStrip.SelectionChanged += PageSelectionChanged;
+        SizeChanged += SampleShellSizeChanged;
 
         sections = CreateSections();
         SectionTabStrip.ItemsSource = sections;
@@ -101,6 +111,13 @@ public partial class SampleShell : UserControl
         {
             hostedPage.IsVisible = ReferenceEquals(hostedPage, targetPage);
         }
+
+        CurrentPageText.Text = page.Header;
+
+        if (isNarrowLayout)
+        {
+            SetPaneOpen(false);
+        }
     }
 
     // Create a docs page lazily and keep it hosted for future visits.
@@ -130,6 +147,7 @@ public partial class SampleShell : UserControl
     private void SelectSection(SampleShellSectionDescriptor section)
     {
         selectedSection = section;
+        CurrentSectionText.Text = section.Header;
         PageTabStrip.ItemsSource = section.Pages;
 
         if (!ReferenceEquals(SectionTabStrip.SelectedItem, section))
@@ -155,9 +173,75 @@ public partial class SampleShell : UserControl
         ShowPage(targetPage);
     }
 
+    // Toggle the navigation pane from either the content header or the pane itself.
+    private void NavigationToggleClicked(object? sender, RoutedEventArgs e)
+    {
+        SetPaneOpen(!NavigationSplitView.IsPaneOpen);
+    }
+
+    // Switch between inline and overlay navigation so narrow screens keep the page readable.
+    private void SampleShellSizeChanged(object? sender, SizeChangedEventArgs e)
+    {
+        UpdateResponsiveLayout(e.NewSize.Width);
+    }
+
+    // Apply the current pane mode, widths, and shell spacing based on available width.
+    private void UpdateResponsiveLayout(double width)
+    {
+        var useNarrowLayout = width > 0 && width < NarrowLayoutBreakpoint;
+
+        if (useNarrowLayout != isNarrowLayout)
+        {
+            if (useNarrowLayout)
+            {
+                reopenPaneWhenWide = NavigationSplitView.IsPaneOpen;
+                isNarrowLayout = true;
+                SetPaneOpen(false);
+            }
+            else
+            {
+                isNarrowLayout = false;
+                SetPaneOpen(reopenPaneWhenWide);
+            }
+        }
+
+        NavigationSplitView.DisplayMode = useNarrowLayout
+            ? SplitViewDisplayMode.Overlay
+            : SplitViewDisplayMode.Inline;
+        NavigationSplitView.OpenPaneLength = useNarrowLayout ? NarrowPaneLength : WidePaneLength;
+        ShellHeader.Padding = useNarrowLayout ? new Thickness(12) : new Thickness(20, 16);
+        PageContentChrome.Padding = useNarrowLayout ? new Thickness(12) : new Thickness(20);
+
+        UpdateNavigationChrome();
+    }
+
+    // Keep the shell buttons aligned with the current open/closed pane state.
+    private void UpdateNavigationChrome()
+    {
+        var isPaneOpen = NavigationSplitView.IsPaneOpen;
+        PaneToggleButton.IsVisible = !isPaneOpen;
+        PaneCloseButton.IsVisible = isPaneOpen;
+        ToolTip.SetTip(PaneToggleButton, isNarrowLayout ? "Open navigation" : "Show navigation");
+        ToolTip.SetTip(PaneCloseButton, isNarrowLayout ? "Close navigation" : "Hide navigation");
+    }
+
+    // Centralize pane state changes so the button chrome stays in sync.
+    private void SetPaneOpen(bool isOpen)
+    {
+        NavigationSplitView.IsPaneOpen = isOpen;
+
+        if (!isNarrowLayout)
+        {
+            reopenPaneWhenWide = isOpen;
+        }
+
+        UpdateNavigationChrome();
+    }
+
     private void SampleShellAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)
     {
         AttachedToVisualTree -= SampleShellAttachedToVisualTree;
+        UpdateResponsiveLayout(Bounds.Width);
         SelectSection(sections[0]);
     }
 }

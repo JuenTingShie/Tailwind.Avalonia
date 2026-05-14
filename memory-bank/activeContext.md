@@ -4,6 +4,9 @@
 With the desktop/browser sample split now in place, finish browser runtime validation on a machine that can install the WebAssembly workload, then return to semantic theme composition and package-validation work under the no-custom-component constraint.
 
 ## Recent Changes
+- Simplified the shared sample shell chrome again by removing the sidebar's descriptive copy and switching both pane-toggle controls to hamburger icon buttons, keeping the visual polish while making the navigation read as a cleaner docs sidebar.
+- Refined `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` so the responsive shell now visually matches the richer docs sample language: the navigation pane is card-based, section/page groups are visually separated, header chrome carries badges and stronger hierarchy, and both pane/content areas use subtle accent layers instead of a flat all-slate frame.
+- Reworked `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` into a responsive `SplitView` shell with one stacked vertical navigation pane for sections and pages, explicit show/hide buttons, and width-based `Inline`/`Overlay` switching so the shared sample is more mobile-friendly without giving up the existing lazy page cache.
 - Followed up on a desktop previewer regression in `SampleShell` by moving the `TabStrip` `SelectionChanged` wiring out of XAML and into code-behind, and by replacing the item-template compiled bindings with reflection bindings because Avalonia's runtime preview compiler could not resolve the shared shell's string event handlers or non-public local descriptor types.
 - Fixed the browser sample's post-canvas blank screen by making `SampleShell` tab-selection event handlers initialization-safe; Avalonia was firing `SelectionChanged` during XAML `EndInit` before the named `TabStrip` fields were reliably available.
 - Tightened the browser splash bootstrap so it now polls per frame for the Avalonia canvas/native host and drops the splash promptly once the browser surface is ready, instead of waiting on the slower observer timeout path.
@@ -70,6 +73,9 @@ With the desktop/browser sample split now in place, finish browser runtime valid
 - Reworked the sample example sections again so nested tabs now switch both the live preview and the AXAML snippet between `Utility` and `StaticResource` variants, while unsupported cases keep their honest explanatory note in the `StaticResource` tab.
 
 ## Active Decisions
+- The shared `SampleShell` sidebar should stay function-first: keep structural labels like `SECTIONS` and `PAGES`, but avoid marketing/explanatory copy inside the pane and prefer compact icon-only hamburger toggles for opening and closing navigation.
+- `SampleShell` should reuse the sample docs visual language instead of staying a plain transport shell: prefer grouped rounded surfaces, stronger selected-state contrast, and restrained accent color layers so navigation looks intentional on both desktop and mobile widths without inventing a second design system.
+- `SampleShell` navigation should stay as a single vertical `SplitView` pane: keep the docs navigation inline on wider widths, switch to overlay on narrow widths, and auto-close the pane after page selection in narrow mode so the content area stays readable on phones and small browser viewports.
 - Browser hosting uses a shared app assembly plus thin desktop/browser host projects, matching Avalonia's official pattern rather than duplicating the sample UI across two app projects.
 - GitHub Pages deployment should publish the browser host's generated `publish/wwwroot` folder directly; relative asset paths plus `.nojekyll` are sufficient for project-site hosting under `/<repository-name>/`.
 - Browser-oriented trim cleanup in `Tw.cs` should keep the existing reflected Avalonia `*Property` field discovery model rather than rely on `AvaloniaPropertyRegistry`, because the registry path is not stable for the current control/test surface.

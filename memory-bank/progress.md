@@ -1,9 +1,12 @@
 # Progress
 
 ## Current Status
-Spacing, color, font-size, and first-pass sizing foundations are implemented, and the repo now also contains a browser-hostable sample plus a GitHub Pages deployment workflow; only local WebAssembly validation remains blocked by this machine's workload-install state.
+Spacing, color, font-size, and first-pass sizing foundations are implemented, and the repo now also contains a browser-hostable sample plus a GitHub Pages deployment workflow; the shared sample shell now has responsive mobile-friendly navigation, and only local WebAssembly validation remains blocked by this machine's workload-install state.
 
 ## What Works
+- `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` now keeps the sidebar visually cleaner by removing descriptive pane copy and using hamburger icon buttons for both open and close affordances, while preserving the responsive `SplitView` navigation behavior.
+- `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` now carries a more intentional docs-shell presentation: rounded pane/header/content surfaces, separated section/page navigation cards, stronger hover/selected states, responsive menu pills, and subtle accent background shapes that improve the sample's appearance without changing the lazy navigation behavior.
+- `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` now uses a responsive `SplitView` shell with one stacked vertical navigation pane for sections and pages, explicit pane show/hide affordances, width-based `Inline`/`Overlay` switching, and narrow-layout auto-collapse after page selection so the docs sample keeps more room for content on phone-sized/browser-narrow viewports.
 - `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` is now friendlier to Avalonia's desktop previewer runtime compiler: `TabStrip` event hookups happen in code-behind, and the simple header item templates now use reflection binding instead of designer-sensitive compiled bindings over local descriptor helper types.
 - Integrated-browser benchmarking now confirms the lazy `SampleShell` tradeoff in real browser runtime: first uncached jumps into `SIZING/Width` and `Height` are slightly slower at roughly 600ms and 540ms because creation cost is deferred, but cached tab revisits dropped from roughly 404-545ms in the old eager shell to roughly 49-51ms in the lazy shell.
 - The browser sample no longer throws the startup `NullReferenceException` that previously blanked the page after the canvas appeared; `SampleShell` now ignores the early `SelectionChanged` signal that Avalonia can raise during XAML initialization before the named controls are ready.

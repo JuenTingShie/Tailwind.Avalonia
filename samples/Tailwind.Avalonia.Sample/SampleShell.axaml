@@ -7,27 +7,12 @@
     d:DesignWidth="1440"
     d:DesignHeight="920"
     x:Class="Tailwind.Avalonia.Sample.SampleShell">
+    <UserControl.Resources>
+        <StreamGeometry x:Key="HamburgerIconGeometry">M4,5 H20 V7 H4 Z M4,11 H20 V13 H4 Z M4,17 H20 V19 H4 Z</StreamGeometry>
+    </UserControl.Resources>
     <UserControl.Styles>
         <Style
-            Selector="TabStripItem">
-            <Setter
-                Property="MinWidth"
-                Value="176" />
-            <Setter
-                Property="Margin"
-                Value="0,0,16,8" />
-            <Setter
-                Property="Padding"
-                Value="18,16" />
-            <Setter
-                Property="FontSize"
-                Value="15" />
-            <Setter
-                Property="FontWeight"
-                Value="SemiBold" />
-            <Setter
-                Property="Foreground"
-                Value="{StaticResource BrushSlate400}" />
+            Selector="Border.shell-paneSurface">
             <Setter
                 Property="Background"
                 Value="{StaticResource BrushSlate900}" />
@@ -38,64 +23,443 @@
                 Property="BorderThickness"
                 Value="1" />
             <Setter
+                Property="CornerRadius"
+                Value="28" />
+            <Setter
+                Property="ClipToBounds"
+                Value="True" />
+        </Style>
+        <Style
+            Selector="Border.shell-navGroup">
+            <Setter
+                Property="Background"
+                Value="{StaticResource BrushSlate950}" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSlate800}" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+            <Setter
+                Property="CornerRadius"
+                Value="22" />
+            <Setter
+                Property="Padding"
+                Value="14" />
+        </Style>
+        <Style
+            Selector="Border.shell-headerSurface">
+            <Setter
+                Property="Background"
+                Value="#CC020617" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSlate800}" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+            <Setter
+                Property="CornerRadius"
+                Value="28" />
+            <Setter
+                Property="Padding"
+                Value="20,18" />
+        </Style>
+        <Style
+            Selector="Border.shell-contentFrame">
+            <Setter
+                Property="Background"
+                Value="#660F172A" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSlate800}" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+            <Setter
+                Property="CornerRadius"
+                Value="28" />
+            <Setter
+                Property="ClipToBounds"
+                Value="True" />
+        </Style>
+        <Style
+            Selector="Button.shell-toggle">
+            <Setter
+                Property="Background"
+                Value="{StaticResource BrushSlate900}" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSlate700}" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+            <Setter
+                Property="Foreground"
+                Value="{StaticResource BrushWhite}" />
+            <Setter
+                Property="Width"
+                Value="46" />
+            <Setter
+                Property="Height"
+                Value="46" />
+            <Setter
+                Property="Padding"
+                Value="0" />
+            <Setter
+                Property="CornerRadius"
+                Value="16" />
+            <Setter
+                Property="FontWeight"
+                Value="Bold" />
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Center" />
+        </Style>
+        <Style
+            Selector="Button.shell-toggle.accent">
+            <Setter
+                Property="Background"
+                Value="#991D4ED8" />
+            <Setter
+                Property="BorderBrush"
+                Value="#FF60A5FA" />
+        </Style>
+        <Style
+            Selector="Button.shell-toggle:pointerover">
+            <Setter
+                Property="Opacity"
+                Value="0.92" />
+        </Style>
+        <Style
+            Selector="Button.shell-toggle:pressed">
+            <Setter
+                Property="Opacity"
+                Value="0.82" />
+        </Style>
+        <Style
+            Selector="TextBlock.shell-navLabel">
+            <Setter
+                Property="Foreground"
+                Value="{StaticResource BrushSlate500}" />
+            <Setter
+                Property="FontSize"
+                Value="11" />
+            <Setter
+                Property="FontWeight"
+                Value="Bold" />
+        </Style>
+        <Style
+            Selector="TextBlock.shell-currentSection">
+            <Setter
+                Property="Foreground"
+                Value="{StaticResource BrushSky300}" />
+            <Setter
+                Property="FontSize"
+                Value="12" />
+            <Setter
+                Property="FontWeight"
+                Value="Bold" />
+        </Style>
+        <Style
+            Selector="TextBlock.shell-currentPage">
+            <Setter
+                Property="Foreground"
+                Value="{StaticResource BrushWhite}" />
+            <Setter
+                Property="FontSize"
+                Value="22" />
+            <Setter
+                Property="FontWeight"
+                Value="Bold" />
+        </Style>
+        <Style
+            Selector="TabStrip.navigation-strip TabStripItem">
+            <Setter
+                Property="MinWidth"
+                Value="0" />
+            <Setter
+                Property="Margin"
+                Value="0,0,0,8" />
+            <Setter
+                Property="Padding"
+                Value="16,14" />
+            <Setter
+                Property="FontSize"
+                Value="14" />
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold" />
+            <Setter
+                Property="Foreground"
+                Value="{StaticResource BrushSlate400}" />
+            <Setter
+                Property="Background"
+                Value="#CC0F172A" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSlate800}" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+            <Setter
+                Property="HorizontalAlignment"
+                Value="Stretch" />
+            <Setter
                 Property="HorizontalContentAlignment"
                 Value="Left" />
         </Style>
         <Style
-            Selector="TabStripItem:selected">
+            Selector="TabStrip.navigation-strip TabStripItem:pointerover">
             <Setter
                 Property="Foreground"
                 Value="{StaticResource BrushWhite}" />
             <Setter
                 Property="Background"
-                Value="{StaticResource BrushSlate800}" />
+                Value="#DD1E293B" />
             <Setter
                 Property="BorderBrush"
                 Value="{StaticResource BrushSlate700}" />
         </Style>
+        <Style
+            Selector="TabStrip.navigation-strip TabStripItem:selected">
+            <Setter
+                Property="Foreground"
+                Value="{StaticResource BrushWhite}" />
+            <Setter
+                Property="Background"
+                Value="#DD1E293B" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSky500}" />
+        </Style>
+        <Style
+            Selector="TabStrip.navigation-strip.section-strip TabStripItem">
+            <Setter
+                Property="Padding"
+                Value="18,16" />
+            <Setter
+                Property="FontSize"
+                Value="15" />
+        </Style>
+        <Style
+            Selector="TabStrip.navigation-strip.section-strip TabStripItem:selected">
+            <Setter
+                Property="Background"
+                Value="#CC172554" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushSky400}" />
+        </Style>
+        <Style
+            Selector="TabStrip.navigation-strip.page-strip TabStripItem">
+            <Setter
+                Property="Margin"
+                Value="12,0,0,8" />
+            <Setter
+                Property="Padding"
+                Value="14,12" />
+            <Setter
+                Property="FontSize"
+                Value="13" />
+            <Setter
+                Property="Background"
+                Value="#88020617" />
+        </Style>
+        <Style
+            Selector="TabStrip.navigation-strip.page-strip TabStripItem:selected">
+            <Setter
+                Property="Background"
+                Value="#66312E81" />
+            <Setter
+                Property="BorderBrush"
+                Value="{StaticResource BrushViolet400}" />
+        </Style>
     </UserControl.Styles>
-    <Grid
-        Background="{StaticResource BrushSlate950}">
-        <Grid
-            Margin="28"
-            ColumnDefinitions="Auto,Auto,*"
-            ColumnSpacing="24">
-            <TabStrip
-                x:Name="SectionTabStrip"
-                Grid.Column="0">
-                <TabStrip.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel
-                            Orientation="Vertical" />
-                    </ItemsPanelTemplate>
-                </TabStrip.ItemsPanel>
-                <TabStrip.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock
-                            Text="{ReflectionBinding Header}" />
-                    </DataTemplate>
-                </TabStrip.ItemTemplate>
-            </TabStrip>
-            <TabStrip
-                x:Name="PageTabStrip"
-                Grid.Column="1">
-                <TabStrip.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel
-                            Orientation="Vertical" />
-                    </ItemsPanelTemplate>
-                </TabStrip.ItemsPanel>
-                <TabStrip.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock
-                            Text="{ReflectionBinding Header}" />
-                    </DataTemplate>
-                </TabStrip.ItemTemplate>
-            </TabStrip>
+    <SplitView
+        x:Name="NavigationSplitView"
+        Background="{StaticResource BrushSlate950}"
+        CompactPaneLength="0"
+        DisplayMode="Inline"
+        IsPaneOpen="True"
+        OpenPaneLength="336"
+        PanePlacement="Left">
+        <SplitView.Pane>
             <Grid
-                x:Name="PageHost"
-                Grid.Column="2"
-                ClipToBounds="True" />
-        </Grid>
-    </Grid>
+                Background="Transparent"
+                Margin="16,16,12,16">
+                <Border
+                    Width="140"
+                    Height="140"
+                    Background="{StaticResource BrushSky500}"
+                    CornerRadius="999"
+                    HorizontalAlignment="Right"
+                    Margin="0,-72,-44,0"
+                    Opacity="0.08"
+                    VerticalAlignment="Top" />
+                <Border
+                    Width="120"
+                    Height="120"
+                    Background="{StaticResource BrushViolet500}"
+                    CornerRadius="999"
+                    HorizontalAlignment="Left"
+                    Margin="-52,24,0,0"
+                    Opacity="0.08"
+                    VerticalAlignment="Top" />
+                <Border
+                    Classes="shell-paneSurface">
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto">
+                    <StackPanel
+                        Margin="18"
+                        Spacing="18">
+                        <Grid
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="12">
+                            <Button
+                                x:Name="PaneCloseButton"
+                                Classes="shell-toggle accent"
+                                ToolTip.Tip="Hide navigation"
+                                VerticalAlignment="Top">
+                                <PathIcon
+                                    Data="{StaticResource HamburgerIconGeometry}"
+                                    Height="18"
+                                    Width="18" />
+                            </Button>
+                        </Grid>
+
+                        <Border
+                            Classes="shell-navGroup">
+                            <StackPanel
+                                Spacing="10">
+                                <TextBlock
+                                    Classes="shell-navLabel"
+                                    Text="SECTIONS" />
+                                <TabStrip
+                                    x:Name="SectionTabStrip"
+                                    Classes="navigation-strip section-strip">
+                                    <TabStrip.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel
+                                                Orientation="Vertical" />
+                                        </ItemsPanelTemplate>
+                                    </TabStrip.ItemsPanel>
+                                    <TabStrip.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Text="{ReflectionBinding Header}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </TabStrip.ItemTemplate>
+                                </TabStrip>
+                            </StackPanel>
+                        </Border>
+
+                        <Border
+                            Classes="shell-navGroup">
+                            <StackPanel
+                                Spacing="10">
+                                <TextBlock
+                                    Classes="shell-navLabel"
+                                    Text="PAGES" />
+                                <TabStrip
+                                    x:Name="PageTabStrip"
+                                    Classes="navigation-strip page-strip">
+                                    <TabStrip.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel
+                                                Orientation="Vertical" />
+                                        </ItemsPanelTemplate>
+                                    </TabStrip.ItemsPanel>
+                                    <TabStrip.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Text="{ReflectionBinding Header}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </TabStrip.ItemTemplate>
+                                </TabStrip>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+                </Border>
+            </Grid>
+        </SplitView.Pane>
+
+        <SplitView.Content>
+            <Grid
+                Background="{StaticResource BrushSlate950}"
+                ClipToBounds="True"
+                RowDefinitions="Auto,*">
+                <Border
+                    Width="220"
+                    Height="220"
+                    Background="{StaticResource BrushSky500}"
+                    CornerRadius="999"
+                    HorizontalAlignment="Right"
+                    Margin="0,-110,-80,0"
+                    Opacity="0.05"
+                    VerticalAlignment="Top" />
+                <Border
+                    Width="180"
+                    Height="180"
+                    Background="{StaticResource BrushViolet500}"
+                    CornerRadius="999"
+                    HorizontalAlignment="Left"
+                    Margin="-72,42,0,0"
+                    Opacity="0.05"
+                    VerticalAlignment="Top" />
+                <Border
+                    x:Name="ShellHeader"
+                    Classes="shell-headerSurface"
+                    Margin="16,16,16,0">
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        ColumnSpacing="16">
+                        <Button
+                            x:Name="PaneToggleButton"
+                            Classes="shell-toggle"
+                            HorizontalAlignment="Left"
+                            ToolTip.Tip="Show navigation"
+                            VerticalAlignment="Center">
+                            <PathIcon
+                                Data="{StaticResource HamburgerIconGeometry}"
+                                Height="18"
+                                Width="18" />
+                        </Button>
+                        <StackPanel
+                            Grid.Column="1"
+                            Spacing="2"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                x:Name="CurrentSectionText"
+                                Classes="shell-currentSection"
+                                Text="SECTION" />
+                            <TextBlock
+                                x:Name="CurrentPageText"
+                                Classes="shell-currentPage"
+                                Text="Page"
+                                TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border
+                    x:Name="PageContentChrome"
+                    Classes="shell-contentFrame"
+                    Grid.Row="1"
+                    Margin="16"
+                    Padding="20">
+                    <Grid
+                        x:Name="PageHost"
+                        ClipToBounds="True" />
+                </Border>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
 </UserControl>
