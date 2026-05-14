@@ -4,6 +4,7 @@
 With the desktop/browser sample split now in place, finish browser runtime validation on a machine that can install the WebAssembly workload, then return to semantic theme composition and package-validation work under the no-custom-component constraint.
 
 ## Recent Changes
+- Compacted the shared sample shell page header into a single-row section/page line with reduced vertical padding so the chrome now reads closer to the hamburger-button height instead of a large hero header.
 - Simplified the shared sample shell chrome again by removing the sidebar's descriptive copy and switching both pane-toggle controls to hamburger icon buttons, keeping the visual polish while making the navigation read as a cleaner docs sidebar.
 - Refined `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` so the responsive shell now visually matches the richer docs sample language: the navigation pane is card-based, section/page groups are visually separated, header chrome carries badges and stronger hierarchy, and both pane/content areas use subtle accent layers instead of a flat all-slate frame.
 - Reworked `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` into a responsive `SplitView` shell with one stacked vertical navigation pane for sections and pages, explicit show/hide buttons, and width-based `Inline`/`Overlay` switching so the shared sample is more mobile-friendly without giving up the existing lazy page cache.
@@ -73,6 +74,7 @@ With the desktop/browser sample split now in place, finish browser runtime valid
 - Reworked the sample example sections again so nested tabs now switch both the live preview and the AXAML snippet between `Utility` and `StaticResource` variants, while unsupported cases keep their honest explanatory note in the `StaticResource` tab.
 
 ## Active Decisions
+- The shared `SampleShell` content header should stay compact: keep the section/page context on a single row with restrained vertical padding so the header chrome tracks the hamburger toggle height instead of presenting as a tall hero block.
 - The shared `SampleShell` sidebar should stay function-first: keep structural labels like `SECTIONS` and `PAGES`, but avoid marketing/explanatory copy inside the pane and prefer compact icon-only hamburger toggles for opening and closing navigation.
 - `SampleShell` should reuse the sample docs visual language instead of staying a plain transport shell: prefer grouped rounded surfaces, stronger selected-state contrast, and restrained accent color layers so navigation looks intentional on both desktop and mobile widths without inventing a second design system.
 - `SampleShell` navigation should stay as a single vertical `SplitView` pane: keep the docs navigation inline on wider widths, switch to overlay on narrow widths, and auto-close the pane after page selection in narrow mode so the content area stays readable on phones and small browser viewports.
