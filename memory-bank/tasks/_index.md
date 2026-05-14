@@ -7,6 +7,7 @@
 - None yet.
 
 ## Completed
+- [TASK025] Tailwind Avalonia compact sample shell header - Reduced the shared shell header to a single-row, button-height-oriented layout and revalidated the desktop sample build plus tests.
 - [TASK024] Tailwind Avalonia sample shell visual polish - Applied card-based shell styling, stronger selected states, and richer header/pane chrome to the shared responsive sample shell, then revalidated desktop/browser host builds.
 - [TASK023] Tailwind Avalonia sample shell responsive navigation - Reworked `SampleShell` into a collapsible vertical `SplitView` navigation shell with mobile-friendly narrow-width behavior and revalidated desktop/browser host builds.
 - [TASK001] Tailwind Avalonia spacing foundation - Solution scaffolded, spacing resources/parser implemented, sample build and startup validated.

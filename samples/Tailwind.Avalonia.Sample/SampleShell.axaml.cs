@@ -209,7 +209,7 @@ public partial class SampleShell : UserControl
             ? SplitViewDisplayMode.Overlay
             : SplitViewDisplayMode.Inline;
         NavigationSplitView.OpenPaneLength = useNarrowLayout ? NarrowPaneLength : WidePaneLength;
-        ShellHeader.Padding = useNarrowLayout ? new Thickness(12) : new Thickness(20, 16);
+        ShellHeader.Padding = useNarrowLayout ? new Thickness(10, 0) : new Thickness(12, 0);
         PageContentChrome.Padding = useNarrowLayout ? new Thickness(12) : new Thickness(20);
 
         UpdateNavigationChrome();
