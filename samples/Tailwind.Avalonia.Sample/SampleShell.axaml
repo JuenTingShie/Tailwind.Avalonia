@@ -63,7 +63,7 @@
                 Value="28" />
             <Setter
                 Property="Padding"
-                Value="20,18" />
+                Value="12,0" />
         </Style>
         <Style
             Selector="Border.shell-contentFrame">
@@ -159,7 +159,7 @@
                 Value="{StaticResource BrushSky300}" />
             <Setter
                 Property="FontSize"
-                Value="12" />
+                Value="11" />
             <Setter
                 Property="FontWeight"
                 Value="Bold" />
@@ -171,10 +171,10 @@
                 Value="{StaticResource BrushWhite}" />
             <Setter
                 Property="FontSize"
-                Value="22" />
+                Value="18" />
             <Setter
                 Property="FontWeight"
-                Value="Bold" />
+                Value="SemiBold" />
         </Style>
         <Style
             Selector="TabStrip.navigation-strip TabStripItem">
@@ -420,7 +420,8 @@
                     Margin="16,16,16,0">
                     <Grid
                         ColumnDefinitions="Auto,*"
-                        ColumnSpacing="16">
+                        ColumnSpacing="12"
+                        MinHeight="46">
                         <Button
                             x:Name="PaneToggleButton"
                             Classes="shell-toggle"
@@ -432,20 +433,29 @@
                                 Height="18"
                                 Width="18" />
                         </Button>
-                        <StackPanel
+                        <Grid
                             Grid.Column="1"
-                            Spacing="2"
+                            ColumnDefinitions="Auto,Auto,*"
+                            ColumnSpacing="10"
                             VerticalAlignment="Center">
                             <TextBlock
                                 x:Name="CurrentSectionText"
                                 Classes="shell-currentSection"
-                                Text="SECTION" />
+                                Text="SECTION"
+                                VerticalAlignment="Center" />
+                            <TextBlock
+                                Grid.Column="1"
+                                Foreground="{StaticResource BrushSlate600}"
+                                Text="/"
+                                VerticalAlignment="Center" />
                             <TextBlock
                                 x:Name="CurrentPageText"
+                                Grid.Column="2"
                                 Classes="shell-currentPage"
                                 Text="Page"
-                                TextTrimming="CharacterEllipsis" />
-                        </StackPanel>
+                                TextTrimming="CharacterEllipsis"
+                                VerticalAlignment="Center" />
+                        </Grid>
                     </Grid>
                 </Border>
 
