@@ -9,22 +9,23 @@
     x:Class="Tailwind.Avalonia.Sample.SampleShell">
     <UserControl.Resources>
         <StreamGeometry x:Key="HamburgerIconGeometry">M4,5 H20 V7 H4 Z M4,11 H20 V13 H4 Z M4,17 H20 V19 H4 Z</StreamGeometry>
+        <StreamGeometry x:Key="CloseIconGeometry">M17.5 4C17.2239 4 17 4.22386 17 4.5V15.5C17 15.7761 17.2239 16 17.5 16C17.7761 16 18 15.7761 18 15.5V4.5C18 4.22386 17.7761 4 17.5 4Z M15 10C15 9.72386 14.7761 9.5 14.5 9.5H3.70711L6.8536 6.35355C7.0488 6.15829 7.0488 5.84171 6.8536 5.64645C6.6583 5.45118 6.3417 5.45118 6.1464 5.64645L2.1464 9.64645C2.09389 9.69898 2.05551 9.76028 2.03125 9.82563C2.01104 9.87992 2 9.93867 2 10C2 10.0613 2.01104 10.1201 2.03125 10.1744C2.05551 10.2397 2.09389 10.301 2.1464 10.3536L6.1464 14.3536C6.3417 14.5488 6.6583 14.5488 6.8536 14.3536C7.0488 14.1583 7.0488 13.8417 6.8536 13.6465L3.7071 10.5H14.5C14.7761 10.5 15 10.2761 15 10Z</StreamGeometry>
     </UserControl.Resources>
     <UserControl.Styles>
         <Style
             Selector="Border.shell-paneSurface">
             <Setter
                 Property="Background"
-                Value="{StaticResource BrushSlate900}" />
+                Value="#F80B1120" />
             <Setter
                 Property="BorderBrush"
                 Value="{StaticResource BrushSlate800}" />
             <Setter
                 Property="BorderThickness"
-                Value="1" />
+                Value="0,0,1,0" />
             <Setter
                 Property="CornerRadius"
-                Value="28" />
+                Value="0" />
             <Setter
                 Property="ClipToBounds"
                 Value="True" />
@@ -51,16 +52,16 @@
             Selector="Border.shell-headerSurface">
             <Setter
                 Property="Background"
-                Value="#CC020617" />
+                Value="#F80B1120" />
             <Setter
                 Property="BorderBrush"
                 Value="{StaticResource BrushSlate800}" />
             <Setter
                 Property="BorderThickness"
-                Value="1" />
+                Value="0,0,0,1" />
             <Setter
                 Property="CornerRadius"
-                Value="28" />
+                Value="0" />
             <Setter
                 Property="Padding"
                 Value="12,0" />
@@ -283,110 +284,94 @@
         x:Name="NavigationSplitView"
         Background="{StaticResource BrushSlate950}"
         CompactPaneLength="0"
-        DisplayMode="Inline"
-        IsPaneOpen="True"
+        DisplayMode="Overlay"
+        IsPaneOpen="False"
         OpenPaneLength="336"
         PanePlacement="Left">
         <SplitView.Pane>
             <Grid
                 Background="Transparent"
-                Margin="16,16,12,16">
-                <Border
-                    Width="140"
-                    Height="140"
-                    Background="{StaticResource BrushSky500}"
-                    CornerRadius="999"
-                    HorizontalAlignment="Right"
-                    Margin="0,-72,-44,0"
-                    Opacity="0.08"
-                    VerticalAlignment="Top" />
-                <Border
-                    Width="120"
-                    Height="120"
-                    Background="{StaticResource BrushViolet500}"
-                    CornerRadius="999"
-                    HorizontalAlignment="Left"
-                    Margin="-52,24,0,0"
-                    Opacity="0.08"
-                    VerticalAlignment="Top" />
+                Margin="0">
                 <Border
                     Classes="shell-paneSurface">
-                <ScrollViewer
-                    HorizontalScrollBarVisibility="Disabled"
-                    VerticalScrollBarVisibility="Auto">
-                    <StackPanel
-                        Margin="18"
-                        Spacing="18">
-                        <Grid
-                            ColumnDefinitions="Auto,*"
-                            ColumnSpacing="12">
-                            <Button
-                                x:Name="PaneCloseButton"
-                                Classes="shell-toggle accent"
-                                ToolTip.Tip="Hide navigation"
-                                VerticalAlignment="Top">
-                                <PathIcon
-                                    Data="{StaticResource HamburgerIconGeometry}"
-                                    Height="18"
-                                    Width="18" />
-                            </Button>
-                        </Grid>
+                    <ScrollViewer
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto">
+                        <StackPanel
+                            Margin="16"
+                            Spacing="18">
+                            <Grid
+                                ColumnDefinitions="*,Auto"
+                                ColumnSpacing="12">
+                                <Button
+                                    x:Name="PaneCloseButton"
+                                    Classes="shell-toggle"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Right"
+                                    ToolTip.Tip="Hide navigation"
+                                    VerticalAlignment="Top">
+                                    <PathIcon
+                                        Data="{StaticResource CloseIconGeometry}"
+                                        Height="18"
+                                        Width="18" />
+                                </Button>
+                            </Grid>
 
-                        <Border
-                            Classes="shell-navGroup">
-                            <StackPanel
-                                Spacing="10">
-                                <TextBlock
-                                    Classes="shell-navLabel"
-                                    Text="SECTIONS" />
-                                <TabStrip
-                                    x:Name="SectionTabStrip"
-                                    Classes="navigation-strip section-strip">
-                                    <TabStrip.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel
-                                                Orientation="Vertical" />
-                                        </ItemsPanelTemplate>
-                                    </TabStrip.ItemsPanel>
-                                    <TabStrip.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Text="{ReflectionBinding Header}"
-                                                TextWrapping="Wrap" />
-                                        </DataTemplate>
-                                    </TabStrip.ItemTemplate>
-                                </TabStrip>
-                            </StackPanel>
-                        </Border>
+                            <Border
+                                Classes="shell-navGroup">
+                                <StackPanel
+                                    Spacing="10">
+                                    <TextBlock
+                                        Classes="shell-navLabel"
+                                        Text="SECTIONS" />
+                                    <TabStrip
+                                        x:Name="SectionTabStrip"
+                                        Classes="navigation-strip section-strip">
+                                        <TabStrip.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel
+                                                    Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </TabStrip.ItemsPanel>
+                                        <TabStrip.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    Text="{ReflectionBinding Header}"
+                                                    TextWrapping="Wrap" />
+                                            </DataTemplate>
+                                        </TabStrip.ItemTemplate>
+                                    </TabStrip>
+                                </StackPanel>
+                            </Border>
 
-                        <Border
-                            Classes="shell-navGroup">
-                            <StackPanel
-                                Spacing="10">
-                                <TextBlock
-                                    Classes="shell-navLabel"
-                                    Text="PAGES" />
-                                <TabStrip
-                                    x:Name="PageTabStrip"
-                                    Classes="navigation-strip page-strip">
-                                    <TabStrip.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel
-                                                Orientation="Vertical" />
-                                        </ItemsPanelTemplate>
-                                    </TabStrip.ItemsPanel>
-                                    <TabStrip.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Text="{ReflectionBinding Header}"
-                                                TextWrapping="Wrap" />
-                                        </DataTemplate>
-                                    </TabStrip.ItemTemplate>
-                                </TabStrip>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                </ScrollViewer>
+                            <Border
+                                Classes="shell-navGroup">
+                                <StackPanel
+                                    Spacing="10">
+                                    <TextBlock
+                                        Classes="shell-navLabel"
+                                        Text="PAGES" />
+                                    <TabStrip
+                                        x:Name="PageTabStrip"
+                                        Classes="navigation-strip page-strip">
+                                        <TabStrip.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel
+                                                    Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </TabStrip.ItemsPanel>
+                                        <TabStrip.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    Text="{ReflectionBinding Header}"
+                                                    TextWrapping="Wrap" />
+                                            </DataTemplate>
+                                        </TabStrip.ItemTemplate>
+                                    </TabStrip>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
                 </Border>
             </Grid>
         </SplitView.Pane>
@@ -397,34 +382,17 @@
                 ClipToBounds="True"
                 RowDefinitions="Auto,*">
                 <Border
-                    Width="220"
-                    Height="220"
-                    Background="{StaticResource BrushSky500}"
-                    CornerRadius="999"
-                    HorizontalAlignment="Right"
-                    Margin="0,-110,-80,0"
-                    Opacity="0.05"
-                    VerticalAlignment="Top" />
-                <Border
-                    Width="180"
-                    Height="180"
-                    Background="{StaticResource BrushViolet500}"
-                    CornerRadius="999"
-                    HorizontalAlignment="Left"
-                    Margin="-72,42,0,0"
-                    Opacity="0.05"
-                    VerticalAlignment="Top" />
-                <Border
                     x:Name="ShellHeader"
                     Classes="shell-headerSurface"
-                    Margin="16,16,16,0">
+                    Margin="0">
                     <Grid
                         ColumnDefinitions="Auto,*"
                         ColumnSpacing="12"
-                        MinHeight="46">
+                        MinHeight="44">
                         <Button
                             x:Name="PaneToggleButton"
                             Classes="shell-toggle"
+                            Margin="0,6,0,6"
                             HorizontalAlignment="Left"
                             ToolTip.Tip="Show navigation"
                             VerticalAlignment="Center">
@@ -463,7 +431,7 @@
                     x:Name="PageContentChrome"
                     Classes="shell-contentFrame"
                     Grid.Row="1"
-                    Margin="16"
+                    Margin="12"
                     Padding="20">
                     <Grid
                         x:Name="PageHost"

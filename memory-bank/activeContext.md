@@ -4,6 +4,8 @@
 With the desktop/browser sample split now in place, finish browser runtime validation on a machine that can install the WebAssembly workload, then return to semantic theme composition and package-validation work under the no-custom-component constraint.
 
 ## Recent Changes
+- Changed `samples/Tailwind.Avalonia.Sample/SampleShell.axaml.cs` so switching sections no longer forces a content page jump; section clicks now only preview that group's page list, while actual content only changes after a page item is selected.
+- Reworked `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` again toward a GitHub-style drawer: the sample shell now opens its navigation as a default-closed overlay pane across widths, uses a dedicated close icon inside the pane, collapses again after page navigation, and trims the header into a flatter top bar instead of a floating card.
 - Compacted the shared sample shell page header into a single-row section/page line with reduced vertical padding so the chrome now reads closer to the hamburger-button height instead of a large hero header.
 - Simplified the shared sample shell chrome again by removing the sidebar's descriptive copy and switching both pane-toggle controls to hamburger icon buttons, keeping the visual polish while making the navigation read as a cleaner docs sidebar.
 - Refined `samples/Tailwind.Avalonia.Sample/SampleShell.axaml` so the responsive shell now visually matches the richer docs sample language: the navigation pane is card-based, section/page groups are visually separated, header chrome carries badges and stronger hierarchy, and both pane/content areas use subtle accent layers instead of a flat all-slate frame.
@@ -74,6 +76,8 @@ With the desktop/browser sample split now in place, finish browser runtime valid
 - Reworked the sample example sections again so nested tabs now switch both the live preview and the AXAML snippet between `Utility` and `StaticResource` variants, while unsupported cases keep their honest explanatory note in the `StaticResource` tab.
 
 ## Active Decisions
+- `SampleShell` section clicks and page clicks are now separate interactions: choosing a section updates drawer context only, and only choosing a page may replace the hosted sample content.
+- `SampleShell` navigation should now behave like a transient drawer, not a persistent left rail: default closed, overlay content instead of reserving width, and close again after navigation so the content canvas stays full-width by default.
 - The shared `SampleShell` content header should stay compact: keep the section/page context on a single row with restrained vertical padding so the header chrome tracks the hamburger toggle height instead of presenting as a tall hero block.
 - The shared `SampleShell` sidebar should stay function-first: keep structural labels like `SECTIONS` and `PAGES`, but avoid marketing/explanatory copy inside the pane and prefer compact icon-only hamburger toggles for opening and closing navigation.
 - `SampleShell` should reuse the sample docs visual language instead of staying a plain transport shell: prefer grouped rounded surfaces, stronger selected-state contrast, and restrained accent color layers so navigation looks intentional on both desktop and mobile widths without inventing a second design system.

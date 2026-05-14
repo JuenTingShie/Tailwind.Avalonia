@@ -7,6 +7,7 @@
 - None yet.
 
 ## Completed
+- [TASK026] Tailwind Avalonia section preview without page switch - Updated `SampleShell` so section changes only preview page groups and no longer force content navigation, then revalidated desktop/browser builds.
 - [TASK025] Tailwind Avalonia compact sample shell header - Reduced the shared shell header to a single-row, button-height-oriented layout and revalidated the desktop sample build plus tests.
 - [TASK024] Tailwind Avalonia sample shell visual polish - Applied card-based shell styling, stronger selected states, and richer header/pane chrome to the shared responsive sample shell, then revalidated desktop/browser host builds.
 - [TASK023] Tailwind Avalonia sample shell responsive navigation - Reworked `SampleShell` into a collapsible vertical `SplitView` navigation shell with mobile-friendly narrow-width behavior and revalidated desktop/browser host builds.

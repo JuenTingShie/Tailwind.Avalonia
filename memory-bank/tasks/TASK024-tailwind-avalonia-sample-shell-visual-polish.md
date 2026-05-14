@@ -41,3 +41,4 @@
 - Kept `samples/Tailwind.Avalonia.Sample/SampleShell.axaml.cs` unchanged so the behavior and responsive layout rules remained stable.
 - Validated the polish slice with `dotnet build samples/Tailwind.Avalonia.Sample.Desktop/Tailwind.Avalonia.Sample.Desktop.csproj -c Release` and `dotnet build samples/Tailwind.Avalonia.Sample.Browser/Tailwind.Avalonia.Sample.Browser.csproj -c Release`.
 - Followed up on the polished shell by removing the sidebar's descriptive copy and replacing the text toggle buttons with hamburger `PathIcon` buttons, then revalidated both desktop and browser host builds.
+- Followed up again to match the GitHub-style references more closely: switched the shell to a default-closed overlay drawer on all widths, replaced the in-pane hamburger with a dedicated close icon, made page navigation close the drawer again, flattened the pane chrome, and slimmed the top header into a lighter bar before revalidating both hosts.

@@ -19,8 +19,10 @@ public partial class SampleShell : UserControl
 
     private readonly Dictionary<SampleShellPageDescriptor, Control> pageCache = new();
     private readonly SampleShellSectionDescriptor[] sections;
+    private bool isSynchronizingSelection;
     private bool isNarrowLayout;
-    private bool reopenPaneWhenWide = true;
+    private SampleShellPageDescriptor? shownPage;
+    private SampleShellSectionDescriptor? shownSection;
     private SampleShellSectionDescriptor? selectedSection;
 
     /// <summary>
@@ -72,6 +74,11 @@ public partial class SampleShell : UserControl
     // Sync the page strip whenever the active top-level section changes.
     private void SectionSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
+        if (isSynchronizingSelection)
+        {
+            return;
+        }
+
         if (SectionTabStrip is null || PageTabStrip is null || PageHost is null)
         {
             return;
@@ -82,12 +89,17 @@ public partial class SampleShell : UserControl
             return;
         }
 
-        SelectSection(section);
+        PreviewSection(section);
     }
 
-    // Remember the active page per section and surface the cached page view.
+    // Remember active page per section and surface cached page view only when page row is chosen.
     private void PageSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
+        if (isSynchronizingSelection)
+        {
+            return;
+        }
+
         if (PageTabStrip is null || PageHost is null)
         {
             return;
@@ -99,11 +111,11 @@ public partial class SampleShell : UserControl
         }
 
         selectedSection.SelectedPageIndex = PageTabStrip.SelectedIndex;
-        ShowPage(page);
+        ShowPage(selectedSection, page);
     }
 
     // Keep each page alive after first load so repeat tab switches only toggle visibility.
-    private void ShowPage(SampleShellPageDescriptor page)
+    private void ShowPage(SampleShellSectionDescriptor section, SampleShellPageDescriptor page)
     {
         var targetPage = GetOrCreatePage(page);
 
@@ -112,12 +124,12 @@ public partial class SampleShell : UserControl
             hostedPage.IsVisible = ReferenceEquals(hostedPage, targetPage);
         }
 
+        shownSection = section;
+        shownPage = page;
+        CurrentSectionText.Text = section.Header;
         CurrentPageText.Text = page.Header;
 
-        if (isNarrowLayout)
-        {
-            SetPaneOpen(false);
-        }
+        SetPaneOpen(false);
     }
 
     // Create a docs page lazily and keep it hosted for future visits.
@@ -144,33 +156,52 @@ public partial class SampleShell : UserControl
         }
     }
 
-    private void SelectSection(SampleShellSectionDescriptor section)
+    // Change visible page list for chosen section, but do not force content switch.
+    private void PreviewSection(SampleShellSectionDescriptor section)
     {
         selectedSection = section;
-        CurrentSectionText.Text = section.Header;
-        PageTabStrip.ItemsSource = section.Pages;
+        SynchronizeNavigationSelection(section);
+    }
 
-        if (!ReferenceEquals(SectionTabStrip.SelectedItem, section))
+    private void SynchronizeNavigationSelection(SampleShellSectionDescriptor section)
+    {
+        isSynchronizingSelection = true;
+
+        try
         {
-            SectionTabStrip.SelectedItem = section;
+            PageTabStrip.ItemsSource = section.Pages;
+
+            if (!ReferenceEquals(SectionTabStrip.SelectedItem, section))
+            {
+                SectionTabStrip.SelectedItem = section;
+            }
+
+            if (shownPage is not null && FindPageIndex(section, shownPage) >= 0)
+            {
+                PageTabStrip.SelectedItem = shownPage;
+            }
+            else
+            {
+                PageTabStrip.SelectedIndex = -1;
+            }
+        }
+        finally
+        {
+            isSynchronizingSelection = false;
+        }
+    }
+
+    private static int FindPageIndex(SampleShellSectionDescriptor section, SampleShellPageDescriptor page)
+    {
+        for (var index = 0; index < section.Pages.Count; index++)
+        {
+            if (ReferenceEquals(section.Pages[index], page))
+            {
+                return index;
+            }
         }
 
-        if (section.Pages.Count == 0)
-        {
-            PageTabStrip.SelectedIndex = -1;
-            HideAllPages();
-            return;
-        }
-
-        var targetIndex = Math.Clamp(section.SelectedPageIndex, 0, section.Pages.Count - 1);
-        var targetPage = section.Pages[targetIndex];
-
-        if (!ReferenceEquals(PageTabStrip.SelectedItem, targetPage))
-        {
-            PageTabStrip.SelectedItem = targetPage;
-        }
-
-        ShowPage(targetPage);
+        return -1;
     }
 
     // Toggle the navigation pane from either the content header or the pane itself.
@@ -190,24 +221,8 @@ public partial class SampleShell : UserControl
     {
         var useNarrowLayout = width > 0 && width < NarrowLayoutBreakpoint;
 
-        if (useNarrowLayout != isNarrowLayout)
-        {
-            if (useNarrowLayout)
-            {
-                reopenPaneWhenWide = NavigationSplitView.IsPaneOpen;
-                isNarrowLayout = true;
-                SetPaneOpen(false);
-            }
-            else
-            {
-                isNarrowLayout = false;
-                SetPaneOpen(reopenPaneWhenWide);
-            }
-        }
-
-        NavigationSplitView.DisplayMode = useNarrowLayout
-            ? SplitViewDisplayMode.Overlay
-            : SplitViewDisplayMode.Inline;
+        isNarrowLayout = useNarrowLayout;
+        NavigationSplitView.DisplayMode = SplitViewDisplayMode.Overlay;
         NavigationSplitView.OpenPaneLength = useNarrowLayout ? NarrowPaneLength : WidePaneLength;
         ShellHeader.Padding = useNarrowLayout ? new Thickness(10, 0) : new Thickness(12, 0);
         PageContentChrome.Padding = useNarrowLayout ? new Thickness(12) : new Thickness(20);
@@ -230,11 +245,6 @@ public partial class SampleShell : UserControl
     {
         NavigationSplitView.IsPaneOpen = isOpen;
 
-        if (!isNarrowLayout)
-        {
-            reopenPaneWhenWide = isOpen;
-        }
-
         UpdateNavigationChrome();
     }
 
@@ -242,7 +252,24 @@ public partial class SampleShell : UserControl
     {
         AttachedToVisualTree -= SampleShellAttachedToVisualTree;
         UpdateResponsiveLayout(Bounds.Width);
-        SelectSection(sections[0]);
+
+        if (sections.Length == 0)
+        {
+            return;
+        }
+
+        var initialSection = sections[0];
+        PreviewSection(initialSection);
+
+        if (initialSection.Pages.Count == 0)
+        {
+            return;
+        }
+
+        var initialPage = initialSection.Pages[0];
+        initialSection.SelectedPageIndex = 0;
+        ShowPage(initialSection, initialPage);
+        SynchronizeNavigationSelection(initialSection);
     }
 }
 
