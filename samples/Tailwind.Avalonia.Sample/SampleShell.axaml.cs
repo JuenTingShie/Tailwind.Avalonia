@@ -13,6 +13,7 @@ namespace Tailwind.Avalonia.Sample;
 /// </summary>
 public partial class SampleShell : UserControl
 {
+    private const string MobileDocsClass = "docs-mobile";
     private const double NarrowLayoutBreakpoint = 960;
     private const double NarrowPaneLength = 304;
     private const double WidePaneLength = 336;
@@ -142,6 +143,7 @@ public partial class SampleShell : UserControl
 
         var createdPage = page.CreateView();
         createdPage.IsVisible = false;
+        ApplyMobileDocsClass(createdPage);
         PageHost.Children.Add(createdPage);
         pageCache.Add(page, createdPage);
         return createdPage;
@@ -226,8 +228,30 @@ public partial class SampleShell : UserControl
         NavigationSplitView.OpenPaneLength = useNarrowLayout ? NarrowPaneLength : WidePaneLength;
         ShellHeader.Padding = useNarrowLayout ? new Thickness(10, 0) : new Thickness(12, 0);
         PageContentChrome.Padding = useNarrowLayout ? new Thickness(12) : new Thickness(20);
+        RefreshPageLayoutClasses();
 
         UpdateNavigationChrome();
+    }
+
+    // Keep all loaded sample pages in sync with current mobile/desktop docs style mode.
+    private void RefreshPageLayoutClasses()
+    {
+        foreach (var cachedPage in pageCache.Values)
+        {
+            ApplyMobileDocsClass(cachedPage);
+        }
+    }
+
+    private void ApplyMobileDocsClass(Control control)
+    {
+        if (isNarrowLayout)
+        {
+            control.Classes.Add(MobileDocsClass);
+        }
+        else
+        {
+            control.Classes.Remove(MobileDocsClass);
+        }
     }
 
     // Keep the shell buttons aligned with the current open/closed pane state.

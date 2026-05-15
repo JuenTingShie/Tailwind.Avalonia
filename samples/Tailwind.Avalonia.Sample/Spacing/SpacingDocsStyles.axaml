@@ -64,6 +64,30 @@
             Value="Bold" />
     </Style>
     <Style
+        Selector="StackPanel.docs-pageLayout">
+        <Setter
+            Property="Margin"
+            Value="28,24,40,32" />
+        <Setter
+            Property="Spacing"
+            Value="40" />
+    </Style>
+    <Style
+        Selector="UserControl.docs-mobile StackPanel.docs-pageLayout">
+        <Setter
+            Property="Margin"
+            Value="16,14,16,24" />
+        <Setter
+            Property="Spacing"
+            Value="28" />
+    </Style>
+    <Style
+        Selector="UserControl.docs-mobile TextBlock.docs-pageTitle">
+        <Setter
+            Property="FontSize"
+            Value="28" />
+    </Style>
+    <Style
         Selector="TextBlock.docs-eyebrow">
         <Setter
             Property="Foreground"
@@ -91,6 +115,12 @@
             Value="900" />
     </Style>
     <Style
+        Selector="UserControl.docs-mobile TextBlock.docs-body">
+        <Setter
+            Property="FontSize"
+            Value="15" />
+    </Style>
+    <Style
         Selector="TextBlock.docs-sectionTitle">
         <Setter
             Property="Foreground"
@@ -101,6 +131,12 @@
         <Setter
             Property="FontWeight"
             Value="SemiBold" />
+    </Style>
+    <Style
+        Selector="UserControl.docs-mobile TextBlock.docs-sectionTitle">
+        <Setter
+            Property="FontSize"
+            Value="21" />
     </Style>
     <Style
         Selector="TextBlock.docs-noteTitle">
@@ -158,6 +194,12 @@
         <Setter
             Property="sample:DocsCodeTextBehavior.NormalizeIndent"
             Value="True" />
+    </Style>
+    <Style
+        Selector="UserControl.docs-mobile TextBlock.docs-code">
+        <Setter
+            Property="FontSize"
+            Value="13" />
     </Style>
     <Style
         Selector="TextBlock.docs-chip">
@@ -340,6 +382,12 @@
             Value="18,14" />
     </Style>
     <Style
+        Selector="UserControl.docs-mobile Border.docs-referenceHeader">
+        <Setter
+            Property="Padding"
+            Value="14,12" />
+    </Style>
+    <Style
         Selector="ItemsControl.docs-referenceList">
         <Setter
             Property="HorizontalAlignment"
@@ -361,10 +409,22 @@
             Value="18,14" />
     </Style>
     <Style
+        Selector="UserControl.docs-mobile Border.docs-referenceRow">
+        <Setter
+            Property="Padding"
+            Value="14,12" />
+    </Style>
+    <Style
         Selector="Grid.docs-referenceColumns">
         <Setter
             Property="ColumnSpacing"
             Value="24" />
+    </Style>
+    <Style
+        Selector="UserControl.docs-mobile Grid.docs-referenceColumns">
+        <Setter
+            Property="ColumnSpacing"
+            Value="14" />
     </Style>
     <Style
         Selector="TextBlock.docs-referenceHeading">
