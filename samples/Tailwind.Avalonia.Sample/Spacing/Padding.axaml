@@ -22,8 +22,7 @@
         <ScrollViewer
             HorizontalScrollBarVisibility="Disabled">
             <StackPanel
-                Margin="28,24,40,32"
-                Spacing="40">
+                Classes="docs-pageLayout">
                 <StackPanel
                     Spacing="10">
                     <TextBlock
