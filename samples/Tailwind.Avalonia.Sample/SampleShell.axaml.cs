@@ -15,6 +15,7 @@ public partial class SampleShell : UserControl
 {
     private const string MobileDocsClass = "docs-mobile";
     private const double NarrowLayoutBreakpoint = 960;
+    private const double CompactDocsHeightBreakpoint = 640;
     private const double NarrowPaneLength = 304;
     private const double WidePaneLength = 336;
 
@@ -22,6 +23,7 @@ public partial class SampleShell : UserControl
     private readonly SampleShellSectionDescriptor[] sections;
     private bool isSynchronizingSelection;
     private bool isNarrowLayout;
+    private bool isCompactDocs;
     private SampleShellPageDescriptor? shownPage;
     private SampleShellSectionDescriptor? shownSection;
     private SampleShellSectionDescriptor? selectedSection;
@@ -215,19 +217,21 @@ public partial class SampleShell : UserControl
     // Switch between inline and overlay navigation so narrow screens keep the page readable.
     private void SampleShellSizeChanged(object? sender, SizeChangedEventArgs e)
     {
-        UpdateResponsiveLayout(e.NewSize.Width);
+        UpdateResponsiveLayout(e.NewSize.Width, e.NewSize.Height);
     }
 
     // Apply the current pane mode, widths, and shell spacing based on available width.
-    private void UpdateResponsiveLayout(double width)
+    private void UpdateResponsiveLayout(double width, double height)
     {
         var useNarrowLayout = width > 0 && width < NarrowLayoutBreakpoint;
+        var useCompactDocs = useNarrowLayout || (height > 0 && height < CompactDocsHeightBreakpoint);
 
         isNarrowLayout = useNarrowLayout;
+        isCompactDocs = useCompactDocs;
         NavigationSplitView.DisplayMode = SplitViewDisplayMode.Overlay;
         NavigationSplitView.OpenPaneLength = useNarrowLayout ? NarrowPaneLength : WidePaneLength;
         ShellHeader.Padding = useNarrowLayout ? new Thickness(10, 0) : new Thickness(12, 0);
-        PageContentChrome.Padding = useNarrowLayout ? new Thickness(12) : new Thickness(20);
+        PageContentChrome.Padding = useCompactDocs ? new Thickness(10) : new Thickness(18);
         RefreshPageLayoutClasses();
 
         UpdateNavigationChrome();
@@ -244,7 +248,7 @@ public partial class SampleShell : UserControl
 
     private void ApplyMobileDocsClass(Control control)
     {
-        if (isNarrowLayout)
+        if (isCompactDocs)
         {
             control.Classes.Add(MobileDocsClass);
         }
@@ -275,7 +279,7 @@ public partial class SampleShell : UserControl
     private void SampleShellAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)
     {
         AttachedToVisualTree -= SampleShellAttachedToVisualTree;
-        UpdateResponsiveLayout(Bounds.Width);
+        UpdateResponsiveLayout(Bounds.Width, Bounds.Height);
 
         if (sections.Length == 0)
         {

@@ -76,16 +76,16 @@
         Selector="UserControl.docs-mobile StackPanel.docs-pageLayout">
         <Setter
             Property="Margin"
-            Value="16,14,16,24" />
+            Value="12,10,12,18" />
         <Setter
             Property="Spacing"
-            Value="28" />
+            Value="22" />
     </Style>
     <Style
         Selector="UserControl.docs-mobile TextBlock.docs-pageTitle">
         <Setter
             Property="FontSize"
-            Value="28" />
+            Value="26" />
     </Style>
     <Style
         Selector="TextBlock.docs-eyebrow">
@@ -118,7 +118,7 @@
         Selector="UserControl.docs-mobile TextBlock.docs-body">
         <Setter
             Property="FontSize"
-            Value="15" />
+            Value="14" />
     </Style>
     <Style
         Selector="TextBlock.docs-sectionTitle">
@@ -320,6 +320,12 @@
         <Setter
             Property="Padding"
             Value="18" />
+    </Style>
+    <Style
+        Selector="UserControl.docs-mobile Border.docs-note">
+        <Setter
+            Property="Padding"
+            Value="14" />
     </Style>
     <Style
         Selector="Border.docs-inset">
