@@ -259,6 +259,21 @@
             Value="Center" />
     </Style>
     <Style
+        Selector="UserControl.docs-mobile TabItem.docs-exampleTab">
+        <Setter
+            Property="MinWidth"
+            Value="92" />
+        <Setter
+            Property="Margin"
+            Value="0,0,6,0" />
+        <Setter
+            Property="Padding"
+            Value="12,8" />
+        <Setter
+            Property="FontSize"
+            Value="12" />
+    </Style>
+    <Style
         Selector="TabItem.docs-exampleTab:selected">
         <Setter
             Property="Foreground"

@@ -259,9 +259,9 @@
                                             <Border
                                                 BorderThickness="1"
                                                 BorderBrush="{StaticResource BrushSlate800}"
-                                                Width="620">
+                                                MaxWidth="620"
+                                                HorizontalAlignment="Center">
                                                 <Grid
-                                                    Width="620"
                                                     RowDefinitions="Auto, Auto, Auto"
                                                     ColumnDefinitions="Auto, *, *, Auto">
                                                     <Border
@@ -382,9 +382,9 @@
                                             <Border
                                                 BorderThickness="1"
                                                 BorderBrush="{StaticResource BrushSlate800}"
-                                                Width="620">
+                                                MaxWidth="620"
+                                                HorizontalAlignment="Center">
                                                 <Grid
-                                                    Width="620"
                                                     RowDefinitions="Auto, Auto, Auto"
                                                     ColumnDefinitions="Auto, *, *, Auto">
                                                     <Border
