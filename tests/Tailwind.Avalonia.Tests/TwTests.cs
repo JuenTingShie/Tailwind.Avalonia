@@ -485,7 +485,7 @@ public class TwTests
 
             Tw.SetClass(rectangle, "p-4");
 
-            var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "Padding");
+            var entry = Assert.Single(sink.Entries);
             Assert.Equal(LogEventLevel.Warning, entry.Level);
             Assert.Equal("Padding", entry.PropertyValues[0]);
         }
@@ -508,7 +508,7 @@ public class TwTests
 
             Tw.SetClass(rectangle, "bg-red-500");
 
-            var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "Background");
+            var entry = Assert.Single(sink.Entries);
             Assert.Equal(LogEventLevel.Warning, entry.Level);
             Assert.Equal("Background", entry.PropertyValues[0]);
         }
