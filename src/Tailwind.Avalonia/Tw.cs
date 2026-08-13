@@ -16,7 +16,6 @@ public class Tw : AvaloniaObject
     private const int BackgroundMask = 4;
     private const int ForegroundMask = 8;
     private const int BorderBrushMask = 16;
-    private const string LogArea = "Tailwind.Avalonia";
     private const int WidthMask = 32;
     private const int MinWidthMask = 64;
     private const int MaxWidthMask = 128;
@@ -24,6 +23,7 @@ public class Tw : AvaloniaObject
     private const int MinHeightMask = 512;
     private const int MaxHeightMask = 1024;
     private const int FontSizeMask = 2048;
+    private const string LogArea = "Tailwind.Avalonia";
 
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> ThicknessPropertyCache = new();
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> BrushPropertyCache = new();

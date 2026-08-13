@@ -431,18 +431,18 @@ public class TwTests
     [Fact]
     public void SetClass_Logs_Warning_For_Unrecognized_Token()
     {
-        var sink = new CapturingLogSink();
+        var border = new Border();
+        var sink = new CapturingLogSink(border);
         var originalSink = Logger.Sink;
         Logger.Sink = sink;
 
         try
         {
-            var border = new Border();
-
             Tw.SetClass(border, "not-a-real-utility");
 
-            var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "not-a-real-utility");
+            var entry = Assert.Single(sink.Entries);
             Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("not-a-real-utility", entry.PropertyValues[0]);
         }
         finally
         {
@@ -453,18 +453,18 @@ public class TwTests
     [Fact]
     public void SetClass_Logs_Warning_For_Unsupported_Border_Width_Token()
     {
-        var sink = new CapturingLogSink();
+        var border = new Border();
+        var sink = new CapturingLogSink(border);
         var originalSink = Logger.Sink;
         Logger.Sink = sink;
 
         try
         {
-            var border = new Border();
-
             Tw.SetClass(border, "border-2");
 
-            var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "border-2");
+            var entry = Assert.Single(sink.Entries);
             Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("border-2", entry.PropertyValues[0]);
         }
         finally
         {
@@ -475,14 +475,13 @@ public class TwTests
     [Fact]
     public void SetClass_Logs_Warning_When_Padding_Property_Is_Missing()
     {
-        var sink = new CapturingLogSink();
+        var rectangle = new Rectangle();
+        var sink = new CapturingLogSink(rectangle);
         var originalSink = Logger.Sink;
         Logger.Sink = sink;
 
         try
         {
-            var rectangle = new Rectangle();
-
             Tw.SetClass(rectangle, "p-4");
 
             var entry = Assert.Single(sink.Entries);
@@ -498,14 +497,13 @@ public class TwTests
     [Fact]
     public void SetClass_Logs_Warning_When_Background_Property_Is_Missing()
     {
-        var sink = new CapturingLogSink();
+        var rectangle = new Rectangle();
+        var sink = new CapturingLogSink(rectangle);
         var originalSink = Logger.Sink;
         Logger.Sink = sink;
 
         try
         {
-            var rectangle = new Rectangle();
-
             Tw.SetClass(rectangle, "bg-red-500");
 
             var entry = Assert.Single(sink.Entries);
@@ -520,7 +518,14 @@ public class TwTests
 
     private sealed class CapturingLogSink : ILogSink
     {
+        private readonly object _expectedSource;
         private readonly List<(LogEventLevel Level, string Area, string MessageTemplate, object?[] PropertyValues)> _entries = new();
+
+        public CapturingLogSink(object expectedSource)
+        {
+            _expectedSource = expectedSource;
+        }
+
         public IReadOnlyList<(LogEventLevel Level, string Area, string MessageTemplate, object?[] PropertyValues)> Entries
         {
             get
@@ -536,6 +541,11 @@ public class TwTests
 
         public void Log(LogEventLevel level, string area, object? source, string messageTemplate)
         {
+            if (!ReferenceEquals(source, _expectedSource))
+            {
+                return;
+            }
+
             lock (_entries)
             {
                 _entries.Add((level, area, messageTemplate, Array.Empty<object?>()));
@@ -544,6 +554,11 @@ public class TwTests
 
         public void Log(LogEventLevel level, string area, object? source, string messageTemplate, object?[] propertyValues)
         {
+            if (!ReferenceEquals(source, _expectedSource))
+            {
+                return;
+            }
+
             lock (_entries)
             {
                 _entries.Add((level, area, messageTemplate, propertyValues));
