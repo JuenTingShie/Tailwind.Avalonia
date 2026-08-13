@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Shapes;
 using Avalonia.Logging;
 using Avalonia.Media;
 
@@ -464,6 +465,52 @@ public class TwTests
 
             var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "border-2");
             Assert.Equal(LogEventLevel.Warning, entry.Level);
+        }
+        finally
+        {
+            Logger.Sink = originalSink;
+        }
+    }
+
+    [Fact]
+    public void SetClass_Logs_Warning_When_Padding_Property_Is_Missing()
+    {
+        var sink = new CapturingLogSink();
+        var originalSink = Logger.Sink;
+        Logger.Sink = sink;
+
+        try
+        {
+            var rectangle = new Rectangle();
+
+            Tw.SetClass(rectangle, "p-4");
+
+            var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "Padding");
+            Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("Padding", entry.PropertyValues[0]);
+        }
+        finally
+        {
+            Logger.Sink = originalSink;
+        }
+    }
+
+    [Fact]
+    public void SetClass_Logs_Warning_When_Background_Property_Is_Missing()
+    {
+        var sink = new CapturingLogSink();
+        var originalSink = Logger.Sink;
+        Logger.Sink = sink;
+
+        try
+        {
+            var rectangle = new Rectangle();
+
+            Tw.SetClass(rectangle, "bg-red-500");
+
+            var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "Background");
+            Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("Background", entry.PropertyValues[0]);
         }
         finally
         {

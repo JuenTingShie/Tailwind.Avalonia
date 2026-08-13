@@ -762,6 +762,11 @@ public class Tw : AvaloniaObject
 
         if (property is null)
         {
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not find a '{PropertyName}' Thickness property on {ElementType}; the utility was ignored.",
+                propertyName,
+                element.GetType());
             return false;
         }
 
@@ -785,6 +790,11 @@ public class Tw : AvaloniaObject
 
         if (property is null)
         {
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not find a '{PropertyName}' brush property on {ElementType}; the utility was ignored.",
+                propertyName,
+                element.GetType());
             return false;
         }
 
