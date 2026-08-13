@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using Avalonia;
 using Avalonia.Data;
+using Avalonia.Logging;
 using Avalonia.Media;
 
 namespace Tailwind.Avalonia;
@@ -15,6 +16,7 @@ public class Tw : AvaloniaObject
     private const int BackgroundMask = 4;
     private const int ForegroundMask = 8;
     private const int BorderBrushMask = 16;
+    private const string LogArea = "Tailwind.Avalonia";
     private const int WidthMask = 32;
     private const int MinWidthMask = 64;
     private const int MaxWidthMask = 128;
@@ -205,6 +207,10 @@ public class Tw : AvaloniaObject
 
                 if (!TryParseBrushUtility(token, out var brushUtility))
                 {
+                    Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                        element,
+                        "Tw.Class ignored unrecognized utility token '{Token}'.",
+                        token);
                     continue;
                 }
 
