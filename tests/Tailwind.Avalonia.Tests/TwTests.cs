@@ -440,9 +440,8 @@ public class TwTests
 
             Tw.SetClass(border, "not-a-real-utility");
 
-            var entry = Assert.Single(sink.Entries, e => e.Area == "Tailwind.Avalonia");
+            var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "not-a-real-utility");
             Assert.Equal(LogEventLevel.Warning, entry.Level);
-            Assert.Equal("not-a-real-utility", entry.PropertyValues[0]);
         }
         finally
         {
@@ -463,9 +462,8 @@ public class TwTests
 
             Tw.SetClass(border, "border-2");
 
-            var entry = Assert.Single(sink.Entries, e => e.Area == "Tailwind.Avalonia");
+            var entry = Assert.Single(sink.Entries, e => e.PropertyValues.Length > 0 && e.PropertyValues[0] as string == "border-2");
             Assert.Equal(LogEventLevel.Warning, entry.Level);
-            Assert.Equal("border-2", entry.PropertyValues[0]);
         }
         finally
         {
@@ -487,7 +485,7 @@ public class TwTests
             }
         }
 
-        public bool IsEnabled(LogEventLevel level, string area) => true;
+        public bool IsEnabled(LogEventLevel level, string area) => area == "Tailwind.Avalonia";
 
         public void Log(LogEventLevel level, string area, object? source, string messageTemplate)
         {
