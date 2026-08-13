@@ -31,7 +31,7 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 - Sample app for build and startup verification.
 
 ## Color Baseline
-- Tailwind v4.2 docs expose the default palette in OKLCH, with `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`, `slate`, `gray`, `zinc`, `neutral`, `stone`, `taupe`, `mauve`, `mist`, `olive`, plus `black` and `white`.
+- Tailwind v4.2 docs expose the default palette in OKLCH, with `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`, `slate`, `gray`, `zinc`, `neutral`, `stone`, plus `black` and `white`.
 - Avalonia 12 `Color.Parse` does not support `oklch(...)`, so package code must convert those values before emitting resources.
 
 ## Current Constraint
@@ -41,6 +41,10 @@ Tailwind default spacing baseline maps to `0.25rem`. In this project, initial pl
 - Font-size utilities currently cover predefined `text-xs` through `text-9xl` tokens plus absolute bracket arbitrary values, but they do not yet support slash line-height modifiers, responsive variants, percentages, or custom-property shorthand.
 - `tw:Tw.Class` now applies whole-property `bg-*`, `text-*`, and `border-*` utilities, including `transparent` and `/opacity`, but it does not yet support directional border colors or variant prefixes.
 - Avalonia `Border` exposes `BorderBrushProperty` but not per-side border brush properties, and user constraint disallows custom components.
+
+## Diagnostics
+- `tw:Tw.Class` emits `Warning`-level log entries via Avalonia's `Logger` (area `"Tailwind.Avalonia"`) when a utility token isn't recognized, or when a recognized token has no matching property on the target element. Silent by default — nothing is emitted unless a consumer attaches a log sink.
+- To see these warnings, call `.LogToTrace(Avalonia.Logging.LogEventLevel.Warning, "Tailwind.Avalonia")` on the `AppBuilder` in `Program.cs` (or `.LogToTrace()` with no arguments to see all Avalonia log areas, which is what the stock Avalonia project template already does).
 
 ## Test Coverage Baseline
 - `dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj` currently passes with 78 tests.
