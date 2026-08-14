@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Shapes;
+using Avalonia.Logging;
 using Avalonia.Media;
 
 namespace Tailwind.Avalonia.Tests;
@@ -422,5 +426,143 @@ public class TwTests
         Tw.SetClass(textBlock, null);
 
         Assert.Equal(defaultFontSize, textBlock.FontSize);
+    }
+
+    [Fact]
+    public void SetClass_Logs_Warning_For_Unrecognized_Token()
+    {
+        var border = new Border();
+        var sink = new CapturingLogSink(border);
+        var originalSink = Logger.Sink;
+        Logger.Sink = sink;
+
+        try
+        {
+            Tw.SetClass(border, "not-a-real-utility");
+
+            var entry = Assert.Single(sink.Entries);
+            Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("not-a-real-utility", entry.PropertyValues[0]);
+        }
+        finally
+        {
+            Logger.Sink = originalSink;
+        }
+    }
+
+    [Fact]
+    public void SetClass_Logs_Warning_For_Unsupported_Border_Width_Token()
+    {
+        var border = new Border();
+        var sink = new CapturingLogSink(border);
+        var originalSink = Logger.Sink;
+        Logger.Sink = sink;
+
+        try
+        {
+            Tw.SetClass(border, "border-2");
+
+            var entry = Assert.Single(sink.Entries);
+            Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("border-2", entry.PropertyValues[0]);
+        }
+        finally
+        {
+            Logger.Sink = originalSink;
+        }
+    }
+
+    [Fact]
+    public void SetClass_Logs_Warning_When_Padding_Property_Is_Missing()
+    {
+        var rectangle = new Rectangle();
+        var sink = new CapturingLogSink(rectangle);
+        var originalSink = Logger.Sink;
+        Logger.Sink = sink;
+
+        try
+        {
+            Tw.SetClass(rectangle, "p-4");
+
+            var entry = Assert.Single(sink.Entries);
+            Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("Padding", entry.PropertyValues[0]);
+        }
+        finally
+        {
+            Logger.Sink = originalSink;
+        }
+    }
+
+    [Fact]
+    public void SetClass_Logs_Warning_When_Background_Property_Is_Missing()
+    {
+        var rectangle = new Rectangle();
+        var sink = new CapturingLogSink(rectangle);
+        var originalSink = Logger.Sink;
+        Logger.Sink = sink;
+
+        try
+        {
+            Tw.SetClass(rectangle, "bg-red-500");
+
+            var entry = Assert.Single(sink.Entries);
+            Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("Background", entry.PropertyValues[0]);
+        }
+        finally
+        {
+            Logger.Sink = originalSink;
+        }
+    }
+
+    private sealed class CapturingLogSink : ILogSink
+    {
+        private readonly object _expectedSource;
+        private readonly List<(LogEventLevel Level, string Area, string MessageTemplate, object?[] PropertyValues)> _entries = new();
+
+        public CapturingLogSink(object expectedSource)
+        {
+            _expectedSource = expectedSource;
+        }
+
+        public IReadOnlyList<(LogEventLevel Level, string Area, string MessageTemplate, object?[] PropertyValues)> Entries
+        {
+            get
+            {
+                lock (_entries)
+                {
+                    return _entries.ToList();
+                }
+            }
+        }
+
+        public bool IsEnabled(LogEventLevel level, string area) => area == "Tailwind.Avalonia";
+
+        public void Log(LogEventLevel level, string area, object? source, string messageTemplate)
+        {
+            if (!ReferenceEquals(source, _expectedSource))
+            {
+                return;
+            }
+
+            lock (_entries)
+            {
+                _entries.Add((level, area, messageTemplate, Array.Empty<object?>()));
+            }
+        }
+
+        public void Log(LogEventLevel level, string area, object? source, string messageTemplate, object?[] propertyValues)
+        {
+            if (!ReferenceEquals(source, _expectedSource))
+            {
+                return;
+            }
+
+            lock (_entries)
+            {
+                _entries.Add((level, area, messageTemplate, propertyValues));
+            }
+        }
     }
 }

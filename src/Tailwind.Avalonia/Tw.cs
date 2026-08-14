@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using Avalonia;
 using Avalonia.Data;
+using Avalonia.Logging;
 using Avalonia.Media;
 
 namespace Tailwind.Avalonia;
@@ -22,6 +23,7 @@ public class Tw : AvaloniaObject
     private const int MinHeightMask = 512;
     private const int MaxHeightMask = 1024;
     private const int FontSizeMask = 2048;
+    private const string LogArea = "Tailwind.Avalonia";
 
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> ThicknessPropertyCache = new();
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> BrushPropertyCache = new();
@@ -205,6 +207,10 @@ public class Tw : AvaloniaObject
 
                 if (!TryParseBrushUtility(token, out var brushUtility))
                 {
+                    Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                        element,
+                        "Tw.Class ignored unrecognized utility token '{Token}'.",
+                        token);
                     continue;
                 }
 
@@ -756,6 +762,11 @@ public class Tw : AvaloniaObject
 
         if (property is null)
         {
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not find a '{PropertyName}' Thickness property on {ElementType}; the utility was ignored.",
+                propertyName,
+                element.GetType());
             return false;
         }
 
@@ -779,6 +790,11 @@ public class Tw : AvaloniaObject
 
         if (property is null)
         {
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not find a '{PropertyName}' brush property on {ElementType}; the utility was ignored.",
+                propertyName,
+                element.GetType());
             return false;
         }
 

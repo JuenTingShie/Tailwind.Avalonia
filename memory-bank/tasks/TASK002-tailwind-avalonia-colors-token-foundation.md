@@ -45,3 +45,6 @@
 - Merged colors into `Themes/Tailwind.axaml` and updated package metadata to mention colors.
 - Updated the sample app to use package `BrushBlue700`, `BrushGreen800`, `BrushOrange800`, and `BrushWhite` resources.
 - Validated the implementation with `dotnet build` on the sample project and a `dotnet run` startup smoke test using an isolated output directory.
+
+### 2026-08-13
+- Correction: the 2026-05-06 entry above claiming Tailwind v4.2's public default palette includes `taupe`, `mauve`, `mist`, and `olive` was wrong — those four families are not part of the real Tailwind palette. They were removed from `TailwindColorPalette.cs` and `techContext.md`'s Color Baseline section as part of a correctness pass.
