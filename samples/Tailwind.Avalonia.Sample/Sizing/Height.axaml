@@ -154,7 +154,7 @@
                                                 Classes="docs-inset"
                                                 HorizontalAlignment="Center"
                                                 Padding="20"
-                                                Width="440">
+                                                MaxWidth="440">
                                                 <Grid
                                                     Height="240"
                                                     ColumnDefinitions="*,*,*"
@@ -239,7 +239,7 @@
                                                 Classes="docs-inset"
                                                 HorizontalAlignment="Center"
                                                 Padding="20"
-                                                Width="440">
+                                                MaxWidth="440">
                                                 <Grid
                                                     Height="240"
                                                     ColumnDefinitions="*,*,*"
@@ -339,7 +339,7 @@
                                                 Classes="docs-inset"
                                                 HorizontalAlignment="Center"
                                                 Padding="20"
-                                                Width="440">
+                                                MaxWidth="440">
                                                 <Grid
                                                     Height="220"
                                                     ColumnDefinitions="*,*"
@@ -408,7 +408,7 @@
                                                 Classes="docs-inset"
                                                 HorizontalAlignment="Center"
                                                 Padding="20"
-                                                Width="440">
+                                                MaxWidth="440">
                                                 <Grid
                                                     Height="220"
                                                     ColumnDefinitions="*,*"
@@ -492,7 +492,7 @@
                                                 Classes="docs-inset"
                                                 HorizontalAlignment="Center"
                                                 Padding="20"
-                                                Width="440">
+                                                MaxWidth="440">
                                                 <Grid
                                                     Height="220"
                                                     ColumnDefinitions="*,*"
@@ -561,7 +561,7 @@
                                                 Classes="docs-inset"
                                                 HorizontalAlignment="Center"
                                                 Padding="20"
-                                                Width="440">
+                                                MaxWidth="440">
                                                 <Grid
                                                     Height="220"
                                                     ColumnDefinitions="*,*"
@@ -801,7 +801,7 @@
                                                 Classes="docs-inset"
                                                 HorizontalAlignment="Center"
                                                 Padding="20"
-                                                Width="440">
+                                                MaxWidth="440">
                                                 <Grid
                                                     Height="240"
                                                     ColumnDefinitions="*,*,*"
@@ -893,7 +893,7 @@
                                                 Classes="docs-inset"
                                                 HorizontalAlignment="Center"
                                                 Padding="20"
-                                                Width="440">
+                                                MaxWidth="440">
                                                 <Grid
                                                     Height="240"
                                                     ColumnDefinitions="*,*,*"
