@@ -100,6 +100,11 @@ internal static class TailwindCssColorParser
             ? token[..^3]
             : token;
 
+        if (normalized.Length == 0)
+        {
+            throw new FormatException($"Invalid hue value '{token}': numeric component is missing.");
+        }
+
         var value = double.Parse(normalized, CultureInfo.InvariantCulture);
         value %= 360.0;
 
