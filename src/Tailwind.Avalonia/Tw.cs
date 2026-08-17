@@ -716,6 +716,18 @@ public class Tw : AvaloniaObject
 
         var hex = hexColor[1..];
 
+        // Expand shorthand hex notation (#rgb → #rrggbb, #rgba → #rrggbbaa)
+        if (hex.Length == 3 || hex.Length == 4)
+        {
+            var expanded = new char[hex.Length * 2];
+            for (var i = 0; i < hex.Length; i++)
+            {
+                expanded[i * 2] = hex[i];
+                expanded[i * 2 + 1] = hex[i];
+            }
+            hex = new string(expanded);
+        }
+
         // Support #rrggbb (6 chars) and #rrggbbaa (8 chars)
         if (hex.Length != 6 && hex.Length != 8)
         {
