@@ -414,4 +414,60 @@ public class TwArbitraryValuesTests
         Assert.Equal(Colors.Lime, borderBrush);
         Assert.Equal(Colors.Blue, foreground);
     }
+
+    [Fact]
+    public void SetClass_Applies_Arbitrary_Color_Hex_3Digit_Shorthand()
+    {
+        var border = new Border();
+        var textBlock = new TextBlock();
+
+        // #rgb shorthand expands to #rrggbb (e.g., #fff → #ffffff, #f00 → #ff0000)
+        Tw.SetClass(border, "bg-[#f00] border-[#0f0]");
+        Tw.SetClass(textBlock, "text-[#00f]");
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+        var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
+        var foreground = Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color;
+
+        Assert.Equal(Colors.Red, background);
+        Assert.Equal(Colors.Lime, borderBrush);
+        Assert.Equal(Colors.Blue, foreground);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Arbitrary_Color_Hex_4Digit_Shorthand_With_Alpha()
+    {
+        var border = new Border();
+
+        // #rgba shorthand expands to #rrggbbaa (e.g., #f00f → #ff0000ff, #f008 → #ff000088)
+        Tw.SetClass(border, "bg-[#f00f] border-[#0f08]");
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+        var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
+
+        Assert.Equal((byte)255, background.A);
+        Assert.Equal(Colors.Red.R, background.R);
+        Assert.Equal(Colors.Red.G, background.G);
+        Assert.Equal(Colors.Red.B, background.B);
+
+        Assert.Equal((byte)136, borderBrush.A);  // 0x88 = 136
+        Assert.Equal(Colors.Lime.R, borderBrush.R);
+        Assert.Equal(Colors.Lime.G, borderBrush.G);
+        Assert.Equal(Colors.Lime.B, borderBrush.B);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Arbitrary_Color_Hex_3Digit_Shorthand_Case_Insensitive()
+    {
+        var border = new Border();
+
+        // Test case insensitivity with shorthand
+        Tw.SetClass(border, "bg-[#FFF] border-[#000]");
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+        var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
+
+        Assert.Equal(Colors.White, background);
+        Assert.Equal(Colors.Black, borderBrush);
+    }
 }
