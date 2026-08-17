@@ -132,14 +132,17 @@ public class TwArbitraryValuesTests
     }
 
     [Fact]
-    public void SetClass_Applies_Arbitrary_Sizing_With_Percentage()
+    public void SetClass_Ignores_Arbitrary_Sizing_With_Percentage()
     {
         var border = new Border();
+        var defaultWidth = border.Width;
+        var defaultHeight = border.Height;
 
         Tw.SetClass(border, "w-[50%] h-[100%]");
 
-        Assert.Equal(50d, border.Width);
-        Assert.Equal(100d, border.Height);
+        // Percentage values are not supported for sizing in Avalonia
+        Assert.Equal(defaultWidth, border.Width);
+        Assert.Equal(defaultHeight, border.Height);
     }
 
     [Fact]
