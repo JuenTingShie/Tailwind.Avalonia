@@ -652,14 +652,14 @@ public class Tw : AvaloniaObject
             "px" => numericValue,
             "rem" => numericValue * 16.0, // 1rem = 16px
             "em" => numericValue * 16.0,  // Treat em as rem for simplicity
-            "%" => numericValue,            // Percentage values used as-is
+            "%" => default,                 // Percentage values not supported for sizing/spacing
             "" => numericValue,             // Unitless (treated as px)
             _ => default,
         };
 
         return unitPart switch
         {
-            "px" or "rem" or "em" or "%" or "" => true,
+            "px" or "rem" or "em" or "" => true,
             _ => false,
         };
     }
