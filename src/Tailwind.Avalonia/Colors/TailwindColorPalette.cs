@@ -11,7 +11,12 @@ internal static class TailwindColorPalette
         @"--color-(?<name>[a-z0-9-]+):\s*(?<value>[^;]+);",
         RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
+    private static readonly Regex WellFormedTokenPattern = new(
+        @"^[a-z]+-[0-9]+$",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
     private static readonly IReadOnlyList<TailwindColorToken> tokens = LoadTokens();
+    private static readonly IReadOnlyDictionary<string, Color> colorsByResourceSuffix = CreateLookup(tokens);
 
     public static IReadOnlyList<TailwindColorToken> Tokens => tokens;
 
@@ -23,19 +28,13 @@ internal static class TailwindColorPalette
             return true;
         }
 
-        var resourceSuffix = ToResourceSuffix(tokenName);
-
-        foreach (var token in tokens)
+        if (!IsWellFormedToken(tokenName))
         {
-            if (string.Equals(token.ResourceSuffix, resourceSuffix, StringComparison.Ordinal))
-            {
-                color = token.Color;
-                return true;
-            }
+            color = default;
+            return false;
         }
 
-        color = default;
-        return false;
+        return colorsByResourceSuffix.TryGetValue(ToResourceSuffix(tokenName), out color);
     }
 
     private static IReadOnlyList<TailwindColorToken> LoadTokens()
@@ -57,6 +56,21 @@ internal static class TailwindColorPalette
 
         return results;
     }
+
+    private static IReadOnlyDictionary<string, Color> CreateLookup(IReadOnlyList<TailwindColorToken> source)
+    {
+        var lookup = new Dictionary<string, Color>(source.Count, StringComparer.Ordinal);
+
+        foreach (var token in source)
+        {
+            lookup[token.ResourceSuffix] = token.Color;
+        }
+
+        return lookup;
+    }
+
+    private static bool IsWellFormedToken(string tokenName) =>
+        tokenName is "black" or "white" || WellFormedTokenPattern.IsMatch(tokenName);
 
     private static string ToResourceSuffix(string tokenName)
     {

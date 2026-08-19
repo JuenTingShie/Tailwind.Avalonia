@@ -146,6 +146,29 @@ public class TwArbitraryValuesTests
     }
 
     [Fact]
+    public void SetClass_Ignores_Arbitrary_Sizing_With_Negative_Value()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "w-[-10px]");
+
+        Assert.True(double.IsNaN(border.Width));
+    }
+
+    [Fact]
+    public void SetClass_Ignores_Arbitrary_Value_That_Overflows_To_Infinity()
+    {
+        var border = new Border();
+        var hugeNumber = new string('9', 400);
+
+        Tw.SetClass(border, $"w-[{hugeNumber}px] m-[{hugeNumber}px] p-[{hugeNumber}px]");
+
+        Assert.True(double.IsNaN(border.Width));
+        Assert.Equal(default, border.Margin);
+        Assert.Equal(default, border.Padding);
+    }
+
+    [Fact]
     public void SetClass_Applies_Arbitrary_Sizing_Unitless()
     {
         var border = new Border();

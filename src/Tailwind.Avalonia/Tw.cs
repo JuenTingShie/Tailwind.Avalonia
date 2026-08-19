@@ -64,26 +64,31 @@ public class Tw : AvaloniaObject
 
     private static void HandleFlowDirectionChanged(Visual visual, AvaloniaPropertyChangedEventArgs args)
     {
-        var classList = GetClass(visual);
-
-        if (!string.IsNullOrWhiteSpace(classList) && ContainsLogicalUtilities(classList))
-        {
-            ApplyUtilities(visual, classList);
-        }
+        ReapplyIfLogicalUtilitiesPresent(visual);
     }
 
     private static void HandleAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs args)
     {
-        if (sender is not Visual visual)
+        if (sender is Visual visual)
+        {
+            ReapplyIfLogicalUtilitiesPresent(visual);
+        }
+    }
+
+    private static void ReapplyIfLogicalUtilitiesPresent(Visual visual)
+    {
+        var classList = GetClass(visual);
+
+        if (string.IsNullOrWhiteSpace(classList))
         {
             return;
         }
 
-        var classList = GetClass(visual);
+        var tokens = classList.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
 
-        if (!string.IsNullOrWhiteSpace(classList) && ContainsLogicalUtilities(classList))
+        if (ContainsLogicalUtilities(tokens))
         {
-            ApplyUtilities(visual, classList);
+            ApplyUtilities(visual, tokens);
         }
     }
 
@@ -99,6 +104,15 @@ public class Tw : AvaloniaObject
     }
 
     private static void ApplyUtilities(AvaloniaObject element, string? classList)
+    {
+        var tokens = string.IsNullOrWhiteSpace(classList)
+            ? Array.Empty<string>()
+            : classList.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+
+        ApplyUtilities(element, tokens);
+    }
+
+    private static void ApplyUtilities(AvaloniaObject element, string[] tokens)
     {
         var previousMask = element.GetValue(AppliedMaskProperty);
         var newMask = 0;
@@ -128,222 +142,141 @@ public class Tw : AvaloniaObject
         var maxHeight = default(double);
         var fontSize = default(double);
 
-        if (!string.IsNullOrWhiteSpace(classList))
+        foreach (var token in tokens)
         {
-            foreach (var token in classList.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries))
+            if (TryParseSpacingUtility(token, out var spacingUtility))
             {
-                if (TryParseSpacingUtility(token, out var spacingUtility))
+                switch (spacingUtility.Target)
                 {
-                    switch (spacingUtility.Target)
-                    {
-                        case SpacingTarget.Margin:
-                            if (!hasMargin)
-                            {
-                                margin = default;
-                                hasMargin = true;
-                            }
+                    case SpacingTarget.Margin:
+                        if (!hasMargin)
+                        {
+                            margin = default;
+                            hasMargin = true;
+                        }
 
-                            margin = ApplyEdge(margin, spacingUtility.Edge, spacingUtility.Pixels, element);
-                            break;
-
-                        case SpacingTarget.Padding:
-                            if (!hasPadding)
-                            {
-                                padding = default;
-                                hasPadding = true;
-                            }
-
-                            padding = ApplyEdge(padding, spacingUtility.Edge, spacingUtility.Pixels, element);
-                            break;
-                    }
-
-                    continue;
-                }
-
-                if (TryParseSizingUtility(token, out var sizingUtility))
-                {
-                    switch (sizingUtility.Target)
-                    {
-                        case SizingTarget.Width:
-                            width = sizingUtility.Pixels;
-                            hasWidth = true;
-                            break;
-
-                        case SizingTarget.MinWidth:
-                            minWidth = sizingUtility.Pixels;
-                            hasMinWidth = true;
-                            break;
-
-                        case SizingTarget.MaxWidth:
-                            maxWidth = sizingUtility.Pixels;
-                            hasMaxWidth = true;
-                            break;
-
-                        case SizingTarget.Height:
-                            height = sizingUtility.Pixels;
-                            hasHeight = true;
-                            break;
-
-                        case SizingTarget.MinHeight:
-                            minHeight = sizingUtility.Pixels;
-                            hasMinHeight = true;
-                            break;
-
-                        case SizingTarget.MaxHeight:
-                            maxHeight = sizingUtility.Pixels;
-                            hasMaxHeight = true;
-                            break;
-                    }
-
-                    continue;
-                }
-
-                if (TryParseFontSizeUtility(token, out var fontSizeUtility))
-                {
-                    fontSize = fontSizeUtility.Pixels;
-                    hasFontSize = true;
-                    continue;
-                }
-
-                if (!TryParseBrushUtility(token, out var brushUtility))
-                {
-                    Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
-                        element,
-                        "Tw.Class ignored unrecognized utility token '{Token}'.",
-                        token);
-                    continue;
-                }
-
-                switch (brushUtility.Target)
-                {
-                    case BrushTarget.Background:
-                        background = brushUtility.Brush;
-                        hasBackground = true;
+                        margin = ApplyEdge(margin, spacingUtility.Edge, spacingUtility.Pixels, element);
                         break;
 
-                    case BrushTarget.Foreground:
-                        foreground = brushUtility.Brush;
-                        hasForeground = true;
-                        break;
+                    case SpacingTarget.Padding:
+                        if (!hasPadding)
+                        {
+                            padding = default;
+                            hasPadding = true;
+                        }
 
-                    case BrushTarget.BorderBrush:
-                        borderBrush = brushUtility.Brush;
-                        hasBorderBrush = true;
+                        padding = ApplyEdge(padding, spacingUtility.Edge, spacingUtility.Pixels, element);
                         break;
                 }
+
+                continue;
+            }
+
+            if (TryParseSizingUtility(token, out var sizingUtility))
+            {
+                switch (sizingUtility.Target)
+                {
+                    case SizingTarget.Width:
+                        width = sizingUtility.Pixels;
+                        hasWidth = true;
+                        break;
+
+                    case SizingTarget.MinWidth:
+                        minWidth = sizingUtility.Pixels;
+                        hasMinWidth = true;
+                        break;
+
+                    case SizingTarget.MaxWidth:
+                        maxWidth = sizingUtility.Pixels;
+                        hasMaxWidth = true;
+                        break;
+
+                    case SizingTarget.Height:
+                        height = sizingUtility.Pixels;
+                        hasHeight = true;
+                        break;
+
+                    case SizingTarget.MinHeight:
+                        minHeight = sizingUtility.Pixels;
+                        hasMinHeight = true;
+                        break;
+
+                    case SizingTarget.MaxHeight:
+                        maxHeight = sizingUtility.Pixels;
+                        hasMaxHeight = true;
+                        break;
+                }
+
+                continue;
+            }
+
+            if (TryParseFontSizeUtility(token, out var fontSizeUtility))
+            {
+                fontSize = fontSizeUtility.Pixels;
+                hasFontSize = true;
+                continue;
+            }
+
+            if (!TryParseBrushUtility(token, out var brushUtility))
+            {
+                Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                    element,
+                    "Tw.Class ignored unrecognized utility token '{Token}'.",
+                    token);
+                continue;
+            }
+
+            switch (brushUtility.Target)
+            {
+                case BrushTarget.Background:
+                    background = brushUtility.Brush;
+                    hasBackground = true;
+                    break;
+
+                case BrushTarget.Foreground:
+                    foreground = brushUtility.Brush;
+                    hasForeground = true;
+                    break;
+
+                case BrushTarget.BorderBrush:
+                    borderBrush = brushUtility.Brush;
+                    hasBorderBrush = true;
+                    break;
             }
         }
 
-        if (hasMargin && TrySetThickness(element, "Margin", margin))
-        {
-            newMask |= MarginMask;
-        }
-        else if ((previousMask & MarginMask) != 0)
-        {
-            ClearThickness(element, "Margin");
-        }
+        Span<PendingUtility> pendingUtilities =
+        [
+            new(MarginMask, hasMargin, () => TrySetThickness(element, "Margin", margin), () => ClearThickness(element, "Margin")),
+            new(PaddingMask, hasPadding, () => TrySetThickness(element, "Padding", padding), () => ClearThickness(element, "Padding")),
+            new(BackgroundMask, hasBackground, () => TrySetBrush(element, "Background", background), () => ClearBrush(element, "Background")),
+            new(ForegroundMask, hasForeground, () => TrySetBrush(element, "Foreground", foreground), () => ClearBrush(element, "Foreground")),
+            new(BorderBrushMask, hasBorderBrush, () => TrySetBrush(element, "BorderBrush", borderBrush), () => ClearBrush(element, "BorderBrush")),
+            new(WidthMask, hasWidth, () => TrySetDouble(element, "Width", width), () => ClearDouble(element, "Width")),
+            new(MinWidthMask, hasMinWidth, () => TrySetDouble(element, "MinWidth", minWidth), () => ClearDouble(element, "MinWidth")),
+            new(MaxWidthMask, hasMaxWidth, () => TrySetDouble(element, "MaxWidth", maxWidth), () => ClearDouble(element, "MaxWidth")),
+            new(HeightMask, hasHeight, () => TrySetDouble(element, "Height", height), () => ClearDouble(element, "Height")),
+            new(MinHeightMask, hasMinHeight, () => TrySetDouble(element, "MinHeight", minHeight), () => ClearDouble(element, "MinHeight")),
+            new(MaxHeightMask, hasMaxHeight, () => TrySetDouble(element, "MaxHeight", maxHeight), () => ClearDouble(element, "MaxHeight")),
+            new(FontSizeMask, hasFontSize, () => TrySetDouble(element, "FontSize", fontSize), () => ClearDouble(element, "FontSize")),
+        ];
 
-        if (hasPadding && TrySetThickness(element, "Padding", padding))
+        foreach (var pending in pendingUtilities)
         {
-            newMask |= PaddingMask;
-        }
-        else if ((previousMask & PaddingMask) != 0)
-        {
-            ClearThickness(element, "Padding");
-        }
-
-        if (hasBackground && TrySetBrush(element, "Background", background))
-        {
-            newMask |= BackgroundMask;
-        }
-        else if ((previousMask & BackgroundMask) != 0)
-        {
-            ClearBrush(element, "Background");
-        }
-
-        if (hasForeground && TrySetBrush(element, "Foreground", foreground))
-        {
-            newMask |= ForegroundMask;
-        }
-        else if ((previousMask & ForegroundMask) != 0)
-        {
-            ClearBrush(element, "Foreground");
-        }
-
-        if (hasBorderBrush && TrySetBrush(element, "BorderBrush", borderBrush))
-        {
-            newMask |= BorderBrushMask;
-        }
-        else if ((previousMask & BorderBrushMask) != 0)
-        {
-            ClearBrush(element, "BorderBrush");
-        }
-
-        if (hasWidth && TrySetDouble(element, "Width", width))
-        {
-            newMask |= WidthMask;
-        }
-        else if ((previousMask & WidthMask) != 0)
-        {
-            ClearDouble(element, "Width");
-        }
-
-        if (hasMinWidth && TrySetDouble(element, "MinWidth", minWidth))
-        {
-            newMask |= MinWidthMask;
-        }
-        else if ((previousMask & MinWidthMask) != 0)
-        {
-            ClearDouble(element, "MinWidth");
-        }
-
-        if (hasMaxWidth && TrySetDouble(element, "MaxWidth", maxWidth))
-        {
-            newMask |= MaxWidthMask;
-        }
-        else if ((previousMask & MaxWidthMask) != 0)
-        {
-            ClearDouble(element, "MaxWidth");
-        }
-
-        if (hasHeight && TrySetDouble(element, "Height", height))
-        {
-            newMask |= HeightMask;
-        }
-        else if ((previousMask & HeightMask) != 0)
-        {
-            ClearDouble(element, "Height");
-        }
-
-        if (hasMinHeight && TrySetDouble(element, "MinHeight", minHeight))
-        {
-            newMask |= MinHeightMask;
-        }
-        else if ((previousMask & MinHeightMask) != 0)
-        {
-            ClearDouble(element, "MinHeight");
-        }
-
-        if (hasMaxHeight && TrySetDouble(element, "MaxHeight", maxHeight))
-        {
-            newMask |= MaxHeightMask;
-        }
-        else if ((previousMask & MaxHeightMask) != 0)
-        {
-            ClearDouble(element, "MaxHeight");
-        }
-
-        if (hasFontSize && TrySetDouble(element, "FontSize", fontSize))
-        {
-            newMask |= FontSizeMask;
-        }
-        else if ((previousMask & FontSizeMask) != 0)
-        {
-            ClearDouble(element, "FontSize");
+            if (pending.HasValue && pending.TrySet())
+            {
+                newMask |= pending.Mask;
+            }
+            else if ((previousMask & pending.Mask) != 0)
+            {
+                pending.Clear();
+            }
         }
 
         element.SetValue(AppliedMaskProperty, newMask);
     }
+
+    private readonly record struct PendingUtility(int Mask, bool HasValue, Func<bool> TrySet, Action Clear);
 
     private static Thickness ApplyEdge(Thickness current, SpacingEdge edge, double value, AvaloniaObject element)
     {
@@ -400,17 +333,10 @@ public class Tw : AvaloniaObject
                 return false;
             }
 
-            // Try to parse as a scale token first
-            if (SpacingScale.TryGetPixels(scaleToken, out var pixels))
+            // Try a scale-table token first (e.g. p-4), then an arbitrary value (e.g. p-[1.5rem]).
+            if (TryParseScaleOrArbitraryPixels(scaleToken, SpacingScale.TryGetPixels, isValid: null, out var pixels))
             {
                 utility = new SpacingUtility(descriptor.Target, descriptor.Edge, negative ? -pixels : pixels);
-                return true;
-            }
-
-            // Try to parse as an arbitrary value (e.g., p-[1.5rem], m-[20px])
-            if (TryParseArbitraryDouble(scaleToken, out var arbitraryPixels))
-            {
-                utility = new SpacingUtility(descriptor.Target, descriptor.Edge, negative ? -arbitraryPixels : arbitraryPixels);
                 return true;
             }
         }
@@ -475,17 +401,10 @@ public class Tw : AvaloniaObject
                 return false;
             }
 
-            // Try to parse as a scale token first
-            if (SpacingScale.TryGetPixels(scaleToken, out var pixels))
+            // Try a scale-table token first (e.g. w-4), then an arbitrary value (e.g. w-[100px]).
+            if (TryParseScaleOrArbitraryPixels(scaleToken, SpacingScale.TryGetPixels, static p => p >= 0, out var pixels))
             {
                 utility = new SizingUtility(descriptor.Target, pixels);
-                return true;
-            }
-
-            // Try to parse as an arbitrary value (e.g., w-[100px], h-[50%])
-            if (TryParseArbitraryDouble(scaleToken, out var arbitraryPixels))
-            {
-                utility = new SizingUtility(descriptor.Target, arbitraryPixels);
                 return true;
             }
         }
@@ -511,20 +430,20 @@ public class Tw : AvaloniaObject
             return false;
         }
 
-        if (FontSizeScale.TryGetPixels(sizeToken, out var pixels))
+        // Try a scale-table token first (e.g. text-lg), then an arbitrary value (e.g. text-[14px]).
+        if (TryParseScaleOrArbitraryPixels(sizeToken, FontSizeScale.TryGetPixels, static p => p >= 0, out var pixels))
         {
             utility = new FontSizeUtility(pixels);
             return true;
         }
 
-        if (TryParseArbitraryFontSize(sizeToken, out var arbitraryPixels))
-        {
-            utility = new FontSizeUtility(arbitraryPixels);
-            return true;
-        }
-
         return false;
     }
+
+    private delegate bool ScalePixelLookup(string token, out double pixels);
+
+    private static bool TryParseScaleOrArbitraryPixels(string token, ScalePixelLookup scaleLookup, Predicate<double>? isValid, out double pixels) =>
+        (scaleLookup(token, out pixels) || TryParseArbitraryDouble(token, out pixels)) && (isValid is null || isValid(pixels));
 
     private static bool TryResolveUtilityColor(string token, out Color color)
     {
@@ -570,6 +489,7 @@ public class Tw : AvaloniaObject
 
         if (token.Length == 0 ||
             !double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out var percent) ||
+            !double.IsFinite(percent) ||
             percent < 0 ||
             percent > 100)
         {
@@ -646,35 +566,21 @@ public class Tw : AvaloniaObject
             return false;
         }
 
-        // Convert based on unit
-        value = unitPart switch
+        // Convert based on unit; "px"/"" are unitless-or-pixels, "rem"/"em" scale to pixels.
+        double? converted = unitPart switch
         {
-            "px" => numericValue,
-            "rem" => numericValue * 16.0, // 1rem = 16px
-            "em" => numericValue * 16.0,  // Treat em as rem for simplicity
-            "%" => default,                 // Percentage values not supported for sizing/spacing
-            "" => numericValue,             // Unitless (treated as px)
-            _ => default,
+            "px" or "" => numericValue,
+            "rem" or "em" => numericValue * 16.0, // 1rem/1em = 16px
+            _ => null, // e.g. "%" - percentage values not supported for sizing/spacing
         };
 
-        return unitPart switch
-        {
-            "px" or "rem" or "em" or "" => true,
-            _ => false,
-        };
-    }
-
-    private static bool TryParseArbitraryFontSize(string token, out double value)
-    {
-        value = default;
-
-        if (token.StartsWith("[%", StringComparison.Ordinal) ||
-            token.EndsWith("%]", StringComparison.Ordinal))
+        if (converted is not { } convertedValue || !double.IsFinite(convertedValue))
         {
             return false;
         }
 
-        return TryParseArbitraryDouble(token, out value) && value >= 0;
+        value = convertedValue;
+        return true;
     }
 
     private static bool TryParseArbitraryColor(string token, out Color color)
@@ -750,16 +656,18 @@ public class Tw : AvaloniaObject
         }
     }
 
-    private static bool ContainsLogicalUtilities(string classList)
+    private static readonly string[] LogicalUtilityPrefixes = UtilityDescriptors.All
+        .Where(descriptor => descriptor.Edge is SpacingEdge.Start or SpacingEdge.End)
+        .Select(descriptor => descriptor.Prefix)
+        .ToArray();
+
+    private static bool ContainsLogicalUtilities(string[] tokens)
     {
-        foreach (var token in classList.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries))
+        foreach (var token in tokens)
         {
             var candidate = token.StartsWith("-", StringComparison.Ordinal) ? token[1..] : token;
 
-            if (candidate.StartsWith("ps-", StringComparison.Ordinal) ||
-                candidate.StartsWith("pe-", StringComparison.Ordinal) ||
-                candidate.StartsWith("ms-", StringComparison.Ordinal) ||
-                candidate.StartsWith("me-", StringComparison.Ordinal))
+            if (LogicalUtilityPrefixes.Any(prefix => candidate.StartsWith(prefix, StringComparison.Ordinal)))
             {
                 return true;
             }
@@ -830,6 +738,11 @@ public class Tw : AvaloniaObject
 
         if (property is null)
         {
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not find a '{PropertyName}' numeric property on {ElementType}; the utility was ignored.",
+                propertyName,
+                element.GetType());
             return false;
         }
 

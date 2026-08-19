@@ -106,6 +106,12 @@ internal static class TailwindCssColorParser
         }
 
         var value = double.Parse(normalized, CultureInfo.InvariantCulture);
+
+        if (!double.IsFinite(value))
+        {
+            throw new FormatException($"Invalid hue value '{token}': value must be finite.");
+        }
+
         value %= 360.0;
 
         if (value < 0)
@@ -118,13 +124,16 @@ internal static class TailwindCssColorParser
 
     private static double ParsePercentOrNumber(string token, double percentageScale)
     {
-        if (token.EndsWith('%'))
+        var value = token.EndsWith('%')
+            ? double.Parse(token[..^1], CultureInfo.InvariantCulture) / 100.0 * percentageScale
+            : double.Parse(token, CultureInfo.InvariantCulture);
+
+        if (!double.IsFinite(value))
         {
-            var percentage = double.Parse(token[..^1], CultureInfo.InvariantCulture);
-            return percentage / 100.0 * percentageScale;
+            throw new FormatException($"Invalid numeric component '{token}': value must be finite.");
         }
 
-        return double.Parse(token, CultureInfo.InvariantCulture);
+        return value;
     }
 
     private static double Clamp01(double value)
