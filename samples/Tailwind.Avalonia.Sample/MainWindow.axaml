@@ -4,11 +4,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="using:Tailwind.Avalonia.Sample"
+    xmlns:tw="using:Tailwind.Avalonia"
     mc:Ignorable="d"
     d:DesignWidth="1440"
     d:DesignHeight="920"
     x:Class="Tailwind.Avalonia.Sample.MainWindow"
     Title="Tailwind.Avalonia Docs Sample"
-    Background="{StaticResource BrushSlate950}">
+    tw:Tw.Class="bg-slate-950">
     <local:SampleShell />
 </Window>
