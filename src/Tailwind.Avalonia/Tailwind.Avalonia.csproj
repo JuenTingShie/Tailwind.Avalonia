@@ -21,8 +21,4 @@
       <_Parameter1>Tailwind.Avalonia.Tests</_Parameter1>
     </AssemblyAttribute>
   </ItemGroup>
-  <ItemGroup>
-    <AvaloniaResource
-       Include="Themes\**"/>
-  </ItemGroup>
 </Project>
