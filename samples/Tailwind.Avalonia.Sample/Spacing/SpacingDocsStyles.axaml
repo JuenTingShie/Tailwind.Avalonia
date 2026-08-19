@@ -4,8 +4,6 @@
     xmlns:sample="using:Tailwind.Avalonia.Sample"
     xmlns:tw="using:Tailwind.Avalonia">
     <Styles.Resources>
-        <x:Double
-            x:Key="DocsExampleTabMinWidth">112</x:Double>
         <DrawingBrush
             x:Key="SamplePaddingStripeBrush"
             DestinationRect="0,0,24,24"
@@ -213,66 +211,6 @@
         <Setter
             Property="FontWeight"
             Value="Bold" />
-    </Style>
-    <Style
-        Selector="TabControl.docs-exampleTabs">
-        <Setter
-            Property="Background"
-            Value="Transparent" />
-        <Setter
-            Property="BorderBrush"
-            Value="Transparent" />
-        <Setter
-            Property="BorderThickness"
-            Value="0" />
-    </Style>
-    <Style
-        Selector="TabItem.docs-exampleTab">
-        <Setter
-            Property="MinWidth"
-            Value="{StaticResource DocsExampleTabMinWidth}" />
-        <Setter
-            Property="Margin"
-            Value="0,0,8,0" />
-        <Setter
-            Property="Padding"
-            Value="14,10" />
-        <Setter
-            Property="FontSize"
-            Value="13" />
-        <Setter
-            Property="FontWeight"
-            Value="SemiBold" />
-        <Setter
-            Property="tw:Tw.Class"
-            Value="text-slate-300 bg-slate-950 border-slate-800" />
-        <Setter
-            Property="BorderThickness"
-            Value="1" />
-        <Setter
-            Property="HorizontalContentAlignment"
-            Value="Center" />
-    </Style>
-    <Style
-        Selector="UserControl.docs-mobile TabItem.docs-exampleTab">
-        <Setter
-            Property="MinWidth"
-            Value="92" />
-        <Setter
-            Property="Margin"
-            Value="0,0,6,0" />
-        <Setter
-            Property="Padding"
-            Value="12,8" />
-        <Setter
-            Property="FontSize"
-            Value="12" />
-    </Style>
-    <Style
-        Selector="TabItem.docs-exampleTab:selected">
-        <Setter
-            Property="tw:Tw.Class"
-            Value="text-white bg-slate-800 border-slate-700" />
     </Style>
     <Style
         Selector="Border.docs-surface">
