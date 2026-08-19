@@ -277,22 +277,19 @@ public class TwTests
     [Fact]
     public void SetClass_Applies_Color_Utilities()
     {
-        var resources = new ColorResourceDictionary();
+        Assert.True(TailwindColorPalette.TryGetColor("blue-700", out var blue700));
+        Assert.True(TailwindColorPalette.TryGetColor("green-800", out var green800));
+        Assert.True(TailwindColorPalette.TryGetColor("orange-800", out var orange800));
+
         var border = new Border();
         var textBlock = new TextBlock();
 
         Tw.SetClass(border, "bg-blue-700 border-green-800");
         Tw.SetClass(textBlock, "text-orange-800");
 
-        Assert.Equal(
-            Assert.IsType<SolidColorBrush>(resources["BrushBlue700"]).Color,
-            Assert.IsType<SolidColorBrush>(border.Background).Color);
-        Assert.Equal(
-            Assert.IsType<SolidColorBrush>(resources["BrushGreen800"]).Color,
-            Assert.IsType<SolidColorBrush>(border.BorderBrush).Color);
-        Assert.Equal(
-            Assert.IsType<SolidColorBrush>(resources["BrushOrange800"]).Color,
-            Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color);
+        Assert.Equal(blue700, Assert.IsType<SolidColorBrush>(border.Background).Color);
+        Assert.Equal(green800, Assert.IsType<SolidColorBrush>(border.BorderBrush).Color);
+        Assert.Equal(orange800, Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color);
     }
 
     [Fact]
@@ -395,15 +392,13 @@ public class TwTests
     [Fact]
     public void SetClass_Applies_Font_Size_Utilities_And_Preserves_Text_Color_Parsing()
     {
-        var resources = new ColorResourceDictionary();
+        Assert.True(TailwindColorPalette.TryGetColor("sky-300", out var sky300));
         var textBlock = new TextBlock();
 
         Tw.SetClass(textBlock, "text-base text-sky-300");
 
         Assert.Equal(16d, textBlock.FontSize);
-        Assert.Equal(
-            Assert.IsType<SolidColorBrush>(resources["BrushSky300"]).Color,
-            Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color);
+        Assert.Equal(sky300, Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color);
     }
 
     [Fact]
