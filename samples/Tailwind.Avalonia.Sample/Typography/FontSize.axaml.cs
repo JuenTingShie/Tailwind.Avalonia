@@ -11,20 +11,20 @@ public partial class FontSize : UserControl
 
     private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
     [
-        new("text-xs", "<TextBlock FontSize=\"{StaticResource FontSizeXs}\" />"),
-        new("text-sm", "<TextBlock FontSize=\"{StaticResource FontSizeSm}\" />"),
-        new("text-base", "<TextBlock FontSize=\"{StaticResource FontSizeBase}\" />"),
-        new("text-lg", "<TextBlock FontSize=\"{StaticResource FontSizeLg}\" />"),
-        new("text-xl", "<TextBlock FontSize=\"{StaticResource FontSizeXl}\" />"),
-        new("text-2xl", "<TextBlock FontSize=\"{StaticResource FontSize2xl}\" />"),
-        new("text-3xl", "<TextBlock FontSize=\"{StaticResource FontSize3xl}\" />"),
-        new("text-4xl", "<TextBlock FontSize=\"{StaticResource FontSize4xl}\" />"),
-        new("text-5xl", "<TextBlock FontSize=\"{StaticResource FontSize5xl}\" />"),
-        new("text-6xl", "<TextBlock FontSize=\"{StaticResource FontSize6xl}\" />"),
-        new("text-7xl", "<TextBlock FontSize=\"{StaticResource FontSize7xl}\" />"),
-        new("text-8xl", "<TextBlock FontSize=\"{StaticResource FontSize8xl}\" />"),
-        new("text-9xl", "<TextBlock FontSize=\"{StaticResource FontSize9xl}\" />"),
-        new("text-[<value>]", "<TextBlock FontSize=\"<parsed absolute value>\" />"),
+        new("text-xs", "<TextBlock tw:Tw.Class=\"text-xs\" />"),
+        new("text-sm", "<TextBlock tw:Tw.Class=\"text-sm\" />"),
+        new("text-base", "<TextBlock tw:Tw.Class=\"text-base\" />"),
+        new("text-lg", "<TextBlock tw:Tw.Class=\"text-lg\" />"),
+        new("text-xl", "<TextBlock tw:Tw.Class=\"text-xl\" />"),
+        new("text-2xl", "<TextBlock tw:Tw.Class=\"text-2xl\" />"),
+        new("text-3xl", "<TextBlock tw:Tw.Class=\"text-3xl\" />"),
+        new("text-4xl", "<TextBlock tw:Tw.Class=\"text-4xl\" />"),
+        new("text-5xl", "<TextBlock tw:Tw.Class=\"text-5xl\" />"),
+        new("text-6xl", "<TextBlock tw:Tw.Class=\"text-6xl\" />"),
+        new("text-7xl", "<TextBlock tw:Tw.Class=\"text-7xl\" />"),
+        new("text-8xl", "<TextBlock tw:Tw.Class=\"text-8xl\" />"),
+        new("text-9xl", "<TextBlock tw:Tw.Class=\"text-9xl\" />"),
+        new("text-[<value>]", "<TextBlock tw:Tw.Class=\"text-[<value>]\" />"),
     ];
 
     private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;
