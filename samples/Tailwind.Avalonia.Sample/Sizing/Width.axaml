@@ -9,7 +9,7 @@
             Source="/Spacing/SpacingDocsStyles.axaml" />
     </UserControl.Styles>
     <Border
-        Background="{StaticResource BrushSlate950}">
+        tw:Tw.Class="bg-slate-950">
         <ScrollViewer
             HorizontalScrollBarVisibility="Disabled">
             <StackPanel
@@ -72,8 +72,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                             <Border
-                                Background="{StaticResource BrushSlate900}"
-                                BorderBrush="{StaticResource BrushSlate800}"
+                                tw:Tw.Class="bg-slate-900 border-slate-800"
                                 Padding="0,12"
                                 Classes="docs-showMoreShell"
                                 HorizontalAlignment="Center">
@@ -129,175 +128,82 @@
                             Text="Use w-&lt;number&gt; utilities like w-24 and w-64 to set a fixed width from the shared spacing scale." />
                         <Border
                             Classes="docs-surface">
-                            <TabControl
-                                Classes="docs-exampleTabs">
-                                <TabItem
-                                    Classes="docs-exampleTab"
-                                    Header="Utility">
+                            <StackPanel
+                                Spacing="0">
+                                <Border
+                                    tw:Tw.Class="bg-slate-950"
+                                    Padding="28">
                                     <StackPanel
-                                        Spacing="0">
+                                        HorizontalAlignment="Center"
+                                        Spacing="14">
                                         <Border
-                                            Background="{StaticResource BrushSlate950}"
-                                            Padding="28">
-                                            <StackPanel
-                                                HorizontalAlignment="Center"
-                                                Spacing="14">
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushSky500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="w-24">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="w-24" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushViolet500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="w-40">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="w-40" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushEmerald500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="w-64">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="w-64" />
-                                                    </Border>
-                                                </Border>
-                                            </StackPanel>
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-sky-500 w-24"
+                                                CornerRadius="12"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
+                                                <TextBlock
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="w-24" />
+                                            </Border>
                                         </Border>
                                         <Border
-                                            BorderBrush="{StaticResource BrushSlate800}"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-violet-500 w-40"
+                                                CornerRadius="12"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
                                                 <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="w-40" />
+                                            </Border>
+                                        </Border>
+                                        <Border
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-emerald-500 w-64"
+                                                CornerRadius="12"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
                                                 <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-24&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-40&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-64&quot; /&gt;" />
-                                            </StackPanel>
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="w-64" />
+                                            </Border>
                                         </Border>
                                     </StackPanel>
-                                </TabItem>
-                                <TabItem
-                                    Classes="docs-exampleTab"
-                                    Header="StaticResource">
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="border-slate-800"
+                                    BorderThickness="0,1,0,0"
+                                    Padding="20,16">
                                     <StackPanel
-                                        Spacing="0">
-                                        <Border
-                                            Background="{StaticResource BrushSlate950}"
-                                            Padding="28">
-                                            <StackPanel
-                                                HorizontalAlignment="Center"
-                                                Spacing="14">
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushSky500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        Width="{StaticResource Width24}">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="Width24" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushViolet500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        Width="{StaticResource Width40}">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="Width40" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushEmerald500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        Width="{StaticResource Width64}">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="Width64" />
-                                                    </Border>
-                                                </Border>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border
-                                            BorderBrush="{StaticResource BrushSlate800}"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
-                                                <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Height=&quot;56&quot; Width=&quot;{StaticResource Width24}&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Height=&quot;56&quot; Width=&quot;{StaticResource Width40}&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Height=&quot;56&quot; Width=&quot;{StaticResource Width64}&quot; /&gt;" />
-                                            </StackPanel>
-                                        </Border>
+                                        Spacing="6">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="AXAML" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-24&quot; /&gt;" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-40&quot; /&gt;" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-64&quot; /&gt;" />
                                     </StackPanel>
-                                </TabItem>
-                            </TabControl>
+                                </Border>
+                            </StackPanel>
                         </Border>
                     </StackPanel>
                     <StackPanel
@@ -310,141 +216,66 @@
                             Text="Use min-w-&lt;number&gt; utilities when an element should never shrink below a spacing-scale width, even if another local Width value is smaller." />
                         <Border
                             Classes="docs-surface">
-                            <TabControl
-                                Classes="docs-exampleTabs">
-                                <TabItem
-                                    Classes="docs-exampleTab"
-                                    Header="Utility">
+                            <StackPanel
+                                Spacing="0">
+                                <Border
+                                    tw:Tw.Class="bg-slate-950"
+                                    Padding="28">
                                     <StackPanel
-                                        Spacing="0">
+                                        HorizontalAlignment="Center"
+                                        Spacing="14">
                                         <Border
-                                            Background="{StaticResource BrushSlate950}"
-                                            Padding="28">
-                                            <StackPanel
-                                                HorizontalAlignment="Center"
-                                                Spacing="14">
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushAmber500}"
-                                                        CornerRadius="12"
-                                                        Width="80"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="min-w-24">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="min-w-24" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushOrange500}"
-                                                        CornerRadius="12"
-                                                        Width="80"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="min-w-40">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="min-w-40" />
-                                                    </Border>
-                                                </Border>
-                                            </StackPanel>
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-amber-500 min-w-24"
+                                                CornerRadius="12"
+                                                Width="80"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
+                                                <TextBlock
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="min-w-24" />
+                                            </Border>
                                         </Border>
                                         <Border
-                                            BorderBrush="{StaticResource BrushSlate800}"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-orange-500 min-w-40"
+                                                CornerRadius="12"
+                                                Width="80"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
                                                 <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-24&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-40&quot; /&gt;" />
-                                            </StackPanel>
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="min-w-40" />
+                                            </Border>
                                         </Border>
                                     </StackPanel>
-                                </TabItem>
-                                <TabItem
-                                    Classes="docs-exampleTab"
-                                    Header="StaticResource">
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="border-slate-800"
+                                    BorderThickness="0,1,0,0"
+                                    Padding="20,16">
                                     <StackPanel
-                                        Spacing="0">
-                                        <Border
-                                            Background="{StaticResource BrushSlate950}"
-                                            Padding="28">
-                                            <StackPanel
-                                                HorizontalAlignment="Center"
-                                                Spacing="14">
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushAmber500}"
-                                                        CornerRadius="12"
-                                                        Width="80"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        MinWidth="{StaticResource MinWidth24}">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="MinWidth24" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushOrange500}"
-                                                        CornerRadius="12"
-                                                        Width="80"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        MinWidth="{StaticResource MinWidth40}">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="MinWidth40" />
-                                                    </Border>
-                                                </Border>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border
-                                            BorderBrush="{StaticResource BrushSlate800}"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
-                                                <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; MinWidth=&quot;{StaticResource MinWidth24}&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; MinWidth=&quot;{StaticResource MinWidth40}&quot; /&gt;" />
-                                            </StackPanel>
-                                        </Border>
+                                        Spacing="6">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="AXAML" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-24&quot; /&gt;" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-40&quot; /&gt;" />
                                     </StackPanel>
-                                </TabItem>
-                            </TabControl>
+                                </Border>
+                            </StackPanel>
                         </Border>
                     </StackPanel>
                     <StackPanel
@@ -457,141 +288,66 @@
                             Text="Use max-w-&lt;number&gt; utilities when content should cap out at a spacing-scale width, even if another local Width value is larger." />
                         <Border
                             Classes="docs-surface">
-                            <TabControl
-                                Classes="docs-exampleTabs">
-                                <TabItem
-                                    Classes="docs-exampleTab"
-                                    Header="Utility">
+                            <StackPanel
+                                Spacing="0">
+                                <Border
+                                    tw:Tw.Class="bg-slate-950"
+                                    Padding="28">
                                     <StackPanel
-                                        Spacing="0">
+                                        HorizontalAlignment="Center"
+                                        Spacing="14">
                                         <Border
-                                            Background="{StaticResource BrushSlate950}"
-                                            Padding="28">
-                                            <StackPanel
-                                                HorizontalAlignment="Center"
-                                                Spacing="14">
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushRose500}"
-                                                        CornerRadius="12"
-                                                        Width="320"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="max-w-24">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="max-w-24" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushPink500}"
-                                                        CornerRadius="12"
-                                                        Width="320"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="max-w-40">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="max-w-40" />
-                                                    </Border>
-                                                </Border>
-                                            </StackPanel>
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-rose-500 max-w-24"
+                                                CornerRadius="12"
+                                                Width="320"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
+                                                <TextBlock
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="max-w-24" />
+                                            </Border>
                                         </Border>
                                         <Border
-                                            BorderBrush="{StaticResource BrushSlate800}"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-pink-500 max-w-40"
+                                                CornerRadius="12"
+                                                Width="320"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
                                                 <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-24&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-40&quot; /&gt;" />
-                                            </StackPanel>
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="max-w-40" />
+                                            </Border>
                                         </Border>
                                     </StackPanel>
-                                </TabItem>
-                                <TabItem
-                                    Classes="docs-exampleTab"
-                                    Header="StaticResource">
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="border-slate-800"
+                                    BorderThickness="0,1,0,0"
+                                    Padding="20,16">
                                     <StackPanel
-                                        Spacing="0">
-                                        <Border
-                                            Background="{StaticResource BrushSlate950}"
-                                            Padding="28">
-                                            <StackPanel
-                                                HorizontalAlignment="Center"
-                                                Spacing="14">
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushRose500}"
-                                                        CornerRadius="12"
-                                                        Width="320"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        MaxWidth="{StaticResource MaxWidth24}">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="MaxWidth24" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushPink500}"
-                                                        CornerRadius="12"
-                                                        Width="320"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        MaxWidth="{StaticResource MaxWidth40}">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="MaxWidth40" />
-                                                    </Border>
-                                                </Border>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border
-                                            BorderBrush="{StaticResource BrushSlate800}"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
-                                                <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; MaxWidth=&quot;{StaticResource MaxWidth24}&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; MaxWidth=&quot;{StaticResource MaxWidth40}&quot; /&gt;" />
-                                            </StackPanel>
-                                        </Border>
+                                        Spacing="6">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="AXAML" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-24&quot; /&gt;" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-40&quot; /&gt;" />
                                     </StackPanel>
-                                </TabItem>
-                            </TabControl>
+                                </Border>
+                            </StackPanel>
                         </Border>
                     </StackPanel>
                     <StackPanel
@@ -739,7 +495,7 @@
                             Text="Using a custom value" />
                         <TextBlock
                             Classes="docs-body"
-                            Text="Use bracket syntax like w-[100px] for direct arbitrary values. The two tabs below compare parser usage with an equivalent local Avalonia StaticResource sample." />
+                            Text="Use bracket syntax like w-[100px] for direct arbitrary values." />
                         <Border
                             Classes="docs-note">
                             <StackPanel
@@ -752,7 +508,7 @@
                                     Text="px / rem / em / % / unitless" />
                                 <TextBlock
                                     Classes="docs-noteBody"
-                                    Text="Arbitrary sizing values are parser-only and do not emit generated package keys, so the StaticResource tab uses local sample resources." />
+                                    Text="Arbitrary sizing values are parser-only and do not emit generated package keys." />
                                 <TextBlock
                                     Classes="docs-noteBody"
                                     Text="rem and em use 16px base. Unitless values are treated as px." />
@@ -766,192 +522,83 @@
                         </Border>
                         <Border
                             Classes="docs-surface">
-                            <TabControl
-                                Classes="docs-exampleTabs">
-                                <TabItem
-                                    Classes="docs-exampleTab"
-                                    Header="Utility">
+                            <StackPanel
+                                Spacing="0">
+                                <Border
+                                    tw:Tw.Class="bg-slate-950"
+                                    Padding="28">
                                     <StackPanel
-                                        Spacing="0">
+                                        HorizontalAlignment="Center"
+                                        Spacing="14">
                                         <Border
-                                            Background="{StaticResource BrushSlate950}"
-                                            Padding="28">
-                                            <StackPanel
-                                                HorizontalAlignment="Center"
-                                                Spacing="14">
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushSky500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="w-[100px]">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="w-[100px]" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushViolet500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="min-w-[12.5rem]">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="min-w-[12.5rem]" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushEmerald500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        tw:Tw.Class="max-w-[5em]"
-                                                        Width="320">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="max-w-[5em]" />
-                                                    </Border>
-                                                </Border>
-                                            </StackPanel>
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-sky-500 w-[100px]"
+                                                CornerRadius="12"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
+                                                <TextBlock
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="w-[100px]" />
+                                            </Border>
                                         </Border>
                                         <Border
-                                            BorderBrush="{StaticResource BrushSlate800}"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-violet-500 min-w-[12.5rem]"
+                                                CornerRadius="12"
+                                                Height="56"
+                                                HorizontalAlignment="Left">
                                                 <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="min-w-[12.5rem]" />
+                                            </Border>
+                                        </Border>
+                                        <Border
+                                            Classes="docs-inset"
+                                            MaxWidth="440">
+                                            <Border
+                                                tw:Tw.Class="bg-emerald-500 max-w-[5em]"
+                                                CornerRadius="12"
+                                                Height="56"
+                                                HorizontalAlignment="Left"
+                                                Width="320">
                                                 <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;w-[100px]&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;min-w-[12.5rem]&quot; Width=&quot;80&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;max-w-[5em]&quot; Width=&quot;320&quot; /&gt;" />
-                                            </StackPanel>
+                                                    Classes="docs-chip"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="max-w-[5em]" />
+                                            </Border>
                                         </Border>
                                     </StackPanel>
-                                </TabItem>
-                                <TabItem
-                                    Classes="docs-exampleTab"
-                                    Header="StaticResource">
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="border-slate-800"
+                                    BorderThickness="0,1,0,0"
+                                    Padding="20,16">
                                     <StackPanel
-                                        Spacing="0">
-                                        <StackPanel.Resources>
-                                            <x:Double x:Key="ArbitraryWidth100">100</x:Double>
-                                            <x:Double x:Key="ArbitraryMinWidth200">200</x:Double>
-                                            <x:Double x:Key="ArbitraryMaxWidth80">80</x:Double>
-                                        </StackPanel.Resources>
-                                        <Border
-                                            Background="{StaticResource BrushSlate950}"
-                                            Padding="28">
-                                            <StackPanel
-                                                HorizontalAlignment="Center"
-                                                Spacing="14">
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushSky500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        Width="{StaticResource ArbitraryWidth100}">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="Width=100" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushViolet500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        MinWidth="{StaticResource ArbitraryMinWidth200}"
-                                                        Width="80">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="MinWidth=200" />
-                                                    </Border>
-                                                </Border>
-                                                <Border
-                                                    Classes="docs-inset"
-                                                    MaxWidth="440">
-                                                    <Border
-                                                        Background="{StaticResource BrushEmerald500}"
-                                                        CornerRadius="12"
-                                                        Height="56"
-                                                        HorizontalAlignment="Left"
-                                                        MaxWidth="{StaticResource ArbitraryMaxWidth80}"
-                                                        Width="320">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="MaxWidth=80" />
-                                                    </Border>
-                                                </Border>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border
-                                            BorderBrush="{StaticResource BrushSlate800}"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
-                                                <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
-                                                    &lt;x:Double x:Key=&quot;ArbitraryWidth100&quot;&gt;100&lt;/x:Double&gt;
-                                                &lt;/StackPanel.Resources&gt;
-                                                &lt;Border Width=&quot;{StaticResource ArbitraryWidth100}&quot; /&gt;</TextBlock>
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
-                                                    &lt;x:Double x:Key=&quot;ArbitraryMinWidth200&quot;&gt;200&lt;/x:Double&gt;
-                                                &lt;/StackPanel.Resources&gt;
-                                                &lt;Border MinWidth=&quot;{StaticResource ArbitraryMinWidth200}&quot; Width=&quot;80&quot; /&gt;</TextBlock>
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    xml:space="preserve">&lt;StackPanel.Resources&gt;
-                                                    &lt;x:Double x:Key=&quot;ArbitraryMaxWidth80&quot;&gt;80&lt;/x:Double&gt;
-                                                &lt;/StackPanel.Resources&gt;
-                                                &lt;Border MaxWidth=&quot;{StaticResource ArbitraryMaxWidth80}&quot; Width=&quot;320&quot; /&gt;</TextBlock>
-                                            </StackPanel>
-                                        </Border>
+                                        Spacing="6">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="AXAML" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border tw:Tw.Class=&quot;w-[100px]&quot; /&gt;" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border tw:Tw.Class=&quot;min-w-[12.5rem]&quot; Width=&quot;80&quot; /&gt;" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Border tw:Tw.Class=&quot;max-w-[5em]&quot; Width=&quot;320&quot; /&gt;" />
                                     </StackPanel>
-                                </TabItem>
-                            </TabControl>
+                                </Border>
+                            </StackPanel>
                         </Border>
                     </StackPanel>
                     <StackPanel
