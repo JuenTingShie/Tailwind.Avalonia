@@ -582,7 +582,7 @@ public class Tw : AvaloniaObject
 
     private static Color ApplyOpacity(Color color, double opacity)
     {
-        var alpha = (byte)Math.Clamp((int)Math.Round(color.A * opacity), 0, byte.MaxValue);
+        var alpha = (byte)Math.Clamp((int)Math.Round(255 * opacity), 0, byte.MaxValue);
         return Color.FromArgb(alpha, color.R, color.G, color.B);
     }
 
