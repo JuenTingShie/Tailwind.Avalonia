@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tw="using:Tailwind.Avalonia"
     mc:Ignorable="d"
     d:DesignWidth="1440"
     d:DesignHeight="920"
@@ -18,8 +19,8 @@
                 Property="Background"
                 Value="#F80B1120" />
             <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSlate800}" />
+                Property="tw:Tw.Class"
+                Value="border-slate-800" />
             <Setter
                 Property="BorderThickness"
                 Value="0,0,1,0" />
@@ -33,11 +34,8 @@
         <Style
             Selector="Border.shell-navGroup">
             <Setter
-                Property="Background"
-                Value="{StaticResource BrushSlate950}" />
-            <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSlate800}" />
+                Property="tw:Tw.Class"
+                Value="bg-slate-950 border-slate-800" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
@@ -54,8 +52,8 @@
                 Property="Background"
                 Value="#F80B1120" />
             <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSlate800}" />
+                Property="tw:Tw.Class"
+                Value="border-slate-800" />
             <Setter
                 Property="BorderThickness"
                 Value="0,0,0,1" />
@@ -72,8 +70,8 @@
                 Property="Background"
                 Value="#660F172A" />
             <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSlate800}" />
+                Property="tw:Tw.Class"
+                Value="border-slate-800" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
@@ -87,17 +85,11 @@
         <Style
             Selector="Button.shell-toggle">
             <Setter
-                Property="Background"
-                Value="{StaticResource BrushSlate900}" />
-            <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSlate700}" />
+                Property="tw:Tw.Class"
+                Value="bg-slate-900 border-slate-700 text-white" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
-            <Setter
-                Property="Foreground"
-                Value="{StaticResource BrushWhite}" />
             <Setter
                 Property="Width"
                 Value="46" />
@@ -144,8 +136,8 @@
         <Style
             Selector="TextBlock.shell-navLabel">
             <Setter
-                Property="Foreground"
-                Value="{StaticResource BrushSlate500}" />
+                Property="tw:Tw.Class"
+                Value="text-slate-500" />
             <Setter
                 Property="FontSize"
                 Value="11" />
@@ -156,8 +148,8 @@
         <Style
             Selector="TextBlock.shell-currentSection">
             <Setter
-                Property="Foreground"
-                Value="{StaticResource BrushSky300}" />
+                Property="tw:Tw.Class"
+                Value="text-sky-300" />
             <Setter
                 Property="FontSize"
                 Value="11" />
@@ -168,8 +160,8 @@
         <Style
             Selector="TextBlock.shell-currentPage">
             <Setter
-                Property="Foreground"
-                Value="{StaticResource BrushWhite}" />
+                Property="tw:Tw.Class"
+                Value="text-white" />
             <Setter
                 Property="FontSize"
                 Value="18" />
@@ -195,14 +187,11 @@
                 Property="FontWeight"
                 Value="SemiBold" />
             <Setter
-                Property="Foreground"
-                Value="{StaticResource BrushSlate400}" />
+                Property="tw:Tw.Class"
+                Value="text-slate-400 border-slate-800" />
             <Setter
                 Property="Background"
                 Value="#CC0F172A" />
-            <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSlate800}" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
@@ -216,26 +205,20 @@
         <Style
             Selector="TabStrip.navigation-strip TabStripItem:pointerover">
             <Setter
-                Property="Foreground"
-                Value="{StaticResource BrushWhite}" />
+                Property="tw:Tw.Class"
+                Value="text-white border-slate-700" />
             <Setter
                 Property="Background"
                 Value="#DD1E293B" />
-            <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSlate700}" />
         </Style>
         <Style
             Selector="TabStrip.navigation-strip TabStripItem:selected">
             <Setter
-                Property="Foreground"
-                Value="{StaticResource BrushWhite}" />
+                Property="tw:Tw.Class"
+                Value="text-white border-sky-500" />
             <Setter
                 Property="Background"
                 Value="#DD1E293B" />
-            <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSky500}" />
         </Style>
         <Style
             Selector="TabStrip.navigation-strip.section-strip TabStripItem">
@@ -252,8 +235,8 @@
                 Property="Background"
                 Value="#CC172554" />
             <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushSky400}" />
+                Property="tw:Tw.Class"
+                Value="border-sky-400" />
         </Style>
         <Style
             Selector="TabStrip.navigation-strip.page-strip TabStripItem">
@@ -276,13 +259,13 @@
                 Property="Background"
                 Value="#66312E81" />
             <Setter
-                Property="BorderBrush"
-                Value="{StaticResource BrushViolet400}" />
+                Property="tw:Tw.Class"
+                Value="border-violet-400" />
         </Style>
     </UserControl.Styles>
     <SplitView
         x:Name="NavigationSplitView"
-        Background="{StaticResource BrushSlate950}"
+        tw:Tw.Class="bg-slate-950"
         CompactPaneLength="0"
         DisplayMode="Overlay"
         IsPaneOpen="False"
@@ -378,7 +361,7 @@
 
         <SplitView.Content>
             <Grid
-                Background="{StaticResource BrushSlate950}"
+                tw:Tw.Class="bg-slate-950"
                 ClipToBounds="True"
                 RowDefinitions="Auto,*">
                 <Border
@@ -413,7 +396,7 @@
                                 VerticalAlignment="Center" />
                             <TextBlock
                                 Grid.Column="1"
-                                Foreground="{StaticResource BrushSlate600}"
+                                tw:Tw.Class="text-slate-600"
                                 Text="/"
                                 VerticalAlignment="Center" />
                             <TextBlock
