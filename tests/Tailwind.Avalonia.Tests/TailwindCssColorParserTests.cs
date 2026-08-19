@@ -43,4 +43,15 @@ public class TailwindCssColorParserTests
 
         Assert.Equal("Unsupported Tailwind color value 'lab(50% 0 0)'.", error.Message);
     }
+
+    [Theory]
+    [InlineData("oklch(50% 0.1 NaNdeg)")]
+    [InlineData("oklch(50% 0.1 Infinitydeg)")]
+    [InlineData("oklch(NaN% 0.1 20deg)")]
+    [InlineData("oklch(50% NaN 20deg)")]
+    [InlineData("oklch(50% 0.1 20deg / NaN%)")]
+    public void Parse_Throws_For_NonFinite_Oklch_Components(string cssValue)
+    {
+        Assert.Throws<FormatException>(() => TailwindCssColorParser.Parse(cssValue));
+    }
 }

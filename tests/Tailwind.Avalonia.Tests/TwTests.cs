@@ -380,6 +380,18 @@ public class TwTests
         Assert.Equal(orange800.B, foreground.B);
     }
 
+    [Theory]
+    [InlineData("bg-red-500/NaN")]
+    [InlineData("bg-red-500/Infinity")]
+    public void SetClass_Ignores_Color_Utilities_With_NonFinite_Opacity(string className)
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, className);
+
+        Assert.Null(border.Background);
+    }
+
     [Fact]
     public void SetClass_Applies_Font_Size_Utilities_And_Preserves_Text_Color_Parsing()
     {
@@ -487,6 +499,28 @@ public class TwTests
             var entry = Assert.Single(sink.Entries);
             Assert.Equal(LogEventLevel.Warning, entry.Level);
             Assert.Equal("Padding", entry.PropertyValues[0]);
+        }
+        finally
+        {
+            Logger.Sink = originalSink;
+        }
+    }
+
+    [Fact]
+    public void SetClass_Logs_Warning_When_FontSize_Property_Is_Missing()
+    {
+        var rectangle = new Rectangle();
+        var sink = new CapturingLogSink(rectangle);
+        var originalSink = Logger.Sink;
+        Logger.Sink = sink;
+
+        try
+        {
+            Tw.SetClass(rectangle, "text-lg");
+
+            var entry = Assert.Single(sink.Entries);
+            Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("FontSize", entry.PropertyValues[0]);
         }
         finally
         {

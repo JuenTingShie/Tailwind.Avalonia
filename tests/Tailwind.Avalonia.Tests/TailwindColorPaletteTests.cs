@@ -23,4 +23,16 @@ public class TailwindColorPaletteTests
         Assert.True(TailwindColorPalette.TryGetColor("black", out var black));
         Assert.Equal(Colors.Black, black);
     }
+
+    [Theory]
+    [InlineData("-red-500")]
+    [InlineData("red--500")]
+    [InlineData("red-500-")]
+    [InlineData("red500")]
+    public void TryGetColor_Returns_False_For_Malformed_Tokens_That_Would_Otherwise_Collapse_To_A_Valid_Suffix(string tokenName)
+    {
+        var resolved = TailwindColorPalette.TryGetColor(tokenName, out _);
+
+        Assert.False(resolved);
+    }
 }
