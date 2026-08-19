@@ -11,14 +11,14 @@ public partial class ColorUtilities : UserControl
 
     private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
     [
-        new("bg-&lt;color&gt;", "<Control Background=\"{StaticResource BrushBlue500}\" />"),
-        new("text-&lt;color&gt;", "<Control Foreground=\"{StaticResource BrushBlue500}\" />"),
-        new("border-&lt;color&gt;", "<Border BorderBrush=\"{StaticResource BrushBlue500}\" />"),
-        new("*&lt;color&gt;/&lt;opacity&gt;", "<SolidColorBrush Color=\"{StaticResource ColorBlue500}\" Opacity=\"0.5\" />"),
-        new("bg-[#&lt;hex&gt;]", "<Control Background=\"arbitrary hex brush\" />"),
-        new("text-[#&lt;hex&gt;]", "<Control Foreground=\"arbitrary hex brush\" />"),
-        new("border-[#&lt;hex&gt;]", "<Border BorderBrush=\"arbitrary hex brush\" />"),
-        new("text-[#&lt;hex&gt;]/&lt;opacity&gt;", "<Control Foreground=\"arbitrary hex brush with opacity\" />"),
+        new("bg-&lt;color&gt;", "<Control tw:Tw.Class=\"bg-blue-500\" />"),
+        new("text-&lt;color&gt;", "<Control tw:Tw.Class=\"text-blue-500\" />"),
+        new("border-&lt;color&gt;", "<Border tw:Tw.Class=\"border-blue-500\" />"),
+        new("*&lt;color&gt;/&lt;opacity&gt;", "<Control tw:Tw.Class=\"bg-blue-500/50\" />"),
+        new("bg-[#&lt;hex&gt;]", "<Control tw:Tw.Class=\"bg-[#3b82f6]\" />"),
+        new("text-[#&lt;hex&gt;]", "<Control tw:Tw.Class=\"text-[#3b82f6]\" />"),
+        new("border-[#&lt;hex&gt;]", "<Border tw:Tw.Class=\"border-[#3b82f6]\" />"),
+        new("text-[#&lt;hex&gt;]/&lt;opacity&gt;", "<Control tw:Tw.Class=\"text-[#3b82f6]/50\" />"),
     ];
 
     private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;
