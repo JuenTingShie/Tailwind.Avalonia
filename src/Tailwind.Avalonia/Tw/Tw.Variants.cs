@@ -54,6 +54,14 @@ public partial class Tw
     private static readonly AttachedProperty<List<Style>?> AppliedVariantStylesProperty =
         AvaloniaProperty.RegisterAttached<Tw, AvaloniaObject, List<Style>?>("AppliedVariantStyles");
 
+    // A bare type selector (e.g. `x.Is(typeof(Border))`) added to an element's own Styles
+    // collection matches every descendant of that type, not just the element itself -- Avalonia
+    // applies local Styles to the owning element AND its subtree. Pairing the type selector with
+    // PropertyEquals against a value unique to this element scopes each generated Style back down
+    // to only the element Tw.Class was set on.
+    private static readonly AttachedProperty<object?> InstanceKeyProperty =
+        AvaloniaProperty.RegisterAttached<Tw, AvaloniaObject, object?>("TwInstanceKey");
+
     private static void ApplyVariantStyles(
         AvaloniaObject element,
         BrushCategoryState background,
@@ -76,17 +84,25 @@ public partial class Tw
             }
         }
 
+        var instanceKey = element.GetValue(InstanceKeyProperty);
+
+        if (instanceKey is null)
+        {
+            instanceKey = new object();
+            element.SetValue(InstanceKeyProperty, instanceKey);
+        }
+
         var newStyles = new List<Style>();
 
-        AddBrushStyles(styled, "Background", background, newStyles);
-        AddBrushStyles(styled, "Foreground", foreground, newStyles);
-        AddBrushStyles(styled, "BorderBrush", borderBrush, newStyles);
-        AddOpacityStyles(styled, opacity, newStyles);
+        AddBrushStyles(styled, instanceKey, "Background", background, newStyles);
+        AddBrushStyles(styled, instanceKey, "Foreground", foreground, newStyles);
+        AddBrushStyles(styled, instanceKey, "BorderBrush", borderBrush, newStyles);
+        AddOpacityStyles(styled, instanceKey, opacity, newStyles);
 
         element.SetValue(AppliedVariantStylesProperty, newStyles.Count > 0 ? newStyles : null);
     }
 
-    private static void AddBrushStyles(StyledElement element, string propertyName, BrushCategoryState state, List<Style> target)
+    private static void AddBrushStyles(StyledElement element, object instanceKey, string propertyName, BrushCategoryState state, List<Style> target)
     {
         if (!state.HasBase && Array.TrueForAll(state.Variants, v => v is null))
         {
@@ -109,7 +125,7 @@ public partial class Tw
 
         if (state.HasBase)
         {
-            var style = new Style(x => x.Is(elementType)) { Setters = { new Setter(property, state.Base) } };
+            var style = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey)) { Setters = { new Setter(property, state.Base) } };
             element.Styles.Add(style);
             target.Add(style);
         }
@@ -122,13 +138,13 @@ public partial class Tw
             }
 
             var pseudoClass = PseudoClassFor((VariantKind)i);
-            var variantStyle = new Style(x => x.Is(elementType).Class(pseudoClass)) { Setters = { new Setter(property, variantBrush) } };
+            var variantStyle = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey).Class(pseudoClass)) { Setters = { new Setter(property, variantBrush) } };
             element.Styles.Add(variantStyle);
             target.Add(variantStyle);
         }
     }
 
-    private static void AddOpacityStyles(StyledElement element, OpacityCategoryState state, List<Style> target)
+    private static void AddOpacityStyles(StyledElement element, object instanceKey, OpacityCategoryState state, List<Style> target)
     {
         if (!state.HasBase && Array.TrueForAll(state.Variants, v => v is null))
         {
@@ -151,7 +167,7 @@ public partial class Tw
 
         if (state.HasBase)
         {
-            var style = new Style(x => x.Is(elementType)) { Setters = { new Setter(property, state.Base) } };
+            var style = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey)) { Setters = { new Setter(property, state.Base) } };
             element.Styles.Add(style);
             target.Add(style);
         }
@@ -164,7 +180,7 @@ public partial class Tw
             }
 
             var pseudoClass = PseudoClassFor((VariantKind)i);
-            var variantStyle = new Style(x => x.Is(elementType).Class(pseudoClass)) { Setters = { new Setter(property, variantOpacity) } };
+            var variantStyle = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey).Class(pseudoClass)) { Setters = { new Setter(property, variantOpacity) } };
             element.Styles.Add(variantStyle);
             target.Add(variantStyle);
         }

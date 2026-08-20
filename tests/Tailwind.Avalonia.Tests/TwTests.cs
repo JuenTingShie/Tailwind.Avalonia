@@ -296,6 +296,24 @@ public class TwTests
     }
 
     [Fact]
+    public void SetClass_Does_Not_Leak_Style_To_Descendants_Of_Same_Type()
+    {
+        Assert.True(TailwindColorPalette.TryGetColor("red-500", out var red500));
+
+        var outer = new Border();
+        var inner = new Border();
+        outer.Child = inner;
+
+        Tw.SetClass(outer, "bg-red-500");
+
+        outer.ApplyStyling();
+        inner.ApplyStyling();
+
+        Assert.Equal(red500, Assert.IsType<SolidColorBrush>(outer.Background).Color);
+        Assert.Null(inner.Background);
+    }
+
+    [Fact]
     public void SetClass_Applies_Sizing_Utilities()
     {
         var border = new Border();

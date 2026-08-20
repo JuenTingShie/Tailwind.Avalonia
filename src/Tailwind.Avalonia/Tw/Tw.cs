@@ -14,6 +14,10 @@ public partial class Tw : AvaloniaObject
     private const int MinHeightMask = 512;
     private const int MaxHeightMask = 1024;
     private const int FontSizeMask = 2048;
+    private const int BackgroundMask = 4096;
+    private const int ForegroundMask = 8192;
+    private const int BorderBrushMask = 16384;
+    private const int OpacityMask = 32768;
     private const string LogArea = "Tailwind.Avalonia";
 
     public static readonly AttachedProperty<string?> ClassProperty =

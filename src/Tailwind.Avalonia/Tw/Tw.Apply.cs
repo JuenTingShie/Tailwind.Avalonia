@@ -198,6 +198,24 @@ public partial class Tw
             }
         }
 
+        // Only elements that combine a base value with at least one hover:/pressed:/focus:
+        // variant for the same property need to go through Avalonia's Style engine (required so
+        // the variant can outrank the base -- local values always beat styles otherwise). Routing
+        // every bg-/text-/border-/opacity- utility through a per-element Style regardless was an
+        // O(n^2) cost across a page: each Style carries a bare type selector, and Avalonia applies
+        // an element's local Styles to itself AND its whole subtree, so every such Style forces
+        // consideration of every same-typed descendant. Elements with no variant for a category
+        // keep going through the cheap, O(1) SetValue path used before variants existed.
+        var hasBackgroundVariant = Array.Exists(backgroundVariants, v => v is not null);
+        var hasForegroundVariant = Array.Exists(foregroundVariants, v => v is not null);
+        var hasBorderBrushVariant = Array.Exists(borderBrushVariants, v => v is not null);
+        var hasOpacityVariant = Array.Exists(opacityVariants, v => v is not null);
+
+        var backgroundDirect = hasBackground && !hasBackgroundVariant;
+        var foregroundDirect = hasForeground && !hasForegroundVariant;
+        var borderBrushDirect = hasBorderBrush && !hasBorderBrushVariant;
+        var opacityDirect = hasOpacity && !hasOpacityVariant;
+
         Span<PendingUtility> pendingUtilities =
         [
             new(MarginMask, hasMargin, () => TrySetThickness(element, "Margin", margin), () => ClearThickness(element, "Margin")),
@@ -209,6 +227,10 @@ public partial class Tw
             new(MinHeightMask, hasMinHeight, () => TrySetDouble(element, "MinHeight", minHeight), () => ClearDouble(element, "MinHeight")),
             new(MaxHeightMask, hasMaxHeight, () => TrySetDouble(element, "MaxHeight", maxHeight), () => ClearDouble(element, "MaxHeight")),
             new(FontSizeMask, hasFontSize, () => TrySetDouble(element, "FontSize", fontSize), () => ClearDouble(element, "FontSize")),
+            new(BackgroundMask, backgroundDirect, () => TrySetBrush(element, "Background", background), () => ClearBrush(element, "Background")),
+            new(ForegroundMask, foregroundDirect, () => TrySetBrush(element, "Foreground", foreground), () => ClearBrush(element, "Foreground")),
+            new(BorderBrushMask, borderBrushDirect, () => TrySetBrush(element, "BorderBrush", borderBrush), () => ClearBrush(element, "BorderBrush")),
+            new(OpacityMask, opacityDirect, () => TrySetDouble(element, "Opacity", opacity), () => ClearDouble(element, "Opacity")),
         ];
 
         foreach (var pending in pendingUtilities)
@@ -227,10 +249,10 @@ public partial class Tw
 
         ApplyVariantStyles(
             element,
-            new BrushCategoryState(hasBackground, background, backgroundVariants),
-            new BrushCategoryState(hasForeground, foreground, foregroundVariants),
-            new BrushCategoryState(hasBorderBrush, borderBrush, borderBrushVariants),
-            new OpacityCategoryState(hasOpacity, opacity, opacityVariants));
+            new BrushCategoryState(hasBackground && hasBackgroundVariant, background, backgroundVariants),
+            new BrushCategoryState(hasForeground && hasForegroundVariant, foreground, foregroundVariants),
+            new BrushCategoryState(hasBorderBrush && hasBorderBrushVariant, borderBrush, borderBrushVariants),
+            new OpacityCategoryState(hasOpacity && hasOpacityVariant, opacity, opacityVariants));
     }
 
     private readonly record struct PendingUtility(int Mask, bool HasValue, Func<bool> TrySet, Action Clear);

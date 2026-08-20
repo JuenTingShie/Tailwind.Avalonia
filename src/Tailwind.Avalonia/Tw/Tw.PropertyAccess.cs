@@ -41,6 +41,34 @@ public partial class Tw
         }
     }
 
+    private static bool TrySetBrush(AvaloniaObject element, string propertyName, IBrush? value)
+    {
+        var property = FindBrushProperty(element.GetType(), propertyName);
+
+        if (property is null)
+        {
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not find a '{PropertyName}' brush property on {ElementType}; the utility was ignored.",
+                propertyName,
+                element.GetType());
+            return false;
+        }
+
+        element.SetValue(property, value);
+        return true;
+    }
+
+    private static void ClearBrush(AvaloniaObject element, string propertyName)
+    {
+        var property = FindBrushProperty(element.GetType(), propertyName);
+
+        if (property is not null)
+        {
+            element.ClearValue(property);
+        }
+    }
+
     private static bool TrySetDouble(AvaloniaObject element, string propertyName, double value)
     {
         var property = FindDoubleProperty(element.GetType(), propertyName);
