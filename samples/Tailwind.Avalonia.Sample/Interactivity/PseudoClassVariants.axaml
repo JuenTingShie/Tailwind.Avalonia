@@ -1,0 +1,258 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Interactivity.PseudoClassVariants">
+    <UserControl.Styles>
+        <StyleInclude
+            Source="/Spacing/SpacingDocsStyles.axaml" />
+    </UserControl.Styles>
+    <Border
+        tw:Tw.Class="bg-slate-950">
+        <ScrollViewer
+            HorizontalScrollBarVisibility="Disabled">
+            <StackPanel
+                Classes="docs-pageLayout">
+                <StackPanel
+                    Spacing="10">
+                    <TextBlock
+                        Classes="docs-library"
+                        Text="INTERACTIVITY" />
+                    <TextBlock
+                        Classes="docs-pageTitle"
+                        Text="Pseudo-class variants" />
+                    <TextBlock
+                        Classes="docs-body"
+                        Text="Prefix a color or opacity utility with hover:, pressed:, or focus: to apply it only while the control is in that state. Variants are backed by real Avalonia :pointerover, :pressed, and :focus styles, not manual event handlers." />
+                    <Border
+                        Classes="docs-note"
+                        BorderThickness="2"
+                        tw:Tw.Class="bg-sky-950/35 border-sky-400/60">
+                        <StackPanel
+                            Spacing="6">
+                            <TextBlock
+                                Classes="docs-noteTitle"
+                                tw:Tw.Class="text-sky-50"
+                                Text="Implemented in this sample" />
+                            <TextBlock
+                                Classes="docs-noteBody"
+                                tw:Tw.Class="text-sky-100/85"
+                                Text="hover:, pressed:, and focus: are supported on bg-*, text-*, and border-* color utilities and on the opacity-* utility. They map to Avalonia's :pointerover, :pressed, and :focus pseudo-classes. Every other utility family (spacing, sizing, font-size) does not accept a variant prefix yet; a variant token on an unsupported utility (e.g. hover:p-4) logs the usual unrecognized-token warning." />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                    Spacing="18">
+                    <TextBlock
+                        Classes="docs-eyebrow"
+                        Text="EXAMPLES" />
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="hover:" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Move the pointer over the button below. The base bg-blue-500 applies at rest; hover:bg-blue-700 takes over while the pointer is over the control." />
+                        <Border
+                            Classes="docs-surface">
+                            <StackPanel
+                                Spacing="0">
+                                <Border
+                                    tw:Tw.Class="bg-slate-950"
+                                    Padding="24">
+                                    <StackPanel
+                                        Spacing="16">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="Live preview - hover me" />
+                                        <Button
+                                            Padding="18,14"
+                                            BorderThickness="0"
+                                            HorizontalAlignment="Left"
+                                            tw:Tw.Class="bg-blue-500 hover:bg-blue-700 text-white"
+                                            Content="bg-blue-500 hover:bg-blue-700" />
+                                    </StackPanel>
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="border-slate-800"
+                                    BorderThickness="0,1,0,0"
+                                    Padding="20,16">
+                                    <StackPanel
+                                        Spacing="6">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="AXAML" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Button tw:Tw.Class=&quot;bg-blue-500 hover:bg-blue-700&quot; /&gt;" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="pressed:" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Click and hold the button below. pressed:opacity-50 only applies while the pointer is held down over the control." />
+                        <Border
+                            Classes="docs-surface">
+                            <StackPanel
+                                Spacing="0">
+                                <Border
+                                    tw:Tw.Class="bg-slate-950"
+                                    Padding="24">
+                                    <StackPanel
+                                        Spacing="16">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="Live preview - click and hold" />
+                                        <Button
+                                            Padding="18,14"
+                                            BorderThickness="0"
+                                            HorizontalAlignment="Left"
+                                            tw:Tw.Class="bg-emerald-500 opacity-100 pressed:opacity-50 text-slate-950"
+                                            Content="opacity-100 pressed:opacity-50" />
+                                    </StackPanel>
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="border-slate-800"
+                                    BorderThickness="0,1,0,0"
+                                    Padding="20,16">
+                                    <StackPanel
+                                        Spacing="6">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="AXAML" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Button tw:Tw.Class=&quot;opacity-100 pressed:opacity-50&quot; /&gt;" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="focus:" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Click into the text box below to give it keyboard focus. focus:border-sky-400 only applies while the control has focus." />
+                        <Border
+                            Classes="docs-surface">
+                            <StackPanel
+                                Spacing="0">
+                                <Border
+                                    tw:Tw.Class="bg-slate-950"
+                                    Padding="24">
+                                    <StackPanel
+                                        Spacing="16">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="Live preview - click to focus" />
+                                        <TextBox
+                                            Width="320"
+                                            Padding="14,10"
+                                            BorderThickness="2"
+                                            HorizontalAlignment="Left"
+                                            tw:Tw.Class="bg-slate-900 border-slate-700 focus:border-sky-400 text-white"
+                                            Text="focus:border-sky-400" />
+                                    </StackPanel>
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="border-slate-800"
+                                    BorderThickness="0,1,0,0"
+                                    Padding="20,16">
+                                    <StackPanel
+                                        Spacing="6">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="AXAML" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;TextBox tw:Tw.Class=&quot;border-slate-700 focus:border-sky-400&quot; /&gt;" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="Stacking multiple variants" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="A control can take more than one variant token at once. Hover the button below, then also press it: pressed:bg-green-500 wins over hover:bg-red-500 while both states are active, because Pressed is declared after Hover and its style is added later." />
+                        <Border
+                            Classes="docs-surface">
+                            <StackPanel
+                                Spacing="0">
+                                <Border
+                                    tw:Tw.Class="bg-slate-950"
+                                    Padding="24">
+                                    <StackPanel
+                                        Spacing="16">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="Live preview - hover, then also press" />
+                                        <Button
+                                            Padding="18,14"
+                                            BorderThickness="0"
+                                            HorizontalAlignment="Left"
+                                            tw:Tw.Class="bg-blue-500 hover:bg-red-500 pressed:bg-green-500 text-white"
+                                            Content="hover:bg-red-500 pressed:bg-green-500" />
+                                    </StackPanel>
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="border-slate-800"
+                                    BorderThickness="0,1,0,0"
+                                    Padding="20,16">
+                                    <StackPanel
+                                        Spacing="6">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="AXAML" />
+                                        <TextBlock
+                                            Classes="docs-code"
+                                            Text="&lt;Button tw:Tw.Class=&quot;bg-blue-500 hover:bg-red-500 pressed:bg-green-500&quot; /&gt;" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel
+                        Spacing="16">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="Unsupported utilities" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Text="Variant prefixes only recognize bg-*, text-*, border-*, and opacity-* remainders. A token like hover:p-4 is not silently ignored - it logs the same unrecognized-utility warning as any other unknown token, citing the full variant-prefixed token." />
+                        <Border
+                            Classes="docs-note">
+                            <StackPanel
+                                Spacing="8">
+                                <TextBlock
+                                    Classes="docs-noteTitle"
+                                    Text="Not implemented" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="hover:p-4 / hover:w-24 / focus:text-sm" />
+                                <TextBlock
+                                    Classes="docs-noteBody"
+                                    Text="Spacing, sizing, and font-size utilities do not accept hover:/pressed:/focus: prefixes yet." />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</UserControl>
