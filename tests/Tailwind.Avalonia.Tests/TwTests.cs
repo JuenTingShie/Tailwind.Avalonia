@@ -287,6 +287,9 @@ public class TwTests
         Tw.SetClass(border, "bg-blue-700 border-green-800");
         Tw.SetClass(textBlock, "text-orange-800");
 
+        border.ApplyStyling();
+        textBlock.ApplyStyling();
+
         Assert.Equal(blue700, Assert.IsType<SolidColorBrush>(border.Background).Color);
         Assert.Equal(green800, Assert.IsType<SolidColorBrush>(border.BorderBrush).Color);
         Assert.Equal(orange800, Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color);
@@ -313,8 +316,7 @@ public class TwTests
         var border = new Border();
 
         Tw.SetClass(border, "opacity-50");
-        border.Measure(new Size(100, 100));
-        border.Arrange(new Rect(0, 0, 100, 100));
+        border.ApplyStyling();
 
         Assert.Equal(0.5d, border.Opacity);
     }
@@ -325,8 +327,7 @@ public class TwTests
         var border = new Border();
 
         Tw.SetClass(border, "opacity-80 opacity-20");
-        border.Measure(new Size(100, 100));
-        border.Arrange(new Rect(0, 0, 100, 100));
+        border.ApplyStyling();
 
         Assert.Equal(0.2d, border.Opacity);
     }
@@ -338,8 +339,7 @@ public class TwTests
 
         Tw.SetClass(border, "opacity-50");
         Tw.SetClass(border, null);
-        border.Measure(new Size(100, 100));
-        border.Arrange(new Rect(0, 0, 100, 100));
+        border.ApplyStyling();
 
         Assert.Equal(1d, border.Opacity);
     }
@@ -383,6 +383,8 @@ public class TwTests
         Tw.SetClass(border, "bg-blue-700 border-green-800");
         Tw.SetClass(border, null);
 
+        border.ApplyStyling();
+
         Assert.Null(border.Background);
         Assert.Null(border.BorderBrush);
     }
@@ -398,6 +400,9 @@ public class TwTests
 
         Tw.SetClass(border, "bg-blue-700/50 border-transparent");
         Tw.SetClass(textBlock, "text-orange-800/25");
+
+        border.ApplyStyling();
+        textBlock.ApplyStyling();
 
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
         var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
@@ -433,6 +438,8 @@ public class TwTests
         var textBlock = new TextBlock();
 
         Tw.SetClass(textBlock, "text-base text-sky-300");
+
+        textBlock.ApplyStyling();
 
         Assert.Equal(16d, textBlock.FontSize);
         Assert.Equal(sky300, Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color);

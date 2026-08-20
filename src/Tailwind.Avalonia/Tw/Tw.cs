@@ -7,9 +7,6 @@ public partial class Tw : AvaloniaObject
 {
     private const int MarginMask = 1;
     private const int PaddingMask = 2;
-    private const int BackgroundMask = 4;
-    private const int ForegroundMask = 8;
-    private const int BorderBrushMask = 16;
     private const int WidthMask = 32;
     private const int MinWidthMask = 64;
     private const int MaxWidthMask = 128;

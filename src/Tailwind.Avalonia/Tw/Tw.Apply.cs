@@ -161,9 +161,6 @@ public partial class Tw
         [
             new(MarginMask, hasMargin, () => TrySetThickness(element, "Margin", margin), () => ClearThickness(element, "Margin")),
             new(PaddingMask, hasPadding, () => TrySetThickness(element, "Padding", padding), () => ClearThickness(element, "Padding")),
-            new(BackgroundMask, hasBackground, () => TrySetBrush(element, "Background", background), () => ClearBrush(element, "Background")),
-            new(ForegroundMask, hasForeground, () => TrySetBrush(element, "Foreground", foreground), () => ClearBrush(element, "Foreground")),
-            new(BorderBrushMask, hasBorderBrush, () => TrySetBrush(element, "BorderBrush", borderBrush), () => ClearBrush(element, "BorderBrush")),
             new(WidthMask, hasWidth, () => TrySetDouble(element, "Width", width), () => ClearDouble(element, "Width")),
             new(MinWidthMask, hasMinWidth, () => TrySetDouble(element, "MinWidth", minWidth), () => ClearDouble(element, "MinWidth")),
             new(MaxWidthMask, hasMaxWidth, () => TrySetDouble(element, "MaxWidth", maxWidth), () => ClearDouble(element, "MaxWidth")),
@@ -187,7 +184,12 @@ public partial class Tw
 
         element.SetValue(AppliedMaskProperty, newMask);
 
-        ApplyVariantStyles(element, new OpacityCategoryState(hasOpacity, opacity));
+        ApplyVariantStyles(
+            element,
+            new BrushCategoryState(hasBackground, background),
+            new BrushCategoryState(hasForeground, foreground),
+            new BrushCategoryState(hasBorderBrush, borderBrush),
+            new OpacityCategoryState(hasOpacity, opacity));
     }
 
     private readonly record struct PendingUtility(int Mask, bool HasValue, Func<bool> TrySet, Action Clear);
