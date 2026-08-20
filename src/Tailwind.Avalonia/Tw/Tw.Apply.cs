@@ -34,6 +34,10 @@ public partial class Tw
         var hasFontSize = false;
         var hasOpacity = false;
         var opacity = default(double);
+        var backgroundVariants = new IBrush?[VariantCount];
+        var foregroundVariants = new IBrush?[VariantCount];
+        var borderBrushVariants = new IBrush?[VariantCount];
+        var opacityVariants = new double?[VariantCount];
         var margin = default(Thickness);
         var padding = default(Thickness);
         IBrush? background = null;
@@ -47,8 +51,45 @@ public partial class Tw
         var maxHeight = default(double);
         var fontSize = default(double);
 
-        foreach (var token in tokens)
+        foreach (var rawToken in tokens)
         {
+            if (TryParseVariantToken(rawToken, out var variantKind, out var variantRemainder))
+            {
+                if (TryParseBrushUtility(variantRemainder, out var variantBrush))
+                {
+                    switch (variantBrush.Target)
+                    {
+                        case BrushTarget.Background:
+                            backgroundVariants[(int)variantKind] = variantBrush.Brush;
+                            break;
+
+                        case BrushTarget.Foreground:
+                            foregroundVariants[(int)variantKind] = variantBrush.Brush;
+                            break;
+
+                        case BrushTarget.BorderBrush:
+                            borderBrushVariants[(int)variantKind] = variantBrush.Brush;
+                            break;
+                    }
+
+                    continue;
+                }
+
+                if (TryParseOpacityUtility(variantRemainder, out var variantOpacity))
+                {
+                    opacityVariants[(int)variantKind] = variantOpacity;
+                    continue;
+                }
+
+                Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                    element,
+                    "Tw.Class ignored unrecognized utility token '{Token}'.",
+                    rawToken);
+                continue;
+            }
+
+            var token = rawToken;
+
             if (TryParseSpacingUtility(token, out var spacingUtility))
             {
                 switch (spacingUtility.Target)
@@ -186,10 +227,10 @@ public partial class Tw
 
         ApplyVariantStyles(
             element,
-            new BrushCategoryState(hasBackground, background),
-            new BrushCategoryState(hasForeground, foreground),
-            new BrushCategoryState(hasBorderBrush, borderBrush),
-            new OpacityCategoryState(hasOpacity, opacity));
+            new BrushCategoryState(hasBackground, background, backgroundVariants),
+            new BrushCategoryState(hasForeground, foreground, foregroundVariants),
+            new BrushCategoryState(hasBorderBrush, borderBrush, borderBrushVariants),
+            new OpacityCategoryState(hasOpacity, opacity, opacityVariants));
     }
 
     private readonly record struct PendingUtility(int Mask, bool HasValue, Func<bool> TrySet, Action Clear);

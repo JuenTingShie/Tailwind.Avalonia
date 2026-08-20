@@ -7,8 +7,49 @@ namespace Tailwind.Avalonia;
 
 public partial class Tw
 {
-    private readonly record struct OpacityCategoryState(bool HasBase, double Base);
-    private readonly record struct BrushCategoryState(bool HasBase, IBrush? Base);
+    private enum VariantKind
+    {
+        Hover,
+        Pressed,
+        Focus,
+    }
+
+    private const int VariantCount = 3;
+
+    private static readonly (string Prefix, VariantKind Kind)[] VariantPrefixes =
+    {
+        ("hover:", VariantKind.Hover),
+        ("pressed:", VariantKind.Pressed),
+        ("focus:", VariantKind.Focus),
+    };
+
+    private static string PseudoClassFor(VariantKind kind) => kind switch
+    {
+        VariantKind.Hover => ":pointerover",
+        VariantKind.Pressed => ":pressed",
+        VariantKind.Focus => ":focus",
+        _ => throw new ArgumentOutOfRangeException(nameof(kind)),
+    };
+
+    private static bool TryParseVariantToken(string token, out VariantKind kind, out string remainder)
+    {
+        foreach (var (prefix, variantKind) in VariantPrefixes)
+        {
+            if (token.StartsWith(prefix, StringComparison.Ordinal))
+            {
+                kind = variantKind;
+                remainder = token[prefix.Length..];
+                return remainder.Length > 0;
+            }
+        }
+
+        kind = default;
+        remainder = string.Empty;
+        return false;
+    }
+
+    private readonly record struct OpacityCategoryState(bool HasBase, double Base, double?[] Variants);
+    private readonly record struct BrushCategoryState(bool HasBase, IBrush? Base, IBrush?[] Variants);
 
     private static readonly AttachedProperty<List<Style>?> AppliedVariantStylesProperty =
         AvaloniaProperty.RegisterAttached<Tw, AvaloniaObject, List<Style>?>("AppliedVariantStyles");
@@ -47,7 +88,7 @@ public partial class Tw
 
     private static void AddBrushStyles(StyledElement element, string propertyName, BrushCategoryState state, List<Style> target)
     {
-        if (!state.HasBase)
+        if (!state.HasBase && Array.TrueForAll(state.Variants, v => v is null))
         {
             return;
         }
@@ -65,14 +106,31 @@ public partial class Tw
         }
 
         var elementType = element.GetType();
-        var style = new Style(x => x.Is(elementType)) { Setters = { new Setter(property, state.Base) } };
-        element.Styles.Add(style);
-        target.Add(style);
+
+        if (state.HasBase)
+        {
+            var style = new Style(x => x.Is(elementType)) { Setters = { new Setter(property, state.Base) } };
+            element.Styles.Add(style);
+            target.Add(style);
+        }
+
+        for (var i = 0; i < state.Variants.Length; i++)
+        {
+            if (state.Variants[i] is not { } variantBrush)
+            {
+                continue;
+            }
+
+            var pseudoClass = PseudoClassFor((VariantKind)i);
+            var variantStyle = new Style(x => x.Is(elementType).Class(pseudoClass)) { Setters = { new Setter(property, variantBrush) } };
+            element.Styles.Add(variantStyle);
+            target.Add(variantStyle);
+        }
     }
 
     private static void AddOpacityStyles(StyledElement element, OpacityCategoryState state, List<Style> target)
     {
-        if (!state.HasBase)
+        if (!state.HasBase && Array.TrueForAll(state.Variants, v => v is null))
         {
             return;
         }
@@ -90,8 +148,25 @@ public partial class Tw
         }
 
         var elementType = element.GetType();
-        var style = new Style(x => x.Is(elementType)) { Setters = { new Setter(property, state.Base) } };
-        element.Styles.Add(style);
-        target.Add(style);
+
+        if (state.HasBase)
+        {
+            var style = new Style(x => x.Is(elementType)) { Setters = { new Setter(property, state.Base) } };
+            element.Styles.Add(style);
+            target.Add(style);
+        }
+
+        for (var i = 0; i < state.Variants.Length; i++)
+        {
+            if (state.Variants[i] is not { } variantOpacity)
+            {
+                continue;
+            }
+
+            var pseudoClass = PseudoClassFor((VariantKind)i);
+            var variantStyle = new Style(x => x.Is(elementType).Class(pseudoClass)) { Setters = { new Setter(property, variantOpacity) } };
+            element.Styles.Add(variantStyle);
+            target.Add(variantStyle);
+        }
     }
 }

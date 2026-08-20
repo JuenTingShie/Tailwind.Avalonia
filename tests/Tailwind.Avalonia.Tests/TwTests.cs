@@ -589,6 +589,98 @@ public class TwTests
         }
     }
 
+    [Fact]
+    public void SetClass_Applies_Hover_Variant_For_Background()
+    {
+        Assert.True(TailwindColorPalette.TryGetColor("blue-500", out var blue500));
+        Assert.True(TailwindColorPalette.TryGetColor("blue-700", out var blue700));
+
+        var border = new Border();
+
+        Tw.SetClass(border, "bg-blue-500 hover:bg-blue-700");
+
+        border.ApplyStyling();
+        Assert.Equal(blue500, Assert.IsType<SolidColorBrush>(border.Background).Color);
+
+        ((IPseudoClasses)border.Classes).Add(":pointerover");
+        border.ApplyStyling();
+        Assert.Equal(blue700, Assert.IsType<SolidColorBrush>(border.Background).Color);
+
+        ((IPseudoClasses)border.Classes).Remove(":pointerover");
+        border.ApplyStyling();
+        Assert.Equal(blue500, Assert.IsType<SolidColorBrush>(border.Background).Color);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Pressed_Variant_For_Opacity()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "opacity-100 pressed:opacity-50");
+
+        border.ApplyStyling();
+        Assert.Equal(1d, border.Opacity);
+
+        ((IPseudoClasses)border.Classes).Add(":pressed");
+        border.ApplyStyling();
+        Assert.Equal(0.5d, border.Opacity);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Focus_Variant_For_Foreground()
+    {
+        Assert.True(TailwindColorPalette.TryGetColor("sky-500", out var sky500));
+
+        var textBlock = new TextBlock();
+
+        Tw.SetClass(textBlock, "text-gray-500 focus:text-sky-500");
+
+        ((IPseudoClasses)textBlock.Classes).Add(":focus");
+        textBlock.ApplyStyling();
+
+        Assert.Equal(sky500, Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color);
+    }
+
+    [Fact]
+    public void SetClass_Prefers_Later_Declared_Variant_When_Multiple_PseudoClasses_Are_Active()
+    {
+        Assert.True(TailwindColorPalette.TryGetColor("green-500", out var green500));
+
+        var border = new Border();
+
+        Tw.SetClass(border, "bg-blue-500 hover:bg-red-500 pressed:bg-green-500");
+
+        ((IPseudoClasses)border.Classes).Add(":pointerover");
+        ((IPseudoClasses)border.Classes).Add(":pressed");
+        border.ApplyStyling();
+
+        // Pressed is declared after Hover in VariantKind, so its Style is added
+        // later and wins while both pseudo-classes are simultaneously active.
+        Assert.Equal(green500, Assert.IsType<SolidColorBrush>(border.Background).Color);
+    }
+
+    [Fact]
+    public void SetClass_Logs_Warning_For_Variant_Token_With_Unsupported_Utility()
+    {
+        var border = new Border();
+        var sink = new CapturingLogSink(border);
+        var originalSink = Logger.Sink;
+        Logger.Sink = sink;
+
+        try
+        {
+            Tw.SetClass(border, "hover:p-4");
+
+            var entry = Assert.Single(sink.Entries);
+            Assert.Equal(LogEventLevel.Warning, entry.Level);
+            Assert.Equal("hover:p-4", entry.PropertyValues[0]);
+        }
+        finally
+        {
+            Logger.Sink = originalSink;
+        }
+    }
+
     private sealed class CapturingLogSink : ILogSink
     {
         private readonly object _expectedSource;
