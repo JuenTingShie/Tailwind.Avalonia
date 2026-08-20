@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 
 namespace Tailwind.Avalonia.Sample;
 
@@ -39,8 +41,10 @@ public partial class SampleShell : UserControl
         // to resolve string-based event handlers from XAML for this shared shell.
         PaneCloseButton.Click += NavigationToggleClicked;
         PaneToggleButton.Click += NavigationToggleClicked;
+        NavigationSplitView.PropertyChanged += NavigationSplitViewPropertyChanged;
         SectionTabStrip.SelectionChanged += SectionSelectionChanged;
         PageTabStrip.SelectionChanged += PageSelectionChanged;
+        PageTabStrip.Tapped += PageTabStripTapped;
         SizeChanged += SampleShellSizeChanged;
 
         sections = CreateSections();
@@ -120,6 +124,25 @@ public partial class SampleShell : UserControl
         ShowPage(selectedSection, page);
     }
 
+    // Fallback for tapping a page TabStripItem that Avalonia had already auto-selected
+    // (e.g. the sole page in a section): no value change means SelectionChanged never
+    // fires, so PageSelectionChanged alone would silently swallow the click.
+    private void PageTabStripTapped(object? sender, TappedEventArgs e)
+    {
+        if (isSynchronizingSelection || selectedSection is null)
+        {
+            return;
+        }
+
+        if (e.Source is not Control { DataContext: SampleShellPageDescriptor page } || ReferenceEquals(page, shownPage))
+        {
+            return;
+        }
+
+        selectedSection.SelectedPageIndex = FindPageIndex(selectedSection, page);
+        ShowPage(selectedSection, page);
+    }
+
     // Keep each page alive after first load so repeat tab switches only toggle visibility.
     private void ShowPage(SampleShellSectionDescriptor section, SampleShellPageDescriptor page)
     {
@@ -190,6 +213,13 @@ public partial class SampleShell : UserControl
             else
             {
                 PageTabStrip.SelectedIndex = -1;
+
+                // TabStrip re-selects the sole item once its container is realized
+                // for a single-item source; clear again after that layout pass.
+                if (section.Pages.Count == 1)
+                {
+                    Dispatcher.UIThread.Post(() => PageTabStrip.SelectedIndex = -1, DispatcherPriority.Loaded);
+                }
             }
         }
         finally
@@ -215,6 +245,16 @@ public partial class SampleShell : UserControl
     private void NavigationToggleClicked(object? sender, RoutedEventArgs e)
     {
         SetPaneOpen(!NavigationSplitView.IsPaneOpen);
+    }
+
+    // Keep button chrome in sync however the pane closes, including Overlay light-dismiss
+    // (tapping outside the pane), which flips IsPaneOpen without going through SetPaneOpen.
+    private void NavigationSplitViewPropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        if (e.Property == SplitView.IsPaneOpenProperty)
+        {
+            UpdateNavigationChrome();
+        }
     }
 
     // Switch between inline and overlay navigation so narrow screens keep the page readable.
@@ -271,12 +311,10 @@ public partial class SampleShell : UserControl
         ToolTip.SetTip(PaneCloseButton, isNarrowLayout ? "Close navigation" : "Hide navigation");
     }
 
-    // Centralize pane state changes so the button chrome stays in sync.
+    // Chrome resync happens centrally in NavigationSplitViewPropertyChanged.
     private void SetPaneOpen(bool isOpen)
     {
         NavigationSplitView.IsPaneOpen = isOpen;
-
-        UpdateNavigationChrome();
     }
 
     private void SampleShellAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)
