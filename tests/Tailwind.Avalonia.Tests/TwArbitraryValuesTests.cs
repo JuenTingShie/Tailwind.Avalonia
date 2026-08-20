@@ -252,6 +252,9 @@ public class TwArbitraryValuesTests
         Tw.SetClass(border, "bg-[#ff0000] border-[#00ff00]");
         Tw.SetClass(textBlock, "text-[#0000ff]");
 
+        border.ApplyStyling();
+        textBlock.ApplyStyling();
+
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
         var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
         var foreground = Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color;
@@ -267,6 +270,8 @@ public class TwArbitraryValuesTests
         var border = new Border();
 
         Tw.SetClass(border, "bg-[#ff0000ff] border-[#00ff0080]");
+
+        border.ApplyStyling();
 
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
         var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
@@ -289,6 +294,8 @@ public class TwArbitraryValuesTests
 
         Tw.SetClass(border, "bg-[#ff0000]/50");
 
+        border.ApplyStyling();
+
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
 
         Assert.Equal((byte)128, background.A);
@@ -305,6 +312,9 @@ public class TwArbitraryValuesTests
 
         Tw.SetClass(border, "bg-[#ffffff]/75");
         Tw.SetClass(textBlock, "text-[#000000]/25");
+
+        border.ApplyStyling();
+        textBlock.ApplyStyling();
 
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
         var foreground = Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color;
@@ -359,6 +369,9 @@ public class TwArbitraryValuesTests
         Tw.SetClass(border, "p-4 px-[10px] bg-blue-700");
         Tw.SetClass(textBlock, "text-[#ffffff]");
 
+        border.ApplyStyling();
+        textBlock.ApplyStyling();
+
         // p-4 sets all sides to 16px, then px-[10px] overrides horizontal to 10px
         // Final: left/right = 10px (from px-[10px]), top/bottom = 16px (from p-4)
         Assert.Equal(new Thickness(10, 16, 10, 16), border.Padding);
@@ -379,6 +392,9 @@ public class TwArbitraryValuesTests
 
         Tw.SetClass(border, "p-[8px] m-[10px] w-[200px] h-[150px] bg-[#333333]");
         Tw.SetClass(textBlock, "text-[#cccccc]");
+
+        border.ApplyStyling();
+        textBlock.ApplyStyling();
 
         Assert.Equal(new Thickness(8), border.Padding);
         Assert.Equal(new Thickness(10), border.Margin);
@@ -403,6 +419,8 @@ public class TwArbitraryValuesTests
 
         // First apply Tailwind palette color, then override with arbitrary
         Tw.SetClass(border, "bg-blue-700 bg-[#ff0000]");
+
+        border.ApplyStyling();
 
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
 
@@ -432,6 +450,9 @@ public class TwArbitraryValuesTests
         Tw.SetClass(border, "bg-[#FF0000] border-[#00FF00]");
         Tw.SetClass(textBlock, "text-[#0000fF]");
 
+        border.ApplyStyling();
+        textBlock.ApplyStyling();
+
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
         var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
         var foreground = Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color;
@@ -451,6 +472,9 @@ public class TwArbitraryValuesTests
         Tw.SetClass(border, "bg-[#f00] border-[#0f0]");
         Tw.SetClass(textBlock, "text-[#00f]");
 
+        border.ApplyStyling();
+        textBlock.ApplyStyling();
+
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
         var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
         var foreground = Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color;
@@ -467,6 +491,8 @@ public class TwArbitraryValuesTests
 
         // #rgba shorthand expands to #rrggbbaa (e.g., #f00f → #ff0000ff, #f008 → #ff000088)
         Tw.SetClass(border, "bg-[#f00f] border-[#0f08]");
+
+        border.ApplyStyling();
 
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
         var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
@@ -489,6 +515,8 @@ public class TwArbitraryValuesTests
 
         // Test case insensitivity with shorthand
         Tw.SetClass(border, "bg-[#FFF] border-[#000]");
+
+        border.ApplyStyling();
 
         var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
         var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;

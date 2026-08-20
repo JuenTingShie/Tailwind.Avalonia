@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented in this file.
 
+## 2.0.0 — 2026-08-20
+
+### Added
+
+- `opacity-*` utility (e.g. `opacity-50`) — sets the element's `Opacity` property from a `0`-`100` percent value, same syntax as the existing color-utility alpha modifier (`bg-black/50`).
+- `hover:`, `pressed:`, and `focus:` variants for color utilities (`bg-`, `text-`, `border-`) and `opacity-*`, backed by Avalonia's `:pointerover`/`:pressed`/`:focus` selectors (e.g. `bg-blue-500 hover:bg-blue-700`). Not supported for spacing, sizing, or font-size utilities in this release.
+- When multiple variant pseudo-classes are active at once (e.g. hovering while pressed), the variant declared later — order is `hover` < `pressed` < `focus` — wins.
+
+### Breaking
+
+- `bg-*`, `text-*`, `border-*` (and the new `opacity-*`) utilities now resolve through per-element Avalonia `Style` objects instead of `SetValue`, so hover/pressed/focus variants can out-rank the base value (Avalonia always ranks a local value set via `SetValue` above any style trigger, regardless of selector, so this was structurally required). **Consequence:** these properties only reflect their resolved value once Avalonia's style engine has run for that element (e.g. `element.ApplyStyling()`, or a normal layout pass once attached to a visual tree), not immediately after `Tw.Class` changes. Any code that reads `Background`/`Foreground`/`BorderBrush`/`Opacity` right after setting `Tw.Class`, before styles have been applied, will now see the previous (or default) value instead of the new one. Elements attached to a running visual tree are unaffected — layout always runs before paint.
+- Spacing, sizing, and font-size utilities are unaffected — they still resolve synchronously via `SetValue`.
+
 ## 1.0.0 — 2026-08-19
 
 ### Breaking

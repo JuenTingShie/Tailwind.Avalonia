@@ -71,6 +71,9 @@ public partial class SampleShell : UserControl
                 "TYPOGRAPHY",
                 new SampleShellPageDescriptor("Font size", static () => new Typography.FontSize()),
                 new SampleShellPageDescriptor("Colors", static () => new Typography.ColorUtilities())),
+            new(
+                "INTERACTIVITY",
+                new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants())),
         ];
     }
 

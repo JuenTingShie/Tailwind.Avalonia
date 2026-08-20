@@ -10,6 +10,9 @@
     d:DesignHeight="920"
     x:Class="Tailwind.Avalonia.Sample.MainWindow"
     Title="Tailwind.Avalonia Docs Sample"
+    Width="1440"
+    Height="920"
+    SizeToContent="Manual"
     tw:Tw.Class="bg-slate-950">
     <local:SampleShell />
 </Window>
