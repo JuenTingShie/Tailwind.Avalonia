@@ -32,6 +32,8 @@ public partial class Tw
         var hasMinHeight = false;
         var hasMaxHeight = false;
         var hasFontSize = false;
+        var hasOpacity = false;
+        var opacity = default(double);
         var margin = default(Thickness);
         var padding = default(Thickness);
         IBrush? background = null;
@@ -120,6 +122,13 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseOpacityUtility(token, out var opacityUtility))
+            {
+                opacity = opacityUtility;
+                hasOpacity = true;
+                continue;
+            }
+
             if (!TryParseBrushUtility(token, out var brushUtility))
             {
                 Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
@@ -177,6 +186,8 @@ public partial class Tw
         }
 
         element.SetValue(AppliedMaskProperty, newMask);
+
+        ApplyVariantStyles(element, new OpacityCategoryState(hasOpacity, opacity));
     }
 
     private readonly record struct PendingUtility(int Mask, bool HasValue, Func<bool> TrySet, Action Clear);

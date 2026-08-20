@@ -308,6 +308,43 @@ public class TwTests
     }
 
     [Fact]
+    public void SetClass_Applies_Opacity_Utility()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "opacity-50");
+        border.Measure(new Size(100, 100));
+        border.Arrange(new Rect(0, 0, 100, 100));
+
+        Assert.Equal(0.5d, border.Opacity);
+    }
+
+    [Fact]
+    public void SetClass_Uses_Last_Opacity_Utility()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "opacity-80 opacity-20");
+        border.Measure(new Size(100, 100));
+        border.Arrange(new Rect(0, 0, 100, 100));
+
+        Assert.Equal(0.2d, border.Opacity);
+    }
+
+    [Fact]
+    public void SetClass_Clears_Previously_Applied_Opacity_When_Class_Removed()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "opacity-50");
+        Tw.SetClass(border, null);
+        border.Measure(new Size(100, 100));
+        border.Arrange(new Rect(0, 0, 100, 100));
+
+        Assert.Equal(1d, border.Opacity);
+    }
+
+    [Fact]
     public void SetClass_Uses_Last_Sizing_Utility_For_Each_Property()
     {
         var border = new Border();

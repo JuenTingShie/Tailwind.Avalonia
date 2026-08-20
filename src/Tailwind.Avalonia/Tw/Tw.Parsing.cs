@@ -144,6 +144,22 @@ public partial class Tw
         return false;
     }
 
+    private static bool TryParseOpacityUtility(string token, out double opacity)
+    {
+        opacity = default;
+
+        if (!token.StartsWith("opacity-", StringComparison.Ordinal) ||
+            token.Contains(':') ||
+            token.Contains('('))
+        {
+            return false;
+        }
+
+        var valueToken = token["opacity-".Length..];
+
+        return TryParseOpacity(valueToken, out opacity);
+    }
+
     private delegate bool ScalePixelLookup(string token, out double pixels);
 
     private static bool TryParseScaleOrArbitraryPixels(string token, ScalePixelLookup scaleLookup, Predicate<double>? isValid, out double pixels) =>
