@@ -1,7 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Metadata;
-using AvaloniaEdit.Highlighting;
 
 namespace Tailwind.Avalonia.Sample;
 
@@ -21,7 +20,7 @@ public partial class AxamlCodeBlock : UserControl
     public AxamlCodeBlock()
     {
         InitializeComponent();
-        Editor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinitionByExtension(".xml");
+        AxamlHighlighting.Install(Editor);
     }
 
     [Content]
