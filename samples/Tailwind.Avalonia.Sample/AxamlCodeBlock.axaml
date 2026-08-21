@@ -1,0 +1,19 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ae="using:AvaloniaEdit"
+    x:Class="Tailwind.Avalonia.Sample.AxamlCodeBlock">
+    <UserControl.Content>
+        <ae:TextEditor
+            x:Name="Editor"
+            Background="Transparent"
+            FontFamily="{Binding $parent[UserControl].FontFamily}"
+            FontSize="{Binding $parent[UserControl].FontSize}"
+            Foreground="{Binding $parent[UserControl].Foreground}"
+            HorizontalScrollBarVisibility="Disabled"
+            IsReadOnly="True"
+            ShowLineNumbers="False"
+            VerticalScrollBarVisibility="Disabled"
+            WordWrap="True" />
+    </UserControl.Content>
+</UserControl>

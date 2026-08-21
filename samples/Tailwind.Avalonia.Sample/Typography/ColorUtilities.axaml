@@ -1,6 +1,7 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample"
     xmlns:spacing="using:Tailwind.Avalonia.Sample.Spacing"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Typography.ColorUtilities">
@@ -151,12 +152,10 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-sky-300&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-rose-300/80&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-sky-300&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-rose-300/80&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -221,12 +220,10 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Button tw:Tw.Class=&quot;bg-emerald-500 text-slate-950 border-emerald-300&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Button tw:Tw.Class=&quot;bg-transparent text-sky-200 border-sky-400&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Button tw:Tw.Class=&quot;bg-emerald-500 text-slate-950 border-emerald-300&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Button tw:Tw.Class=&quot;bg-transparent text-sky-200 border-sky-400&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -293,9 +290,8 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border BorderThickness=&quot;3&quot; tw:Tw.Class=&quot;border-cyan-400&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border BorderThickness=&quot;3&quot; tw:Tw.Class=&quot;border-cyan-400&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -368,15 +364,12 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-[#ff6b6b]&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-[#4ecdc4]/70&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Button tw:Tw.Class=&quot;bg-[#95e1d3] text-[#38ada9] border-[#1abc9c]&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-[#ff6b6b]&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-[#4ecdc4]/70&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Button tw:Tw.Class=&quot;bg-[#95e1d3] text-[#38ada9] border-[#1abc9c]&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
