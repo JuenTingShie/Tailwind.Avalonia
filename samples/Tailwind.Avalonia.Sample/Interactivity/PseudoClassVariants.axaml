@@ -1,6 +1,7 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Interactivity.PseudoClassVariants">
     <UserControl.Styles>
@@ -83,9 +84,8 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Button tw:Tw.Class=&quot;bg-blue-500 hover:bg-blue-700&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Button tw:Tw.Class=&quot;bg-blue-500 hover:bg-blue-700&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -128,9 +128,8 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Button tw:Tw.Class=&quot;opacity-100 pressed:opacity-50&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Button tw:Tw.Class=&quot;opacity-100 pressed:opacity-50&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -174,9 +173,8 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBox tw:Tw.Class=&quot;border-slate-700 focus:border-sky-400&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBox tw:Tw.Class=&quot;border-slate-700 focus:border-sky-400&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -219,9 +217,8 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Button tw:Tw.Class=&quot;bg-blue-500 hover:bg-red-500 pressed:bg-green-500&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Button tw:Tw.Class=&quot;bg-blue-500 hover:bg-red-500 pressed:bg-green-500&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>

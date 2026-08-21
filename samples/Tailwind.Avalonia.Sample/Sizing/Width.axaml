@@ -1,6 +1,7 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample"
     xmlns:spacing="using:Tailwind.Avalonia.Sample.Spacing"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Sizing.Width">
@@ -192,15 +193,12 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-24&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-40&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-64&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-24&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-40&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-64&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -267,12 +265,10 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-24&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-40&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-24&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-40&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -339,12 +335,10 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-24&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-40&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-24&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-40&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -587,15 +581,12 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border tw:Tw.Class=&quot;w-[100px]&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border tw:Tw.Class=&quot;min-w-[12.5rem]&quot; Width=&quot;80&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border tw:Tw.Class=&quot;max-w-[5em]&quot; Width=&quot;320&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border tw:Tw.Class=&quot;w-[100px]&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border tw:Tw.Class=&quot;min-w-[12.5rem]&quot; Width=&quot;80&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border tw:Tw.Class=&quot;max-w-[5em]&quot; Width=&quot;320&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>

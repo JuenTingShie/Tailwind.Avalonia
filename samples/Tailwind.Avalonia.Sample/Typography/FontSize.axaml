@@ -1,6 +1,7 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample"
     xmlns:spacing="using:Tailwind.Avalonia.Sample.Spacing"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Typography.FontSize">
@@ -167,18 +168,14 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-xs&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-base&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-2xl&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-5xl&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-xs&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-base&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-2xl&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-5xl&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -265,15 +262,12 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-[14px]&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-[1.5rem]&quot; /&gt;" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;TextBlock tw:Tw.Class=&quot;text-[2em]&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-[14px]&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-[1.5rem]&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-[2em]&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>

@@ -2,6 +2,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:media="clr-namespace:Avalonia.Media;assembly=Avalonia.Base"
+    xmlns:docs="using:Tailwind.Avalonia.Sample"
     xmlns:sample="using:Tailwind.Avalonia.Sample.Spacing"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Spacing.Padding">
@@ -159,9 +160,8 @@
                                         <TextBlock
                                             Classes="docs-miniTitle"
                                             Text="AXAML" />
-                                        <TextBlock
-                                            Classes="docs-code"
-                                            Text="&lt;Border tw:Tw.Class=&quot;p-8&quot; /&gt;" />
+                                        <docs:AxamlCodeBlock
+                                            Code="&lt;Border tw:Tw.Class=&quot;p-8&quot; /&gt;" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -264,18 +264,14 @@
                                                 <TextBlock
                                                     Classes="docs-miniTitle"
                                                     Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;pt-6&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;pr-4&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;pb-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;pl-2&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;pt-6&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;pr-4&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;pb-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;pl-2&quot; /&gt;" />
                                             </StackPanel>
                                         </Border>
                             </StackPanel>
@@ -346,12 +342,10 @@
                                                 <TextBlock
                                                     Classes="docs-miniTitle"
                                                     Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;px-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;py-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;px-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;py-8&quot; /&gt;" />
                                             </StackPanel>
                                         </Border>
                             </StackPanel>
@@ -1019,42 +1013,30 @@
                                                 <TextBlock
                                                     Classes="docs-miniTitle"
                                                     Text="Actual usage" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;ps-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pe-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;ps-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pe-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pbs-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pbe-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pbs-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pbe-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;psv-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;psv-8&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;ps-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pe-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;ps-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pe-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pbs-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pbe-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pbs-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pbe-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;psv-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;psv-8&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;pev-8&quot; /&gt;" />
                                             </StackPanel>
                                         </Border>
                             </StackPanel>
@@ -1163,15 +1145,12 @@
                                                 <TextBlock
                                                     Classes="docs-miniTitle"
                                                     Text="AXAML" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;p-[12px]&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;px-[20px] py-[10px]&quot; /&gt;" />
-                                                <TextBlock
-                                                    Classes="docs-code"
-                                                    Text="&lt;Border tw:Tw.Class=&quot;pt-[8px] pr-[12px] pb-[16px] pl-[20px]&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;p-[12px]&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;px-[20px] py-[10px]&quot; /&gt;" />
+                                                <docs:AxamlCodeBlock
+                                                    Code="&lt;Border tw:Tw.Class=&quot;pt-[8px] pr-[12px] pb-[16px] pl-[20px]&quot; /&gt;" />
                                             </StackPanel>
                                         </Border>
                             </StackPanel>

@@ -177,7 +177,7 @@
             Value="SemiBold" />
     </Style>
     <Style
-        Selector="TextBlock.docs-code">
+        Selector="sample|AxamlCodeBlock">
         <Setter
             Property="tw:Tw.Class"
             Value="text-slate-200" />
@@ -185,17 +185,11 @@
             Property="FontSize"
             Value="14" />
         <Setter
-            Property="TextWrapping"
-            Value="Wrap" />
-        <Setter
             Property="FontFamily"
             Value="Cascadia Mono, Consolas" />
-        <Setter
-            Property="sample:DocsCodeTextBehavior.NormalizeIndent"
-            Value="True" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile TextBlock.docs-code">
+        Selector="UserControl.docs-mobile sample|AxamlCodeBlock">
         <Setter
             Property="FontSize"
             Value="13" />
