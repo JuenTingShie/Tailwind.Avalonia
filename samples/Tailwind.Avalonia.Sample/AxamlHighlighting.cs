@@ -12,10 +12,12 @@ internal static class AxamlHighlighting
 {
     private static readonly RegistryOptions RegistryOptions = new(ThemeName.DarkPlus);
     private static readonly string XmlScope = RegistryOptions.GetScopeByExtension(".xml");
+    private static readonly AxamlHighlightColorizer Colorizer = new();
 
     public static void Install(TextEditor editor)
     {
         var installation = editor.InstallTextMate(RegistryOptions);
         installation.SetGrammar(XmlScope);
+        editor.TextArea.TextView.LineTransformers.Add(Colorizer);
     }
 }
