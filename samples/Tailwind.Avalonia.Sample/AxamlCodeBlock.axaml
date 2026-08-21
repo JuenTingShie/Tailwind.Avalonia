@@ -2,18 +2,33 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ae="using:AvaloniaEdit"
+    xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.AxamlCodeBlock">
     <UserControl.Content>
-        <ae:TextEditor
-            x:Name="Editor"
-            Background="Transparent"
-            FontFamily="{Binding $parent[UserControl].FontFamily}"
-            FontSize="{Binding $parent[UserControl].FontSize}"
-            Foreground="{Binding $parent[UserControl].Foreground}"
-            HorizontalScrollBarVisibility="Disabled"
-            IsReadOnly="True"
-            ShowLineNumbers="False"
-            VerticalScrollBarVisibility="Disabled"
-            WordWrap="True" />
+        <Grid>
+            <ae:TextEditor
+                x:Name="Editor"
+                Background="Transparent"
+                FontFamily="{Binding $parent[UserControl].FontFamily}"
+                FontSize="{Binding $parent[UserControl].FontSize}"
+                Foreground="{Binding $parent[UserControl].Foreground}"
+                HorizontalScrollBarVisibility="Disabled"
+                IsReadOnly="True"
+                ShowLineNumbers="True"
+                VerticalScrollBarVisibility="Disabled"
+                WordWrap="True" />
+            <Button
+                x:Name="CopyButton"
+                Click="OnCopyButtonClick"
+                Content="Copy"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,4,4,0"
+                Padding="10,4"
+                FontSize="11"
+                BorderThickness="1"
+                CornerRadius="4"
+                tw:Tw.Class="bg-slate-800 border-slate-700 text-slate-300" />
+        </Grid>
     </UserControl.Content>
 </UserControl>
