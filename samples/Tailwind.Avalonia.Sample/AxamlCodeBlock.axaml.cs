@@ -1,7 +1,10 @@
+using System;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input.Platform;
+using Avalonia.Interactivity;
 using Avalonia.Metadata;
-using AvaloniaEdit.Highlighting;
 
 namespace Tailwind.Avalonia.Sample;
 
@@ -21,7 +24,7 @@ public partial class AxamlCodeBlock : UserControl
     public AxamlCodeBlock()
     {
         InitializeComponent();
-        Editor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinitionByExtension(".xml");
+        AxamlHighlighting.Install(Editor);
     }
 
     [Content]
@@ -34,5 +37,21 @@ public partial class AxamlCodeBlock : UserControl
     private void ApplyCode()
     {
         Editor.Text = AxamlSnippetFormatter.Format(Code ?? string.Empty);
+    }
+
+    private async void OnCopyButtonClick(object? sender, RoutedEventArgs e)
+    {
+        var clipboard = TopLevel.GetTopLevel(this)?.Clipboard;
+
+        if (clipboard is null)
+        {
+            return;
+        }
+
+        await clipboard.SetTextAsync(Editor.Text);
+
+        CopyButton.Content = "Copied";
+        await Task.Delay(TimeSpan.FromSeconds(1.5));
+        CopyButton.Content = "Copy";
     }
 }
