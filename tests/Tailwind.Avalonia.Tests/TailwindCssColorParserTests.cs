@@ -54,4 +54,110 @@ public class TailwindCssColorParserTests
     {
         Assert.Throws<FormatException>(() => TailwindCssColorParser.Parse(cssValue));
     }
+
+    [Fact]
+    public void Parse_Converts_Comma_Separated_Rgb_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("rgb(255, 0, 0)");
+
+        Assert.Equal(Color.Parse("#ff0000"), actual);
+    }
+
+    [Fact]
+    public void Parse_Converts_Space_Separated_Rgb_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("rgb(255 0 0)");
+
+        Assert.Equal(Color.Parse("#ff0000"), actual);
+    }
+
+    [Fact]
+    public void Parse_Converts_Percentage_Rgb_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("rgb(100% 0% 0%)");
+
+        Assert.Equal(Color.Parse("#ff0000"), actual);
+    }
+
+    [Fact]
+    public void Parse_Converts_Legacy_Comma_Rgba_With_Alpha_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("rgba(255, 0, 0, 0.5)");
+
+        Assert.Equal(Color.Parse("#80ff0000"), actual);
+    }
+
+    [Fact]
+    public void Parse_Converts_Modern_Slash_Alpha_Rgb_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("rgb(255 0 0 / 0.5)");
+
+        Assert.Equal(Color.Parse("#80ff0000"), actual);
+    }
+
+    [Fact]
+    public void Parse_Converts_Comma_Separated_Hsl_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("hsl(0, 100%, 50%)");
+
+        Assert.Equal(Color.Parse("#ff0000"), actual);
+    }
+
+    [Fact]
+    public void Parse_Converts_Space_Separated_Hsl_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("hsl(120 100% 50%)");
+
+        Assert.Equal(Color.Parse("#00ff00"), actual);
+    }
+
+    [Fact]
+    public void Parse_Converts_Legacy_Comma_Hsla_With_Alpha_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("hsla(240, 100%, 50%, 0.5)");
+
+        Assert.Equal(Color.Parse("#800000ff"), actual);
+    }
+
+    [Fact]
+    public void Parse_Converts_Modern_Slash_Alpha_Hsl_To_Expected_Color()
+    {
+        var actual = TailwindCssColorParser.Parse("hsl(0 100% 50% / 0.5)");
+
+        Assert.Equal(Color.Parse("#80ff0000"), actual);
+    }
+
+    [Fact]
+    public void Parse_Handles_Trailing_Comma_In_Rgb()
+    {
+        var actual = TailwindCssColorParser.Parse("rgb(255, 0, 0,)");
+
+        Assert.Equal(Color.Parse("#ff0000"), actual);
+    }
+
+    [Theory]
+    [InlineData("rgb(255, 0 0)")]
+    [InlineData("rgb(255, 0)")]
+    [InlineData("rgb(255, 0, 0, 0.5 / 0.5)")]
+    [InlineData("hsl(0, 100% 50%)")]
+    public void Parse_Throws_For_Mixed_Or_Malformed_Separators(string cssValue)
+    {
+        Assert.Throws<FormatException>(() => TailwindCssColorParser.Parse(cssValue));
+    }
+
+    [Theory]
+    [InlineData("hsl(50%, 50%, 50%)")]
+    [InlineData("hsl(0, 50, 50%)")]
+    public void Parse_Throws_When_Hsl_Saturation_Or_Lightness_Missing_Percent(string cssValue)
+    {
+        Assert.Throws<FormatException>(() => TailwindCssColorParser.Parse(cssValue));
+    }
+
+    [Theory]
+    [InlineData("rgb(NaN, 0, 0)")]
+    [InlineData("hsl(0, NaN%, 50%)")]
+    public void Parse_Throws_For_NonFinite_Rgb_Or_Hsl_Components(string cssValue)
+    {
+        Assert.Throws<FormatException>(() => TailwindCssColorParser.Parse(cssValue));
+    }
 }

@@ -18,7 +18,133 @@ internal static class TailwindCssColorParser
             return ParseOklch(cssValue);
         }
 
+        if (cssValue.StartsWith("rgb(", StringComparison.OrdinalIgnoreCase)
+            || cssValue.StartsWith("rgba(", StringComparison.OrdinalIgnoreCase))
+        {
+            return ParseRgb(cssValue);
+        }
+
+        if (cssValue.StartsWith("hsl(", StringComparison.OrdinalIgnoreCase)
+            || cssValue.StartsWith("hsla(", StringComparison.OrdinalIgnoreCase))
+        {
+            return ParseHsl(cssValue);
+        }
+
         throw new FormatException($"Unsupported Tailwind color value '{cssValue}'.");
+    }
+
+    private static Color ParseRgb(string cssValue)
+    {
+        var (components, alpha) = SplitFunctionComponents(cssValue, "RGB");
+
+        if (components.Length != 3)
+        {
+            throw new FormatException($"Invalid RGB value '{cssValue}'.");
+        }
+
+        var red = ParseRgbComponent(components[0]);
+        var green = ParseRgbComponent(components[1]);
+        var blue = ParseRgbComponent(components[2]);
+
+        return Color.FromArgb(ToByte(alpha), ToByte(red), ToByte(green), ToByte(blue));
+    }
+
+    private static Color ParseHsl(string cssValue)
+    {
+        var (components, alpha) = SplitFunctionComponents(cssValue, "HSL");
+
+        if (components.Length != 3)
+        {
+            throw new FormatException($"Invalid HSL value '{cssValue}'.");
+        }
+
+        var hue = ParseHue(components[0]);
+        var saturation = ParseRequiredPercent(components[1]);
+        var lightness = ParseRequiredPercent(components[2]);
+
+        var (red, green, blue) = HslToRgb(hue, saturation, lightness);
+
+        return Color.FromArgb(ToByte(alpha), ToByte(red), ToByte(green), ToByte(blue));
+    }
+
+    private static (double Red, double Green, double Blue) HslToRgb(double hue, double saturation, double lightness)
+    {
+        var chroma = (1 - Math.Abs(2 * lightness - 1)) * saturation;
+        var hPrime = hue / 60.0;
+        var x = chroma * (1 - Math.Abs(hPrime % 2 - 1));
+        var m = lightness - chroma / 2;
+
+        var (r, g, b) = (int)hPrime switch
+        {
+            0 => (chroma, x, 0.0),
+            1 => (x, chroma, 0.0),
+            2 => (0.0, chroma, x),
+            3 => (0.0, x, chroma),
+            4 => (x, 0.0, chroma),
+            _ => (chroma, 0.0, x),
+        };
+
+        return (r + m, g + m, b + m);
+    }
+
+    private static (string[] Components, double Alpha) SplitFunctionComponents(string cssValue, string label)
+    {
+        var open = cssValue.IndexOf('(');
+        var close = cssValue.LastIndexOf(')');
+        var inner = cssValue.AsSpan(open + 1, close - open - 1).Trim();
+
+        var alpha = 1.0;
+        var slashIndex = inner.IndexOf('/');
+        var hasSlashAlpha = slashIndex >= 0;
+
+        if (hasSlashAlpha)
+        {
+            alpha = ParseAlpha(inner[(slashIndex + 1)..].Trim().ToString());
+            inner = inner[..slashIndex].Trim();
+        }
+
+        var colorPart = inner.ToString();
+
+        string[] components = colorPart.Contains(',')
+            ? colorPart.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            : colorPart.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+
+        if (components.Length == 4)
+        {
+            if (hasSlashAlpha)
+            {
+                throw new FormatException($"Invalid {label} value '{cssValue}': alpha specified twice.");
+            }
+
+            alpha = ParseAlpha(components[3]);
+            components = components[..3];
+        }
+
+        return (components, alpha);
+    }
+
+    private static double ParseRgbComponent(string token)
+    {
+        var value = token.EndsWith('%')
+            ? double.Parse(token[..^1], CultureInfo.InvariantCulture) / 100.0
+            : double.Parse(token, CultureInfo.InvariantCulture) / 255.0;
+
+        if (!double.IsFinite(value))
+        {
+            throw new FormatException($"Invalid numeric component '{token}': value must be finite.");
+        }
+
+        return value;
+    }
+
+    private static double ParseRequiredPercent(string token)
+    {
+        if (!token.EndsWith('%'))
+        {
+            throw new FormatException($"Invalid component '{token}': percentage value expected.");
+        }
+
+        return ParsePercentOrNumber(token, 1.0);
     }
 
     private static Color ParseOklch(string cssValue)
