@@ -97,11 +97,26 @@ async function waitForCanvas(container) {
     await nextFrame()
 }
 
+const BOOT_TIMEOUT_MS = 60000
+
+function withTimeout(promise, ms, message) {
+    let timer
+    const timeout = new Promise((_, reject) => {
+        timer = globalThis.setTimeout(() => reject(new Error(message)), ms)
+    })
+
+    return Promise.race([promise, timeout]).finally(() => globalThis.clearTimeout(timer))
+}
+
 try {
-    const dotnetRuntime = await dotnet
-        .withDiagnosticTracing(false)
-        .withApplicationArgumentsFromQuery()
-        .create()
+    const dotnetRuntime = await withTimeout(
+        dotnet
+            .withDiagnosticTracing(false)
+            .withApplicationArgumentsFromQuery()
+            .create(),
+        BOOT_TIMEOUT_MS,
+        `Timed out after ${BOOT_TIMEOUT_MS / 1000}s starting the .NET WebAssembly runtime. Check your network connection and reload the page.`
+    )
 
     const config = dotnetRuntime.getConfig()
     const runMainPromise = dotnetRuntime.runMain(config.mainAssemblyName, [globalThis.location.href])

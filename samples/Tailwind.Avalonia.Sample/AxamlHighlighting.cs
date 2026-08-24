@@ -1,12 +1,18 @@
+using System;
 using AvaloniaEdit;
-using AvaloniaEdit.TextMate;
 using TextMateSharp.Grammars;
+using TextMateSharp.Registry;
+using TextMateSharp.Themes;
 
 namespace Tailwind.Avalonia.Sample;
 
 /// <summary>
-/// Shared TextMate registry so every AxamlCodeBlock reuses the same loaded grammar/theme
-/// instead of re-parsing them per instance.
+/// Applies XML syntax highlighting to AxamlCodeBlock editors via a synchronous, one-time
+/// tokenize pass (see AxamlTextMateColorizer) rather than AvaloniaEdit.TextMate's
+/// Installation/TMModel, which drives tokenization on a background thread that deadlocks
+/// under WASM. The grammar itself is compiled once and shared across every editor, since
+/// TextMateSharp.Registry.Registry.LoadGrammar is the expensive (Oniguruma pattern
+/// compilation) step and doesn't need to be repeated per instance.
 /// </summary>
 internal static class AxamlHighlighting
 {
@@ -14,10 +20,20 @@ internal static class AxamlHighlighting
     private static readonly string XmlScope = RegistryOptions.GetScopeByExtension(".xml");
     private static readonly AxamlHighlightColorizer Colorizer = new();
 
+    private static readonly Registry SharedRegistry = new(RegistryOptions);
+    private static readonly Lazy<IGrammar> SharedGrammar = new(() => SharedRegistry.LoadGrammar(XmlScope));
+    private static readonly Lazy<Theme> SharedTheme = new(() =>
+    {
+        SharedRegistry.SetTheme(RegistryOptions.GetDefaultTheme());
+        return SharedRegistry.GetTheme();
+    });
+
     public static void Install(TextEditor editor)
     {
-        var installation = editor.InstallTextMate(RegistryOptions);
-        installation.SetGrammar(XmlScope);
+        var textMateColorizer = new AxamlTextMateColorizer(SharedTheme.Value);
+        textMateColorizer.Tokenize(SharedGrammar.Value, editor.Document);
+
+        editor.TextArea.TextView.LineTransformers.Add(textMateColorizer);
         editor.TextArea.TextView.LineTransformers.Add(Colorizer);
     }
 }

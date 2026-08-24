@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Input.Platform;
 using Avalonia.Interactivity;
 using Avalonia.Metadata;
+using Avalonia.Threading;
 
 namespace Tailwind.Avalonia.Sample;
 
@@ -24,7 +25,16 @@ public partial class AxamlCodeBlock : UserControl
     public AxamlCodeBlock()
     {
         InitializeComponent();
-        AxamlHighlighting.Install(Editor);
+
+        // TextMate grammar install compiles its own Oniguruma patterns per editor
+        // (AvaloniaEdit.TextMate builds a fresh Registry per instance, so
+        // AxamlHighlighting's shared RegistryOptions doesn't dedupe that cost).
+        // Pages with many code blocks would otherwise install all of them
+        // synchronously during the initial layout pass, blocking the first
+        // paint for as long as it takes to compile every grammar - on the
+        // WASM interpreter that's long enough to look like a hung page.
+        // Deferring lets the first frame render, then installs progressively.
+        Dispatcher.UIThread.Post(() => AxamlHighlighting.Install(Editor), DispatcherPriority.Background);
     }
 
     [Content]
