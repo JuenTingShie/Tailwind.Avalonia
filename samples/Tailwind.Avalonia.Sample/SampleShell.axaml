@@ -45,6 +45,9 @@
             <Setter
                 Property="Padding"
                 Value="14" />
+            <Setter
+                Property="BoxShadow"
+                Value="0 12 28 -16 #99020617" />
         </Style>
         <Style
             Selector="Border.shell-headerSurface">
@@ -81,6 +84,9 @@
             <Setter
                 Property="ClipToBounds"
                 Value="True" />
+            <Setter
+                Property="BoxShadow"
+                Value="0 28 56 -24 #B3020617" />
         </Style>
         <Style
             Selector="Button.shell-toggle">
@@ -111,15 +117,23 @@
             <Setter
                 Property="VerticalContentAlignment"
                 Value="Center" />
-        </Style>
-        <Style
-            Selector="Button.shell-toggle.accent">
             <Setter
-                Property="Background"
-                Value="#991D4ED8" />
+                Property="RenderTransformOrigin"
+                Value="50%,50%" />
             <Setter
-                Property="BorderBrush"
-                Value="#FF60A5FA" />
+                Property="Transitions">
+                <Transitions>
+                    <BrushTransition
+                        Property="Background"
+                        Duration="0:0:0.15" />
+                    <DoubleTransition
+                        Property="Opacity"
+                        Duration="0:0:0.15" />
+                    <TransformOperationsTransition
+                        Property="RenderTransform"
+                        Duration="0:0:0.1" />
+                </Transitions>
+            </Setter>
         </Style>
         <Style
             Selector="Button.shell-toggle:pointerover">
@@ -132,18 +146,33 @@
             <Setter
                 Property="Opacity"
                 Value="0.82" />
+            <Setter
+                Property="RenderTransform"
+                Value="scale(0.93)" />
+        </Style>
+        <Style
+            Selector="Button.shell-toggle:focus-visible">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="border-sky-400" />
+            <Setter
+                Property="BorderThickness"
+                Value="1.5" />
         </Style>
         <Style
             Selector="TextBlock.shell-navLabel">
             <Setter
                 Property="tw:Tw.Class"
-                Value="text-slate-500" />
+                Value="text-slate-400" />
             <Setter
                 Property="FontSize"
                 Value="11" />
             <Setter
                 Property="FontWeight"
                 Value="Bold" />
+            <Setter
+                Property="LetterSpacing"
+                Value="1.1" />
         </Style>
         <Style
             Selector="TextBlock.shell-currentSection">
@@ -156,6 +185,9 @@
             <Setter
                 Property="FontWeight"
                 Value="Bold" />
+            <Setter
+                Property="LetterSpacing"
+                Value="1.1" />
         </Style>
         <Style
             Selector="TextBlock.shell-currentPage">
@@ -201,6 +233,14 @@
             <Setter
                 Property="HorizontalContentAlignment"
                 Value="Left" />
+            <Setter
+                Property="Transitions">
+                <Transitions>
+                    <BrushTransition
+                        Property="Background"
+                        Duration="0:0:0.15" />
+                </Transitions>
+            </Setter>
         </Style>
         <Style
             Selector="TabStrip.navigation-strip TabStripItem:pointerover">
@@ -219,6 +259,15 @@
             <Setter
                 Property="Background"
                 Value="#DD1E293B" />
+        </Style>
+        <Style
+            Selector="TabStrip.navigation-strip TabStripItem:focus-visible">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="border-sky-400" />
+            <Setter
+                Property="BorderThickness"
+                Value="1.5" />
         </Style>
         <Style
             Selector="TabStrip.navigation-strip.section-strip TabStripItem">
@@ -257,10 +306,10 @@
             Selector="TabStrip.navigation-strip.page-strip TabStripItem:selected">
             <Setter
                 Property="Background"
-                Value="#66312E81" />
+                Value="#660C4A6E" />
             <Setter
                 Property="tw:Tw.Class"
-                Value="border-violet-400" />
+                Value="border-sky-300" />
         </Style>
     </UserControl.Styles>
     <SplitView
@@ -292,6 +341,7 @@
                                     Grid.Column="1"
                                     HorizontalAlignment="Right"
                                     ToolTip.Tip="Hide navigation"
+                                    AutomationProperties.Name="Hide navigation"
                                     VerticalAlignment="Top">
                                     <PathIcon
                                         Data="{StaticResource CloseIconGeometry}"
@@ -378,6 +428,7 @@
                             Margin="0,6,0,6"
                             HorizontalAlignment="Left"
                             ToolTip.Tip="Show navigation"
+                            AutomationProperties.Name="Show navigation"
                             VerticalAlignment="Center">
                             <PathIcon
                                 Data="{StaticResource HamburgerIconGeometry}"

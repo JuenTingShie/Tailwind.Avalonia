@@ -353,7 +353,7 @@
                             Classes="docs-body"
                             Text="Tailwind&apos;s width, min-width, and max-width docs all include percentage-based examples like w-1/2, min-w-3/4, and max-w-1/3. Current package keeps sizing on numeric spacing tokens only, so relative percentage sizing stays out of scope for now." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -380,7 +380,7 @@
                             Classes="docs-body"
                             Text="Tailwind also documents container-based tokens like w-sm, min-w-lg, and max-w-xl. Package does not ship container-size tokens yet, so these examples stay documented as pending instead of implied support." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -407,7 +407,7 @@
                             Classes="docs-body"
                             Text="Official width docs include viewport-width examples like w-screen, w-dvw, w-lvw, and w-svw. Current package does not model CSS viewport sizing tokens in Avalonia yet." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -428,7 +428,7 @@
                             Classes="docs-body"
                             Text="Tailwind docs use w-auto as reset example. Current parser does not map auto sizing or breakpoint overrides yet, so docs keep this example explicit but unsupported." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -449,7 +449,7 @@
                             Classes="docs-body"
                             Text="Max-width docs include container utility examples. Responsive container semantics do not have current package parity, so this stays as explicit future scope." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -470,7 +470,7 @@
                             Classes="docs-body"
                             Text="Width docs also show size-* aliases that set both dimensions at once. Current package exposes width and height separately, but not combined size aliases yet." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -601,7 +601,7 @@
                             Classes="docs-body"
                             Text="All three official docs pages close with breakpoint-prefixed examples. Variant prefixes remain unsupported across current utility parser surface, so docs call them out directly instead of suggesting they already work." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock

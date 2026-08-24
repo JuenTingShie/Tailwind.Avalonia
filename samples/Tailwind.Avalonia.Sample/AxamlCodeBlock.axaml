@@ -4,6 +4,26 @@
     xmlns:ae="using:AvaloniaEdit"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.AxamlCodeBlock">
+    <UserControl.Styles>
+        <Style Selector="Button.docs-copyButton">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.15" />
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.15" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.docs-copyButton:pointerover">
+            <Setter Property="tw:Tw.Class" Value="bg-slate-700 border-slate-600 text-white" />
+        </Style>
+        <Style Selector="Button.docs-copyButton:pressed">
+            <Setter Property="Opacity" Value="0.8" />
+        </Style>
+        <Style Selector="Button.docs-copyButton:focus-visible">
+            <Setter Property="tw:Tw.Class" Value="border-sky-400" />
+            <Setter Property="BorderThickness" Value="1.5" />
+        </Style>
+    </UserControl.Styles>
     <UserControl.Content>
         <Grid>
             <ae:TextEditor
@@ -19,6 +39,7 @@
                 WordWrap="True" />
             <Button
                 x:Name="CopyButton"
+                Classes="docs-copyButton"
                 Click="OnCopyButtonClick"
                 Content="Copy"
                 HorizontalAlignment="Right"
@@ -27,7 +48,7 @@
                 Padding="10,4"
                 FontSize="11"
                 BorderThickness="1"
-                CornerRadius="4"
+                CornerRadius="6"
                 tw:Tw.Class="bg-slate-800 border-slate-700 text-slate-300" />
         </Grid>
     </UserControl.Content>

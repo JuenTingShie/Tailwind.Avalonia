@@ -364,7 +364,7 @@
                             Classes="docs-body"
                             Text="Official height, min-height, and max-height docs all include percentage-based examples like h-1/2, min-h-full, and max-h-1/4. Current package keeps sizing on numeric spacing tokens only, so relative percentage sizing stays out of scope for now." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -391,7 +391,7 @@
                             Classes="docs-body"
                             Text="Official height docs include viewport-sized examples. Current package does not yet map CSS viewport units onto Avalonia sizing resources or parser tokens." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -412,7 +412,7 @@
                             Classes="docs-body"
                             Text="Tailwind docs call out dynamic viewport sizing with h-dvh. Package does not expose dvh-based sizing yet." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -433,7 +433,7 @@
                             Classes="docs-body"
                             Text="Official height docs also show large viewport examples with h-lvh. Package does not expose lvh-based sizing yet." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -454,7 +454,7 @@
                             Classes="docs-body"
                             Text="Official height docs also show small viewport examples with h-svh. Package does not expose svh-based sizing yet." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -475,7 +475,7 @@
                             Classes="docs-body"
                             Text="Height docs also show size-* aliases that set both dimensions at once. Current package exposes width and height separately, but not combined size aliases yet." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -609,7 +609,7 @@
                             Classes="docs-body"
                             Text="Official height, min-height, and max-height docs close with breakpoint-prefixed examples. Variant prefixes remain unsupported across current parser surface, so docs keep them explicit but pending." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
