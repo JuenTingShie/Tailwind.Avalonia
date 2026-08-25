@@ -40,6 +40,13 @@ public partial class Tw
             // Try a scale-table token first (e.g. p-4), then an arbitrary value (e.g. p-[1.5rem]).
             if (TryParseScaleOrArbitraryPixels(scaleToken, SpacingScale.TryGetPixels, isValid: null, out var pixels))
             {
+                // Reject if negative prefix is combined with already-negative arbitrary value (e.g., -m-[-10px])
+                // This prevents confusing double-negative behavior where two negatives cancel out
+                if (negative && pixels < 0)
+                {
+                    return false;
+                }
+
                 utility = new SpacingUtility(descriptor.Target, descriptor.Edge, negative ? -pixels : pixels);
                 return true;
             }
