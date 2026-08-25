@@ -233,7 +233,7 @@
                             Classes="docs-body"
                             Text="Variant prefixes only recognize bg-*, text-*, border-*, and opacity-* remainders. A token like hover:p-4 is not silently ignored - it logs the same unrecognized-utility warning as any other unknown token, citing the full variant-prefixed token." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock

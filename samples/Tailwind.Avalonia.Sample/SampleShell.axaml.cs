@@ -26,6 +26,7 @@ public partial class SampleShell : UserControl
     private bool isSynchronizingSelection;
     private bool isNarrowLayout;
     private bool isCompactDocs;
+    private bool? lastNarrowLayout;
     private SampleShellPageDescriptor? shownPage;
     private SampleShellSectionDescriptor? shownSection;
     private SampleShellSectionDescriptor? selectedSection;
@@ -271,11 +272,21 @@ public partial class SampleShell : UserControl
 
         isNarrowLayout = useNarrowLayout;
         isCompactDocs = useCompactDocs;
-        NavigationSplitView.DisplayMode = SplitViewDisplayMode.Overlay;
+        NavigationSplitView.DisplayMode = useNarrowLayout ? SplitViewDisplayMode.Overlay : SplitViewDisplayMode.CompactInline;
         NavigationSplitView.OpenPaneLength = useNarrowLayout ? NarrowPaneLength : WidePaneLength;
         ShellHeader.Padding = useNarrowLayout ? new Thickness(10, 0) : new Thickness(12, 0);
         PageContentChrome.Padding = useCompactDocs ? new Thickness(10) : new Thickness(18);
         RefreshPageLayoutClasses();
+
+        // Pin the pane open on wide layouts, closed on narrow entry. Only touch
+        // IsPaneOpen when the breakpoint actually crosses, so a manual toggle
+        // inside the same band survives an unrelated resize event.
+        if (lastNarrowLayout != useNarrowLayout)
+        {
+            SetPaneOpen(!useNarrowLayout);
+        }
+
+        lastNarrowLayout = useNarrowLayout;
 
         UpdateNavigationChrome();
     }

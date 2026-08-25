@@ -190,7 +190,7 @@
                             Classes="docs-body"
                             Text="Tailwind also supports text-sm/6 style tokens that set font size and line-height together. The current parser only maps FontSize, so slash line-height modifiers stay explicitly documented as unsupported." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
@@ -282,7 +282,7 @@
                             Classes="docs-body"
                             Text="Tailwind&apos;s font-size docs also show breakpoint-prefixed examples like md:text-base. Variant prefixes remain unsupported across the current utility parser surface, so the docs call them out directly instead of implying support." />
                         <Border
-                            Classes="docs-note">
+                            Classes="docs-note docs-noteUnsupported">
                             <StackPanel
                                 Spacing="8">
                                 <TextBlock
