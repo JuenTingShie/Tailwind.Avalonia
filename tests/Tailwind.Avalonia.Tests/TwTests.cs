@@ -1,10 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
+using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Shapes;
+using Avalonia.Controls.Templates;
+using Avalonia.Data;
 using Avalonia.Logging;
 using Avalonia.Media;
+using Avalonia.Styling;
+using Avalonia.VisualTree;
 
 namespace Tailwind.Avalonia.Tests;
 
@@ -675,6 +682,80 @@ public class TwTests
         // Pressed is declared after Hover in VariantKind, so its Style is added
         // later and wins while both pseudo-classes are simultaneously active.
         Assert.Equal(green500, Assert.IsType<SolidColorBrush>(border.Background).Color);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Hover_Variant_On_Templated_ContentPresenter_Part()
+    {
+        // Reproduces FluentTheme's real Button ControlTheme: it sets Background on the
+        // template's ContentPresenter#PART_ContentPresenter directly for :pointerover,
+        // rather than relying on the TemplateBinding from Button.Background. A variant
+        // style that only targets Button.Background never has any visible effect,
+        // because the theme's part-level Setter always wins over the TemplateBinding.
+        Assert.True(TailwindColorPalette.TryGetColor("blue-700", out var blue700));
+
+        var button = new Button
+        {
+            Template = new FuncControlTemplate<Button>((owner, scope) =>
+            {
+                var presenter = new ContentPresenter { Name = "PART_ContentPresenter" };
+                presenter.Bind(ContentPresenter.BackgroundProperty, new TemplateBinding(Button.BackgroundProperty));
+                return presenter.RegisterInNameScope(scope);
+            }),
+        };
+
+        // Stand-in for FluentTheme's own `^:pointerover /template/ ContentPresenter#PART_ContentPresenter` style.
+        button.Styles.Add(new Style(x => x.OfType<Button>().Class(":pointerover").Template().OfType<ContentPresenter>().Name("PART_ContentPresenter"))
+        {
+            Setters = { new Setter(ContentPresenter.BackgroundProperty, Brushes.Gray) },
+        });
+
+        Tw.SetClass(button, "bg-blue-500 hover:bg-blue-700");
+
+        button.ApplyTemplate();
+        var contentPresenter = Assert.IsType<ContentPresenter>(button.Presenter);
+
+        ((IPseudoClasses)button.Classes).Add(":pointerover");
+        button.ApplyStyling();
+        contentPresenter.ApplyStyling();
+
+        Assert.Equal(blue700, Assert.IsAssignableFrom<ISolidColorBrush>(contentPresenter.Background).Color);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Focus_Variant_On_Templated_BorderElement_Part()
+    {
+        // Reproduces FluentTheme's real TextBox ControlTheme: it sets BorderBrush on the
+        // template's Border#PART_BorderElement directly for :focus, rather than relying on
+        // the TemplateBinding from TextBox.BorderBrush.
+        Assert.True(TailwindColorPalette.TryGetColor("sky-400", out var sky400));
+
+        var textBox = new TemplatedControl
+        {
+            Template = new FuncControlTemplate<TemplatedControl>((owner, scope) =>
+            {
+                var border = new Border { Name = "PART_BorderElement" };
+                border.Bind(Border.BorderBrushProperty, new TemplateBinding(TemplatedControl.BorderBrushProperty));
+                return border.RegisterInNameScope(scope);
+            }),
+        };
+
+        // Stand-in for FluentTheme's own `^:focus /template/ Border#PART_BorderElement` style.
+        textBox.Styles.Add(new Style(x => x.OfType<TemplatedControl>().Class(":focus").Template().OfType<Border>().Name("PART_BorderElement"))
+        {
+            Setters = { new Setter(Border.BorderBrushProperty, Brushes.Gray) },
+        });
+
+        Tw.SetClass(textBox, "border-slate-700 focus:border-sky-400");
+
+        textBox.ApplyTemplate();
+        var border = Assert.IsType<Border>(textBox.GetVisualChildren().Single());
+
+        ((IPseudoClasses)textBox.Classes).Add(":focus");
+        textBox.ApplyStyling();
+        border.ApplyStyling();
+
+        Assert.Equal(sky400, Assert.IsAssignableFrom<ISolidColorBrush>(border.BorderBrush).Color);
     }
 
     [Fact]
