@@ -1,4 +1,6 @@
 using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
 using Avalonia.Logging;
 using Avalonia.Media;
 using Avalonia.Styling;
@@ -141,7 +143,43 @@ public partial class Tw
             var variantStyle = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey).Class(pseudoClass)) { Setters = { new Setter(property, variantBrush) } };
             element.Styles.Add(variantStyle);
             target.Add(variantStyle);
+
+            // Built-in Avalonia themes (e.g. FluentTheme's Button and TextBox) set
+            // Background/Foreground/BorderBrush directly on an internal template part for
+            // :pointerover/:pressed/:focus, rather than relying on the TemplateBinding from
+            // this element's own property. Without also targeting those parts, the variant
+            // above is silently overridden by the theme's own pseudo-class styles and never
+            // appears on screen.
+            AddTemplatePartVariantStyle<ContentPresenter>(element, elementType, instanceKey, pseudoClass, "PART_ContentPresenter", propertyName, variantBrush, target);
+            AddTemplatePartVariantStyle<Border>(element, elementType, instanceKey, pseudoClass, "PART_BorderElement", propertyName, variantBrush, target);
         }
+    }
+
+    private static void AddTemplatePartVariantStyle<TPart>(
+        StyledElement element,
+        Type elementType,
+        object instanceKey,
+        string pseudoClass,
+        string partName,
+        string propertyName,
+        IBrush variantBrush,
+        List<Style> target)
+        where TPart : StyledElement
+    {
+        var property = FindBrushProperty(typeof(TPart), propertyName);
+
+        if (property is null)
+        {
+            return;
+        }
+
+        var style = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey).Class(pseudoClass).Template().OfType<TPart>().Name(partName))
+        {
+            Setters = { new Setter(property, variantBrush) },
+        };
+
+        element.Styles.Add(style);
+        target.Add(style);
     }
 
     private static void AddOpacityStyles(StyledElement element, object instanceKey, OpacityCategoryState state, List<Style> target)
