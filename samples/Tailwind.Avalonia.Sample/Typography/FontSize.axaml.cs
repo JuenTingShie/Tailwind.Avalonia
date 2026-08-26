@@ -1,15 +1,12 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 
-using Tailwind.Avalonia.Sample.Spacing;
+using Tailwind.Avalonia.Sample.Docs;
 
 namespace Tailwind.Avalonia.Sample.Typography;
 
 public partial class FontSize : UserControl
 {
-    private const int CollapsedUtilityRowCount = 5;
-
-    private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
+    private static readonly UtilityReferenceRow[] UtilityRows =
     [
         new("text-xs", "<TextBlock tw:Tw.Class=\"text-xs\" />"),
         new("text-sm", "<TextBlock tw:Tw.Class=\"text-sm\" />"),
@@ -27,24 +24,12 @@ public partial class FontSize : UserControl
         new("text-[<value>]", "<TextBlock tw:Tw.Class=\"text-[<value>]\" />"),
     ];
 
-    private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;
-
     /// <summary>
-    /// Initializes the font-size docs page and seeds the compact utility reference table.
+    /// Initializes the font-size docs page and seeds the utility reference table.
     /// </summary>
     public FontSize()
     {
         InitializeComponent();
-        utilityTablePresenter = new SpacingUtilityReferenceTablePresenter(
-            FontSizeUtilityRows,
-            FontSizeUtilityToggleButton,
-            AllUtilityRows,
-            CollapsedUtilityRowCount);
-    }
-
-    // Switch between the compact and full font-size utility reference rows.
-    private void ToggleUtilityRows(object? sender, RoutedEventArgs e)
-    {
-        utilityTablePresenter.Toggle();
+        UtilityTable.Rows = UtilityRows;
     }
 }

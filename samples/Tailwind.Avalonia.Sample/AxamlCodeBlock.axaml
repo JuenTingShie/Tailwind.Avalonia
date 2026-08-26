@@ -44,12 +44,10 @@
                 Content="Copy"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                Margin="0,4,4,0"
-                Padding="10,4"
                 FontSize="11"
                 BorderThickness="1"
                 CornerRadius="6"
-                tw:Tw.Class="bg-slate-800 border-slate-700 text-slate-300" />
+                tw:Tw.Class="bg-slate-800 border-slate-700 text-slate-300 mt-1 mr-1 px-2.5 py-1" />
         </Grid>
     </UserControl.Content>
 </UserControl>

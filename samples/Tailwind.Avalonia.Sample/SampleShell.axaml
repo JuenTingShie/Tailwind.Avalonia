@@ -5,22 +5,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tw="using:Tailwind.Avalonia"
     mc:Ignorable="d"
-    d:DesignWidth="1440"
-    d:DesignHeight="920"
+    d:DesignWidth="1280"
+    d:DesignHeight="820"
     x:Class="Tailwind.Avalonia.Sample.SampleShell">
     <UserControl.Resources>
         <StreamGeometry x:Key="HamburgerIconGeometry">M4,5 H20 V7 H4 Z M4,11 H20 V13 H4 Z M4,17 H20 V19 H4 Z</StreamGeometry>
         <StreamGeometry x:Key="CloseIconGeometry">M17.5 4C17.2239 4 17 4.22386 17 4.5V15.5C17 15.7761 17.2239 16 17.5 16C17.7761 16 18 15.7761 18 15.5V4.5C18 4.22386 17.7761 4 17.5 4Z M15 10C15 9.72386 14.7761 9.5 14.5 9.5H3.70711L6.8536 6.35355C7.0488 6.15829 7.0488 5.84171 6.8536 5.64645C6.6583 5.45118 6.3417 5.45118 6.1464 5.64645L2.1464 9.64645C2.09389 9.69898 2.05551 9.76028 2.03125 9.82563C2.01104 9.87992 2 9.93867 2 10C2 10.0613 2.01104 10.1201 2.03125 10.1744C2.05551 10.2397 2.09389 10.301 2.1464 10.3536L6.1464 14.3536C6.3417 14.5488 6.6583 14.5488 6.8536 14.3536C7.0488 14.1583 7.0488 13.8417 6.8536 13.6465L3.7071 10.5H14.5C14.7761 10.5 15 10.2761 15 10Z</StreamGeometry>
     </UserControl.Resources>
     <UserControl.Styles>
+        <!-- ===================================================================
+             Shell surfaces. Same slate ladder the docs pages use: slate-950 is
+             the ground, slate-900 is anything raised off it, slate-800 the hairline.
+             =================================================================== -->
+
+        <!-- Navigation rail. Near-opaque rather than solid so the overlay pane on
+             narrow layouts still reads as floating, without letting the page show
+             through enough to hurt the labels. -->
         <Style
             Selector="Border.shell-paneSurface">
             <Setter
-                Property="Background"
-                Value="#F80B1120" />
-            <Setter
                 Property="tw:Tw.Class"
-                Value="border-slate-800" />
+                Value="bg-slate-950/97 border-slate-800" />
             <Setter
                 Property="BorderThickness"
                 Value="0,0,1,0" />
@@ -31,50 +36,51 @@
                 Property="ClipToBounds"
                 Value="True" />
         </Style>
+
+        <!-- A nav group is a docs surface: same fill, same 20 radius, one step in
+             from the content frame's 28. -->
         <Style
             Selector="Border.shell-navGroup">
             <Setter
                 Property="tw:Tw.Class"
-                Value="bg-slate-950 border-slate-800" />
+                Value="bg-slate-900 border-slate-800 p-3.5" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
             <Setter
                 Property="CornerRadius"
-                Value="22" />
-            <Setter
-                Property="Padding"
-                Value="14" />
+                Value="20" />
+            <!-- Same slate-950 tint and same fall-away as Border.docs-surface, so the
+                 shell and the page it frames sit under one upper-left light. -->
             <Setter
                 Property="BoxShadow"
-                Value="0 12 28 -16 #99020617" />
+                Value="0 14 32 -18 #A6020617, 0 2 6 -3 #59020617" />
         </Style>
+
         <Style
             Selector="Border.shell-headerSurface">
             <Setter
-                Property="Background"
-                Value="#F80B1120" />
-            <Setter
                 Property="tw:Tw.Class"
-                Value="border-slate-800" />
+                Value="bg-slate-950/97 border-slate-800" />
             <Setter
                 Property="BorderThickness"
                 Value="0,0,0,1" />
             <Setter
                 Property="CornerRadius"
                 Value="0" />
+            <!-- Padding stays a plain property on purpose: UpdateResponsiveLayout
+                 rewrites it per breakpoint, and a local value from code has to be
+                 free to outrank whatever is set here. -->
             <Setter
                 Property="Padding"
                 Value="12,0" />
         </Style>
+
         <Style
             Selector="Border.shell-contentFrame">
             <Setter
-                Property="Background"
-                Value="#660F172A" />
-            <Setter
                 Property="tw:Tw.Class"
-                Value="border-slate-800" />
+                Value="bg-slate-900/40 border-slate-800 m-3" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
@@ -84,33 +90,35 @@
             <Setter
                 Property="ClipToBounds"
                 Value="True" />
+            <!-- Deeper than the nav group but the same tint and direction, so the
+                 frame reads as the thing furthest off the ground. -->
             <Setter
                 Property="BoxShadow"
-                Value="0 28 56 -24 #B3020617" />
+                Value="0 26 56 -24 #B3020617, 0 2 8 -3 #59020617" />
         </Style>
+
+        <!-- ===================================================================
+             Chrome buttons
+             =================================================================== -->
+
+        <!-- Hover and pressed dimming ride on the hover:/pressed: variant tokens so
+             the whole resting appearance of the button is one utility string. Only
+             the pressed nudge and the focus ring need styles of their own, because
+             RenderTransform and BorderThickness have no utility equivalent. -->
         <Style
             Selector="Button.shell-toggle">
             <Setter
                 Property="tw:Tw.Class"
-                Value="bg-slate-900 border-slate-700 text-white" />
+                Value="bg-slate-800 border-slate-700 text-white w-[46px] h-[46px] p-0 hover:opacity-92 pressed:opacity-82" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
-            <Setter
-                Property="Width"
-                Value="46" />
-            <Setter
-                Property="Height"
-                Value="46" />
-            <Setter
-                Property="Padding"
-                Value="0" />
             <Setter
                 Property="CornerRadius"
                 Value="16" />
             <Setter
                 Property="FontWeight"
-                Value="Bold" />
+                Value="Medium" />
             <Setter
                 Property="HorizontalContentAlignment"
                 Value="Center" />
@@ -136,73 +144,86 @@
             </Setter>
         </Style>
         <Style
-            Selector="Button.shell-toggle:pointerover">
-            <Setter
-                Property="Opacity"
-                Value="0.92" />
-        </Style>
-        <Style
             Selector="Button.shell-toggle:pressed">
-            <Setter
-                Property="Opacity"
-                Value="0.82" />
             <Setter
                 Property="RenderTransform"
                 Value="scale(0.93)" />
         </Style>
         <Style
             Selector="Button.shell-toggle:focus-visible">
+            <!-- Overriding tw:Tw.Class replaces the whole token string rather than
+                 merging into it, so every token the base still needs is repeated
+                 here next to the sky ring. Dropping one would clear that property. -->
             <Setter
                 Property="tw:Tw.Class"
-                Value="border-sky-400" />
+                Value="bg-slate-800 border-sky-400 text-white w-[46px] h-[46px] p-0 hover:opacity-92 pressed:opacity-82" />
             <Setter
                 Property="BorderThickness"
                 Value="1.5" />
         </Style>
+
+        <!-- ===================================================================
+             Shell type. Sentence case throughout, so the small labels lean on
+             weight and colour instead of caps plus wide tracking.
+             =================================================================== -->
+
+        <!-- Rail group label ("Sections", "Pages"). Tracking pulled back to what
+             mixed case wants, weight down to Medium so it still reads as a label. -->
         <Style
             Selector="TextBlock.shell-navLabel">
             <Setter
                 Property="tw:Tw.Class"
-                Value="text-slate-400" />
-            <Setter
-                Property="FontSize"
-                Value="11" />
+                Value="text-slate-500 text-[12px]" />
             <Setter
                 Property="FontWeight"
-                Value="Bold" />
+                Value="Medium" />
             <Setter
                 Property="LetterSpacing"
-                Value="1.1" />
+                Value="0.2" />
         </Style>
+
+        <!-- Breadcrumb section, carrying the one sky accent the docs pages use for
+             class names. Sized against docs-eyebrow rather than the old small caps. -->
         <Style
             Selector="TextBlock.shell-currentSection">
             <Setter
                 Property="tw:Tw.Class"
-                Value="text-sky-300" />
-            <Setter
-                Property="FontSize"
-                Value="11" />
+                Value="text-sky-300 text-[13px]" />
             <Setter
                 Property="FontWeight"
-                Value="Bold" />
+                Value="Medium" />
             <Setter
                 Property="LetterSpacing"
-                Value="1.1" />
+                Value="0.2" />
         </Style>
+
+        <!-- Breadcrumb page name: the docs-pageTitle treatment (white, weighted,
+             tracking pulled negative) taken down to header scale, so the header
+             names the page in the same voice the page titles itself. -->
         <Style
             Selector="TextBlock.shell-currentPage">
             <Setter
                 Property="tw:Tw.Class"
-                Value="text-white" />
-            <Setter
-                Property="FontSize"
-                Value="18" />
+                Value="text-white text-[20px]" />
             <Setter
                 Property="FontWeight"
                 Value="SemiBold" />
+            <Setter
+                Property="LetterSpacing"
+                Value="-0.4" />
         </Style>
+
+        <!-- ===================================================================
+             Navigation items. Colour lives in tw:Tw.Class, geometry stays in plain
+             setters: the per-strip styles below re-specify geometry, and routing
+             that through tw:Tw.Class would make each override replace (and so
+             clear) the colour tokens too.
+             =================================================================== -->
         <Style
             Selector="TabStrip.navigation-strip TabStripItem">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="bg-slate-900/70 text-slate-400 border-slate-800" />
             <Setter
                 Property="MinWidth"
                 Value="0" />
@@ -217,16 +238,13 @@
                 Value="14" />
             <Setter
                 Property="FontWeight"
-                Value="SemiBold" />
-            <Setter
-                Property="tw:Tw.Class"
-                Value="text-slate-400 border-slate-800" />
-            <Setter
-                Property="Background"
-                Value="#CC0F172A" />
+                Value="Medium" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
+            <Setter
+                Property="CornerRadius"
+                Value="14" />
             <Setter
                 Property="HorizontalAlignment"
                 Value="Stretch" />
@@ -239,35 +257,14 @@
                     <BrushTransition
                         Property="Background"
                         Duration="0:0:0.15" />
+                    <BrushTransition
+                        Property="Foreground"
+                        Duration="0:0:0.15" />
+                    <BrushTransition
+                        Property="BorderBrush"
+                        Duration="0:0:0.15" />
                 </Transitions>
             </Setter>
-        </Style>
-        <Style
-            Selector="TabStrip.navigation-strip TabStripItem:pointerover">
-            <Setter
-                Property="tw:Tw.Class"
-                Value="text-white border-slate-700" />
-            <Setter
-                Property="Background"
-                Value="#DD1E293B" />
-        </Style>
-        <Style
-            Selector="TabStrip.navigation-strip TabStripItem:selected">
-            <Setter
-                Property="tw:Tw.Class"
-                Value="text-white border-sky-500" />
-            <Setter
-                Property="Background"
-                Value="#DD1E293B" />
-        </Style>
-        <Style
-            Selector="TabStrip.navigation-strip TabStripItem:focus-visible">
-            <Setter
-                Property="tw:Tw.Class"
-                Value="border-sky-400" />
-            <Setter
-                Property="BorderThickness"
-                Value="1.5" />
         </Style>
         <Style
             Selector="TabStrip.navigation-strip.section-strip TabStripItem">
@@ -278,15 +275,9 @@
                 Property="FontSize"
                 Value="15" />
         </Style>
-        <Style
-            Selector="TabStrip.navigation-strip.section-strip TabStripItem:selected">
-            <Setter
-                Property="Background"
-                Value="#CC172554" />
-            <Setter
-                Property="tw:Tw.Class"
-                Value="border-sky-400" />
-        </Style>
+        <!-- Page rows read as children of the section above them: indented, a size
+             down, one radius step in. Their colour comes from the shared state
+             styles so a page row and a section row never disagree about the accent. -->
         <Style
             Selector="TabStrip.navigation-strip.page-strip TabStripItem">
             <Setter
@@ -299,17 +290,45 @@
                 Property="FontSize"
                 Value="13" />
             <Setter
-                Property="Background"
-                Value="#88020617" />
+                Property="CornerRadius"
+                Value="12" />
         </Style>
+
+        <!-- State styles are declared after the per-strip styles on purpose:
+             Avalonia resolves competing setters by document order, so a style
+             placed below these would silently outrank hover and selection. -->
         <Style
-            Selector="TabStrip.navigation-strip.page-strip TabStripItem:selected">
-            <Setter
-                Property="Background"
-                Value="#660C4A6E" />
+            Selector="TabStrip.navigation-strip TabStripItem:pointerover">
             <Setter
                 Property="tw:Tw.Class"
-                Value="border-sky-300" />
+                Value="bg-slate-800/80 text-slate-100 border-slate-700" />
+        </Style>
+        <Style
+            Selector="TabStrip.navigation-strip TabStripItem:selected">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="bg-sky-950/70 text-white border-sky-500" />
+        </Style>
+        <!-- The ring repeats the colours of the state it lands on, again because an
+             override replaces the whole token string: without the repeat, focusing a
+             selected row would drop it back to the unselected palette. -->
+        <Style
+            Selector="TabStrip.navigation-strip TabStripItem:focus-visible">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="bg-slate-900/70 text-slate-100 border-sky-400" />
+            <Setter
+                Property="BorderThickness"
+                Value="1.5" />
+        </Style>
+        <Style
+            Selector="TabStrip.navigation-strip TabStripItem:selected:focus-visible">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="bg-sky-950/70 text-white border-sky-400" />
+            <Setter
+                Property="BorderThickness"
+                Value="1.5" />
         </Style>
     </UserControl.Styles>
     <SplitView
@@ -322,15 +341,14 @@
         PanePlacement="Left">
         <SplitView.Pane>
             <Grid
-                Background="Transparent"
-                Margin="0">
+                Background="Transparent">
                 <Border
                     Classes="shell-paneSurface">
                     <ScrollViewer
                         HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Auto">
                         <StackPanel
-                            Margin="16"
+                            tw:Tw.Class="m-4"
                             Spacing="18">
                             <Grid
                                 ColumnDefinitions="*,Auto"
@@ -344,9 +362,8 @@
                                     AutomationProperties.Name="Hide navigation"
                                     VerticalAlignment="Top">
                                     <PathIcon
-                                        Data="{StaticResource CloseIconGeometry}"
-                                        Height="18"
-                                        Width="18" />
+                                        tw:Tw.Class="w-[18px] h-[18px]"
+                                        Data="{StaticResource CloseIconGeometry}" />
                                 </Button>
                             </Grid>
 
@@ -356,7 +373,7 @@
                                     Spacing="10">
                                     <TextBlock
                                         Classes="shell-navLabel"
-                                        Text="SECTIONS" />
+                                        Text="Sections" />
                                     <TabStrip
                                         x:Name="SectionTabStrip"
                                         Classes="navigation-strip section-strip">
@@ -383,7 +400,7 @@
                                     Spacing="10">
                                     <TextBlock
                                         Classes="shell-navLabel"
-                                        Text="PAGES" />
+                                        Text="Pages" />
                                     <TabStrip
                                         x:Name="PageTabStrip"
                                         Classes="navigation-strip page-strip">
@@ -416,12 +433,11 @@
                 RowDefinitions="Auto,*">
                 <Border
                     x:Name="ShellHeader"
-                    Classes="shell-headerSurface"
-                    Margin="0">
+                    Classes="shell-headerSurface">
                     <Grid
+                        tw:Tw.Class="min-h-11"
                         ColumnDefinitions="Auto,*"
-                        ColumnSpacing="12"
-                        MinHeight="44">
+                        ColumnSpacing="12">
                         <Button
                             x:Name="PaneToggleButton"
                             Classes="shell-toggle"
@@ -431,9 +447,8 @@
                             AutomationProperties.Name="Show navigation"
                             VerticalAlignment="Center">
                             <PathIcon
-                                Data="{StaticResource HamburgerIconGeometry}"
-                                Height="18"
-                                Width="18" />
+                                tw:Tw.Class="w-[18px] h-[18px]"
+                                Data="{StaticResource HamburgerIconGeometry}" />
                         </Button>
                         <Grid
                             Grid.Column="1"
@@ -443,7 +458,7 @@
                             <TextBlock
                                 x:Name="CurrentSectionText"
                                 Classes="shell-currentSection"
-                                Text="SECTION"
+                                Text="Section"
                                 VerticalAlignment="Center" />
                             <TextBlock
                                 Grid.Column="1"
@@ -465,11 +480,33 @@
                     x:Name="PageContentChrome"
                     Classes="shell-contentFrame"
                     Grid.Row="1"
-                    Margin="12"
                     Padding="20">
-                    <Grid
-                        x:Name="PageHost"
-                        ClipToBounds="True" />
+                    <Panel>
+                        <Grid
+                            x:Name="PageHost"
+                            ClipToBounds="True" />
+                        <!-- Empty state, sharing the docs type scale so it reads as part
+                             of the documentation rather than shell chrome. Visibility is
+                             driven from ShowPage/HideAllPages, so the frame is never a
+                             blank void with nothing to explain it. -->
+                        <StackPanel
+                            x:Name="PageEmptyState"
+                            tw:Tw.Class="max-w-[420px] p-6"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Spacing="12">
+                            <TextBlock
+                                Classes="docs-sectionTitle"
+                                HorizontalAlignment="Center"
+                                Text="No page open"
+                                TextAlignment="Center" />
+                            <TextBlock
+                                Classes="docs-body"
+                                HorizontalAlignment="Center"
+                                Text="Open the navigation button in the top left, pick a section, then choose a page from it."
+                                TextAlignment="Center" />
+                        </StackPanel>
+                    </Panel>
                 </Border>
             </Grid>
         </SplitView.Content>

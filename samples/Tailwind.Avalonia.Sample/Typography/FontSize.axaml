@@ -1,293 +1,145 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:docs="using:Tailwind.Avalonia.Sample"
-    xmlns:spacing="using:Tailwind.Avalonia.Sample.Spacing"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Typography.FontSize">
-    <UserControl.Styles>
-        <StyleInclude
-            Source="/Spacing/SpacingDocsStyles.axaml" />
-    </UserControl.Styles>
-    <Border
-        tw:Tw.Class="bg-slate-950">
-        <ScrollViewer
-            HorizontalScrollBarVisibility="Disabled">
+    <docs:DocsPage
+        Section="Typography"
+        Title="Font size"
+        Intro="Utilities for controlling the font size of an element. Recognized size tokens set FontSize, while palette tokens like text-sky-300 keep targeting Foreground on the same tw:Tw.Class surface.">
+        <StackPanel
+            Spacing="52">
             <StackPanel
-                Classes="docs-pageLayout">
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="text-xs through text-9xl work, as do bracket arbitrary values like text-[14px], text-[1.5rem], and text-[18]. Line-height modifiers, the text-(length:&lt;custom-property&gt;) shorthand, and responsive variants are still out of scope." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="5" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not covered yet"
+                    Body="These Tailwind font-size rows sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="text-sm/6 · text-sm/7 · text-sm/8 · text-lg/7" />
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="text-(length:&lt;custom-property&gt;) · md:text-base" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
                 <StackPanel
-                    Spacing="10">
-                    <TextBlock
-                        Classes="docs-library"
-                        Text="TYPOGRAPHY" />
-                    <TextBlock
-                        Classes="docs-pageTitle"
-                        Text="Font size" />
-                    <TextBlock
-                        Classes="docs-body"
-                        Text="Utilities for controlling the font size of an element. Recognized size tokens now set FontSize, while palette tokens like text-sky-300 continue to target Foreground on the same tw:Tw.Class surface." />
-                    <Border
-                        Classes="docs-note"
-                        BorderThickness="2"
-                        tw:Tw.Class="bg-sky-950/35 border-sky-400/60">
-                        <StackPanel
-                            Spacing="6">
-                            <TextBlock
-                                Classes="docs-noteTitle"
-                                tw:Tw.Class="text-sky-50"
-                                Text="Implemented in this sample" />
-                            <TextBlock
-                                Classes="docs-noteBody"
-                                tw:Tw.Class="text-sky-100/85"
-                                Text="Supported now: text-xs through text-9xl and bracket arbitrary values like text-[14px], text-[1.5rem], and text-[18]. text-sm/6 line-height modifiers, text-(length:&lt;custom-property&gt;) shorthand, and responsive variants remain out of scope for now." />
-                        </StackPanel>
-                    </Border>
-                    <Border
-                        Classes="docs-surface">
-                        <StackPanel
-                            Spacing="0">
-                            <Border
-                                Classes="docs-referenceHeader">
-                                <Grid
-                                    Classes="docs-referenceColumns"
-                                    ColumnDefinitions="1.45*,3.15*">
-                                    <TextBlock
-                                        Classes="docs-referenceHeading"
-                                        Text="Class" />
-                                    <TextBlock
-                                        Grid.Column="1"
-                                        Classes="docs-referenceHeading"
-                                        Text="Styles" />
-                                </Grid>
-                            </Border>
-                            <ItemsControl
-                                x:Name="FontSizeUtilityRows"
-                                Classes="docs-referenceList">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate
-                                        DataType="spacing:SpacingUtilityReferenceRow">
-                                        <Border
-                                            Classes="docs-referenceRow">
-                                            <Grid
-                                                Classes="docs-referenceColumns"
-                                                ColumnDefinitions="1.45*,3.15*">
-                                                <TextBlock
-                                                    Classes="docs-tableClass"
-                                                    Text="{CompiledBinding ClassName}"
-                                                    VerticalAlignment="Center" />
-                                                <TextBlock
-                                                    Grid.Column="1"
-                                                    Classes="docs-tableStyle"
-                                                    Text="{CompiledBinding AxamlStyle}"
-                                                    VerticalAlignment="Center" />
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                            <Border
-                                tw:Tw.Class="bg-slate-900 border-slate-800"
-                                Padding="0,12"
-                                Classes="docs-showMoreShell"
-                                HorizontalAlignment="Center">
-                                <Button
-                                    x:Name="FontSizeUtilityToggleButton"
-                                    Classes="docs-showMoreButton"
-                                    Click="ToggleUtilityRows"
-                                    Content="SHOW MORE" />
-                            </Border>
-                        </StackPanel>
-                    </Border>
-                    <Border
-                        Classes="docs-note"
-                        BorderThickness="2"
-                        tw:Tw.Class="bg-amber-950/30 border-amber-400/50">
-                        <StackPanel
-                            Spacing="8">
-                            <TextBlock
-                                Classes="docs-noteTitle"
-                                tw:Tw.Class="text-amber-50"
-                                Text="Unsupported rows" />
-                            <TextBlock
-                                Classes="docs-noteBody"
-                                tw:Tw.Class="text-amber-100/85"
-                                Text="These Tailwind font-size rows remain outside the current parser surface." />
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Basic example"
+                        Summary="Use utilities like text-sm and text-2xl to set the font size of an element. Each previewed TextBlock below carries the real tw:Tw.Class token.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class="text-xs" /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class="text-base" /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class="text-2xl" /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class="text-5xl" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Spacing="12">
+                                <TextBlock
+                                    tw:Tw.Class="text-slate-100 text-xs"
+                                    Text="The quick brown fox jumps over the lazy dog." />
+                                <TextBlock
+                                    tw:Tw.Class="text-slate-100 text-base"
+                                    Text="The quick brown fox jumps over the lazy dog." />
+                                <TextBlock
+                                    FontWeight="SemiBold"
+                                    tw:Tw.Class="text-slate-100 text-2xl"
+                                    Text="The quick brown fox." />
+                                <TextBlock
+                                    FontWeight="Bold"
+                                    LetterSpacing="-1"
+                                    tw:Tw.Class="text-slate-50 text-5xl"
+                                    Text="Quick fox" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Setting the line-height"
+                        Summary="Tailwind also supports text-sm/6 style tokens that set font size and line-height together. The parser here only maps FontSize, so the slash modifiers stay documented as a gap rather than quietly ignored.">
+                        <docs:DocsNote
+                            Classes="gap muted"
+                            Title="Official examples not implemented yet">
                             <TextBlock
                                 Classes="docs-tableClass"
-                                Text="text-sm/6 / text-sm/7 / text-sm/8 / text-lg/7" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="text-(length:&lt;custom-property&gt;) / md:text-base" />
+                                Text="text-sm/6 · text-sm/7 · text-sm/8 · text-lg/7" />
+                        </docs:DocsNote>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Using a custom value"
+                        Summary="Bracket syntax like text-[14px] sets the font size from an absolute value.">
+                        <StackPanel
+                            Spacing="18">
+                            <docs:DocsNote
+                                Title="How arbitrary sizes resolve">
+                                <StackPanel
+                                    Spacing="8">
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="px · rem · em · unitless" />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Arbitrary font sizes are parser-only and emit no generated package keys." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="rem and em resolve against a 16px base. Unitless values are treated as px." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Percentages and text-(length:&lt;custom-property&gt;) stay unsupported because Avalonia models FontSize as an absolute double." />
+                                </StackPanel>
+                            </docs:DocsNote>
+                            <docs:DocsExample>
+                                <docs:DocsExample.Snippets>
+                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[14px]" /&gt;</x:String>
+                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[1.5rem]" /&gt;</x:String>
+                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[2em]" /&gt;</x:String>
+                                </docs:DocsExample.Snippets>
+                                <StackPanel
+                                    Spacing="12">
+                                    <TextBlock
+                                        tw:Tw.Class="text-slate-100 text-[14px]"
+                                        Text="text-[14px]" />
+                                    <TextBlock
+                                        FontWeight="SemiBold"
+                                        tw:Tw.Class="text-slate-100 text-[1.5rem]"
+                                        Text="text-[1.5rem]" />
+                                    <TextBlock
+                                        FontWeight="Bold"
+                                        tw:Tw.Class="text-slate-50 text-[2em]"
+                                        Text="text-[2em]" />
+                                </StackPanel>
+                            </docs:DocsExample>
                         </StackPanel>
-                    </Border>
-                </StackPanel>
-                <StackPanel
-                    Spacing="18">
-                    <TextBlock
-                        Classes="docs-eyebrow"
-                        Text="EXAMPLES" />
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Basic example" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use utilities like text-sm and text-2xl to set the font size of an element. This demo keeps the real tw:Tw.Class token on each previewed TextBlock." />
-                        <Border
-                            Classes="docs-surface">
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Responsive design"
+                        Summary="Tailwind's font-size docs also show breakpoint-prefixed examples like md:text-base. Variant prefixes are unsupported across the whole parser surface, so the docs name them instead of implying they work.">
+                        <docs:DocsNote
+                            Classes="gap muted"
+                            Title="Official examples not implemented yet">
                             <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Padding="24">
-                                    <StackPanel
-                                        Spacing="10">
-                                        <TextBlock
-                                            tw:Tw.Class="text-slate-100 text-xs"
-                                            Text="The quick brown fox jumps over the lazy dog." />
-                                        <TextBlock
-                                            tw:Tw.Class="text-slate-100 text-base"
-                                            Text="The quick brown fox jumps over the lazy dog." />
-                                        <TextBlock
-                                            FontWeight="SemiBold"
-                                            tw:Tw.Class="text-slate-100 text-2xl"
-                                            Text="The quick brown fox." />
-                                        <TextBlock
-                                            FontWeight="Bold"
-                                            tw:Tw.Class="text-slate-50 text-5xl"
-                                            Text="Quick fox" />
-                                    </StackPanel>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-xs&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-base&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-2xl&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-5xl&quot; /&gt;" />
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Setting the line-height" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Tailwind also supports text-sm/6 style tokens that set font size and line-height together. The current parser only maps FontSize, so slash line-height modifiers stay explicitly documented as unsupported." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="text-sm/6 / text-sm/7 / text-sm/8 / text-lg/7" />
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Using a custom value" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use bracket syntax like text-[14px] to set the font size based on a custom absolute value." />
-                        <Border
-                            Classes="docs-note">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Arbitrary font-size notes" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="px / rem / em / unitless" />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="Arbitrary font-size values are parser-only and do not emit generated package keys." />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="rem and em use 16px base. Unitless values are treated as px." />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="% values and text-(length:&lt;custom-property&gt;) remain unsupported because Avalonia FontSize is modeled as an absolute double." />
-                            </StackPanel>
-                        </Border>
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Padding="24">
-                                    <StackPanel
-                                        Spacing="10">
-                                        <TextBlock
-                                            tw:Tw.Class="text-slate-100 text-[14px]"
-                                            Text="text-[14px]" />
-                                        <TextBlock
-                                            FontWeight="SemiBold"
-                                            tw:Tw.Class="text-slate-100 text-[1.5rem]"
-                                            Text="text-[1.5rem]" />
-                                        <TextBlock
-                                            FontWeight="Bold"
-                                            tw:Tw.Class="text-slate-50 text-[2em]"
-                                            Text="text-[2em]" />
-                                    </StackPanel>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-[14px]&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-[1.5rem]&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-[2em]&quot; /&gt;" />
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Responsive design" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Tailwind&apos;s font-size docs also show breakpoint-prefixed examples like md:text-base. Variant prefixes remain unsupported across the current utility parser surface, so the docs call them out directly instead of implying support." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
+                                Spacing="6">
                                 <TextBlock
                                     Classes="docs-tableClass"
                                     Text="text-sm md:text-base" />
@@ -295,10 +147,10 @@
                                     Classes="docs-tableClass"
                                     Text="text-base lg:text-2xl" />
                             </StackPanel>
-                        </Border>
-                    </StackPanel>
+                        </docs:DocsNote>
+                    </docs:DocsSection>
                 </StackPanel>
             </StackPanel>
-        </ScrollViewer>
-    </Border>
+        </StackPanel>
+    </docs:DocsPage>
 </UserControl>

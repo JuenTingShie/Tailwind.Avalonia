@@ -2,10 +2,18 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Class="Tailwind.Avalonia.Sample.App"
-    RequestedThemeVariant="Default">
-    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    RequestedThemeVariant="Dark">
+    <!-- The docs are authored dark end to end, so pin the variant instead of
+         following the system and half-rendering in light. -->
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+        <StyleInclude
+            Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+        <!-- Shared docs design system: every page picks these up from here
+             rather than repeating a StyleInclude of its own. -->
+        <StyleInclude
+            Source="avares://Tailwind.Avalonia.Sample/Docs/DocsStyles.axaml" />
+        <StyleInclude
+            Source="avares://Tailwind.Avalonia.Sample/Docs/DocsControls.axaml" />
     </Application.Styles>
 </Application>

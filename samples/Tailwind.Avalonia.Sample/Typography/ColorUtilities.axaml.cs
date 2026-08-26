@@ -1,40 +1,32 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 
-using Tailwind.Avalonia.Sample.Spacing;
+using Tailwind.Avalonia.Sample.Docs;
 
 namespace Tailwind.Avalonia.Sample.Typography;
 
 public partial class ColorUtilities : UserControl
 {
-    private const int CollapsedUtilityRowCount = 4;
-
-    private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
+    // These are C# string literals bound straight to TextBlock.Text, so the
+    // placeholder brackets are written literally - XML entities would render
+    // as "&lt;color&gt;" on screen.
+    private static readonly UtilityReferenceRow[] UtilityRows =
     [
-        new("bg-&lt;color&gt;", "<Control tw:Tw.Class=\"bg-blue-500\" />"),
-        new("text-&lt;color&gt;", "<Control tw:Tw.Class=\"text-blue-500\" />"),
-        new("border-&lt;color&gt;", "<Border tw:Tw.Class=\"border-blue-500\" />"),
-        new("*&lt;color&gt;/&lt;opacity&gt;", "<Control tw:Tw.Class=\"bg-blue-500/50\" />"),
-        new("bg-[#&lt;hex&gt;]", "<Control tw:Tw.Class=\"bg-[#3b82f6]\" />"),
-        new("text-[#&lt;hex&gt;]", "<Control tw:Tw.Class=\"text-[#3b82f6]\" />"),
-        new("border-[#&lt;hex&gt;]", "<Border tw:Tw.Class=\"border-[#3b82f6]\" />"),
-        new("text-[#&lt;hex&gt;]/&lt;opacity&gt;", "<Control tw:Tw.Class=\"text-[#3b82f6]/50\" />"),
+        new("bg-<color>", "<Control tw:Tw.Class=\"bg-blue-500\" />"),
+        new("text-<color>", "<Control tw:Tw.Class=\"text-blue-500\" />"),
+        new("border-<color>", "<Border tw:Tw.Class=\"border-blue-500\" />"),
+        new("*<color>/<opacity>", "<Control tw:Tw.Class=\"bg-blue-500/50\" />"),
+        new("bg-[#<hex>]", "<Control tw:Tw.Class=\"bg-[#3b82f6]\" />"),
+        new("text-[#<hex>]", "<Control tw:Tw.Class=\"text-[#3b82f6]\" />"),
+        new("border-[#<hex>]", "<Border tw:Tw.Class=\"border-[#3b82f6]\" />"),
+        new("text-[#<hex>]/<opacity>", "<Control tw:Tw.Class=\"text-[#3b82f6]/50\" />"),
     ];
 
-    private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;
-
+    /// <summary>
+    /// Initializes the color docs page and seeds the utility reference table.
+    /// </summary>
     public ColorUtilities()
     {
         InitializeComponent();
-        utilityTablePresenter = new SpacingUtilityReferenceTablePresenter(
-            ColorUtilityRows,
-            ColorUtilityToggleButton,
-            AllUtilityRows,
-            CollapsedUtilityRowCount);
-    }
-
-    private void ToggleUtilityRows(object? sender, RoutedEventArgs e)
-    {
-        utilityTablePresenter.Toggle();
+        UtilityTable.Rows = UtilityRows;
     }
 }
