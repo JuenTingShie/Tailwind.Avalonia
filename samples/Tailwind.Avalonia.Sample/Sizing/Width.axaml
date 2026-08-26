@@ -1,620 +1,338 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:docs="using:Tailwind.Avalonia.Sample"
-    xmlns:spacing="using:Tailwind.Avalonia.Sample.Spacing"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Sizing.Width">
-    <UserControl.Styles>
-        <StyleInclude
-            Source="/Spacing/SpacingDocsStyles.axaml" />
-    </UserControl.Styles>
-    <Border
-        tw:Tw.Class="bg-slate-950">
-        <ScrollViewer
-            HorizontalScrollBarVisibility="Disabled">
+    <docs:DocsPage
+        Section="Sizing"
+        Title="Width"
+        Intro="Utilities for controlling an element's width, minimum width, and maximum width. Sizing currently maps the numeric spacing scale and bracket arbitrary values onto Avalonia's Width, MinWidth, and MaxWidth.">
+        <StackPanel
+            Spacing="52">
             <StackPanel
-                Classes="docs-pageLayout">
+                Classes="docs-overviewStack">
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="4" />
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
                 <StackPanel
-                    Spacing="10">
-                    <TextBlock
-                        Classes="docs-library"
-                        Text="SIZING" />
-                    <TextBlock
-                        Classes="docs-pageTitle"
-                        Text="Width" />
-                    <TextBlock
-                        Classes="docs-body"
-                        Text="Utilities for controlling an element&apos;s width, minimum width, and maximum width." />
-                </StackPanel>
-                <StackPanel
-                    Spacing="16">
-                    <Border
-                        Classes="docs-surface">
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Basic example"
+                        Summary="Use w-&lt;number&gt; utilities like w-24 and w-64 to set a fixed width from the shared spacing scale.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border Height="56" tw:Tw.Class="w-24" /&gt;</x:String>
+                                <x:String>&lt;Border Height="56" tw:Tw.Class="w-40" /&gt;</x:String>
+                                <x:String>&lt;Border Height="56" tw:Tw.Class="w-64" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                HorizontalAlignment="Left"
+                                Spacing="14">
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="w-[460px]">
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 w-24"
+                                        CornerRadius="10"
+                                        Height="56"
+                                        HorizontalAlignment="Left">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="w-24" />
+                                    </Border>
+                                </Border>
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="w-[460px]">
+                                    <Border
+                                        tw:Tw.Class="bg-violet-500 w-40"
+                                        CornerRadius="10"
+                                        Height="56"
+                                        HorizontalAlignment="Left">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="w-40" />
+                                    </Border>
+                                </Border>
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="w-[460px]">
+                                    <Border
+                                        tw:Tw.Class="bg-emerald-500 w-64"
+                                        CornerRadius="10"
+                                        Height="56"
+                                        HorizontalAlignment="Left">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="w-64" />
+                                    </Border>
+                                </Border>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Setting a minimum width"
+                        Summary="Use min-w-&lt;number&gt; when an element should never shrink below a spacing-scale width, even if a local Width value is smaller. Both bars below set Width=&quot;80&quot;.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border Width="80" Height="56" tw:Tw.Class="min-w-24" /&gt;</x:String>
+                                <x:String>&lt;Border Width="80" Height="56" tw:Tw.Class="min-w-40" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                HorizontalAlignment="Left"
+                                Spacing="14">
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="w-[460px]">
+                                    <Border
+                                        tw:Tw.Class="bg-amber-500 min-w-24"
+                                        CornerRadius="10"
+                                        Width="80"
+                                        Height="56"
+                                        HorizontalAlignment="Left">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="min-w-24" />
+                                    </Border>
+                                </Border>
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="w-[460px]">
+                                    <Border
+                                        tw:Tw.Class="bg-orange-500 min-w-40"
+                                        CornerRadius="10"
+                                        Width="80"
+                                        Height="56"
+                                        HorizontalAlignment="Left">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="min-w-40" />
+                                    </Border>
+                                </Border>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Setting a maximum width"
+                        Summary="Use max-w-&lt;number&gt; when content should cap out at a spacing-scale width, even if a local Width value is larger. Both bars below set Width=&quot;320&quot;.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border Width="320" Height="56" tw:Tw.Class="max-w-24" /&gt;</x:String>
+                                <x:String>&lt;Border Width="320" Height="56" tw:Tw.Class="max-w-40" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                HorizontalAlignment="Left"
+                                Spacing="14">
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="w-[460px]">
+                                    <Border
+                                        tw:Tw.Class="bg-rose-500 max-w-24"
+                                        CornerRadius="10"
+                                        Width="320"
+                                        Height="56"
+                                        HorizontalAlignment="Left">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="max-w-24" />
+                                    </Border>
+                                </Border>
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="w-[460px]">
+                                    <Border
+                                        tw:Tw.Class="bg-pink-500 max-w-40"
+                                        CornerRadius="10"
+                                        Width="320"
+                                        Height="56"
+                                        HorizontalAlignment="Left">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="max-w-40" />
+                                    </Border>
+                                </Border>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Using a custom value"
+                        Summary="Bracket syntax like w-[100px] takes a direct arbitrary value.">
                         <StackPanel
-                            Spacing="0">
-                            <Border
-                                Classes="docs-referenceHeader">
-                                <Grid
-                                    Classes="docs-referenceColumns"
-                                    ColumnDefinitions="1.45*,3.15*">
+                            Spacing="18">
+                            <docs:DocsNote
+                                Title="How arbitrary sizes resolve">
+                                <StackPanel
+                                    Spacing="8">
                                     <TextBlock
-                                        Classes="docs-referenceHeading"
-                                        Text="Class" />
+                                        Classes="docs-tableClass"
+                                        Text="px · rem · em · % · unitless" />
                                     <TextBlock
-                                        Grid.Column="1"
-                                        Classes="docs-referenceHeading"
-                                        Text="Styles" />
-                                </Grid>
-                            </Border>
-                            <ItemsControl
-                                x:Name="WidthUtilityRows"
-                                Classes="docs-referenceList">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate
-                                        DataType="spacing:SpacingUtilityReferenceRow">
+                                        Classes="docs-noteBody"
+                                        Text="Arbitrary sizing values are parser-only and emit no generated package keys." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="rem and em resolve against a 16px base. Unitless values are treated as px." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Only bracket syntax is parsed; w-(&lt;custom-property&gt;) stays unsupported." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Percentage tokens parse as plain numbers, not container-relative layout." />
+                                </StackPanel>
+                            </docs:DocsNote>
+                            <docs:DocsExample>
+                                <docs:DocsExample.Snippets>
+                                    <x:String>&lt;Border tw:Tw.Class="w-[100px]" /&gt;</x:String>
+                                    <x:String>&lt;Border Width="80" tw:Tw.Class="min-w-[12.5rem]" /&gt;</x:String>
+                                    <x:String>&lt;Border Width="320" tw:Tw.Class="max-w-[5em]" /&gt;</x:String>
+                                </docs:DocsExample.Snippets>
+                                <StackPanel
+                                    HorizontalAlignment="Left"
+                                    Spacing="14">
+                                    <Border
+                                        Classes="docs-inset"
+                                        tw:Tw.Class="w-[460px]">
                                         <Border
-                                            Classes="docs-referenceRow">
-                                            <Grid
-                                                Classes="docs-referenceColumns"
-                                                ColumnDefinitions="1.45*,3.15*">
-                                                <TextBlock
-                                                    Classes="docs-tableClass"
-                                                    Text="{CompiledBinding ClassName}"
-                                                    VerticalAlignment="Center" />
-                                                <TextBlock
-                                                    Grid.Column="1"
-                                                    Classes="docs-tableStyle"
-                                                    Text="{CompiledBinding AxamlStyle}"
-                                                    VerticalAlignment="Center" />
-                                            </Grid>
+                                            tw:Tw.Class="bg-sky-500 w-[100px] h-14"
+                                            CornerRadius="10"
+                                            HorizontalAlignment="Left">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="w-[100px]" />
                                         </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                            <Border
-                                tw:Tw.Class="bg-slate-900 border-slate-800"
-                                Padding="0,12"
-                                Classes="docs-showMoreShell"
-                                HorizontalAlignment="Center">
-                                <Button
-                                    x:Name="WidthUtilityToggleButton"
-                                    Classes="docs-showMoreButton"
-                                    Click="ToggleUtilityRows"
-                                    Content="SHOW MORE" />
-                            </Border>
+                                    </Border>
+                                    <Border
+                                        Classes="docs-inset"
+                                        tw:Tw.Class="w-[460px]">
+                                        <Border
+                                            tw:Tw.Class="bg-violet-500 min-w-[12.5rem] h-14"
+                                            CornerRadius="10"
+                                            Width="80"
+                                            HorizontalAlignment="Left">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="min-w-[12.5rem]" />
+                                        </Border>
+                                    </Border>
+                                    <Border
+                                        Classes="docs-inset"
+                                        tw:Tw.Class="w-[460px]">
+                                        <Border
+                                            tw:Tw.Class="bg-emerald-500 max-w-[5em] h-14"
+                                            CornerRadius="10"
+                                            HorizontalAlignment="Left"
+                                            Width="320">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="max-w-[5em]" />
+                                        </Border>
+                                    </Border>
+                                </StackPanel>
+                            </docs:DocsExample>
                         </StackPanel>
-                    </Border>
-                    <Border
-                        Classes="docs-note"
-                        BorderThickness="2"
-                        tw:Tw.Class="bg-amber-950/30 border-amber-400/50">
-                        <StackPanel
-                            Spacing="8">
-                            <TextBlock
-                                Classes="docs-noteTitle"
-                                tw:Tw.Class="text-amber-50"
-                                Text="Unsupported rows" />
-                            <TextBlock
-                                Classes="docs-noteBody"
-                                tw:Tw.Class="text-amber-100/85"
-                                Text="The current parser only supports spacing-scale numeric width utilities. Other Tailwind sizing syntaxes are still intentionally out of scope on this page." />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="w-px / w-auto / w-full / w-screen / w-dvw / w-lvw / w-svw / w-dvh / w-lvh / w-svh" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="w-&lt;fraction&gt; / min-w-&lt;fraction&gt; / max-w-&lt;fraction&gt;" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="w-3xs...w-7xl / min-w-3xs...min-w-2xl / max-w-3xs...max-w-7xl / max-w-prose / container" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="w-(&lt;custom-property&gt;) / min-w-(&lt;custom-property&gt;) / max-w-(&lt;custom-property&gt;) / size-*" />
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
-                <StackPanel
-                    Spacing="18">
-                    <TextBlock
-                        Classes="docs-eyebrow"
-                        Text="EXAMPLES" />
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Basic example" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use w-&lt;number&gt; utilities like w-24 and w-64 to set a fixed width from the shared spacing scale." />
-                        <Border
-                            Classes="docs-surface">
+                    </docs:DocsSection>
+
+                    <!-- Tailwind's width docs close with seven sections that this
+                         parser does not implement. Collapsed into one grouped
+                         gap list rather than seven near-identical callouts. -->
+                    <docs:DocsSection
+                        Heading="Not implemented yet"
+                        Summary="Tailwind's width, min-width, and max-width pages cover several more families. They are listed here rather than shown as examples, so nothing on this page implies support that does not exist.">
+                        <docs:DocsNote
+                            Classes="gap"
+                            Title="Official rows outside the current parser surface">
                             <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Padding="28">
-                                    <StackPanel
-                                        HorizontalAlignment="Center"
-                                        Spacing="14">
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-sky-500 w-24"
-                                                CornerRadius="12"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="w-24" />
-                                            </Border>
-                                        </Border>
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-violet-500 w-40"
-                                                CornerRadius="12"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="w-40" />
-                                            </Border>
-                                        </Border>
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-emerald-500 w-64"
-                                                CornerRadius="12"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="w-64" />
-                                            </Border>
-                                        </Border>
-                                    </StackPanel>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-24&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-40&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border Height=&quot;56&quot; tw:Tw.Class=&quot;w-64&quot; /&gt;" />
-                                    </StackPanel>
-                                </Border>
+                                Spacing="14">
+                                <StackPanel
+                                    Spacing="5">
+                                    <TextBlock
+                                        Classes="docs-miniTitle"
+                                        Text="percentages and fractions" />
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="w-full · w-1/2 · w-2/5 · w-1/3 · w-1/4 · min-w-3/4 · max-w-9/10" />
+                                </StackPanel>
+                                <StackPanel
+                                    Spacing="5">
+                                    <TextBlock
+                                        Classes="docs-miniTitle"
+                                        Text="container scale" />
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="w-3xs…w-2xl · min-w-3xs…min-w-2xl · max-w-3xs…max-w-7xl · max-w-prose" />
+                                </StackPanel>
+                                <StackPanel
+                                    Spacing="5">
+                                    <TextBlock
+                                        Classes="docs-miniTitle"
+                                        Text="viewport units" />
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="w-screen · w-dvw · w-lvw · w-svw · w-dvh · w-lvh · w-svh" />
+                                </StackPanel>
+                                <StackPanel
+                                    Spacing="5">
+                                    <TextBlock
+                                        Classes="docs-miniTitle"
+                                        Text="keywords and resets" />
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="w-px · w-auto · container · container mx-auto px-4" />
+                                </StackPanel>
+                                <StackPanel
+                                    Spacing="5">
+                                    <TextBlock
+                                        Classes="docs-miniTitle"
+                                        Text="combined dimensions" />
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="size-16 · size-24 · size-40 · size-full · size-px" />
+                                </StackPanel>
+                                <StackPanel
+                                    Spacing="5">
+                                    <TextBlock
+                                        Classes="docs-miniTitle"
+                                        Text="custom properties and breakpoints" />
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="w-(&lt;custom-property&gt;) · md:w-full · md:min-w-0 · md:max-w-lg" />
+                                </StackPanel>
                             </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Setting a minimum width" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use min-w-&lt;number&gt; utilities when an element should never shrink below a spacing-scale width, even if another local Width value is smaller." />
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Padding="28">
-                                    <StackPanel
-                                        HorizontalAlignment="Center"
-                                        Spacing="14">
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-amber-500 min-w-24"
-                                                CornerRadius="12"
-                                                Width="80"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="min-w-24" />
-                                            </Border>
-                                        </Border>
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-orange-500 min-w-40"
-                                                CornerRadius="12"
-                                                Width="80"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="min-w-40" />
-                                            </Border>
-                                        </Border>
-                                    </StackPanel>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-24&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border Width=&quot;80&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;min-w-40&quot; /&gt;" />
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Setting a maximum width" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use max-w-&lt;number&gt; utilities when content should cap out at a spacing-scale width, even if another local Width value is larger." />
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Padding="28">
-                                    <StackPanel
-                                        HorizontalAlignment="Center"
-                                        Spacing="14">
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-rose-500 max-w-24"
-                                                CornerRadius="12"
-                                                Width="320"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="max-w-24" />
-                                            </Border>
-                                        </Border>
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-pink-500 max-w-40"
-                                                CornerRadius="12"
-                                                Width="320"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="max-w-40" />
-                                            </Border>
-                                        </Border>
-                                    </StackPanel>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-24&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border Width=&quot;320&quot; Height=&quot;56&quot; tw:Tw.Class=&quot;max-w-40&quot; /&gt;" />
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Using a percentage" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Tailwind&apos;s width, min-width, and max-width docs all include percentage-based examples like w-1/2, min-w-3/4, and max-w-1/3. Current package keeps sizing on numeric spacing tokens only, so relative percentage sizing stays out of scope for now." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="w-full / w-1/2 / w-2/5 / w-1/3 / w-1/4 / w-1/5 / w-1/6" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="min-w-full / min-w-3/4 / min-w-1/2 / min-w-2/5" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="max-w-full / max-w-9/10 / max-w-3/4 / max-w-1/2 / max-w-1/3" />
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Using the container scale" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Tailwind also documents container-based tokens like w-sm, min-w-lg, and max-w-xl. Package does not ship container-size tokens yet, so these examples stay documented as pending instead of implied support." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="w-3xs / w-2xs / w-xs / w-sm / w-md / w-lg / w-xl / w-2xl" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="min-w-3xs / min-w-2xs / min-w-xs / min-w-sm / min-w-md / min-w-lg / min-w-xl / min-w-2xl" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="max-w-3xs / max-w-2xs / max-w-xs / max-w-sm / max-w-md / max-w-lg / max-w-xl / max-w-2xl" />
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Matching the viewport" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Official width docs include viewport-width examples like w-screen, w-dvw, w-lvw, and w-svw. Current package does not model CSS viewport sizing tokens in Avalonia yet." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="w-screen / w-dvw / w-lvw / w-svw" />
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Resetting the width" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Tailwind docs use w-auto as reset example. Current parser does not map auto sizing or breakpoint overrides yet, so docs keep this example explicit but unsupported." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="w-auto / md:w-auto" />
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Using breakpoint container" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Max-width docs include container utility examples. Responsive container semantics do not have current package parity, so this stays as explicit future scope." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="container / container mx-auto px-4" />
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Setting both width and height" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Width docs also show size-* aliases that set both dimensions at once. Current package exposes width and height separately, but not combined size aliases yet." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="size-16 / size-20 / size-24 / size-32 / size-40 / size-full / size-px" />
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Using a custom value" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use bracket syntax like w-[100px] for direct arbitrary values." />
-                        <Border
-                            Classes="docs-note">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Arbitrary width notes" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="px / rem / em / % / unitless" />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="Arbitrary sizing values are parser-only and do not emit generated package keys." />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="rem and em use 16px base. Unitless values are treated as px." />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="Current parser only supports bracket arbitrary syntax. w-(&lt;custom-property&gt;) remains unsupported." />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="% tokens are currently parsed as numeric values, not container-relative layout." />
-                            </StackPanel>
-                        </Border>
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Padding="28">
-                                    <StackPanel
-                                        HorizontalAlignment="Center"
-                                        Spacing="14">
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-sky-500 w-[100px]"
-                                                CornerRadius="12"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="w-[100px]" />
-                                            </Border>
-                                        </Border>
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-violet-500 min-w-[12.5rem]"
-                                                CornerRadius="12"
-                                                Height="56"
-                                                HorizontalAlignment="Left">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="min-w-[12.5rem]" />
-                                            </Border>
-                                        </Border>
-                                        <Border
-                                            Classes="docs-inset"
-                                            MaxWidth="440">
-                                            <Border
-                                                tw:Tw.Class="bg-emerald-500 max-w-[5em]"
-                                                CornerRadius="12"
-                                                Height="56"
-                                                HorizontalAlignment="Left"
-                                                Width="320">
-                                                <TextBlock
-                                                    Classes="docs-chip"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="max-w-[5em]" />
-                                            </Border>
-                                        </Border>
-                                    </StackPanel>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border tw:Tw.Class=&quot;w-[100px]&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border tw:Tw.Class=&quot;min-w-[12.5rem]&quot; Width=&quot;80&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border tw:Tw.Class=&quot;max-w-[5em]&quot; Width=&quot;320&quot; /&gt;" />
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Responsive design" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="All three official docs pages close with breakpoint-prefixed examples. Variant prefixes remain unsupported across current utility parser surface, so docs call them out directly instead of suggesting they already work." />
-                        <Border
-                            Classes="docs-note docs-noteUnsupported">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Official examples not implemented yet" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="md:w-full / md:min-w-0 / md:max-w-lg" />
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
+                        </docs:DocsNote>
+                    </docs:DocsSection>
                 </StackPanel>
             </StackPanel>
-        </ScrollViewer>
-    </Border>
+        </StackPanel>
+    </docs:DocsPage>
 </UserControl>

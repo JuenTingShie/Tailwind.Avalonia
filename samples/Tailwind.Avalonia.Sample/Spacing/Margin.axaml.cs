@@ -1,13 +1,12 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
+
+using Tailwind.Avalonia.Sample.Docs;
 
 namespace Tailwind.Avalonia.Sample.Spacing;
 
 public partial class Margin : UserControl
 {
-    private const int CollapsedUtilityRowCount = 6;
-
-    private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
+    private static readonly UtilityReferenceRow[] UtilityRows =
     [
         new("m-<number>", "<Border Margin=\"<number>\" />"),
         new("m-[<value>]", "<Border Margin=\"<parsed value>\" />"),
@@ -59,24 +58,12 @@ public partial class Margin : UserControl
         new("-mbe-[<value>]", "<Border Margin=\"0,0,0,-<parsed>\" />"),
     ];
 
-    private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;
-
     /// <summary>
-    /// Initializes the margin docs page and seeds the reference table with the compact row set.
+    /// Initializes the margin docs page and seeds the utility reference table.
     /// </summary>
     public Margin()
     {
         InitializeComponent();
-        utilityTablePresenter = new SpacingUtilityReferenceTablePresenter(
-            MarginUtilityRows,
-            MarginUtilityToggleButton,
-            AllUtilityRows,
-            CollapsedUtilityRowCount);
-    }
-
-    // Switch between the compact and full margin utility reference rows.
-    private void ToggleUtilityRows(object? sender, RoutedEventArgs e)
-    {
-        utilityTablePresenter.Toggle();
+        UtilityTable.Rows = UtilityRows;
     }
 }

@@ -1,0 +1,328 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:sample="using:Tailwind.Avalonia.Sample"
+    xmlns:tw="using:Tailwind.Avalonia">
+    <Styles.Resources>
+
+        <!-- ===============================================================
+             DocsPage: ground, texture, scroll, constrained column, header.
+             =============================================================== -->
+        <ControlTheme
+            x:Key="{x:Type docs:DocsPage}"
+            TargetType="docs:DocsPage">
+            <Setter
+                Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <Border
+                            tw:Tw.Class="bg-slate-950" />
+                        <Border
+                            Background="{StaticResource DocsAmbientBrush}" />
+                        <Border
+                            Background="{StaticResource DocsGrainBrush}" />
+                        <ScrollViewer
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto">
+                            <StackPanel
+                                Classes="docs-pageLayout">
+                                <StackPanel
+                                    Spacing="0">
+                                    <!-- Optical spacing, not mathematical: the eyebrow
+                                         sits close to the title it labels, the lede
+                                         breathes further away from it. -->
+                                    <TextBlock
+                                        Classes="docs-library"
+                                        Margin="0,0,0,12"
+                                        Text="{TemplateBinding Section}"
+                                        IsVisible="{TemplateBinding Section, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                                    <TextBlock
+                                        Classes="docs-pageTitle"
+                                        Text="{TemplateBinding Title}" />
+                                    <TextBlock
+                                        Classes="docs-lede"
+                                        Margin="0,20,0,0"
+                                        Text="{TemplateBinding Intro}"
+                                        IsVisible="{TemplateBinding Intro, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                                </StackPanel>
+                                <ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+
+        <!-- ===============================================================
+             DocsSection: heading, optional summary, then whatever follows.
+             =============================================================== -->
+        <ControlTheme
+            x:Key="{x:Type docs:DocsSection}"
+            TargetType="docs:DocsSection">
+            <Setter
+                Property="Template">
+                <ControlTemplate>
+                    <StackPanel
+                        Spacing="0">
+                        <TextBlock
+                            Classes="docs-sectionTitle"
+                            Text="{TemplateBinding Heading}"
+                            IsVisible="{TemplateBinding Heading, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                        <TextBlock
+                            Classes="docs-body"
+                            Margin="0,14,0,0"
+                            Text="{TemplateBinding Summary}"
+                            IsVisible="{TemplateBinding Summary, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Margin="0,20,0,0"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+
+        <!-- ===============================================================
+             DocsExample: live preview with its AXAML pinned underneath.
+             =============================================================== -->
+        <ControlTheme
+            x:Key="{x:Type docs:DocsExample}"
+            TargetType="docs:DocsExample">
+            <Setter
+                Property="Template">
+                <ControlTemplate>
+                    <Border
+                        Classes="docs-surface">
+                        <StackPanel
+                            Spacing="0">
+                            <Border
+                                Classes="docs-stage">
+                                <ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Border>
+                            <Border
+                                Classes="docs-codeFooter"
+                                IsVisible="{TemplateBinding HasCode}">
+                                <StackPanel
+                                    Spacing="10">
+                                    <TextBlock
+                                        Classes="docs-miniTitle"
+                                        Text="{TemplateBinding CodeLabel}" />
+                                    <ItemsControl
+                                        ItemsSource="{TemplateBinding Snippets}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel
+                                                    Orientation="Vertical"
+                                                    Spacing="6" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <sample:AxamlCodeBlock
+                                                    Code="{ReflectionBinding .}" />
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+
+        <!-- ===============================================================
+             DocsNote: neutral by default, `supported` for the capability
+             banner, `gap` for Tailwind rows this parser does not reach yet.
+             =============================================================== -->
+        <ControlTheme
+            x:Key="{x:Type docs:DocsNote}"
+            TargetType="docs:DocsNote">
+            <Setter
+                Property="Template">
+                <ControlTemplate>
+                    <Border
+                        Name="PART_Shell"
+                        Classes="docs-note">
+                        <StackPanel
+                            Spacing="0">
+                            <TextBlock
+                                Name="PART_Title"
+                                Classes="docs-noteTitle"
+                                Text="{TemplateBinding Title}"
+                                IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                            <TextBlock
+                                Name="PART_Body"
+                                Classes="docs-noteBody"
+                                Margin="0,8,0,0"
+                                Text="{TemplateBinding Body}"
+                                IsVisible="{TemplateBinding Body, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                            <ContentPresenter
+                                Name="PART_ContentPresenter"
+                                Margin="0,10,0,0"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <!-- Avalonia forbids a flat "^.class /template/ Selector" at the top
+                 level inside a ControlTheme - a descendant combinator after ^ has
+                 to be nested inside a "^.class" wrapper style instead. -->
+
+            <!-- Supported: the one accent, held to a hairline so it informs
+                 rather than shouts. -->
+            <Style
+                Selector="^.supported">
+                <Style
+                    Selector="^ /template/ Border#PART_Shell">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="bg-sky-950/40 border-sky-500/30" />
+                </Style>
+                <Style
+                    Selector="^ /template/ TextBlock#PART_Title">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="text-sky-100" />
+                </Style>
+                <Style
+                    Selector="^ /template/ TextBlock#PART_Body">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="text-sky-200/75" />
+                </Style>
+            </Style>
+
+            <!-- Gap: amber reads as status, not as a second brand colour. -->
+            <Style
+                Selector="^.gap">
+                <Style
+                    Selector="^ /template/ Border#PART_Shell">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="bg-amber-950/25 border-amber-500/25" />
+                </Style>
+                <Style
+                    Selector="^ /template/ TextBlock#PART_Title">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="text-amber-100" />
+                </Style>
+                <Style
+                    Selector="^ /template/ TextBlock#PART_Body">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="text-amber-200/70" />
+                </Style>
+                <Style
+                    Selector="^ TextBlock.docs-tableClass">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="text-amber-200/80" />
+                </Style>
+            </Style>
+
+            <!-- Muted: a gap note that should recede inside a busy section. -->
+            <Style
+                Selector="^.muted">
+                <Style
+                    Selector="^ /template/ Border#PART_Shell">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="bg-slate-950/60 border-slate-800/70" />
+                </Style>
+                <Style
+                    Selector="^ /template/ TextBlock#PART_Title">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="text-slate-400" />
+                </Style>
+                <Style
+                    Selector="^ TextBlock.docs-tableClass">
+                    <Setter
+                        Property="tw:Tw.Class"
+                        Value="text-sky-400/60" />
+                </Style>
+            </Style>
+        </ControlTheme>
+
+        <!-- ===============================================================
+             DocsUtilityTable: class-to-AXAML reference with row collapsing.
+             =============================================================== -->
+        <ControlTheme
+            x:Key="{x:Type docs:DocsUtilityTable}"
+            TargetType="docs:DocsUtilityTable">
+            <Setter
+                Property="Template">
+                <ControlTemplate>
+                    <Border
+                        Classes="docs-surface">
+                        <StackPanel
+                            Spacing="0">
+                            <Border
+                                Classes="docs-referenceHeader">
+                                <Grid
+                                    Classes="docs-referenceColumns"
+                                    ColumnDefinitions="1.45*,3.15*">
+                                    <TextBlock
+                                        Classes="docs-referenceHeading"
+                                        Text="Class" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Classes="docs-referenceHeading"
+                                        Text="Styles" />
+                                </Grid>
+                            </Border>
+                            <ItemsControl
+                                Classes="docs-referenceList"
+                                ItemsSource="{TemplateBinding VisibleRows}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate
+                                        DataType="docs:UtilityReferenceRow">
+                                        <Border
+                                            Classes="docs-referenceRow">
+                                            <Grid
+                                                Classes="docs-referenceColumns"
+                                                ColumnDefinitions="1.45*,3.15*">
+                                                <TextBlock
+                                                    Classes="docs-tableClass"
+                                                    Text="{CompiledBinding ClassName}"
+                                                    VerticalAlignment="Center" />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Classes="docs-tableStyle"
+                                                    Text="{CompiledBinding AxamlStyle}"
+                                                    VerticalAlignment="Center" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Border
+                                Classes="docs-showMoreShell"
+                                IsVisible="{TemplateBinding CanToggle}">
+                                <Button
+                                    Name="PART_ToggleButton"
+                                    Classes="docs-showMoreButton"
+                                    Content="{TemplateBinding ToggleLabel}"
+                                    HorizontalAlignment="Center" />
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+    </Styles.Resources>
+</Styles>

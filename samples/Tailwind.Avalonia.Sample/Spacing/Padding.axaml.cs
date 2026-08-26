@@ -1,13 +1,12 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
+
+using Tailwind.Avalonia.Sample.Docs;
 
 namespace Tailwind.Avalonia.Sample.Spacing;
 
 public partial class Padding : UserControl
 {
-    private const int CollapsedUtilityRowCount = 6;
-
-    private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
+    private static readonly UtilityReferenceRow[] UtilityRows =
     [
         new("p-<number>", "<Border Padding=\"<number>\" />"),
         new("p-[<value>]", "<Border Padding=\"<parsed value>\" />"),
@@ -37,24 +36,12 @@ public partial class Padding : UserControl
         new("pev-[<value>]", "<Border Padding=\"0,0,<parsed>,0\" />"),
     ];
 
-    private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;
-
     /// <summary>
-    /// Initializes the padding docs page and seeds the reference table with the compact row set.
+    /// Initializes the padding docs page and seeds the utility reference table.
     /// </summary>
     public Padding()
     {
         InitializeComponent();
-        utilityTablePresenter = new SpacingUtilityReferenceTablePresenter(
-            PaddingUtilityRows,
-            PaddingUtilityToggleButton,
-            AllUtilityRows,
-            CollapsedUtilityRowCount);
-    }
-
-    // Switch between the compact and full padding utility reference rows.
-    private void ToggleUtilityRows(object? sender, RoutedEventArgs e)
-    {
-        utilityTablePresenter.Toggle();
+        UtilityTable.Rows = UtilityRows;
     }
 }

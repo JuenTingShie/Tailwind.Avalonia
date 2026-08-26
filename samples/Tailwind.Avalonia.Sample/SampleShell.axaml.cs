@@ -64,20 +64,22 @@ public partial class SampleShell : UserControl
     {
         return
         [
+            // Sentence case matches the eyebrow the docs pages print above their own
+            // titles, so the breadcrumb and the page agree on how a section is spelled.
             new(
-                "SPACING",
+                "Spacing",
                 new SampleShellPageDescriptor("Padding", static () => new Spacing.Padding()),
                 new SampleShellPageDescriptor("Margin", static () => new Spacing.Margin())),
             new(
-                "SIZING",
+                "Sizing",
                 new SampleShellPageDescriptor("Width", static () => new Sizing.Width()),
                 new SampleShellPageDescriptor("Height", static () => new Sizing.Height())),
             new(
-                "TYPOGRAPHY",
+                "Typography",
                 new SampleShellPageDescriptor("Font size", static () => new Typography.FontSize()),
                 new SampleShellPageDescriptor("Colors", static () => new Typography.ColorUtilities())),
             new(
-                "INTERACTIVITY",
+                "Interactivity",
                 new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants())),
         ];
     }
@@ -158,8 +160,15 @@ public partial class SampleShell : UserControl
         shownPage = page;
         CurrentSectionText.Text = section.Header;
         CurrentPageText.Text = page.Header;
+        UpdateEmptyState();
 
-        SetPaneOpen(false);
+        // Auto-close only while the pane is a modal overlay. On wide layouts it is
+        // pinned inline beside the content, so navigating there must not dismiss the
+        // navigation the user is still reading.
+        if (isNarrowLayout)
+        {
+            SetPaneOpen(false);
+        }
     }
 
     // Create a docs page lazily and keep it hosted for future visits.
@@ -185,6 +194,26 @@ public partial class SampleShell : UserControl
         {
             hostedPage.IsVisible = false;
         }
+
+        UpdateEmptyState();
+    }
+
+    // Derive the empty state from what the host is actually showing rather than from a
+    // second flag, so ShowPage and HideAllPages stay the only places that decide it.
+    private void UpdateEmptyState()
+    {
+        var hasVisiblePage = false;
+
+        foreach (var hostedPage in pageCache.Values)
+        {
+            if (hostedPage.IsVisible)
+            {
+                hasVisiblePage = true;
+                break;
+            }
+        }
+
+        PageEmptyState.IsVisible = !hasVisiblePage;
     }
 
     // Change visible page list for chosen section, but do not force content switch.

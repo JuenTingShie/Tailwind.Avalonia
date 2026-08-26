@@ -1,15 +1,12 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 
-using Tailwind.Avalonia.Sample.Spacing;
+using Tailwind.Avalonia.Sample.Docs;
 
 namespace Tailwind.Avalonia.Sample.Sizing;
 
 public partial class Width : UserControl
 {
-    private const int CollapsedUtilityRowCount = 4;
-
-    private static readonly SpacingUtilityReferenceRow[] AllUtilityRows =
+    private static readonly UtilityReferenceRow[] UtilityRows =
     [
         new("w-<number>", "<Border Width=\"<number>\" />"),
         new("w-[<value>]", "<Border Width=\"<parsed value>\" />"),
@@ -19,24 +16,12 @@ public partial class Width : UserControl
         new("max-w-[<value>]", "<Border MaxWidth=\"<parsed value>\" />"),
     ];
 
-    private readonly SpacingUtilityReferenceTablePresenter utilityTablePresenter;
-
     /// <summary>
-    /// Initializes the width docs page and seeds the reference table with the compact row set.
+    /// Initializes the width docs page and seeds the utility reference table.
     /// </summary>
     public Width()
     {
         InitializeComponent();
-        utilityTablePresenter = new SpacingUtilityReferenceTablePresenter(
-            WidthUtilityRows,
-            WidthUtilityToggleButton,
-            AllUtilityRows,
-            CollapsedUtilityRowCount);
-    }
-
-    // Switch between the compact and full width utility reference rows.
-    private void ToggleUtilityRows(object? sender, RoutedEventArgs e)
-    {
-        utilityTablePresenter.Toggle();
+        UtilityTable.Rows = UtilityRows;
     }
 }

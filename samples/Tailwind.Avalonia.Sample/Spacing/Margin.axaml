@@ -1,1278 +1,997 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
     xmlns:media="clr-namespace:Avalonia.Media;assembly=Avalonia.Base"
-    xmlns:docs="using:Tailwind.Avalonia.Sample"
-    xmlns:sample="using:Tailwind.Avalonia.Sample.Spacing"
     xmlns:tw="using:Tailwind.Avalonia"
     x:Class="Tailwind.Avalonia.Sample.Spacing.Margin">
-    <UserControl.Styles>
-        <StyleInclude
-            Source="/Spacing/SpacingDocsStyles.axaml" />
-    </UserControl.Styles>
-    <Border
-        tw:Tw.Class="bg-slate-950">
-        <ScrollViewer
-            HorizontalScrollBarVisibility="Disabled">
+    <docs:DocsPage
+        Section="Spacing"
+        Title="Margin"
+        Intro="Utilities for controlling an element&apos;s margin. Margin currently maps the numeric spacing scale, bracket arbitrary values, and negative variants onto Avalonia&apos;s Margin thickness, together with the logical and visual side aliases.">
+        <StackPanel
+            Spacing="52">
             <StackPanel
-                Classes="docs-pageLayout">
+                Classes="docs-overviewStack">
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These Tailwind margin rows remain outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="m-auto · mx-auto · my-auto · ms-auto · me-auto" />
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="m-(&lt;custom-property&gt;) · mx-(&lt;custom-property&gt;) · my-(&lt;custom-property&gt;) · mt-(&lt;custom-property&gt;) · mr-(&lt;custom-property&gt;) · mb-(&lt;custom-property&gt;) · ml-(&lt;custom-property&gt;)" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
                 <StackPanel
-                    Spacing="10">
-                    <TextBlock
-                        Classes="docs-library"
-                        Text="SPACING" />
-                    <TextBlock
-                        Classes="docs-pageTitle"
-                        Text="Margin" />
-                    <TextBlock
-                        Classes="docs-body"
-                        Text="Utilities for controlling an element&apos;s margin." />
-                </StackPanel>
-                <StackPanel
-                    Spacing="16">
-                    <Border
-                        Classes="docs-surface">
-                        <StackPanel
-                            Spacing="0">
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Basic example"
+                        Summary="Use m-&lt;number&gt; utilities like m-4 and m-8 to control the outer space on all sides of an element.">
+                        <docs:DocsExample
+                            Code="&lt;Border tw:Tw.Class=&quot;m-8&quot; /&gt;">
                             <Border
-                                Classes="docs-referenceHeader">
+                                Classes="docs-marginShell"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
                                 <Grid
-                                    Classes="docs-referenceColumns"
-                                    ColumnDefinitions="1.45*,3.15*">
-                                    <TextBlock
-                                        Classes="docs-referenceHeading"
-                                        Text="Class" />
-                                    <TextBlock
-                                        Grid.Column="1"
-                                        Classes="docs-referenceHeading"
-                                        Text="Styles" />
+                                    tw:Tw.Class="w-[280px] h-[120px]">
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 m-8"
+                                        CornerRadius="12"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="m-8" />
+                                    </Border>
                                 </Grid>
                             </Border>
-                            <ItemsControl
-                                x:Name="MarginUtilityRows"
-                                Classes="docs-referenceList">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate
-                                        DataType="sample:SpacingUtilityReferenceRow">
-                                        <Border
-                                            Classes="docs-referenceRow">
-                                            <Grid
-                                                Classes="docs-referenceColumns"
-                                                ColumnDefinitions="1.45*,3.15*">
-                                                <TextBlock
-                                                    Classes="docs-tableClass"
-                                                    Text="{CompiledBinding ClassName}"
-                                                    VerticalAlignment="Center" />
-                                                <TextBlock
-                                                    Grid.Column="1"
-                                                    Classes="docs-tableStyle"
-                                                    Text="{CompiledBinding AxamlStyle}"
-                                                    VerticalAlignment="Center" />
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Adding margin to one side"
+                        Summary="Use mt-&lt;number&gt;, mr-&lt;number&gt;, mb-&lt;number&gt;, and ml-&lt;number&gt; utilities like mt-6 and mr-4 to control margin on one side of an element.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="ml-2" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="mt-6" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="mb-8" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="mr-4" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
                             <Border
-                                tw:Tw.Class="bg-slate-900 border-slate-800"
-                                Padding="0,12"
-                                Classes="docs-showMoreShell"
+                                tw:Tw.Class="border-slate-800 max-w-[620px]"
+                                BorderThickness="1"
                                 HorizontalAlignment="Center">
-                                <Button
-                                    x:Name="MarginUtilityToggleButton"
-                                    Classes="docs-showMoreButton"
-                                    Click="ToggleUtilityRows"
-                                    Content="SHOW MORE" />
-                            </Border>
-                        </StackPanel>
-                    </Border>
-                    <Border
-                        Classes="docs-note"
-                        BorderThickness="2"
-                        tw:Tw.Class="bg-amber-950/30 border-amber-400/50">
-                        <StackPanel
-                            Spacing="8">
-                            <TextBlock
-                                Classes="docs-noteTitle"
-                                tw:Tw.Class="text-amber-50"
-                                Text="Unsupported rows" />
-                            <TextBlock
-                                Classes="docs-noteBody"
-                                tw:Tw.Class="text-amber-100/85"
-                                Text="These Tailwind margin rows remain outside the current parser surface." />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="m-auto / mx-auto / my-auto / ms-auto / me-auto" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="m-(&lt;custom-property&gt;) / mx-(&lt;custom-property&gt;) / my-(&lt;custom-property&gt;) / mt-(&lt;custom-property&gt;) / mr-(&lt;custom-property&gt;) / mb-(&lt;custom-property&gt;) / ml-(&lt;custom-property&gt;)" />
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
-                <StackPanel
-                    Spacing="18">
-                    <TextBlock
-                        Classes="docs-eyebrow"
-                        Text="EXAMPLES" />
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Basic example" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use m-&lt;number&gt; utilities like m-4 and m-8 to control the outer space on all sides of an element." />
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Height="208"
-                                    Padding="28">
-                                    <Grid>
+                                <Grid
+                                    RowDefinitions="Auto, Auto, Auto"
+                                    ColumnDefinitions="Auto, *, *, Auto">
+                                    <Border
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Classes="docs-marginShell"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top">
                                         <Border
-                                            Classes="docs-marginShell"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center">
-                                            <Grid
-                                                Width="280"
-                                                Height="120">
-                                                <Border
-                                                    tw:Tw.Class="bg-sky-500 m-8"
-                                                    CornerRadius="12"
-                                                    HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Stretch">
-                                                    <TextBlock
-                                                        Classes="docs-chip"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        Text="m-8" />
-                                                </Border>
-                                            </Grid>
+                                            tw:Tw.Class="bg-violet-500 mt-6 w-[68px] h-14"
+                                            CornerRadius="12">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="mt-6" />
                                         </Border>
-                                    </Grid>
+                                    </Border>
+                                    <Border
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Classes="docs-marginShell"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center">
+                                        <Border
+                                            tw:Tw.Class="bg-violet-500 ml-2 w-16 h-14"
+                                            CornerRadius="12">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="ml-2" />
+                                        </Border>
+                                    </Border>
+                                    <Border
+                                        Grid.Row="1"
+                                        Grid.Column="3"
+                                        Classes="docs-marginShell"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom">
+                                        <Border
+                                            tw:Tw.Class="bg-violet-500 mr-4 w-16 h-14"
+                                            CornerRadius="12">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="mr-4" />
+                                        </Border>
+                                    </Border>
+                                    <Border
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        Classes="docs-marginShell"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom">
+                                        <Border
+                                            tw:Tw.Class="bg-violet-500 mb-8 w-[68px] h-14"
+                                            CornerRadius="12">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="mb-8" />
+                                        </Border>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Adding horizontal and vertical margin"
+                        Summary="Use mx-&lt;number&gt; and my-&lt;number&gt; utilities like mx-8 and my-8 to control axis-specific margin.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="mx-8" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="my-8" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Spacing="24">
+                                <Border
+                                    Classes="docs-marginShell">
+                                    <Border
+                                        tw:Tw.Class="bg-amber-500 mx-8"
+                                        CornerRadius="12">
+                                        <Border
+                                            tw:Tw.Class="w-[72px] h-14">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="mx-8" />
+                                        </Border>
+                                    </Border>
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock>
-                                            &lt;Border tw:Tw.Class=&quot;m-8&quot; /&gt;
-                                        </docs:AxamlCodeBlock>
-                                    </StackPanel>
+                                    Classes="docs-marginShell">
+                                    <Border
+                                        tw:Tw.Class="bg-rose-500 my-8"
+                                        CornerRadius="12">
+                                        <Border
+                                            tw:Tw.Class="w-[72px] h-14">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="my-8" />
+                                        </Border>
+                                    </Border>
                                 </Border>
                             </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Adding margin to one side" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use mt-&lt;number&gt;, mr-&lt;number&gt;, mb-&lt;number&gt;, and ml-&lt;number&gt; utilities like mt-6 and mr-4 to control margin on one side of an element." />
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950">
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Using negative values"
+                        Summary="Prefix a margin utility with a leading minus sign, like -mt-8, when you need elements to intentionally overlap.">
+                        <docs:DocsExample
+                            Code="&lt;Border tw:Tw.Class=&quot;-mt-8&quot; /&gt;">
+                            <Border
+                                Classes="docs-marginShell"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                <StackPanel
+                                    Spacing="0">
                                     <Border
-                                        BorderThickness="1"
-                                        tw:Tw.Class="border-slate-800"
-                                        MaxWidth="620"
+                                        tw:Tw.Class="bg-sky-400 w-60 p-4"
+                                        CornerRadius="12">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            Text="base block" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-blue-500 -mt-8 w-[188px] p-4"
+                                        CornerRadius="12"
+                                        HorizontalAlignment="Center">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            Text="-mt-8" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Using logical properties"
+                        Summary="Use ms-&lt;number&gt;, me-&lt;number&gt;, mbs-&lt;number&gt;, and mbe-&lt;number&gt; utilities when margin should follow the current text direction or writing mode. In Avalonia RTL, logical layout is resolved first from FlowDirection, then the final rendered result is mirrored, so the screen side can differ from the physical margin side. Use msv-&lt;number&gt; and mev-&lt;number&gt; when you want margin to stay on the final visual start or end side after Avalonia mirrors RTL content.">
+                        <StackPanel
+                            Spacing="18">
+                            <docs:DocsNote
+                                Classes="supported"
+                                Title="Teaching note"
+                                Body="The visualized side-mapping demo below adds ScaleTransform only to cancel Avalonia&apos;s automatic RTL mirror for teaching. In the real RTL demo, layout logic is applied first, then Avalonia&apos;s mirror changes the final rendered side. Real app usage is the unmodified RTL rendering demo and the code examples below." />
+                            <docs:DocsExample
+                                CodeLabel="Actual usage">
+                                <docs:DocsExample.Snippets>
+                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="ms-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="me-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="ms-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="me-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="mbs-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="mbe-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="mbs-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="mbe-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="msv-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="mev-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="msv-8" /&gt;</x:String>
+                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="mev-8" /&gt;</x:String>
+                                </docs:DocsExample.Snippets>
+                                <StackPanel
+                                    Spacing="24">
+                                    <StackPanel
+                                        Spacing="16">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="Real RTL rendering" />
+                                        <TextBlock
+                                            Classes="docs-noteBody"
+                                            Text="This preview shows the actual Avalonia result when FlowDirection changes. It uses tw:Tw.Class and FlowDirection only, with no extra transforms. Under RTL, the logical margin is calculated first, then Avalonia mirrors the rendered output." />
+                                        <Grid
+                                            ColumnDefinitions="*,*"
+                                            ColumnSpacing="20">
+                                            <Border
+                                                Grid.Column="0"
+                                                Classes="docs-inset">
+                                                <StackPanel
+                                                    Spacing="12">
+                                                    <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Left-to-right" />
+                                                    <StackPanel
+                                                        Orientation="Vertical"
+                                                        Spacing="12">
+                                                        <Grid
+                                                            ColumnDefinitions="Auto,*,Auto"
+                                                            ColumnSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="start -&gt;" />
+                                                            <Border
+                                                                Grid.Column="1"
+                                                                Classes="docs-marginShell">
+                                                                <Grid
+                                                                    tw:Tw.Class="h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        FlowDirection="LeftToRight"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-lime-500 ms-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="ms-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Column="2"
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="&lt;- end" />
+                                                        </Grid>
+                                                        <Grid
+                                                            ColumnDefinitions="Auto,*,Auto"
+                                                            ColumnSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="start -&gt;" />
+                                                            <Border
+                                                                Grid.Column="1"
+                                                                Classes="docs-marginShell">
+                                                                <Grid
+                                                                    tw:Tw.Class="h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        FlowDirection="LeftToRight"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-cyan-500 me-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="me-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Column="2"
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="&lt;- end" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border
+                                                Grid.Column="1"
+                                                Classes="docs-inset">
+                                                <StackPanel
+                                                    Spacing="12">
+                                                    <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Right-to-left" />
+                                                    <StackPanel
+                                                        Orientation="Vertical"
+                                                        Spacing="12">
+                                                        <Grid
+                                                            ColumnDefinitions="Auto,*,Auto"
+                                                            ColumnSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="end -&gt;" />
+                                                            <Border
+                                                                Grid.Column="1"
+                                                                Classes="docs-marginShell"
+                                                                FlowDirection="RightToLeft">
+                                                                <Grid
+                                                                    tw:Tw.Class="h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-lime-500 ms-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="ms-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Column="2"
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="&lt;- start" />
+                                                        </Grid>
+                                                        <Grid
+                                                            ColumnDefinitions="Auto,*,Auto"
+                                                            ColumnSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="end -&gt;" />
+                                                            <Border
+                                                                Grid.Column="1"
+                                                                Classes="docs-marginShell"
+                                                                FlowDirection="RightToLeft">
+                                                                <Grid
+                                                                    tw:Tw.Class="h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-cyan-500 me-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="me-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Column="2"
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="&lt;- start" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel
+                                        Spacing="16">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="Block start and end" />
+                                        <TextBlock
+                                            Classes="docs-noteBody"
+                                            Text="In the sample&apos;s horizontal writing mode, mbs-8 stays on top and mbe-8 stays on bottom in both LTR and RTL. FlowDirection changes inline start and end, but it does not remap the block axis here." />
+                                        <Grid
+                                            ColumnDefinitions="*,*"
+                                            ColumnSpacing="20">
+                                            <Border
+                                                Grid.Column="0"
+                                                Classes="docs-inset">
+                                                <StackPanel
+                                                    Spacing="12">
+                                                    <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Left-to-right" />
+                                                    <StackPanel
+                                                        Orientation="Vertical"
+                                                        Spacing="12">
+                                                        <Grid
+                                                            RowDefinitions="Auto,*,Auto"
+                                                            RowSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                HorizontalAlignment="Center"
+                                                                Text="block start" />
+                                                            <Border
+                                                                Grid.Row="1"
+                                                                Classes="docs-marginShell"
+                                                                HorizontalAlignment="Center">
+                                                                <Grid
+                                                                    tw:Tw.Class="w-32 h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        FlowDirection="LeftToRight"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-fuchsia-500 mbs-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="mbs-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Row="2"
+                                                                Classes="docs-miniTitle"
+                                                                HorizontalAlignment="Center"
+                                                                Text="block end" />
+                                                        </Grid>
+                                                        <Grid
+                                                            RowDefinitions="Auto,*,Auto"
+                                                            RowSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                HorizontalAlignment="Center"
+                                                                Text="block start" />
+                                                            <Border
+                                                                Grid.Row="1"
+                                                                Classes="docs-marginShell"
+                                                                HorizontalAlignment="Center">
+                                                                <Grid
+                                                                    tw:Tw.Class="w-32 h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        FlowDirection="LeftToRight"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-sky-500 mbe-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip on-color"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="mbe-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Row="2"
+                                                                Classes="docs-miniTitle"
+                                                                HorizontalAlignment="Center"
+                                                                Text="block end" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border
+                                                Grid.Column="1"
+                                                Classes="docs-inset">
+                                                <StackPanel
+                                                    Spacing="12">
+                                                    <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Right-to-left" />
+                                                    <StackPanel
+                                                        Orientation="Vertical"
+                                                        Spacing="12">
+                                                        <Grid
+                                                            RowDefinitions="Auto,*,Auto"
+                                                            RowSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                HorizontalAlignment="Center"
+                                                                Text="block start" />
+                                                            <Border
+                                                                Grid.Row="1"
+                                                                Classes="docs-marginShell"
+                                                                HorizontalAlignment="Center">
+                                                                <Grid
+                                                                    tw:Tw.Class="w-32 h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        FlowDirection="RightToLeft"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-fuchsia-500 mbs-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="mbs-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Row="2"
+                                                                Classes="docs-miniTitle"
+                                                                HorizontalAlignment="Center"
+                                                                Text="block end" />
+                                                        </Grid>
+                                                        <Grid
+                                                            RowDefinitions="Auto,*,Auto"
+                                                            RowSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                HorizontalAlignment="Center"
+                                                                Text="block start" />
+                                                            <Border
+                                                                Grid.Row="1"
+                                                                Classes="docs-marginShell"
+                                                                HorizontalAlignment="Center">
+                                                                <Grid
+                                                                    tw:Tw.Class="w-32 h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        FlowDirection="RightToLeft"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-sky-500 mbe-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip on-color"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="mbe-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Row="2"
+                                                                Classes="docs-miniTitle"
+                                                                HorizontalAlignment="Center"
+                                                                Text="block end" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel
+                                        Spacing="16">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="Visualized side mapping" />
+                                        <TextBlock
+                                            Classes="docs-noteBody"
+                                            Text="This teaching preview cancels Avalonia&apos;s RTL mirror so the physical start/end side is easier to inspect side-by-side." />
+                                        <Grid
+                                            ColumnDefinitions="*,*"
+                                            ColumnSpacing="20">
+                                            <Border
+                                                Grid.Column="0"
+                                                Classes="docs-inset">
+                                                <StackPanel
+                                                    Spacing="12">
+                                                    <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Left-to-right" />
+                                                    <StackPanel
+                                                        Orientation="Vertical"
+                                                        Spacing="12">
+                                                        <Border
+                                                            Classes="docs-marginShell"
+                                                            FlowDirection="LeftToRight">
+                                                            <Grid
+                                                                tw:Tw.Class="h-20">
+                                                                <Border
+                                                                    CornerRadius="12"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Stretch"
+                                                                    tw:Tw.Class="bg-lime-500 ms-8">
+                                                                    <TextBlock
+                                                                        Classes="docs-chip"
+                                                                        HorizontalAlignment="Center"
+                                                                        VerticalAlignment="Center"
+                                                                        Text="ms-8" />
+                                                                </Border>
+                                                            </Grid>
+                                                        </Border>
+                                                        <Border
+                                                            Classes="docs-marginShell"
+                                                            FlowDirection="LeftToRight">
+                                                            <Grid
+                                                                tw:Tw.Class="h-20">
+                                                                <Border
+                                                                    CornerRadius="12"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Stretch"
+                                                                    tw:Tw.Class="bg-cyan-500 me-8">
+                                                                    <TextBlock
+                                                                        Classes="docs-chip"
+                                                                        HorizontalAlignment="Center"
+                                                                        VerticalAlignment="Center"
+                                                                        Text="me-8" />
+                                                                </Border>
+                                                            </Grid>
+                                                        </Border>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border
+                                                Grid.Column="1"
+                                                Classes="docs-inset">
+                                                <StackPanel
+                                                    Spacing="12">
+                                                    <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Right-to-left" />
+                                                    <StackPanel
+                                                        Orientation="Vertical"
+                                                        Spacing="12">
+                                                        <Border
+                                                            Classes="docs-marginShell"
+                                                            FlowDirection="RightToLeft">
+                                                            <Grid
+                                                                tw:Tw.Class="h-20">
+                                                                <Border
+                                                                    CornerRadius="12"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    RenderTransformOrigin="50%, 50%"
+                                                                    VerticalAlignment="Stretch"
+                                                                    tw:Tw.Class="bg-lime-500 ms-8">
+                                                                    <Border.RenderTransform>
+                                                                        <media:ScaleTransform
+                                                                            ScaleX="-1" />
+                                                                    </Border.RenderTransform>
+                                                                    <TextBlock
+                                                                        Classes="docs-chip"
+                                                                        HorizontalAlignment="Center"
+                                                                        VerticalAlignment="Center"
+                                                                        Text="ms-8" />
+                                                                </Border>
+                                                            </Grid>
+                                                        </Border>
+                                                        <Border
+                                                            Classes="docs-marginShell"
+                                                            FlowDirection="RightToLeft">
+                                                            <Grid
+                                                                tw:Tw.Class="h-20">
+                                                                <Border
+                                                                    CornerRadius="12"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    RenderTransformOrigin="50%, 50%"
+                                                                    VerticalAlignment="Stretch"
+                                                                    tw:Tw.Class="bg-cyan-500 me-8">
+                                                                    <Border.RenderTransform>
+                                                                        <media:ScaleTransform
+                                                                            ScaleX="-1" />
+                                                                    </Border.RenderTransform>
+                                                                    <TextBlock
+                                                                        Classes="docs-chip"
+                                                                        HorizontalAlignment="Center"
+                                                                        VerticalAlignment="Center"
+                                                                        Text="me-8" />
+                                                                </Border>
+                                                            </Grid>
+                                                        </Border>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel
+                                        Spacing="16">
+                                        <TextBlock
+                                            Classes="docs-miniTitle"
+                                            Text="Visual start and end aliases" />
+                                        <TextBlock
+                                            Classes="docs-noteBody"
+                                            Text="msv-8 follows the final rendered start side, and mev-8 follows the final rendered end side. In RTL they intentionally write physical left and right margin so Avalonia&apos;s mirror lands the spacing on the expected visual side." />
+                                        <Grid
+                                            ColumnDefinitions="*,*"
+                                            ColumnSpacing="20">
+                                            <Border
+                                                Grid.Column="0"
+                                                Classes="docs-inset">
+                                                <StackPanel
+                                                    Spacing="12">
+                                                    <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Left-to-right" />
+                                                    <StackPanel
+                                                        Orientation="Vertical"
+                                                        Spacing="12">
+                                                        <Grid
+                                                            ColumnDefinitions="Auto,*,Auto"
+                                                            ColumnSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="start -&gt;" />
+                                                            <Border
+                                                                Grid.Column="1"
+                                                                Classes="docs-marginShell"
+                                                                FlowDirection="LeftToRight">
+                                                                <Grid
+                                                                    tw:Tw.Class="h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-lime-500 msv-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="msv-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Column="2"
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="&lt;- end" />
+                                                        </Grid>
+                                                        <Grid
+                                                            ColumnDefinitions="Auto,*,Auto"
+                                                            ColumnSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="start -&gt;" />
+                                                            <Border
+                                                                Grid.Column="1"
+                                                                Classes="docs-marginShell"
+                                                                FlowDirection="LeftToRight">
+                                                                <Grid
+                                                                    tw:Tw.Class="h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-cyan-500 mev-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="mev-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Column="2"
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="&lt;- end" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border
+                                                Grid.Column="1"
+                                                Classes="docs-inset">
+                                                <StackPanel
+                                                    Spacing="12">
+                                                    <TextBlock
+                                                        Classes="docs-miniTitle"
+                                                        Text="Right-to-left" />
+                                                    <StackPanel
+                                                        Orientation="Vertical"
+                                                        Spacing="12">
+                                                        <Grid
+                                                            ColumnDefinitions="Auto,*,Auto"
+                                                            ColumnSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="end -&gt;" />
+                                                            <Border
+                                                                Grid.Column="1"
+                                                                Classes="docs-marginShell"
+                                                                FlowDirection="RightToLeft">
+                                                                <Grid
+                                                                    tw:Tw.Class="h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-lime-500 msv-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="msv-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Column="2"
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="&lt;- start" />
+                                                        </Grid>
+                                                        <Grid
+                                                            ColumnDefinitions="Auto,*,Auto"
+                                                            ColumnSpacing="10">
+                                                            <TextBlock
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="end -&gt;" />
+                                                            <Border
+                                                                Grid.Column="1"
+                                                                Classes="docs-marginShell"
+                                                                FlowDirection="RightToLeft">
+                                                                <Grid
+                                                                    tw:Tw.Class="h-20">
+                                                                    <Border
+                                                                        CornerRadius="12"
+                                                                        HorizontalAlignment="Stretch"
+                                                                        VerticalAlignment="Stretch"
+                                                                        tw:Tw.Class="bg-cyan-500 mev-8">
+                                                                        <TextBlock
+                                                                            Classes="docs-chip"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center"
+                                                                            Text="mev-8" />
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+                                                            <TextBlock
+                                                                Grid.Column="2"
+                                                                Classes="docs-miniTitle"
+                                                                VerticalAlignment="Center"
+                                                                Text="&lt;- start" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                </StackPanel>
+                            </docs:DocsExample>
+                        </StackPanel>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Arbitrary margin values"
+                        Summary="Use bracket syntax like m-[8px] for direct arbitrary values.">
+                        <StackPanel
+                            Spacing="18">
+                            <docs:DocsNote
+                                Title="How arbitrary margins resolve">
+                                <StackPanel
+                                    Spacing="8">
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="px · rem · em · % · unitless · negative prefix" />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Arbitrary margin values are parser-only and do not emit generated package keys." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="rem and em use 16px base. Unitless values are treated as px." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Current parser only supports bracket arbitrary syntax. m-(&lt;custom-property&gt;) and -m-(&lt;custom-property&gt;) remain unsupported." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="% tokens are currently parsed as numeric values, not CSS percentage layout." />
+                                </StackPanel>
+                            </docs:DocsNote>
+                            <docs:DocsExample>
+                                <docs:DocsExample.Snippets>
+                                    <x:String>&lt;Border tw:Tw.Class="m-[8px]" /&gt;</x:String>
+                                    <x:String>&lt;Border tw:Tw.Class="mx-[16px] my-[12px]" /&gt;</x:String>
+                                    <x:String>&lt;Border tw:Tw.Class="-m-[4px]" /&gt;</x:String>
+                                </docs:DocsExample.Snippets>
+                                <StackPanel
+                                    Spacing="12">
+                                    <Border
+                                        Classes="docs-marginShell"
                                         HorizontalAlignment="Center">
                                         <Grid
-                                            RowDefinitions="Auto, Auto, Auto"
-                                            ColumnDefinitions="Auto, *, *, Auto">
+                                            tw:Tw.Class="w-[280px] h-[120px]">
                                             <Border
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Classes="docs-marginShell"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Top">
-                                                <Border
-                                                    tw:Tw.Class="bg-violet-500 mt-6"
-                                                    CornerRadius="12"
-                                                    Width="68"
-                                                    Height="56">
-                                                            <TextBlock
-                                                                Classes="docs-chip"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Center"
-                                                                Text="mt-6" />
-                                                        </Border>
-                                                    </Border>
-                                                    <Border
-                                                        Grid.Row="1"
-                                                        Grid.Column="0"
-                                                        Classes="docs-marginShell"
-                                                        HorizontalAlignment="Left"
-                                                        VerticalAlignment="Center">
-                                                        <Border
-                                                            tw:Tw.Class="bg-violet-500 ml-2"
-                                                            CornerRadius="12"
-                                                            Width="64"
-                                                            Height="56">
-                                                            <TextBlock
-                                                                Classes="docs-chip"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Center"
-                                                                Text="ml-2" />
-                                                        </Border>
-                                                    </Border>
-                                                    <Border
-                                                        Grid.Row="1"
-                                                        Grid.Column="3"
-                                                        Classes="docs-marginShell"
-                                                        HorizontalAlignment="Right"
-                                                        VerticalAlignment="Bottom">
-                                                        <Border
-                                                            tw:Tw.Class="bg-violet-500 mr-4"
-                                                            CornerRadius="12"
-                                                            Width="64"
-                                                            Height="56">
-                                                            <TextBlock
-                                                                Classes="docs-chip"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Center"
-                                                                Text="mr-4" />
-                                                        </Border>
-                                                    </Border>
-                                                    <Border
-                                                        Grid.Row="2"
-                                                        Grid.Column="2"
-                                                        Classes="docs-marginShell"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Bottom">
-                                                        <Border
-                                                            tw:Tw.Class="bg-violet-500 mb-8"
-                                                            CornerRadius="12"
-                                                            Width="68"
-                                                            Height="56">
-                                                            <TextBlock
-                                                                Classes="docs-chip"
-                                                                HorizontalAlignment="Center"
-                                                                VerticalAlignment="Center"
-                                                                Text="mb-8" />
-                                                        </Border>
-                                                    </Border>
-                                                </Grid>
-                                            </Border>
-                                        </Border>
-                                        <Border
-                                            tw:Tw.Class="border-slate-800"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
-                                                <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="AXAML" />
-                                                <docs:AxamlCodeBlock>
-                                                    &lt;Border tw:Tw.Class=&quot;ml-2&quot; /&gt;
-                                                </docs:AxamlCodeBlock>
-                                                <docs:AxamlCodeBlock>
-                                                    &lt;Border tw:Tw.Class=&quot;mt-6&quot; /&gt;
-                                                </docs:AxamlCodeBlock>
-                                                <docs:AxamlCodeBlock>
-                                                    &lt;Border tw:Tw.Class=&quot;mb-12&quot; /&gt;
-                                                </docs:AxamlCodeBlock>
-                                                <docs:AxamlCodeBlock>
-                                                    &lt;Border tw:Tw.Class=&quot;mr-4&quot; /&gt;
-                                                </docs:AxamlCodeBlock>
-                                            </StackPanel>
-                                        </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Adding horizontal and vertical margin" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use mx-&lt;number&gt; and my-&lt;number&gt; utilities like mx-8 and my-8 to control axis-specific margin." />
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Height="176"
-                                    Padding="24">
-                                    <Grid>
-                                        <StackPanel
-                                            Orientation="Horizontal"
-                                            HorizontalAlignment="Center"
-                                            Spacing="24">
-                                            <Border
-                                                Classes="docs-marginShell">
-                                                <Border
-                                                    tw:Tw.Class="bg-amber-500 mx-8"
-                                                    CornerRadius="12">
-                                                    <Border
-                                                        Width="72"
-                                                        Height="56">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="mx-8" />
-                                                    </Border>
-                                                </Border>
-                                            </Border>
-                                            <Border
-                                                Classes="docs-marginShell">
-                                                <Border
-                                                    tw:Tw.Class="bg-rose-500 my-8"
-                                                    CornerRadius="12">
-                                                    <Border
-                                                        Width="72"
-                                                        Height="56">
-                                                        <TextBlock
-                                                            Classes="docs-chip"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center"
-                                                            Text="my-8" />
-                                                    </Border>
-                                                </Border>
-                                            </Border>
-                                        </StackPanel>
-                                    </Grid>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock>
-                                            &lt;Border tw:Tw.Class=&quot;mx-8&quot; /&gt;
-                                        </docs:AxamlCodeBlock>
-                                        <docs:AxamlCodeBlock>
-                                            &lt;Border tw:Tw.Class=&quot;my-8&quot; /&gt;
-                                        </docs:AxamlCodeBlock>
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Using negative values" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Prefix a margin utility with a leading minus sign, like -mt-8, when you need elements to intentionally overlap." />
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Height="208"
-                                    Padding="28">
-                                    <Grid>
-                                        <Border
-                                            Classes="docs-marginShell"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center">
-                                            <StackPanel
-                                                Spacing="0">
-                                                <Border
-                                                    tw:Tw.Class="bg-sky-400"
-                                                    CornerRadius="12"
-                                                    Width="240"
-                                                    Padding="16">
-                                                    <TextBlock
-                                                        Classes="docs-chip"
-                                                        HorizontalAlignment="Center"
-                                                        Text="base block" />
-                                                </Border>
-                                                <Border
-                                                    tw:Tw.Class="bg-blue-500 -mt-8"
-                                                    CornerRadius="12"
-                                                    Width="188"
-                                                    Padding="16"
-                                                    HorizontalAlignment="Center">
-                                                    <TextBlock
-                                                        Classes="docs-chip"
-                                                        HorizontalAlignment="Center"
-                                                        Text="-mt-8" />
-                                                </Border>
-                                            </StackPanel>
-                                        </Border>
-                                    </Grid>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock>
-                                            &lt;Border tw:Tw.Class=&quot;-mt-8&quot; /&gt;
-                                        </docs:AxamlCodeBlock>
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Using logical properties" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use ms-&lt;number&gt;, me-&lt;number&gt;, mbs-&lt;number&gt;, and mbe-&lt;number&gt; utilities when margin should follow the current text direction or writing mode. In Avalonia RTL, logical layout is resolved first from FlowDirection, then the final rendered result is mirrored, so the screen side can differ from the physical margin side. Use msv-&lt;number&gt; and mev-&lt;number&gt; when you want margin to stay on the final visual start or end side after Avalonia mirrors RTL content." />
-                        <Border
-                            Classes="docs-note"
-                            BorderThickness="2"
-                            tw:Tw.Class="bg-sky-950/35 border-sky-400/60">
-                            <StackPanel
-                                Spacing="6">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    tw:Tw.Class="text-sky-50"
-                                    Text="Teaching note" />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    tw:Tw.Class="text-sky-100/85"
-                                    Text="The visualized side-mapping demo below adds ScaleTransform only to cancel Avalonia&apos;s automatic RTL mirror for teaching. In the real RTL demo, layout logic is applied first, then Avalonia&apos;s mirror changes the final rendered side. Real app usage is the unmodified RTL rendering demo and the code examples below." />
-                            </StackPanel>
-                        </Border>
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Padding="24">
-                                    <StackPanel
-                                        Spacing="24">
-                                        <StackPanel
-                                            Spacing="16">
-                                            <TextBlock
-                                                Classes="docs-miniTitle"
-                                                Text="Real RTL rendering" />
-                                                    <TextBlock
-                                                        Classes="docs-noteBody"
-                                                        Text="This preview shows the actual Avalonia result when FlowDirection changes. It uses tw:Tw.Class and FlowDirection only, with no extra transforms. Under RTL, the logical margin is calculated first, then Avalonia mirrors the rendered output." />
-                                                    <Grid
-                                                        ColumnDefinitions="*,*"
-                                                        ColumnSpacing="20">
-                                                        <Border
-                                                            Grid.Column="0"
-                                                            Classes="docs-inset">
-                                                            <StackPanel
-                                                                Spacing="12">
-                                                                <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="Left-to-right" />
-                                                                <StackPanel
-                                                                    Orientation="Vertical"
-                                                                    Spacing="12">
-                                                                    <Grid
-                                                                        ColumnDefinitions="Auto,*,Auto"
-                                                                        ColumnSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="start -&gt;" />
-                                                                        <Border
-                                                                            Grid.Column="1"
-                                                                            Classes="docs-marginShell">
-                                                                            <Grid
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    FlowDirection="LeftToRight"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-lime-500 ms-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="ms-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Column="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="&lt;- end" />
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        ColumnDefinitions="Auto,*,Auto"
-                                                                        ColumnSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="start -&gt;" />
-                                                                        <Border
-                                                                            Grid.Column="1"
-                                                                            Classes="docs-marginShell">
-                                                                            <Grid
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    FlowDirection="LeftToRight"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-cyan-500 me-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="me-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Column="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="&lt;- end" />
-                                                                    </Grid>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Border>
-                                                        <Border
-                                                            Grid.Column="1"
-                                                            Classes="docs-inset">
-                                                            <StackPanel
-                                                                Spacing="12">
-                                                                <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="Right-to-left" />
-                                                                <StackPanel
-                                                                    Orientation="Vertical"
-                                                                    Spacing="12">
-                                                                    <Grid
-                                                                        ColumnDefinitions="Auto,*,Auto"
-                                                                        ColumnSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="end -&gt;" />
-                                                                        <Border
-                                                                            Grid.Column="1"
-                                                                            Classes="docs-marginShell"
-                                                                            FlowDirection="RightToLeft">
-                                                                            <Grid
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-lime-500 ms-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="ms-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Column="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="&lt;- start" />
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        ColumnDefinitions="Auto,*,Auto"
-                                                                        ColumnSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="end -&gt;" />
-                                                                        <Border
-                                                                            Grid.Column="1"
-                                                                            Classes="docs-marginShell"
-                                                                            FlowDirection="RightToLeft">
-                                                                            <Grid
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-cyan-500 me-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="me-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Column="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="&lt;- start" />
-                                                                    </Grid>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Border>
-                                                    </Grid>
-                                                </StackPanel>
-                                                <StackPanel
-                                                    Spacing="16">
-                                                    <TextBlock
-                                                        Classes="docs-miniTitle"
-                                                        Text="Block start and end" />
-                                                    <TextBlock
-                                                        Classes="docs-noteBody"
-                                                        Text="In the sample&apos;s horizontal writing mode, mbs-8 stays on top and mbe-8 stays on bottom in both LTR and RTL. FlowDirection changes inline start and end, but it does not remap the block axis here." />
-                                                    <Grid
-                                                        ColumnDefinitions="*,*"
-                                                        ColumnSpacing="20">
-                                                        <Border
-                                                            Grid.Column="0"
-                                                            Classes="docs-inset">
-                                                            <StackPanel
-                                                                Spacing="12">
-                                                                <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="Left-to-right" />
-                                                                <StackPanel
-                                                                    Orientation="Vertical"
-                                                                    Spacing="12">
-                                                                    <Grid
-                                                                        RowDefinitions="Auto,*,Auto"
-                                                                        RowSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            HorizontalAlignment="Center"
-                                                                            Text="block start" />
-                                                                        <Border
-                                                                            Grid.Row="1"
-                                                                            Classes="docs-marginShell"
-                                                                            HorizontalAlignment="Center">
-                                                                            <Grid
-                                                                                Width="128"
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    FlowDirection="LeftToRight"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-fuchsia-500 mbs-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="mbs-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Row="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            HorizontalAlignment="Center"
-                                                                            Text="block end" />
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        RowDefinitions="Auto,*,Auto"
-                                                                        RowSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            HorizontalAlignment="Center"
-                                                                            Text="block start" />
-                                                                        <Border
-                                                                            Grid.Row="1"
-                                                                            Classes="docs-marginShell"
-                                                                            HorizontalAlignment="Center">
-                                                                            <Grid
-                                                                                Width="128"
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    FlowDirection="LeftToRight"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-sky-500 mbe-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="mbe-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Row="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            HorizontalAlignment="Center"
-                                                                            Text="block end" />
-                                                                    </Grid>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Border>
-                                                        <Border
-                                                            Grid.Column="1"
-                                                            Classes="docs-inset">
-                                                            <StackPanel
-                                                                Spacing="12">
-                                                                <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="Right-to-left" />
-                                                                <StackPanel
-                                                                    Orientation="Vertical"
-                                                                    Spacing="12">
-                                                                    <Grid
-                                                                        RowDefinitions="Auto,*,Auto"
-                                                                        RowSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            HorizontalAlignment="Center"
-                                                                            Text="block start" />
-                                                                        <Border
-                                                                            Grid.Row="1"
-                                                                            Classes="docs-marginShell"
-                                                                            HorizontalAlignment="Center">
-                                                                            <Grid
-                                                                                Width="128"
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    FlowDirection="RightToLeft"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-fuchsia-500 mbs-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="mbs-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Row="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            HorizontalAlignment="Center"
-                                                                            Text="block end" />
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        RowDefinitions="Auto,*,Auto"
-                                                                        RowSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            HorizontalAlignment="Center"
-                                                                            Text="block start" />
-                                                                        <Border
-                                                                            Grid.Row="1"
-                                                                            Classes="docs-marginShell"
-                                                                            HorizontalAlignment="Center">
-                                                                            <Grid
-                                                                                Width="128"
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    FlowDirection="RightToLeft"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-sky-500 mbe-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="mbe-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Row="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            HorizontalAlignment="Center"
-                                                                            Text="block end" />
-                                                                    </Grid>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Border>
-                                                    </Grid>
-                                                </StackPanel>
-                                                <StackPanel
-                                                    Spacing="16">
-                                                    <TextBlock
-                                                        Classes="docs-miniTitle"
-                                                        Text="Visualized side mapping" />
-                                                    <TextBlock
-                                                        Classes="docs-noteBody"
-                                                        Text="This teaching preview cancels Avalonia&apos;s RTL mirror so the physical start/end side is easier to inspect side-by-side." />
-                                                    <Grid
-                                                        ColumnDefinitions="*,*"
-                                                        ColumnSpacing="20">
-                                                        <Border
-                                                            Grid.Column="0"
-                                                            Classes="docs-inset">
-                                                            <StackPanel
-                                                                Spacing="12">
-                                                                <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="Left-to-right" />
-                                                                <StackPanel
-                                                                    Orientation="Vertical"
-                                                                    Spacing="12">
-                                                                    <Border
-                                                                        Classes="docs-marginShell"
-                                                                        FlowDirection="LeftToRight">
-                                                                        <Grid
-                                                                            Height="80">
-                                                                            <Border
-                                                                                CornerRadius="12"
-                                                                                HorizontalAlignment="Stretch"
-                                                                                VerticalAlignment="Stretch"
-                                                                                tw:Tw.Class="bg-lime-500 ms-8">
-                                                                                <TextBlock
-                                                                                    Classes="docs-chip"
-                                                                                    HorizontalAlignment="Center"
-                                                                                    VerticalAlignment="Center"
-                                                                                    Text="ms-8" />
-                                                                            </Border>
-                                                                        </Grid>
-                                                                    </Border>
-                                                                    <Border
-                                                                        Classes="docs-marginShell"
-                                                                        FlowDirection="LeftToRight">
-                                                                        <Grid
-                                                                            Height="80">
-                                                                            <Border
-                                                                                CornerRadius="12"
-                                                                                HorizontalAlignment="Stretch"
-                                                                                VerticalAlignment="Stretch"
-                                                                                tw:Tw.Class="bg-cyan-500 me-8">
-                                                                                <TextBlock
-                                                                                    Classes="docs-chip"
-                                                                                    HorizontalAlignment="Center"
-                                                                                    VerticalAlignment="Center"
-                                                                                    Text="me-8" />
-                                                                            </Border>
-                                                                        </Grid>
-                                                                    </Border>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Border>
-                                                        <Border
-                                                            Grid.Column="1"
-                                                            Classes="docs-inset">
-                                                            <StackPanel
-                                                                Spacing="12">
-                                                                <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="Right-to-left" />
-                                                                <StackPanel
-                                                                    Orientation="Vertical"
-                                                                    Spacing="12">
-                                                                    <Border
-                                                                        Classes="docs-marginShell"
-                                                                        FlowDirection="RightToLeft">
-                                                                        <Grid
-                                                                            Height="80">
-                                                                            <Border
-                                                                                CornerRadius="12"
-                                                                                HorizontalAlignment="Stretch"
-                                                                                RenderTransformOrigin="50%, 50%"
-                                                                                VerticalAlignment="Stretch"
-                                                                                tw:Tw.Class="bg-lime-500 ms-8">
-                                                                                <Border.RenderTransform>
-                                                                                    <media:ScaleTransform
-                                                                                        ScaleX="-1" />
-                                                                                </Border.RenderTransform>
-                                                                                <TextBlock
-                                                                                    Classes="docs-chip"
-                                                                                    HorizontalAlignment="Center"
-                                                                                    VerticalAlignment="Center"
-                                                                                    Text="ms-8" />
-                                                                            </Border>
-                                                                        </Grid>
-                                                                    </Border>
-                                                                    <Border
-                                                                        Classes="docs-marginShell"
-                                                                        FlowDirection="RightToLeft">
-                                                                        <Grid
-                                                                            Height="80">
-                                                                            <Border
-                                                                                CornerRadius="12"
-                                                                                HorizontalAlignment="Stretch"
-                                                                                RenderTransformOrigin="50%, 50%"
-                                                                                VerticalAlignment="Stretch"
-                                                                                tw:Tw.Class="bg-cyan-500 me-8">
-                                                                                <Border.RenderTransform>
-                                                                                    <media:ScaleTransform
-                                                                                        ScaleX="-1" />
-                                                                                </Border.RenderTransform>
-                                                                                <TextBlock
-                                                                                    Classes="docs-chip"
-                                                                                    HorizontalAlignment="Center"
-                                                                                    VerticalAlignment="Center"
-                                                                                    Text="me-8" />
-                                                                            </Border>
-                                                                        </Grid>
-                                                                    </Border>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Border>
-                                                    </Grid>
-                                                </StackPanel>
-                                                <StackPanel
-                                                    Spacing="16">
-                                                    <TextBlock
-                                                        Classes="docs-miniTitle"
-                                                        Text="Visual start and end aliases" />
-                                                    <TextBlock
-                                                        Classes="docs-noteBody"
-                                                        Text="msv-8 follows the final rendered start side, and mev-8 follows the final rendered end side. In RTL they intentionally write physical left and right margin so Avalonia&apos;s mirror lands the spacing on the expected visual side." />
-                                                    <Grid
-                                                        ColumnDefinitions="*,*"
-                                                        ColumnSpacing="20">
-                                                        <Border
-                                                            Grid.Column="0"
-                                                            Classes="docs-inset">
-                                                            <StackPanel
-                                                                Spacing="12">
-                                                                <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="Left-to-right" />
-                                                                <StackPanel
-                                                                    Orientation="Vertical"
-                                                                    Spacing="12">
-                                                                    <Grid
-                                                                        ColumnDefinitions="Auto,*,Auto"
-                                                                        ColumnSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="start -&gt;" />
-                                                                        <Border
-                                                                            Grid.Column="1"
-                                                                            Classes="docs-marginShell"
-                                                                            FlowDirection="LeftToRight">
-                                                                            <Grid
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-lime-500 msv-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="msv-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Column="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="&lt;- end" />
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        ColumnDefinitions="Auto,*,Auto"
-                                                                        ColumnSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="start -&gt;" />
-                                                                        <Border
-                                                                            Grid.Column="1"
-                                                                            Classes="docs-marginShell"
-                                                                            FlowDirection="LeftToRight">
-                                                                            <Grid
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-cyan-500 mev-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="mev-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Column="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="&lt;- end" />
-                                                                    </Grid>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Border>
-                                                        <Border
-                                                            Grid.Column="1"
-                                                            Classes="docs-inset">
-                                                            <StackPanel
-                                                                Spacing="12">
-                                                                <TextBlock
-                                                                    Classes="docs-miniTitle"
-                                                                    Text="Right-to-left" />
-                                                                <StackPanel
-                                                                    Orientation="Vertical"
-                                                                    Spacing="12">
-                                                                    <Grid
-                                                                        ColumnDefinitions="Auto,*,Auto"
-                                                                        ColumnSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="end -&gt;" />
-                                                                        <Border
-                                                                            Grid.Column="1"
-                                                                            Classes="docs-marginShell"
-                                                                            FlowDirection="RightToLeft">
-                                                                            <Grid
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-lime-500 msv-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="msv-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Column="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="&lt;- start" />
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        ColumnDefinitions="Auto,*,Auto"
-                                                                        ColumnSpacing="10">
-                                                                        <TextBlock
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="end -&gt;" />
-                                                                        <Border
-                                                                            Grid.Column="1"
-                                                                            Classes="docs-marginShell"
-                                                                            FlowDirection="RightToLeft">
-                                                                            <Grid
-                                                                                Height="80">
-                                                                                <Border
-                                                                                    CornerRadius="12"
-                                                                                    HorizontalAlignment="Stretch"
-                                                                                    VerticalAlignment="Stretch"
-                                                                                    tw:Tw.Class="bg-cyan-500 mev-8">
-                                                                                    <TextBlock
-                                                                                        Classes="docs-chip"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center"
-                                                                                        Text="mev-8" />
-                                                                                </Border>
-                                                                            </Grid>
-                                                                        </Border>
-                                                                        <TextBlock
-                                                                            Grid.Column="2"
-                                                                            Classes="docs-miniTitle"
-                                                                            VerticalAlignment="Center"
-                                                                            Text="&lt;- start" />
-                                                                    </Grid>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Border>
-                                                    </Grid>
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border
-                                            tw:Tw.Class="border-slate-800"
-                                            BorderThickness="0,1,0,0"
-                                            Padding="20,16">
-                                            <StackPanel
-                                                Spacing="6">
-                                                <TextBlock
-                                                    Classes="docs-miniTitle"
-                                                    Text="Actual usage" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;ms-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;me-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;ms-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;me-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;mbs-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;mbe-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;mbs-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;mbe-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;msv-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;LeftToRight&quot; tw:Tw.Class=&quot;mev-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;msv-8&quot; /&gt;" />
-                                                <docs:AxamlCodeBlock
-                                                    Code="&lt;Border FlowDirection=&quot;RightToLeft&quot; tw:Tw.Class=&quot;mev-8&quot; /&gt;" />
-                                            </StackPanel>
-                                        </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel
-                        Spacing="16">
-                        <TextBlock
-                            Classes="docs-sectionTitle"
-                            Text="Arbitrary margin values" />
-                        <TextBlock
-                            Classes="docs-body"
-                            Text="Use bracket syntax like m-[8px] for direct arbitrary values." />
-                        <Border
-                            Classes="docs-note">
-                            <StackPanel
-                                Spacing="8">
-                                <TextBlock
-                                    Classes="docs-noteTitle"
-                                    Text="Arbitrary margin notes" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="px / rem / em / % / unitless / negative prefix" />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="Arbitrary margin values are parser-only and do not emit generated package keys." />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="rem and em use 16px base. Unitless values are treated as px." />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="Current parser only supports bracket arbitrary syntax. m-(&lt;custom-property&gt;) and -m-(&lt;custom-property&gt;) remain unsupported." />
-                                <TextBlock
-                                    Classes="docs-noteBody"
-                                    Text="% tokens are currently parsed as numeric values, not CSS percentage layout." />
-                            </StackPanel>
-                        </Border>
-                        <Border
-                            Classes="docs-surface">
-                            <StackPanel
-                                Spacing="0">
-                                <Border
-                                    tw:Tw.Class="bg-slate-950"
-                                    Padding="24">
-                                    <StackPanel
-                                        Spacing="12">
-                                        <Border
-                                            Classes="docs-marginShell"
-                                            HorizontalAlignment="Center">
-                                            <Grid
-                                                Width="280"
-                                                Height="120">
-                                                <Border
-                                                    tw:Tw.Class="bg-sky-500 m-[8px]"
-                                                    CornerRadius="12"
-                                                    HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Stretch">
-                                                    <TextBlock
-                                                        Classes="docs-chip"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        Text="m-[8px]" />
-                                                </Border>
-                                            </Grid>
-                                        </Border>
-                                        <Border
-                                            Classes="docs-marginShell"
-                                            HorizontalAlignment="Center">
-                                            <Border
-                                                tw:Tw.Class="bg-emerald-500 mx-[16px] my-[12px]"
+                                                tw:Tw.Class="bg-sky-500 m-[8px]"
                                                 CornerRadius="12"
-                                                Width="120"
-                                                Height="56"
-                                                Margin="0">
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch">
+                                                <TextBlock
+                                                    Classes="docs-chip on-color"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="m-[8px]" />
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                    <Border
+                                        Classes="docs-marginShell"
+                                        HorizontalAlignment="Center">
+                                        <Border
+                                            tw:Tw.Class="bg-emerald-500 mx-[16px] my-[12px] w-[120px] h-14"
+                                            CornerRadius="12">
+                                            <TextBlock
+                                                Classes="docs-chip on-color"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="mx/my" />
+                                        </Border>
+                                    </Border>
+                                    <Border
+                                        Classes="docs-marginShell"
+                                        HorizontalAlignment="Center">
+                                        <StackPanel
+                                            Spacing="0">
+                                            <Border
+                                                tw:Tw.Class="bg-sky-400 w-60 p-4"
+                                                CornerRadius="12">
                                                 <TextBlock
                                                     Classes="docs-chip"
                                                     HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="mx/my" />
+                                                    Text="base block" />
                                             </Border>
-                                        </Border>
-                                        <Border
-                                            Classes="docs-marginShell"
-                                            HorizontalAlignment="Center">
-                                            <StackPanel
-                                                Spacing="0">
-                                                <Border
-                                                    tw:Tw.Class="bg-sky-400"
-                                                    CornerRadius="12"
-                                                    Width="240"
-                                                    Padding="16">
-                                                    <TextBlock
-                                                        Classes="docs-chip"
-                                                        HorizontalAlignment="Center"
-                                                        Text="base block" />
-                                                </Border>
-                                                <Border
-                                                    tw:Tw.Class="bg-orange-500 -m-[4px]"
-                                                    CornerRadius="12"
-                                                    Width="188"
-                                                    Padding="16"
-                                                    HorizontalAlignment="Center">
-                                                    <TextBlock
-                                                        Classes="docs-chip"
-                                                        HorizontalAlignment="Center"
-                                                        Text="-m-[4px]" />
-                                                </Border>
-                                            </StackPanel>
-                                        </Border>
-                                    </StackPanel>
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="border-slate-800"
-                                    BorderThickness="0,1,0,0"
-                                    Padding="20,16">
-                                    <StackPanel
-                                        Spacing="6">
-                                        <TextBlock
-                                            Classes="docs-miniTitle"
-                                            Text="AXAML" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border tw:Tw.Class=&quot;m-[8px]&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border tw:Tw.Class=&quot;mx-[16px] my-[12px]&quot; /&gt;" />
-                                        <docs:AxamlCodeBlock
-                                            Code="&lt;Border tw:Tw.Class=&quot;-m-[4px]&quot; /&gt;" />
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
+                                            <Border
+                                                tw:Tw.Class="bg-orange-500 -m-[4px] w-[188px] p-4"
+                                                CornerRadius="12"
+                                                HorizontalAlignment="Center">
+                                                <TextBlock
+                                                    Classes="docs-chip on-color"
+                                                    HorizontalAlignment="Center"
+                                                    Text="-m-[4px]" />
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </docs:DocsExample>
+                        </StackPanel>
+                    </docs:DocsSection>
                 </StackPanel>
             </StackPanel>
-        </ScrollViewer>
-    </Border>
+        </StackPanel>
+    </docs:DocsPage>
 </UserControl>
