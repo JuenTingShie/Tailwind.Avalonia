@@ -5,12 +5,14 @@ on:
     branches:
       - main
     paths:
+      - 'src/Tailwind.Avalonia/**'
       - 'samples/Tailwind.Avalonia.Sample.Browser/**'
       - 'samples/Tailwind.Avalonia.Sample/**'
   pull_request:
     branches:
       - main
     paths:
+      - 'src/Tailwind.Avalonia/**'
       - 'samples/Tailwind.Avalonia.Sample.Browser/**'
       - 'samples/Tailwind.Avalonia.Sample/**'
   workflow_dispatch:
@@ -46,6 +48,7 @@ jobs:
         uses: actions/configure-pages@v6.0.0
 
       - name: Publish browser sample
+        if: github.event_name == 'push'
         run: dotnet publish samples/Tailwind.Avalonia.Sample.Browser/Tailwind.Avalonia.Sample.Browser.csproj -c Release
 
       - name: Upload Pages artifact
