@@ -13,14 +13,7 @@
                 </Transitions>
             </Setter>
         </Style>
-        <Style Selector="Button.docs-copyButton:pointerover">
-            <Setter Property="tw:Tw.Class" Value="bg-slate-700 border-slate-600 text-white" />
-        </Style>
-        <Style Selector="Button.docs-copyButton:pressed">
-            <Setter Property="Opacity" Value="0.8" />
-        </Style>
         <Style Selector="Button.docs-copyButton:focus-visible">
-            <Setter Property="tw:Tw.Class" Value="border-sky-400" />
             <Setter Property="BorderThickness" Value="1.5" />
         </Style>
     </UserControl.Styles>
@@ -47,7 +40,7 @@
                 FontSize="11"
                 BorderThickness="1"
                 CornerRadius="6"
-                tw:Tw.Class="bg-slate-800 border-slate-700 text-slate-300 mt-1 mr-1 px-2.5 py-1" />
+                tw:Tw.Class="bg-slate-800 border-slate-700 text-slate-300 mt-1 mr-1 px-2.5 py-1 hover:bg-slate-700 hover:border-slate-600 hover:text-white pressed:opacity-80 focus:border-sky-400" />
         </Grid>
     </UserControl.Content>
 </UserControl>

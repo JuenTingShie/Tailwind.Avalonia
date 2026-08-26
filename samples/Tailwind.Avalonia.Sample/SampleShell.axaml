@@ -489,23 +489,24 @@
                              of the documentation rather than shell chrome. Visibility is
                              driven from ShowPage/HideAllPages, so the frame is never a
                              blank void with nothing to explain it. -->
-                        <StackPanel
+                        <Border
                             x:Name="PageEmptyState"
                             tw:Tw.Class="max-w-[420px] p-6"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Spacing="12">
-                            <TextBlock
-                                Classes="docs-sectionTitle"
-                                HorizontalAlignment="Center"
-                                Text="No page open"
-                                TextAlignment="Center" />
-                            <TextBlock
-                                Classes="docs-body"
-                                HorizontalAlignment="Center"
-                                Text="Open the navigation button in the top left, pick a section, then choose a page from it."
-                                TextAlignment="Center" />
-                        </StackPanel>
+                            VerticalAlignment="Center">
+                            <StackPanel Spacing="12">
+                                <TextBlock
+                                    Classes="docs-sectionTitle"
+                                    HorizontalAlignment="Center"
+                                    Text="No page open"
+                                    TextAlignment="Center" />
+                                <TextBlock
+                                    Classes="docs-body"
+                                    HorizontalAlignment="Center"
+                                    Text="Open the navigation button in the top left, pick a section, then choose a page from it."
+                                    TextAlignment="Center" />
+                            </StackPanel>
+                        </Border>
                     </Panel>
                 </Border>
             </Grid>
