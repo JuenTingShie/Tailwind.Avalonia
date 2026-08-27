@@ -123,6 +123,46 @@ public partial class Tw
         return false;
     }
 
+    private static bool TryParseCornerRadiusUtility(string token, out CornerRadiusUtility utility)
+    {
+        utility = default;
+
+        if (token.Contains(':') || token.Contains('('))
+        {
+            return false;
+        }
+
+        if (token.Equals("rounded", StringComparison.Ordinal))
+        {
+            utility = new CornerRadiusUtility(CornerRadiusEdge.All, 4.0);
+            return true;
+        }
+
+        foreach (var descriptor in CornerRadiusUtilityDescriptors.All)
+        {
+            if (!token.StartsWith(descriptor.Prefix, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var scaleToken = token[descriptor.Prefix.Length..];
+
+            if (scaleToken.Length == 0)
+            {
+                return false;
+            }
+
+            // Try a scale-table token first (e.g. rounded-lg), then an arbitrary value (e.g. rounded-[6px]).
+            if (TryParseScaleOrArbitraryPixels(scaleToken, CornerRadiusScale.TryGetPixels, static p => p >= 0, out var pixels))
+            {
+                utility = new CornerRadiusUtility(descriptor.Edge, pixels);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private static bool TryParseFontSizeUtility(string token, out FontSizeUtility utility)
     {
         utility = default;

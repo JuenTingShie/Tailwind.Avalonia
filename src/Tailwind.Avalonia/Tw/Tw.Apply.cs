@@ -32,6 +32,7 @@ public partial class Tw
         var hasMinHeight = false;
         var hasMaxHeight = false;
         var hasFontSize = false;
+        var hasCornerRadius = false;
         var hasOpacity = false;
         var opacity = default(double);
         var backgroundVariants = new IBrush?[VariantCount];
@@ -50,6 +51,7 @@ public partial class Tw
         var minHeight = default(double);
         var maxHeight = default(double);
         var fontSize = default(double);
+        var cornerRadius = default(CornerRadius);
 
         foreach (var rawToken in tokens)
         {
@@ -156,6 +158,18 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseCornerRadiusUtility(token, out var cornerRadiusUtility))
+            {
+                if (!hasCornerRadius)
+                {
+                    cornerRadius = default;
+                    hasCornerRadius = true;
+                }
+
+                cornerRadius = ApplyCornerRadiusEdge(cornerRadius, cornerRadiusUtility.Edge, cornerRadiusUtility.Pixels);
+                continue;
+            }
+
             if (TryParseFontSizeUtility(token, out var fontSizeUtility))
             {
                 fontSize = fontSizeUtility.Pixels;
@@ -231,6 +245,7 @@ public partial class Tw
             new(ForegroundMask, foregroundDirect, () => TrySetBrush(element, "Foreground", foreground), () => ClearBrush(element, "Foreground")),
             new(BorderBrushMask, borderBrushDirect, () => TrySetBrush(element, "BorderBrush", borderBrush), () => ClearBrush(element, "BorderBrush")),
             new(OpacityMask, opacityDirect, () => TrySetDouble(element, "Opacity", opacity), () => ClearDouble(element, "Opacity")),
+            new(CornerRadiusMask, hasCornerRadius, () => TrySetCornerRadius(element, "CornerRadius", cornerRadius), () => ClearCornerRadius(element, "CornerRadius")),
         ];
 
         foreach (var pending in pendingUtilities)
@@ -279,4 +294,18 @@ public partial class Tw
             _ => current,
         };
     }
+
+    private static CornerRadius ApplyCornerRadiusEdge(CornerRadius current, CornerRadiusEdge edge, double value) => edge switch
+    {
+        CornerRadiusEdge.All => new CornerRadius(value),
+        CornerRadiusEdge.Top => new CornerRadius(value, value, current.BottomRight, current.BottomLeft),
+        CornerRadiusEdge.Right => new CornerRadius(current.TopLeft, value, value, current.BottomLeft),
+        CornerRadiusEdge.Bottom => new CornerRadius(current.TopLeft, current.TopRight, value, value),
+        CornerRadiusEdge.Left => new CornerRadius(value, current.TopRight, current.BottomRight, value),
+        CornerRadiusEdge.TopLeft => new CornerRadius(value, current.TopRight, current.BottomRight, current.BottomLeft),
+        CornerRadiusEdge.TopRight => new CornerRadius(current.TopLeft, value, current.BottomRight, current.BottomLeft),
+        CornerRadiusEdge.BottomRight => new CornerRadius(current.TopLeft, current.TopRight, value, current.BottomLeft),
+        CornerRadiusEdge.BottomLeft => new CornerRadius(current.TopLeft, current.TopRight, current.BottomRight, value),
+        _ => current,
+    };
 }

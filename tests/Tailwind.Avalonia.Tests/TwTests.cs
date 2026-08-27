@@ -18,6 +18,56 @@ namespace Tailwind.Avalonia.Tests;
 public class TwTests
 {
     [Fact]
+    public void SetClass_Applies_Bare_Border_Radius_Utility()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded");
+
+        Assert.Equal(new CornerRadius(4), border.CornerRadius);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Named_Border_Radius_Utilities()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-lg");
+
+        Assert.Equal(new CornerRadius(8), border.CornerRadius);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Border_Radius_Full()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-full");
+
+        Assert.Equal(new CornerRadius(9999), border.CornerRadius);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Physical_Side_Border_Radius_Utilities()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-t-lg rounded-b-sm");
+
+        Assert.Equal(new CornerRadius(8, 8, 4, 4), border.CornerRadius);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Physical_Corner_Border_Radius_Utilities()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-tl-xl rounded-br-none");
+
+        Assert.Equal(new CornerRadius(12, 0, 0, 0), border.CornerRadius);
+    }
+
+    [Fact]
     public void SetClass_Applies_Physical_Spacing_Utilities()
     {
         var border = new Border();
