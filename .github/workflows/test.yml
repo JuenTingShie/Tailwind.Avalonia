@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/Tailwind.Avalonia/**'
+      - 'samples/Tailwind.Avalonia.Sample.Browser/**'
+      - 'samples/Tailwind.Avalonia.Sample/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/Tailwind.Avalonia/**'
+      - 'samples/Tailwind.Avalonia.Sample.Browser/**'
+      - 'samples/Tailwind.Avalonia.Sample/**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v6.0.0
+        with:
+          dotnet-version: 10.0.202
+          workloads: wasm-tools
+
+      - name: Run tests
+        run: dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj -c Release
