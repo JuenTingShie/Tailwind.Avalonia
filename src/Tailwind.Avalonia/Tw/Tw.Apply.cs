@@ -22,6 +22,7 @@ public partial class Tw
 
         var hasMargin = false;
         var hasPadding = false;
+        var hasBorderWidth = false;
         var hasBackground = false;
         var hasForeground = false;
         var hasBorderBrush = false;
@@ -41,6 +42,7 @@ public partial class Tw
         var opacityVariants = new double?[VariantCount];
         var margin = default(Thickness);
         var padding = default(Thickness);
+        var borderWidth = default(Thickness);
         IBrush? background = null;
         IBrush? foreground = null;
         IBrush? borderBrush = null;
@@ -92,7 +94,7 @@ public partial class Tw
 
             var token = rawToken;
 
-            if (TryParseSpacingUtility(token, out var spacingUtility))
+            if (TryParseSpacingUtility(token, out var spacingUtility) || TryParseBorderWidthUtility(token, out spacingUtility))
             {
                 switch (spacingUtility.Target)
                 {
@@ -114,6 +116,16 @@ public partial class Tw
                         }
 
                         padding = ApplyEdge(padding, spacingUtility.Edge, spacingUtility.Pixels, element);
+                        break;
+
+                    case SpacingTarget.BorderWidth:
+                        if (!hasBorderWidth)
+                        {
+                            borderWidth = default;
+                            hasBorderWidth = true;
+                        }
+
+                        borderWidth = ApplyEdge(borderWidth, spacingUtility.Edge, spacingUtility.Pixels, element);
                         break;
                 }
 
@@ -234,6 +246,7 @@ public partial class Tw
         [
             new(MarginMask, hasMargin, () => TrySetThickness(element, "Margin", margin), () => ClearThickness(element, "Margin")),
             new(PaddingMask, hasPadding, () => TrySetThickness(element, "Padding", padding), () => ClearThickness(element, "Padding")),
+            new(BorderWidthMask, hasBorderWidth, () => TrySetThickness(element, "BorderThickness", borderWidth), () => ClearThickness(element, "BorderThickness")),
             new(WidthMask, hasWidth, () => TrySetDouble(element, "Width", width), () => ClearDouble(element, "Width")),
             new(MinWidthMask, hasMinWidth, () => TrySetDouble(element, "MinWidth", minWidth), () => ClearDouble(element, "MinWidth")),
             new(MaxWidthMask, hasMaxWidth, () => TrySetDouble(element, "MaxWidth", maxWidth), () => ClearDouble(element, "MaxWidth")),
