@@ -9,8 +9,35 @@ public partial class Tw
     {
         color = default;
 
-        var separatorIndex = token.IndexOf('/');
-        var colorToken = separatorIndex >= 0 ? token[..separatorIndex] : token;
+        // Handle opacity modifiers correctly by detecting bracket-enclosed arbitrary values first.
+        // For arbitrary colors like bg-[#ff0000]/50, we must extract the full [...] section
+        // before checking for the slash, otherwise we split incorrectly at the / inside potential expressions.
+        var bracketCloseIndex = token.IndexOf(']');
+        var slashIndex = token.IndexOf('/');
+
+        string colorToken;
+        string? opacityToken = null;
+
+        if (bracketCloseIndex >= 0 && (slashIndex < 0 || slashIndex > bracketCloseIndex))
+        {
+            // Arbitrary value in brackets, possibly with opacity after it
+            colorToken = token[..(bracketCloseIndex + 1)];
+            if (slashIndex > bracketCloseIndex)
+            {
+                opacityToken = token[(slashIndex + 1)..];
+            }
+        }
+        else if (slashIndex >= 0)
+        {
+            // Palette color with opacity modifier (no brackets)
+            colorToken = token[..slashIndex];
+            opacityToken = token[(slashIndex + 1)..];
+        }
+        else
+        {
+            // No opacity modifier
+            colorToken = token;
+        }
 
         if (colorToken.Length == 0)
         {
@@ -27,12 +54,10 @@ public partial class Tw
             }
         }
 
-        if (separatorIndex < 0)
+        if (opacityToken is null)
         {
             return true;
         }
-
-        var opacityToken = token[(separatorIndex + 1)..];
 
         if (!TryParseOpacity(opacityToken, out var opacity))
         {
