@@ -1,0 +1,307 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Borders.Radius">
+    <docs:DocsPage
+        Section="Borders"
+        Title="Border Radius"
+        Intro="Utilities for controlling the border radius of an element. rounded-* folds a fixed named scale, physical sides, physical corners, and bracket arbitrary values into Avalonia's CornerRadius.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These Tailwind border-radius rows remain outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="rounded-(&lt;custom-property&gt;) · md:rounded-lg (responsive) · hover:rounded-* · focus:rounded-*" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Basic example"
+                        Summary="Use rounded-sm, rounded-md, rounded-lg, or rounded-xl to apply different border radius sizes to an element.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-sm" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-md" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-xl" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="18">
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-sm w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="sm" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-violet-500 rounded-md w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="md" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-emerald-500 rounded-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="lg" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-amber-500 rounded-xl w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="xl" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Rounding sides separately"
+                        Summary="Use rounded-t-&lt;name&gt;, rounded-r-&lt;name&gt;, rounded-b-&lt;name&gt;, and rounded-l-&lt;name&gt; to only round the two corners on one side of an element.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-t-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-r-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-b-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-l-lg" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="18">
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-t-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="t" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-violet-500 rounded-r-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="r" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-emerald-500 rounded-b-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="b" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-amber-500 rounded-l-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="l" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Rounding corners separately"
+                        Summary="Use rounded-tl-&lt;name&gt;, rounded-tr-&lt;name&gt;, rounded-br-&lt;name&gt;, and rounded-bl-&lt;name&gt; to only round a single corner of an element.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-tl-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-tr-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-br-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="rounded-bl-lg" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="18">
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-tl-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="tl" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-violet-500 rounded-tr-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="tr" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-emerald-500 rounded-br-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="br" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-amber-500 rounded-bl-lg w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="bl" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Using logical properties"
+                        Summary="Tailwind ships rounded-s-*, rounded-e-*, rounded-ss-*, rounded-se-*, rounded-es-*, and rounded-ee-* to set radius using logical start/end sides that flip with text direction. This parser does not implement them yet — rounded-t-*/r-*/b-*/l-* and rounded-tl-*/tr-*/br-*/bl-* only resolve to physical corners, so a value set for LTR stays put under RightToLeft FlowDirection.">
+                        <docs:DocsNote
+                            Classes="gap"
+                            Title="Logical radius mapping (not implemented)">
+                            <StackPanel
+                                Spacing="6">
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="rounded-s-lg → LTR: top-left + bottom-left · RTL: top-right + bottom-right" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="rounded-e-lg → LTR: top-right + bottom-right · RTL: top-left + bottom-left" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="rounded-ss-lg → LTR: top-left · RTL: top-right" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="rounded-se-lg → LTR: top-right · RTL: top-left" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="rounded-es-lg → LTR: bottom-left · RTL: bottom-right" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="rounded-ee-lg → LTR: bottom-right · RTL: bottom-left" />
+                            </StackPanel>
+                        </docs:DocsNote>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Creating pill buttons"
+                        Summary="Use rounded-full to create pill buttons, useful for things like navigation items or badges.">
+                        <docs:DocsExample
+                            Code="&lt;Button tw:Tw.Class=&quot;bg-sky-500 rounded-full&quot; /&gt;">
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <Button
+                                    tw:Tw.Class="bg-sky-500 text-white rounded-full px-5 py-2.5"
+                                    Content="Save Changes" />
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Removing the border radius"
+                        Summary="Use rounded-none to remove an existing border radius from an element.">
+                        <docs:DocsExample
+                            Code="&lt;Button tw:Tw.Class=&quot;bg-sky-500 rounded-none&quot; /&gt;">
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <Button
+                                    tw:Tw.Class="bg-sky-500 text-white rounded-none px-5 py-2.5"
+                                    Content="Save Changes" />
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Using a custom value"
+                        Summary="Bracket syntax like rounded-[2vw] takes a direct arbitrary value.">
+                        <StackPanel
+                            Spacing="18">
+                            <docs:DocsNote
+                                Title="How arbitrary radius resolves">
+                                <StackPanel
+                                    Spacing="8">
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="px · rem · em · % · unitless" />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Arbitrary radius values are parser-only and emit no generated package keys." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="rem and em resolve against a 16px base. Unitless values are treated as px." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Only bracket syntax is parsed; rounded-(&lt;custom-property&gt;) stays unsupported." />
+                                </StackPanel>
+                            </docs:DocsNote>
+                            <docs:DocsExample
+                                Code="&lt;Border tw:Tw.Class=&quot;rounded-[6px]&quot; /&gt;">
+                                <Border
+                                    Classes="docs-inset"
+                                    HorizontalAlignment="Left"
+                                    tw:Tw.Class="p-5">
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-[6px] w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="[6px]" />
+                                    </Border>
+                                </Border>
+                            </docs:DocsExample>
+                        </StackPanel>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>

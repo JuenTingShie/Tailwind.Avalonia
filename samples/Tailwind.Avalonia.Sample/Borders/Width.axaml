@@ -1,0 +1,307 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Borders.Width">
+    <docs:DocsPage
+        Section="Borders"
+        Title="Border Width"
+        Intro="Utilities for controlling the width of an element's border. border-* folds a bare 1px default, non-negative integer values, physical sides, axis, logical inline/block edges, and bracket arbitrary values into Avalonia's BorderThickness.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These Tailwind border-width rows remain outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="divide-x-* · divide-y-* · divide-x-reverse · divide-y-reverse (between children)" />
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="border-(length:&lt;custom-property&gt;) · md:border-t-4 (responsive) · hover:border-* · focus:border-*" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Basic example"
+                        Summary="Use border or border-&lt;number&gt; utilities like border-2 and border-8 to set the border width for all sides of an element.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="border" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-2" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-4" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-8" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="18">
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="border" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-2 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="border-2" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="border-4" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-8 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="border-8" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Individual sides"
+                        Summary="Use border-t-&lt;number&gt;, border-r-&lt;number&gt;, border-b-&lt;number&gt;, and border-l-&lt;number&gt; utilities to set the border width for one side of an element.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="border-t-4" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-r-4" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-b-4" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-l-4" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="18">
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-t-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="t" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-r-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="r" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-b-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="b" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-l-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="l" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Horizontal and vertical sides"
+                        Summary="Use border-x-&lt;number&gt; and border-y-&lt;number&gt; utilities to set the border width on two sides of an element at the same time.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="border-x-4" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-y-4" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="18">
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-x-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="x" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-y-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="y" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Using logical properties"
+                        Summary="Use border-s-&lt;number&gt;, border-e-&lt;number&gt;, border-bs-&lt;number&gt;, and border-be-&lt;number&gt; utilities to set the inline and block border width based on text direction. In LTR, s maps to left and e maps to right; RTL swaps them.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="border-s-4" /&gt;</x:String>
+                                <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="border-s-4" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-bs-4" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="border-be-4" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="18">
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-s-4 w-20 h-20"
+                                        FlowDirection="LeftToRight">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="s LTR" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-s-4 w-20 h-20"
+                                        FlowDirection="RightToLeft">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="s RTL" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-bs-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="bs" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-be-4 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="be" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Disambiguating width from color"
+                        Summary="border-&lt;number&gt; (width) and border-&lt;color&gt; (brush) share the border- prefix. The parser tries border-width first; color tokens never parse as non-negative integers, so both can appear on the same element without conflict.">
+                        <docs:DocsExample
+                            Code="&lt;Border tw:Tw.Class=&quot;border-2 border-rose-500&quot; /&gt;">
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <Border
+                                    tw:Tw.Class="bg-slate-900 border-2 border-rose-500 rounded-lg w-20 h-20">
+                                    <TextBlock
+                                        Classes="docs-chip"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Text="2 + rose" />
+                                </Border>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Using a custom value"
+                        Summary="Bracket syntax like border-[3px] takes a direct arbitrary value.">
+                        <StackPanel
+                            Spacing="18">
+                            <docs:DocsNote
+                                Title="How arbitrary widths resolve">
+                                <StackPanel
+                                    Spacing="8">
+                                    <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="px · rem · em · % · unitless" />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Arbitrary width values are parser-only and emit no generated package keys." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="rem and em resolve against a 16px base. Unitless values are treated as px." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="Only bracket syntax is parsed; border-(length:&lt;custom-property&gt;) stays unsupported." />
+                                </StackPanel>
+                            </docs:DocsNote>
+                            <docs:DocsExample
+                                Code="&lt;Border tw:Tw.Class=&quot;border-[3px]&quot; /&gt;">
+                                <Border
+                                    Classes="docs-inset"
+                                    HorizontalAlignment="Left"
+                                    tw:Tw.Class="p-5">
+                                    <Border
+                                        tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-[3px] w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="[3px]" />
+                                    </Border>
+                                </Border>
+                            </docs:DocsExample>
+                        </StackPanel>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
