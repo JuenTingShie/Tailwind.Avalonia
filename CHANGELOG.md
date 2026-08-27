@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## Unreleased
+
+### Added
+
+- `rounded-*` utility (border-radius) — bare `rounded` (0.25rem/4px, Tailwind's `--radius` default), named scale (`rounded-xs` through `rounded-4xl`, `rounded-none`, `rounded-full`), arbitrary values (`rounded-[6px]`), physical sides (`rounded-t-*`/`r-*`/`b-*`/`l-*`), and physical corners (`rounded-tl-*`/`tr-*`/`br-*`/`bl-*`). No logical corner variants (`rounded-s-*`, `rounded-ss-*`, ...) and no hover/pressed/focus variant support.
+- `border-*` utility (border-width) — bare `border`/`border-t`/etc. (1px, Tailwind's `--default-border-width`), non-negative integer values (`border-2`), arbitrary values (`border-[3px]`), physical sides, axis (`border-x-*`/`y-*`), and logical inline/block edges (`border-s-*`/`e-*`/`bs-*`/`be-*`), sharing RTL-aware logical-edge behavior with the existing margin/padding utilities. No hover/pressed/focus variant support.
+
 ## 2.0.0 — 2026-08-20
 
 ### Added
