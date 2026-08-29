@@ -91,6 +91,12 @@ internal static class TailwindCssColorParser
     {
         var open = cssValue.IndexOf('(');
         var close = cssValue.LastIndexOf(')');
+
+        if (open < 0 || close < 0 || close <= open)
+        {
+            throw new FormatException($"Invalid {label} value '{cssValue}': malformed function syntax.");
+        }
+
         var inner = cssValue.AsSpan(open + 1, close - open - 1).Trim();
 
         var alpha = 1.0;
