@@ -155,7 +155,15 @@ internal static class TailwindCssColorParser
 
     private static Color ParseOklch(string cssValue)
     {
-        var inner = cssValue.AsSpan(6, cssValue.Length - 7).Trim();
+        var open = cssValue.IndexOf('(');
+        var close = cssValue.LastIndexOf(')');
+
+        if (open < 0 || close < 0 || close <= open)
+        {
+            throw new FormatException($"Invalid OKLCH value '{cssValue}': malformed function syntax.");
+        }
+
+        var inner = cssValue.AsSpan(open + 1, close - open - 1).Trim();
         var alpha = 1.0;
 
         var slashIndex = inner.IndexOf('/');
