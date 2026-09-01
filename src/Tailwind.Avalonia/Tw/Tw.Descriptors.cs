@@ -12,11 +12,15 @@ public partial class Tw
     private readonly record struct UtilityDescriptor(string Prefix, SpacingTarget Target, SpacingEdge Edge);
     private readonly record struct BrushUtilityDescriptor(string Prefix, BrushTarget Target);
     private readonly record struct SizingUtilityDescriptor(string Prefix, SizingTarget Target);
+    private readonly record struct CornerRadiusUtility(CornerRadiusEdge Edge, double Pixels);
+    private readonly record struct CornerRadiusUtilityDescriptor(string Prefix, CornerRadiusEdge Edge);
+    private readonly record struct BorderWidthUtilityDescriptor(string Prefix, SpacingEdge Edge);
 
     private enum SpacingTarget
     {
         Margin,
         Padding,
+        BorderWidth,
     }
 
     private enum BrushTarget
@@ -49,6 +53,19 @@ public partial class Tw
         End,
         BlockStart,
         BlockEnd,
+    }
+
+    private enum CornerRadiusEdge
+    {
+        All,
+        Top,
+        Right,
+        Bottom,
+        Left,
+        TopLeft,
+        TopRight,
+        BottomRight,
+        BottomLeft,
     }
 
     private static class UtilityDescriptors
@@ -104,6 +121,40 @@ public partial class Tw
             new("max-h-", SizingTarget.MaxHeight),
             new("w-", SizingTarget.Width),
             new("h-", SizingTarget.Height),
+        };
+    }
+
+    private static class CornerRadiusUtilityDescriptors
+    {
+        public static readonly CornerRadiusUtilityDescriptor[] All =
+        {
+            new("rounded-tl-", CornerRadiusEdge.TopLeft),
+            new("rounded-tr-", CornerRadiusEdge.TopRight),
+            new("rounded-br-", CornerRadiusEdge.BottomRight),
+            new("rounded-bl-", CornerRadiusEdge.BottomLeft),
+            new("rounded-t-", CornerRadiusEdge.Top),
+            new("rounded-r-", CornerRadiusEdge.Right),
+            new("rounded-b-", CornerRadiusEdge.Bottom),
+            new("rounded-l-", CornerRadiusEdge.Left),
+            new("rounded-", CornerRadiusEdge.All),
+        };
+    }
+
+    private static class BorderWidthUtilityDescriptors
+    {
+        public static readonly BorderWidthUtilityDescriptor[] All =
+        {
+            new("border-bs", SpacingEdge.BlockStart),
+            new("border-be", SpacingEdge.BlockEnd),
+            new("border-x", SpacingEdge.X),
+            new("border-y", SpacingEdge.Y),
+            new("border-s", SpacingEdge.Start),
+            new("border-e", SpacingEdge.End),
+            new("border-t", SpacingEdge.Top),
+            new("border-r", SpacingEdge.Right),
+            new("border-b", SpacingEdge.Bottom),
+            new("border-l", SpacingEdge.Left),
+            new("border", SpacingEdge.All),
         };
     }
 }

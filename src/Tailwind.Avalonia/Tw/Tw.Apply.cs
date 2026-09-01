@@ -22,6 +22,7 @@ public partial class Tw
 
         var hasMargin = false;
         var hasPadding = false;
+        var hasBorderWidth = false;
         var hasBackground = false;
         var hasForeground = false;
         var hasBorderBrush = false;
@@ -32,6 +33,7 @@ public partial class Tw
         var hasMinHeight = false;
         var hasMaxHeight = false;
         var hasFontSize = false;
+        var hasCornerRadius = false;
         var hasOpacity = false;
         var opacity = default(double);
         var backgroundVariants = new IBrush?[VariantCount];
@@ -40,6 +42,7 @@ public partial class Tw
         var opacityVariants = new double?[VariantCount];
         var margin = default(Thickness);
         var padding = default(Thickness);
+        var borderWidth = default(Thickness);
         IBrush? background = null;
         IBrush? foreground = null;
         IBrush? borderBrush = null;
@@ -50,6 +53,7 @@ public partial class Tw
         var minHeight = default(double);
         var maxHeight = default(double);
         var fontSize = default(double);
+        var cornerRadius = default(CornerRadius);
 
         foreach (var rawToken in tokens)
         {
@@ -90,7 +94,7 @@ public partial class Tw
 
             var token = rawToken;
 
-            if (TryParseSpacingUtility(token, out var spacingUtility))
+            if (TryParseSpacingUtility(token, out var spacingUtility) || TryParseBorderWidthUtility(token, out spacingUtility))
             {
                 switch (spacingUtility.Target)
                 {
@@ -112,6 +116,16 @@ public partial class Tw
                         }
 
                         padding = ApplyEdge(padding, spacingUtility.Edge, spacingUtility.Pixels, element);
+                        break;
+
+                    case SpacingTarget.BorderWidth:
+                        if (!hasBorderWidth)
+                        {
+                            borderWidth = default;
+                            hasBorderWidth = true;
+                        }
+
+                        borderWidth = ApplyEdge(borderWidth, spacingUtility.Edge, spacingUtility.Pixels, element);
                         break;
                 }
 
@@ -153,6 +167,18 @@ public partial class Tw
                         break;
                 }
 
+                continue;
+            }
+
+            if (TryParseCornerRadiusUtility(token, out var cornerRadiusUtility))
+            {
+                if (!hasCornerRadius)
+                {
+                    cornerRadius = default;
+                    hasCornerRadius = true;
+                }
+
+                cornerRadius = ApplyCornerRadiusEdge(cornerRadius, cornerRadiusUtility.Edge, cornerRadiusUtility.Pixels);
                 continue;
             }
 
@@ -220,6 +246,7 @@ public partial class Tw
         [
             new(MarginMask, hasMargin, () => TrySetThickness(element, "Margin", margin), () => ClearThickness(element, "Margin")),
             new(PaddingMask, hasPadding, () => TrySetThickness(element, "Padding", padding), () => ClearThickness(element, "Padding")),
+            new(BorderWidthMask, hasBorderWidth, () => TrySetThickness(element, "BorderThickness", borderWidth), () => ClearThickness(element, "BorderThickness")),
             new(WidthMask, hasWidth, () => TrySetDouble(element, "Width", width), () => ClearDouble(element, "Width")),
             new(MinWidthMask, hasMinWidth, () => TrySetDouble(element, "MinWidth", minWidth), () => ClearDouble(element, "MinWidth")),
             new(MaxWidthMask, hasMaxWidth, () => TrySetDouble(element, "MaxWidth", maxWidth), () => ClearDouble(element, "MaxWidth")),
@@ -231,6 +258,7 @@ public partial class Tw
             new(ForegroundMask, foregroundDirect, () => TrySetBrush(element, "Foreground", foreground), () => ClearBrush(element, "Foreground")),
             new(BorderBrushMask, borderBrushDirect, () => TrySetBrush(element, "BorderBrush", borderBrush), () => ClearBrush(element, "BorderBrush")),
             new(OpacityMask, opacityDirect, () => TrySetDouble(element, "Opacity", opacity), () => ClearDouble(element, "Opacity")),
+            new(CornerRadiusMask, hasCornerRadius, () => TrySetCornerRadius(element, "CornerRadius", cornerRadius), () => ClearCornerRadius(element, "CornerRadius")),
         ];
 
         foreach (var pending in pendingUtilities)
@@ -279,4 +307,18 @@ public partial class Tw
             _ => current,
         };
     }
+
+    private static CornerRadius ApplyCornerRadiusEdge(CornerRadius current, CornerRadiusEdge edge, double value) => edge switch
+    {
+        CornerRadiusEdge.All => new CornerRadius(value),
+        CornerRadiusEdge.Top => new CornerRadius(value, value, current.BottomRight, current.BottomLeft),
+        CornerRadiusEdge.Right => new CornerRadius(current.TopLeft, value, value, current.BottomLeft),
+        CornerRadiusEdge.Bottom => new CornerRadius(current.TopLeft, current.TopRight, value, value),
+        CornerRadiusEdge.Left => new CornerRadius(value, current.TopRight, current.BottomRight, value),
+        CornerRadiusEdge.TopLeft => new CornerRadius(value, current.TopRight, current.BottomRight, current.BottomLeft),
+        CornerRadiusEdge.TopRight => new CornerRadius(current.TopLeft, value, current.BottomRight, current.BottomLeft),
+        CornerRadiusEdge.BottomRight => new CornerRadius(current.TopLeft, current.TopRight, value, current.BottomLeft),
+        CornerRadiusEdge.BottomLeft => new CornerRadius(current.TopLeft, current.TopRight, current.BottomRight, value),
+        _ => current,
+    };
 }

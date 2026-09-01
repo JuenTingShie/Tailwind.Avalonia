@@ -75,6 +75,10 @@ public partial class SampleShell : UserControl
                 new SampleShellPageDescriptor("Width", static () => new Sizing.Width()),
                 new SampleShellPageDescriptor("Height", static () => new Sizing.Height())),
             new(
+                "Borders",
+                new SampleShellPageDescriptor("Radius", static () => new Borders.Radius()),
+                new SampleShellPageDescriptor("Width", static () => new Borders.Width())),
+            new(
                 "Typography",
                 new SampleShellPageDescriptor("Font size", static () => new Typography.FontSize()),
                 new SampleShellPageDescriptor("Colors", static () => new Typography.ColorUtilities())),

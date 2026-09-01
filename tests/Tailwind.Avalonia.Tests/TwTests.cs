@@ -18,6 +18,123 @@ namespace Tailwind.Avalonia.Tests;
 public class TwTests
 {
     [Fact]
+    public void SetClass_Applies_Bare_Border_Width_Utility()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "border");
+
+        Assert.Equal(new Thickness(1), border.BorderThickness);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Numeric_Border_Width_Utility()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "border-2");
+
+        Assert.Equal(new Thickness(2), border.BorderThickness);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Physical_Side_Border_Width_Utilities()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "border-t-4 border-b-2 border-x-1");
+
+        Assert.Equal(new Thickness(1, 4, 1, 2), border.BorderThickness);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Bare_Side_Border_Width_Utility()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "border-t");
+
+        Assert.Equal(new Thickness(0, 1, 0, 0), border.BorderThickness);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Logical_Border_Width_For_RightToLeft()
+    {
+        var border = new Border
+        {
+            FlowDirection = FlowDirection.RightToLeft,
+        };
+
+        Tw.SetClass(border, "border-s-6 border-e-2");
+
+        Assert.Equal(new Thickness(2, 0, 6, 0), border.BorderThickness);
+    }
+
+    [Fact]
+    public void SetClass_Disambiguates_Border_Width_From_Border_Color()
+    {
+        Assert.True(TailwindColorPalette.TryGetColor("red-500", out var red500));
+        var border = new Border();
+
+        Tw.SetClass(border, "border-2 border-red-500");
+
+        border.ApplyStyling();
+
+        Assert.Equal(new Thickness(2), border.BorderThickness);
+        Assert.Equal(red500, Assert.IsType<SolidColorBrush>(border.BorderBrush).Color);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Bare_Border_Radius_Utility()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded");
+
+        Assert.Equal(new CornerRadius(4), border.CornerRadius);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Named_Border_Radius_Utilities()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-lg");
+
+        Assert.Equal(new CornerRadius(8), border.CornerRadius);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Border_Radius_Full()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-full");
+
+        Assert.Equal(new CornerRadius(9999), border.CornerRadius);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Physical_Side_Border_Radius_Utilities()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-t-lg rounded-b-sm");
+
+        Assert.Equal(new CornerRadius(8, 8, 4, 4), border.CornerRadius);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Physical_Corner_Border_Radius_Utilities()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-tl-xl rounded-br-none");
+
+        Assert.Equal(new CornerRadius(12, 0, 0, 0), border.CornerRadius);
+    }
+
+    [Fact]
     public void SetClass_Applies_Physical_Spacing_Utilities()
     {
         var border = new Border();
@@ -519,28 +636,6 @@ public class TwTests
             var entry = Assert.Single(sink.Entries);
             Assert.Equal(LogEventLevel.Warning, entry.Level);
             Assert.Equal("not-a-real-utility", entry.PropertyValues[0]);
-        }
-        finally
-        {
-            Logger.Sink = originalSink;
-        }
-    }
-
-    [Fact]
-    public void SetClass_Logs_Warning_For_Unsupported_Border_Width_Token()
-    {
-        var border = new Border();
-        var sink = new CapturingLogSink(border);
-        var originalSink = Logger.Sink;
-        Logger.Sink = sink;
-
-        try
-        {
-            Tw.SetClass(border, "border-2");
-
-            var entry = Assert.Single(sink.Entries);
-            Assert.Equal(LogEventLevel.Warning, entry.Level);
-            Assert.Equal("border-2", entry.PropertyValues[0]);
         }
         finally
         {

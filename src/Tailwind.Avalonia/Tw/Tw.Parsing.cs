@@ -123,6 +123,110 @@ public partial class Tw
         return false;
     }
 
+    private static bool TryParseBorderWidthUtility(string token, out SpacingUtility utility)
+    {
+        utility = default;
+
+        if (token.Contains(':') || token.Contains('('))
+        {
+            return false;
+        }
+
+        foreach (var descriptor in BorderWidthUtilityDescriptors.All)
+        {
+            if (token.Equals(descriptor.Prefix, StringComparison.Ordinal))
+            {
+                utility = new SpacingUtility(SpacingTarget.BorderWidth, descriptor.Edge, 1.0);
+                return true;
+            }
+
+            var valuedPrefix = descriptor.Prefix + "-";
+
+            if (!token.StartsWith(valuedPrefix, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var scaleToken = token[valuedPrefix.Length..];
+
+            if (scaleToken.Length == 0)
+            {
+                continue;
+            }
+
+            // Try a bare non-negative integer first (e.g. border-2 = 2px, unlike the spacing scale's
+            // 4px-per-step multiplier), then an arbitrary value (e.g. border-[3px]).
+            if (TryParseScaleOrArbitraryPixels(scaleToken, TryParseBareBorderWidthPixels, static p => p >= 0, out var pixels))
+            {
+                utility = new SpacingUtility(SpacingTarget.BorderWidth, descriptor.Edge, pixels);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static bool TryParseBareBorderWidthPixels(string token, out double pixels)
+    {
+        pixels = default;
+
+        if (token.Length == 0)
+        {
+            return false;
+        }
+
+        foreach (var ch in token)
+        {
+            if (!char.IsAsciiDigit(ch))
+            {
+                return false;
+            }
+        }
+
+        pixels = double.Parse(token, NumberStyles.None, CultureInfo.InvariantCulture);
+        return true;
+    }
+
+    private static bool TryParseCornerRadiusUtility(string token, out CornerRadiusUtility utility)
+    {
+        utility = default;
+
+        if (token.Contains(':') || token.Contains('('))
+        {
+            return false;
+        }
+
+        if (token.Equals("rounded", StringComparison.Ordinal))
+        {
+            utility = new CornerRadiusUtility(CornerRadiusEdge.All, 4.0);
+            return true;
+        }
+
+        foreach (var descriptor in CornerRadiusUtilityDescriptors.All)
+        {
+            if (!token.StartsWith(descriptor.Prefix, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var scaleToken = token[descriptor.Prefix.Length..];
+
+            if (scaleToken.Length == 0)
+            {
+                return false;
+            }
+
+            // Try a scale-table token first (e.g. rounded-lg), then an arbitrary value (e.g. rounded-[6px]).
+            if (TryParseScaleOrArbitraryPixels(scaleToken, CornerRadiusScale.TryGetPixels, static p => p >= 0, out var pixels))
+            {
+                utility = new CornerRadiusUtility(descriptor.Edge, pixels);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private static bool TryParseFontSizeUtility(string token, out FontSizeUtility utility)
     {
         utility = default;

@@ -7,6 +7,26 @@ namespace Tailwind.Avalonia.Tests;
 public class TwArbitraryValuesTests
 {
     [Fact]
+    public void SetClass_Applies_Arbitrary_Border_Width()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "border-[3px]");
+
+        Assert.Equal(new Thickness(3), border.BorderThickness);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Arbitrary_Border_Radius()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "rounded-[6px]");
+
+        Assert.Equal(new CornerRadius(6), border.CornerRadius);
+    }
+
+    [Fact]
     public void SetClass_Applies_Arbitrary_Spacing_With_Px_Unit()
     {
         var border = new Border();

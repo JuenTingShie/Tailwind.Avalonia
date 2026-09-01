@@ -18,6 +18,8 @@ public partial class Tw : AvaloniaObject
     private const int ForegroundMask = 8192;
     private const int BorderBrushMask = 16384;
     private const int OpacityMask = 32768;
+    private const int CornerRadiusMask = 65536;
+    private const int BorderWidthMask = 131072;
     private const string LogArea = "Tailwind.Avalonia";
 
     public static readonly AttachedProperty<string?> ClassProperty =
