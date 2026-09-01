@@ -261,7 +261,7 @@
 
                     <docs:DocsSection
                         Heading="Using a custom value"
-                        Summary="Bracket syntax like rounded-[2vw] takes a direct arbitrary value.">
+                        Summary="Bracket syntax like rounded-[6px] takes a direct arbitrary value.">
                         <StackPanel
                             Spacing="18">
                             <docs:DocsNote
@@ -270,7 +270,7 @@
                                     Spacing="8">
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="px · rem · em · % · unitless" />
+                                        Text="px · rem · em · unitless" />
                                     <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Arbitrary radius values are parser-only and emit no generated package keys." />

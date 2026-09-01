@@ -908,7 +908,7 @@
                                     Spacing="8">
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="px · rem · em · % · unitless · negative prefix" />
+                                        Text="px · rem · em · unitless · negative prefix" />
                                     <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Arbitrary margin values are parser-only and do not emit generated package keys." />
@@ -920,7 +920,7 @@
                                         Text="Current parser only supports bracket arbitrary syntax. m-(&lt;custom-property&gt;) and -m-(&lt;custom-property&gt;) remain unsupported." />
                                     <TextBlock
                                         Classes="docs-noteBody"
-                                        Text="% tokens are currently parsed as numeric values, not CSS percentage layout." />
+                                        Text="Percentages stay unsupported; a % token fails to parse and the whole class is dropped." />
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>

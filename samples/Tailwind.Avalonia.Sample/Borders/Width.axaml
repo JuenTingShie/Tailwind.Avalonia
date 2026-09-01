@@ -26,7 +26,7 @@
                             Text="divide-x-* · divide-y-* · divide-x-reverse · divide-y-reverse (between children)" />
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="border-(length:&lt;custom-property&gt;) · md:border-t-4 (responsive) · hover:border-* · focus:border-*" />
+                            Text="border-(length:&lt;custom-property&gt;) · md:border-t-4 (responsive) · hover:border-&lt;number&gt; · focus:border-&lt;number&gt; (border-width variants; border-color variants like focus:border-sky-400 are supported)" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>
@@ -270,7 +270,7 @@
                                     Spacing="8">
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="px · rem · em · % · unitless" />
+                                        Text="px · rem · em · unitless" />
                                     <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Arbitrary width values are parser-only and emit no generated package keys." />

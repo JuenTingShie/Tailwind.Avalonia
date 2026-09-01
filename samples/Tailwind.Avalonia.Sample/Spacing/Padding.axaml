@@ -24,9 +24,6 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="p-px · px-px · py-px · pt-px · pr-px · pb-px · pl-px · ps-px · pe-px · pbs-px · pbe-px" />
-                        <TextBlock
-                            Classes="docs-tableClass"
                             Text="p-(&lt;custom-property&gt;) · px-(&lt;custom-property&gt;) · py-(&lt;custom-property&gt;) · pt-(&lt;custom-property&gt;) · pr-(&lt;custom-property&gt;) · pb-(&lt;custom-property&gt;) · pl-(&lt;custom-property&gt;)" />
                     </StackPanel>
                 </docs:DocsNote>
@@ -833,7 +830,7 @@
                                     Spacing="8">
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="px · rem · em · % · unitless" />
+                                        Text="px · rem · em · unitless" />
                                     <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Arbitrary padding values are parser-only and do not emit generated package keys." />
@@ -845,7 +842,7 @@
                                         Text="Current parser only supports bracket arbitrary syntax. p-(&lt;custom-property&gt;) remains unsupported." />
                                     <TextBlock
                                         Classes="docs-noteBody"
-                                        Text="% tokens are currently parsed as numeric values, not CSS percentage layout." />
+                                        Text="Percentages stay unsupported; a % token fails to parse and the whole class is dropped." />
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>

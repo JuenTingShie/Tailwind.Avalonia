@@ -163,7 +163,7 @@
                                     Spacing="8">
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="#rrggbb · #rrggbbaa · [#hex]/opacity" />
+                                        Text="#rrggbb · #rrggbbaa · #rgb · #rgba · [#hex]/opacity" />
                                     <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Hex is case-insensitive. Arbitrary colors are parser-only and generate no dedicated package keys." />

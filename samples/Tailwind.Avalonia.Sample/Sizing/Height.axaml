@@ -197,7 +197,7 @@
                                     Spacing="8">
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="px · rem · em · % · unitless" />
+                                        Text="px · rem · em · unitless" />
                                     <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Arbitrary sizing values are parser-only and emit no generated package keys." />
@@ -209,7 +209,7 @@
                                         Text="Only bracket syntax is parsed; h-(&lt;custom-property&gt;) stays unsupported." />
                                     <TextBlock
                                         Classes="docs-noteBody"
-                                        Text="Percentage tokens parse as plain numbers, not container-relative layout." />
+                                        Text="Percentages stay unsupported; a % token fails to parse and the whole class is dropped." />
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
@@ -318,7 +318,7 @@
                                         Text="keywords and resets" />
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="h-px · h-auto · min-h-px · min-h-full · max-h-none · max-h-px · max-h-full" />
+                                        Text="h-auto · min-h-full · max-h-none · max-h-full" />
                                 </StackPanel>
                                 <StackPanel
                                     Spacing="5">
