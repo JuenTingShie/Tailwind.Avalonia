@@ -544,4 +544,116 @@ public class TwArbitraryValuesTests
         Assert.Equal(Colors.White, background);
         Assert.Equal(Colors.Black, borderBrush);
     }
+
+    [Fact]
+    public void SetClass_Applies_Rgb_Function_Color_To_Background()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "bg-[rgb(255,0,0)]");
+
+        border.ApplyStyling();
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+
+        Assert.Equal(Colors.Red, background);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Hsl_Function_Color_To_Background()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "bg-[hsl(0,100%,50%)]");
+
+        border.ApplyStyling();
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+
+        Assert.Equal(Colors.Red, background);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Oklch_Function_Color_To_Background()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "bg-[oklch(0%,0,0)]");
+
+        border.ApplyStyling();
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+
+        Assert.Equal(Colors.Black, background);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Rgb_Function_Color_To_Foreground()
+    {
+        var textBlock = new TextBlock();
+
+        Tw.SetClass(textBlock, "text-[rgb(0,0,255)]");
+
+        textBlock.ApplyStyling();
+
+        var foreground = Assert.IsType<SolidColorBrush>(textBlock.Foreground).Color;
+
+        Assert.Equal(Colors.Blue, foreground);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Rgb_Function_Color_To_BorderBrush()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "border-[rgb(0,255,0)]");
+
+        border.ApplyStyling();
+
+        var borderBrush = Assert.IsType<SolidColorBrush>(border.BorderBrush).Color;
+
+        Assert.Equal(Colors.Lime, borderBrush);
+    }
+
+    [Fact]
+    public void SetClass_Applies_Opacity_Modifier_On_Function_Color()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "bg-[rgb(255,0,0)]/50");
+
+        border.ApplyStyling();
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+
+        Assert.Equal((byte)128, background.A);
+        Assert.Equal(Colors.Red.R, background.R);
+        Assert.Equal(Colors.Red.G, background.G);
+        Assert.Equal(Colors.Red.B, background.B);
+    }
+
+    [Fact]
+    public void SetClass_Rejects_CustomProperty_Shorthand_When_Function_Colors_Are_Reachable()
+    {
+        var border = new Border();
+
+        // bg-(--my-color) must stay rejected even though bg-[rgb(...)] is now reachable.
+        Tw.SetClass(border, "bg-(--my-color)");
+
+        Assert.Null(border.Background);
+    }
+
+    [Fact]
+    public void SetClass_Ignores_Function_Color_With_Internal_Whitespace()
+    {
+        var border = new Border();
+
+        // ApplyUtilities splits the class list on whitespace, so a space inside the function
+        // call breaks the token apart before it ever reaches the color parser.
+        Tw.SetClass(border, "bg-[rgb(255, 0, 0)]");
+
+        border.ApplyStyling();
+
+        Assert.Null(border.Background);
+    }
 }

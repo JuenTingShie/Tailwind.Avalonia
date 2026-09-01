@@ -56,6 +56,15 @@ public class TailwindCssColorParserTests
     }
 
     [Fact]
+    public void Parse_Converts_Comma_Separated_Oklch_To_Same_Color_As_Space_Separated()
+    {
+        var commaSeparated = TailwindCssColorParser.Parse("oklch(0%,0,0)");
+        var spaceSeparated = TailwindCssColorParser.Parse("oklch(0% 0 0)");
+
+        Assert.Equal(spaceSeparated, commaSeparated);
+    }
+
+    [Fact]
     public void Parse_Converts_Comma_Separated_Rgb_To_Expected_Color()
     {
         var actual = TailwindCssColorParser.Parse("rgb(255, 0, 0)");
