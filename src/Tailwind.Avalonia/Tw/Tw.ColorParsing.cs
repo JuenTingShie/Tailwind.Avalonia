@@ -114,7 +114,24 @@ public partial class Tw
             return TryParseHexColor(colorValue, out color);
         }
 
-        // Could be extended to support rgb(), hsl(), etc. in the future
+        // Try to parse CSS color functions (rgb, hsl, oklch)
+        if (colorValue.StartsWith("rgb(", StringComparison.OrdinalIgnoreCase) ||
+            colorValue.StartsWith("rgba(", StringComparison.OrdinalIgnoreCase) ||
+            colorValue.StartsWith("hsl(", StringComparison.OrdinalIgnoreCase) ||
+            colorValue.StartsWith("hsla(", StringComparison.OrdinalIgnoreCase) ||
+            colorValue.StartsWith("oklch(", StringComparison.OrdinalIgnoreCase))
+        {
+            try
+            {
+                color = TailwindCssColorParser.Parse(colorValue);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
         return false;
     }
 
