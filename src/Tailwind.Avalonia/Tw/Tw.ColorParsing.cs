@@ -76,13 +76,19 @@ public partial class Tw
             !double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out var percent) ||
             !double.IsFinite(percent) ||
             percent < 0 ||
-            percent > 100)
+            percent > 100 ||
+            !IsIntegerValue(percent))
         {
             return false;
         }
 
         opacity = percent / 100d;
         return true;
+    }
+
+    private static bool IsIntegerValue(double value)
+    {
+        return value == Math.Floor(value);
     }
 
     private static Color ApplyOpacity(Color color, double opacity)
