@@ -131,11 +131,28 @@ new ones pass.
 
 ---
 
-## Task 2: Make `dotnet test` actually run the tests
+## Task 2: Make `dotnet test` actually run the tests — VOID, DO NOT IMPLEMENT
 
-**Problem.** `dotnet test` reports "zero tests executed" with exit code 5, while
-running `Tailwind.Avalonia.Tests.exe` directly runs 152 tests, all passing. CI
-using `dotnet test` is silently testing nothing.
+> **This task was withdrawn during execution. There was no bug.**
+>
+> Verified from a clean `obj/`+`bin/` against the untouched csproj:
+> `dotnet test Tailwind.Avalonia.slnx -c Debug` discovers and passes all 161
+> tests and exits 0. The VSTest-era packages and the MTP runner coexist fine.
+>
+> The original "zero tests executed / exit code 5" observation was an artifact of
+> passing `--nologo`, which MTP's `dotnet test` rejects as an invalid argument and
+> reports in a way that reads like an empty test run. The correct invocation is
+> `dotnet test Tailwind.Avalonia.slnx -c Debug` with no `--nologo`.
+>
+> An implementation of this task was committed (93137bd) and then reverted
+> (7a1c30d) because it removed `coverlet.collector` and two other packages on the
+> strength of the false premise. The section below is retained only so the
+> reverted commit has a readable rationale; treat it as historical.
+
+**Problem (as originally and incorrectly diagnosed).** `dotnet test` reports
+"zero tests executed" with exit code 5, while running
+`Tailwind.Avalonia.Tests.exe` directly runs 152 tests, all passing. CI using
+`dotnet test` is silently testing nothing.
 
 **Cause.** `global.json` selects the Microsoft.Testing.Platform runner:
 
