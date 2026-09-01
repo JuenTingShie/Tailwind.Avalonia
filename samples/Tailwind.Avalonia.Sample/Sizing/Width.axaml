@@ -12,9 +12,74 @@
             Spacing="52">
             <StackPanel
                 Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="w-&lt;number&gt;, min-w-&lt;number&gt;, and max-w-&lt;number&gt; map the numeric spacing scale onto Width, MinWidth, and MaxWidth, as do bracket arbitrary values like w-[100px], min-w-[12.5rem], and max-w-[5em]. Percentages, the container scale, viewport units, size-*, and responsive variants are still out of scope." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="4" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Official rows outside the current parser surface">
+                    <StackPanel
+                        Spacing="14">
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="percentages and fractions" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="w-full · w-1/2 · w-2/5 · w-1/3 · w-1/4 · min-w-3/4 · max-w-9/10" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="container scale" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="w-3xs…w-2xl · min-w-3xs…min-w-2xl · max-w-3xs…max-w-7xl · max-w-prose" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="viewport units" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="w-screen · w-dvw · w-lvw · w-svw · w-dvh · w-lvh · w-svh" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="keywords and resets" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="w-auto · container · container mx-auto px-4" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="combined dimensions" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="size-16 · size-24 · size-40 · size-full · size-px" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="custom properties and breakpoints" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="w-(&lt;custom-property&gt;) · md:w-full · md:min-w-0 · md:max-w-lg" />
+                        </StackPanel>
+                    </StackPanel>
+                </docs:DocsNote>
             </StackPanel>
 
             <StackPanel
@@ -261,75 +326,6 @@
                                 </StackPanel>
                             </docs:DocsExample>
                         </StackPanel>
-                    </docs:DocsSection>
-
-                    <!-- Tailwind's width docs close with seven sections that this
-                         parser does not implement. Collapsed into one grouped
-                         gap list rather than seven near-identical callouts. -->
-                    <docs:DocsSection
-                        Heading="Not implemented yet"
-                        Summary="Tailwind's width, min-width, and max-width pages cover several more families. They are listed here rather than shown as examples, so nothing on this page implies support that does not exist.">
-                        <docs:DocsNote
-                            Classes="gap"
-                            Title="Official rows outside the current parser surface">
-                            <StackPanel
-                                Spacing="14">
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="percentages and fractions" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="w-full · w-1/2 · w-2/5 · w-1/3 · w-1/4 · min-w-3/4 · max-w-9/10" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="container scale" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="w-3xs…w-2xl · min-w-3xs…min-w-2xl · max-w-3xs…max-w-7xl · max-w-prose" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="viewport units" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="w-screen · w-dvw · w-lvw · w-svw · w-dvh · w-lvh · w-svh" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="keywords and resets" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="w-auto · container · container mx-auto px-4" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="combined dimensions" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="size-16 · size-24 · size-40 · size-full · size-px" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="custom properties and breakpoints" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="w-(&lt;custom-property&gt;) · md:w-full · md:min-w-0 · md:max-w-lg" />
-                                </StackPanel>
-                            </StackPanel>
-                        </docs:DocsNote>
                     </docs:DocsSection>
                 </StackPanel>
             </StackPanel>

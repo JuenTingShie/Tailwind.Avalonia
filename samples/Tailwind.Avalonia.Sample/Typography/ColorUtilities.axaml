@@ -6,7 +6,7 @@
     x:Class="Tailwind.Avalonia.Sample.Typography.ColorUtilities">
     <docs:DocsPage
         Section="Typography"
-        Title="Color utilities"
+        Title="Colors"
         Intro="Use bg-*, text-*, and border-* to apply whole-property Tailwind palette colors to Avalonia controls. This page covers the families tw:Tw.Class already implements, including transparent, /opacity, and arbitrary hex bracket values.">
         <StackPanel
             Spacing="52">

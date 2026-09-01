@@ -6,12 +6,16 @@
     x:Class="Tailwind.Avalonia.Sample.Borders.Width">
     <docs:DocsPage
         Section="Borders"
-        Title="Border Width"
+        Title="Width"
         Intro="Utilities for controlling the width of an element's border. border-* folds a bare 1px default, non-negative integer values, physical sides, axis, logical inline/block edges, and bracket arbitrary values into Avalonia's BorderThickness.">
         <StackPanel
             Spacing="52">
             <StackPanel
                 Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="border and border-&lt;number&gt; set BorderThickness on all sides; physical sides (border-t/r/b/l-*), axes (border-x/y-*), and logical inline/block edges (border-s/e-*, border-bs/be-*) target one or two sides, and bracket arbitrary values like border-[3px] take a direct value. divide-*, custom properties, and responsive or hover/focus border-width variants are still out of scope; border-color variants like focus:border-sky-400 remain supported." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />

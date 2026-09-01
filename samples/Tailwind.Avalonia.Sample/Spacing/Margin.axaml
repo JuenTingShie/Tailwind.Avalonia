@@ -13,6 +13,10 @@
             Spacing="52">
             <StackPanel
                 Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="m-&lt;number&gt; sets margin on all sides; mx-*/my-* target an axis, mt/mr/mb/ml-* target one physical side, and the logical ms/me-*, mbs/mbe-*, and visual msv/mev-* variants map to inline/block or final-rendered sides. A leading minus sign, as in -mt-8, negates any of these, and bracket arbitrary values like m-[8px] take a direct value. Auto values, such as m-auto and its axis/logical variants, and custom properties are still out of scope." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />

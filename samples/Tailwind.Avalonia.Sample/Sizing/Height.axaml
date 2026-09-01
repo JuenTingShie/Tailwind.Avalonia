@@ -12,9 +12,74 @@
             Spacing="52">
             <StackPanel
                 Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="h-&lt;number&gt;, min-h-&lt;number&gt;, and max-h-&lt;number&gt; map the numeric spacing scale onto Height, MinHeight, and MaxHeight, as do bracket arbitrary values like h-[60px], min-h-[8rem], and max-h-[5em]. Percentages, viewport units, size-*, and responsive variants are still out of scope." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="4" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Official rows outside the current parser surface">
+                    <StackPanel
+                        Spacing="14">
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="percentages and fractions" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="h-full · h-&lt;fraction&gt; · min-h-&lt;fraction&gt; · max-h-&lt;fraction&gt;" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="viewport units" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="h-screen · h-dvh · h-lvh · h-svh · h-dvw · h-lvw · h-svw" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="viewport units on min and max" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="min-h-screen · min-h-dvh · min-h-svh · max-h-screen · max-h-dvh · max-h-svh" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="keywords and resets" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="h-auto · min-h-full · max-h-none · max-h-full" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="combined dimensions" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="size-16 · size-24 · size-40 · size-full · size-px" />
+                        </StackPanel>
+                        <StackPanel
+                            Spacing="5">
+                            <TextBlock
+                                Classes="docs-miniTitle"
+                                Text="custom properties and breakpoints" />
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="h-(&lt;custom-property&gt;) · md:h-full · md:min-h-0 · md:max-h-96" />
+                        </StackPanel>
+                    </StackPanel>
+                </docs:DocsNote>
             </StackPanel>
 
             <StackPanel
@@ -272,74 +337,6 @@
                                 </Border>
                             </docs:DocsExample>
                         </StackPanel>
-                    </docs:DocsSection>
-
-                    <!-- Eight consecutive "not implemented" callouts in the
-                         original collapsed into one grouped list. -->
-                    <docs:DocsSection
-                        Heading="Not implemented yet"
-                        Summary="Tailwind's height, min-height, and max-height pages cover several more families. They are listed here rather than shown as examples, so nothing on this page implies support that does not exist.">
-                        <docs:DocsNote
-                            Classes="gap"
-                            Title="Official rows outside the current parser surface">
-                            <StackPanel
-                                Spacing="14">
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="percentages and fractions" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="h-full · h-&lt;fraction&gt; · min-h-&lt;fraction&gt; · max-h-&lt;fraction&gt;" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="viewport units" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="h-screen · h-dvh · h-lvh · h-svh · h-dvw · h-lvw · h-svw" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="viewport units on min and max" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="min-h-screen · min-h-dvh · min-h-svh · max-h-screen · max-h-dvh · max-h-svh" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="keywords and resets" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="h-auto · min-h-full · max-h-none · max-h-full" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="combined dimensions" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="size-16 · size-24 · size-40 · size-full · size-px" />
-                                </StackPanel>
-                                <StackPanel
-                                    Spacing="5">
-                                    <TextBlock
-                                        Classes="docs-miniTitle"
-                                        Text="custom properties and breakpoints" />
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="h-(&lt;custom-property&gt;) · md:h-full · md:min-h-0 · md:max-h-96" />
-                                </StackPanel>
-                            </StackPanel>
-                        </docs:DocsNote>
                     </docs:DocsSection>
                 </StackPanel>
             </StackPanel>

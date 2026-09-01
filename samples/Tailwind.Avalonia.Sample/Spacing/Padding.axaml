@@ -13,6 +13,10 @@
             Spacing="52">
             <StackPanel
                 Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="p-&lt;number&gt; sets padding on all sides; px-*/py-* target an axis, pt/pr/pb/pl-* target one physical side, and the logical ps/pe-*, pbs/pbe-*, and visual psv/pev-* variants map to inline/block or final-rendered sides. Bracket arbitrary values like p-[12px] take a direct value. Custom properties, such as p-(&lt;custom-property&gt;) and its per-side forms, are still out of scope." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />

@@ -6,12 +6,16 @@
     x:Class="Tailwind.Avalonia.Sample.Borders.Radius">
     <docs:DocsPage
         Section="Borders"
-        Title="Border Radius"
+        Title="Radius"
         Intro="Utilities for controlling the border radius of an element. rounded-* folds a fixed named scale, physical sides, physical corners, and bracket arbitrary values into Avalonia's CornerRadius.">
         <StackPanel
             Spacing="52">
             <StackPanel
                 Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="rounded-* maps the named scale (none, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, full), physical sides (rounded-t/r/b/l-*), physical corners (rounded-tl/tr/br/bl-*), and bracket arbitrary values like rounded-[6px] onto CornerRadius. Logical properties, custom properties, and responsive or hover/focus variants are still out of scope." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />
