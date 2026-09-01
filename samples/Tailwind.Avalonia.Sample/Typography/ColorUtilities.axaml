@@ -165,11 +165,20 @@
                                         Classes="docs-tableClass"
                                         Text="#rrggbb · #rrggbbaa · #rgb · #rgba · [#hex]/opacity" />
                                     <TextBlock
+                                        Classes="docs-tableClass"
+                                        Text="rgb(r,g,b) · rgba(r,g,b,a) · hsl(h,s%,l%) · hsla(h,s%,l%,a) · oklch(l%,c,h)" />
+                                    <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Hex is case-insensitive. Arbitrary colors are parser-only and generate no dedicated package keys." />
                                     <TextBlock
                                         Classes="docs-noteBody"
-                                        Text="Only bracket syntax is parsed. bg-(&lt;custom-property&gt;), text-(&lt;custom-property&gt;), and border-(&lt;custom-property&gt;) stay unsupported." />
+                                        Text="Only bracket syntax is parsed, and the bracket may hold a hex literal or an rgb(), rgba(), hsl(), hsla(), or oklch() function. bg-(&lt;custom-property&gt;), text-(&lt;custom-property&gt;), and border-(&lt;custom-property&gt;) stay unsupported." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="The class list is split on whitespace before parsing, so only space-free function syntax survives: bg-[rgb(255,0,0)] works but bg-[rgb(255, 0, 0)] silently does nothing. oklch() must use commas here too, e.g. bg-[oklch(70%,0.15,200)], because the CSS-standard space-separated form cannot survive that split." />
+                                    <TextBlock
+                                        Classes="docs-noteBody"
+                                        Text="CSS-native inner alpha, e.g. rgb(255,0,0/0.5), is not supported. Set alpha with the post-bracket modifier instead, e.g. bg-[rgb(255,0,0)]/50." />
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
@@ -197,6 +206,33 @@
                                         HorizontalAlignment="Left"
                                         tw:Tw.Class="bg-[#95e1d3] text-[#38ada9] border-[#1abc9c] px-3.5 py-[9px]"
                                         Content="bg / text / border arbitrary" />
+                                </StackPanel>
+                            </docs:DocsExample>
+                            <docs:DocsExample>
+                                <docs:DocsExample.Snippets>
+                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[rgb(56,173,169)]" /&gt;</x:String>
+                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[hsl(175,50%,55%)]/70" /&gt;</x:String>
+                                    <x:String>&lt;Button tw:Tw.Class="bg-[oklch(70%,0.15,200)] text-[#04252b] border-[rgb(0,140,148)]" /&gt;</x:String>
+                                </docs:DocsExample.Snippets>
+                                <StackPanel
+                                    Spacing="12">
+                                    <TextBlock
+                                        FontSize="24"
+                                        FontWeight="Bold"
+                                        LetterSpacing="-0.4"
+                                        tw:Tw.Class="text-[rgb(56,173,169)]"
+                                        Text="text-[rgb(56,173,169)]" />
+                                    <TextBlock
+                                        FontSize="20"
+                                        FontWeight="SemiBold"
+                                        tw:Tw.Class="text-[hsl(175,50%,55%)]/70"
+                                        Text="text-[hsl(175,50%,55%)]/70" />
+                                    <Button
+                                        CornerRadius="10"
+                                        BorderThickness="2"
+                                        HorizontalAlignment="Left"
+                                        tw:Tw.Class="bg-[oklch(70%,0.15,200)] text-[#04252b] border-[rgb(0,140,148)] px-3.5 py-[9px]"
+                                        Content="bg / text / border via CSS functions" />
                                 </StackPanel>
                             </docs:DocsExample>
                         </StackPanel>

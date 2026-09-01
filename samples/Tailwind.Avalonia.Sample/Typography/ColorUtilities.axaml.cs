@@ -19,6 +19,10 @@ public partial class ColorUtilities : UserControl
         new("text-[#<hex>]", "<Control tw:Tw.Class=\"text-[#3b82f6]\" />"),
         new("border-[#<hex>]", "<Border tw:Tw.Class=\"border-[#3b82f6]\" />"),
         new("text-[#<hex>]/<opacity>", "<Control tw:Tw.Class=\"text-[#3b82f6]/50\" />"),
+        new("bg-[rgb(r,g,b)]", "<Control tw:Tw.Class=\"bg-[rgb(255,0,0)]\" />"),
+        new("bg-[hsl(h,s%,l%)]", "<Control tw:Tw.Class=\"bg-[hsl(200,70%,50%)]\" />"),
+        new("bg-[oklch(l%,c,h)]", "<Control tw:Tw.Class=\"bg-[oklch(70%,0.15,200)]\" />"),
+        new("bg-[rgb(r,g,b)]/<opacity>", "<Control tw:Tw.Class=\"bg-[rgb(255,0,0)]/50\" />"),
     ];
 
     /// <summary>
