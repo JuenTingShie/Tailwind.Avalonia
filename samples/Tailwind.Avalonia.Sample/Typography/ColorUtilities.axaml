@@ -7,7 +7,7 @@
     <docs:DocsPage
         Section="Typography"
         Title="Colors"
-        Intro="Use bg-*, text-*, and border-* to apply whole-property Tailwind palette colors to Avalonia controls. This page covers the families tw:Tw.Class already implements, including transparent, /opacity, and arbitrary hex bracket values.">
+        Intro="Use bg-*, text-*, and border-* to apply whole-property Tailwind palette colors to Avalonia controls. This page covers the families tw:Tw.Class already implements, including transparent, /opacity, arbitrary hex bracket values, and bracketed CSS colour functions like rgb(), rgba(), hsl(), hsla(), and oklch().">
         <StackPanel
             Spacing="52">
             <StackPanel
@@ -15,7 +15,7 @@
                 <docs:DocsNote
                     Classes="supported"
                     Title="Implemented in this sample"
-                    Body="bg-*, text-*, and border-* accept Tailwind palette tokens, transparent, /opacity, and arbitrary hex bracket values. Border utilities set the whole BorderBrush property; per-side border colors stay outside the current no-custom-component scope." />
+                    Body="bg-*, text-*, and border-* accept Tailwind palette tokens, transparent, /opacity, arbitrary hex bracket values, and bracketed CSS colour functions like rgb(), rgba(), hsl(), hsla(), and oklch(). Border utilities set the whole BorderBrush property; per-side border colors stay outside the current no-custom-component scope." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="4" />

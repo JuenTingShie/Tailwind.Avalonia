@@ -134,7 +134,7 @@
 
                     <docs:DocsSection
                         Heading="Responsive design"
-                        Summary="Tailwind's font-size docs also show breakpoint-prefixed examples like md:text-base. Variant prefixes are unsupported across the whole parser surface, so the docs name them instead of implying they work.">
+                        Summary="Tailwind's font-size docs also show breakpoint-prefixed examples like md:text-base. Breakpoint prefixes are unsupported across the whole parser surface, and font size does not accept hover:, pressed: or focus: either — those work only on the bg-*, text-*, border-* colour utilities and opacity-*. See Interactivity &gt; Pseudo-class variants.">
                         <docs:DocsNote
                             Classes="gap muted"
                             Title="Official examples not implemented yet">

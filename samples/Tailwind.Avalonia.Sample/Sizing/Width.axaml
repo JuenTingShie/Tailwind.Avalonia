@@ -58,7 +58,7 @@
                                 Text="keywords and resets" />
                             <TextBlock
                                 Classes="docs-tableClass"
-                                Text="w-auto · container · container mx-auto px-4" />
+                                Text="w-auto · container" />
                         </StackPanel>
                         <StackPanel
                             Spacing="5">
@@ -267,7 +267,7 @@
                                         Text="Only bracket syntax is parsed; w-(&lt;custom-property&gt;) stays unsupported." />
                                     <TextBlock
                                         Classes="docs-noteBody"
-                                        Text="Percentages stay unsupported; a % token fails to parse and the whole class is dropped." />
+                                        Text="Percentages stay unsupported; a % token fails to parse and that token is dropped, while the rest of the class list still applies." />
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
