@@ -1,0 +1,160 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Effects.Opacity">
+    <docs:DocsPage
+        Section="Effects"
+        Title="Opacity"
+        Intro="Utilities for controlling the opacity of an element. opacity-&lt;0-100&gt; maps directly to Avalonia's Opacity property, expressed as the token's value divided by 100.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="opacity-0 through opacity-100 set Avalonia's Opacity property to the token's integer value divided by 100. hover:, pressed:, and focus: variants apply an opacity-* token only in that pseudo-class state - opacity is the only non-color utility family variant prefixes work on." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These opacity forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="opacity-52.5 · opacity-150 · opacity-[0.5]" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Basic example"
+                        Summary="Use opacity-&lt;number&gt; utilities like opacity-50 and opacity-100 to set the opacity of an element. Any integer from 0 through 100 works; each previewed Border below carries the real tw:Tw.Class token.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="opacity-100" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="opacity-75" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="opacity-50" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="opacity-25" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                Classes="docs-inset"
+                                HorizontalAlignment="Left"
+                                tw:Tw.Class="p-5">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="18">
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-lg opacity-100 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="100" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-lg opacity-75 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="75" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-lg opacity-50 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="50" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-lg opacity-25 w-20 h-20">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="25" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Variant prefixes"
+                        Summary="opacity-* is the only non-color utility family that accepts hover:, pressed:, and focus: prefixes; spacing, sizing, and font-size utilities do not. See the Interactivity &gt; Pseudo-class variants page, which already demonstrates opacity-100 pressed:opacity-50 on a button; the two controls below show hover: and focus: doing the same.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="opacity-100 hover:opacity-40" /&gt;</x:String>
+                                <x:String>&lt;Button tw:Tw.Class="opacity-100 focus:opacity-40" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="28">
+                                <StackPanel
+                                    Spacing="14">
+                                    <TextBlock
+                                        Classes="docs-hint"
+                                        Text="Move the pointer over the box." />
+                                    <Border
+                                        tw:Tw.Class="bg-sky-500 rounded-lg opacity-100 hover:opacity-40 w-24 h-24">
+                                        <TextBlock
+                                            Classes="docs-chip on-color"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="hover" />
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel
+                                    Spacing="14">
+                                    <TextBlock
+                                        Classes="docs-hint"
+                                        Text="Click into the button, or tab to it." />
+                                    <Button
+                                        CornerRadius="10"
+                                        BorderThickness="0"
+                                        HorizontalAlignment="Left"
+                                        tw:Tw.Class="bg-emerald-500 opacity-100 focus:opacity-40 text-slate-950 px-[18px] py-3.5"
+                                        Content="focus:opacity-40" />
+                                </StackPanel>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Decimals, out-of-range values, and arbitrary syntax"
+                        Summary="opacity-&lt;number&gt; only accepts a bare integer from 0 to 100. Non-integer values, values outside that range, and Tailwind's bracket arbitrary-value syntax are all rejected outright rather than clamped or coerced, so the token is dropped and the control keeps its default opacity.">
+                        <docs:DocsNote
+                            Classes="gap muted"
+                            Title="Not implemented">
+                            <StackPanel
+                                Spacing="6">
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="opacity-52.5 (non-integer values are rejected)" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="opacity-150 (values outside 0-100 are rejected)" />
+                                <TextBlock
+                                    Classes="docs-tableClass"
+                                    Text="opacity-[0.5] (there is no bracket arbitrary form)" />
+                            </StackPanel>
+                        </docs:DocsNote>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>

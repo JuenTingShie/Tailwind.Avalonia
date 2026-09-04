@@ -174,7 +174,15 @@ internal static class TailwindCssColorParser
             inner = inner[..slashIndex].Trim();
         }
 
-        var components = inner.ToString().Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+        // Comma-split when a comma is present, otherwise whitespace-split, matching
+        // SplitFunctionComponents (used by rgb()/hsl()). This is a deliberate deviation from
+        // the CSS spec (oklch() is space-separated only): the class-list tokenizer splits
+        // tokens on whitespace, so a space-separated oklch() value can never survive to reach
+        // this parser from Tw.Class. Accepting commas is what makes oklch() reachable at all.
+        var colorPart = inner.ToString();
+        var components = colorPart.Contains(',')
+            ? colorPart.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            : colorPart.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
 
         if (components.Length != 3)
         {

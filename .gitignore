@@ -5,3 +5,6 @@
 # Added by code-review-graph
 .code-review-graph/
 .vscode/
+
+# Subagent-driven-development scratch workspace (ledger, briefs, review packages)
+.superpowers/

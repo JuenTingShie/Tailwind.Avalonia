@@ -85,6 +85,9 @@ public partial class SampleShell : UserControl
             new(
                 "Interactivity",
                 new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants())),
+            new(
+                "Effects",
+                new SampleShellPageDescriptor("Opacity", static () => new Effects.Opacity())),
         ];
     }
 

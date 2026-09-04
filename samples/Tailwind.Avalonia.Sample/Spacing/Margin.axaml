@@ -13,6 +13,10 @@
             Spacing="52">
             <StackPanel
                 Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="m-&lt;number&gt; sets margin on all sides; mx-*/my-* target an axis, mt/mr/mb/ml-* target one physical side, and the logical ms/me-*, mbs/mbe-*, and visual msv/mev-* variants map to inline/block or final-rendered sides. A leading minus sign, as in -mt-8, negates any of these, and bracket arbitrary values like m-[8px] take a direct value. Auto values, such as m-auto and its axis/logical variants, and custom properties are still out of scope." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />
@@ -908,7 +912,7 @@
                                     Spacing="8">
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="px · rem · em · % · unitless · negative prefix" />
+                                        Text="px · rem · em · unitless · negative prefix" />
                                     <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Arbitrary margin values are parser-only and do not emit generated package keys." />
@@ -920,7 +924,7 @@
                                         Text="Current parser only supports bracket arbitrary syntax. m-(&lt;custom-property&gt;) and -m-(&lt;custom-property&gt;) remain unsupported." />
                                     <TextBlock
                                         Classes="docs-noteBody"
-                                        Text="% tokens are currently parsed as numeric values, not CSS percentage layout." />
+                                        Text="Percentages stay unsupported; a % token fails to parse and that token is dropped, while the rest of the class list still applies." />
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>

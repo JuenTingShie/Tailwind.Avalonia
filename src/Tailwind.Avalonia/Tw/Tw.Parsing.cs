@@ -60,8 +60,7 @@ public partial class Tw
         utility = default;
 
         if (token.StartsWith("-", StringComparison.Ordinal) ||
-            token.Contains(':') ||
-            token.Contains('('))
+            token.Contains(':'))
         {
             return false;
         }
@@ -74,6 +73,19 @@ public partial class Tw
             }
 
             var colorToken = token[descriptor.Prefix.Length..];
+
+            // Reject Tailwind's custom-property shorthand (e.g. bg-(--my-color)), which this
+            // library deliberately does not support, but allow a '(' that is part of a CSS
+            // color function inside a bracket arbitrary value (e.g. bg-[rgb(255,0,0)]). A
+            // token only qualifies as a bracket arbitrary value when it starts with '[' right
+            // after the utility prefix. Note: ApplyUtilities splits the class list on
+            // whitespace, so only space-free function syntax can ever survive tokenization —
+            // bg-[rgb(255,0,0)] works, bg-[rgb(255, 0, 0)] cannot; that tokenizer limitation is
+            // out of scope here.
+            if (colorToken.Contains('(') && !colorToken.StartsWith("[", StringComparison.Ordinal))
+            {
+                return false;
+            }
 
             if (!TryResolveUtilityColor(colorToken, out var color))
             {

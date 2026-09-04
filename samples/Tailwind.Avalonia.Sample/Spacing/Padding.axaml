@@ -13,6 +13,10 @@
             Spacing="52">
             <StackPanel
                 Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="p-&lt;number&gt; sets padding on all sides; px-*/py-* target an axis, pt/pr/pb/pl-* target one physical side, and the logical ps/pe-*, pbs/pbe-*, and visual psv/pev-* variants map to inline/block or final-rendered sides. Bracket arbitrary values like p-[12px] take a direct value. Custom properties, such as p-(&lt;custom-property&gt;) and its per-side forms, are still out of scope." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />
@@ -22,9 +26,6 @@
                     Body="These Tailwind padding rows remain outside the current parser surface.">
                     <StackPanel
                         Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="p-px · px-px · py-px · pt-px · pr-px · pb-px · pl-px · ps-px · pe-px · pbs-px · pbe-px" />
                         <TextBlock
                             Classes="docs-tableClass"
                             Text="p-(&lt;custom-property&gt;) · px-(&lt;custom-property&gt;) · py-(&lt;custom-property&gt;) · pt-(&lt;custom-property&gt;) · pr-(&lt;custom-property&gt;) · pb-(&lt;custom-property&gt;) · pl-(&lt;custom-property&gt;)" />
@@ -833,7 +834,7 @@
                                     Spacing="8">
                                     <TextBlock
                                         Classes="docs-tableClass"
-                                        Text="px · rem · em · % · unitless" />
+                                        Text="px · rem · em · unitless" />
                                     <TextBlock
                                         Classes="docs-noteBody"
                                         Text="Arbitrary padding values are parser-only and do not emit generated package keys." />
@@ -845,7 +846,7 @@
                                         Text="Current parser only supports bracket arbitrary syntax. p-(&lt;custom-property&gt;) remains unsupported." />
                                     <TextBlock
                                         Classes="docs-noteBody"
-                                        Text="% tokens are currently parsed as numeric values, not CSS percentage layout." />
+                                        Text="Percentages stay unsupported; a % token fails to parse and that token is dropped, while the rest of the class list still applies." />
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>

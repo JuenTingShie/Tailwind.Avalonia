@@ -21,13 +21,21 @@ public partial class Radius : UserControl
         new("rounded-full", "<Border CornerRadius=\"9999\" />"),
         new("rounded-[<value>]", "<Border CornerRadius=\"<parsed value>\" />"),
         new("rounded-t-<name>", "<Border CornerRadius=\"<v>,<v>,0,0\" />"),
+        new("rounded-t-[<value>]", "<Border CornerRadius=\"<parsed>,<parsed>,0,0\" />"),
         new("rounded-r-<name>", "<Border CornerRadius=\"0,<v>,<v>,0\" />"),
+        new("rounded-r-[<value>]", "<Border CornerRadius=\"0,<parsed>,<parsed>,0\" />"),
         new("rounded-b-<name>", "<Border CornerRadius=\"0,0,<v>,<v>\" />"),
+        new("rounded-b-[<value>]", "<Border CornerRadius=\"0,0,<parsed>,<parsed>\" />"),
         new("rounded-l-<name>", "<Border CornerRadius=\"<v>,0,0,<v>\" />"),
+        new("rounded-l-[<value>]", "<Border CornerRadius=\"<parsed>,0,0,<parsed>\" />"),
         new("rounded-tl-<name>", "<Border CornerRadius=\"<v>,0,0,0\" />"),
+        new("rounded-tl-[<value>]", "<Border CornerRadius=\"<parsed>,0,0,0\" />"),
         new("rounded-tr-<name>", "<Border CornerRadius=\"0,<v>,0,0\" />"),
+        new("rounded-tr-[<value>]", "<Border CornerRadius=\"0,<parsed>,0,0\" />"),
         new("rounded-br-<name>", "<Border CornerRadius=\"0,0,<v>,0\" />"),
+        new("rounded-br-[<value>]", "<Border CornerRadius=\"0,0,<parsed>,0\" />"),
         new("rounded-bl-<name>", "<Border CornerRadius=\"0,0,0,<v>\" />"),
+        new("rounded-bl-[<value>]", "<Border CornerRadius=\"0,0,0,<parsed>\" />"),
     ];
 
     /// <summary>

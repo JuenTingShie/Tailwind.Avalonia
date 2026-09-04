@@ -56,6 +56,10 @@ public partial class Margin : UserControl
         new("-mbs-[<value>]", "<Border Margin=\"0,-<parsed>,0,0\" />"),
         new("-mbe-<number>", "<Border Margin=\"0,0,0,-<number>\" />"),
         new("-mbe-[<value>]", "<Border Margin=\"0,0,0,-<parsed>\" />"),
+        new("-msv-<number>", "<Border Margin=\"-<number>,0,0,0\" />"),
+        new("-msv-[<value>]", "<Border Margin=\"-<parsed>,0,0,0\" />"),
+        new("-mev-<number>", "<Border Margin=\"0,0,-<number>,0\" />"),
+        new("-mev-[<value>]", "<Border Margin=\"0,0,-<parsed>,0\" />"),
     ];
 
     /// <summary>
