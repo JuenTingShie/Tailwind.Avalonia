@@ -341,7 +341,7 @@ public partial class Tw
         }
 
         var numericPart = contentWithUnit[..index];
-        var unitPart = contentWithUnit[index..].Trim();
+        var unitPart = contentWithUnit[index..].Trim().ToLowerInvariant();
 
         if (!double.TryParse(numericPart, NumberStyles.Float, CultureInfo.InvariantCulture, out var numericValue))
         {
