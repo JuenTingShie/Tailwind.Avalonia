@@ -9,6 +9,7 @@ public partial class Tw
     private readonly record struct SizingUtility(SizingTarget Target, double Pixels);
     private readonly record struct FontSizeUtility(double Pixels);
     private readonly record struct TextAlignUtility(TextAlignment Alignment);
+    private readonly record struct BoxShadowUtility(BoxShadows Shadows);
 
     private readonly record struct UtilityDescriptor(string Prefix, SpacingTarget Target, SpacingEdge Edge);
     private readonly record struct BrushUtilityDescriptor(string Prefix, BrushTarget Target);

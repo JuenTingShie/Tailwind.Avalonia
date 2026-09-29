@@ -14,6 +14,7 @@ public partial class Tw
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> DoublePropertyCache = new();
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> CornerRadiusPropertyCache = new();
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> TextAlignmentPropertyCache = new();
+    private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> BoxShadowPropertyCache = new();
 
     private static bool TrySetThickness(AvaloniaObject element, string propertyName, Thickness value)
     {
@@ -202,6 +203,44 @@ public partial class Tw
         {
             var property = FindPropertyField(key);
             return property?.PropertyType == typeof(TextAlignment) ? property : null;
+        });
+    }
+
+    private static bool TrySetBoxShadows(AvaloniaObject element, string propertyName, BoxShadows value)
+    {
+        var property = FindBoxShadowProperty(element.GetType(), propertyName);
+
+        if (property is null)
+        {
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not find a '{PropertyName}' BoxShadows property on {ElementType}; the utility was ignored.",
+                propertyName,
+                element.GetType());
+            return false;
+        }
+
+        element.SetValue(property, value);
+        return true;
+    }
+
+    private static void ClearBoxShadows(AvaloniaObject element, string propertyName)
+    {
+        var property = FindBoxShadowProperty(element.GetType(), propertyName);
+
+        if (property is not null)
+        {
+            element.ClearValue(property);
+        }
+    }
+
+    [UnconditionalSuppressMessage("Trimming", "IL2067", Justification = "Avalonia property lookup intentionally inspects runtime control types for public static *Property fields on the supported control surface.")]
+    private static AvaloniaProperty? FindBoxShadowProperty(Type type, string propertyName)
+    {
+        return BoxShadowPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key =>
+        {
+            var property = FindPropertyField(key);
+            return property?.PropertyType == typeof(BoxShadows) ? property : null;
         });
     }
 
