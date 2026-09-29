@@ -101,7 +101,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | list-style-image          |             |
 | list-style-position       |             |
 | list-style-type           |             |
-| text-align                |             |
+| text-align                |     ✅      |
 | color                     |     ✅      |
 | text-decoration-line      |             |
 | text-decoration-color     |             |

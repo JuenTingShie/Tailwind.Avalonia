@@ -13,6 +13,7 @@ public partial class Tw
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> BrushPropertyCache = new();
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> DoublePropertyCache = new();
     private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> CornerRadiusPropertyCache = new();
+    private static readonly ConcurrentDictionary<PropertyLookupKey, AvaloniaProperty?> TextAlignmentPropertyCache = new();
 
     private static bool TrySetThickness(AvaloniaObject element, string propertyName, Thickness value)
     {
@@ -163,6 +164,44 @@ public partial class Tw
         {
             var property = FindPropertyField(key);
             return property?.PropertyType == typeof(CornerRadius) ? property : null;
+        });
+    }
+
+    private static bool TrySetTextAlignment(AvaloniaObject element, string propertyName, TextAlignment value)
+    {
+        var property = FindTextAlignmentProperty(element.GetType(), propertyName);
+
+        if (property is null)
+        {
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not find a '{PropertyName}' TextAlignment property on {ElementType}; the utility was ignored.",
+                propertyName,
+                element.GetType());
+            return false;
+        }
+
+        element.SetValue(property, value);
+        return true;
+    }
+
+    private static void ClearTextAlignment(AvaloniaObject element, string propertyName)
+    {
+        var property = FindTextAlignmentProperty(element.GetType(), propertyName);
+
+        if (property is not null)
+        {
+            element.ClearValue(property);
+        }
+    }
+
+    [UnconditionalSuppressMessage("Trimming", "IL2067", Justification = "Avalonia property lookup intentionally inspects runtime control types for public static *Property fields on the supported control surface.")]
+    private static AvaloniaProperty? FindTextAlignmentProperty(Type type, string propertyName)
+    {
+        return TextAlignmentPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key =>
+        {
+            var property = FindPropertyField(key);
+            return property?.PropertyType == typeof(TextAlignment) ? property : null;
         });
     }
 

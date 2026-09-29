@@ -35,6 +35,8 @@ public partial class Tw
         var hasFontSize = false;
         var hasCornerRadius = false;
         var hasOpacity = false;
+        var hasTextAlignment = false;
+        var textAlignment = default(TextAlignment);
         var opacity = default(double);
         var backgroundVariants = new IBrush?[VariantCount];
         var foregroundVariants = new IBrush?[VariantCount];
@@ -189,6 +191,13 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseTextAlignUtility(token, out var textAlignUtility))
+            {
+                textAlignment = textAlignUtility.Alignment;
+                hasTextAlignment = true;
+                continue;
+            }
+
             if (TryParseOpacityUtility(token, out var opacityUtility))
             {
                 opacity = opacityUtility;
@@ -258,6 +267,7 @@ public partial class Tw
             new(ForegroundMask, foregroundDirect, () => TrySetBrush(element, "Foreground", foreground), () => ClearBrush(element, "Foreground")),
             new(BorderBrushMask, borderBrushDirect, () => TrySetBrush(element, "BorderBrush", borderBrush), () => ClearBrush(element, "BorderBrush")),
             new(OpacityMask, opacityDirect, () => TrySetDouble(element, "Opacity", opacity), () => ClearDouble(element, "Opacity")),
+            new(TextAlignmentMask, hasTextAlignment, () => TrySetTextAlignment(element, "TextAlignment", textAlignment), () => ClearTextAlignment(element, "TextAlignment")),
             new(CornerRadiusMask, hasCornerRadius, () => TrySetCornerRadius(element, "CornerRadius", cornerRadius), () => ClearCornerRadius(element, "CornerRadius")),
         ];
 
