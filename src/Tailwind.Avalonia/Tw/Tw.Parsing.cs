@@ -267,6 +267,23 @@ public partial class Tw
         return false;
     }
 
+    private static bool TryParseTextAlignUtility(string token, out TextAlignUtility utility)
+    {
+        TextAlignment? alignment = token switch
+        {
+            "text-left" => TextAlignment.Left,
+            "text-center" => TextAlignment.Center,
+            "text-right" => TextAlignment.Right,
+            "text-justify" => TextAlignment.Justify,
+            "text-start" => TextAlignment.Start,
+            "text-end" => TextAlignment.End,
+            _ => null,
+        };
+
+        utility = alignment is { } value ? new TextAlignUtility(value) : default;
+        return alignment is not null;
+    }
+
     private static bool TryParseOpacityUtility(string token, out double opacity)
     {
         opacity = default;
