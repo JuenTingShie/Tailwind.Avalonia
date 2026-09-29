@@ -17,13 +17,13 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | break-inside                |             |
 | box-decoration-break        |             |
 | box-sizing                  |             |
-| display                     |             |
+| display                     |     ✅      |
 | float                       |             |
 | clear                       |             |
 | isolation                   |             |
 | object-fit                  |             |
 | object-position             |             |
-| overflow                    |             |
+| overflow                    |     ✅      |
 | overscroll-behavior         |             |
 | position                    |             |
 | top / right / bottom / left |             |

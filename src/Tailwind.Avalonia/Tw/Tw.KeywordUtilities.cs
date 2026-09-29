@@ -43,6 +43,11 @@ public partial class Tw
         Add("text-clip", "TextTrimming", TextTrimming.None);
         Add("text-wrap", "TextWrapping", TextWrapping.Wrap);
         Add("text-nowrap", "TextWrapping", TextWrapping.NoWrap);
+        Add("hidden", "IsVisible", false);
+        Add("block", "IsVisible", true);
+        Add("overflow-hidden", "ClipToBounds", true);
+        Add("overflow-clip", "ClipToBounds", true);
+        Add("overflow-visible", "ClipToBounds", false);
         table["truncate"] =
         [
             new KeywordAssignment("TextTrimming", TextTrimming.CharacterEllipsis),
