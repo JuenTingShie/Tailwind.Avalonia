@@ -119,6 +119,8 @@ public partial class SampleShell : UserControl
                 new SampleShellPageDescriptor("Opacity", static () => new Effects.Opacity()),
                 new SampleShellPageDescriptor("Box shadow", static () => new Effects.BoxShadow()),
                 new SampleShellPageDescriptor("Ring", static () => new Effects.Ring()),
+                new SampleShellPageDescriptor("Blur", static () => new Effects.Blur()),
+                new SampleShellPageDescriptor("Drop shadow", static () => new Effects.DropShadow()),
                 new SampleShellPageDescriptor("Transitions", static () => new Effects.Transitions())),
         ];
     }

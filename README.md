@@ -171,10 +171,10 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 | Utility                      | Implemented |
 | ---------------------------- | :---------: |
-| filter (blur)                |             |
+| filter (blur)                |     ✅      |
 | filter (brightness)          |             |
 | filter (contrast)            |             |
-| filter (drop-shadow)         |             |
+| filter (drop-shadow)         |     ✅      |
 | filter (grayscale)           |             |
 | filter (hue-rotate)          |             |
 | filter (invert)              |             |
