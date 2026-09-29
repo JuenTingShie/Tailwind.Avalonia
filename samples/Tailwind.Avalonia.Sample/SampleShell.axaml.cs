@@ -101,6 +101,8 @@ public partial class SampleShell : UserControl
                 new SampleShellPageDescriptor("Self alignment", static () => new Layout.SelfAlignment()),
                 new SampleShellPageDescriptor("Direction and gap", static () => new Layout.FlexDirectionGap()),
                 new SampleShellPageDescriptor("Position", static () => new Layout.Position()),
+                new SampleShellPageDescriptor("Grid", static () => new Layout.Grid()),
+                new SampleShellPageDescriptor("Object fit", static () => new Layout.ObjectFit()),
                 new SampleShellPageDescriptor("Z-index", static () => new Layout.ZIndex())),
             new(
                 "Transforms",
