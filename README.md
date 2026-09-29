@@ -96,7 +96,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | font-variant-numeric      |             |
 | font-feature-settings     |             |
 | letter-spacing            |     ✅      |
-| line-clamp                |             |
+| line-clamp                |     ✅      |
 | line-height               |     ✅      |
 | list-style-image          |             |
 | list-style-position       |             |
