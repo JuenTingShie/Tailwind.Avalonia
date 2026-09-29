@@ -76,6 +76,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | height          |     ✅      |
 | min-height      |     ✅      |
 | max-height      |     ✅      |
+| size            |     ✅      |
 | inline-size     |             |
 | min-inline-size |             |
 | max-inline-size |             |

@@ -73,7 +73,8 @@ public partial class SampleShell : UserControl
             new(
                 "Sizing",
                 new SampleShellPageDescriptor("Width", static () => new Sizing.Width()),
-                new SampleShellPageDescriptor("Height", static () => new Sizing.Height())),
+                new SampleShellPageDescriptor("Height", static () => new Sizing.Height()),
+                new SampleShellPageDescriptor("Size keywords", static () => new Sizing.SizeKeywords())),
             new(
                 "Borders",
                 new SampleShellPageDescriptor("Radius", static () => new Borders.Radius()),
