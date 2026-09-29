@@ -138,7 +138,44 @@ public partial class Tw
             }
         }
 
+        // Try CSS named colors (red, rebeccapurple, transparent, ...). Restrict to plain ASCII letters so
+        // Color.TryParse is never asked to interpret other syntaxes here.
+        if (IsAsciiLetters(colorValue))
+        {
+            // Avalonia's table differs from CSS for these two: it lacks rebeccapurple and defines
+            // transparent as #00FFFFFF, while CSS defines it as rgba(0, 0, 0, 0).
+            if (colorValue.Equals("transparent", StringComparison.OrdinalIgnoreCase))
+            {
+                color = Color.FromArgb(0, 0, 0, 0);
+                return true;
+            }
+
+            if (colorValue.Equals("rebeccapurple", StringComparison.OrdinalIgnoreCase))
+            {
+                color = Color.FromRgb(0x66, 0x33, 0x99);
+                return true;
+            }
+
+            if (Color.TryParse(colorValue, out color))
+            {
+                return true;
+            }
+        }
+
         return false;
+    }
+
+    private static bool IsAsciiLetters(string value)
+    {
+        foreach (var ch in value)
+        {
+            if (!char.IsAsciiLetter(ch))
+            {
+                return false;
+            }
+        }
+
+        return value.Length > 0;
     }
 
     private static bool TryParseHexColor(string hexColor, out Color color)
