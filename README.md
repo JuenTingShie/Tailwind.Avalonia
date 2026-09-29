@@ -91,7 +91,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | font-size                 |     ✅      |
 | font-smoothing            |             |
 | font-style                |             |
-| font-weight               |             |
+| font-weight               |     ✅      |
 | font-stretch              |             |
 | font-variant-numeric      |             |
 | font-feature-settings     |             |
