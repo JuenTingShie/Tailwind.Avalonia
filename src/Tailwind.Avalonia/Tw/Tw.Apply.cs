@@ -36,6 +36,8 @@ public partial class Tw
         var hasCornerRadius = false;
         var hasOpacity = false;
         var hasTextAlignment = false;
+        var hasBoxShadow = false;
+        var boxShadow = default(BoxShadows);
         var textAlignment = default(TextAlignment);
         var opacity = default(double);
         var backgroundVariants = new IBrush?[VariantCount];
@@ -191,6 +193,13 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseBoxShadowUtility(token, out var boxShadowUtility))
+            {
+                boxShadow = boxShadowUtility.Shadows;
+                hasBoxShadow = true;
+                continue;
+            }
+
             if (TryParseTextAlignUtility(token, out var textAlignUtility))
             {
                 textAlignment = textAlignUtility.Alignment;
@@ -267,6 +276,7 @@ public partial class Tw
             new(ForegroundMask, foregroundDirect, () => TrySetBrush(element, "Foreground", foreground), () => ClearBrush(element, "Foreground")),
             new(BorderBrushMask, borderBrushDirect, () => TrySetBrush(element, "BorderBrush", borderBrush), () => ClearBrush(element, "BorderBrush")),
             new(OpacityMask, opacityDirect, () => TrySetDouble(element, "Opacity", opacity), () => ClearDouble(element, "Opacity")),
+            new(BoxShadowMask, hasBoxShadow, () => TrySetBoxShadows(element, "BoxShadow", boxShadow), () => ClearBoxShadows(element, "BoxShadow")),
             new(TextAlignmentMask, hasTextAlignment, () => TrySetTextAlignment(element, "TextAlignment", textAlignment), () => ClearTextAlignment(element, "TextAlignment")),
             new(CornerRadiusMask, hasCornerRadius, () => TrySetCornerRadius(element, "CornerRadius", cornerRadius), () => ClearCornerRadius(element, "CornerRadius")),
         ];

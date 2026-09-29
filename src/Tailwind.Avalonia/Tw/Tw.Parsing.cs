@@ -284,6 +284,20 @@ public partial class Tw
         return alignment is not null;
     }
 
+    private static bool TryParseBoxShadowUtility(string token, out BoxShadowUtility utility)
+    {
+        utility = default;
+
+        if (!token.StartsWith("shadow-", StringComparison.Ordinal) ||
+            !BoxShadowScale.TryGetShadows(token["shadow-".Length..], out var shadows))
+        {
+            return false;
+        }
+
+        utility = new BoxShadowUtility(shadows);
+        return true;
+    }
+
     private static bool TryParseOpacityUtility(string token, out double opacity)
     {
         opacity = default;
