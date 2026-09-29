@@ -267,6 +267,40 @@ public class TwArbitraryValuesTests
         Assert.Equal(expectedWidth, border.Width);
     }
 
+    [Theory]
+    [InlineData("bg-[#f00]", 255, 255, 0, 0)]
+    [InlineData("bg-[#f008]", 136, 255, 0, 0)]
+    [InlineData("bg-[#FF0000]", 255, 255, 0, 0)]
+    [InlineData("bg-[#00ff0080]", 128, 0, 255, 0)]
+    public void SetClass_Applies_Arbitrary_Hex_Color_Forms(string className, byte a, byte r, byte g, byte b)
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, className);
+        border.ApplyStyling();
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+
+        Assert.Equal(Color.FromArgb(a, r, g, b), background);
+    }
+
+    [Theory]
+    [InlineData("bg-[#gg0000]")]
+    [InlineData("bg-[#ff00zz]")]
+    [InlineData("bg-[#12345]")]
+    [InlineData("bg-[#1234567]")]
+    [InlineData("bg-[#]")]
+    [InlineData("bg-[#+f0000]")]
+    public void SetClass_Ignores_Malformed_Arbitrary_Hex_Colors(string className)
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, className);
+        border.ApplyStyling();
+
+        Assert.Null(border.Background);
+    }
+
     [Fact]
     public void SetClass_Ignores_CustomProperty_Shorthand_For_Sizing()
     {

@@ -171,19 +171,18 @@ public partial class Tw
             return false;
         }
 
-        try
+        foreach (var ch in hex)
         {
-            var r = byte.Parse(hex[..2], System.Globalization.NumberStyles.HexNumber);
-            var g = byte.Parse(hex[2..4], System.Globalization.NumberStyles.HexNumber);
-            var b = byte.Parse(hex[4..6], System.Globalization.NumberStyles.HexNumber);
-            var a = hex.Length == 8 ? byte.Parse(hex[6..8], System.Globalization.NumberStyles.HexNumber) : (byte)255;
+            if (!char.IsAsciiHexDigit(ch))
+            {
+                return false;
+            }
+        }
 
-            color = Color.FromArgb(a, r, g, b);
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
+        var bytes = Convert.FromHexString(hex);
+        var alpha = bytes.Length == 4 ? bytes[3] : (byte)255;
+
+        color = Color.FromArgb(alpha, bytes[0], bytes[1], bytes[2]);
+        return true;
     }
 }
