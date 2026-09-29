@@ -95,6 +95,33 @@ public partial class Tw
             return true;
         }
 
+        // line-clamp-<n> limits the visible lines and ends the last one with an ellipsis; line-clamp-none removes the limit.
+        if (token.StartsWith("line-clamp-", StringComparison.Ordinal))
+        {
+            var value = token["line-clamp-".Length..];
+
+            if (value == "none")
+            {
+                assignments =
+                [
+                    new KeywordAssignment("MaxLines", 0),
+                    new KeywordAssignment("TextTrimming", TextTrimming.None),
+                ];
+                return true;
+            }
+
+            if (int.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out var lines) && lines > 0)
+            {
+                assignments =
+                [
+                    new KeywordAssignment("MaxLines", lines),
+                    new KeywordAssignment("TextTrimming", TextTrimming.CharacterEllipsis),
+                    new KeywordAssignment("TextWrapping", TextWrapping.Wrap),
+                ];
+                return true;
+            }
+        }
+
         return false;
     }
 
