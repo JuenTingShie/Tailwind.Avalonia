@@ -39,6 +39,16 @@ public partial class Tw
         Add("italic", "FontStyle", FontStyle.Italic);
         Add("not-italic", "FontStyle", FontStyle.Normal);
 
+        Add("text-ellipsis", "TextTrimming", TextTrimming.CharacterEllipsis);
+        Add("text-clip", "TextTrimming", TextTrimming.None);
+        Add("text-wrap", "TextWrapping", TextWrapping.Wrap);
+        Add("text-nowrap", "TextWrapping", TextWrapping.NoWrap);
+        table["truncate"] =
+        [
+            new KeywordAssignment("TextTrimming", TextTrimming.CharacterEllipsis),
+            new KeywordAssignment("TextWrapping", TextWrapping.NoWrap),
+        ];
+
         return table;
     }
 

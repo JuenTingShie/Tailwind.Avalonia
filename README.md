@@ -109,8 +109,8 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | text-decoration-thickness |             |
 | text-underline-offset     |             |
 | text-transform            |             |
-| text-overflow             |             |
-| text-wrap                 |             |
+| text-overflow             |     ✅      |
+| text-wrap                 |     ✅      |
 | text-indent               |             |
 | tab-size                  |             |
 | vertical-align            |             |
