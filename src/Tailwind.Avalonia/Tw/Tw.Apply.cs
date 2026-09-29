@@ -39,6 +39,7 @@ public partial class Tw
         Dictionary<string, object>? keywordValues = null;
         var hasBoxShadow = false;
         TransformState? transformState = null;
+        LayoutState? layoutState = null;
         var hasTextDecoration = false;
         var textDecorationLocations = new List<TextDecorationLocation>();
         var hasLetterSpacing = false;
@@ -215,6 +216,11 @@ public partial class Tw
                 continue;
             }
 
+            if (layoutState is null ? TryApplyLayoutToken(token, layoutState = new LayoutState()) : TryApplyLayoutToken(token, layoutState))
+            {
+                continue;
+            }
+
             if (transformState is null ? TryApplyTransformToken(token, transformState = new TransformState()) : TryApplyTransformToken(token, transformState))
             {
                 continue;
@@ -309,6 +315,12 @@ public partial class Tw
         var hasForegroundVariant = Array.Exists(foregroundVariants, v => v is not null);
         var hasBorderBrushVariant = Array.Exists(borderBrushVariants, v => v is not null);
         var hasOpacityVariant = Array.Exists(opacityVariants, v => v is not null);
+
+        if (layoutState is { HasValues: true } layout)
+        {
+            keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+            AddLayoutValues(element, layout, keywordValues);
+        }
 
         if (transformState is { } transform)
         {

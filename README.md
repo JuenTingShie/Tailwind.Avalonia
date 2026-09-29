@@ -35,7 +35,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | Utility               | Implemented |
 | --------------------- | :---------: |
 | flex-basis            |             |
-| flex-direction        |             |
+| flex-direction        |     ✅      |
 | flex-wrap             |             |
 | flex                  |             |
 | flex-grow             |             |
@@ -48,7 +48,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | grid-auto-flow        |             |
 | grid-auto-columns     |             |
 | grid-auto-rows        |             |
-| gap                   |             |
+| gap                   |     ✅      |
 | justify-content       |             |
 | justify-items         |             |
 | justify-self          |     ✅      |
