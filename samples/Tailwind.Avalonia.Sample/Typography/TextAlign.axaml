@@ -1,0 +1,179 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Typography.TextAlign">
+    <docs:DocsPage
+        Section="Typography"
+        Title="Text align"
+        Intro="Utilities for controlling the horizontal alignment of text. text-left, text-center, text-right, text-justify, text-start, and text-end map directly to Avalonia's TextAlignment property.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="Each utility sets TextAlignment on the element that carries tw:Tw.Class (TextBlock and other controls that expose the property). The last alignment class in the list wins, removing the class restores the default, and elements without a TextAlignment property ignore the token with a warning. Alignment only shows when the text has more room than it needs, so stretch the control or give it a width." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These text-align forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="text-justify-all · hover:text-center · md:text-center" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Basic example"
+                        Summary="Use text-left, text-center, and text-right to align a TextBlock inside a wider container. Each TextBlock below carries the real tw:Tw.Class token.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class="text-left" /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class="text-center" /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class="text-right" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Spacing="12">
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="p-4">
+                                    <TextBlock
+                                        Classes="docs-chip"
+                                        tw:Tw.Class="text-left"
+                                        Text="text-left" />
+                                </Border>
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="p-4">
+                                    <TextBlock
+                                        Classes="docs-chip"
+                                        tw:Tw.Class="text-center"
+                                        Text="text-center" />
+                                </Border>
+                                <Border
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="p-4">
+                                    <TextBlock
+                                        Classes="docs-chip"
+                                        tw:Tw.Class="text-right"
+                                        Text="text-right" />
+                                </Border>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Justified text"
+                        Summary="text-justify stretches the spaces in wrapped lines so both edges line up. It needs TextWrapping so the text spans more than one line.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock TextWrapping="Wrap" tw:Tw.Class="text-left" /&gt;</x:String>
+                                <x:String>&lt;TextBlock TextWrapping="Wrap" tw:Tw.Class="text-justify" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Grid
+                                ColumnDefinitions="*,*"
+                                ColumnSpacing="20">
+                                <Border
+                                    Grid.Column="0"
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="p-4">
+                                    <StackPanel
+                                        Spacing="8">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            Text="text-left" />
+                                        <TextBlock
+                                            Classes="docs-noteBody"
+                                            TextWrapping="Wrap"
+                                            tw:Tw.Class="text-left"
+                                            Text="Utility classes let you build custom designs without ever leaving your markup, which keeps each control's look next to the control itself." />
+                                    </StackPanel>
+                                </Border>
+                                <Border
+                                    Grid.Column="1"
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="p-4">
+                                    <StackPanel
+                                        Spacing="8">
+                                        <TextBlock
+                                            Classes="docs-chip"
+                                            Text="text-justify" />
+                                        <TextBlock
+                                            Classes="docs-noteBody"
+                                            TextWrapping="Wrap"
+                                            tw:Tw.Class="text-justify"
+                                            Text="Utility classes let you build custom designs without ever leaving your markup, which keeps each control's look next to the control itself." />
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Start and end"
+                        Summary="text-start and text-end follow the flow direction: start is the left edge in left-to-right layouts and the right edge in right-to-left layouts, whereas text-left and text-right never move.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class="text-start" /&gt;</x:String>
+                                <x:String>&lt;TextBlock FlowDirection="RightToLeft" tw:Tw.Class="text-start" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Grid
+                                ColumnDefinitions="*,*"
+                                ColumnSpacing="20">
+                                <Border
+                                    Grid.Column="0"
+                                    Classes="docs-inset"
+                                    tw:Tw.Class="p-4">
+                                    <TextBlock
+                                        Classes="docs-chip"
+                                        tw:Tw.Class="text-start"
+                                        Text="text-start (LTR)" />
+                                </Border>
+                                <Border
+                                    Grid.Column="1"
+                                    Classes="docs-inset"
+                                    FlowDirection="RightToLeft"
+                                    tw:Tw.Class="p-4">
+                                    <TextBlock
+                                        Classes="docs-chip"
+                                        tw:Tw.Class="text-start"
+                                        Text="text-start (RTL)" />
+                                </Border>
+                            </Grid>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Combining with other text utilities"
+                        Summary="text-* is shared by alignment, font size, and color. The parser tells them apart by value, so all three can sit in one class list.">
+                        <docs:DocsExample
+                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-center text-2xl text-sky-300&quot; /&gt;">
+                            <Border
+                                Classes="docs-inset"
+                                tw:Tw.Class="p-4">
+                                <TextBlock
+                                    tw:Tw.Class="text-center text-2xl text-sky-300"
+                                    Text="text-center text-2xl text-sky-300" />
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
