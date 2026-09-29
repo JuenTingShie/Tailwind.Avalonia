@@ -344,6 +344,31 @@ public class TwArbitraryValuesTests
         Assert.Equal(new Thickness(0), border.BorderThickness);
     }
 
+    [Theory]
+    [InlineData("p-[-10px]")]
+    [InlineData("px-[-10px]")]
+    [InlineData("py-[-1rem]")]
+    [InlineData("pt-[-4px]")]
+    [InlineData("pl-[-4px]")]
+    public void SetClass_Ignores_Negative_Arbitrary_Padding(string className)
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, className);
+
+        Assert.Equal(new Thickness(0), border.Padding);
+    }
+
+    [Fact]
+    public void SetClass_Still_Accepts_Negative_Arbitrary_Margin()
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, "m-[-10px]");
+
+        Assert.Equal(new Thickness(-10), border.Margin);
+    }
+
     [Fact]
     public void SetClass_Ignores_CustomProperty_Shorthand_For_Sizing()
     {
