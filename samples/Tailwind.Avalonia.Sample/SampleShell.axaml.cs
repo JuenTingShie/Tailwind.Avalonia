@@ -107,7 +107,8 @@ public partial class SampleShell : UserControl
                 "Interactivity",
                 new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants()),
                 new SampleShellPageDescriptor("Cursor", static () => new Interactivity.Cursor()),
-                new SampleShellPageDescriptor("Pointer events", static () => new Interactivity.PointerEvents())),
+                new SampleShellPageDescriptor("Pointer events", static () => new Interactivity.PointerEvents()),
+                new SampleShellPageDescriptor("Caret and selection color", static () => new Interactivity.CaretSelectionColor())),
             new(
                 "Effects",
                 new SampleShellPageDescriptor("Opacity", static () => new Effects.Opacity()),

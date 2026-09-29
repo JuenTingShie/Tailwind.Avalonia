@@ -300,6 +300,18 @@ public partial class Tw
                     borderBrush = brushUtility.Brush;
                     hasBorderBrush = true;
                     break;
+
+                // Caret and selection colors are plain brush properties on text input controls (TextBox and
+                // SelectableTextBlock), applied through the keyword mechanism so removed classes are cleared.
+                case BrushTarget.CaretBrush:
+                    keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+                    keywordValues["CaretBrush"] = brushUtility.Brush;
+                    break;
+
+                case BrushTarget.SelectionBrush:
+                    keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+                    keywordValues["SelectionBrush"] = brushUtility.Brush;
+                    break;
             }
         }
 
