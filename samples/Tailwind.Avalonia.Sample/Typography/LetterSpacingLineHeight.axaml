@@ -1,0 +1,102 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Typography.LetterSpacingLineHeight">
+    <docs:DocsPage
+        Section="Typography"
+        Title="Tracking and leading"
+        Intro="Utilities for letter spacing (tracking-*) and line height (leading-*). They map to Avalonia&#x27;s TextBlock LetterSpacing and LineHeight properties.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="tracking-* sets LetterSpacing and leading-* sets LineHeight in device-independent pixels. Named tracking values (tighter to widest, in em) and leading keywords (none to loose, as multiples of the font size) are resolved against the font size in the same class list, for example text-lg, or against the element&#x27;s current FontSize when the list has no size class. leading-&lt;n&gt; uses the spacing scale (leading-6 is 24px) and both accept arbitrary pixel values such as tracking-[3px] and leading-[18px]. Removing the class restores the default. Values are calculated when the class is applied and do not follow later FontSize changes." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="em / rem arbitrary units · leading-[1.5] unitless multiplier" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Letter spacing"
+                        Summary="Named tracking values scale with the font size in the class list. An arbitrary pixel value ignores the font size.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;text-base tracking-tighter&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;text-base tracking-widest&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;text-base tracking-[6px]&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Spacing="10">
+                                <TextBlock
+                                    tw:Tw.Class="text-base tracking-tighter"
+                                    Text="text-base tracking-tighter" />
+                                <TextBlock
+                                    tw:Tw.Class="text-base tracking-normal"
+                                    Text="text-base tracking-normal" />
+                                <TextBlock
+                                    tw:Tw.Class="text-base tracking-wide"
+                                    Text="text-base tracking-wide" />
+                                <TextBlock
+                                    tw:Tw.Class="text-base tracking-widest"
+                                    Text="text-base tracking-widest" />
+                                <TextBlock
+                                    tw:Tw.Class="text-base tracking-[6px]"
+                                    Text="text-base tracking-[6px]" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Line height"
+                        Summary="Each paragraph is 18rem wide so it wraps. leading-10 is a fixed 40px, the keyword values scale with the text-sm font size.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 text-sm text-wrap leading-tight&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 text-sm text-wrap leading-loose&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 text-sm text-wrap leading-10&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Spacing="10">
+                                <TextBlock
+                                    tw:Tw.Class="w-72 text-sm text-wrap leading-tight"
+                                    Text="leading-tight: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                                <TextBlock
+                                    tw:Tw.Class="w-72 text-sm text-wrap leading-normal"
+                                    Text="leading-normal: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                                <TextBlock
+                                    tw:Tw.Class="w-72 text-sm text-wrap leading-loose"
+                                    Text="leading-loose: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                                <TextBlock
+                                    tw:Tw.Class="w-72 text-sm text-wrap leading-10"
+                                    Text="leading-10: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>

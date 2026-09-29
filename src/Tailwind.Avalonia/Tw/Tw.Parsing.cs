@@ -270,6 +270,78 @@ public partial class Tw
         return false;
     }
 
+    private static bool TryParseLetterSpacingUtility(string token, out TextMetricUtility utility)
+    {
+        utility = default;
+
+        if (!token.StartsWith("tracking-", StringComparison.Ordinal) || token.Contains(':'))
+        {
+            return false;
+        }
+
+        var value = token["tracking-".Length..];
+        double? em = value switch
+        {
+            "tighter" => -0.05,
+            "tight" => -0.025,
+            "normal" => 0,
+            "wide" => 0.025,
+            "wider" => 0.05,
+            "widest" => 0.1,
+            _ => null,
+        };
+
+        if (em is { } known)
+        {
+            utility = new TextMetricUtility(known, true);
+            return true;
+        }
+
+        if (TryParseArbitraryDouble(value, out var pixels))
+        {
+            utility = new TextMetricUtility(pixels, false);
+            return true;
+        }
+
+        return false;
+    }
+
+    private static bool TryParseLineHeightUtility(string token, out TextMetricUtility utility)
+    {
+        utility = default;
+
+        if (!token.StartsWith("leading-", StringComparison.Ordinal) || token.Contains(':'))
+        {
+            return false;
+        }
+
+        var value = token["leading-".Length..];
+        double? multiplier = value switch
+        {
+            "none" => 1,
+            "tight" => 1.25,
+            "snug" => 1.375,
+            "normal" => 1.5,
+            "relaxed" => 1.625,
+            "loose" => 2,
+            _ => null,
+        };
+
+        if (multiplier is { } known)
+        {
+            utility = new TextMetricUtility(known, true);
+            return true;
+        }
+
+        if (TryParseScaleOrArbitraryPixels(value, SpacingScale.TryGetPixels, static p => p >= 0, out var pixels))
+        {
+            utility = new TextMetricUtility(pixels, false);
+            return true;
+        }
+
+        return false;
+    }
+
     private static bool TryParseTextAlignUtility(string token, out TextAlignUtility utility)
     {
         TextAlignment? alignment = token switch
