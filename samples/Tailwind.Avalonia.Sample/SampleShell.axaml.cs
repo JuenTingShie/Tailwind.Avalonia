@@ -116,7 +116,8 @@ public partial class SampleShell : UserControl
             new(
                 "Effects",
                 new SampleShellPageDescriptor("Opacity", static () => new Effects.Opacity()),
-                new SampleShellPageDescriptor("Box shadow", static () => new Effects.BoxShadow())),
+                new SampleShellPageDescriptor("Box shadow", static () => new Effects.BoxShadow()),
+                new SampleShellPageDescriptor("Ring", static () => new Effects.Ring())),
         ];
     }
 
