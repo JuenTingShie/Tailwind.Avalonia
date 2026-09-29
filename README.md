@@ -26,7 +26,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | overflow                    |     ✅      |
 | overscroll-behavior         |             |
 | position                    |             |
-| top / right / bottom / left |             |
+| top / right / bottom / left |     ✅      |
 | visibility                  |             |
 | z-index                     |     ✅      |
 

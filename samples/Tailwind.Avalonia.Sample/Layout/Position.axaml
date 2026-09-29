@@ -1,0 +1,91 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Layout.Position">
+    <docs:DocsPage
+        Section="Layout"
+        Title="Position"
+        Intro="Utilities for placing an element at an offset from its container&#x27;s edges. They map to the attached properties of Avalonia&#x27;s Canvas.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="top-&lt;n&gt;, right-&lt;n&gt;, bottom-&lt;n&gt;, left-&lt;n&gt;, inset-&lt;n&gt;, inset-x-&lt;n&gt; and inset-y-&lt;n&gt; set Canvas.Top, Canvas.Right, Canvas.Bottom and Canvas.Left on the element, using the spacing scale or an arbitrary value such as left-[10px]. A leading minus gives a negative offset. Canvas is Avalonia&#x27;s absolute-positioning panel, so the element must sit directly inside a Canvas for the offsets to matter, and unlike CSS there is no absolute or relative keyword to add. Canvas does not stretch an element between two opposite offsets, so inset-x and inset-y anchor the element to both sides only in the sense of Canvas.Left plus Canvas.Right. Removing the classes clears the offsets. The attached properties are the same on every target." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="absolute / relative / fixed / sticky · top-1/2 · inset-full · top-auto · start-* / end-*" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Positioning children in a Canvas"
+                        Summary="The dark box is a Canvas with five children, each positioned by its own classes.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;left-2 top-2&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;right-2 bottom-2&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;left-24 top-14&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Canvas
+                                tw:Tw.Class="w-72 h-40 rounded-md bg-slate-700"
+                                HorizontalAlignment="Left">
+                                <Border
+                                    tw:Tw.Class="left-2 top-2 w-20 h-10 rounded-md bg-sky-600 text-white p-1">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="left-2 top-2" />
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="right-2 top-2 w-20 h-10 rounded-md bg-emerald-600 text-white p-1">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="right-2 top-2" />
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="left-2 bottom-2 w-20 h-10 rounded-md bg-rose-600 text-white p-1">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="left-2 bottom-2" />
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="right-2 bottom-2 w-20 h-10 rounded-md bg-amber-600 text-white p-1">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="right-2 bottom-2" />
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="left-24 top-14 w-20 h-10 rounded-md bg-violet-600 text-white p-1">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="left-24 top-14" />
+                                </Border>
+                            </Canvas>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>

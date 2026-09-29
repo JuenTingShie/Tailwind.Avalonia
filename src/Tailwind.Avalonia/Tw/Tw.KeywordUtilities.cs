@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia;
 using Avalonia.Logging;
+using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Layout;
 using Avalonia.Media;
@@ -104,6 +105,12 @@ public partial class Tw
     {
         if (KeywordUtilities.TryGetValue(token, out assignments!))
         {
+            return true;
+        }
+
+        if (TryParsePositionUtility(token, out var position))
+        {
+            assignments = position;
             return true;
         }
 
@@ -240,6 +247,14 @@ public partial class Tw
     [UnconditionalSuppressMessage("Trimming", "IL2067", Justification = "Avalonia property lookup intentionally inspects runtime control types for public static *Property fields on the supported control surface.")]
     private static AvaloniaProperty? FindKeywordProperty(Type type, string propertyName)
     {
-        return KeywordPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key => FindPropertyField(key));
+        // Canvas position utilities set Canvas' attached properties, which are not declared on the element's own type.
+        return propertyName switch
+        {
+            "Canvas.Left" => Canvas.LeftProperty,
+            "Canvas.Top" => Canvas.TopProperty,
+            "Canvas.Right" => Canvas.RightProperty,
+            "Canvas.Bottom" => Canvas.BottomProperty,
+            _ => KeywordPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key => FindPropertyField(key)),
+        };
     }
 }
