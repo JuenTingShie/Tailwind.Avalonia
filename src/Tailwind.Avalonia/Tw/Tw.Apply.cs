@@ -38,6 +38,8 @@ public partial class Tw
         var hasTextAlignment = false;
         Dictionary<string, object>? keywordValues = null;
         var hasBoxShadow = false;
+        var hasTextDecoration = false;
+        var textDecorationLocations = new List<TextDecorationLocation>();
         var hasLetterSpacing = false;
         var hasLineHeight = false;
         var letterSpacing = default(TextMetricUtility);
@@ -212,6 +214,22 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseTextDecorationUtility(token, out var decorationLocation))
+            {
+                hasTextDecoration = true;
+
+                if (decorationLocation is null)
+                {
+                    textDecorationLocations.Clear();
+                }
+                else if (!textDecorationLocations.Contains(decorationLocation.Value))
+                {
+                    textDecorationLocations.Add(decorationLocation.Value);
+                }
+
+                continue;
+            }
+
             if (TryParseKeywordUtility(token, out var keywordAssignments))
             {
                 keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
@@ -285,6 +303,19 @@ public partial class Tw
         var hasForegroundVariant = Array.Exists(foregroundVariants, v => v is not null);
         var hasBorderBrushVariant = Array.Exists(borderBrushVariants, v => v is not null);
         var hasOpacityVariant = Array.Exists(opacityVariants, v => v is not null);
+
+        if (hasTextDecoration)
+        {
+            var decorations = new TextDecorationCollection();
+
+            foreach (var location in textDecorationLocations)
+            {
+                decorations.Add(new TextDecoration { Location = location });
+            }
+
+            keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+            keywordValues["TextDecorations"] = decorations;
+        }
 
         var backgroundDirect = hasBackground && !hasBackgroundVariant;
         var foregroundDirect = hasForeground && !hasForegroundVariant;

@@ -103,7 +103,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | list-style-type           |             |
 | text-align                |     ✅      |
 | color                     |     ✅      |
-| text-decoration-line      |             |
+| text-decoration-line      |     ✅      |
 | text-decoration-color     |             |
 | text-decoration-style     |             |
 | text-decoration-thickness |             |
