@@ -215,13 +215,13 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | backface-visibility |             |
 | perspective         |             |
 | perspective-origin  |             |
-| rotate              |             |
-| scale               |             |
-| skew                |             |
+| rotate              |     ✅      |
+| scale               |     ✅      |
+| skew                |     ✅      |
 | transform           |             |
-| transform-origin    |             |
+| transform-origin    |     ✅      |
 | transform-style     |             |
-| translate           |             |
+| translate           |     ✅      |
 | zoom                |             |
 
 ### Interactivity

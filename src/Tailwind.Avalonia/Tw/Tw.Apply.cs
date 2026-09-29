@@ -38,6 +38,7 @@ public partial class Tw
         var hasTextAlignment = false;
         Dictionary<string, object>? keywordValues = null;
         var hasBoxShadow = false;
+        TransformState? transformState = null;
         var hasTextDecoration = false;
         var textDecorationLocations = new List<TextDecorationLocation>();
         var hasLetterSpacing = false;
@@ -214,6 +215,11 @@ public partial class Tw
                 continue;
             }
 
+            if (transformState is null ? TryApplyTransformToken(token, transformState = new TransformState()) : TryApplyTransformToken(token, transformState))
+            {
+                continue;
+            }
+
             if (TryParseTextDecorationUtility(token, out var decorationLocation))
             {
                 hasTextDecoration = true;
@@ -303,6 +309,21 @@ public partial class Tw
         var hasForegroundVariant = Array.Exists(foregroundVariants, v => v is not null);
         var hasBorderBrushVariant = Array.Exists(borderBrushVariants, v => v is not null);
         var hasOpacityVariant = Array.Exists(opacityVariants, v => v is not null);
+
+        if (transformState is { } transform)
+        {
+            keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+
+            if (transform.HasTransform)
+            {
+                keywordValues["RenderTransform"] = BuildTransform(transform);
+            }
+
+            if (transform.Origin is { } origin)
+            {
+                keywordValues["RenderTransformOrigin"] = origin;
+            }
+        }
 
         if (hasTextDecoration)
         {
