@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Avalonia;
 using Avalonia.Logging;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Layout;
 using Avalonia.Media;
@@ -55,6 +56,25 @@ public partial class Tw
         Add("text-nowrap", "TextWrapping", TextWrapping.NoWrap);
         Add("hidden", "IsVisible", false);
         Add("block", "IsVisible", true);
+        // object-fit maps to Image.Stretch (elements without Stretch ignore the token with a warning).
+        Add("object-contain", "Stretch", Stretch.Uniform);
+        Add("object-cover", "Stretch", Stretch.UniformToFill);
+        Add("object-fill", "Stretch", Stretch.Fill);
+        Add("object-none", "Stretch", Stretch.None);
+        table["object-scale-down"] = [new KeywordAssignment("Stretch", Stretch.Uniform), new KeywordAssignment("StretchDirection", StretchDirection.DownOnly)];
+
+        // Per-axis overflow maps to ScrollViewer scroll bar visibility.
+        Add("overflow-x-auto", "ScrollViewer.HorizontalScrollBarVisibility", ScrollBarVisibility.Auto);
+        Add("overflow-x-scroll", "ScrollViewer.HorizontalScrollBarVisibility", ScrollBarVisibility.Visible);
+        Add("overflow-x-hidden", "ScrollViewer.HorizontalScrollBarVisibility", ScrollBarVisibility.Hidden);
+        Add("overflow-x-clip", "ScrollViewer.HorizontalScrollBarVisibility", ScrollBarVisibility.Disabled);
+        Add("overflow-y-auto", "ScrollViewer.VerticalScrollBarVisibility", ScrollBarVisibility.Auto);
+        Add("overflow-y-scroll", "ScrollViewer.VerticalScrollBarVisibility", ScrollBarVisibility.Visible);
+        Add("overflow-y-hidden", "ScrollViewer.VerticalScrollBarVisibility", ScrollBarVisibility.Hidden);
+        Add("overflow-y-clip", "ScrollViewer.VerticalScrollBarVisibility", ScrollBarVisibility.Disabled);
+        Add("whitespace-nowrap", "TextWrapping", TextWrapping.NoWrap);
+        Add("whitespace-normal", "TextWrapping", TextWrapping.Wrap);
+
         Add("overflow-hidden", "ClipToBounds", true);
         Add("overflow-clip", "ClipToBounds", true);
         Add("overflow-visible", "ClipToBounds", false);
@@ -159,6 +179,12 @@ public partial class Tw
             return true;
         }
 
+        if (TryParseGridUtility(token, out var grid))
+        {
+            assignments = grid;
+            return true;
+        }
+
         if (TryParsePositionUtility(token, out var position))
         {
             assignments = position;
@@ -231,6 +257,12 @@ public partial class Tw
                     continue;
                 }
 
+                if (TryApplyGridDefinitions(element, propertyName, value))
+                {
+                    applied.Add(propertyName);
+                    continue;
+                }
+
                 var property = FindKeywordProperty(element.GetType(), propertyName);
 
                 if (property is null || !property.PropertyType.IsInstanceOfType(value))
@@ -253,6 +285,11 @@ public partial class Tw
             foreach (var propertyName in previous)
             {
                 if (applied.Contains(propertyName))
+                {
+                    continue;
+                }
+
+                if (ClearGridDefinitions(element, propertyName))
                 {
                     continue;
                 }
@@ -305,6 +342,12 @@ public partial class Tw
             "Canvas.Top" => Canvas.TopProperty,
             "Canvas.Right" => Canvas.RightProperty,
             "Canvas.Bottom" => Canvas.BottomProperty,
+            "Grid.Column" => Grid.ColumnProperty,
+            "Grid.Row" => Grid.RowProperty,
+            "Grid.ColumnSpan" => Grid.ColumnSpanProperty,
+            "Grid.RowSpan" => Grid.RowSpanProperty,
+            "ScrollViewer.HorizontalScrollBarVisibility" => ScrollViewer.HorizontalScrollBarVisibilityProperty,
+            "ScrollViewer.VerticalScrollBarVisibility" => ScrollViewer.VerticalScrollBarVisibilityProperty,
             _ => KeywordPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key => FindPropertyField(key)),
         };
     }

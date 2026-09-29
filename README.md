@@ -21,7 +21,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | float                       |             |
 | clear                       |             |
 | isolation                   |             |
-| object-fit                  |             |
+| object-fit                  |     ✅      |
 | object-position             |             |
 | overflow                    |     ✅      |
 | overscroll-behavior         |             |
@@ -41,10 +41,10 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | flex-grow             |             |
 | flex-shrink           |             |
 | order                 |             |
-| grid-template-columns |             |
-| grid-column           |             |
-| grid-template-rows    |             |
-| grid-row              |             |
+| grid-template-columns |     ✅      |
+| grid-column           |     ✅      |
+| grid-template-rows    |     ✅      |
+| grid-row              |     ✅      |
 | grid-auto-flow        |             |
 | grid-auto-columns     |             |
 | grid-auto-rows        |             |
