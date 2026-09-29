@@ -1,0 +1,198 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Effects.BoxShadow">
+    <docs:DocsPage
+        Section="Effects"
+        Title="Box shadow"
+        Intro="Utilities for adding an elevation shadow to an element. The shadow-* scale follows Tailwind v4 and maps onto Avalonia's BoxShadow property, so multi-layer shadows become multiple BoxShadow layers.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="shadow-2xs, shadow-xs, shadow-sm, shadow-md, shadow-lg, shadow-xl, shadow-2xl, and shadow-none set BoxShadow on controls that expose it (Border and ContentPresenter). The last shadow class in the list wins, removing the class clears the shadow, and elements without a BoxShadow property ignore the token with a warning. The shadows are translucent black, so previews sit on a light surface to stay visible." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="4" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These shadow forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="shadow · shadow-inner · shadow-red-500 · shadow-[0_4px_6px_black] · inset-shadow-* · hover:shadow-lg" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Shadow scale"
+                        Summary="Use shadow-2xs through shadow-2xl to raise an element by an increasing amount. Each Border below carries the real tw:Tw.Class token.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-2xs" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-xs" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-sm" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-md" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-xl" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-2xl" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                CornerRadius="14"
+                                tw:Tw.Class="bg-slate-200 p-8">
+                                <WrapPanel
+                                    Orientation="Horizontal"
+                                    ItemSpacing="28"
+                                    LineSpacing="28">
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-2xs w-24 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            tw:Tw.Class="text-slate-700"
+                                            Text="shadow-2xs" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-xs w-24 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            tw:Tw.Class="text-slate-700"
+                                            Text="shadow-xs" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-sm w-24 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            tw:Tw.Class="text-slate-700"
+                                            Text="shadow-sm" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-md w-24 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            tw:Tw.Class="text-slate-700"
+                                            Text="shadow-md" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-lg w-24 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            tw:Tw.Class="text-slate-700"
+                                            Text="shadow-lg" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-xl w-24 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            tw:Tw.Class="text-slate-700"
+                                            Text="shadow-xl" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-2xl w-24 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            tw:Tw.Class="text-slate-700"
+                                            Text="shadow-2xl" />
+                                    </Border>
+                                </WrapPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Removing a shadow"
+                        Summary="shadow-none clears a shadow set earlier in the same class list, because the last shadow-* token wins. This is how you turn a shadow off for one element without touching the rest of the class list.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-lg" /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class="shadow-lg shadow-none" /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                CornerRadius="14"
+                                tw:Tw.Class="bg-slate-200 p-8">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="28">
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-lg w-32 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            tw:Tw.Class="text-slate-700"
+                                            Text="shadow-lg" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="bg-white rounded-lg shadow-lg shadow-none w-32 h-24">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            TextWrapping="Wrap"
+                                            tw:Tw.Class="text-slate-700 text-center"
+                                            Text="shadow-lg shadow-none" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Combining with other utilities"
+                        Summary="Shadows follow the element's CornerRadius, so pair them with rounded-* and a background color for a card.">
+                        <docs:DocsExample
+                            Code="&lt;Border tw:Tw.Class=&quot;bg-white rounded-2xl shadow-xl p-6 w-72&quot; /&gt;">
+                            <Border
+                                CornerRadius="14"
+                                tw:Tw.Class="bg-slate-200 p-8">
+                                <Border
+                                    HorizontalAlignment="Left"
+                                    tw:Tw.Class="bg-white rounded-2xl shadow-xl p-6 w-72">
+                                    <StackPanel
+                                        Spacing="6">
+                                        <TextBlock
+                                            FontWeight="SemiBold"
+                                            tw:Tw.Class="text-slate-900 text-lg"
+                                            Text="Card title" />
+                                        <TextBlock
+                                            TextWrapping="Wrap"
+                                            tw:Tw.Class="text-slate-600 text-sm"
+                                            Text="rounded-2xl gives the corners, shadow-xl gives the elevation." />
+                                    </StackPanel>
+                                </Border>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
