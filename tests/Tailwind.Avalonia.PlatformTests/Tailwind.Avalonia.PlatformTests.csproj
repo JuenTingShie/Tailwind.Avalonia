@@ -4,6 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
+    <RootNamespace>Tailwind.Avalonia.PlatformTests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="10.0.1">
@@ -15,6 +16,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Avalonia.Headless" Version="12.1.1" />
     <PackageReference Include="xunit.v3" Version="4.0.0" />
   </ItemGroup>
   <ItemGroup>

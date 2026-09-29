@@ -33,3 +33,6 @@ jobs:
 
       - name: Run tests
         run: dotnet test tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj -c Release
+
+      - name: Run platform tests
+        run: dotnet test tests/Tailwind.Avalonia.PlatformTests/Tailwind.Avalonia.PlatformTests.csproj -c Release

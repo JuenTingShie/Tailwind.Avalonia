@@ -203,11 +203,11 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 | Utility                    | Implemented |
 | -------------------------- | :---------: |
-| transition-property        |             |
+| transition-property        |     ✅      |
 | transition-behavior        |             |
-| transition-duration        |             |
-| transition-timing-function |             |
-| transition-delay           |             |
+| transition-duration        |     ✅      |
+| transition-timing-function |     ✅      |
+| transition-delay           |     ✅      |
 | animation                  |             |
 
 ### Transforms
