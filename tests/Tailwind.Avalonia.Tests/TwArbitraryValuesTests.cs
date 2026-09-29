@@ -301,6 +301,38 @@ public class TwArbitraryValuesTests
         Assert.Null(border.Background);
     }
 
+    [Theory]
+    [InlineData("bg-[red]", 255, 255, 0, 0)]
+    [InlineData("bg-[RED]", 255, 255, 0, 0)]
+    [InlineData("bg-[rebeccapurple]", 255, 102, 51, 153)]
+    [InlineData("bg-[transparent]", 0, 0, 0, 0)]
+    [InlineData("bg-[red]/50", 128, 255, 0, 0)]
+    public void SetClass_Applies_Arbitrary_Named_Colors(string className, byte a, byte r, byte g, byte b)
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, className);
+        border.ApplyStyling();
+
+        var background = Assert.IsType<SolidColorBrush>(border.Background).Color;
+
+        Assert.Equal(Color.FromArgb(a, r, g, b), background);
+    }
+
+    [Theory]
+    [InlineData("bg-[notacolor]")]
+    [InlineData("bg-[red1]")]
+    [InlineData("bg-[re d]")]
+    public void SetClass_Ignores_Unknown_Arbitrary_Named_Colors(string className)
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, className);
+        border.ApplyStyling();
+
+        Assert.Null(border.Background);
+    }
+
     [Fact]
     public void SetClass_Ignores_CustomProperty_Shorthand_For_Sizing()
     {

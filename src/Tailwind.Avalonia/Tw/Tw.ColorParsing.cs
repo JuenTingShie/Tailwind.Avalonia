@@ -138,7 +138,27 @@ public partial class Tw
             }
         }
 
+        // Try CSS named colors (red, rebeccapurple, transparent, ...). Restrict to plain ASCII letters so
+        // Color.TryParse is never asked to interpret other syntaxes here.
+        if (IsAsciiLetters(colorValue) && Color.TryParse(colorValue, out color))
+        {
+            return true;
+        }
+
         return false;
+    }
+
+    private static bool IsAsciiLetters(string value)
+    {
+        foreach (var ch in value)
+        {
+            if (!char.IsAsciiLetter(ch))
+            {
+                return false;
+            }
+        }
+
+        return value.Length > 0;
     }
 
     private static bool TryParseHexColor(string hexColor, out Color color)
