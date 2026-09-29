@@ -36,6 +36,8 @@ public partial class Tw
         Background,
         Foreground,
         BorderBrush,
+        CaretBrush,
+        SelectionBrush,
     }
 
     private enum SizingTarget
@@ -116,6 +118,8 @@ public partial class Tw
             new("bg-", BrushTarget.Background),
             new("text-", BrushTarget.Foreground),
             new("border-", BrushTarget.BorderBrush),
+            new("caret-", BrushTarget.CaretBrush),
+            new("selection-", BrushTarget.SelectionBrush),
         };
     }
 

@@ -230,7 +230,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | ----------------- | :---------: |
 | accent-color      |             |
 | appearance        |             |
-| caret-color       |             |
+| caret-color       |     ✅      |
 | color-scheme      |             |
 | cursor            |     ✅      |
 | field-sizing      |             |
