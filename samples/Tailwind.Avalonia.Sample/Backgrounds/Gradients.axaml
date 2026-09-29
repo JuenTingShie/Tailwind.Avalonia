@@ -1,0 +1,69 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Backgrounds.Gradients">
+    <docs:DocsPage
+        Section="Backgrounds"
+        Title="Gradients"
+        Intro="Utilities for linear color gradients. They build a LinearGradientBrush for the element&#x27;s Background.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="bg-gradient-to-&lt;direction&gt; (or bg-linear-to-&lt;direction&gt;) picks the direction: t, tr, r, br, b, bl, l or tl. from-&lt;color&gt;, via-&lt;color&gt; and to-&lt;color&gt; set the start, middle and end colors and accept the same values as bg-*: palette colors, named colors, hex, and an opacity modifier. Stops are spread evenly (0, 0.5 and 1), a missing from or to is transparent, and the gradient needs a direction and at least one color. Avalonia has a single Background brush, so a gradient replaces any bg-&lt;color&gt; on the same element, and removing the classes clears it. Positioned stops (from-10%), radial and conic gradients and variants are not included. LinearGradientBrush is available on every target." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="from-10% / via-30% / to-90% · bg-linear-&lt;angle&gt; · bg-radial · bg-conic · hover:from-*" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Directions, via and opacity"
+                        Summary="Every bar is a Border with a gradient class list. The second uses a middle stop, the last one an arbitrary color and an opacity modifier.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-gradient-to-r from-sky-500 to-indigo-600&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-gradient-to-b from-rose-500 via-amber-300 to-emerald-500&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Spacing="10">
+                                <Border
+                                    tw:Tw.Class="bg-gradient-to-r from-sky-500 to-indigo-600 w-72 h-14 rounded-lg" />
+                                <Border
+                                    tw:Tw.Class="bg-gradient-to-b from-rose-500 via-amber-300 to-emerald-500 w-72 h-14 rounded-lg" />
+                                <Border
+                                    tw:Tw.Class="bg-gradient-to-br from-fuchsia-500 to-cyan-400 w-72 h-14 rounded-lg" />
+                                <Border
+                                    tw:Tw.Class="bg-linear-to-t from-slate-900 to-slate-500 w-72 h-14 rounded-lg" />
+                                <Border
+                                    tw:Tw.Class="bg-gradient-to-r from-[#ff0080] to-blue-500/50 w-72 h-14 rounded-lg" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
