@@ -48,6 +48,7 @@ public partial class Tw
         Add("overflow-hidden", "ClipToBounds", true);
         Add("overflow-clip", "ClipToBounds", true);
         Add("overflow-visible", "ClipToBounds", false);
+        Add("z-auto", "ZIndex", 0);
         table["truncate"] =
         [
             new KeywordAssignment("TextTrimming", TextTrimming.CharacterEllipsis),
@@ -57,8 +58,37 @@ public partial class Tw
         return table;
     }
 
-    private static bool TryParseKeywordUtility(string token, out KeywordAssignment[] assignments) =>
-        KeywordUtilities.TryGetValue(token, out assignments!);
+    private static bool TryParseKeywordUtility(string token, out KeywordAssignment[] assignments)
+    {
+        if (KeywordUtilities.TryGetValue(token, out assignments!))
+        {
+            return true;
+        }
+
+        // z-<integer> and z-[<integer>] are open-ended, so they are parsed rather than listed in the table.
+        if (token.StartsWith("z-", StringComparison.Ordinal) && TryParseZIndex(token["z-".Length..], out var zIndex))
+        {
+            assignments = [new KeywordAssignment("ZIndex", zIndex)];
+            return true;
+        }
+
+        return false;
+    }
+
+    private static bool TryParseZIndex(string value, out int zIndex)
+    {
+        if (value.Length > 2 && value[0] == '[' && value[^1] == ']')
+        {
+            value = value[1..^1];
+        }
+        else if (value.StartsWith('[') || value.EndsWith(']'))
+        {
+            zIndex = default;
+            return false;
+        }
+
+        return int.TryParse(value, System.Globalization.NumberStyles.AllowLeadingSign, System.Globalization.CultureInfo.InvariantCulture, out zIndex);
+    }
 
     private static void ApplyKeywordUtilities(AvaloniaObject element, Dictionary<string, object>? values)
     {

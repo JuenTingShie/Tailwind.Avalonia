@@ -28,7 +28,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | position                    |             |
 | top / right / bottom / left |             |
 | visibility                  |             |
-| z-index                     |             |
+| z-index                     |     ✅      |
 
 ### Flexbox & Grid
 
