@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia;
 using Avalonia.Logging;
+using Avalonia.Input;
 using Avalonia.Media;
 
 namespace Tailwind.Avalonia;
@@ -10,6 +11,8 @@ public partial class Tw
 {
     // Keyword utilities map a fixed token (e.g. "font-bold") to one or more Avalonia property values. Unlike the
     // numeric utilities above they need no parsing, so they are described by a table and applied generically.
+    // A Value that is a Func<object> is created when the utility is applied, for values that need a platform
+    // service (such as cursors) and so cannot be built up front.
     private readonly record struct KeywordAssignment(string PropertyName, object Value);
 
     private static readonly AttachedProperty<string[]?> AppliedKeywordPropertiesProperty =
@@ -49,6 +52,23 @@ public partial class Tw
         Add("overflow-clip", "ClipToBounds", true);
         Add("overflow-visible", "ClipToBounds", false);
         Add("z-auto", "ZIndex", 0);
+
+        void AddCursor(string token, StandardCursorType type) =>
+            table[token] = [new KeywordAssignment("Cursor", (Func<object>)(() => new Cursor(type)))];
+
+        AddCursor("cursor-auto", StandardCursorType.Arrow);
+        AddCursor("cursor-default", StandardCursorType.Arrow);
+        AddCursor("cursor-pointer", StandardCursorType.Hand);
+        AddCursor("cursor-text", StandardCursorType.Ibeam);
+        AddCursor("cursor-wait", StandardCursorType.Wait);
+        AddCursor("cursor-progress", StandardCursorType.AppStarting);
+        AddCursor("cursor-crosshair", StandardCursorType.Cross);
+        AddCursor("cursor-move", StandardCursorType.SizeAll);
+        AddCursor("cursor-help", StandardCursorType.Help);
+        AddCursor("cursor-not-allowed", StandardCursorType.No);
+        AddCursor("cursor-none", StandardCursorType.None);
+        AddCursor("cursor-ew-resize", StandardCursorType.SizeWestEast);
+        AddCursor("cursor-ns-resize", StandardCursorType.SizeNorthSouth);
         table["truncate"] =
         [
             new KeywordAssignment("TextTrimming", TextTrimming.CharacterEllipsis),
@@ -97,8 +117,13 @@ public partial class Tw
 
         if (values is not null)
         {
-            foreach (var (propertyName, value) in values)
+            foreach (var (propertyName, rawValue) in values)
             {
+                if (!TryResolveKeywordValue(element, propertyName, rawValue, out var value))
+                {
+                    continue;
+                }
+
                 var property = FindKeywordProperty(element.GetType(), propertyName);
 
                 if (property is null || !property.PropertyType.IsInstanceOfType(value))
@@ -135,6 +160,32 @@ public partial class Tw
         }
 
         element.SetValue(AppliedKeywordPropertiesProperty, applied.Count > 0 ? applied.ToArray() : null);
+    }
+
+    internal static bool TryResolveKeywordValue(AvaloniaObject element, string propertyName, object rawValue, out object value)
+    {
+        if (rawValue is not Func<object> factory)
+        {
+            value = rawValue;
+            return true;
+        }
+
+        try
+        {
+            value = factory();
+            return true;
+        }
+        catch (InvalidOperationException exception)
+        {
+            // Platform services (for example the cursor factory) are missing on this target or in this host.
+            Logger.TryGet(LogEventLevel.Warning, LogArea)?.Log(
+                element,
+                "Tw.Class could not create the '{PropertyName}' value on this platform ({Reason}); the utility was ignored.",
+                propertyName,
+                exception.Message);
+            value = null!;
+            return false;
+        }
     }
 
     [UnconditionalSuppressMessage("Trimming", "IL2067", Justification = "Avalonia property lookup intentionally inspects runtime control types for public static *Property fields on the supported control surface.")]
