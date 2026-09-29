@@ -87,6 +87,7 @@ public partial class SampleShell : UserControl
                 new SampleShellPageDescriptor("Font size", static () => new Typography.FontSize()),
                 new SampleShellPageDescriptor("Font weight", static () => new Typography.FontWeight()),
                 new SampleShellPageDescriptor("Font style", static () => new Typography.FontStyle()),
+                new SampleShellPageDescriptor("Font family", static () => new Typography.FontFamily()),
                 new SampleShellPageDescriptor("Text decoration", static () => new Typography.TextDecoration()),
                 new SampleShellPageDescriptor("Line clamp", static () => new Typography.LineClamp()),
                 new SampleShellPageDescriptor("Text overflow", static () => new Typography.TextOverflow()),

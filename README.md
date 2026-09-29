@@ -88,7 +88,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 | Utility                   | Implemented |
 | ------------------------- | :---------: |
-| font-family               |             |
+| font-family               |     ✅      |
 | font-size                 |     ✅      |
 | font-smoothing            |             |
 | font-style                |     ✅      |

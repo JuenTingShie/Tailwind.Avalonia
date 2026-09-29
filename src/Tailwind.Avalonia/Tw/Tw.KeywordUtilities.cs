@@ -31,6 +31,11 @@ public partial class Tw
         void Add(string token, string propertyName, object value) =>
             table[token] = [new KeywordAssignment(propertyName, value)];
 
+        // Font stacks mirror Tailwind's defaults. Unknown families fall back to the platform default font, so
+        // the tokens are safe on desktop, Browser and mobile targets.
+        Add("font-sans", "FontFamily", new FontFamily("Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"));
+        Add("font-serif", "FontFamily", new FontFamily("Georgia, Cambria, Times New Roman, Times, serif"));
+        Add("font-mono", "FontFamily", new FontFamily("Cascadia Mono, Consolas, Menlo, SF Mono, DejaVu Sans Mono, monospace"));
         Add("font-thin", "FontWeight", FontWeight.Thin);
         Add("font-extralight", "FontWeight", FontWeight.ExtraLight);
         Add("font-light", "FontWeight", FontWeight.Light);
