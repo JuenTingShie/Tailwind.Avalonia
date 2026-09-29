@@ -55,6 +55,43 @@ public partial class Tw
         Add("overflow-visible", "ClipToBounds", false);
         Add("z-auto", "ZIndex", 0);
 
+        // Filters map to Visual.Effect. Effects are animatable objects that belong to the UI thread, so each element
+        // gets its own instance created when the utility is applied. An element has a single Effect, so a blur and a
+        // drop shadow on the same element replace each other and the last class wins.
+        void AddBlur(string token, double radius) =>
+            table[token] = [new KeywordAssignment("Effect", (Func<object>)(() => new BlurEffect { Radius = radius }))];
+
+        AddBlur("blur-none", 0);
+        AddBlur("blur-xs", 4);
+        AddBlur("blur-sm", 8);
+        AddBlur("blur", 8);
+        AddBlur("blur-md", 12);
+        AddBlur("blur-lg", 16);
+        AddBlur("blur-xl", 24);
+        AddBlur("blur-2xl", 40);
+        AddBlur("blur-3xl", 64);
+
+        void AddDropShadow(string token, double offsetY, double blurRadius, double opacity) =>
+            table[token] =
+            [
+                new KeywordAssignment("Effect", (Func<object>)(() => new DropShadowEffect
+                {
+                    OffsetX = 0,
+                    OffsetY = offsetY,
+                    BlurRadius = blurRadius,
+                    Color = Colors.Black,
+                    Opacity = opacity,
+                })),
+            ];
+
+        AddDropShadow("drop-shadow-xs", 1, 1, 0.05);
+        AddDropShadow("drop-shadow-sm", 1, 2, 0.15);
+        AddDropShadow("drop-shadow", 1, 2, 0.1);
+        AddDropShadow("drop-shadow-md", 3, 3, 0.12);
+        AddDropShadow("drop-shadow-lg", 4, 4, 0.15);
+        AddDropShadow("drop-shadow-xl", 9, 7, 0.1);
+        AddDropShadow("drop-shadow-2xl", 25, 25, 0.15);
+
         // Self-alignment follows CSS grid semantics: align-self is the block (vertical) axis, justify-self the inline
         // (horizontal) axis and place-self sets both. Avalonia aligns an element inside its parent with these properties.
         void AddSelfAlignment(string suffix, VerticalAlignment vertical, HorizontalAlignment horizontal)
@@ -105,6 +142,15 @@ public partial class Tw
     {
         if (KeywordUtilities.TryGetValue(token, out assignments!))
         {
+            return true;
+        }
+
+        // blur-[<px>] takes an arbitrary radius.
+        if (token.StartsWith("blur-[", StringComparison.Ordinal) &&
+            TryParseArbitraryDouble(token["blur-".Length..], out var blurRadius) &&
+            blurRadius >= 0)
+        {
+            assignments = [new KeywordAssignment("Effect", (Func<object>)(() => new BlurEffect { Radius = blurRadius }))];
             return true;
         }
 

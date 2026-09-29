@@ -1,0 +1,89 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Effects.DropShadow">
+    <docs:DocsPage
+        Section="Effects"
+        Title="Drop shadow"
+        Intro="Utilities for a soft shadow that follows the shape of an element. They map to Avalonia&#x27;s DropShadowEffect on Visual.Effect.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="drop-shadow, drop-shadow-xs, drop-shadow-sm, drop-shadow-md, drop-shadow-lg, drop-shadow-xl and drop-shadow-2xl set a DropShadowEffect that follows the drawn shape, with a single layer approximating Tailwind&#x27;s. blur-* uses the same Visual.Effect property, so an element carries one effect and the last of a blur and a drop shadow wins. Removing the class clears it. Each element gets its own effect object because effects belong to the UI thread. The effect applies to the whole element including its children, as in CSS filters. Effects are drawn by Avalonia&#x27;s Skia renderer, which every target uses (checked in a real browser run of the Browser sample), but the shadow color is fixed black and drop-shadow-&lt;color&gt; is not included." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="drop-shadow-&lt;color&gt; · drop-shadow-[&lt;value&gt;] · multi-layer shadows" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Drop shadow sizes"
+                        Summary="The shadow is drawn below the white cards on a light backdrop and follows their rounded corners.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;drop-shadow-md&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;drop-shadow-xl&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <Border
+                                tw:Tw.Class="bg-slate-200 rounded-lg p-8"
+                                HorizontalAlignment="Left">
+                                <WrapPanel
+                                    ItemSpacing="32"
+                                    LineSpacing="32"
+                                    Width="480">
+                                    <Border
+                                        tw:Tw.Class="drop-shadow-sm w-28 h-16 rounded-lg bg-white p-2">
+                                        <TextBlock
+                                            tw:Tw.Class="text-slate-800 font-bold text-sm"
+                                            Text="sm" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="drop-shadow-md w-28 h-16 rounded-lg bg-white p-2">
+                                        <TextBlock
+                                            tw:Tw.Class="text-slate-800 font-bold text-sm"
+                                            Text="md" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="drop-shadow-xl w-28 h-16 rounded-lg bg-white p-2">
+                                        <TextBlock
+                                            tw:Tw.Class="text-slate-800 font-bold text-sm"
+                                            Text="xl" />
+                                    </Border>
+                                    <Border
+                                        tw:Tw.Class="drop-shadow-2xl w-28 h-16 rounded-lg bg-white p-2">
+                                        <TextBlock
+                                            tw:Tw.Class="text-slate-800 font-bold text-sm"
+                                            Text="2xl" />
+                                    </Border>
+                                </WrapPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
