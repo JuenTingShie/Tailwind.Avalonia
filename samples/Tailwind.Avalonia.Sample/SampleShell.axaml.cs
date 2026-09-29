@@ -95,6 +95,12 @@ public partial class SampleShell : UserControl
                 new SampleShellPageDescriptor("Overflow", static () => new Layout.Overflow()),
                 new SampleShellPageDescriptor("Z-index", static () => new Layout.ZIndex())),
             new(
+                "Transforms",
+                new SampleShellPageDescriptor("Rotate", static () => new Transforms.Rotate()),
+                new SampleShellPageDescriptor("Scale", static () => new Transforms.Scale()),
+                new SampleShellPageDescriptor("Translate", static () => new Transforms.Translate()),
+                new SampleShellPageDescriptor("Skew", static () => new Transforms.Skew())),
+            new(
                 "Interactivity",
                 new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants()),
                 new SampleShellPageDescriptor("Cursor", static () => new Interactivity.Cursor()),
