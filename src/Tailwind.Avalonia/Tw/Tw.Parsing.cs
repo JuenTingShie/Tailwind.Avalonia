@@ -270,6 +270,29 @@ public partial class Tw
         return false;
     }
 
+    // underline, overline and line-through combine; no-underline (reported as a null location) clears them all.
+    private static bool TryParseTextDecorationUtility(string token, out TextDecorationLocation? location)
+    {
+        location = null;
+
+        switch (token)
+        {
+            case "underline":
+                location = TextDecorationLocation.Underline;
+                return true;
+            case "overline":
+                location = TextDecorationLocation.Overline;
+                return true;
+            case "line-through":
+                location = TextDecorationLocation.Strikethrough;
+                return true;
+            case "no-underline":
+                return true;
+            default:
+                return false;
+        }
+    }
+
     private static bool TryParseLetterSpacingUtility(string token, out TextMetricUtility utility)
     {
         utility = default;
