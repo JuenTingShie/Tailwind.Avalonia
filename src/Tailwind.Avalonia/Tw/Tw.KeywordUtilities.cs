@@ -36,6 +36,9 @@ public partial class Tw
         Add("font-extrabold", "FontWeight", FontWeight.ExtraBold);
         Add("font-black", "FontWeight", FontWeight.Black);
 
+        Add("italic", "FontStyle", FontStyle.Italic);
+        Add("not-italic", "FontStyle", FontStyle.Normal);
+
         return table;
     }
 
