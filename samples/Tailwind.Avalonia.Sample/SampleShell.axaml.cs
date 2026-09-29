@@ -90,7 +90,8 @@ public partial class SampleShell : UserControl
             new(
                 "Layout",
                 new SampleShellPageDescriptor("Display", static () => new Layout.Display()),
-                new SampleShellPageDescriptor("Overflow", static () => new Layout.Overflow())),
+                new SampleShellPageDescriptor("Overflow", static () => new Layout.Overflow()),
+                new SampleShellPageDescriptor("Z-index", static () => new Layout.ZIndex())),
             new(
                 "Interactivity",
                 new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants())),
