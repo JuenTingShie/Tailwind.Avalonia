@@ -17,5 +17,7 @@
      Name="/tests/">
     <Project
        Path="tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj"/>
+    <Project
+       Path="tests/Tailwind.Avalonia.PlatformTests/Tailwind.Avalonia.PlatformTests.csproj"/>
   </Folder>
 </Solution>

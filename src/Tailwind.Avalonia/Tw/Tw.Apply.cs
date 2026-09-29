@@ -43,6 +43,7 @@ public partial class Tw
         LayoutState? layoutState = null;
         GradientState? gradientState = null;
         RingState? ringState = null;
+        TransitionState? transitionState = null;
         var widthFill = false;
         var heightFill = false;
         var hasTextDecoration = false;
@@ -242,6 +243,11 @@ public partial class Tw
                 continue;
             }
 
+            if (transitionState is null ? TryApplyTransitionToken(token, transitionState = new TransitionState()) : TryApplyTransitionToken(token, transitionState))
+            {
+                continue;
+            }
+
             if (layoutState is null ? TryApplyLayoutToken(token, layoutState = new LayoutState()) : TryApplyLayoutToken(token, layoutState))
             {
                 continue;
@@ -353,6 +359,12 @@ public partial class Tw
         var hasForegroundVariant = Array.Exists(foregroundVariants, v => v is not null);
         var hasBorderBrushVariant = Array.Exists(borderBrushVariants, v => v is not null);
         var hasOpacityVariant = Array.Exists(opacityVariants, v => v is not null);
+
+        if (transitionState is { HasTransition: true } transition)
+        {
+            keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+            keywordValues["Transitions"] = BuildTransitions(element, transition)!;
+        }
 
         // A ring (width plus color) is combined with any shadow-* utility into one BoxShadow value.
         if (ringState is { Width: not null } ring)
