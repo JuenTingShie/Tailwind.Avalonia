@@ -36,6 +36,7 @@ public partial class Tw
         var hasCornerRadius = false;
         var hasOpacity = false;
         var hasTextAlignment = false;
+        Dictionary<string, object>? keywordValues = null;
         var hasBoxShadow = false;
         var boxShadow = default(BoxShadows);
         var textAlignment = default(TextAlignment);
@@ -193,6 +194,18 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseKeywordUtility(token, out var keywordAssignments))
+            {
+                keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+
+                foreach (var assignment in keywordAssignments)
+                {
+                    keywordValues[assignment.PropertyName] = assignment.Value;
+                }
+
+                continue;
+            }
+
             if (TryParseBoxShadowUtility(token, out var boxShadowUtility))
             {
                 boxShadow = boxShadowUtility.Shadows;
@@ -294,6 +307,8 @@ public partial class Tw
         }
 
         element.SetValue(AppliedMaskProperty, newMask);
+
+        ApplyKeywordUtilities(element, keywordValues);
 
         ApplyVariantStyles(
             element,
