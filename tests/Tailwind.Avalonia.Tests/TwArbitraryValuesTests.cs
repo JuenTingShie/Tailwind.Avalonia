@@ -240,6 +240,33 @@ public class TwArbitraryValuesTests
         Assert.Equal(defaultFontSize, textBlock.FontSize);
     }
 
+    [Theory]
+    [InlineData("w-[1.px]")]
+    [InlineData("w-[3.rem]")]
+    [InlineData("w-[-2.em]")]
+    [InlineData("w-[1..5px]")]
+    public void SetClass_Ignores_Arbitrary_Values_With_Malformed_Decimal_Point(string className)
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, className);
+
+        Assert.True(double.IsNaN(border.Width));
+    }
+
+    [Theory]
+    [InlineData("w-[1.5px]", 1.5d)]
+    [InlineData("w-[.5px]", 0.5d)]
+    [InlineData("w-[2.25rem]", 36d)]
+    public void SetClass_Applies_Arbitrary_Values_With_Valid_Decimal_Point(string className, double expectedWidth)
+    {
+        var border = new Border();
+
+        Tw.SetClass(border, className);
+
+        Assert.Equal(expectedWidth, border.Width);
+    }
+
     [Fact]
     public void SetClass_Ignores_CustomProperty_Shorthand_For_Sizing()
     {

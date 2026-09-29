@@ -341,6 +341,13 @@ public partial class Tw
         }
 
         var numericPart = contentWithUnit[..index];
+
+        // CSS numbers need a digit after the decimal point: "1." is malformed even though double.TryParse accepts it.
+        if (numericPart[^1] == '.')
+        {
+            return false;
+        }
+
         var unitPart = contentWithUnit[index..].Trim().ToLowerInvariant();
 
         if (!double.TryParse(numericPart, NumberStyles.Float, CultureInfo.InvariantCulture, out var numericValue))
