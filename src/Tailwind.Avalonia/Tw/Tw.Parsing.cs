@@ -127,6 +127,28 @@ public partial class Tw
                 return false;
             }
 
+            var isSize = descriptor.Target is SizingTarget.Width or SizingTarget.Height or SizingTarget.Size;
+            var isMax = descriptor.Target is SizingTarget.MaxWidth or SizingTarget.MaxHeight;
+
+            // auto clears an explicit size, full stretches to the parent, none lifts a maximum.
+            if (isSize && scaleToken == "auto")
+            {
+                utility = new SizingUtility(descriptor.Target, double.NaN);
+                return true;
+            }
+
+            if (descriptor.Target is SizingTarget.Width or SizingTarget.Height && scaleToken == "full")
+            {
+                utility = new SizingUtility(descriptor.Target, double.NaN, Fill: true);
+                return true;
+            }
+
+            if (isMax && scaleToken == "none")
+            {
+                utility = new SizingUtility(descriptor.Target, double.PositiveInfinity);
+                return true;
+            }
+
             // Try a scale-table token first (e.g. w-4), then an arbitrary value (e.g. w-[100px]).
             if (TryParseScaleOrArbitraryPixels(scaleToken, SpacingScale.TryGetPixels, static p => p >= 0, out var pixels))
             {

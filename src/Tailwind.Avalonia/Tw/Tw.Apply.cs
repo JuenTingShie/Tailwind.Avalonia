@@ -1,4 +1,5 @@
 using Avalonia;
+using Avalonia.Layout;
 using Avalonia.Logging;
 using Avalonia.Media;
 
@@ -40,6 +41,8 @@ public partial class Tw
         var hasBoxShadow = false;
         TransformState? transformState = null;
         LayoutState? layoutState = null;
+        var widthFill = false;
+        var heightFill = false;
         var hasTextDecoration = false;
         var textDecorationLocations = new List<TextDecorationLocation>();
         var hasLetterSpacing = false;
@@ -152,6 +155,16 @@ public partial class Tw
                     case SizingTarget.Width:
                         width = sizingUtility.Pixels;
                         hasWidth = true;
+                        widthFill = sizingUtility.Fill;
+                        break;
+
+                    case SizingTarget.Size:
+                        width = sizingUtility.Pixels;
+                        height = sizingUtility.Pixels;
+                        hasWidth = true;
+                        hasHeight = true;
+                        widthFill = false;
+                        heightFill = false;
                         break;
 
                     case SizingTarget.MinWidth:
@@ -167,6 +180,7 @@ public partial class Tw
                     case SizingTarget.Height:
                         height = sizingUtility.Pixels;
                         hasHeight = true;
+                        heightFill = sizingUtility.Fill;
                         break;
 
                     case SizingTarget.MinHeight:
@@ -327,6 +341,19 @@ public partial class Tw
         var hasForegroundVariant = Array.Exists(foregroundVariants, v => v is not null);
         var hasBorderBrushVariant = Array.Exists(borderBrushVariants, v => v is not null);
         var hasOpacityVariant = Array.Exists(opacityVariants, v => v is not null);
+
+        // w-full and h-full leave the size to layout and stretch the element inside its parent.
+        if (hasWidth && widthFill)
+        {
+            keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+            keywordValues.TryAdd("HorizontalAlignment", HorizontalAlignment.Stretch);
+        }
+
+        if (hasHeight && heightFill)
+        {
+            keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+            keywordValues.TryAdd("VerticalAlignment", VerticalAlignment.Stretch);
+        }
 
         if (layoutState is { HasValues: true } layout)
         {

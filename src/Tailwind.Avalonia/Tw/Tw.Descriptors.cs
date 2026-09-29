@@ -6,7 +6,7 @@ public partial class Tw
 {
     private readonly record struct SpacingUtility(SpacingTarget Target, SpacingEdge Edge, double Pixels);
     private readonly record struct BrushUtility(BrushTarget Target, IBrush Brush);
-    private readonly record struct SizingUtility(SizingTarget Target, double Pixels);
+    private readonly record struct SizingUtility(SizingTarget Target, double Pixels, bool Fill = false);
     private readonly record struct FontSizeUtility(double Pixels);
     private readonly record struct TextAlignUtility(TextAlignment Alignment);
     private readonly record struct BoxShadowUtility(BoxShadows Shadows);
@@ -48,6 +48,7 @@ public partial class Tw
         Height,
         MinHeight,
         MaxHeight,
+        Size,
     }
 
     private enum SpacingEdge
@@ -131,6 +132,7 @@ public partial class Tw
             new("max-w-", SizingTarget.MaxWidth),
             new("min-h-", SizingTarget.MinHeight),
             new("max-h-", SizingTarget.MaxHeight),
+            new("size-", SizingTarget.Size),
             new("w-", SizingTarget.Width),
             new("h-", SizingTarget.Height),
         };
