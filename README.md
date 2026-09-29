@@ -265,4 +265,4 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | ------------------- | :---------: |
 | forced-color-adjust |             |
 
-Additionally, `hover:`, `pressed:`, and `focus:` variants are supported for the color (`bg-`, `text-`, `border-`) and `opacity-*` utilities above — see [CHANGELOG.md](CHANGELOG.md).
+Additionally, `hover:`, `pressed:`, `focus:`, `focus-visible:`, `checked:`, and `disabled:` variants are supported for the color (`bg-`, `text-`, `border-`) and `opacity-*` utilities above — see [CHANGELOG.md](CHANGELOG.md).

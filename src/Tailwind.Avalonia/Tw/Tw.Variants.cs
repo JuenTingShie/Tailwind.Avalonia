@@ -14,15 +14,23 @@ public partial class Tw
         Hover,
         Pressed,
         Focus,
+        FocusVisible,
+        Checked,
+        Disabled,
     }
 
-    private const int VariantCount = 3;
+    // The order of VariantKind is also the order the variant Styles are added, so a later kind wins when several
+    // pseudo-classes are active at once (disabled beats checked beats focus beats hover).
+    private const int VariantCount = 6;
 
     private static readonly (string Prefix, VariantKind Kind)[] VariantPrefixes =
     {
         ("hover:", VariantKind.Hover),
         ("pressed:", VariantKind.Pressed),
         ("focus:", VariantKind.Focus),
+        ("focus-visible:", VariantKind.FocusVisible),
+        ("checked:", VariantKind.Checked),
+        ("disabled:", VariantKind.Disabled),
     };
 
     private static string PseudoClassFor(VariantKind kind) => kind switch
@@ -30,6 +38,9 @@ public partial class Tw
         VariantKind.Hover => ":pointerover",
         VariantKind.Pressed => ":pressed",
         VariantKind.Focus => ":focus",
+        VariantKind.FocusVisible => ":focus-visible",
+        VariantKind.Checked => ":checked",
+        VariantKind.Disabled => ":disabled",
         _ => throw new ArgumentOutOfRangeException(nameof(kind)),
     };
 

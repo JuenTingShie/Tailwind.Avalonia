@@ -110,6 +110,7 @@ public partial class SampleShell : UserControl
             new(
                 "Interactivity",
                 new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants()),
+                new SampleShellPageDescriptor("More variants", static () => new Interactivity.MoreVariants()),
                 new SampleShellPageDescriptor("Cursor", static () => new Interactivity.Cursor()),
                 new SampleShellPageDescriptor("Pointer events", static () => new Interactivity.PointerEvents()),
                 new SampleShellPageDescriptor("Caret and selection color", static () => new Interactivity.CaretSelectionColor())),
