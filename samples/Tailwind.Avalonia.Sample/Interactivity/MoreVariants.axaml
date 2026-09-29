@@ -1,0 +1,74 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Interactivity.MoreVariants">
+    <docs:DocsPage
+        Section="Interactivity"
+        Title="Disabled, checked and focus-visible variants"
+        Intro="State variants that apply a color or opacity utility only while the control is in that state. They select on Avalonia&#x27;s :disabled, :checked and :focus-visible pseudo-classes.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="disabled:, checked: and focus-visible: work like hover:, pressed: and focus: and accept the same utilities: background, text and border colors and opacity. disabled: follows IsEnabled, checked: follows IsChecked on ToggleButton, CheckBox and RadioButton, and focus-visible: applies when the control has keyboard focus. When several states are active at once the later one in the list disabled, checked, focus-visible, focus, pressed, hover wins, so disabled beats hover. Other utilities, such as padding, are ignored in a variant with a warning. The variants are pseudo-class Styles, so they work on every target." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="dark: · group-hover: · first: / last: · aria-* · variants on non-color utilities" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Disabled, checked and focus-visible"
+                        Summary="The first two buttons carry the same classes and only differ in IsEnabled. Tab through the last button to see focus-visible.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Button tw:Tw.Class=&quot;bg-sky-600 disabled:bg-slate-400&quot; /&gt;</x:String>
+                                <x:String>&lt;ToggleButton tw:Tw.Class=&quot;bg-slate-600 checked:bg-emerald-600&quot; /&gt;</x:String>
+                                <x:String>&lt;Button tw:Tw.Class=&quot;bg-slate-600 focus-visible:bg-amber-600&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Spacing="12"
+                                HorizontalAlignment="Left">
+                                <Button
+                                    Content="disabled: (this button is disabled)"
+                                    IsEnabled="False"
+                                    tw:Tw.Class="bg-sky-600 text-white disabled:bg-slate-400 disabled:text-slate-100 disabled:opacity-70" />
+                                <Button
+                                    Content="enabled, same classes"
+                                    tw:Tw.Class="bg-sky-600 text-white disabled:bg-slate-400 disabled:text-slate-100 disabled:opacity-70" />
+                                <ToggleButton
+                                    Content="checked: click to toggle"
+                                    tw:Tw.Class="bg-slate-600 text-white checked:bg-emerald-600" />
+                                <Button
+                                    Content="focus-visible: press Tab to focus"
+                                    tw:Tw.Class="bg-slate-600 text-white focus-visible:bg-amber-600" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
