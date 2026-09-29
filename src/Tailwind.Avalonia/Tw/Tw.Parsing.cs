@@ -195,8 +195,8 @@ public partial class Tw
             }
         }
 
-        pixels = double.Parse(token, NumberStyles.None, CultureInfo.InvariantCulture);
-        return true;
+        // Very long digit strings parse to Infinity instead of failing, and Avalonia rejects a non-finite Thickness.
+        return double.TryParse(token, NumberStyles.None, CultureInfo.InvariantCulture, out pixels) && double.IsFinite(pixels);
     }
 
     private static bool TryParseCornerRadiusUtility(string token, out CornerRadiusUtility utility)

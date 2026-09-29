@@ -334,6 +334,17 @@ public class TwArbitraryValuesTests
     }
 
     [Fact]
+    public void SetClass_Ignores_Border_Width_That_Overflows_To_Infinity()
+    {
+        var border = new Border();
+
+        var exception = Record.Exception(() => Tw.SetClass(border, "border-" + new string('9', 400)));
+
+        Assert.Null(exception);
+        Assert.Equal(new Thickness(0), border.BorderThickness);
+    }
+
+    [Fact]
     public void SetClass_Ignores_CustomProperty_Shorthand_For_Sizing()
     {
         var border = new Border();
