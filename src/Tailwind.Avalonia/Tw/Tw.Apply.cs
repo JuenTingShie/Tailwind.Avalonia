@@ -41,6 +41,7 @@ public partial class Tw
         var hasBoxShadow = false;
         TransformState? transformState = null;
         LayoutState? layoutState = null;
+        GradientState? gradientState = null;
         var widthFill = false;
         var heightFill = false;
         var hasTextDecoration = false;
@@ -230,6 +231,11 @@ public partial class Tw
                 continue;
             }
 
+            if (gradientState is null ? TryApplyGradientToken(token, gradientState = new GradientState()) : TryApplyGradientToken(token, gradientState))
+            {
+                continue;
+            }
+
             if (layoutState is null ? TryApplyLayoutToken(token, layoutState = new LayoutState()) : TryApplyLayoutToken(token, layoutState))
             {
                 continue;
@@ -341,6 +347,13 @@ public partial class Tw
         var hasForegroundVariant = Array.Exists(foregroundVariants, v => v is not null);
         var hasBorderBrushVariant = Array.Exists(borderBrushVariants, v => v is not null);
         var hasOpacityVariant = Array.Exists(opacityVariants, v => v is not null);
+
+        // A gradient replaces the Background color, because Avalonia has one Background brush.
+        if (gradientState is { IsUsable: true } gradient)
+        {
+            background = BuildGradientBrush(gradient);
+            hasBackground = true;
+        }
 
         // w-full and h-full leave the size to layout and stretch the element inside its parent.
         if (hasWidth && widthFill)

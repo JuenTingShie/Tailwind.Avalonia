@@ -128,7 +128,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | background-attachment |             |
 | background-clip       |             |
 | background-color      |     ✅      |
-| background-image      |             |
+| background-image      |     ✅      |
 | background-origin     |             |
 | background-position   |             |
 | background-repeat     |             |
