@@ -53,6 +53,9 @@ public partial class Tw
         Add("overflow-visible", "ClipToBounds", false);
         Add("z-auto", "ZIndex", 0);
 
+        Add("pointer-events-none", "IsHitTestVisible", false);
+        Add("pointer-events-auto", "IsHitTestVisible", true);
+
         void AddCursor(string token, StandardCursorType type) =>
             table[token] = [new KeywordAssignment("Cursor", (Func<object>)(() => new Cursor(type)))];
 

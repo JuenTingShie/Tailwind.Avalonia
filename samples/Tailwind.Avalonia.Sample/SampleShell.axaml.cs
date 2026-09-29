@@ -95,7 +95,8 @@ public partial class SampleShell : UserControl
             new(
                 "Interactivity",
                 new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants()),
-                new SampleShellPageDescriptor("Cursor", static () => new Interactivity.Cursor())),
+                new SampleShellPageDescriptor("Cursor", static () => new Interactivity.Cursor()),
+                new SampleShellPageDescriptor("Pointer events", static () => new Interactivity.PointerEvents())),
             new(
                 "Effects",
                 new SampleShellPageDescriptor("Opacity", static () => new Effects.Opacity()),

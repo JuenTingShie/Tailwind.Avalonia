@@ -234,7 +234,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | color-scheme      |             |
 | cursor            |     ✅      |
 | field-sizing      |             |
-| pointer-events    |             |
+| pointer-events    |     ✅      |
 | resize            |             |
 | scroll-behavior   |             |
 | scrollbar-color   |             |
