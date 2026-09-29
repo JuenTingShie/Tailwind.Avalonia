@@ -81,6 +81,7 @@ public partial class SampleShell : UserControl
             new(
                 "Typography",
                 new SampleShellPageDescriptor("Font size", static () => new Typography.FontSize()),
+                new SampleShellPageDescriptor("Text align", static () => new Typography.TextAlign()),
                 new SampleShellPageDescriptor("Colors", static () => new Typography.ColorUtilities())),
             new(
                 "Interactivity",
