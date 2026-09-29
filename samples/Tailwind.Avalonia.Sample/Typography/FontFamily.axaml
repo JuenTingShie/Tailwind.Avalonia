@@ -1,0 +1,63 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Typography.FontFamily">
+    <docs:DocsPage
+        Section="Typography"
+        Title="Font family"
+        Intro="Utilities for choosing the typeface. font-sans, font-serif and font-mono map to FontFamily fallback stacks.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="font-sans, font-serif and font-mono set FontFamily to a fallback stack modelled on Tailwind defaults. Families that are not installed fall back to the next entry and finally the platform default, so the tokens are safe on desktop, Browser and mobile. Later font family classes win and removing the class restores the default." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="font-[Family Name] · font-(--var) · theme font tokens" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Sans, serif and mono"
+                        Summary="Each TextBlock below carries the real token; the rendered face depends on which fonts the platform provides.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-sans&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-serif&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-mono&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel
+                                Spacing="10">
+                                <TextBlock FontSize="20" tw:Tw.Class="font-sans" Text="font-sans: The quick brown fox" />
+                                <TextBlock FontSize="20" tw:Tw.Class="font-serif" Text="font-serif: The quick brown fox" />
+                                <TextBlock FontSize="20" tw:Tw.Class="font-mono" Text="font-mono: The quick brown fox" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
