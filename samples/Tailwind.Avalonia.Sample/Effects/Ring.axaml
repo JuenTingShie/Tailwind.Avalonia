@@ -1,0 +1,94 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Effects.Ring">
+    <docs:DocsPage
+        Section="Effects"
+        Title="Ring"
+        Intro="Utilities for drawing an outline ring around an element. They are built on Avalonia&#x27;s BoxShadow, since Avalonia has no outline property.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="ring draws a 1px ring, ring-0, ring-1, ring-2, ring-4 and ring-8 pick a width and ring-[&lt;px&gt;] takes an arbitrary width. ring-&lt;color&gt; sets the color with the same values as bg-*: palette colors, named colors, hex and an opacity modifier. A color needs a width class to have an effect, and the default color is blue-500. The ring is a spread-only BoxShadow with no blur or offset, so it follows the element&#x27;s corner radius and is drawn in front of any shadow-* utility. The ring is not part of layout, so a neighbor can overlap it, and the element needs to be a Border because BoxShadow belongs to Border. ring-offset, ring-inset and variants are not included. BoxShadow is available on every target that renders with Skia, which is all Avalonia targets." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="ring-inset · ring-offset-* · inset-ring-* · hover:ring-* · outline-*" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Ring widths, colors and shadows"
+                        Summary="Each dark Border carries a ring class list. The fourth combines a ring with shadow-lg, and the ring stays in front of the shadow.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;ring-2 ring-sky-500&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;ring-4 ring-emerald-400/60&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;ring-2 ring-rose-500 shadow-lg&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <WrapPanel
+                                ItemSpacing="20"
+                                LineSpacing="20"
+                                Margin="8"
+                                Width="520"
+                                HorizontalAlignment="Left">
+                                <Border
+                                    tw:Tw.Class="ring w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="ring" />
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="ring-2 ring-sky-500 w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="ring-2 ring-sky-500" />
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="ring-4 ring-emerald-400/60 w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="ring-4 ring-emerald-400/60" />
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="ring-2 ring-rose-500 shadow-lg w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="ring-2 ring-rose-500 shadow-lg" />
+                                </Border>
+                                <Border
+                                    tw:Tw.Class="ring-[6px] ring-amber-400 w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="ring-[6px] ring-amber-400" />
+                                </Border>
+                            </WrapPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>

@@ -42,6 +42,7 @@ public partial class Tw
         TransformState? transformState = null;
         LayoutState? layoutState = null;
         GradientState? gradientState = null;
+        RingState? ringState = null;
         var widthFill = false;
         var heightFill = false;
         var hasTextDecoration = false;
@@ -236,6 +237,11 @@ public partial class Tw
                 continue;
             }
 
+            if (ringState is null ? TryApplyRingToken(token, ringState = new RingState()) : TryApplyRingToken(token, ringState))
+            {
+                continue;
+            }
+
             if (layoutState is null ? TryApplyLayoutToken(token, layoutState = new LayoutState()) : TryApplyLayoutToken(token, layoutState))
             {
                 continue;
@@ -347,6 +353,13 @@ public partial class Tw
         var hasForegroundVariant = Array.Exists(foregroundVariants, v => v is not null);
         var hasBorderBrushVariant = Array.Exists(borderBrushVariants, v => v is not null);
         var hasOpacityVariant = Array.Exists(opacityVariants, v => v is not null);
+
+        // A ring (width plus color) is combined with any shadow-* utility into one BoxShadow value.
+        if (ringState is { Width: not null } ring)
+        {
+            boxShadow = ApplyRing(ring, hasBoxShadow, boxShadow);
+            hasBoxShadow = true;
+        }
 
         // A gradient replaces the Background color, because Avalonia has one Background brush.
         if (gradientState is { IsUsable: true } gradient)

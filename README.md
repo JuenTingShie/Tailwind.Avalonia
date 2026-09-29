@@ -152,6 +152,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | Utility               | Implemented |
 | --------------------- | :---------: |
 | box-shadow            |     ✅      |
+| ring                  |     ✅      |
 | text-shadow           |             |
 | opacity               |     ✅      |
 | mix-blend-mode        |             |
