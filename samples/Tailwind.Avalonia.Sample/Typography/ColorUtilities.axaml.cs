@@ -23,6 +23,10 @@ public partial class ColorUtilities : UserControl
         new("bg-[hsl(h,s%,l%)]", "<Control tw:Tw.Class=\"bg-[hsl(200,70%,50%)]\" />"),
         new("bg-[oklch(l%,c,h)]", "<Control tw:Tw.Class=\"bg-[oklch(70%,0.15,200)]\" />"),
         new("bg-[rgb(r,g,b)]/<opacity>", "<Control tw:Tw.Class=\"bg-[rgb(255,0,0)]/50\" />"),
+        new("bg-[<name>]", "<Control tw:Tw.Class=\"bg-[rebeccapurple]\" />"),
+        new("text-[<name>]", "<Control tw:Tw.Class=\"text-[tomato]\" />"),
+        new("border-[<name>]", "<Border tw:Tw.Class=\"border-[teal]\" />"),
+        new("bg-[<name>]/<opacity>", "<Control tw:Tw.Class=\"bg-[red]/50\" />"),
     ];
 
     /// <summary>
