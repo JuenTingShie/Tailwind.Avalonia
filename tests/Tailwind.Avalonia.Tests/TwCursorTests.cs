@@ -1,34 +1,11 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Headless;
 
 namespace Tailwind.Avalonia.Tests;
 
-// AvaloniaLocator is process-wide, so tests that swap the cursor factory run one at a time.
-[Collection("AvaloniaLocator")]
+// The headless platform (and its cursor factory) is registered once by HeadlessPlatformFixture.
 public class TwCursorTests
 {
-    // The headless platform supplies a real ICursorFactory without needing a window system.
-    private static readonly object PlatformLock = new();
-    private static bool platformReady;
-
-    private static void EnsureHeadlessPlatform()
-    {
-        lock (PlatformLock)
-        {
-            if (platformReady)
-            {
-                return;
-            }
-
-            AppBuilder.Configure<Application>().UseHeadless(new AvaloniaHeadlessPlatformOptions()).SetupWithoutStarting();
-            platformReady = true;
-        }
-    }
-
-    private static void UseHeadlessPlatform() => EnsureHeadlessPlatform();
-
     [Theory]
     [InlineData("cursor-auto")]
     [InlineData("cursor-default")]
@@ -45,7 +22,6 @@ public class TwCursorTests
     [InlineData("cursor-ns-resize")]
     public void SetClass_Applies_Cursor_When_Platform_Provides_Factory(string className)
     {
-        UseHeadlessPlatform();
         var border = new Border();
 
         Tw.SetClass(border, className);
@@ -56,7 +32,6 @@ public class TwCursorTests
     [Fact]
     public void SetClass_Clears_Cursor_When_Class_Removed()
     {
-        UseHeadlessPlatform();
         var border = new Border();
 
         Tw.SetClass(border, "cursor-pointer");
@@ -82,7 +57,6 @@ public class TwCursorTests
     [Fact]
     public void SetClass_Ignores_Unknown_Cursor()
     {
-        UseHeadlessPlatform();
         var border = new Border();
 
         Tw.SetClass(border, "cursor-banana");
