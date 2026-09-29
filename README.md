@@ -95,9 +95,9 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | font-stretch              |             |
 | font-variant-numeric      |             |
 | font-feature-settings     |             |
-| letter-spacing            |             |
+| letter-spacing            |     ✅      |
 | line-clamp                |             |
-| line-height               |             |
+| line-height               |     ✅      |
 | list-style-image          |             |
 | list-style-position       |             |
 | list-style-type           |             |

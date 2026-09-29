@@ -11,6 +11,12 @@ public partial class Tw
     private readonly record struct TextAlignUtility(TextAlignment Alignment);
     private readonly record struct BoxShadowUtility(BoxShadows Shadows);
 
+    /// <summary>A text metric that is either absolute pixels or a multiple of the font size.</summary>
+    private readonly record struct TextMetricUtility(double Value, bool IsRelative)
+    {
+        public double Resolve(double fontSize) => IsRelative ? Value * fontSize : Value;
+    }
+
     private readonly record struct UtilityDescriptor(string Prefix, SpacingTarget Target, SpacingEdge Edge);
     private readonly record struct BrushUtilityDescriptor(string Prefix, BrushTarget Target);
     private readonly record struct SizingUtilityDescriptor(string Prefix, SizingTarget Target);

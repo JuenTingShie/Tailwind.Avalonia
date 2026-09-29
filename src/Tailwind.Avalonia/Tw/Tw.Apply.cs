@@ -38,6 +38,10 @@ public partial class Tw
         var hasTextAlignment = false;
         Dictionary<string, object>? keywordValues = null;
         var hasBoxShadow = false;
+        var hasLetterSpacing = false;
+        var hasLineHeight = false;
+        var letterSpacing = default(TextMetricUtility);
+        var lineHeight = default(TextMetricUtility);
         var boxShadow = default(BoxShadows);
         var textAlignment = default(TextAlignment);
         var opacity = default(double);
@@ -194,6 +198,20 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseLetterSpacingUtility(token, out var letterSpacingUtility))
+            {
+                letterSpacing = letterSpacingUtility;
+                hasLetterSpacing = true;
+                continue;
+            }
+
+            if (TryParseLineHeightUtility(token, out var lineHeightUtility))
+            {
+                lineHeight = lineHeightUtility;
+                hasLineHeight = true;
+                continue;
+            }
+
             if (TryParseKeywordUtility(token, out var keywordAssignments))
             {
                 keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
@@ -273,6 +291,10 @@ public partial class Tw
         var borderBrushDirect = hasBorderBrush && !hasBorderBrushVariant;
         var opacityDirect = hasOpacity && !hasOpacityVariant;
 
+        // Relative metrics (em / line-height multipliers) resolve against the class-list font size,
+        // falling back to the element's current FontSize.
+        var effectiveFontSize = hasFontSize ? fontSize : GetCurrentFontSize(element);
+
         Span<PendingUtility> pendingUtilities =
         [
             new(MarginMask, hasMargin, () => TrySetThickness(element, "Margin", margin), () => ClearThickness(element, "Margin")),
@@ -291,6 +313,8 @@ public partial class Tw
             new(OpacityMask, opacityDirect, () => TrySetDouble(element, "Opacity", opacity), () => ClearDouble(element, "Opacity")),
             new(BoxShadowMask, hasBoxShadow, () => TrySetBoxShadows(element, "BoxShadow", boxShadow), () => ClearBoxShadows(element, "BoxShadow")),
             new(TextAlignmentMask, hasTextAlignment, () => TrySetTextAlignment(element, "TextAlignment", textAlignment), () => ClearTextAlignment(element, "TextAlignment")),
+            new(LetterSpacingMask, hasLetterSpacing, () => TrySetDouble(element, "LetterSpacing", letterSpacing.Resolve(effectiveFontSize)), () => ClearDouble(element, "LetterSpacing")),
+            new(LineHeightMask, hasLineHeight, () => TrySetDouble(element, "LineHeight", lineHeight.Resolve(effectiveFontSize)), () => ClearDouble(element, "LineHeight")),
             new(CornerRadiusMask, hasCornerRadius, () => TrySetCornerRadius(element, "CornerRadius", cornerRadius), () => ClearCornerRadius(element, "CornerRadius")),
         ];
 
@@ -316,6 +340,12 @@ public partial class Tw
             new BrushCategoryState(hasForeground && hasForegroundVariant, foreground, foregroundVariants),
             new BrushCategoryState(hasBorderBrush && hasBorderBrushVariant, borderBrush, borderBrushVariants),
             new OpacityCategoryState(hasOpacity && hasOpacityVariant, opacity, opacityVariants));
+    }
+
+    private static double GetCurrentFontSize(AvaloniaObject element)
+    {
+        var property = FindDoubleProperty(element.GetType(), "FontSize");
+        return property is not null && element.GetValue(property) is double size ? size : 12;
     }
 
     private readonly record struct PendingUtility(int Mask, bool HasValue, Func<bool> TrySet, Action Clear);
