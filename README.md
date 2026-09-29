@@ -51,13 +51,13 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | gap                   |             |
 | justify-content       |             |
 | justify-items         |             |
-| justify-self          |             |
+| justify-self          |     ✅      |
 | align-content         |             |
 | align-items           |             |
-| align-self            |             |
+| align-self            |     ✅      |
 | place-content         |             |
 | place-items           |             |
-| place-self            |             |
+| place-self            |     ✅      |
 
 ### Spacing
 

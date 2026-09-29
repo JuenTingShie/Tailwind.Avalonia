@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Avalonia;
 using Avalonia.Logging;
 using Avalonia.Input;
+using Avalonia.Layout;
 using Avalonia.Media;
 
 namespace Tailwind.Avalonia;
@@ -52,6 +53,24 @@ public partial class Tw
         Add("overflow-clip", "ClipToBounds", true);
         Add("overflow-visible", "ClipToBounds", false);
         Add("z-auto", "ZIndex", 0);
+
+        // Self-alignment follows CSS grid semantics: align-self is the block (vertical) axis, justify-self the inline
+        // (horizontal) axis and place-self sets both. Avalonia aligns an element inside its parent with these properties.
+        void AddSelfAlignment(string suffix, VerticalAlignment vertical, HorizontalAlignment horizontal)
+        {
+            table["self-" + suffix] = [new KeywordAssignment("VerticalAlignment", vertical)];
+            table["justify-self-" + suffix] = [new KeywordAssignment("HorizontalAlignment", horizontal)];
+            table["place-self-" + suffix] =
+            [
+                new KeywordAssignment("VerticalAlignment", vertical),
+                new KeywordAssignment("HorizontalAlignment", horizontal),
+            ];
+        }
+
+        AddSelfAlignment("start", VerticalAlignment.Top, HorizontalAlignment.Left);
+        AddSelfAlignment("center", VerticalAlignment.Center, HorizontalAlignment.Center);
+        AddSelfAlignment("end", VerticalAlignment.Bottom, HorizontalAlignment.Right);
+        AddSelfAlignment("stretch", VerticalAlignment.Stretch, HorizontalAlignment.Stretch);
 
         Add("pointer-events-none", "IsHitTestVisible", false);
         Add("pointer-events-auto", "IsHitTestVisible", true);

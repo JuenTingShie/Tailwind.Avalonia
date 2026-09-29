@@ -93,6 +93,7 @@ public partial class SampleShell : UserControl
                 "Layout",
                 new SampleShellPageDescriptor("Display", static () => new Layout.Display()),
                 new SampleShellPageDescriptor("Overflow", static () => new Layout.Overflow()),
+                new SampleShellPageDescriptor("Self alignment", static () => new Layout.SelfAlignment()),
                 new SampleShellPageDescriptor("Z-index", static () => new Layout.ZIndex())),
             new(
                 "Transforms",
