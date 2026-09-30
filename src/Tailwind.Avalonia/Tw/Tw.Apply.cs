@@ -48,6 +48,9 @@ public partial class Tw
         var heightFill = false;
         var hasTextDecoration = false;
         var textDecorationLocations = new List<TextDecorationLocation>();
+        double? decorationThickness = null;
+        double? decorationOffset = null;
+        IBrush? decorationBrush = null;
         var hasLetterSpacing = false;
         var hasLineHeight = false;
         var letterSpacing = default(TextMetricUtility);
@@ -258,6 +261,20 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseDecorationMetricUtility(token, out var isThickness, out var decorationMetric))
+            {
+                if (isThickness)
+                {
+                    decorationThickness = decorationMetric;
+                }
+                else
+                {
+                    decorationOffset = decorationMetric;
+                }
+
+                continue;
+            }
+
             if (TryParseTextDecorationUtility(token, out var decorationLocation))
             {
                 hasTextDecoration = true;
@@ -340,6 +357,10 @@ public partial class Tw
                     keywordValues["CaretBrush"] = brushUtility.Brush;
                     break;
 
+                case BrushTarget.DecorationBrush:
+                    decorationBrush = brushUtility.Brush;
+                    break;
+
                 case BrushTarget.SelectionBrush:
                     keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
                     keywordValues["SelectionBrush"] = brushUtility.Brush;
@@ -420,7 +441,26 @@ public partial class Tw
 
             foreach (var location in textDecorationLocations)
             {
-                decorations.Add(new TextDecoration { Location = location });
+                var decoration = new TextDecoration { Location = location };
+
+                if (decorationThickness is { } thickness)
+                {
+                    decoration.StrokeThicknessUnit = TextDecorationUnit.Pixel;
+                    decoration.StrokeThickness = thickness;
+                }
+
+                if (decorationOffset is { } offset)
+                {
+                    decoration.StrokeOffsetUnit = TextDecorationUnit.Pixel;
+                    decoration.StrokeOffset = offset;
+                }
+
+                if (decorationBrush is not null)
+                {
+                    decoration.Stroke = decorationBrush;
+                }
+
+                decorations.Add(decoration);
             }
 
             keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);

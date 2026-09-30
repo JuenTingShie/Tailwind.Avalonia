@@ -77,12 +77,12 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | min-height      |     ✅      |
 | max-height      |     ✅      |
 | size            |     ✅      |
-| inline-size     |             |
-| min-inline-size |             |
-| max-inline-size |             |
-| block-size      |             |
-| min-block-size  |             |
-| max-block-size  |             |
+| inline-size     |     ✅      |
+| min-inline-size |     ✅      |
+| max-inline-size |     ✅      |
+| block-size      |     ✅      |
+| min-block-size  |     ✅      |
+| max-block-size  |     ✅      |
 
 ### Typography
 
@@ -105,10 +105,10 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | text-align                |     ✅      |
 | color                     |     ✅      |
 | text-decoration-line      |     ✅      |
-| text-decoration-color     |             |
+| text-decoration-color     |     ✅      |
 | text-decoration-style     |             |
-| text-decoration-thickness |             |
-| text-underline-offset     |             |
+| text-decoration-thickness |     ✅      |
+| text-underline-offset     |     ✅      |
 | text-transform            |             |
 | text-overflow             |     ✅      |
 | text-wrap                 |     ✅      |

@@ -12,6 +12,11 @@ public partial class TextDecoration : UserControl
         new("overline", "TextDecorations: Overline"),
         new("line-through", "TextDecorations: Strikethrough"),
         new("no-underline", "TextDecorations: none"),
+        new("decoration-<0|1|2|4|8>", "TextDecoration.StrokeThickness (px)"),
+        new("decoration-[<px>]", "TextDecoration.StrokeThickness (px)"),
+        new("decoration-<color>", "TextDecoration.Stroke"),
+        new("underline-offset-<0|1|2|4|8>", "TextDecoration.StrokeOffset (px)"),
+        new("decoration-auto / underline-offset-auto", "font recommended metrics"),
     ];
 
     /// <summary>

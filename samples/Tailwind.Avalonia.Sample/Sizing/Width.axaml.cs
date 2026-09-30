@@ -14,6 +14,9 @@ public partial class Width : UserControl
         new("min-w-[<value>]", "<Border MinWidth=\"<parsed value>\" />"),
         new("max-w-<number>", "<Border MaxWidth=\"<number>\" />"),
         new("max-w-[<value>]", "<Border MaxWidth=\"<parsed value>\" />"),
+        new("inline-<number>", "Width (alias of w-)"),
+        new("min-inline-<number>", "MinWidth"),
+        new("max-inline-<number>", "MaxWidth"),
     ];
 
     /// <summary>

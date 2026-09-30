@@ -315,6 +315,49 @@ public partial class Tw
         }
     }
 
+    // decoration-<n> / decoration-[<px>] set the line thickness, underline-offset-<n> the distance from the text;
+    // decoration-auto and underline-offset-auto return to the font's recommended metrics (reported as NaN).
+    private static bool TryParseDecorationMetricUtility(string token, out bool isThickness, out double? value)
+    {
+        isThickness = false;
+        value = null;
+        string rest;
+
+        if (token.StartsWith("decoration-", StringComparison.Ordinal))
+        {
+            isThickness = true;
+            rest = token["decoration-".Length..];
+        }
+        else if (token.StartsWith("underline-offset-", StringComparison.Ordinal))
+        {
+            rest = token["underline-offset-".Length..];
+        }
+        else
+        {
+            return false;
+        }
+
+        if (rest == "auto" || (isThickness && rest == "from-font"))
+        {
+            value = null;
+            return true;
+        }
+
+        if (rest is "0" or "1" or "2" or "4" or "8")
+        {
+            value = double.Parse(rest, System.Globalization.CultureInfo.InvariantCulture);
+            return true;
+        }
+
+        if (rest.StartsWith('[') && TryParseArbitraryDouble(rest, out var arbitrary) && arbitrary >= 0)
+        {
+            value = arbitrary;
+            return true;
+        }
+
+        return false;
+    }
+
     private static bool TryParseLetterSpacingUtility(string token, out TextMetricUtility utility)
     {
         utility = default;

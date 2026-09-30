@@ -14,6 +14,9 @@ public partial class Height : UserControl
         new("min-h-[<value>]", "<Border MinHeight=\"<parsed value>\" />"),
         new("max-h-<number>", "<Border MaxHeight=\"<number>\" />"),
         new("max-h-[<value>]", "<Border MaxHeight=\"<parsed value>\" />"),
+        new("block-<number>", "Height (alias of h-)"),
+        new("min-block-<number>", "MinHeight"),
+        new("max-block-<number>", "MaxHeight"),
     ];
 
     /// <summary>
