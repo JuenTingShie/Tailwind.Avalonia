@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="shadow · shadow-inner · shadow-red-500 · shadow-[0_4px_6px_black] · inset-shadow-* · hover:shadow-lg" />
+                            Text="shadow (bare) · shadow-red-500 · shadow-[0_4px_6px_black] · hover:shadow-lg" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>

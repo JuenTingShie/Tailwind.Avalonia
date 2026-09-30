@@ -19,17 +19,6 @@
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="em / rem arbitrary units · leading-[1.5] unitless multiplier" />
-                    </StackPanel>
-                </docs:DocsNote>
             </StackPanel>
 
             <StackPanel

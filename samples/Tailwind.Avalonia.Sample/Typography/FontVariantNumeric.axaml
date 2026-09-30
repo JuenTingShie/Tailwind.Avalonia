@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="font-features-[...] · font-variant-caps · font-variant-ligatures" />
+                            Text="font-variant-caps · font-variant-ligatures" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>
