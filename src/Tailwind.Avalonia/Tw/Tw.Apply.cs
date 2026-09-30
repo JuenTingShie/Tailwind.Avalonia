@@ -49,6 +49,7 @@ public partial class Tw
         var hasTextDecoration = false;
         var textDecorationLocations = new List<TextDecorationLocation>();
         double? decorationThickness = null;
+        string? animationName = null;
         var hasNumericVariants = false;
         var numericFeatures = new List<string>();
         double? decorationOffset = null;
@@ -262,6 +263,12 @@ public partial class Tw
 
             if (transformState is null ? TryApplyTransformToken(token, transformState = new TransformState()) : TryApplyTransformToken(token, transformState))
             {
+                continue;
+            }
+
+            if (TryParseAnimationUtility(token, out var animation))
+            {
+                animationName = animation;
                 continue;
             }
 
@@ -584,6 +591,7 @@ public partial class Tw
         element.SetValue(AppliedMaskProperty, newMask);
 
         ApplyKeywordUtilities(element, keywordValues);
+        SyncAnimation(element, animationName);
 
         ApplyVariantStyles(
             element,

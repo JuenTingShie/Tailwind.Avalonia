@@ -1,0 +1,79 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Effects.Animation">
+    <docs:DocsPage
+        Section="Effects"
+        Title="Animation"
+        Intro="Utilities for the built-in Tailwind animations. They run Avalonia keyframe animations on the element.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="animate-spin rotates the element, animate-ping scales it up while fading out, animate-pulse fades it in and out, animate-bounce moves it up and down; animate-none stops the animation. An animation starts when the element enters the visual tree, stops when it leaves or the class is removed, and restores the values it was animating. It uses core Avalonia animations, so it works on every platform. Bounce approximates the CSS easing with a single ease curve, and spin/ping/bounce temporarily own the element RenderTransform." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="animate-[...] · custom @keyframes · motion-reduce:" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Spin, ping, pulse and bounce"
+                        Summary="Each shape carries the real animate-* token.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;animate-spin&quot; /&gt;</x:String>
+                                <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-rose-400 animate-ping&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;animate-pulse&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;animate-bounce&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Border Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin" />
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-spin" />
+                                </StackPanel>
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Grid Width="40" Height="40">
+                                        <Ellipse tw:Tw.Class="fill-rose-400 animate-ping" />
+                                        <Ellipse Width="20" Height="20" tw:Tw.Class="fill-rose-500" />
+                                    </Grid>
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-ping" />
+                                </StackPanel>
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Border Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-emerald-500 animate-pulse" />
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-pulse" />
+                                </StackPanel>
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Border Width="40" Height="40" CornerRadius="20" tw:Tw.Class="bg-amber-500 animate-bounce" />
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-bounce" />
+                                </StackPanel>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>

@@ -209,7 +209,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | transition-duration        |     ✅      | All platforms                                                       |
 | transition-timing-function |     ✅      | All platforms                                                       |
 | transition-delay           |     ✅      | All platforms                                                       |
-| animation                  |             | Feasible (Avalonia Animation) but not implemented yet               |
+| animation                  |     ✅      | animate-spin / ping / pulse / bounce / none; Avalonia Animation, all platforms |
 
 ### Transforms
 
