@@ -40,4 +40,20 @@ public class DocsCodeTests
             Assert.Equal(["<Manual />", "<Border tw:Tw.Class=\"p-4\" />", "<Border tw:Tw.Class=\"p-8\" />"], example.Snippets);
         });
     }
+
+    [Fact]
+    public void ShowChildren_Nests_Direct_Children_That_Have_Classes()
+    {
+        SampleHeadless.Run(() =>
+        {
+            var inner = new Grid();
+            Tw.SetClass(inner, "animate-spin");
+            inner.Children.Add(new Border());
+            var wrapper = new Border { Child = inner };
+            Tw.SetClass(wrapper, "-scale-x-100");
+            DocsCode.SetShowChildren(wrapper, true);
+
+            Assert.Equal("<Border tw:Tw.Class=\"-scale-x-100\">\n    <Grid tw:Tw.Class=\"animate-spin\" />\n</Border>", DocsCode.Build(wrapper));
+        });
+    }
 }

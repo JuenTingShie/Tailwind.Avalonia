@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using Avalonia;
@@ -25,6 +26,14 @@ public static class DocsCode
     /// <summary>Comma-separated plain properties (for example "Width,Height") printed before tw:Tw.Class.</summary>
     public static readonly AttachedProperty<string?> AttributesProperty =
         AvaloniaProperty.RegisterAttached<AvaloniaObject, string?>("Attributes", typeof(DocsCode));
+
+    /// <summary>Also prints the element's direct children that carry tw:Tw.Class, nested inside it.</summary>
+    public static readonly AttachedProperty<bool> ShowChildrenProperty =
+        AvaloniaProperty.RegisterAttached<AvaloniaObject, bool>("ShowChildren", typeof(DocsCode));
+
+    public static bool GetShowChildren(AvaloniaObject element) => element.GetValue(ShowChildrenProperty);
+
+    public static void SetShowChildren(AvaloniaObject element, bool value) => element.SetValue(ShowChildrenProperty, value);
 
     public static bool GetShow(AvaloniaObject element) => element.GetValue(ShowProperty);
 
@@ -76,8 +85,26 @@ public static class DocsCode
             builder.Append(" tw:Tw.Class=\"").Append(classes.Trim()).Append('"');
         }
 
-        return builder.Append(" />").ToString();
+        var children = GetShowChildren(element) && element is ILogical logical
+            ? logical.LogicalChildren.OfType<AvaloniaObject>().Where(child => Tw.GetClass(child) is { Length: > 0 }).ToList()
+            : [];
+
+        if (children.Count == 0)
+        {
+            return builder.Append(" />").ToString();
+        }
+
+        builder.Append('>');
+
+        foreach (var child in children)
+        {
+            builder.Append('\n').Append(Indent(Build(child)));
+        }
+
+        return builder.Append("\n</").Append(typeName).Append('>').ToString();
     }
+
+    private static string Indent(string snippet) => "    " + snippet.Replace("\n", "\n    ");
 
     private static string Format(object? value) => value switch
     {

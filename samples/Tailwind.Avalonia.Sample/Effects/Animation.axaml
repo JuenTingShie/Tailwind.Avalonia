@@ -35,7 +35,7 @@
                     <StackPanel Spacing="12" HorizontalAlignment="Center">
                         <Grid Width="40" Height="40">
                             <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-rose-400 animate-ping" />
-                            <Ellipse docs:DocsCode.Show="True" Width="20" Height="20" tw:Tw.Class="fill-rose-500" />
+                            <Ellipse Width="20" Height="20" tw:Tw.Class="fill-rose-500" />
                         </Grid>
                         <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-ping" />
                     </StackPanel>
@@ -80,21 +80,18 @@
             Heading="Spinning the other way"
             Summary="animate-spin always turns clockwise. To spin counter-clockwise, mirror a wrapper with -scale-x-100, the same idiom used with Tailwind CSS. The dot marks one edge so the direction is visible.">
             <docs:DocsExample>
-                <docs:DocsExample.Snippets>
-                    <x:String>&lt;Border tw:Tw.Class=&quot;-scale-x-100&quot;&gt;&lt;Grid tw:Tw.Class=&quot;animate-spin&quot; /&gt;&lt;/Border&gt;</x:String>
-                </docs:DocsExample.Snippets>
                 <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
                     <StackPanel Spacing="12" HorizontalAlignment="Center">
                         <Grid docs:DocsCode.Show="True" Width="48" Height="48" tw:Tw.Class="animate-spin">
-                            <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-sky-500" />
-                            <Ellipse docs:DocsCode.Show="True" Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
+                            <Ellipse tw:Tw.Class="fill-sky-500" />
+                            <Ellipse Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
                         </Grid>
                         <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-spin (clockwise)" />
                     </StackPanel>
                     <StackPanel Spacing="12" HorizontalAlignment="Center">
-                        <Border Width="48" Height="48" tw:Tw.Class="-scale-x-100">
+                        <Border docs:DocsCode.Show="True" docs:DocsCode.ShowChildren="True" Width="48" Height="48" tw:Tw.Class="-scale-x-100">
                             <Grid tw:Tw.Class="animate-spin">
-                                <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-rose-500" />
+                                <Ellipse tw:Tw.Class="fill-rose-500" />
                                 <Ellipse Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
                             </Grid>
                         </Border>
