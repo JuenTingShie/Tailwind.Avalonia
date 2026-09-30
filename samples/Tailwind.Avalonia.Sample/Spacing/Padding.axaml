@@ -43,9 +43,9 @@
                     <docs:DocsSection
                         Heading="Basic example"
                         Summary="Use p-&lt;number&gt; utilities like p-4 and p-8 to control padding on all sides of an element.">
-                        <docs:DocsExample
-                            Code="&lt;Border tw:Tw.Class=&quot;p-8&quot; /&gt;">
+                        <docs:DocsExample>
                             <Border
+                                docs:DocsCode.Show="True"
                                 Classes="docs-paddingShell"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
@@ -69,17 +69,12 @@
                         Heading="Adding padding to one side"
                         Summary="Use pt-&lt;number&gt;, pr-&lt;number&gt;, pb-&lt;number&gt;, and pl-&lt;number&gt; utilities like pt-6 and pr-4 to control padding on one side of an element.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="pt-6" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="pr-4" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="pb-8" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="pl-2" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Spacing="18">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     Classes="docs-paddingShell"
                                     tw:Tw.Class="pt-6">
                                     <Border
@@ -95,6 +90,7 @@
                                     </Border>
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     Classes="docs-paddingShell"
                                     tw:Tw.Class="pr-4">
                                     <Border
@@ -110,6 +106,7 @@
                                     </Border>
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     Classes="docs-paddingShell"
                                     tw:Tw.Class="pb-8">
                                     <Border
@@ -125,6 +122,7 @@
                                     </Border>
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     Classes="docs-paddingShell"
                                     tw:Tw.Class="pl-2">
                                     <Border
@@ -147,15 +145,12 @@
                         Heading="Adding horizontal and vertical padding"
                         Summary="Use px-&lt;number&gt; and py-&lt;number&gt; utilities like px-8 and py-8 to control axis-specific padding.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="px-8" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="py-8" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Spacing="24">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     Classes="docs-paddingShell"
                                     tw:Tw.Class="px-8">
                                     <Border
@@ -171,6 +166,7 @@
                                     </Border>
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     Classes="docs-paddingShell"
                                     tw:Tw.Class="py-8">
                                     <Border
@@ -200,20 +196,6 @@
                                 Body="The visualized side-mapping demo below adds ScaleTransform only to cancel Avalonia&apos;s automatic RTL mirror for teaching. In the real RTL demo, layout logic is applied first, then Avalonia&apos;s mirror changes the final rendered side. Real app usage is the unmodified RTL rendering demo and the code examples below." />
                             <docs:DocsExample
                                 CodeLabel="Actual usage">
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="ps-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="pe-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="ps-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="pe-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="pbs-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="pbe-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="pbs-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="pbe-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="psv-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="pev-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="psv-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="pev-8" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <StackPanel
                                     Spacing="24">
                                     <StackPanel
@@ -246,6 +228,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Text="start -&gt;" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Column="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="LeftToRight"
@@ -276,6 +260,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Text="start -&gt;" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Column="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="LeftToRight"
@@ -320,6 +306,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Text="end -&gt;" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Column="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="RightToLeft"
@@ -350,6 +338,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Text="end -&gt;" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Column="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="RightToLeft"
@@ -407,6 +397,8 @@
                                                                 HorizontalAlignment="Center"
                                                                 Text="block start" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Row="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="LeftToRight"
@@ -438,6 +430,8 @@
                                                                 HorizontalAlignment="Center"
                                                                 Text="block start" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Row="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="LeftToRight"
@@ -483,6 +477,8 @@
                                                                 HorizontalAlignment="Center"
                                                                 Text="block start" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Row="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="RightToLeft"
@@ -514,6 +510,8 @@
                                                                 HorizontalAlignment="Center"
                                                                 Text="block start" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Row="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="RightToLeft"
@@ -687,6 +685,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Text="start -&gt;" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Column="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="LeftToRight"
@@ -717,6 +717,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Text="start -&gt;" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Column="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="LeftToRight"
@@ -761,6 +763,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Text="end -&gt;" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Column="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="RightToLeft"
@@ -791,6 +795,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Text="end -&gt;" />
                                                             <Border
+                                                                docs:DocsCode.Show="True"
+                                                                docs:DocsCode.Attributes="FlowDirection"
                                                                 Grid.Column="1"
                                                                 Classes="docs-paddingShell"
                                                                 FlowDirection="RightToLeft"
@@ -850,14 +856,10 @@
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;Border tw:Tw.Class="p-[12px]" /&gt;</x:String>
-                                    <x:String>&lt;Border tw:Tw.Class="px-[20px] py-[10px]" /&gt;</x:String>
-                                    <x:String>&lt;Border tw:Tw.Class="pt-[8px] pr-[12px] pb-[16px] pl-[20px]" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <StackPanel
                                     Spacing="12">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         Classes="docs-paddingShell"
                                         HorizontalAlignment="Center"
                                         tw:Tw.Class="p-[12px]">
@@ -874,6 +876,7 @@
                                         </Border>
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         Classes="docs-paddingShell"
                                         HorizontalAlignment="Center"
                                         tw:Tw.Class="px-[20px] py-[10px]">
@@ -890,6 +893,7 @@
                                         </Border>
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         Classes="docs-paddingShell"
                                         HorizontalAlignment="Center"
                                         tw:Tw.Class="pt-[8px] pr-[12px] pb-[16px] pl-[20px]">

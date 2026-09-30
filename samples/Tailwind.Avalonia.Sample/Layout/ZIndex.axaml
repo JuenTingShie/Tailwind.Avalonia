@@ -43,16 +43,12 @@
                         Heading="Stacking overlapping siblings"
                         Summary="Three overlapping boxes sit in one Grid. They are declared red, sky, green, so without z classes the green box is on top. Here z-30 lifts the red box above the others and z-20 lifts the sky box above the green one.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;z-30 bg-red-500&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;z-20 bg-sky-600&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;z-10 bg-emerald-600&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Grid
                                 Height="120"
                                 Width="220"
                                 HorizontalAlignment="Left">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="z-30 bg-red-500 w-24 h-16 p-2 rounded-lg"
                                         Margin="0,0,0,0"
                                         HorizontalAlignment="Left"
@@ -61,6 +57,7 @@
                                             Text="z-30" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="z-20 bg-sky-600 w-24 h-16 p-2 rounded-lg"
                                         Margin="40,20,0,0"
                                         HorizontalAlignment="Left"
@@ -69,6 +66,7 @@
                                             Text="z-20" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="z-10 bg-emerald-600 w-24 h-16 p-2 rounded-lg"
                                         Margin="80,40,0,0"
                                         HorizontalAlignment="Left"

@@ -43,30 +43,25 @@
                         Heading="Weight scale"
                         Summary="Each TextBlock below carries the real font-* token. Compare neighbouring weights to see how the selected typeface steps between them.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-thin&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-normal&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-bold&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-black&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-extralight&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-light&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-extrabold&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="font-thin"
                                     Text="font-thin" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="font-extralight"
                                     Text="font-extralight" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="font-light"
                                     Text="font-light" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="font-normal"
                                     Text="font-normal" />
@@ -79,14 +74,17 @@
                                     tw:Tw.Class="font-semibold"
                                     Text="font-semibold" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="font-bold"
                                     Text="font-bold" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="font-extrabold"
                                     Text="font-extrabold" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="font-black"
                                     Text="font-black" />
@@ -98,24 +96,22 @@
                         Heading="Combining with other utilities"
                         Summary="font-* combines with the other text utilities in one class list, and works on any control that exposes FontWeight. When two weights appear together the last one wins.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-bold text-2xl text-sky-300&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-normal font-black&quot; /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;font-semibold bg-emerald-500 px-4 py-2&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-light&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="font-light text-2xl text-sky-300"
                                     Text="font-light text-2xl text-sky-300" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="font-bold text-2xl text-sky-300"
                                     Text="font-bold text-2xl text-sky-300" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="font-normal font-black text-2xl text-rose-300"
                                     Text="font-normal font-black: the last weight wins" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     CornerRadius="10"
                                     HorizontalAlignment="Left"
                                     tw:Tw.Class="font-semibold bg-emerald-500 text-slate-950 px-4 py-2"

@@ -28,14 +28,14 @@
                     <docs:DocsSection
                         Heading="hover:"
                         Summary="The base bg-blue-500 applies at rest; hover:bg-blue-700 takes over while the pointer is over the control.">
-                        <docs:DocsExample
-                            Code="&lt;Button tw:Tw.Class=&quot;bg-blue-500 hover:bg-blue-700&quot; /&gt;">
+                        <docs:DocsExample>
                             <StackPanel
                                 Spacing="14">
                                 <TextBlock
                                     Classes="docs-hint"
                                     Text="Move the pointer over the button." />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     CornerRadius="10"
                                     BorderThickness="0"
                                     HorizontalAlignment="Left"
@@ -48,14 +48,14 @@
                     <docs:DocsSection
                         Heading="pressed:"
                         Summary="pressed:opacity-50 applies only while the pointer is held down over the control.">
-                        <docs:DocsExample
-                            Code="&lt;Button tw:Tw.Class=&quot;opacity-100 pressed:opacity-50&quot; /&gt;">
+                        <docs:DocsExample>
                             <StackPanel
                                 Spacing="14">
                                 <TextBlock
                                     Classes="docs-hint"
                                     Text="Click and hold the button." />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     CornerRadius="10"
                                     BorderThickness="0"
                                     HorizontalAlignment="Left"
@@ -68,14 +68,14 @@
                     <docs:DocsSection
                         Heading="focus:"
                         Summary="focus:border-sky-400 applies only while the control holds keyboard focus.">
-                        <docs:DocsExample
-                            Code="&lt;TextBox tw:Tw.Class=&quot;border-slate-700 focus:border-sky-400&quot; /&gt;">
+                        <docs:DocsExample>
                             <StackPanel
                                 Spacing="14">
                                 <TextBlock
                                     Classes="docs-hint"
                                     Text="Click into the text box, or tab to it." />
                                 <TextBox
+                                    docs:DocsCode.Show="True"
                                     CornerRadius="10"
                                     BorderThickness="2"
                                     HorizontalAlignment="Left"
@@ -88,14 +88,14 @@
                     <docs:DocsSection
                         Heading="Stacking multiple variants"
                         Summary="A control can take more than one variant token at once. Hover the button, then also press it: pressed:bg-green-500 wins over hover:bg-red-500 while both states are active, because Pressed is declared after Hover and its style is added later.">
-                        <docs:DocsExample
-                            Code="&lt;Button tw:Tw.Class=&quot;bg-blue-500 hover:bg-red-500 pressed:bg-green-500&quot; /&gt;">
+                        <docs:DocsExample>
                             <StackPanel
                                 Spacing="14">
                                 <TextBlock
                                     Classes="docs-hint"
                                     Text="Hover the button, then press and hold." />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     CornerRadius="10"
                                     BorderThickness="0"
                                     HorizontalAlignment="Left"

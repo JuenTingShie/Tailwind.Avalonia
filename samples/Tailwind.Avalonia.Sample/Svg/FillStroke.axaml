@@ -43,17 +43,11 @@
                         Heading="Fill and stroke"
                         Summary="Each shape carries the real tokens.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-sky-500 stroke-sky-900 stroke-2&quot; /&gt;</x:String>
-                                <x:String>&lt;Rectangle tw:Tw.Class=&quot;fill-none stroke-rose-500 stroke-[4px]&quot; /&gt;</x:String>
-                                <x:String>&lt;Rectangle tw:Tw.Class=&quot;fill-amber-400 stroke-none&quot; /&gt;</x:String>
-                                <x:String>&lt;Rectangle tw:Tw.Class=&quot;fill-emerald-500 stroke-slate-700 stroke-1&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel Orientation="Horizontal" Spacing="24">
-                                <Ellipse Width="80" Height="80" tw:Tw.Class="fill-sky-500 stroke-sky-900 stroke-2" />
-                                <Rectangle Width="80" Height="80" RadiusX="12" RadiusY="12" tw:Tw.Class="fill-none stroke-rose-500 stroke-[4px]" />
-                                <Rectangle Width="80" Height="80" tw:Tw.Class="fill-amber-400 stroke-none" />
-                                <Rectangle Width="80" Height="80" tw:Tw.Class="fill-emerald-500 stroke-slate-700 stroke-1" />
+                                <Ellipse docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-sky-500 stroke-sky-900 stroke-2" />
+                                <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" RadiusX="12" RadiusY="12" tw:Tw.Class="fill-none stroke-rose-500 stroke-[4px]" />
+                                <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-amber-400 stroke-none" />
+                                <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-emerald-500 stroke-slate-700 stroke-1" />
                             </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>

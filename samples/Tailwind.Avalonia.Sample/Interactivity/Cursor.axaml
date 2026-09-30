@@ -43,63 +43,61 @@
                         Heading="Pointer shapes"
                         Summary="Hover over each box to see its pointer. The screenshots and touch targets do not show a pointer, so this example is best tried with a mouse.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-pointer&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-not-allowed&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-text&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-default&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-wait&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-crosshair&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-move&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-help&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-none&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="8"
                                 LineSpacing="8"
                                 Width="420"
                                 HorizontalAlignment="Left">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-default w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-default" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-pointer w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-pointer" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-text w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-text" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-wait w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-wait" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-crosshair w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-crosshair" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-move w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-move" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-help w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-help" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-not-allowed w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-not-allowed" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="cursor-none w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-none" />

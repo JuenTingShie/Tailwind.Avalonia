@@ -43,12 +43,6 @@
                         Heading="Ring widths, colors and shadows"
                         Summary="Each dark Border carries a ring class list. The fourth combines a ring with shadow-lg, and the ring stays in front of the shadow.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;ring-2 ring-sky-500&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;ring-4 ring-emerald-400/60&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;ring-2 ring-rose-500 shadow-lg&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;ring-[6px] ring-amber-400&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="20"
                                 LineSpacing="20"
@@ -62,24 +56,28 @@
                                         Text="ring" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="ring-2 ring-sky-500 w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"
                                         Text="ring-2 ring-sky-500" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="ring-4 ring-emerald-400/60 w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"
                                         Text="ring-4 ring-emerald-400/60" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="ring-2 ring-rose-500 shadow-lg w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"
                                         Text="ring-2 ring-rose-500 shadow-lg" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="ring-[6px] ring-amber-400 w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"

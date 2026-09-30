@@ -43,12 +43,6 @@
                         Heading="Aligning a child inside a fixed frame"
                         Summary="Each dark frame is 14rem by 8rem and holds one small box carrying the real class.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;self-end&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;justify-self-end&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;place-self-center&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;self-start&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="12"
                                 LineSpacing="12"
@@ -57,6 +51,7 @@
                             <Border
                                 tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="self-start w-24 h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         FontSize="11"
@@ -77,6 +72,7 @@
                             <Border
                                 tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="self-end w-24 h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         FontSize="11"
@@ -87,6 +83,7 @@
                             <Border
                                 tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="justify-self-end w-24 h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         FontSize="11"
@@ -97,6 +94,7 @@
                             <Border
                                 tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="place-self-center w-24 h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         FontSize="11"

@@ -43,16 +43,12 @@
                         Heading="Full, fixed, auto and size"
                         Summary="The bars sit inside a 20rem StackPanel. The first one fills it, the second has a fixed width, the third shows auto overriding a fixed width, and the last one uses size-10.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;w-full&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;w-48&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;size-10&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="8"
                                 Width="320"
                                 HorizontalAlignment="Left">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-full h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         VerticalAlignment="Center"
@@ -60,6 +56,7 @@
                                         Text="w-full" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-48 h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         VerticalAlignment="Center"
@@ -74,6 +71,7 @@
                                         Text="w-48 w-auto (auto wins, it comes last)" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="size-10 rounded-full h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         VerticalAlignment="Center"

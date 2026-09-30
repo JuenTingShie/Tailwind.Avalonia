@@ -43,15 +43,10 @@
                         Heading="Direction and gap on panels"
                         Summary="From top to bottom: a horizontal StackPanel with gap-2, a vertical one with gap-4, a WrapPanel with separate horizontal and vertical gaps and a two-column Grid with gap-2.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;StackPanel tw:Tw.Class=&quot;flex-row gap-2&quot; /&gt;</x:String>
-                                <x:String>&lt;StackPanel tw:Tw.Class=&quot;flex-col gap-4&quot; /&gt;</x:String>
-                                <x:String>&lt;WrapPanel tw:Tw.Class=&quot;w-48 gap-x-2 gap-y-4&quot; /&gt;</x:String>
-                                <x:String>&lt;Grid tw:Tw.Class=&quot;gap-2&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="20">
                             <StackPanel
+                                docs:DocsCode.Show="True"
                                 tw:Tw.Class="flex-row gap-2">
                                 <Border
                                     tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
@@ -75,6 +70,7 @@
                                 </Border>
                             </StackPanel>
                             <StackPanel
+                                docs:DocsCode.Show="True"
                                 tw:Tw.Class="flex-col gap-4">
                                 <Border
                                     tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
@@ -98,6 +94,7 @@
                                 </Border>
                             </StackPanel>
                             <WrapPanel
+                                docs:DocsCode.Show="True"
                                 tw:Tw.Class="w-48 gap-x-2 gap-y-4">
                                 <Border
                                     tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
@@ -131,6 +128,7 @@
                                 </Border>
                             </WrapPanel>
                             <Grid
+                                docs:DocsCode.Show="True"
                                 tw:Tw.Class="w-40 gap-2"
                                 ColumnDefinitions="*,*"
                                 RowDefinitions="Auto,Auto">

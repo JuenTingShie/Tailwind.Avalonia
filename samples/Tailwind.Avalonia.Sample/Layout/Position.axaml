@@ -43,15 +43,11 @@
                         Heading="Positioning children in a Canvas"
                         Summary="The dark box is a Canvas with five children, each positioned by its own classes.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;left-2 top-2&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;right-2 bottom-2&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;left-24 top-14&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Canvas
                                 tw:Tw.Class="w-72 h-40 bg-slate-700"
                                 HorizontalAlignment="Left">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="left-2 top-2 w-20 h-10 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
@@ -70,12 +66,14 @@
                                         Text="left-2 bottom-2" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="right-2 bottom-2 w-20 h-10 rounded-md bg-amber-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="right-2 bottom-2" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="left-24 top-14 w-20 h-10 rounded-md bg-violet-600 p-1">
                                     <TextBlock
                                         FontSize="11"

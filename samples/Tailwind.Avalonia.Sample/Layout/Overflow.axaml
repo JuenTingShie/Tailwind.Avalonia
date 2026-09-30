@@ -43,19 +43,17 @@
                         Heading="Clipping overflowing children"
                         Summary="Both containers are 8rem wide and hold a wider child. The first clips it, the second lets it spill over.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;overflow-hidden&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;overflow-visible&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-32 h-12 bg-slate-700 overflow-hidden">
                                     <Border
                                         tw:Tw.Class="w-48 h-8 bg-sky-500"
                                         HorizontalAlignment="Left" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-32 h-12 bg-slate-700 overflow-visible">
                                     <Border
                                         tw:Tw.Class="w-48 h-8 bg-sky-500"

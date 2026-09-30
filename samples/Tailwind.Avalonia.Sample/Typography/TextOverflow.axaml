@@ -43,24 +43,22 @@
                         Heading="Truncate, ellipsis, clip and wrap"
                         Summary="Each TextBlock below is 16rem wide and carries the real token. truncate and text-ellipsis end the line with an ellipsis, text-clip cuts it, and text-wrap wraps onto more lines.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-64 truncate&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-64 text-ellipsis&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-64 text-clip text-nowrap&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-64 text-wrap&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-64 truncate"
                                     Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-64 text-ellipsis"
                                     Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-64 text-clip text-nowrap"
                                     Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-64 text-wrap"
                                     Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
                             </StackPanel>

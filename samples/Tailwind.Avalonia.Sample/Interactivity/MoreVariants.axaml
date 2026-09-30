@@ -43,26 +43,24 @@
                         Heading="Disabled, checked and focus-visible"
                         Summary="The first two buttons carry the same classes and only differ in IsEnabled. Tab through the last button to see focus-visible.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;bg-sky-600 disabled:bg-slate-400&quot; /&gt;</x:String>
-                                <x:String>&lt;ToggleButton tw:Tw.Class=&quot;bg-slate-600 checked:bg-emerald-600&quot; /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;bg-slate-600 focus-visible:bg-amber-600&quot; /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;disabled:bg-slate-400 disabled:text-slate-100 disabled:opacity-70&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="12"
                                 HorizontalAlignment="Left">
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="disabled: (this button is disabled)"
                                     IsEnabled="False"
                                     tw:Tw.Class="bg-sky-600 text-white disabled:bg-slate-400 disabled:text-slate-100 disabled:opacity-70" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="enabled, same classes"
                                     tw:Tw.Class="bg-sky-600 text-white disabled:bg-slate-400 disabled:text-slate-100 disabled:opacity-70" />
                                 <ToggleButton
+                                    docs:DocsCode.Show="True"
                                     Content="checked: click to toggle"
                                     tw:Tw.Class="bg-slate-600 text-white checked:bg-emerald-600" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="focus-visible: press Tab to focus"
                                     tw:Tw.Class="bg-slate-600 text-white focus-visible:bg-amber-600" />
                             </StackPanel>

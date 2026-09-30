@@ -43,12 +43,8 @@
                         Heading="First, last, odd and even"
                         Summary="Every row carries the same classes; only its position differs.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-slate-100 first:bg-sky-200 last:bg-amber-200&quot; /&gt;</x:String>
-                                <x:String>&lt;ContentControl tw:Tw.Class=&quot;odd:text-slate-900 even:text-slate-600&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel Spacing="4" Width="260">
-                                <ContentControl Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 1" /></ContentControl>
+                                <ContentControl docs:DocsCode.Show="True" Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 1" /></ContentControl>
                                 <ContentControl Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 2" /></ContentControl>
                                 <ContentControl Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 3" /></ContentControl>
                                 <ContentControl Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 4" /></ContentControl>

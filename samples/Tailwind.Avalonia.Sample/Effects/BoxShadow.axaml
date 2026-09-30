@@ -43,15 +43,6 @@
                         Heading="Shadow scale"
                         Summary="Use shadow-2xs through shadow-2xl to raise an element by an increasing amount. Each Border below carries the real tw:Tw.Class token.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-2xs" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-xs" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-sm" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-md" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-lg" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-xl" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-2xl" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 CornerRadius="14"
                                 tw:Tw.Class="bg-slate-200 p-8">
@@ -60,6 +51,7 @@
                                     ItemSpacing="28"
                                     LineSpacing="28">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-2xs w-24 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -69,6 +61,7 @@
                                             Text="shadow-2xs" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-xs w-24 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -78,6 +71,7 @@
                                             Text="shadow-xs" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-sm w-24 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -87,6 +81,7 @@
                                             Text="shadow-sm" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-md w-24 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -96,6 +91,7 @@
                                             Text="shadow-md" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-lg w-24 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -105,6 +101,7 @@
                                             Text="shadow-lg" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-xl w-24 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -114,6 +111,7 @@
                                             Text="shadow-xl" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-2xl w-24 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -131,10 +129,6 @@
                         Heading="Removing a shadow"
                         Summary="shadow-none clears a shadow set earlier in the same class list, because the last shadow-* token wins. This is how you turn a shadow off for one element without touching the rest of the class list.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-lg" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="shadow-lg shadow-none" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 CornerRadius="14"
                                 tw:Tw.Class="bg-slate-200 p-8">
@@ -142,6 +136,7 @@
                                     Orientation="Horizontal"
                                     Spacing="28">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-lg w-32 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -151,6 +146,7 @@
                                             Text="shadow-lg" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-white rounded-lg shadow-lg shadow-none w-32 h-24">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -168,12 +164,12 @@
                     <docs:DocsSection
                         Heading="Combining with other utilities"
                         Summary="Shadows follow the element's CornerRadius, so pair them with rounded-* and a background color for a card.">
-                        <docs:DocsExample
-                            Code="&lt;Border tw:Tw.Class=&quot;bg-white rounded-2xl shadow-xl p-6 w-72&quot; /&gt;">
+                        <docs:DocsExample>
                             <Border
                                 CornerRadius="14"
                                 tw:Tw.Class="bg-slate-200 p-8">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     HorizontalAlignment="Left"
                                     tw:Tw.Class="bg-white rounded-2xl shadow-xl p-6 w-72">
                                     <StackPanel
@@ -196,23 +192,16 @@
                         Heading="Inset shadows"
                         Summary="inset-shadow-* (and shadow-inner) draw the shadow inside the box and can be combined with shadow-* and ring-*.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-slate-100 rounded-xl inset-shadow-sm&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;inset-shadow-2xs&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;inset-shadow-xs&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;shadow-inner&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;shadow-md inset-shadow-sm&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 CornerRadius="14"
                                 tw:Tw.Class="bg-white p-8">
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Spacing="16">
-                                    <Border Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-2xs" />
-                                    <Border Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-xs" />
-                                    <Border Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl shadow-inner" />
-                                    <Border Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl shadow-md inset-shadow-sm" />
+                                    <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-2xs" />
+                                    <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-xs" />
+                                    <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl shadow-inner" />
+                                    <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl shadow-md inset-shadow-sm" />
                                 </StackPanel>
                             </Border>
                         </docs:DocsExample>

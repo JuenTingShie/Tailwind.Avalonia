@@ -46,25 +46,23 @@
                         Heading="Basic example"
                         Summary="Use utilities like text-sm and text-2xl to set the font size of an element. Each previewed TextBlock below carries the real tw:Tw.Class token.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-xs" /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-base" /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-2xl" /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-5xl" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="12">
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="text-slate-100 text-xs"
                                     Text="The quick brown fox jumps over the lazy dog." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="text-slate-100 text-base"
                                     Text="The quick brown fox jumps over the lazy dog." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontWeight="SemiBold"
                                     tw:Tw.Class="text-slate-100 text-2xl"
                                     Text="The quick brown fox." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontWeight="Bold"
                                     LetterSpacing="-1"
                                     tw:Tw.Class="text-slate-50 text-5xl"
@@ -109,21 +107,19 @@
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[14px]" /&gt;</x:String>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[1.5rem]" /&gt;</x:String>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[2em]" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <StackPanel
                                     Spacing="12">
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="text-slate-100 text-[14px]"
                                         Text="text-[14px]" />
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         FontWeight="SemiBold"
                                         tw:Tw.Class="text-slate-100 text-[1.5rem]"
                                         Text="text-[1.5rem]" />
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         FontWeight="Bold"
                                         tw:Tw.Class="text-slate-50 text-[2em]"
                                         Text="text-[2em]" />
