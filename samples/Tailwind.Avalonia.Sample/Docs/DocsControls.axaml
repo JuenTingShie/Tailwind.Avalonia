@@ -103,10 +103,17 @@
                             Spacing="0">
                             <Border
                                 Classes="docs-stage">
-                                <ContentPresenter
-                                    Name="PART_ContentPresenter"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                <ScrollViewer
+                                    AllowAutoHide="False"
+                                    HorizontalScrollBarVisibility="Auto"
+                                    VerticalScrollBarVisibility="Disabled">
+                                    <docs:StageFit>
+                                        <ContentPresenter
+                                            Name="PART_ContentPresenter"
+                                            Content="{TemplateBinding Content}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    </docs:StageFit>
+                                </ScrollViewer>
                             </Border>
                             <Border
                                 Classes="docs-codeFooter"
