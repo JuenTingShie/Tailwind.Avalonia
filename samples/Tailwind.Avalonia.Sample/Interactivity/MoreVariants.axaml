@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="dark: · group-hover: · first: / last: · aria-* · variants on non-color utilities" />
+                            Text="dark: · group-hover: · aria-* · variants on non-color utilities" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>

@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="text-balance · text-pretty · line-clamp-* · whitespace-* · break-*" />
+                            Text="text-balance · text-pretty · break-*" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>

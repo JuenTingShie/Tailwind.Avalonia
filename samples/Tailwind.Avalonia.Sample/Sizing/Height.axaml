@@ -31,7 +31,7 @@
                                 Text="percentages and fractions" />
                             <TextBlock
                                 Classes="docs-tableClass"
-                                Text="h-full · h-&lt;fraction&gt; · min-h-&lt;fraction&gt; · max-h-&lt;fraction&gt;" />
+                                Text="h-&lt;fraction&gt; · min-h-&lt;fraction&gt; · max-h-&lt;fraction&gt;" />
                         </StackPanel>
                         <StackPanel
                             Spacing="5">

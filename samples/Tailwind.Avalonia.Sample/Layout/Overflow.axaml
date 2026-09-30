@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="overflow-auto · overflow-scroll · overflow-x-* · overflow-y-*" />
+                            Text="overflow-auto · overflow-scroll (use overflow-x-* / overflow-y-* on a ScrollViewer)" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>
