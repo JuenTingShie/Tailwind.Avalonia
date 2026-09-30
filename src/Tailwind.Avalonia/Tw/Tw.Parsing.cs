@@ -358,6 +358,26 @@ public partial class Tw
         return false;
     }
 
+    // font-variant-numeric utilities combine into one OpenType feature list; normal-nums resets it.
+    private static bool TryParseNumericVariantUtility(string token, out string? feature)
+    {
+        feature = token switch
+        {
+            "normal-nums" => null,
+            "ordinal" => "ordn",
+            "slashed-zero" => "zero",
+            "lining-nums" => "lnum",
+            "oldstyle-nums" => "onum",
+            "proportional-nums" => "pnum",
+            "tabular-nums" => "tnum",
+            "diagonal-fractions" => "frac",
+            "stacked-fractions" => "afrc",
+            _ => null,
+        };
+
+        return feature is not null || token == "normal-nums";
+    }
+
     private static bool TryParseLetterSpacingUtility(string token, out TextMetricUtility utility)
     {
         utility = default;

@@ -49,6 +49,8 @@ public partial class Tw
         var hasTextDecoration = false;
         var textDecorationLocations = new List<TextDecorationLocation>();
         double? decorationThickness = null;
+        var hasNumericVariants = false;
+        var numericFeatures = new List<string>();
         double? decorationOffset = null;
         IBrush? decorationBrush = null;
         var hasLetterSpacing = false;
@@ -263,6 +265,22 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseNumericVariantUtility(token, out var numericFeature))
+            {
+                hasNumericVariants = true;
+
+                if (numericFeature is null)
+                {
+                    numericFeatures.Clear();
+                }
+                else if (!numericFeatures.Contains(numericFeature))
+                {
+                    numericFeatures.Add(numericFeature);
+                }
+
+                continue;
+            }
+
             if (TryParseDecorationMetricUtility(token, out var isThickness, out var decorationMetric))
             {
                 if (isThickness)
@@ -474,6 +492,12 @@ public partial class Tw
             {
                 keywordValues["RenderTransformOrigin"] = origin;
             }
+        }
+
+        if (hasNumericVariants && numericFeatures.Count > 0)
+        {
+            keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+            keywordValues["FontFeatures"] = FontFeatureCollection.Parse(string.Join(", ", numericFeatures));
         }
 
         if (hasTextDecoration)

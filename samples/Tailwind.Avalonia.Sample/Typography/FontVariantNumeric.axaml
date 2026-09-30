@@ -1,0 +1,63 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Typography.FontVariantNumeric">
+    <docs:DocsPage
+        Section="Typography"
+        Title="Font variant numeric"
+        Intro="Utilities for numeric glyph variants. They map to OpenType features on FontFeatures.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="tabular-nums, proportional-nums, lining-nums, oldstyle-nums, slashed-zero, ordinal, diagonal-fractions and stacked-fractions combine into one FontFeatures list; normal-nums resets it. The API is available on every platform, but a variant only shows when the selected font provides that OpenType feature." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="font-features-[...] · font-variant-caps · font-variant-ligatures" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Numeric variants"
+                        Summary="Effect depends on the font: fonts without the feature render the default digits.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;tabular-nums&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;tabular-nums slashed-zero&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;oldstyle-nums&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Spacing="8">
+                                <TextBlock FontSize="22" Text="1111 8888 (default)" />
+                                <TextBlock FontSize="22" tw:Tw.Class="tabular-nums" Text="1111 8888 (tabular-nums)" />
+                                <TextBlock FontSize="22" tw:Tw.Class="tabular-nums slashed-zero" Text="0000 1234 (tabular-nums slashed-zero)" />
+                                <TextBlock FontSize="22" tw:Tw.Class="oldstyle-nums" Text="0123456789 (oldstyle-nums)" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>

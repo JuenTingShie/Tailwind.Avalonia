@@ -1,0 +1,61 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Typography.FontStretch">
+    <docs:DocsPage
+        Section="Typography"
+        Title="Font stretch"
+        Intro="Utilities for the width of the typeface. font-stretch-* map to the FontStretch property.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="font-stretch-ultra-condensed through font-stretch-ultra-expanded set FontStretch. It is available on every platform, but only fonts that ship condensed or expanded faces change appearance; other fonts render at normal width." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="font-stretch-&lt;percentage&gt;" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Font stretch"
+                        Summary="Only fonts with matching faces change width.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-stretch-condensed&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-stretch-expanded&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Spacing="8">
+                                <TextBlock FontSize="20" tw:Tw.Class="font-stretch-condensed" Text="font-stretch-condensed" />
+                                <TextBlock FontSize="20" tw:Tw.Class="font-stretch-normal" Text="font-stretch-normal" />
+                                <TextBlock FontSize="20" tw:Tw.Class="font-stretch-expanded" Text="font-stretch-expanded" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
