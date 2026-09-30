@@ -1,0 +1,61 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Interactivity.PlaceholderColor">
+    <docs:DocsPage
+        Section="Interactivity"
+        Title="Placeholder color"
+        Intro="Utilities for the color of placeholder text. placeholder-&lt;color&gt; sets TextBox.PlaceholderForeground.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="placeholder-&lt;color&gt; uses the Tailwind palette (with optional opacity) and sets PlaceholderForeground on TextBox. Other elements ignore it with a warning. Core Avalonia property, available on every platform." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="placeholder: variant" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Placeholder color"
+                        Summary="Each TextBox is empty so the placeholder is visible.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBox tw:Tw.Class=&quot;placeholder-rose-400&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBox tw:Tw.Class=&quot;placeholder-emerald-500&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Spacing="10" Width="280">
+                                <TextBox PlaceholderText="default placeholder" />
+                                <TextBox PlaceholderText="placeholder-rose-400" tw:Tw.Class="placeholder-rose-400" />
+                                <TextBox PlaceholderText="placeholder-emerald-500" tw:Tw.Class="placeholder-emerald-500" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>

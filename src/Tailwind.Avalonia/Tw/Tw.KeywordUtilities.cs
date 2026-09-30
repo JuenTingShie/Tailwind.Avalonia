@@ -7,6 +7,8 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Layout;
 using Avalonia.Media;
+using Avalonia.Media.Transformation;
+using Avalonia.Styling;
 
 namespace Tailwind.Avalonia;
 
@@ -88,6 +90,17 @@ public partial class Tw
         Add("font-stretch-expanded", "FontStretch", FontStretch.Expanded);
         Add("font-stretch-extra-expanded", "FontStretch", FontStretch.ExtraExpanded);
         Add("font-stretch-ultra-expanded", "FontStretch", FontStretch.UltraExpanded);
+        // overscroll-behavior maps to scroll chaining; contain and none both stop chaining to the parent.
+        Add("overscroll-auto", "ScrollViewer.IsScrollChainingEnabled", true);
+        Add("overscroll-contain", "ScrollViewer.IsScrollChainingEnabled", false);
+        Add("overscroll-none", "ScrollViewer.IsScrollChainingEnabled", false);
+
+        // color-scheme (Tailwind v4 scheme-*) selects the theme variant for the element and its subtree.
+        Add("scheme-light", "RequestedThemeVariant", ThemeVariant.Light);
+        Add("scheme-dark", "RequestedThemeVariant", ThemeVariant.Dark);
+        Add("scheme-normal", "RequestedThemeVariant", ThemeVariant.Default);
+
+        Add("transform-none", "RenderTransform", TransformOperations.Identity);
         Add("whitespace-nowrap", "TextWrapping", TextWrapping.NoWrap);
         Add("whitespace-normal", "TextWrapping", TextWrapping.Wrap);
 
@@ -370,6 +383,7 @@ public partial class Tw
             "Grid.Row" => Grid.RowProperty,
             "Grid.ColumnSpan" => Grid.ColumnSpanProperty,
             "Grid.RowSpan" => Grid.RowSpanProperty,
+            "ScrollViewer.IsScrollChainingEnabled" => ScrollViewer.IsScrollChainingEnabledProperty,
             "ScrollViewer.HorizontalScrollBarVisibility" => ScrollViewer.HorizontalScrollBarVisibilityProperty,
             "ScrollViewer.VerticalScrollBarVisibility" => ScrollViewer.VerticalScrollBarVisibilityProperty,
             _ => KeywordPropertyCache.GetOrAdd(new PropertyLookupKey(type, propertyName), static key => FindPropertyField(key)),

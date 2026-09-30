@@ -119,7 +119,9 @@ public partial class SampleShell : UserControl
                 new SampleShellPageDescriptor("Structural variants", static () => new Interactivity.StructuralVariants()),
                 new SampleShellPageDescriptor("Cursor", static () => new Interactivity.Cursor()),
                 new SampleShellPageDescriptor("Pointer events", static () => new Interactivity.PointerEvents()),
-                new SampleShellPageDescriptor("Caret and selection color", static () => new Interactivity.CaretSelectionColor())),
+                new SampleShellPageDescriptor("Caret and selection color", static () => new Interactivity.CaretSelectionColor()),
+                new SampleShellPageDescriptor("Placeholder color", static () => new Interactivity.PlaceholderColor()),
+                new SampleShellPageDescriptor("Color scheme", static () => new Interactivity.ColorScheme())),
             new(
                 "Effects",
                 new SampleShellPageDescriptor("Opacity", static () => new Effects.Opacity()),

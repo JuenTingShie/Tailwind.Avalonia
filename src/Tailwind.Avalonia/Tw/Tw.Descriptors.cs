@@ -41,6 +41,7 @@ public partial class Tw
         DecorationBrush,
         Fill,
         Stroke,
+        PlaceholderForeground,
     }
 
     private enum SizingTarget
@@ -125,6 +126,7 @@ public partial class Tw
             new("caret-", BrushTarget.CaretBrush),
             new("selection-", BrushTarget.SelectionBrush),
             new("decoration-", BrushTarget.DecorationBrush),
+            new("placeholder-", BrushTarget.PlaceholderForeground),
             new("fill-", BrushTarget.Fill),
             new("stroke-", BrushTarget.Stroke),
         };
