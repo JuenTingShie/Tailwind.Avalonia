@@ -43,6 +43,7 @@ public partial class Tw
         TransformState? transformState = null;
         LayoutState? layoutState = null;
         GradientState? gradientState = null;
+        BackgroundImageState? backgroundImageState = null;
         RingState? ringState = null;
         TransitionState? transitionState = null;
         var widthFill = false;
@@ -240,6 +241,11 @@ public partial class Tw
             {
                 lineHeight = lineHeightUtility;
                 hasLineHeight = true;
+                continue;
+            }
+
+            if (backgroundImageState is null ? TryApplyBackgroundImageToken(token, backgroundImageState = new BackgroundImageState()) : TryApplyBackgroundImageToken(token, backgroundImageState))
+            {
                 continue;
             }
 
@@ -477,6 +483,13 @@ public partial class Tw
         if (gradientState is { IsUsable: true } gradient)
         {
             background = BuildGradientBrush(gradient);
+            hasBackground = true;
+        }
+
+        // A background image replaces the Background as well and wins over a gradient.
+        if (backgroundImageState is { IsUsable: true } backgroundImage && TryBuildImageBrush(element, backgroundImage) is { } imageBrush)
+        {
+            background = imageBrush;
             hasBackground = true;
         }
 

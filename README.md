@@ -128,11 +128,11 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | background-attachment |             | No Avalonia equivalent                                                      |
 | background-clip       |             | No Avalonia equivalent                                                      |
 | background-color      |     ✅      | All platforms                                                               |
-| background-image      |     ✅      | All platforms                                                               |
-| background-origin     |             | Feasible with TileBrush but not implemented                                 |
-| background-position   |             | Feasible with ImageBrush but not implemented (needs an image source syntax) |
-| background-repeat     |             | Feasible with TileBrush but not implemented (needs an image source syntax)  |
-| background-size       |             | Feasible with ImageBrush but not implemented (needs an image source syntax) |
+| background-image      |     ✅      | Gradients (bg-gradient-to-*) and images (bg-[url(avares://...)]); remote URLs are not downloaded |
+| background-origin     |             | No Avalonia equivalent: the Background always covers the border box         |
+| background-position   |     ✅      | bg-center / top / bottom / left / right and corners via ImageBrush alignment |
+| background-repeat     |     ✅      | bg-repeat / bg-no-repeat only (no repeat-x / -y / -round / -space)          |
+| background-size       |     ✅      | bg-cover / bg-contain / bg-auto via ImageBrush.Stretch                      |
 
 ### Borders
 
