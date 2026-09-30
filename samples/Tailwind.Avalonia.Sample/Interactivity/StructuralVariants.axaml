@@ -1,0 +1,63 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Interactivity.StructuralVariants">
+    <docs:DocsPage
+        Section="Interactivity"
+        Title="Structural variants"
+        Intro="first:, last:, odd: and even: apply a utility depending on the element&#x27;s position among its siblings. They map to Avalonia&#x27;s nth-child selectors.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="first:, last:, odd: and even: work with the color (bg-, text-, border-) and opacity utilities. They match once the element has a parent, count from 1 like CSS, and can be combined with hover: etc. Core Avalonia selectors, so they work on every platform." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="Structural variants for other utilities and dark: / group-* variants are not implemented yet.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="dark: · group-hover: · aria-* · variants on non-color utilities" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="First, last, odd and even"
+                        Summary="Every row carries the same classes; only its position differs.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-slate-100 first:bg-sky-200 last:bg-amber-200&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;odd:text-slate-900 even:text-slate-600&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Spacing="4" Width="260">
+                                <Border Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 1" /></Border>
+                                <Border Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 2" /></Border>
+                                <Border Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 3" /></Border>
+                                <Border Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 4" /></Border>
+                                <Border Padding="10" CornerRadius="6" tw:Tw.Class="bg-slate-100 first:bg-sky-200 last:bg-amber-200 odd:text-slate-900 even:text-slate-600"><TextBlock Text="row 5" /></Border>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
