@@ -13,20 +13,20 @@
         GapsTitle="Not covered yet"
         GapsBody="These Tailwind font-size rows sit outside the current parser surface.">
         <docs:DocsPage.Utilities>
-            <docs:UtilityReferenceRow ClassName="text-xs" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-xs&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-sm" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-sm&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-base" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-base&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-lg" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-lg&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-2xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-2xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-3xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-3xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-4xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-4xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-5xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-5xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-6xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-6xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-7xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-7xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-8xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-8xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-9xl" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-9xl&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-[&lt;value&gt;]" AxamlStyle="&lt;TextBlock tw:Tw.Class=&quot;text-[&lt;value&gt;]&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-xs" AxamlStyle="&lt;TextBlock FontSize=&quot;12&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-sm" AxamlStyle="&lt;TextBlock FontSize=&quot;14&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-base" AxamlStyle="&lt;TextBlock FontSize=&quot;16&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-lg" AxamlStyle="&lt;TextBlock FontSize=&quot;18&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-xl" AxamlStyle="&lt;TextBlock FontSize=&quot;20&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-2xl" AxamlStyle="&lt;TextBlock FontSize=&quot;24&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-3xl" AxamlStyle="&lt;TextBlock FontSize=&quot;30&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-4xl" AxamlStyle="&lt;TextBlock FontSize=&quot;36&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-5xl" AxamlStyle="&lt;TextBlock FontSize=&quot;48&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-6xl" AxamlStyle="&lt;TextBlock FontSize=&quot;60&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-7xl" AxamlStyle="&lt;TextBlock FontSize=&quot;72&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-8xl" AxamlStyle="&lt;TextBlock FontSize=&quot;96&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-9xl" AxamlStyle="&lt;TextBlock FontSize=&quot;128&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-[&lt;value&gt;]" AxamlStyle="&lt;TextBlock FontSize=&quot;&lt;parsed value&gt;&quot; /&gt;" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
             <docs:DocsGap Text="text-sm/6 · text-sm/7 · text-sm/8 · text-lg/7" />

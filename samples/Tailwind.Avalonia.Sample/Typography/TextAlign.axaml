@@ -122,6 +122,7 @@
                         tw:Tw.Class="p-4">
                         <TextBlock
                             docs:DocsCode.Show="True"
+                            docs:DocsCode.Attributes="FlowDirection"
                             Classes="docs-chip"
                             tw:Tw.Class="text-start"
                             Text="text-start (LTR)" />

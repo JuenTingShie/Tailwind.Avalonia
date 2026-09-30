@@ -42,6 +42,7 @@
                         tw:Tw.Class="text-base tracking-normal"
                         Text="text-base tracking-normal" />
                     <TextBlock
+                        docs:DocsCode.Show="True"
                         tw:Tw.Class="text-base tracking-wide"
                         Text="text-base tracking-wide" />
                     <TextBlock

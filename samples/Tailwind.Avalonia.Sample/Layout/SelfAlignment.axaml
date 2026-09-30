@@ -31,7 +31,7 @@
                     tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="self-start w-24 h-8 rounded-md bg-sky-600 px-2">
+                        tw:Tw.Class="self-start w-40 h-8 rounded-md bg-sky-600 px-2">
                         <TextBlock
                             FontSize="11"
                             VerticalAlignment="Center"
@@ -41,7 +41,7 @@
                 <Border
                     tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                     <Border
-                        tw:Tw.Class="self-center w-24 h-8 rounded-md bg-sky-600 px-2">
+                        tw:Tw.Class="self-center w-40 h-8 rounded-md bg-sky-600 px-2">
                         <TextBlock
                             FontSize="11"
                             VerticalAlignment="Center"
@@ -52,7 +52,7 @@
                     tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="self-end w-24 h-8 rounded-md bg-sky-600 px-2">
+                        tw:Tw.Class="self-end w-40 h-8 rounded-md bg-sky-600 px-2">
                         <TextBlock
                             FontSize="11"
                             VerticalAlignment="Center"
@@ -63,7 +63,7 @@
                     tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="justify-self-end w-24 h-8 rounded-md bg-sky-600 px-2">
+                        tw:Tw.Class="justify-self-end w-40 h-8 rounded-md bg-sky-600 px-2">
                         <TextBlock
                             FontSize="11"
                             VerticalAlignment="Center"
@@ -74,7 +74,7 @@
                     tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="place-self-center w-24 h-8 rounded-md bg-sky-600 px-2">
+                        tw:Tw.Class="place-self-center w-40 h-8 rounded-md bg-sky-600 px-2">
                         <TextBlock
                             FontSize="11"
                             VerticalAlignment="Center"

@@ -29,33 +29,35 @@
                     HorizontalAlignment="Left">
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="left-2 top-2 w-20 h-10 rounded-md bg-sky-600 p-1">
+                        tw:Tw.Class="left-2 top-2 w-32 h-10 rounded-md bg-sky-600 p-1">
                         <TextBlock
                             FontSize="11"
                             Text="left-2 top-2" />
                     </Border>
                     <Border
-                        tw:Tw.Class="right-2 top-2 w-20 h-10 rounded-md bg-emerald-600 p-1">
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="right-2 top-2 w-32 h-10 rounded-md bg-emerald-600 p-1">
                         <TextBlock
                             FontSize="11"
                             Text="right-2 top-2" />
                     </Border>
                     <Border
-                        tw:Tw.Class="left-2 bottom-2 w-20 h-10 rounded-md bg-rose-600 p-1">
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="left-2 bottom-2 w-32 h-10 rounded-md bg-rose-600 p-1">
                         <TextBlock
                             FontSize="11"
                             Text="left-2 bottom-2" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="right-2 bottom-2 w-20 h-10 rounded-md bg-amber-600 p-1">
+                        tw:Tw.Class="right-2 bottom-2 w-32 h-10 rounded-md bg-amber-600 p-1">
                         <TextBlock
                             FontSize="11"
                             Text="right-2 bottom-2" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="left-24 top-14 w-20 h-10 rounded-md bg-violet-600 p-1">
+                        tw:Tw.Class="left-24 top-14 w-32 h-10 rounded-md bg-violet-600 p-1">
                         <TextBlock
                             FontSize="11"
                             Text="left-24 top-14" />

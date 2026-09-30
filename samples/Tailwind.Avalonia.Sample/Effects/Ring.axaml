@@ -27,38 +27,39 @@
                     ItemSpacing="20"
                     LineSpacing="20"
                     Margin="8"
-                    Width="520"
+                    Width="560"
                     HorizontalAlignment="Left">
                     <Border
-                        tw:Tw.Class="ring w-32 h-14 rounded-lg bg-slate-700 p-2">
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="ring w-64 h-14 rounded-lg bg-slate-700 p-2">
                         <TextBlock
                             FontSize="11"
                             Text="ring" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="ring-2 ring-sky-500 w-32 h-14 rounded-lg bg-slate-700 p-2">
+                        tw:Tw.Class="ring-2 ring-sky-500 w-64 h-14 rounded-lg bg-slate-700 p-2">
                         <TextBlock
                             FontSize="11"
                             Text="ring-2 ring-sky-500" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="ring-4 ring-emerald-400/60 w-32 h-14 rounded-lg bg-slate-700 p-2">
+                        tw:Tw.Class="ring-4 ring-emerald-400/60 w-64 h-14 rounded-lg bg-slate-700 p-2">
                         <TextBlock
                             FontSize="11"
                             Text="ring-4 ring-emerald-400/60" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="ring-2 ring-rose-500 shadow-lg w-32 h-14 rounded-lg bg-slate-700 p-2">
+                        tw:Tw.Class="ring-2 ring-rose-500 shadow-lg w-64 h-14 rounded-lg bg-slate-700 p-2">
                         <TextBlock
                             FontSize="11"
                             Text="ring-2 ring-rose-500 shadow-lg" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="ring-[6px] ring-amber-400 w-32 h-14 rounded-lg bg-slate-700 p-2">
+                        tw:Tw.Class="ring-[6px] ring-amber-400 w-64 h-14 rounded-lg bg-slate-700 p-2">
                         <TextBlock
                             FontSize="11"
                             Text="ring-[6px] ring-amber-400" />

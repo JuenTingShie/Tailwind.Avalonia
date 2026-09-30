@@ -10,8 +10,9 @@
         Intro="Utilities for choosing the typeface. font-sans, font-serif and font-mono map to FontFamily fallback stacks."
         Supported="font-sans, font-serif and font-mono set FontFamily to a fallback stack modelled on Tailwind defaults. Families that are not installed fall back to the next entry and finally the platform default, so the tokens are safe on desktop, Browser and mobile. Later font family classes win and removing the class restores the default.">
         <docs:DocsPage.Utilities>
-            <docs:UtilityReferenceRow ClassName="italic" AxamlStyle="&lt;TextBlock FontFamily=&quot;Italic&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="not-italic" AxamlStyle="&lt;TextBlock FontFamily=&quot;Normal&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="font-sans" AxamlStyle="FontFamily: Inter, Segoe UI, Helvetica Neue, Arial, sans-serif" />
+            <docs:UtilityReferenceRow ClassName="font-serif" AxamlStyle="FontFamily: Georgia, Cambria, Times New Roman, serif" />
+            <docs:UtilityReferenceRow ClassName="font-mono" AxamlStyle="FontFamily: Cascadia Mono, Consolas, Menlo, monospace" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
             <docs:DocsGap Text="font-[Family Name] · font-(--var) · theme font tokens" />

@@ -11,22 +11,22 @@
         Supported="bg-*, text-*, and border-* accept Tailwind palette tokens, transparent, /opacity, arbitrary hex bracket values, bracketed CSS named colors like [red], and bracketed CSS colour functions like rgb(), rgba(), hsl(), hsla(), and oklch(). Border utilities set the whole BorderBrush property; per-side border colors stay outside the current no-custom-component scope."
         CollapsedRowCount="4">
         <docs:DocsPage.Utilities>
-            <docs:UtilityReferenceRow ClassName="bg-&lt;color&gt;" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-blue-500&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-&lt;color&gt;" AxamlStyle="&lt;Control tw:Tw.Class=&quot;text-blue-500&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="border-&lt;color&gt;" AxamlStyle="&lt;Border tw:Tw.Class=&quot;border-blue-500&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="*&lt;color&gt;/&lt;opacity&gt;" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-blue-500/50&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="bg-[#&lt;hex&gt;]" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-[#3b82f6]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-[#&lt;hex&gt;]" AxamlStyle="&lt;Control tw:Tw.Class=&quot;text-[#3b82f6]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="border-[#&lt;hex&gt;]" AxamlStyle="&lt;Border tw:Tw.Class=&quot;border-[#3b82f6]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-[#&lt;hex&gt;]/&lt;opacity&gt;" AxamlStyle="&lt;Control tw:Tw.Class=&quot;text-[#3b82f6]/50&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="bg-[rgb(r,g,b)]" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-[rgb(255,0,0)]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="bg-[hsl(h,s%,l%)]" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-[hsl(200,70%,50%)]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="bg-[oklch(l%,c,h)]" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-[oklch(70%,0.15,200)]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="bg-[rgb(r,g,b)]/&lt;opacity&gt;" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-[rgb(255,0,0)]/50&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="bg-[&lt;name&gt;]" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-[rebeccapurple]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="text-[&lt;name&gt;]" AxamlStyle="&lt;Control tw:Tw.Class=&quot;text-[tomato]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="border-[&lt;name&gt;]" AxamlStyle="&lt;Border tw:Tw.Class=&quot;border-[teal]&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="bg-[&lt;name&gt;]/&lt;opacity&gt;" AxamlStyle="&lt;Control tw:Tw.Class=&quot;bg-[red]/50&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="bg-&lt;color&gt;" AxamlStyle="Background: palette color" />
+            <docs:UtilityReferenceRow ClassName="text-&lt;color&gt;" AxamlStyle="Foreground: palette color" />
+            <docs:UtilityReferenceRow ClassName="border-&lt;color&gt;" AxamlStyle="BorderBrush: palette color" />
+            <docs:UtilityReferenceRow ClassName="*&lt;color&gt;/&lt;opacity&gt;" AxamlStyle="same property, alpha = opacity / 100" />
+            <docs:UtilityReferenceRow ClassName="bg-[#&lt;hex&gt;]" AxamlStyle="Background: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="text-[#&lt;hex&gt;]" AxamlStyle="Foreground: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="border-[#&lt;hex&gt;]" AxamlStyle="BorderBrush: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="text-[#&lt;hex&gt;]/&lt;opacity&gt;" AxamlStyle="Foreground: the bracketed color with opacity" />
+            <docs:UtilityReferenceRow ClassName="bg-[rgb(r,g,b)]" AxamlStyle="Background: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="bg-[hsl(h,s%,l%)]" AxamlStyle="Background: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="bg-[oklch(l%,c,h)]" AxamlStyle="Background: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="bg-[rgb(r,g,b)]/&lt;opacity&gt;" AxamlStyle="Background: the bracketed color with opacity" />
+            <docs:UtilityReferenceRow ClassName="bg-[&lt;name&gt;]" AxamlStyle="Background: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="text-[&lt;name&gt;]" AxamlStyle="Foreground: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="border-[&lt;name&gt;]" AxamlStyle="BorderBrush: the bracketed color" />
+            <docs:UtilityReferenceRow ClassName="bg-[&lt;name&gt;]/&lt;opacity&gt;" AxamlStyle="Background: the bracketed color with opacity" />
         </docs:DocsPage.Utilities>
 
         <docs:DocsSection
@@ -49,6 +49,7 @@
                         tw:Tw.Class="text-rose-300/80"
                         Text="text-rose-300/80" />
                     <TextBlock
+                        docs:DocsCode.Show="True"
                         FontSize="16"
                         tw:Tw.Class="text-slate-200"
                         Text="text-slate-200 keeps longer copy readable on dark surfaces." />
@@ -76,6 +77,7 @@
                         tw:Tw.Class="bg-emerald-500 text-slate-950 border-emerald-300 px-[18px] py-3.5"
                         Content="bg-emerald-500" />
                     <Button
+                        docs:DocsCode.Show="True"
                         Grid.Column="1"
                         Grid.Row="0"
                         CornerRadius="10"
@@ -95,6 +97,7 @@
                         tw:Tw.Class="bg-transparent text-sky-200 border-sky-400 px-[18px] py-3.5"
                         Content="bg-transparent" />
                     <Button
+                        docs:DocsCode.Show="True"
                         Grid.Column="1"
                         Grid.Row="1"
                         CornerRadius="10"
@@ -132,6 +135,8 @@
                         </StackPanel>
                     </Border>
                     <Border
+                        docs:DocsCode.Show="True"
+                        docs:DocsCode.Attributes="BorderThickness"
                         Grid.Column="1"
                         CornerRadius="14"
                         BorderThickness="3"

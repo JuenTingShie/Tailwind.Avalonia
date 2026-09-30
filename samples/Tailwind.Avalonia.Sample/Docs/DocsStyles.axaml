@@ -161,6 +161,9 @@
             Property="tw:Tw.Class"
             Value="text-white" />
         <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+        <Setter
             Property="FontSize"
             Value="44" />
         <Setter

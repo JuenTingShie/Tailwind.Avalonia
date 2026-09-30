@@ -33,7 +33,7 @@
                         <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="default: tiles at natural size" />
                     </StackPanel>
                     <StackPanel Spacing="6">
-                        <Border Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/pattern.png)] bg-no-repeat bg-center" />
+                        <Border docs:DocsCode.Show="True" Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/pattern.png)] bg-no-repeat bg-center" />
                         <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="bg-no-repeat bg-center" />
                     </StackPanel>
                     <StackPanel Spacing="6">
@@ -45,7 +45,7 @@
                         <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="bg-contain bg-no-repeat bg-center" />
                     </StackPanel>
                     <StackPanel Spacing="6">
-                        <Border Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-auto bg-no-repeat bg-bottom-right" />
+                        <Border docs:DocsCode.Show="True" Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-auto bg-no-repeat bg-bottom-right" />
                         <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="bg-auto bg-bottom-right" />
                     </StackPanel>
                 </WrapPanel>

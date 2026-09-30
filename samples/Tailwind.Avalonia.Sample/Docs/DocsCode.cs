@@ -110,6 +110,8 @@ public static class DocsCode
     {
         null => string.Empty,
         double number => number.ToString(CultureInfo.InvariantCulture),
+        Thickness { IsUniform: true } thickness => Format(thickness.Left),
+        CornerRadius { IsUniform: true } radius => Format(radius.TopLeft),
         IFormattable formattable => formattable.ToString(null, CultureInfo.InvariantCulture),
         _ => value.ToString() ?? string.Empty,
     };
