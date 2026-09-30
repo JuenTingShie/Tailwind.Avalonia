@@ -256,9 +256,9 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 | Utility      | Implemented |
 | ------------ | :---------: |
-| fill         |             |
-| stroke       |             |
-| stroke-width |             |
+| fill         |     ✅      |
+| stroke       |     ✅      |
+| stroke-width |     ✅      |
 
 ### Accessibility
 

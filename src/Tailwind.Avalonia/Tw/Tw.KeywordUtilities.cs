@@ -72,6 +72,12 @@ public partial class Tw
         Add("overflow-y-scroll", "ScrollViewer.VerticalScrollBarVisibility", ScrollBarVisibility.Visible);
         Add("overflow-y-hidden", "ScrollViewer.VerticalScrollBarVisibility", ScrollBarVisibility.Hidden);
         Add("overflow-y-clip", "ScrollViewer.VerticalScrollBarVisibility", ScrollBarVisibility.Disabled);
+        // SVG-style shape paint: fill-none / stroke-none clear the paint, stroke-<n> sets the outline thickness.
+        Add("fill-none", "Fill", Brushes.Transparent);
+        Add("stroke-none", "Stroke", Brushes.Transparent);
+        Add("stroke-0", "StrokeThickness", 0.0);
+        Add("stroke-1", "StrokeThickness", 1.0);
+        Add("stroke-2", "StrokeThickness", 2.0);
         Add("whitespace-nowrap", "TextWrapping", TextWrapping.NoWrap);
         Add("whitespace-normal", "TextWrapping", TextWrapping.Wrap);
 
@@ -176,6 +182,14 @@ public partial class Tw
             blurRadius >= 0)
         {
             assignments = [new KeywordAssignment("Effect", (Func<object>)(() => new BlurEffect { Radius = blurRadius }))];
+            return true;
+        }
+
+        if (token.StartsWith("stroke-[", StringComparison.Ordinal) &&
+            TryParseArbitraryDouble(token["stroke-".Length..], out var strokeThickness) &&
+            strokeThickness >= 0)
+        {
+            assignments = [new KeywordAssignment("StrokeThickness", strokeThickness)];
             return true;
         }
 

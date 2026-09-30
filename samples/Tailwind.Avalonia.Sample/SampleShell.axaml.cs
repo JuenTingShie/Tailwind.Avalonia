@@ -126,6 +126,9 @@ public partial class SampleShell : UserControl
                 new SampleShellPageDescriptor("Blur", static () => new Effects.Blur()),
                 new SampleShellPageDescriptor("Drop shadow", static () => new Effects.DropShadow()),
                 new SampleShellPageDescriptor("Transitions", static () => new Effects.Transitions())),
+            new(
+                "SVG",
+                new SampleShellPageDescriptor("Fill and stroke", static () => new Svg.FillStroke())),
         ];
     }
 
