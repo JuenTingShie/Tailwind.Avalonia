@@ -77,7 +77,8 @@ public partial class SampleShell : UserControl
                 new SampleShellPageDescriptor("Size keywords", static () => new Sizing.SizeKeywords())),
             new(
                 "Backgrounds",
-                new SampleShellPageDescriptor("Gradients", static () => new Backgrounds.Gradients())),
+                new SampleShellPageDescriptor("Gradients", static () => new Backgrounds.Gradients()),
+                new SampleShellPageDescriptor("Background image", static () => new Backgrounds.BackgroundImage())),
             new(
                 "Borders",
                 new SampleShellPageDescriptor("Radius", static () => new Borders.Radius()),
