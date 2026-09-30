@@ -247,7 +247,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | scroll-padding    |             | No Avalonia equivalent                                                                                 |
 | scroll-snap-align |     ✅      | snap-start / center / end apply to the whole ScrollViewer, not each child                              |
 | scroll-snap-stop  |             | Not implemented: Avalonia sets snap points on the ScrollViewer, not per child, so CSS semantics differ |
-| scroll-snap-type  |     ✅      | snap-x / snap-y / snap-both / snap-none; always mandatory (no proximity)                               |
+| scroll-snap-type  |     ✅      | snap-x / snap-y / snap-both / snap-none; always mandatory; also snaps after wheel/scrollbar scrolling |
 | touch-action      |             | No Avalonia equivalent                                                                                 |
 | user-select       |             | No Avalonia equivalent (selection depends on the control type)                                         |
 | will-change       |             | Not applicable                                                                                         |
