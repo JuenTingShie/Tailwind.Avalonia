@@ -92,4 +92,24 @@ public class SampleNarrowLayoutTests
         var tw = visual is AvaloniaObject element && Tw.GetClass(element) is { } c ? $" [{c}]" : string.Empty;
         return visual.GetType().Name + classes + tw;
     }
+
+    [Fact]
+    public void Compact_Docs_Styles_Reach_The_Page()
+    {
+        SampleHeadless.Run(() =>
+        {
+            var shell = new SampleShell();
+            var window = new Window { Width = PhoneWidth, Height = 900, Content = shell };
+            window.Show();
+            var view = shell.Navigate("Spacing", "Padding");
+            window.UpdateLayout();
+
+            // docs-mobile selectors must match page types derived from UserControl.
+            var title = view.GetVisualDescendants().OfType<TextBlock>().First(t => t.Classes.Contains("docs-pageTitle"));
+            Assert.Equal(30, title.FontSize);
+
+            var table = view.GetVisualDescendants().OfType<DocsUtilityTable>().First();
+            Assert.Contains(":stacked", table.Classes);
+        });
+    }
 }

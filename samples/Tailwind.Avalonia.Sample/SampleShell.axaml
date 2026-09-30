@@ -97,6 +97,24 @@
                 Value="0 26 56 -24 #B3020617, 0 2 8 -3 #59020617" />
         </Style>
 
+        <!-- On a phone the framed card costs a margin, a border and a padding on
+             each side, so the page runs edge to edge under the header instead. -->
+        <Style
+            Selector=":is(UserControl).shell-narrow Border.shell-contentFrame">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="bg-slate-900/40 border-slate-800" />
+            <Setter
+                Property="BorderThickness"
+                Value="0" />
+            <Setter
+                Property="CornerRadius"
+                Value="0" />
+            <Setter
+                Property="BoxShadow"
+                Value="none" />
+        </Style>
+
         <!-- ===================================================================
              Chrome buttons
              =================================================================== -->

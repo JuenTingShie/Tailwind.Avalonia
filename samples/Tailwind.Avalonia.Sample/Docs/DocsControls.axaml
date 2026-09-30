@@ -270,6 +270,35 @@
         <ControlTheme
             x:Key="{x:Type docs:DocsUtilityTable}"
             TargetType="docs:DocsUtilityTable">
+            <!-- Class and styles sit side by side; below 560px (see DocsUtilityTable)
+                 the styles drop under the class and the header row goes away. -->
+            <Style
+                Selector="^ /template/ DockPanel.docs-referenceRowColumns > TextBlock.docs-tableClass, ^ /template/ DockPanel.docs-referenceRowColumns > TextBlock.docs-referenceClassHeading">
+                <Setter
+                    Property="Width"
+                    Value="240" />
+            </Style>
+            <Style
+                Selector="^:stacked">
+                <Style
+                    Selector="^ /template/ DockPanel.docs-referenceRowColumns > TextBlock.docs-tableClass">
+                    <Setter
+                        Property="Width"
+                        Value="NaN" />
+                </Style>
+                <Style
+                    Selector="^ /template/ Border.docs-referenceHeader">
+                    <Setter
+                        Property="IsVisible"
+                        Value="False" />
+                </Style>
+                <Style
+                    Selector="^ /template/ Border.docs-referenceRow">
+                    <Setter
+                        Property="Padding"
+                        Value="14,11" />
+                </Style>
+            </Style>
             <Setter
                 Property="Template">
                 <ControlTemplate>
@@ -279,17 +308,15 @@
                             Spacing="0">
                             <Border
                                 Classes="docs-referenceHeader">
-                                <Grid
-                                    Classes="docs-referenceColumns"
-                                    ColumnDefinitions="1.45*,3.15*">
+                                <DockPanel
+                                    Classes="docs-referenceRowColumns">
                                     <TextBlock
-                                        Classes="docs-referenceHeading"
+                                        Classes="docs-referenceHeading docs-referenceClassHeading"
                                         Text="Class" />
                                     <TextBlock
-                                        Grid.Column="1"
                                         Classes="docs-referenceHeading"
                                         Text="Styles" />
-                                </Grid>
+                                </DockPanel>
                             </Border>
                             <ItemsControl
                                 Classes="docs-referenceList"
@@ -299,19 +326,17 @@
                                         DataType="docs:UtilityReferenceRow">
                                         <Border
                                             Classes="docs-referenceRow">
-                                            <Grid
-                                                Classes="docs-referenceColumns"
-                                                ColumnDefinitions="1.45*,3.15*">
+                                            <DockPanel
+                                                Classes="docs-referenceRowColumns">
                                                 <TextBlock
                                                     Classes="docs-tableClass"
                                                     Text="{CompiledBinding ClassName}"
                                                     VerticalAlignment="Center" />
                                                 <TextBlock
-                                                    Grid.Column="1"
                                                     Classes="docs-tableStyle"
                                                     Text="{CompiledBinding AxamlStyle}"
                                                     VerticalAlignment="Center" />
-                                            </Grid>
+                                            </DockPanel>
                                         </Border>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>

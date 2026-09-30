@@ -6,6 +6,7 @@ using Avalonia.Collections;
 using Avalonia.Metadata;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.VisualTree;
 
 namespace Tailwind.Avalonia.Sample.Docs;
 
@@ -89,6 +90,33 @@ public class DocsUtilityTable : TemplatedControl
     {
         get => canToggle;
         private set => SetAndRaise(CanToggleProperty, ref canToggle, value);
+    }
+
+    /// <summary>Below this width the class and its styles stack instead of sitting in two columns.</summary>
+    public const double StackBelowWidth = 560;
+
+    protected override Size MeasureOverride(Size availableSize)
+    {
+        var stacked = availableSize.Width < StackBelowWidth;
+        PseudoClasses.Set(":stacked", stacked);
+        var size = base.MeasureOverride(availableSize);
+
+        // DockPanel.Dock does not take a style setter reliably inside the template, so the
+        // class cell is docked here: left beside its styles, or on top of them when stacked.
+        var dock = stacked ? Dock.Top : Dock.Left;
+        var changed = false;
+
+        foreach (var cell in this.GetVisualDescendants().OfType<TextBlock>())
+        {
+            if ((cell.Classes.Contains("docs-tableClass") || cell.Classes.Contains("docs-referenceClassHeading")) && DockPanel.GetDock(cell) != dock)
+            {
+                DockPanel.SetDock(cell, dock);
+                cell.Margin = stacked ? new Thickness(0, 0, 0, 4) : new Thickness(0, 0, 24, 0);
+                changed = true;
+            }
+        }
+
+        return changed ? base.MeasureOverride(availableSize) : size;
     }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)

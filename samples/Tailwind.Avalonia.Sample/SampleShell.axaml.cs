@@ -286,6 +286,7 @@ public partial class SampleShell : UserControl
         NavigationSplitView.OpenPaneLength = layout.PaneLength;
         ShellHeader.Padding = layout.HeaderPadding;
         PageContentChrome.Padding = layout.ContentPadding;
+        Classes.Set(SampleLayout.NarrowShellClass, layout.IsNarrow);
         RefreshPageLayoutClasses();
 
         // Pin the pane open on wide layouts, closed on narrow entry. Only touch
