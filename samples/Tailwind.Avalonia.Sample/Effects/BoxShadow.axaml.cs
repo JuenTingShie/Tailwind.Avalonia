@@ -16,6 +16,10 @@ public partial class BoxShadow : UserControl
         new("shadow-xl", "<Border BoxShadow=\"0 20 25 -5 #1A000000, 0 8 10 -6 #1A000000\" />"),
         new("shadow-2xl", "<Border BoxShadow=\"0 25 50 -12 #40000000\" />"),
         new("shadow-none", "<Border BoxShadow=\"none\" />"),
+        new("inset-shadow-2xs", "<Border BoxShadow=\"inset 0 1 0 0 #0D000000\" />"),
+        new("inset-shadow-xs", "<Border BoxShadow=\"inset 0 1 1 0 #0D000000\" />"),
+        new("inset-shadow-sm / shadow-inner", "<Border BoxShadow=\"inset 0 2 4 0 #0D000000\" />"),
+        new("inset-shadow-none", "removes the inset layer"),
     ];
 
     /// <summary>

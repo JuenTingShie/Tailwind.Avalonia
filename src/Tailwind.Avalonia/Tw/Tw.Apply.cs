@@ -56,6 +56,8 @@ public partial class Tw
         var letterSpacing = default(TextMetricUtility);
         var lineHeight = default(TextMetricUtility);
         var boxShadow = default(BoxShadows);
+        var insetShadow = default(BoxShadows);
+        var hasInsetShadow = false;
         var textAlignment = default(TextAlignment);
         var opacity = default(double);
         var backgroundVariants = new IBrush?[VariantCount];
@@ -303,6 +305,13 @@ public partial class Tw
                 continue;
             }
 
+            if (TryParseInsetShadowUtility(token, out var insetShadowUtility))
+            {
+                insetShadow = insetShadowUtility;
+                hasInsetShadow = true;
+                continue;
+            }
+
             if (TryParseBoxShadowUtility(token, out var boxShadowUtility))
             {
                 boxShadow = boxShadowUtility.Shadows;
@@ -391,6 +400,28 @@ public partial class Tw
         if (ringState is { Width: not null } ring)
         {
             boxShadow = ApplyRing(ring, hasBoxShadow, boxShadow);
+            hasBoxShadow = true;
+        }
+
+        // Inset shadows are appended after the outer shadows and ring so both can be active together.
+        if (hasInsetShadow && insetShadow.Count > 0)
+        {
+            var layers = new List<BoxShadow>();
+
+            if (hasBoxShadow)
+            {
+                foreach (var shadow in boxShadow)
+                {
+                    layers.Add(shadow);
+                }
+            }
+
+            foreach (var shadow in insetShadow)
+            {
+                layers.Add(shadow);
+            }
+
+            boxShadow = new BoxShadows(layers[0], layers.Skip(1).ToArray());
             hasBoxShadow = true;
         }
 

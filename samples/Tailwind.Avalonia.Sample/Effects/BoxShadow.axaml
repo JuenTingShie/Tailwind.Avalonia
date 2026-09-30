@@ -191,6 +191,26 @@
                             </Border>
                         </docs:DocsExample>
                     </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Inset shadows"
+                        Summary="inset-shadow-* (and shadow-inner) draw the shadow inside the box and can be combined with shadow-* and ring-*.">
+                        <docs:DocsExample
+                            Code="&lt;Border tw:Tw.Class=&quot;bg-slate-100 rounded-xl inset-shadow-sm p-6&quot; /&gt;">
+                            <Border
+                                CornerRadius="14"
+                                tw:Tw.Class="bg-white p-8">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="16">
+                                    <Border Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-2xs" />
+                                    <Border Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-xs" />
+                                    <Border Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl shadow-inner" />
+                                    <Border Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl shadow-md inset-shadow-sm" />
+                                </StackPanel>
+                            </Border>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
