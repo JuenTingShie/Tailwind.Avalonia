@@ -43,12 +43,6 @@
                         Heading="Colors, opacity and timing"
                         Summary="Hover over each button. The first button has no transition, so its color jumps.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;transition-colors duration-500 bg-slate-600 hover:bg-emerald-600&quot; /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;transition-opacity duration-300 opacity-100 hover:opacity-40&quot; /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;transition delay-200 duration-500 hover:bg-amber-800&quot; /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;transition-colors duration-150 ease-linear hover:bg-rose-600&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10"
                                 HorizontalAlignment="Left">
@@ -56,15 +50,19 @@
                                     Content="no transition: hover changes instantly"
                                     tw:Tw.Class="bg-slate-600 text-white hover:bg-emerald-600" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="transition-colors duration-500"
                                     tw:Tw.Class="transition-colors duration-500 bg-slate-600 text-white hover:bg-emerald-600" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="transition-colors duration-150 ease-linear"
                                     tw:Tw.Class="transition-colors duration-150 ease-linear bg-slate-600 text-white hover:bg-rose-600" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="transition-opacity duration-300"
                                     tw:Tw.Class="transition-opacity duration-300 bg-sky-600 text-white opacity-100 hover:opacity-40" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="transition delay-200 duration-500"
                                     tw:Tw.Class="transition delay-200 duration-500 bg-amber-600 text-white hover:bg-amber-800" />
                             </StackPanel>

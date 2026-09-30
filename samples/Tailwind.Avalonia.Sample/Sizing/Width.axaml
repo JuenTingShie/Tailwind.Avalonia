@@ -93,11 +93,6 @@
                         Heading="Basic example"
                         Summary="Use w-&lt;number&gt; utilities like w-24 and w-64 to set a fixed width from the shared spacing scale.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border Height="56" tw:Tw.Class="w-24" /&gt;</x:String>
-                                <x:String>&lt;Border Height="56" tw:Tw.Class="w-40" /&gt;</x:String>
-                                <x:String>&lt;Border Height="56" tw:Tw.Class="w-64" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 HorizontalAlignment="Left"
                                 Spacing="14">
@@ -105,6 +100,8 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="w-[460px]">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Height"
                                         tw:Tw.Class="bg-sky-500 w-24"
                                         CornerRadius="10"
                                         Height="56"
@@ -120,6 +117,8 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="w-[460px]">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Height"
                                         tw:Tw.Class="bg-violet-500 w-40"
                                         CornerRadius="10"
                                         Height="56"
@@ -135,6 +134,8 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="w-[460px]">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Height"
                                         tw:Tw.Class="bg-emerald-500 w-64"
                                         CornerRadius="10"
                                         Height="56"
@@ -154,10 +155,6 @@
                         Heading="Setting a minimum width"
                         Summary="Use min-w-&lt;number&gt; when an element should never shrink below a spacing-scale width, even if a local Width value is smaller. Both bars below set Width=&quot;80&quot;.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border Width="80" Height="56" tw:Tw.Class="min-w-24" /&gt;</x:String>
-                                <x:String>&lt;Border Width="80" Height="56" tw:Tw.Class="min-w-40" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 HorizontalAlignment="Left"
                                 Spacing="14">
@@ -165,6 +162,8 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="w-[460px]">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width,Height"
                                         tw:Tw.Class="bg-amber-500 min-w-24"
                                         CornerRadius="10"
                                         Width="80"
@@ -181,6 +180,8 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="w-[460px]">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width,Height"
                                         tw:Tw.Class="bg-orange-500 min-w-40"
                                         CornerRadius="10"
                                         Width="80"
@@ -201,10 +202,6 @@
                         Heading="Setting a maximum width"
                         Summary="Use max-w-&lt;number&gt; when content should cap out at a spacing-scale width, even if a local Width value is larger. Both bars below set Width=&quot;320&quot;.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border Width="320" Height="56" tw:Tw.Class="max-w-24" /&gt;</x:String>
-                                <x:String>&lt;Border Width="320" Height="56" tw:Tw.Class="max-w-40" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 HorizontalAlignment="Left"
                                 Spacing="14">
@@ -212,6 +209,8 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="w-[460px]">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width,Height"
                                         tw:Tw.Class="bg-rose-500 max-w-24"
                                         CornerRadius="10"
                                         Width="320"
@@ -228,6 +227,8 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="w-[460px]">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width,Height"
                                         tw:Tw.Class="bg-pink-500 max-w-40"
                                         CornerRadius="10"
                                         Width="320"
@@ -271,11 +272,6 @@
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;Border tw:Tw.Class="w-[100px]" /&gt;</x:String>
-                                    <x:String>&lt;Border Width="80" tw:Tw.Class="min-w-[12.5rem]" /&gt;</x:String>
-                                    <x:String>&lt;Border Width="320" tw:Tw.Class="max-w-[5em]" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <StackPanel
                                     HorizontalAlignment="Left"
                                     Spacing="14">
@@ -283,6 +279,7 @@
                                         Classes="docs-inset"
                                         tw:Tw.Class="w-[460px]">
                                         <Border
+                                            docs:DocsCode.Show="True"
                                             tw:Tw.Class="bg-sky-500 w-[100px] h-14"
                                             CornerRadius="10"
                                             HorizontalAlignment="Left">
@@ -297,6 +294,8 @@
                                         Classes="docs-inset"
                                         tw:Tw.Class="w-[460px]">
                                         <Border
+                                            docs:DocsCode.Show="True"
+                                            docs:DocsCode.Attributes="Width"
                                             tw:Tw.Class="bg-violet-500 min-w-[12.5rem] h-14"
                                             CornerRadius="10"
                                             Width="80"
@@ -312,6 +311,8 @@
                                         Classes="docs-inset"
                                         tw:Tw.Class="w-[460px]">
                                         <Border
+                                            docs:DocsCode.Show="True"
+                                            docs:DocsCode.Attributes="Width"
                                             tw:Tw.Class="bg-emerald-500 max-w-[5em] h-14"
                                             CornerRadius="10"
                                             HorizontalAlignment="Left"

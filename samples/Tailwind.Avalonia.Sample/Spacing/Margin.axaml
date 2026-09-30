@@ -46,8 +46,7 @@
                     <docs:DocsSection
                         Heading="Basic example"
                         Summary="Use m-&lt;number&gt; utilities like m-4 and m-8 to control the outer space on all sides of an element.">
-                        <docs:DocsExample
-                            Code="&lt;Border tw:Tw.Class=&quot;m-8&quot; /&gt;">
+                        <docs:DocsExample>
                             <Border
                                 Classes="docs-marginShell"
                                 HorizontalAlignment="Center"
@@ -55,6 +54,7 @@
                                 <Grid
                                     tw:Tw.Class="w-[280px] h-[120px]">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-sky-500 m-8"
                                         CornerRadius="12"
                                         HorizontalAlignment="Stretch"
@@ -74,12 +74,6 @@
                         Heading="Adding margin to one side"
                         Summary="Use mt-&lt;number&gt;, mr-&lt;number&gt;, mb-&lt;number&gt;, and ml-&lt;number&gt; utilities like mt-6 and mr-4 to control margin on one side of an element.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="ml-2" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="mt-6" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="mb-8" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="mr-4" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 tw:Tw.Class="border-slate-800 max-w-[620px]"
                                 BorderThickness="1"
@@ -94,6 +88,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top">
                                         <Border
+                                            docs:DocsCode.Show="True"
                                             tw:Tw.Class="bg-violet-500 mt-6 w-[68px] h-14"
                                             CornerRadius="12">
                                             <TextBlock
@@ -110,6 +105,7 @@
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center">
                                         <Border
+                                            docs:DocsCode.Show="True"
                                             tw:Tw.Class="bg-violet-500 ml-2 w-16 h-14"
                                             CornerRadius="12">
                                             <TextBlock
@@ -126,6 +122,7 @@
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom">
                                         <Border
+                                            docs:DocsCode.Show="True"
                                             tw:Tw.Class="bg-violet-500 mr-4 w-16 h-14"
                                             CornerRadius="12">
                                             <TextBlock
@@ -142,6 +139,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Bottom">
                                         <Border
+                                            docs:DocsCode.Show="True"
                                             tw:Tw.Class="bg-violet-500 mb-8 w-[68px] h-14"
                                             CornerRadius="12">
                                             <TextBlock
@@ -160,10 +158,6 @@
                         Heading="Adding horizontal and vertical margin"
                         Summary="Use mx-&lt;number&gt; and my-&lt;number&gt; utilities like mx-8 and my-8 to control axis-specific margin.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="mx-8" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="my-8" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Center"
@@ -171,6 +165,7 @@
                                 <Border
                                     Classes="docs-marginShell">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-amber-500 mx-8"
                                         CornerRadius="12">
                                         <Border
@@ -186,6 +181,7 @@
                                 <Border
                                     Classes="docs-marginShell">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-rose-500 my-8"
                                         CornerRadius="12">
                                         <Border
@@ -205,8 +201,7 @@
                     <docs:DocsSection
                         Heading="Using negative values"
                         Summary="Prefix a margin utility with a leading minus sign, like -mt-8, when you need elements to intentionally overlap.">
-                        <docs:DocsExample
-                            Code="&lt;Border tw:Tw.Class=&quot;-mt-8&quot; /&gt;">
+                        <docs:DocsExample>
                             <Border
                                 Classes="docs-marginShell"
                                 HorizontalAlignment="Center"
@@ -222,6 +217,7 @@
                                             Text="base block" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-blue-500 -mt-8 w-[188px] p-4"
                                         CornerRadius="12"
                                         HorizontalAlignment="Center">
@@ -247,14 +243,8 @@
                             <docs:DocsExample
                                 CodeLabel="Actual usage">
                                 <docs:DocsExample.Snippets>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="ms-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="me-8" /&gt;</x:String>
                                     <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="ms-8" /&gt;</x:String>
                                     <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="me-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="mbs-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="mbe-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="mbs-8" /&gt;</x:String>
-                                    <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="mbe-8" /&gt;</x:String>
                                     <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="msv-8" /&gt;</x:String>
                                     <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="mev-8" /&gt;</x:String>
                                     <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="msv-8" /&gt;</x:String>
@@ -297,6 +287,8 @@
                                                                 <Grid
                                                                     tw:Tw.Class="h-20">
                                                                     <Border
+                                                                        docs:DocsCode.Show="True"
+                                                                        docs:DocsCode.Attributes="FlowDirection"
                                                                         CornerRadius="12"
                                                                         FlowDirection="LeftToRight"
                                                                         HorizontalAlignment="Stretch"
@@ -329,6 +321,8 @@
                                                                 <Grid
                                                                     tw:Tw.Class="h-20">
                                                                     <Border
+                                                                        docs:DocsCode.Show="True"
+                                                                        docs:DocsCode.Attributes="FlowDirection"
                                                                         CornerRadius="12"
                                                                         FlowDirection="LeftToRight"
                                                                         HorizontalAlignment="Stretch"
@@ -467,6 +461,8 @@
                                                                 <Grid
                                                                     tw:Tw.Class="w-32 h-20">
                                                                     <Border
+                                                                        docs:DocsCode.Show="True"
+                                                                        docs:DocsCode.Attributes="FlowDirection"
                                                                         CornerRadius="12"
                                                                         FlowDirection="LeftToRight"
                                                                         HorizontalAlignment="Stretch"
@@ -500,6 +496,8 @@
                                                                 <Grid
                                                                     tw:Tw.Class="w-32 h-20">
                                                                     <Border
+                                                                        docs:DocsCode.Show="True"
+                                                                        docs:DocsCode.Attributes="FlowDirection"
                                                                         CornerRadius="12"
                                                                         FlowDirection="LeftToRight"
                                                                         HorizontalAlignment="Stretch"
@@ -547,6 +545,8 @@
                                                                 <Grid
                                                                     tw:Tw.Class="w-32 h-20">
                                                                     <Border
+                                                                        docs:DocsCode.Show="True"
+                                                                        docs:DocsCode.Attributes="FlowDirection"
                                                                         CornerRadius="12"
                                                                         FlowDirection="RightToLeft"
                                                                         HorizontalAlignment="Stretch"
@@ -580,6 +580,8 @@
                                                                 <Grid
                                                                     tw:Tw.Class="w-32 h-20">
                                                                     <Border
+                                                                        docs:DocsCode.Show="True"
+                                                                        docs:DocsCode.Attributes="FlowDirection"
                                                                         CornerRadius="12"
                                                                         FlowDirection="RightToLeft"
                                                                         HorizontalAlignment="Stretch"
@@ -928,11 +930,6 @@
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;Border tw:Tw.Class="m-[8px]" /&gt;</x:String>
-                                    <x:String>&lt;Border tw:Tw.Class="mx-[16px] my-[12px]" /&gt;</x:String>
-                                    <x:String>&lt;Border tw:Tw.Class="-m-[4px]" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <StackPanel
                                     Spacing="12">
                                     <Border
@@ -941,6 +938,7 @@
                                         <Grid
                                             tw:Tw.Class="w-[280px] h-[120px]">
                                             <Border
+                                                docs:DocsCode.Show="True"
                                                 tw:Tw.Class="bg-sky-500 m-[8px]"
                                                 CornerRadius="12"
                                                 HorizontalAlignment="Stretch"
@@ -957,6 +955,7 @@
                                         Classes="docs-marginShell"
                                         HorizontalAlignment="Center">
                                         <Border
+                                            docs:DocsCode.Show="True"
                                             tw:Tw.Class="bg-emerald-500 mx-[16px] my-[12px] w-[120px] h-14"
                                             CornerRadius="12">
                                             <TextBlock
@@ -980,6 +979,7 @@
                                                     Text="base block" />
                                             </Border>
                                             <Border
+                                                docs:DocsCode.Show="True"
                                                 tw:Tw.Class="bg-orange-500 -m-[4px] w-[188px] p-4"
                                                 CornerRadius="12"
                                                 HorizontalAlignment="Center">

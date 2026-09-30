@@ -43,12 +43,6 @@
                         Heading="Blur radii"
                         Summary="Each card is blurred by the radius in its class. The first card has no blur class.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;blur-sm&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;blur-md&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;blur-[3px]&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;blur-xs&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="28"
                                 LineSpacing="28"
@@ -62,24 +56,28 @@
                                         Text="none" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="blur-xs bg-sky-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"
                                         Text="blur-xs" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="blur-sm bg-sky-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"
                                         Text="blur-sm" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="blur-md bg-sky-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"
                                         Text="blur-md" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="blur-[3px] bg-sky-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"

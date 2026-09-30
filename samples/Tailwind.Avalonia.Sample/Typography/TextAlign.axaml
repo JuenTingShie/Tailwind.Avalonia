@@ -42,17 +42,13 @@
                         Heading="Basic example"
                         Summary="Use text-left, text-center, and text-right to align a TextBlock inside a wider container. Each TextBlock below carries the real tw:Tw.Class token.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-left" /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-center" /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-right" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="12">
                                 <Border
                                     Classes="docs-inset"
                                     tw:Tw.Class="p-4">
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         Classes="docs-chip"
                                         tw:Tw.Class="text-left"
                                         Text="text-left" />
@@ -61,6 +57,7 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="p-4">
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         Classes="docs-chip"
                                         tw:Tw.Class="text-center"
                                         Text="text-center" />
@@ -69,6 +66,7 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="p-4">
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         Classes="docs-chip"
                                         tw:Tw.Class="text-right"
                                         Text="text-right" />
@@ -81,10 +79,6 @@
                         Heading="Justified text"
                         Summary="text-justify stretches the spaces in wrapped lines so both edges line up. It needs TextWrapping so the text spans more than one line.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock TextWrapping="Wrap" tw:Tw.Class="text-left" /&gt;</x:String>
-                                <x:String>&lt;TextBlock TextWrapping="Wrap" tw:Tw.Class="text-justify" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Grid
                                 ColumnDefinitions="*,*"
                                 ColumnSpacing="20">
@@ -98,6 +92,8 @@
                                             Classes="docs-chip"
                                             Text="text-left" />
                                         <TextBlock
+                                            docs:DocsCode.Show="True"
+                                            docs:DocsCode.Attributes="TextWrapping"
                                             Classes="docs-noteBody"
                                             TextWrapping="Wrap"
                                             tw:Tw.Class="text-left"
@@ -114,6 +110,8 @@
                                             Classes="docs-chip"
                                             Text="text-justify" />
                                         <TextBlock
+                                            docs:DocsCode.Show="True"
+                                            docs:DocsCode.Attributes="TextWrapping"
                                             Classes="docs-noteBody"
                                             TextWrapping="Wrap"
                                             tw:Tw.Class="text-justify"
@@ -129,7 +127,6 @@
                         Summary="text-start and text-end follow the flow direction: start is the left edge in left-to-right layouts and the right edge in right-to-left layouts, whereas text-left and text-right never move.">
                         <docs:DocsExample>
                             <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-start" /&gt;</x:String>
                                 <x:String>&lt;TextBlock FlowDirection="RightToLeft" tw:Tw.Class="text-start" /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <Grid
@@ -140,6 +137,7 @@
                                     Classes="docs-inset"
                                     tw:Tw.Class="p-4">
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         Classes="docs-chip"
                                         tw:Tw.Class="text-start"
                                         Text="text-start (LTR)" />
@@ -161,12 +159,12 @@
                     <docs:DocsSection
                         Heading="Combining with other text utilities"
                         Summary="text-* is shared by alignment, font size, and color. The parser tells them apart by value, so all three can sit in one class list.">
-                        <docs:DocsExample
-                            Code="&lt;TextBlock tw:Tw.Class=&quot;text-center text-2xl text-sky-300&quot; /&gt;">
+                        <docs:DocsExample>
                             <Border
                                 Classes="docs-inset"
                                 tw:Tw.Class="p-4">
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="text-center text-2xl text-sky-300"
                                     Text="text-center text-2xl text-sky-300" />
                             </Border>

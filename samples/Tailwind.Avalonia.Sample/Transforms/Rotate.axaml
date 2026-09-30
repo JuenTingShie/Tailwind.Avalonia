@@ -43,11 +43,6 @@
                         Heading="Rotating around the center or a corner"
                         Summary="The default origin is the center. origin-top-left rotates around the top-left corner instead.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;rotate-12&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;-rotate-45&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;rotate-45 origin-top-left&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="36"
                                 LineSpacing="36"
@@ -55,18 +50,21 @@
                                 Width="460"
                                 HorizontalAlignment="Left">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="rotate-12 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="rotate-12" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="-rotate-45 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="-rotate-45" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="rotate-45 origin-top-left w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"

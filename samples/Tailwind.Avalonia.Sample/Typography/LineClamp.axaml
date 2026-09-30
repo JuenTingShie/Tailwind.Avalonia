@@ -43,24 +43,22 @@
                         Heading="Clamping to a number of lines"
                         Summary="Each paragraph is 18rem wide and carries the real class. The last one has no limit.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 line-clamp-2&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 line-clamp-3&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 line-clamp-none&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;line-clamp-1&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="14">
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-72 text-sm line-clamp-1"
                                     Text="line-clamp-1: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-72 text-sm line-clamp-2"
                                     Text="line-clamp-2: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-72 text-sm line-clamp-3"
                                     Text="line-clamp-3: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="w-72 text-sm line-clamp-none"
                                     Text="line-clamp-none: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
                             </StackPanel>

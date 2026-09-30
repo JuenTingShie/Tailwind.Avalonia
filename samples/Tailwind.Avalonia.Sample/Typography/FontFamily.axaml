@@ -43,16 +43,11 @@
                         Heading="Sans, serif and mono"
                         Summary="Each TextBlock below carries the real token; the rendered face depends on which fonts the platform provides.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-sans&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-serif&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-mono&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
-                                <TextBlock FontSize="20" tw:Tw.Class="font-sans" Text="font-sans: The quick brown fox" />
-                                <TextBlock FontSize="20" tw:Tw.Class="font-serif" Text="font-serif: The quick brown fox" />
-                                <TextBlock FontSize="20" tw:Tw.Class="font-mono" Text="font-mono: The quick brown fox" />
+                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="font-sans" Text="font-sans: The quick brown fox" />
+                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="font-serif" Text="font-serif: The quick brown fox" />
+                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="font-mono" Text="font-mono: The quick brown fox" />
                             </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>

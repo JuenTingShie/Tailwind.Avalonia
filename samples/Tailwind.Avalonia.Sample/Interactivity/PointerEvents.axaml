@@ -43,17 +43,14 @@
                         Heading="Blocking and allowing input"
                         Summary="Both buttons are real Buttons. The second one ignores the pointer, so it does not react to hover or clicks.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;pointer-events-auto&quot; /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;pointer-events-none&quot; /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class=&quot;pointer-events-none opacity-60&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="Clickable: pointer-events-auto"
                                     tw:Tw.Class="pointer-events-auto" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Content="Not clickable: pointer-events-none"
                                     tw:Tw.Class="pointer-events-none opacity-60" />
                             </StackPanel>

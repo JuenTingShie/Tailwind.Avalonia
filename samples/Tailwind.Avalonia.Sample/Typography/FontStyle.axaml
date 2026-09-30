@@ -43,22 +43,20 @@
                         Heading="Italic and not-italic"
                         Summary="Use italic to slant text and not-italic to reset it, for example when an inherited or earlier class set italic. Each TextBlock below carries the real token.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;italic&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;not-italic&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;italic font-bold text-sky-300&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="not-italic"
                                     Text="not-italic: upright text" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="italic"
                                     Text="italic: slanted text" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     tw:Tw.Class="italic font-bold text-sky-300"
                                     Text="italic font-bold text-sky-300" />

@@ -93,11 +93,6 @@
                         Heading="Basic example"
                         Summary="Use h-&lt;number&gt; utilities like h-24 and h-64 to set a fixed height from the shared spacing scale.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border Width="96" tw:Tw.Class="h-24" /&gt;</x:String>
-                                <x:String>&lt;Border Width="96" tw:Tw.Class="h-40" /&gt;</x:String>
-                                <x:String>&lt;Border Width="96" tw:Tw.Class="h-64" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 Classes="docs-inset"
                                 HorizontalAlignment="Left"
@@ -108,6 +103,8 @@
                                     ColumnSpacing="20"
                                     VerticalAlignment="Bottom">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width"
                                         Grid.Column="0"
                                         tw:Tw.Class="bg-sky-500 h-24"
                                         CornerRadius="10"
@@ -121,6 +118,8 @@
                                             Text="h-24" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width"
                                         Grid.Column="1"
                                         tw:Tw.Class="bg-violet-500 h-40"
                                         CornerRadius="10"
@@ -134,6 +133,8 @@
                                             Text="h-40" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width"
                                         Grid.Column="2"
                                         tw:Tw.Class="bg-emerald-500 h-64"
                                         CornerRadius="10"
@@ -155,10 +156,6 @@
                         Heading="Setting a minimum height"
                         Summary="Use min-h-&lt;number&gt; when an element should never shrink below a spacing-scale height, even if a local Height value is smaller. Both bars below set Height=&quot;40&quot;.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border Width="112" Height="40" tw:Tw.Class="min-h-24" /&gt;</x:String>
-                                <x:String>&lt;Border Width="112" Height="40" tw:Tw.Class="min-h-40" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 Classes="docs-inset"
                                 HorizontalAlignment="Left"
@@ -169,6 +166,8 @@
                                     ColumnSpacing="20"
                                     VerticalAlignment="Bottom">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width,Height"
                                         Grid.Column="0"
                                         tw:Tw.Class="bg-amber-500 min-h-24"
                                         CornerRadius="10"
@@ -183,6 +182,8 @@
                                             Text="min-h-24" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width,Height"
                                         Grid.Column="1"
                                         tw:Tw.Class="bg-orange-500 min-h-40"
                                         CornerRadius="10"
@@ -205,10 +206,6 @@
                         Heading="Setting a maximum height"
                         Summary="Use max-h-&lt;number&gt; when content should cap out at a spacing-scale height, even if a local Height value is larger. Both bars below set Height=&quot;220&quot;.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border Width="112" Height="220" tw:Tw.Class="max-h-24" /&gt;</x:String>
-                                <x:String>&lt;Border Width="112" Height="220" tw:Tw.Class="max-h-40" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 Classes="docs-inset"
                                 HorizontalAlignment="Left"
@@ -219,6 +216,8 @@
                                     ColumnSpacing="20"
                                     VerticalAlignment="Bottom">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width,Height"
                                         Grid.Column="0"
                                         tw:Tw.Class="bg-rose-500 max-h-24"
                                         CornerRadius="10"
@@ -233,6 +232,8 @@
                                             Text="max-h-24" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="Width,Height"
                                         Grid.Column="1"
                                         tw:Tw.Class="bg-pink-500 max-h-40"
                                         CornerRadius="10"
@@ -278,11 +279,6 @@
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;Border Width="96" tw:Tw.Class="h-[60px]" /&gt;</x:String>
-                                    <x:String>&lt;Border Width="96" Height="40" tw:Tw.Class="min-h-[8rem]" /&gt;</x:String>
-                                    <x:String>&lt;Border Width="96" Height="220" tw:Tw.Class="max-h-[5em]" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <Border
                                     Classes="docs-inset"
                                     HorizontalAlignment="Left"
@@ -293,6 +289,8 @@
                                         ColumnSpacing="20"
                                         VerticalAlignment="Bottom">
                                         <Border
+                                            docs:DocsCode.Show="True"
+                                            docs:DocsCode.Attributes="Width"
                                             Grid.Column="0"
                                             tw:Tw.Class="bg-sky-500 h-[60px]"
                                             CornerRadius="10"
@@ -306,6 +304,8 @@
                                                 Text="h-[60px]" />
                                         </Border>
                                         <Border
+                                            docs:DocsCode.Show="True"
+                                            docs:DocsCode.Attributes="Width,Height"
                                             Grid.Column="1"
                                             tw:Tw.Class="bg-violet-500 min-h-[8rem]"
                                             CornerRadius="10"
@@ -320,6 +320,8 @@
                                                 Text="min-h-[8rem]" />
                                         </Border>
                                         <Border
+                                            docs:DocsCode.Show="True"
+                                            docs:DocsCode.Attributes="Width,Height"
                                             Grid.Column="2"
                                             tw:Tw.Class="bg-emerald-500 max-h-[5em]"
                                             CornerRadius="10"

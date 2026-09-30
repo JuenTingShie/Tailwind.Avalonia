@@ -51,17 +51,11 @@
                         Heading="Fit modes"
                         Summary="The same wide image is shown in a 120x80 box with each mode.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Image tw:Tw.Class=&quot;object-contain&quot; /&gt;</x:String>
-                                <x:String>&lt;Image tw:Tw.Class=&quot;object-cover&quot; /&gt;</x:String>
-                                <x:String>&lt;Image tw:Tw.Class=&quot;object-fill&quot; /&gt;</x:String>
-                                <x:String>&lt;Image tw:Tw.Class=&quot;object-none&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel Orientation="Horizontal" Spacing="16">
-                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image tw:Tw.Class="object-contain" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-contain" /></StackPanel>
-                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image tw:Tw.Class="object-cover" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-cover" /></StackPanel>
-                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image tw:Tw.Class="object-fill" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-fill" /></StackPanel>
-                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image tw:Tw.Class="object-none" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-none" /></StackPanel>
+                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-contain" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-contain" /></StackPanel>
+                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-cover" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-cover" /></StackPanel>
+                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-fill" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-fill" /></StackPanel>
+                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-none" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-none" /></StackPanel>
                             </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>

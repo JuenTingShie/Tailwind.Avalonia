@@ -43,15 +43,10 @@
                         Heading="Columns, rows and spans"
                         Summary="The grid below has three columns and two rows; the first cell spans two columns and the amber cell starts in column 2.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Grid tw:Tw.Class=&quot;grid-cols-3 grid-rows-2 gap-2&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;col-span-2&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;col-start-2&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
-                            <Grid tw:Tw.Class="grid-cols-3 grid-rows-2 gap-2" Width="360" Height="120">
-                                <Border tw:Tw.Class="bg-sky-500 col-span-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-span-2" /></Border>
+                            <Grid docs:DocsCode.Show="True" tw:Tw.Class="grid-cols-3 grid-rows-2 gap-2" Width="360" Height="120">
+                                <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-sky-500 col-span-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-span-2" /></Border>
                                 <Border tw:Tw.Class="bg-emerald-500" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="1" /></Border>
-                                <Border tw:Tw.Class="bg-amber-500 col-start-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-start-2" /></Border>
+                                <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-amber-500 col-start-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-start-2" /></Border>
                                 <Border tw:Tw.Class="bg-rose-500" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="3" /></Border>
                             </Grid>
                         </docs:DocsExample>

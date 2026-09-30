@@ -43,17 +43,13 @@
                         Heading="Light and dark scopes"
                         Summary="Both scopes sit in the same window but follow their own theme variant.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;ThemeVariantScope tw:Tw.Class=&quot;scheme-light&quot; /&gt;</x:String>
-                                <x:String>&lt;ThemeVariantScope tw:Tw.Class=&quot;scheme-dark&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel Orientation="Horizontal" Spacing="16">
-                                <ThemeVariantScope tw:Tw.Class="scheme-light">
+                                <ThemeVariantScope docs:DocsCode.Show="True" tw:Tw.Class="scheme-light">
                                     <Border Padding="16" Background="{DynamicResource SystemRegionBrush}">
                                         <StackPanel Spacing="8"><TextBlock Text="scheme-light" /><Button Content="Button" /></StackPanel>
                                     </Border>
                                 </ThemeVariantScope>
-                                <ThemeVariantScope tw:Tw.Class="scheme-dark">
+                                <ThemeVariantScope docs:DocsCode.Show="True" tw:Tw.Class="scheme-dark">
                                     <Border Padding="16" Background="{DynamicResource SystemRegionBrush}">
                                         <StackPanel Spacing="8"><TextBlock Text="scheme-dark" /><Button Content="Button" /></StackPanel>
                                     </Border>

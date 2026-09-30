@@ -43,12 +43,8 @@
                         Heading="Snapping a scroller"
                         Summary="Scroll the strip horizontally or the list vertically; each settles on a child boundary.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;ScrollViewer tw:Tw.Class=&quot;snap-x snap-start&quot; /&gt;</x:String>
-                                <x:String>&lt;ScrollViewer tw:Tw.Class=&quot;snap-both snap-center&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel Spacing="20">
-                                <ScrollViewer Width="420" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" tw:Tw.Class="snap-x snap-start">
+                                <ScrollViewer docs:DocsCode.Show="True" Width="420" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" tw:Tw.Class="snap-x snap-start">
                                     <StackPanel Orientation="Horizontal" Spacing="12">
                                         <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 1" /></Border>
                                         <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 2" /></Border>
@@ -58,7 +54,7 @@
                                         <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 6" /></Border>
                                     </StackPanel>
                                 </ScrollViewer>
-                                <ScrollViewer Width="260" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-both snap-center">
+                                <ScrollViewer docs:DocsCode.Show="True" Width="260" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-both snap-center">
                                     <StackPanel Spacing="12">
                                         <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 1" /></Border>
                                         <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 2" /></Border>

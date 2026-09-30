@@ -43,14 +43,9 @@
                         Heading="Size, repeat and position"
                         Summary="Every box uses the same two bundled images with different keywords.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://Tailwind.Avalonia.Sample/Assets/pattern.png)]&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-cover bg-center&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-contain bg-no-repeat bg-center&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <WrapPanel Orientation="Horizontal" ItemSpacing="16" LineSpacing="16">
                                 <StackPanel Spacing="6">
-                                    <Border Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/pattern.png)]" />
+                                    <Border docs:DocsCode.Show="True" Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/pattern.png)]" />
                                     <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="default: tiles at natural size" />
                                 </StackPanel>
                                 <StackPanel Spacing="6">
@@ -58,11 +53,11 @@
                                     <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="bg-no-repeat bg-center" />
                                 </StackPanel>
                                 <StackPanel Spacing="6">
-                                    <Border Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-cover bg-center" />
+                                    <Border docs:DocsCode.Show="True" Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-cover bg-center" />
                                     <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="bg-cover bg-center" />
                                 </StackPanel>
                                 <StackPanel Spacing="6">
-                                    <Border Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-contain bg-no-repeat bg-center" />
+                                    <Border docs:DocsCode.Show="True" Width="180" Height="110" CornerRadius="10" BorderThickness="1" BorderBrush="#334155" tw:Tw.Class="bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-contain bg-no-repeat bg-center" />
                                     <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="bg-contain bg-no-repeat bg-center" />
                                 </StackPanel>
                                 <StackPanel Spacing="6">

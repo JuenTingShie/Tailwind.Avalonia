@@ -32,19 +32,17 @@
                         Heading="Text color"
                         Summary="Apply text-* directly to controls that expose Foreground. Every line below carries the real tw:Tw.Class token on the text element itself.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-sky-300" /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class="text-rose-300/80" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="12">
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="28"
                                     FontWeight="Bold"
                                     LetterSpacing="-0.5"
                                     tw:Tw.Class="text-sky-300"
                                     Text="text-sky-300" />
                                 <TextBlock
+                                    docs:DocsCode.Show="True"
                                     FontSize="20"
                                     FontWeight="SemiBold"
                                     tw:Tw.Class="text-rose-300/80"
@@ -61,16 +59,13 @@
                         Heading="Background and border color"
                         Summary="Apply bg-* and border-* to controls that expose Background and BorderBrush. The utilities sit on the live target control rather than on a painted stand-in.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Button tw:Tw.Class="bg-emerald-500 text-slate-950 border-emerald-300" /&gt;</x:String>
-                                <x:String>&lt;Button tw:Tw.Class="bg-transparent text-sky-200 border-sky-400" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Grid
                                 ColumnDefinitions="*,*"
                                 ColumnSpacing="20"
                                 RowDefinitions="Auto,Auto"
                                 RowSpacing="16">
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Grid.Column="0"
                                     Grid.Row="0"
                                     CornerRadius="10"
@@ -89,6 +84,7 @@
                                     tw:Tw.Class="bg-amber-400/20 text-amber-100 border-amber-300/45 px-[18px] py-3.5"
                                     Content="bg-amber-400/20 border-amber-300/45" />
                                 <Button
+                                    docs:DocsCode.Show="True"
                                     Grid.Column="0"
                                     Grid.Row="1"
                                     CornerRadius="10"
@@ -113,12 +109,13 @@
                     <docs:DocsSection
                         Heading="Whole-property border scope"
                         Summary="Border color support sets BorderBrush on the target control, so the whole outline changes together. That matches the implemented parser boundary.">
-                        <docs:DocsExample
-                            Code="&lt;Border BorderThickness=&quot;3&quot; tw:Tw.Class=&quot;border-cyan-400&quot; /&gt;">
+                        <docs:DocsExample>
                             <Grid
                                 ColumnDefinitions="*,*"
                                 ColumnSpacing="20">
                                 <Border
+                                    docs:DocsCode.Show="True"
+                                    docs:DocsCode.Attributes="BorderThickness"
                                     Grid.Column="0"
                                     CornerRadius="14"
                                     BorderThickness="3"
@@ -185,25 +182,23 @@
                                 </StackPanel>
                             </docs:DocsNote>
                             <docs:DocsExample>
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[#ff6b6b]" /&gt;</x:String>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[#4ecdc4]/70" /&gt;</x:String>
-                                    <x:String>&lt;Button tw:Tw.Class="bg-[#95e1d3] text-[#38ada9] border-[#1abc9c]" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <StackPanel
                                     Spacing="12">
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         FontSize="24"
                                         FontWeight="Bold"
                                         LetterSpacing="-0.4"
                                         tw:Tw.Class="text-[#ff6b6b]"
                                         Text="text-[#ff6b6b]" />
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         FontSize="20"
                                         FontWeight="SemiBold"
                                         tw:Tw.Class="text-[#4ecdc4]/70"
                                         Text="text-[#4ecdc4]/70" />
                                     <Button
+                                        docs:DocsCode.Show="True"
                                         CornerRadius="10"
                                         BorderThickness="2"
                                         HorizontalAlignment="Left"
@@ -212,25 +207,23 @@
                                 </StackPanel>
                             </docs:DocsExample>
                             <docs:DocsExample>
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[rgb(56,173,169)]" /&gt;</x:String>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[hsl(175,50%,55%)]/70" /&gt;</x:String>
-                                    <x:String>&lt;Button tw:Tw.Class="bg-[oklch(70%,0.15,200)] text-[#04252b] border-[rgb(0,140,148)]" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <StackPanel
                                     Spacing="12">
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         FontSize="24"
                                         FontWeight="Bold"
                                         LetterSpacing="-0.4"
                                         tw:Tw.Class="text-[rgb(56,173,169)]"
                                         Text="text-[rgb(56,173,169)]" />
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         FontSize="20"
                                         FontWeight="SemiBold"
                                         tw:Tw.Class="text-[hsl(175,50%,55%)]/70"
                                         Text="text-[hsl(175,50%,55%)]/70" />
                                     <Button
+                                        docs:DocsCode.Show="True"
                                         CornerRadius="10"
                                         BorderThickness="2"
                                         HorizontalAlignment="Left"
@@ -239,25 +232,23 @@
                                 </StackPanel>
                             </docs:DocsExample>
                             <docs:DocsExample>
-                                <docs:DocsExample.Snippets>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[tomato]" /&gt;</x:String>
-                                    <x:String>&lt;TextBlock tw:Tw.Class="text-[orchid]/70" /&gt;</x:String>
-                                    <x:String>&lt;Button tw:Tw.Class="bg-[gold] text-[black] border-[darkorange]" /&gt;</x:String>
-                                </docs:DocsExample.Snippets>
                                 <StackPanel
                                     Spacing="12">
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         FontSize="24"
                                         FontWeight="Bold"
                                         LetterSpacing="-0.4"
                                         tw:Tw.Class="text-[tomato]"
                                         Text="text-[tomato]" />
                                     <TextBlock
+                                        docs:DocsCode.Show="True"
                                         FontSize="20"
                                         FontWeight="SemiBold"
                                         tw:Tw.Class="text-[orchid]/70"
                                         Text="text-[orchid]/70" />
                                     <Button
+                                        docs:DocsCode.Show="True"
                                         CornerRadius="10"
                                         BorderThickness="2"
                                         HorizontalAlignment="Left"

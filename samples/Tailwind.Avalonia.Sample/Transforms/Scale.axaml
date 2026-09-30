@@ -43,11 +43,6 @@
                         Heading="Scaling and mirroring"
                         Summary="Percent values: scale-50 halves the element, scale-125 enlarges it. A negative scale mirrors it.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;scale-50&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;scale-125&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;-scale-x-100&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="36"
                                 LineSpacing="36"
@@ -55,18 +50,21 @@
                                 Width="460"
                                 HorizontalAlignment="Left">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="scale-50 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="scale-50" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="scale-125 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="scale-125" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="-scale-x-100 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"

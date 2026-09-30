@@ -84,6 +84,32 @@ public class DocsExample : ContentControl
         }
     }
 
+    private bool generated;
+
+    /// <summary>
+    /// Appends the snippets generated from preview elements marked with <see cref="DocsCode.ShowProperty"/>
+    /// once the example joins the tree, when its content has been fully built.
+    /// </summary>
+    protected override void OnAttachedToLogicalTree(global::Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToLogicalTree(e);
+
+        if (generated)
+        {
+            return;
+        }
+
+        generated = true;
+
+        foreach (var snippet in DocsCode.Collect(Content))
+        {
+            if (!Snippets.Contains(snippet))
+            {
+                Snippets.Add(snippet);
+            }
+        }
+    }
+
     private void RefreshHasCode()
     {
         HasCode = Snippets.Count > 0;

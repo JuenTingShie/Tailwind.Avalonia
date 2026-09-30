@@ -43,16 +43,11 @@
                         Heading="Numeric variants"
                         Summary="Effect depends on the font: fonts without the feature render the default digits.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;tabular-nums&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;tabular-nums slashed-zero&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;oldstyle-nums&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel Spacing="8">
                                 <TextBlock FontSize="22" Text="1111 8888 (default)" />
-                                <TextBlock FontSize="22" tw:Tw.Class="tabular-nums" Text="1111 8888 (tabular-nums)" />
-                                <TextBlock FontSize="22" tw:Tw.Class="tabular-nums slashed-zero" Text="0000 1234 (tabular-nums slashed-zero)" />
-                                <TextBlock FontSize="22" tw:Tw.Class="oldstyle-nums" Text="0123456789 (oldstyle-nums)" />
+                                <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="tabular-nums" Text="1111 8888 (tabular-nums)" />
+                                <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="tabular-nums slashed-zero" Text="0000 1234 (tabular-nums slashed-zero)" />
+                                <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="oldstyle-nums" Text="0123456789 (oldstyle-nums)" />
                             </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>

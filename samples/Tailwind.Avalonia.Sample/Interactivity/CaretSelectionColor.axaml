@@ -43,22 +43,20 @@
                         Heading="Caret and selection colors"
                         Summary="Click into each box and select some text.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBox tw:Tw.Class=&quot;caret-red-500 selection-red-300&quot; /&gt;</x:String>
-                                <x:String>&lt;SelectableTextBlock tw:Tw.Class=&quot;selection-amber-400&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBox tw:Tw.Class=&quot;caret-emerald-500 selection-emerald-300&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="12"
                                 Width="320"
                                 HorizontalAlignment="Left">
                                 <TextBox
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="caret-red-500 selection-red-300"
                                     Text="caret-red-500 selection-red-300" />
                                 <TextBox
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="caret-emerald-500 selection-emerald-300"
                                     Text="caret-emerald-500 selection-emerald-300" />
                                 <SelectableTextBlock
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="selection-amber-400"
                                     Text="selection-amber-400: select this text with the mouse" />
                             </StackPanel>

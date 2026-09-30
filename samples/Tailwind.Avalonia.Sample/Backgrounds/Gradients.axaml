@@ -43,24 +43,22 @@
                         Heading="Directions, via and opacity"
                         Summary="Every bar is a Border with a gradient class list. The second uses a middle stop, the last one an arbitrary color and an opacity modifier.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-gradient-to-r from-sky-500 to-indigo-600&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-gradient-to-b from-rose-500 via-amber-300 to-emerald-500&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-gradient-to-br from-fuchsia-500 to-cyan-400&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-linear-to-t from-slate-900 to-slate-500&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-gradient-to-r from-[#ff0080] to-blue-500/50&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="bg-gradient-to-r from-sky-500 to-indigo-600 w-72 h-14 rounded-lg" />
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="bg-gradient-to-b from-rose-500 via-amber-300 to-emerald-500 w-72 h-14 rounded-lg" />
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="bg-gradient-to-br from-fuchsia-500 to-cyan-400 w-72 h-14 rounded-lg" />
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="bg-linear-to-t from-slate-900 to-slate-500 w-72 h-14 rounded-lg" />
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="bg-gradient-to-r from-[#ff0080] to-blue-500/50 w-72 h-14 rounded-lg" />
                             </StackPanel>
                         </docs:DocsExample>

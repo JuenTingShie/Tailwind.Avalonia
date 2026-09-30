@@ -43,24 +43,22 @@
                         Heading="Hidden and block"
                         Summary="Three boxes carry a class each, but only two are visible: the one with hidden takes no space, and block shows the last one again.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;hidden&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;block&quot; /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;hidden block&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="hidden bg-red-500 p-3">
                                     <TextBlock
                                         Text="hidden: you cannot see this" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="block bg-sky-600 p-3">
                                     <TextBlock
                                         Text="block: visible" />
                                 </Border>
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="hidden block bg-emerald-600 p-3">
                                     <TextBlock
                                         Text="hidden block: the last one wins" />

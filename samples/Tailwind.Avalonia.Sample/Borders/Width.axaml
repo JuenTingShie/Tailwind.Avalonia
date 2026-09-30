@@ -46,12 +46,6 @@
                         Heading="Basic example"
                         Summary="Use border or border-&lt;number&gt; utilities like border-2 and border-8 to set the border width for all sides of an element.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="border" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-2" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-4" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-8" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 Classes="docs-inset"
                                 HorizontalAlignment="Left"
@@ -60,6 +54,7 @@
                                     Orientation="Horizontal"
                                     Spacing="18">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -68,6 +63,7 @@
                                             Text="border" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-2 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -76,6 +72,7 @@
                                             Text="border-2" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -84,6 +81,7 @@
                                             Text="border-4" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-8 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -100,12 +98,6 @@
                         Heading="Individual sides"
                         Summary="Use border-t-&lt;number&gt;, border-r-&lt;number&gt;, border-b-&lt;number&gt;, and border-l-&lt;number&gt; utilities to set the border width for one side of an element.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="border-t-4" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-r-4" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-b-4" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-l-4" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 Classes="docs-inset"
                                 HorizontalAlignment="Left"
@@ -114,6 +106,7 @@
                                     Orientation="Horizontal"
                                     Spacing="18">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-t-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -122,6 +115,7 @@
                                             Text="t" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-r-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -130,6 +124,7 @@
                                             Text="r" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-b-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -138,6 +133,7 @@
                                             Text="b" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-l-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -154,10 +150,6 @@
                         Heading="Horizontal and vertical sides"
                         Summary="Use border-x-&lt;number&gt; and border-y-&lt;number&gt; utilities to set the border width on two sides of an element at the same time.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class="border-x-4" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-y-4" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 Classes="docs-inset"
                                 HorizontalAlignment="Left"
@@ -166,6 +158,7 @@
                                     Orientation="Horizontal"
                                     Spacing="18">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-x-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -174,6 +167,7 @@
                                             Text="x" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-y-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -190,12 +184,6 @@
                         Heading="Using logical properties"
                         Summary="Use border-s-&lt;number&gt;, border-e-&lt;number&gt;, border-bs-&lt;number&gt;, and border-be-&lt;number&gt; utilities to set the inline and block border width based on text direction. In LTR, s maps to left and e maps to right; RTL swaps them.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="border-s-4" /&gt;</x:String>
-                                <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="border-s-4" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-bs-4" /&gt;</x:String>
-                                <x:String>&lt;Border tw:Tw.Class="border-be-4" /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <Border
                                 Classes="docs-inset"
                                 HorizontalAlignment="Left"
@@ -204,6 +192,8 @@
                                     Orientation="Horizontal"
                                     Spacing="18">
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="FlowDirection"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-s-4 w-20 h-20"
                                         FlowDirection="LeftToRight">
                                         <TextBlock
@@ -213,6 +203,8 @@
                                             Text="s LTR" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
+                                        docs:DocsCode.Attributes="FlowDirection"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-s-4 w-20 h-20"
                                         FlowDirection="RightToLeft">
                                         <TextBlock
@@ -222,6 +214,7 @@
                                             Text="s RTL" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-bs-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -230,6 +223,7 @@
                                             Text="bs" />
                                     </Border>
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-be-4 w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"
@@ -245,13 +239,13 @@
                     <docs:DocsSection
                         Heading="Disambiguating width from color"
                         Summary="border-&lt;number&gt; (width) and border-&lt;color&gt; (brush) share the border- prefix. The parser tries border-width first; color tokens never parse as non-negative integers, so both can appear on the same element without conflict.">
-                        <docs:DocsExample
-                            Code="&lt;Border tw:Tw.Class=&quot;border-2 border-rose-500&quot; /&gt;">
+                        <docs:DocsExample>
                             <Border
                                 Classes="docs-inset"
                                 HorizontalAlignment="Left"
                                 tw:Tw.Class="p-5">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="bg-slate-900 border-2 border-rose-500 rounded-lg w-20 h-20">
                                     <TextBlock
                                         Classes="docs-chip"
@@ -286,13 +280,13 @@
                                         Text="Only bracket syntax is parsed; border-(length:&lt;custom-property&gt;) stays unsupported." />
                                 </StackPanel>
                             </docs:DocsNote>
-                            <docs:DocsExample
-                                Code="&lt;Border tw:Tw.Class=&quot;border-[3px]&quot; /&gt;">
+                            <docs:DocsExample>
                                 <Border
                                     Classes="docs-inset"
                                     HorizontalAlignment="Left"
                                     tw:Tw.Class="p-5">
                                     <Border
+                                        docs:DocsCode.Show="True"
                                         tw:Tw.Class="bg-slate-900 border-sky-500 rounded-lg border-[3px] w-20 h-20">
                                         <TextBlock
                                             Classes="docs-chip"

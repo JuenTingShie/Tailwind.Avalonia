@@ -43,14 +43,10 @@
                         Heading="Placeholder color"
                         Summary="Each TextBox is empty so the placeholder is visible.">
                         <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;TextBox tw:Tw.Class=&quot;placeholder-rose-400&quot; /&gt;</x:String>
-                                <x:String>&lt;TextBox tw:Tw.Class=&quot;placeholder-emerald-500&quot; /&gt;</x:String>
-                            </docs:DocsExample.Snippets>
                             <StackPanel Spacing="10" Width="280">
                                 <TextBox PlaceholderText="default placeholder" />
-                                <TextBox PlaceholderText="placeholder-rose-400" tw:Tw.Class="placeholder-rose-400" />
-                                <TextBox PlaceholderText="placeholder-emerald-500" tw:Tw.Class="placeholder-emerald-500" />
+                                <TextBox docs:DocsCode.Show="True" PlaceholderText="placeholder-rose-400" tw:Tw.Class="placeholder-rose-400" />
+                                <TextBox docs:DocsCode.Show="True" PlaceholderText="placeholder-emerald-500" tw:Tw.Class="placeholder-emerald-500" />
                             </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>
