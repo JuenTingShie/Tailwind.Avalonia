@@ -15,9 +15,10 @@
             <docs:UtilityReferenceRow ClassName="hover:opacity-&lt;0-100&gt;" AxamlStyle="&lt;Control Opacity=&quot;&lt;value / 100&gt;&quot; /&gt; while :pointerover" />
             <docs:UtilityReferenceRow ClassName="pressed:opacity-&lt;0-100&gt;" AxamlStyle="&lt;Control Opacity=&quot;&lt;value / 100&gt;&quot; /&gt; while :pressed" />
             <docs:UtilityReferenceRow ClassName="focus:opacity-&lt;0-100&gt;" AxamlStyle="&lt;Control Opacity=&quot;&lt;value / 100&gt;&quot; /&gt; while :focus" />
+            <docs:UtilityReferenceRow ClassName="opacity-[&lt;fraction&gt;]" AxamlStyle="Opacity: the fraction (.67) or percentage (35%) in brackets" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="opacity-52.5 · opacity-150 · opacity-[0.5]" />
+            <docs:DocsGap Text="opacity-52.5 · opacity-150 · opacity-(&lt;custom-property&gt;)" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
@@ -92,8 +93,22 @@
         </docs:DocsSection>
 
         <docs:DocsSection
-            Heading="Decimals, out-of-range values, and arbitrary syntax"
-            Summary="opacity-&lt;number&gt; only accepts a bare integer from 0 to 100. Non-integer values, values outside that range, and Tailwind's bracket arbitrary-value syntax are all rejected outright rather than clamped or coerced, so the token is dropped and the control keeps its default opacity.">
+            Heading="Using a custom value"
+            Summary="Bracket syntax takes any fraction from 0 to 1, or a percentage: opacity-[.67] and opacity-[35%]. Values outside that range are ignored. The same form works as a color modifier, for example bg-sky-500/[.5].">
+            <docs:DocsExample>
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="16">
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-sky-500 rounded-lg opacity-[.67] w-20 h-20"><docs:DocsChip Text="[.67]" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-sky-500 rounded-lg opacity-[35%] w-20 h-20"><docs:DocsChip Text="[35%]" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-sky-500/[.5] rounded-lg w-20 h-20"><docs:DocsChip Text="bg /[.5]" /></Border>
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Decimals and out-of-range values"
+            Summary="The bare form opacity-&lt;number&gt; only accepts an integer from 0 to 100, and a bracket value must stay between 0 and 1 (or 0% and 100%). Anything else is rejected rather than clamped, so the token is dropped and the control keeps its default opacity.">
             <docs:DocsNote
                 Classes="gap muted"
                 Title="Not implemented">
@@ -107,7 +122,7 @@
                         Text="opacity-150 (values outside 0-100 are rejected)" />
                     <TextBlock
                         Classes="docs-tableClass"
-                        Text="opacity-[0.5] (there is no bracket arbitrary form)" />
+                        Text="opacity-[1.5] (bracket values outside 0-1 are rejected)" />
                 </StackPanel>
             </docs:DocsNote>
         </docs:DocsSection>

@@ -12,9 +12,11 @@
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="hidden" AxamlStyle="IsVisible: false" />
             <docs:UtilityReferenceRow ClassName="block" AxamlStyle="IsVisible: true" />
+            <docs:UtilityReferenceRow ClassName="invisible" AxamlStyle="Opacity: 0; IsHitTestVisible: false (keeps its layout space)" />
+            <docs:UtilityReferenceRow ClassName="visible" AxamlStyle="undoes invisible" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="invisible · flex · grid · inline · inline-block · contents · sm:hidden" />
+            <docs:DocsGap Text="collapse · flex · grid · inline · inline-block · contents · sm:hidden" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
@@ -41,6 +43,20 @@
                         <TextBlock
                             Text="hidden block: the last one wins" />
                     </Border>
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Invisible"
+            Summary="invisible hides an element but keeps its space, unlike hidden. Avalonia has no visibility property, so it becomes fully transparent and ignores the pointer; it wins over opacity-* and pointer-events-* in the same list, and visible undoes it.">
+            <docs:DocsExample>
+                <StackPanel
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <Border Background="#0284C7" Width="80" Height="56" CornerRadius="6" />
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="invisible bg-rose-600 w-20 h-14 rounded-md" />
+                    <Border Background="#0284C7" Width="80" Height="56" CornerRadius="6" />
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>

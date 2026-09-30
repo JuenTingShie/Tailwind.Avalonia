@@ -15,9 +15,11 @@
             <docs:UtilityReferenceRow ClassName="size-&lt;n&gt;" AxamlStyle="Width and Height: n * 4px" />
             <docs:UtilityReferenceRow ClassName="size-auto" AxamlStyle="Width and Height: auto" />
             <docs:UtilityReferenceRow ClassName="max-w-none / max-h-none" AxamlStyle="MaxWidth/MaxHeight: unlimited" />
+            <docs:UtilityReferenceRow ClassName="size-full" AxamlStyle="Width and Height: stretch" />
+            <docs:UtilityReferenceRow ClassName="max-w-full / max-h-full" AxamlStyle="MaxWidth/MaxHeight: unlimited (already held to the parent)" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="w-1/2 and other fractions · w-screen · w-fit / w-min / w-max · size-full · min-w-full" />
+            <docs:DocsGap Text="w-1/2 and other fractions · w-screen · w-fit / w-min / w-max · min-w-full" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
@@ -64,6 +66,22 @@
                             Text="size-10 (40 × 40)" />
                     </StackPanel>
                 </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Filling the parent"
+            Summary="size-full stretches both axes. max-w-full removes a maximum: an Avalonia child is always held to the space its parent gives it, so it matches max-w-none.">
+            <docs:DocsExample>
+                <Border
+                    Width="240"
+                    Height="80"
+                    HorizontalAlignment="Left"
+                    tw:Tw.Class="bg-slate-700 rounded-md p-2">
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="size-full rounded-md bg-sky-600 px-2">
+                        <TextBlock VerticalAlignment="Center" FontSize="12" Text="size-full" />
+                    </Border>
+                </Border>
             </docs:DocsExample>
         </docs:DocsSection>
     </docs:DocsPage>

@@ -19,9 +19,10 @@
             <docs:UtilityReferenceRow ClassName="font-bold" AxamlStyle="&lt;TextBlock FontWeight=&quot;Bold&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="font-extrabold" AxamlStyle="&lt;TextBlock FontWeight=&quot;ExtraBold&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="font-black" AxamlStyle="&lt;TextBlock FontWeight=&quot;Black&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="font-[&lt;weight&gt;]" AxamlStyle="&lt;TextBlock FontWeight=&quot;&lt;1-1000&gt;&quot; /&gt;" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="font-[600] · hover:font-bold (font families: see Typography > Font family)" />
+            <docs:DocsGap Text="font-(weight:&lt;custom-property&gt;) · hover:font-bold (font families: see Typography > Font family)" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
@@ -103,6 +104,19 @@
                         HorizontalAlignment="Left"
                         tw:Tw.Class="font-semibold bg-emerald-500 text-slate-950 px-4 py-2"
                         Content="font-semibold button" />
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Using a custom value"
+            Summary="font-[&lt;value&gt;] takes any numeric weight from 1 to 1000, such as font-[650]. The font picks its nearest face, so the result depends on which weights the font ships.">
+            <docs:DocsExample>
+                <StackPanel
+                    Spacing="6">
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="font-[350]" Text="font-[350]" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="font-[650]" Text="font-[650]" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="font-[1000]" Text="font-[1000]" />
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>

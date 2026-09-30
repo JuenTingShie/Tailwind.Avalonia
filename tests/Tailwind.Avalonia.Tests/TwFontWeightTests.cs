@@ -93,7 +93,6 @@ public class TwFontWeightTests
 
     [Theory]
     [InlineData("font-heavy")]
-    [InlineData("font-[600]")]
     [InlineData("hover:font-bold")]
     public void SetClass_Ignores_Unsupported_Font_Weight_Tokens(string className)
     {

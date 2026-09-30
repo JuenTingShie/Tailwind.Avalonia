@@ -12,14 +12,15 @@
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="rotate-&lt;deg&gt;" AxamlStyle="RenderTransform: rotate n degrees" />
             <docs:UtilityReferenceRow ClassName="-rotate-&lt;deg&gt;" AxamlStyle="RenderTransform: rotate -n degrees" />
-            <docs:UtilityReferenceRow ClassName="rotate-[&lt;deg&gt;deg]" AxamlStyle="RenderTransform: arbitrary angle" />
+            <docs:UtilityReferenceRow ClassName="rotate-[&lt;deg&gt;deg]" AxamlStyle="RenderTransform: arbitrary angle in degrees" />
             <docs:UtilityReferenceRow ClassName="origin-center" AxamlStyle="RenderTransformOrigin: 50% 50%" />
             <docs:UtilityReferenceRow ClassName="origin-top-left" AxamlStyle="RenderTransformOrigin: 0 0" />
             <docs:UtilityReferenceRow ClassName="origin-&lt;side&gt;" AxamlStyle="top, right, bottom, left and the corners" />
             <docs:UtilityReferenceRow ClassName="transform-none" AxamlStyle="RenderTransform: identity" />
+            <docs:UtilityReferenceRow ClassName="rotate-[&lt;angle&gt;]" AxamlStyle="deg, rad, grad or turn: rotate-[0.125turn], rotate-[1rad]" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="rotate-x-* · rotate-y-* · rotate-z-* · 3D rotation · rotate-[0.5turn]" />
+            <docs:DocsGap Text="rotate-x-* · rotate-y-* · rotate-z-* · 3D rotation" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
@@ -53,6 +54,21 @@
                             FontSize="11"
                             Text="rotate-45 origin-top-left" />
                     </Border>
+                </WrapPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Using other angle units"
+            Summary="Bracket values accept the CSS angle units: deg, rad, grad and turn. skew-x-[…] and skew-y-[…] take them too.">
+            <docs:DocsExample>
+                <WrapPanel
+                    ItemSpacing="40"
+                    LineSpacing="24"
+                    Margin="16">
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="rotate-[0.125turn] w-28 h-16 rounded-md bg-sky-600 p-1"><TextBlock FontSize="11" Text="[0.125turn]" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="rotate-[1rad] w-28 h-16 rounded-md bg-sky-600 p-1"><TextBlock FontSize="11" Text="[1rad]" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="-rotate-[50grad] w-28 h-16 rounded-md bg-sky-600 p-1"><TextBlock FontSize="11" Text="-[50grad]" /></Border>
                 </WrapPanel>
             </docs:DocsExample>
         </docs:DocsSection>

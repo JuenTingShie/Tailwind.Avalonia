@@ -10,7 +10,7 @@
         Intro="Utilities for controlling the font size of an element. Recognized size tokens set FontSize, while palette tokens like text-sky-300 keep targeting Foreground on the same tw:Tw.Class surface."
         Supported="text-xs through text-9xl work, as do bracket arbitrary values like text-[14px], text-[1.5rem], and text-[18]. Line-height modifiers, the text-(length:&lt;custom-property&gt;) shorthand, and responsive variants are still out of scope."
         CollapsedRowCount="5"
-        GapsTitle="Not covered yet"
+        GapsTitle="Not implemented yet"
         GapsBody="These Tailwind font-size rows sit outside the current parser surface.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="text-xs" AxamlStyle="&lt;TextBlock FontSize=&quot;12&quot; /&gt;" />
@@ -27,9 +27,10 @@
             <docs:UtilityReferenceRow ClassName="text-8xl" AxamlStyle="&lt;TextBlock FontSize=&quot;96&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="text-9xl" AxamlStyle="&lt;TextBlock FontSize=&quot;128&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="text-[&lt;value&gt;]" AxamlStyle="&lt;TextBlock FontSize=&quot;&lt;parsed value&gt;&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="text-&lt;size&gt;/&lt;number&gt;" AxamlStyle="FontSize and LineHeight = number * 4px (text-sm/6)" />
+            <docs:UtilityReferenceRow ClassName="text-&lt;size&gt;/[&lt;value&gt;]" AxamlStyle="FontSize and LineHeight: px, rem, or a unitless / em multiplier" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="text-sm/6 · text-sm/7 · text-sm/8 · text-lg/7" />
             <docs:DocsGap Text="text-(length:&lt;custom-property&gt;) · md:text-base" />
         </docs:DocsPage.Gaps>
 
@@ -64,14 +65,16 @@
 
         <docs:DocsSection
             Heading="Setting the line-height"
-            Summary="Tailwind also supports text-sm/6 style tokens that set font size and line-height together. The parser here only maps FontSize, so the slash modifiers stay documented as a gap rather than quietly ignored.">
-            <docs:DocsNote
-                Classes="gap muted"
-                Title="Official examples not implemented yet">
-                <TextBlock
-                    Classes="docs-tableClass"
-                    Text="text-sm/6 · text-sm/7 · text-sm/8 · text-lg/7" />
-            </docs:DocsNote>
+            Summary="Add a slash after the size to set the line height too: text-sm/6 is 14px text on a 24px line. The number uses the spacing scale, and brackets take any value, where a unitless or em value multiplies the font size. A later leading-* class still overrides it.">
+            <docs:DocsExample>
+                <StackPanel
+                    Spacing="16">
+                    <TextBlock docs:DocsCode.Show="True" Width="320" HorizontalAlignment="Left" tw:Tw.Class="text-slate-100 text-sm/6 text-wrap" Text="text-sm/6: So I started to walk into the water. I won&#x27;t lie to you boys, I was terrified." />
+                    <TextBlock docs:DocsCode.Show="True" Width="320" HorizontalAlignment="Left" tw:Tw.Class="text-slate-100 text-sm/7 text-wrap" Text="text-sm/7: So I started to walk into the water. I won&#x27;t lie to you boys, I was terrified." />
+                    <TextBlock docs:DocsCode.Show="True" Width="320" HorizontalAlignment="Left" tw:Tw.Class="text-slate-100 text-sm/8 text-wrap" Text="text-sm/8: So I started to walk into the water. I won&#x27;t lie to you boys, I was terrified." />
+                    <TextBlock docs:DocsCode.Show="True" Width="320" HorizontalAlignment="Left" tw:Tw.Class="text-slate-100 text-lg/[1.5] text-wrap" Text="text-lg/[1.5]: So I started to walk into the water. I won&#x27;t lie to you boys, I was terrified." />
+                </StackPanel>
+            </docs:DocsExample>
         </docs:DocsSection>
 
         <docs:DocsSection

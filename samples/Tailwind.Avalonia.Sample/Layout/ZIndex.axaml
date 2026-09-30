@@ -18,9 +18,10 @@
             <docs:UtilityReferenceRow ClassName="z-50" AxamlStyle="ZIndex: 50" />
             <docs:UtilityReferenceRow ClassName="z-auto" AxamlStyle="ZIndex: 0" />
             <docs:UtilityReferenceRow ClassName="z-[25]" AxamlStyle="ZIndex: 25" />
+            <docs:UtilityReferenceRow ClassName="-z-&lt;number&gt;" AxamlStyle="ZIndex: -number" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="negative z-index (-z-10) · variants such as hover:z-10" />
+            <docs:DocsGap Text="z-(&lt;custom-property&gt;) · variants such as hover:z-10" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
@@ -58,6 +59,20 @@
                             <TextBlock
                                 Text="z-10" />
                         </Border>
+                </Grid>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Using negative values"
+            Summary="A leading dash makes the value negative. -z-10 puts the sky box behind its siblings even though it is declared last.">
+            <docs:DocsExample>
+                <Grid
+                    Height="100"
+                    Width="200"
+                    HorizontalAlignment="Left">
+                    <Border Background="#059669" Width="96" Height="64" Padding="8" CornerRadius="8" HorizontalAlignment="Left" VerticalAlignment="Top"><TextBlock Text="default" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="-z-10 bg-sky-600 w-24 h-16 p-2 rounded-lg" Margin="40,24,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"><TextBlock Text="-z-10" /></Border>
                 </Grid>
             </docs:DocsExample>
         </docs:DocsSection>

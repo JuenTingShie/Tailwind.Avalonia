@@ -15,6 +15,7 @@ public partial class SampleDocsAccuracyTests
     private static readonly (string Placeholder, string Value)[] Fillers =
     [
         ("[rgb(r,g,b)]", "[rgb(14,165,233)]"), ("[hsl(h,s%,l%)]", "[hsl(199,89%,48%)]"), ("[oklch(l%,c,h)]", "[oklch(68%,0.15,237)]"),
+        ("[<weight>]", "[600]"), ("[<fraction>]", "[.5]"), ("[<angle>]", "[0.25turn]"), ("[<n>]", "[5]"),
         ("[<value>]", "[12px]"), ("[<px>]", "[3px]"), ("[#<hex>]", "[#ff0080]"), ("[<time>]", "[200ms]"),
         ("[<deg>deg]", "[12deg]"), ("<number>", "4"), ("<n>", "3"), ("<color>", "sky-500"), ("<deg>", "45"),
         ("<opacity>", "50"), ("<ms>", "150"), ("<0-100>", "50"), ("<0|1|2|4|8>", "2"),

@@ -72,6 +72,35 @@ public partial class Tw
     {
         opacity = default;
 
+        // Arbitrary opacity: a fraction (opacity-[.67], bg-sky-500/[0.5]) or a percentage (opacity-[35%]).
+        if (token.Length > 2 && token[0] == '[' && token[^1] == ']')
+        {
+            var inner = token[1..^1].Trim();
+            var isPercent = inner.EndsWith('%');
+
+            if (isPercent)
+            {
+                inner = inner[..^1];
+            }
+
+            if (inner.Length == 0 || inner[^1] == '.' ||
+                !double.TryParse(inner, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out var raw) ||
+                !double.IsFinite(raw))
+            {
+                return false;
+            }
+
+            var fraction = isPercent ? raw / 100d : raw;
+
+            if (fraction is < 0 or > 1)
+            {
+                return false;
+            }
+
+            opacity = fraction;
+            return true;
+        }
+
         if (token.Length == 0 ||
             !double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out var percent) ||
             !double.IsFinite(percent) ||

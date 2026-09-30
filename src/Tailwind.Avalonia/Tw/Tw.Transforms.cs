@@ -136,15 +136,35 @@ public partial class Tw
         !text.StartsWith('-') && !text.StartsWith('+') && !text.EndsWith('.');
 
     // Degrees: a bare non-negative number (rotate-45) or an arbitrary value such as rotate-[12.5deg].
+    private static readonly (string Unit, double Degrees)[] AngleUnits =
+    [
+        ("grad", 0.9),
+        ("turn", 360),
+        ("rad", 180 / Math.PI),
+        ("deg", 1),
+    ];
+
     private static bool TryParseDegrees(string value, out double degrees)
     {
         if (value.Length > 2 && value[0] == '[' && value[^1] == ']')
         {
+            // CSS angle units: deg (default), rad, grad and turn.
             var inner = value[1..^1];
-            inner = inner.EndsWith("deg", StringComparison.Ordinal) ? inner[..^3] : inner;
+            var perUnit = 1d;
+
+            foreach (var (unit, factor) in AngleUnits)
+            {
+                if (inner.EndsWith(unit, StringComparison.Ordinal))
+                {
+                    inner = inner[..^unit.Length];
+                    perUnit = factor;
+                    break;
+                }
+            }
+
             var isNegative = inner.StartsWith('-');
             var ok = TryParseNumber(isNegative ? inner[1..] : inner, out degrees);
-            degrees = isNegative ? -degrees : degrees;
+            degrees = (isNegative ? -degrees : degrees) * perUnit;
             return ok;
         }
 

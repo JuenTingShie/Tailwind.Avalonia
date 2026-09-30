@@ -7,7 +7,7 @@ public partial class Tw
     private readonly record struct SpacingUtility(SpacingTarget Target, SpacingEdge Edge, double Pixels);
     private readonly record struct BrushUtility(BrushTarget Target, IBrush Brush);
     private readonly record struct SizingUtility(SizingTarget Target, double Pixels, bool Fill = false);
-    private readonly record struct FontSizeUtility(double Pixels);
+    private readonly record struct FontSizeUtility(double Pixels, TextMetricUtility? LineHeight = null);
     private readonly record struct TextAlignUtility(TextAlignment Alignment);
     private readonly record struct BoxShadowUtility(BoxShadows Shadows);
 

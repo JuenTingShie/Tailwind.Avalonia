@@ -25,6 +25,8 @@
             <docs:UtilityReferenceRow ClassName="leading-loose" AxamlStyle="LineHeight: 2 x font size" />
             <docs:UtilityReferenceRow ClassName="leading-6" AxamlStyle="LineHeight: 24px" />
             <docs:UtilityReferenceRow ClassName="leading-[18px]" AxamlStyle="LineHeight: 18px" />
+            <docs:UtilityReferenceRow ClassName="leading-[&lt;number&gt;]" AxamlStyle="LineHeight: number x font size (leading-[1.5])" />
+            <docs:UtilityReferenceRow ClassName="leading-[&lt;n&gt;em]" AxamlStyle="LineHeight: n x font size" />
         </docs:DocsPage.Utilities>
 
         <docs:DocsSection
@@ -79,6 +81,18 @@
                         docs:DocsCode.Show="True"
                         tw:Tw.Class="w-72 text-sm text-wrap leading-10"
                         Text="leading-10: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Custom line height"
+            Summary="As in CSS, a unitless or em value multiplies the font size: with text-sm (14px), leading-[1.5] and leading-[1.5em] are 21px. px and rem values are absolute. Tailwind v4 prefers this form and text-sm/6 over the named leading-tight family, which is kept here for older class lists.">
+            <docs:DocsExample>
+                <StackPanel
+                    Spacing="10">
+                    <TextBlock docs:DocsCode.Show="True" tw:Tw.Class="w-72 text-sm text-wrap leading-[1.5]" Text="leading-[1.5]: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                    <TextBlock docs:DocsCode.Show="True" tw:Tw.Class="w-72 text-sm text-wrap leading-[2rem]" Text="leading-[2rem]: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>

@@ -12,9 +12,10 @@
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="line-clamp-&lt;n&gt;" AxamlStyle="MaxLines: n; TextTrimming: CharacterEllipsis; TextWrapping: Wrap" />
             <docs:UtilityReferenceRow ClassName="line-clamp-none" AxamlStyle="MaxLines: 0; TextTrimming: None" />
+            <docs:UtilityReferenceRow ClassName="line-clamp-[&lt;n&gt;]" AxamlStyle="same as line-clamp-n, any count" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="line-clamp-[n] · line-clamp-(&lt;custom-property&gt;)" />
+            <docs:DocsGap Text="line-clamp-(&lt;custom-property&gt;)" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
