@@ -93,8 +93,8 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | font-smoothing            |             |
 | font-style                |     ✅      |
 | font-weight               |     ✅      |
-| font-stretch              |             |
-| font-variant-numeric      |             |
+| font-stretch              |     ✅      |
+| font-variant-numeric      |     ✅      |
 | font-feature-settings     |             |
 | letter-spacing            |     ✅      |
 | line-clamp                |     ✅      |

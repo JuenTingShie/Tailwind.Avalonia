@@ -78,6 +78,16 @@ public partial class Tw
         Add("stroke-0", "StrokeThickness", 0.0);
         Add("stroke-1", "StrokeThickness", 1.0);
         Add("stroke-2", "StrokeThickness", 2.0);
+        // font-stretch-* maps to FontStretch; the rendered width depends on the font providing that face.
+        Add("font-stretch-ultra-condensed", "FontStretch", FontStretch.UltraCondensed);
+        Add("font-stretch-extra-condensed", "FontStretch", FontStretch.ExtraCondensed);
+        Add("font-stretch-condensed", "FontStretch", FontStretch.Condensed);
+        Add("font-stretch-semi-condensed", "FontStretch", FontStretch.SemiCondensed);
+        Add("font-stretch-normal", "FontStretch", FontStretch.Normal);
+        Add("font-stretch-semi-expanded", "FontStretch", FontStretch.SemiExpanded);
+        Add("font-stretch-expanded", "FontStretch", FontStretch.Expanded);
+        Add("font-stretch-extra-expanded", "FontStretch", FontStretch.ExtraExpanded);
+        Add("font-stretch-ultra-expanded", "FontStretch", FontStretch.UltraExpanded);
         Add("whitespace-nowrap", "TextWrapping", TextWrapping.NoWrap);
         Add("whitespace-normal", "TextWrapping", TextWrapping.Wrap);
 
