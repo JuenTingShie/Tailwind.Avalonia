@@ -1,3 +1,4 @@
+using System.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -15,17 +16,11 @@ namespace Tailwind.Avalonia.Sample;
 /// </summary>
 public partial class SampleShell : UserControl
 {
-    private const string MobileDocsClass = "docs-mobile";
-    private const double NarrowLayoutBreakpoint = 960;
-    private const double CompactDocsHeightBreakpoint = 640;
-    private const double NarrowPaneLength = 304;
-    private const double WidePaneLength = 336;
 
     private readonly Dictionary<SampleShellPageDescriptor, Control> pageCache = new();
     private readonly SampleShellSectionDescriptor[] sections;
     private bool isSynchronizingSelection;
-    private bool isNarrowLayout;
-    private bool isCompactDocs;
+    private SampleLayout layout;
     private bool? lastNarrowLayout;
     private SampleShellPageDescriptor? shownPage;
     private SampleShellSectionDescriptor? shownSection;
@@ -124,6 +119,18 @@ public partial class SampleShell : UserControl
     }
 
     // Keep each page alive after first load so repeat tab switches only toggle visibility.
+    /// <summary>Shows a page as if it had been picked in the navigation, and returns the hosted page control.</summary>
+    internal Control Navigate(string sectionHeader, string pageHeader)
+    {
+        var section = sections.First(s => s.Header == sectionHeader);
+        var page = section.Pages.First(p => p.Header == pageHeader);
+        PreviewSection(section);
+        section.SelectedPageIndex = FindPageIndex(section, page);
+        ShowPage(section, page);
+        SynchronizeNavigationSelection(section);
+        return pageCache[page];
+    }
+
     private void ShowPage(SampleShellSectionDescriptor section, SampleShellPageDescriptor page)
     {
         var targetPage = GetOrCreatePage(page);
@@ -142,7 +149,7 @@ public partial class SampleShell : UserControl
         // Auto-close only while the pane is a modal overlay. On wide layouts it is
         // pinned inline beside the content, so navigating there must not dismiss the
         // navigation the user is still reading.
-        if (isNarrowLayout)
+        if (layout.IsNarrow)
         {
             SetPaneOpen(false);
         }
@@ -273,15 +280,12 @@ public partial class SampleShell : UserControl
     // Apply the current pane mode, widths, and shell spacing based on available width.
     private void UpdateResponsiveLayout(double width, double height)
     {
-        var useNarrowLayout = width > 0 && width < NarrowLayoutBreakpoint;
-        var useCompactDocs = useNarrowLayout || (height > 0 && height < CompactDocsHeightBreakpoint);
-
-        isNarrowLayout = useNarrowLayout;
-        isCompactDocs = useCompactDocs;
+        layout = SampleLayout.For(width, height);
+        var useNarrowLayout = layout.IsNarrow;
         NavigationSplitView.DisplayMode = useNarrowLayout ? SplitViewDisplayMode.Overlay : SplitViewDisplayMode.CompactInline;
-        NavigationSplitView.OpenPaneLength = useNarrowLayout ? NarrowPaneLength : WidePaneLength;
-        ShellHeader.Padding = useNarrowLayout ? new Thickness(10, 0) : new Thickness(12, 0);
-        PageContentChrome.Padding = useCompactDocs ? new Thickness(10) : new Thickness(18);
+        NavigationSplitView.OpenPaneLength = layout.PaneLength;
+        ShellHeader.Padding = layout.HeaderPadding;
+        PageContentChrome.Padding = layout.ContentPadding;
         RefreshPageLayoutClasses();
 
         // Pin the pane open on wide layouts, closed on narrow entry. Only touch
@@ -306,17 +310,7 @@ public partial class SampleShell : UserControl
         }
     }
 
-    private void ApplyMobileDocsClass(Control control)
-    {
-        if (isCompactDocs)
-        {
-            control.Classes.Add(MobileDocsClass);
-        }
-        else
-        {
-            control.Classes.Remove(MobileDocsClass);
-        }
-    }
+    private void ApplyMobileDocsClass(Control control) => layout.ApplyTo(control);
 
     // Keep the shell buttons aligned with the current open/closed pane state.
     private void UpdateNavigationChrome()
@@ -324,8 +318,8 @@ public partial class SampleShell : UserControl
         var isPaneOpen = NavigationSplitView.IsPaneOpen;
         PaneToggleButton.IsVisible = !isPaneOpen;
         PaneCloseButton.IsVisible = isPaneOpen;
-        ToolTip.SetTip(PaneToggleButton, isNarrowLayout ? "Open navigation" : "Show navigation");
-        ToolTip.SetTip(PaneCloseButton, isNarrowLayout ? "Close navigation" : "Hide navigation");
+        ToolTip.SetTip(PaneToggleButton, layout.IsNarrow ? "Open navigation" : "Show navigation");
+        ToolTip.SetTip(PaneCloseButton, layout.IsNarrow ? "Close navigation" : "Hide navigation");
     }
 
     // Chrome resync happens centrally in NavigationSplitViewPropertyChanged.
