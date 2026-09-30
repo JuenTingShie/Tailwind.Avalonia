@@ -361,6 +361,13 @@ public partial class Tw
     // font-variant-numeric utilities combine into one OpenType feature list; normal-nums resets it.
     private static bool TryParseNumericVariantUtility(string token, out string? feature)
     {
+        // font-features-[smcp,liga=0] is the arbitrary font-feature-settings form; underscores stand for spaces.
+        if (token.StartsWith("font-features-[", StringComparison.Ordinal) && token.EndsWith(']') && token.Length > "font-features-[]".Length)
+        {
+            feature = token["font-features-[".Length..^1].Replace('_', ' ').Replace("'", string.Empty).Replace("\"", string.Empty);
+            return true;
+        }
+
         feature = token switch
         {
             "normal-nums" => null,
