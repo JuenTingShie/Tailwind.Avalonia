@@ -101,6 +101,32 @@ public partial class Tw
         Add("scheme-normal", "RequestedThemeVariant", ThemeVariant.Default);
 
         Add("transform-none", "RenderTransform", TransformOperations.Identity);
+        // scroll-snap-type maps to ScrollViewer snap points. Avalonia has no "proximity" strictness, so snap-x / snap-y /
+        // snap-both use mandatory snapping; snap-start / center / end align the snap points of the whole scroller.
+        table["snap-x"] = [new KeywordAssignment("ScrollViewer.HorizontalSnapPointsType", SnapPointsType.Mandatory)];
+        table["snap-y"] = [new KeywordAssignment("ScrollViewer.VerticalSnapPointsType", SnapPointsType.Mandatory)];
+        table["snap-both"] =
+        [
+            new KeywordAssignment("ScrollViewer.HorizontalSnapPointsType", SnapPointsType.Mandatory),
+            new KeywordAssignment("ScrollViewer.VerticalSnapPointsType", SnapPointsType.Mandatory),
+        ];
+        table["snap-none"] =
+        [
+            new KeywordAssignment("ScrollViewer.HorizontalSnapPointsType", SnapPointsType.None),
+            new KeywordAssignment("ScrollViewer.VerticalSnapPointsType", SnapPointsType.None),
+        ];
+
+        void AddSnapAlignment(string token, SnapPointsAlignment alignment) =>
+            table[token] =
+            [
+                new KeywordAssignment("ScrollViewer.HorizontalSnapPointsAlignment", alignment),
+                new KeywordAssignment("ScrollViewer.VerticalSnapPointsAlignment", alignment),
+            ];
+
+        AddSnapAlignment("snap-start", SnapPointsAlignment.Near);
+        AddSnapAlignment("snap-center", SnapPointsAlignment.Center);
+        AddSnapAlignment("snap-end", SnapPointsAlignment.Far);
+
         Add("whitespace-nowrap", "TextWrapping", TextWrapping.NoWrap);
         Add("whitespace-normal", "TextWrapping", TextWrapping.Wrap);
 
@@ -383,6 +409,10 @@ public partial class Tw
             "Grid.Row" => Grid.RowProperty,
             "Grid.ColumnSpan" => Grid.ColumnSpanProperty,
             "Grid.RowSpan" => Grid.RowSpanProperty,
+            "ScrollViewer.HorizontalSnapPointsType" => ScrollViewer.HorizontalSnapPointsTypeProperty,
+            "ScrollViewer.VerticalSnapPointsType" => ScrollViewer.VerticalSnapPointsTypeProperty,
+            "ScrollViewer.HorizontalSnapPointsAlignment" => ScrollViewer.HorizontalSnapPointsAlignmentProperty,
+            "ScrollViewer.VerticalSnapPointsAlignment" => ScrollViewer.VerticalSnapPointsAlignmentProperty,
             "ScrollViewer.IsScrollChainingEnabled" => ScrollViewer.IsScrollChainingEnabledProperty,
             "ScrollViewer.HorizontalScrollBarVisibility" => ScrollViewer.HorizontalScrollBarVisibilityProperty,
             "ScrollViewer.VerticalScrollBarVisibility" => ScrollViewer.VerticalScrollBarVisibilityProperty,
