@@ -366,6 +366,16 @@ public partial class Tw
                     keywordValues["CaretBrush"] = brushUtility.Brush;
                     break;
 
+                case BrushTarget.Fill:
+                    keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+                    keywordValues["Fill"] = brushUtility.Brush;
+                    break;
+
+                case BrushTarget.Stroke:
+                    keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+                    keywordValues["Stroke"] = brushUtility.Brush;
+                    break;
+
                 case BrushTarget.DecorationBrush:
                     decorationBrush = brushUtility.Brush;
                     break;

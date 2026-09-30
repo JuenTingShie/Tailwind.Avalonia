@@ -1,0 +1,63 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Svg.FillStroke">
+    <docs:DocsPage
+        Section="SVG"
+        Title="Fill and stroke"
+        Intro="Utilities for painting Avalonia shapes. fill-* and stroke-* set the Fill and Stroke brushes, stroke-N sets StrokeThickness.">
+        <StackPanel
+            Spacing="52">
+            <StackPanel
+                Classes="docs-overviewStack">
+                <docs:DocsNote
+                    Classes="supported"
+                    Title="Implemented in this sample"
+                    Body="fill-&lt;color&gt;, stroke-&lt;color&gt;, fill-none, stroke-none, stroke-0/1/2 and stroke-[px] apply to Shape controls (Ellipse, Rectangle, Path, Line, Polygon...). Other elements ignore the token with a warning. Core Avalonia properties, available on every platform." />
+                <docs:DocsUtilityTable
+                    x:Name="UtilityTable"
+                    CollapsedRowCount="6" />
+                <docs:DocsNote
+                    Classes="gap"
+                    Title="Not implemented yet"
+                    Body="These forms sit outside the current parser surface.">
+                    <StackPanel
+                        Spacing="6">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="fill-current · stroke-current · fill-(--var) · stroke-dasharray" />
+                    </StackPanel>
+                </docs:DocsNote>
+            </StackPanel>
+
+            <StackPanel
+                Spacing="22">
+                <TextBlock
+                    Classes="docs-eyebrow"
+                    Text="Examples" />
+                <StackPanel
+                    Classes="docs-exampleStack">
+                    <docs:DocsSection
+                        Heading="Fill and stroke"
+                        Summary="Each shape carries the real tokens.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-sky-500 stroke-sky-900 stroke-2&quot; /&gt;</x:String>
+                                <x:String>&lt;Rectangle tw:Tw.Class=&quot;fill-none stroke-rose-500 stroke-[4px]&quot; /&gt;</x:String>
+                                <x:String>&lt;Rectangle tw:Tw.Class=&quot;fill-amber-400 stroke-none&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Orientation="Horizontal" Spacing="24">
+                                <Ellipse Width="80" Height="80" tw:Tw.Class="fill-sky-500 stroke-sky-900 stroke-2" />
+                                <Rectangle Width="80" Height="80" RadiusX="12" RadiusY="12" tw:Tw.Class="fill-none stroke-rose-500 stroke-[4px]" />
+                                <Rectangle Width="80" Height="80" tw:Tw.Class="fill-amber-400 stroke-none" />
+                                <Rectangle Width="80" Height="80" tw:Tw.Class="fill-emerald-500 stroke-slate-700 stroke-1" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </docs:DocsPage>
+</UserControl>
