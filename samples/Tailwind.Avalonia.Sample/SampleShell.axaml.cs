@@ -100,6 +100,7 @@ public partial class SampleShell : UserControl
                 "Layout",
                 new SampleShellPageDescriptor("Display", static () => new Layout.Display()),
                 new SampleShellPageDescriptor("Overflow", static () => new Layout.Overflow()),
+                new SampleShellPageDescriptor("Scroll snap", static () => new Layout.ScrollSnap()),
                 new SampleShellPageDescriptor("Self alignment", static () => new Layout.SelfAlignment()),
                 new SampleShellPageDescriptor("Direction and gap", static () => new Layout.FlexDirectionGap()),
                 new SampleShellPageDescriptor("Position", static () => new Layout.Position()),
