@@ -59,87 +59,9 @@ public partial class SampleShell : UserControl
         AttachedToVisualTree += SampleShellAttachedToVisualTree;
     }
 
-    // Define the docs navigation tree so pages can be created only when first visited.
-    internal static SampleShellSectionDescriptor[] CreateSections()
-    {
-        return
-        [
-            // Sentence case matches the eyebrow the docs pages print above their own
-            // titles, so the breadcrumb and the page agree on how a section is spelled.
-            new(
-                "Spacing",
-                new SampleShellPageDescriptor("Padding", static () => new Spacing.Padding()),
-                new SampleShellPageDescriptor("Margin", static () => new Spacing.Margin())),
-            new(
-                "Sizing",
-                new SampleShellPageDescriptor("Width", static () => new Sizing.Width()),
-                new SampleShellPageDescriptor("Height", static () => new Sizing.Height()),
-                new SampleShellPageDescriptor("Size keywords", static () => new Sizing.SizeKeywords())),
-            new(
-                "Backgrounds",
-                new SampleShellPageDescriptor("Gradients", static () => new Backgrounds.Gradients()),
-                new SampleShellPageDescriptor("Background image", static () => new Backgrounds.BackgroundImage())),
-            new(
-                "Borders",
-                new SampleShellPageDescriptor("Radius", static () => new Borders.Radius()),
-                new SampleShellPageDescriptor("Width", static () => new Borders.Width())),
-            new(
-                "Typography",
-                new SampleShellPageDescriptor("Font size", static () => new Typography.FontSize()),
-                new SampleShellPageDescriptor("Font weight", static () => new Typography.FontWeight()),
-                new SampleShellPageDescriptor("Font style", static () => new Typography.FontStyle()),
-                new SampleShellPageDescriptor("Font family", static () => new Typography.FontFamily()),
-                new SampleShellPageDescriptor("Font variant numeric", static () => new Typography.FontVariantNumeric()),
-                new SampleShellPageDescriptor("Font stretch", static () => new Typography.FontStretch()),
-                new SampleShellPageDescriptor("Text decoration", static () => new Typography.TextDecoration()),
-                new SampleShellPageDescriptor("Line clamp", static () => new Typography.LineClamp()),
-                new SampleShellPageDescriptor("Text overflow", static () => new Typography.TextOverflow()),
-                new SampleShellPageDescriptor("Tracking and leading", static () => new Typography.LetterSpacingLineHeight()),
-                new SampleShellPageDescriptor("Text align", static () => new Typography.TextAlign()),
-                new SampleShellPageDescriptor("Colors", static () => new Typography.ColorUtilities())),
-            new(
-                "Layout",
-                new SampleShellPageDescriptor("Display", static () => new Layout.Display()),
-                new SampleShellPageDescriptor("Overflow", static () => new Layout.Overflow()),
-                new SampleShellPageDescriptor("Scroll snap", static () => new Layout.ScrollSnap()),
-                new SampleShellPageDescriptor("Self alignment", static () => new Layout.SelfAlignment()),
-                new SampleShellPageDescriptor("Direction and gap", static () => new Layout.FlexDirectionGap()),
-                new SampleShellPageDescriptor("Position", static () => new Layout.Position()),
-                new SampleShellPageDescriptor("Grid", static () => new Layout.Grid()),
-                new SampleShellPageDescriptor("Object fit", static () => new Layout.ObjectFit()),
-                new SampleShellPageDescriptor("Z-index", static () => new Layout.ZIndex())),
-            new(
-                "Transforms",
-                new SampleShellPageDescriptor("Rotate", static () => new Transforms.Rotate()),
-                new SampleShellPageDescriptor("Scale", static () => new Transforms.Scale()),
-                new SampleShellPageDescriptor("Translate", static () => new Transforms.Translate()),
-                new SampleShellPageDescriptor("Skew", static () => new Transforms.Skew())),
-            new(
-                "Interactivity",
-                new SampleShellPageDescriptor("Pseudo-class variants", static () => new Interactivity.PseudoClassVariants()),
-                new SampleShellPageDescriptor("More variants", static () => new Interactivity.MoreVariants()),
-                new SampleShellPageDescriptor("Structural variants", static () => new Interactivity.StructuralVariants()),
-                new SampleShellPageDescriptor("Cursor", static () => new Interactivity.Cursor()),
-                new SampleShellPageDescriptor("Pointer events", static () => new Interactivity.PointerEvents()),
-                new SampleShellPageDescriptor("Caret and selection color", static () => new Interactivity.CaretSelectionColor()),
-                new SampleShellPageDescriptor("Placeholder color", static () => new Interactivity.PlaceholderColor()),
-                new SampleShellPageDescriptor("Color scheme", static () => new Interactivity.ColorScheme())),
-            new(
-                "Effects",
-                new SampleShellPageDescriptor("Opacity", static () => new Effects.Opacity()),
-                new SampleShellPageDescriptor("Box shadow", static () => new Effects.BoxShadow()),
-                new SampleShellPageDescriptor("Ring", static () => new Effects.Ring()),
-                new SampleShellPageDescriptor("Blur", static () => new Effects.Blur()),
-                new SampleShellPageDescriptor("Drop shadow", static () => new Effects.DropShadow()),
-                new SampleShellPageDescriptor("Transitions", static () => new Effects.Transitions()),
-                new SampleShellPageDescriptor("Animation", static () => new Effects.Animation())),
-            new(
-                "SVG",
-                new SampleShellPageDescriptor("Fill and stroke", static () => new Svg.FillStroke())),
-        ];
-    }
+    // Navigation comes from SampleCatalog; kept here so tests and callers have one entry point.
+    internal static SampleShellSectionDescriptor[] CreateSections() => SampleCatalog.CreateSections();
 
-    // Sync the page strip whenever the active top-level section changes.
     private void SectionSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         if (isSynchronizingSelection)
