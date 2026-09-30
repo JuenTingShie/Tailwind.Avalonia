@@ -11,6 +11,10 @@ public partial class Tw
 {
     private enum VariantKind
     {
+        First,
+        Last,
+        Odd,
+        Even,
         Hover,
         Pressed,
         Focus,
@@ -21,16 +25,31 @@ public partial class Tw
 
     // The order of VariantKind is also the order the variant Styles are added, so a later kind wins when several
     // pseudo-classes are active at once (disabled beats checked beats focus beats hover).
-    private const int VariantCount = 6;
+    private const int VariantCount = 10;
 
     private static readonly (string Prefix, VariantKind Kind)[] VariantPrefixes =
     {
+        ("first:", VariantKind.First),
+        ("last:", VariantKind.Last),
+        ("odd:", VariantKind.Odd),
+        ("even:", VariantKind.Even),
         ("hover:", VariantKind.Hover),
         ("pressed:", VariantKind.Pressed),
         ("focus:", VariantKind.Focus),
         ("focus-visible:", VariantKind.FocusVisible),
         ("checked:", VariantKind.Checked),
         ("disabled:", VariantKind.Disabled),
+    };
+
+    // first/last/odd/even are structural: they use Avalonia's :nth-child / :nth-last-child selectors, so they
+    // only match once the element has a logical parent.
+    private static Selector? ApplyVariantSelector(Selector? selector, VariantKind kind) => kind switch
+    {
+        VariantKind.First => selector.NthChild(0, 1),
+        VariantKind.Last => selector.NthLastChild(0, 1),
+        VariantKind.Odd => selector.NthChild(2, 1),
+        VariantKind.Even => selector.NthChild(2, 0),
+        _ => selector.Class(PseudoClassFor(kind)),
     };
 
     private static string PseudoClassFor(VariantKind kind) => kind switch
@@ -150,8 +169,8 @@ public partial class Tw
                 continue;
             }
 
-            var pseudoClass = PseudoClassFor((VariantKind)i);
-            var variantStyle = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey).Class(pseudoClass)) { Setters = { new Setter(property, variantBrush) } };
+            var variantKind = (VariantKind)i;
+            var variantStyle = new Style(x => ApplyVariantSelector(x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey), variantKind)) { Setters = { new Setter(property, variantBrush) } };
             element.Styles.Add(variantStyle);
             target.Add(variantStyle);
 
@@ -161,8 +180,8 @@ public partial class Tw
             // this element's own property. Without also targeting those parts, the variant
             // above is silently overridden by the theme's own pseudo-class styles and never
             // appears on screen.
-            AddTemplatePartVariantStyle<ContentPresenter>(element, elementType, instanceKey, pseudoClass, "PART_ContentPresenter", propertyName, variantBrush, target);
-            AddTemplatePartVariantStyle<Border>(element, elementType, instanceKey, pseudoClass, "PART_BorderElement", propertyName, variantBrush, target);
+            AddTemplatePartVariantStyle<ContentPresenter>(element, elementType, instanceKey, variantKind, "PART_ContentPresenter", propertyName, variantBrush, target);
+            AddTemplatePartVariantStyle<Border>(element, elementType, instanceKey, variantKind, "PART_BorderElement", propertyName, variantBrush, target);
         }
     }
 
@@ -170,7 +189,7 @@ public partial class Tw
         StyledElement element,
         Type elementType,
         object instanceKey,
-        string pseudoClass,
+        VariantKind variantKind,
         string partName,
         string propertyName,
         IBrush variantBrush,
@@ -184,7 +203,7 @@ public partial class Tw
             return;
         }
 
-        var style = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey).Class(pseudoClass).Template().OfType<TPart>().Name(partName))
+        var style = new Style(x => ApplyVariantSelector(x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey), variantKind).Template().OfType<TPart>().Name(partName))
         {
             Setters = { new Setter(property, variantBrush) },
         };
@@ -228,8 +247,8 @@ public partial class Tw
                 continue;
             }
 
-            var pseudoClass = PseudoClassFor((VariantKind)i);
-            var variantStyle = new Style(x => x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey).Class(pseudoClass)) { Setters = { new Setter(property, variantOpacity) } };
+            var variantKind = (VariantKind)i;
+            var variantStyle = new Style(x => ApplyVariantSelector(x.Is(elementType).PropertyEquals(InstanceKeyProperty, instanceKey), variantKind)) { Setters = { new Setter(property, variantOpacity) } };
             element.Styles.Add(variantStyle);
             target.Add(variantStyle);
         }
