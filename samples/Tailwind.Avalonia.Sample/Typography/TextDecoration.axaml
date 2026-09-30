@@ -47,6 +47,8 @@
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;line-through&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline line-through&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;overline&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline no-underline&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
@@ -98,6 +100,9 @@
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-2&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-dotted decoration-2&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-dashed decoration-2&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-2 decoration-sky-400 underline-offset-4&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-dotted decoration-2 decoration-sky-400 underline-offset-4&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-dashed decoration-2 decoration-sky-400 underline-offset-4&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel Spacing="10">
                                 <TextBlock FontSize="20" tw:Tw.Class="underline decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-solid (default)" />

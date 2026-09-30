@@ -47,6 +47,7 @@
                                 <x:String>&lt;Border tw:Tw.Class=&quot;ring-2 ring-sky-500&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;ring-4 ring-emerald-400/60&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;ring-2 ring-rose-500 shadow-lg&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;ring-[6px] ring-amber-400&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="20"

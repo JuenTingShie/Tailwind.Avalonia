@@ -47,6 +47,7 @@
                                 <x:String>&lt;Button tw:Tw.Class=&quot;bg-sky-600 disabled:bg-slate-400&quot; /&gt;</x:String>
                                 <x:String>&lt;ToggleButton tw:Tw.Class=&quot;bg-slate-600 checked:bg-emerald-600&quot; /&gt;</x:String>
                                 <x:String>&lt;Button tw:Tw.Class=&quot;bg-slate-600 focus-visible:bg-amber-600&quot; /&gt;</x:String>
+                                <x:String>&lt;Button tw:Tw.Class=&quot;disabled:bg-slate-400 disabled:text-slate-100 disabled:opacity-70&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="12"

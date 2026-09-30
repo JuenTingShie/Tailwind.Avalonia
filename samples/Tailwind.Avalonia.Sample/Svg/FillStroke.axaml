@@ -47,6 +47,7 @@
                                 <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-sky-500 stroke-sky-900 stroke-2&quot; /&gt;</x:String>
                                 <x:String>&lt;Rectangle tw:Tw.Class=&quot;fill-none stroke-rose-500 stroke-[4px]&quot; /&gt;</x:String>
                                 <x:String>&lt;Rectangle tw:Tw.Class=&quot;fill-amber-400 stroke-none&quot; /&gt;</x:String>
+                                <x:String>&lt;Rectangle tw:Tw.Class=&quot;fill-emerald-500 stroke-slate-700 stroke-1&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel Orientation="Horizontal" Spacing="24">
                                 <Ellipse Width="80" Height="80" tw:Tw.Class="fill-sky-500 stroke-sky-900 stroke-2" />

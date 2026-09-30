@@ -47,6 +47,7 @@
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 line-clamp-2&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 line-clamp-3&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 line-clamp-none&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;line-clamp-1&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="14">

@@ -47,6 +47,11 @@
                                 <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://.../pattern.png)]&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://.../photo.png)] bg-cover bg-center&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://.../photo.png)] bg-contain bg-no-repeat bg-center&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://Tailwind.Avalonia.Sample/Assets/pattern.png)]&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://Tailwind.Avalonia.Sample/Assets/pattern.png)] bg-no-repeat bg-center&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-cover bg-center&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-contain bg-no-repeat bg-center&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-[url(avares://Tailwind.Avalonia.Sample/Assets/photo.png)] bg-auto bg-no-repeat bg-bottom-right&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <WrapPanel Orientation="Horizontal" ItemSpacing="16" LineSpacing="16">
                                 <StackPanel Spacing="6">
