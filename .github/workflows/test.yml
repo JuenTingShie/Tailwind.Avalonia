@@ -8,6 +8,7 @@ on:
       - 'src/Tailwind.Avalonia/**'
       - 'samples/Tailwind.Avalonia.Sample.Browser/**'
       - 'samples/Tailwind.Avalonia.Sample/**'
+      - 'tests/**'
   pull_request:
     branches:
       - main
@@ -15,6 +16,7 @@ on:
       - 'src/Tailwind.Avalonia/**'
       - 'samples/Tailwind.Avalonia.Sample.Browser/**'
       - 'samples/Tailwind.Avalonia.Sample/**'
+      - 'tests/**'
   workflow_dispatch:
 
 jobs:
@@ -36,3 +38,6 @@ jobs:
 
       - name: Run platform tests
         run: dotnet test tests/Tailwind.Avalonia.PlatformTests/Tailwind.Avalonia.PlatformTests.csproj -c Release
+
+      - name: Run sample tests
+        run: dotnet test tests/Tailwind.Avalonia.Sample.Tests/Tailwind.Avalonia.Sample.Tests.csproj -c Release

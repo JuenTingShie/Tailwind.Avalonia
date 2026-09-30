@@ -53,7 +53,7 @@
                                 Width="220"
                                 HorizontalAlignment="Left">
                                     <Border
-                                        tw:Tw.Class="z-30 bg-red-500 w-24 h-16 p-2 rounded-lg text-white"
+                                        tw:Tw.Class="z-30 bg-red-500 w-24 h-16 p-2 rounded-lg"
                                         Margin="0,0,0,0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top">
@@ -61,7 +61,7 @@
                                             Text="z-30" />
                                     </Border>
                                     <Border
-                                        tw:Tw.Class="z-20 bg-sky-600 w-24 h-16 p-2 rounded-lg text-white"
+                                        tw:Tw.Class="z-20 bg-sky-600 w-24 h-16 p-2 rounded-lg"
                                         Margin="40,20,0,0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top">
@@ -69,7 +69,7 @@
                                             Text="z-20" />
                                     </Border>
                                     <Border
-                                        tw:Tw.Class="z-10 bg-emerald-600 w-24 h-16 p-2 rounded-lg text-white"
+                                        tw:Tw.Class="z-10 bg-emerald-600 w-24 h-16 p-2 rounded-lg"
                                         Margin="80,40,0,0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top">

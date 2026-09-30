@@ -56,31 +56,31 @@
                                 Width="520"
                                 HorizontalAlignment="Left">
                                 <Border
-                                    tw:Tw.Class="bg-slate-600 w-28 h-16 rounded-lg p-2 text-white">
+                                    tw:Tw.Class="bg-slate-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"
                                         Text="none" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="blur-xs bg-sky-600 w-28 h-16 rounded-lg p-2 text-white">
+                                    tw:Tw.Class="blur-xs bg-sky-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"
                                         Text="blur-xs" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="blur-sm bg-sky-600 w-28 h-16 rounded-lg p-2 text-white">
+                                    tw:Tw.Class="blur-sm bg-sky-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"
                                         Text="blur-sm" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="blur-md bg-sky-600 w-28 h-16 rounded-lg p-2 text-white">
+                                    tw:Tw.Class="blur-md bg-sky-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"
                                         Text="blur-md" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="blur-[3px] bg-sky-600 w-28 h-16 rounded-lg p-2 text-white">
+                                    tw:Tw.Class="blur-[3px] bg-sky-600 w-28 h-16 rounded-lg p-2">
                                     <TextBlock
                                         FontWeight="Bold"
                                         Text="blur-[3px]" />

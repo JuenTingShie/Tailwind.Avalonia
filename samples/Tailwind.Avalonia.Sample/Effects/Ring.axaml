@@ -56,31 +56,31 @@
                                 Width="520"
                                 HorizontalAlignment="Left">
                                 <Border
-                                    tw:Tw.Class="ring w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="ring w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"
                                         Text="ring" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="ring-2 ring-sky-500 w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="ring-2 ring-sky-500 w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"
                                         Text="ring-2 ring-sky-500" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="ring-4 ring-emerald-400/60 w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="ring-4 ring-emerald-400/60 w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"
                                         Text="ring-4 ring-emerald-400/60" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="ring-2 ring-rose-500 shadow-lg w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="ring-2 ring-rose-500 shadow-lg w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"
                                         Text="ring-2 ring-rose-500 shadow-lg" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="ring-[6px] ring-amber-400 w-32 h-14 rounded-lg bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="ring-[6px] ring-amber-400 w-32 h-14 rounded-lg bg-slate-700 p-2">
                                     <TextBlock
                                         FontSize="11"
                                         Text="ring-[6px] ring-amber-400" />

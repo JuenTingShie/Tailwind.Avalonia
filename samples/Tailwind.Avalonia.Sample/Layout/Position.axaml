@@ -49,34 +49,34 @@
                                 <x:String>&lt;Border tw:Tw.Class=&quot;left-24 top-14&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <Canvas
-                                tw:Tw.Class="w-72 h-40 rounded-md bg-slate-700"
+                                tw:Tw.Class="w-72 h-40 bg-slate-700"
                                 HorizontalAlignment="Left">
                                 <Border
-                                    tw:Tw.Class="left-2 top-2 w-20 h-10 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="left-2 top-2 w-20 h-10 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="left-2 top-2" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="right-2 top-2 w-20 h-10 rounded-md bg-emerald-600 text-white p-1">
+                                    tw:Tw.Class="right-2 top-2 w-20 h-10 rounded-md bg-emerald-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="right-2 top-2" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="left-2 bottom-2 w-20 h-10 rounded-md bg-rose-600 text-white p-1">
+                                    tw:Tw.Class="left-2 bottom-2 w-20 h-10 rounded-md bg-rose-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="left-2 bottom-2" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="right-2 bottom-2 w-20 h-10 rounded-md bg-amber-600 text-white p-1">
+                                    tw:Tw.Class="right-2 bottom-2 w-20 h-10 rounded-md bg-amber-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="right-2 bottom-2" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="left-24 top-14 w-20 h-10 rounded-md bg-violet-600 text-white p-1">
+                                    tw:Tw.Class="left-24 top-14 w-20 h-10 rounded-md bg-violet-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="left-24 top-14" />

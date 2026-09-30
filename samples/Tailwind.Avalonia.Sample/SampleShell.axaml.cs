@@ -60,7 +60,7 @@ public partial class SampleShell : UserControl
     }
 
     // Define the docs navigation tree so pages can be created only when first visited.
-    private static SampleShellSectionDescriptor[] CreateSections()
+    internal static SampleShellSectionDescriptor[] CreateSections()
     {
         return
         [

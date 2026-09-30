@@ -53,28 +53,28 @@
                                 Width="320"
                                 HorizontalAlignment="Left">
                                 <Border
-                                    tw:Tw.Class="w-full h-8 rounded-md bg-sky-600 text-white px-2">
+                                    tw:Tw.Class="w-full h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         VerticalAlignment="Center"
                                         FontSize="12"
                                         Text="w-full" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-48 h-8 rounded-md bg-sky-600 text-white px-2">
+                                    tw:Tw.Class="w-48 h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         VerticalAlignment="Center"
                                         FontSize="12"
                                         Text="w-48" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-48 w-auto h-8 rounded-md bg-sky-600 text-white px-2">
+                                    tw:Tw.Class="w-48 w-auto h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         VerticalAlignment="Center"
                                         FontSize="12"
                                         Text="w-48 w-auto (auto wins, it comes last)" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="size-10 rounded-full h-8 rounded-md bg-sky-600 text-white px-2">
+                                    tw:Tw.Class="size-10 rounded-full h-8 rounded-md bg-sky-600 px-2">
                                     <TextBlock
                                         VerticalAlignment="Center"
                                         FontSize="12"

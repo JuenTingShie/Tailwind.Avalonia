@@ -60,47 +60,47 @@
                                 Width="420"
                                 HorizontalAlignment="Left">
                                 <Border
-                                    tw:Tw.Class="cursor-default w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-default w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-default" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="cursor-pointer w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-pointer w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-pointer" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="cursor-text w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-text w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-text" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="cursor-wait w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-wait w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-wait" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="cursor-crosshair w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-crosshair w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-crosshair" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="cursor-move w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-move w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-move" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="cursor-help w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-help w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-help" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="cursor-not-allowed w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-not-allowed w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-not-allowed" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="cursor-none w-32 h-12 rounded-md bg-slate-700 text-white p-2">
+                                    tw:Tw.Class="cursor-none w-32 h-12 rounded-md bg-slate-700 p-2">
                                     <TextBlock
                                         Text="cursor-none" />
                                 </Border>
