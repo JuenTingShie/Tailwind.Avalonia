@@ -129,4 +129,82 @@ public class TwAnimationTests
             window.Close();
         });
     }
+
+    [Fact]
+    public void Defaults_Match_Tailwind_Keyframes()
+    {
+        HeadlessPlatformFixture.Run(() =>
+        {
+            var spin = new Border();
+            var pulse = new Border();
+
+            Tw.SetClass(spin, "animate-spin");
+            Tw.SetClass(pulse, "animate-pulse");
+
+            Assert.Equal(TimeSpan.FromSeconds(1), Tw.GetAnimationDefinition(spin)!.Duration);
+            Assert.Equal(TimeSpan.FromSeconds(2), Tw.GetAnimationDefinition(pulse)!.Duration);
+        });
+    }
+
+    [Fact]
+    public void Duration_Delay_And_Ease_Override_The_Animation_Timing()
+    {
+        HeadlessPlatformFixture.Run(() =>
+        {
+            var border = new Border();
+
+            Tw.SetClass(border, "animate-spin duration-500 delay-300 ease-in");
+
+            var animation = Tw.GetAnimationDefinition(border)!;
+            Assert.Equal(TimeSpan.FromMilliseconds(500), animation.Duration);
+            Assert.Equal(TimeSpan.FromMilliseconds(300), animation.Delay);
+            Assert.IsType<global::Avalonia.Animation.Easings.SplineEasing>(animation.Easing);
+        });
+    }
+
+    [Fact]
+    public void Arbitrary_Duration_And_Linear_Ease_Apply()
+    {
+        HeadlessPlatformFixture.Run(() =>
+        {
+            var border = new Border();
+
+            Tw.SetClass(border, "animate-pulse duration-[3s] ease-linear");
+
+            var animation = Tw.GetAnimationDefinition(border)!;
+            Assert.Equal(TimeSpan.FromSeconds(3), animation.Duration);
+            Assert.IsType<global::Avalonia.Animation.Easings.LinearEasing>(animation.Easing);
+        });
+    }
+
+    [Fact]
+    public void Changing_Duration_Restarts_With_The_New_Timing_And_Removing_It_Restores_Defaults()
+    {
+        HeadlessPlatformFixture.Run(() =>
+        {
+            var border = new Border();
+
+            Tw.SetClass(border, "animate-spin duration-500");
+            Assert.Equal(TimeSpan.FromMilliseconds(500), Tw.GetAnimationDefinition(border)!.Duration);
+
+            Tw.SetClass(border, "animate-spin duration-200");
+            Assert.Equal(TimeSpan.FromMilliseconds(200), Tw.GetAnimationDefinition(border)!.Duration);
+
+            Tw.SetClass(border, "animate-spin");
+            Assert.Equal(TimeSpan.FromSeconds(1), Tw.GetAnimationDefinition(border)!.Duration);
+        });
+    }
+
+    [Fact]
+    public void Timing_Utilities_Alone_Do_Not_Start_An_Animation()
+    {
+        HeadlessPlatformFixture.Run(() =>
+        {
+            var border = new Border();
+
+            Tw.SetClass(border, "duration-500 delay-300");
+
+            Assert.Null(Tw.GetActiveAnimation(border));
+        });
+    }
 }

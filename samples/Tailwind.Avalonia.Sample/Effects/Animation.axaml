@@ -15,7 +15,7 @@
                 <docs:DocsNote
                     Classes="supported"
                     Title="Implemented in this sample"
-                    Body="animate-spin rotates the element, animate-ping scales it up while fading out, animate-pulse fades it in and out, animate-bounce moves it up and down; animate-none stops the animation. An animation starts when the element enters the visual tree, stops when it leaves or the class is removed, and restores the values it was animating. It uses core Avalonia animations, so it works on every platform. Bounce approximates the CSS easing with a single ease curve, and spin/ping/bounce temporarily own the element RenderTransform." />
+                    Body="animate-spin rotates the element, animate-ping scales it up while fading out, animate-pulse fades it in and out, animate-bounce moves it up and down; animate-none stops the animation. An animation starts when the element enters the visual tree, stops when it leaves or the class is removed, and restores the values it was animating. It uses core Avalonia animations, so it works on every platform. duration-*, delay-* and ease-* in the same class list override the default timing (for example animate-spin duration-500). Bounce approximates the CSS easing with a single ease curve, and spin/ping/bounce temporarily own the element RenderTransform." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />
@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="animate-[...] · custom @keyframes · motion-reduce:" />
+                            Text="animate-[...] · custom @keyframes · motion-reduce: · iteration count / direction" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>
@@ -68,6 +68,37 @@
                                 <StackPanel Spacing="12" HorizontalAlignment="Center">
                                     <Border Width="40" Height="40" CornerRadius="20" tw:Tw.Class="bg-amber-500 animate-bounce" />
                                     <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-bounce" />
+                                </StackPanel>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Tuning the timing"
+                        Summary="duration-*, delay-* and ease-* change how fast an animation runs, when it starts and its easing. The three spinners differ only in their timing classes.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;animate-spin&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;animate-spin duration-500&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;animate-spin duration-[3s] ease-in-out&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;animate-pulse duration-500 delay-300&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Border Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin" />
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="1s (default)" />
+                                </StackPanel>
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Border Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin duration-500" />
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-500" />
+                                </StackPanel>
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Border Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin duration-[3s] ease-in-out" />
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-[3s] ease-in-out" />
+                                </StackPanel>
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Border Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-emerald-500 animate-pulse duration-500 delay-300" />
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-500 delay-300" />
                                 </StackPanel>
                             </StackPanel>
                         </docs:DocsExample>

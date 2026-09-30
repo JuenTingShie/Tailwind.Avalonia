@@ -591,7 +591,7 @@ public partial class Tw
         element.SetValue(AppliedMaskProperty, newMask);
 
         ApplyKeywordUtilities(element, keywordValues);
-        SyncAnimation(element, animationName);
+        SyncAnimation(element, animationName, TimingFrom(transitionState));
 
         ApplyVariantStyles(
             element,
