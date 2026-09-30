@@ -66,3 +66,39 @@ public class TwDecorationDetailAndInlineSizeTests
         Assert.Equal(128, border.MaxHeight);
     }
 }
+
+public class TwDecorationStyleTests
+{
+    [Fact]
+    public void SetClass_Dotted_Sets_Round_Dots()
+    {
+        var text = new TextBlock();
+
+        Tw.SetClass(text, "underline decoration-dotted decoration-2");
+
+        var decoration = Assert.Single(text.TextDecorations!);
+        Assert.Equal([0d, 2d], decoration.StrokeDashArray!.ToArray());
+        Assert.Equal(PenLineCap.Round, decoration.StrokeLineCap);
+    }
+
+    [Fact]
+    public void SetClass_Dashed_Sets_Dashes()
+    {
+        var text = new TextBlock();
+
+        Tw.SetClass(text, "line-through decoration-dashed");
+
+        Assert.Equal([4d, 3d], Assert.Single(text.TextDecorations!).StrokeDashArray!.ToArray());
+    }
+
+    [Fact]
+    public void SetClass_Solid_Overrides_Earlier_Style()
+    {
+        var text = new TextBlock();
+
+        Tw.SetClass(text, "underline decoration-dashed decoration-solid");
+
+        var decoration = Assert.Single(text.TextDecorations!);
+        Assert.True(decoration.StrokeDashArray is null or { Count: 0 });
+    }
+}

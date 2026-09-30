@@ -1,4 +1,5 @@
 using Avalonia;
+using Avalonia.Collections;
 using Avalonia.Layout;
 using Avalonia.Logging;
 using Avalonia.Media;
@@ -49,6 +50,7 @@ public partial class Tw
         var hasTextDecoration = false;
         var textDecorationLocations = new List<TextDecorationLocation>();
         double? decorationThickness = null;
+        string? decorationStyle = null;
         string? animationName = null;
         var hasNumericVariants = false;
         var numericFeatures = new List<string>();
@@ -285,6 +287,12 @@ public partial class Tw
                     numericFeatures.Add(numericFeature);
                 }
 
+                continue;
+            }
+
+            if (token is "decoration-solid" or "decoration-dotted" or "decoration-dashed")
+            {
+                decorationStyle = token["decoration-".Length..];
                 continue;
             }
 
@@ -535,6 +543,17 @@ public partial class Tw
                 if (decorationBrush is not null)
                 {
                     decoration.Stroke = decorationBrush;
+                }
+
+                // Dash lengths are multiples of the line thickness. Dotted uses round caps so the dots are round.
+                if (decorationStyle == "dotted")
+                {
+                    decoration.StrokeDashArray = new AvaloniaList<double> { 0, 2 };
+                    decoration.StrokeLineCap = PenLineCap.Round;
+                }
+                else if (decorationStyle == "dashed")
+                {
+                    decoration.StrokeDashArray = new AvaloniaList<double> { 4, 3 };
                 }
 
                 decorations.Add(decoration);

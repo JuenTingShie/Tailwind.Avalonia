@@ -106,7 +106,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | color                     |     ✅      | All platforms                                                                                |
 | text-decoration-line      |     ✅      | All platforms                                                                                |
 | text-decoration-color     |     ✅      | All platforms                                                                                |
-| text-decoration-style     |             | Not implemented: TextDecoration has dash arrays but rendering across platforms is unverified |
+| text-decoration-style     |     ✅      | solid / dotted / dashed only; double and wavy have no Avalonia equivalent                    |
 | text-decoration-thickness |     ✅      | All platforms                                                                                |
 | text-underline-offset     |     ✅      | All platforms                                                                                |
 | text-transform            |             | No Avalonia equivalent                                                                       |
