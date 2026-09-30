@@ -55,19 +55,19 @@
                                 Width="460"
                                 HorizontalAlignment="Left">
                                 <Border
-                                    tw:Tw.Class="scale-50 w-16 h-16 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="scale-50 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="scale-50" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="scale-125 w-16 h-16 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="scale-125 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="scale-125" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="-scale-x-100 w-16 h-16 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="-scale-x-100 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="-scale-x-100" />

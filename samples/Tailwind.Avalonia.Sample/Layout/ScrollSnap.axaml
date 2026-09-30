@@ -15,7 +15,7 @@
                 <docs:DocsNote
                     Classes="supported"
                     Title="Implemented in this sample"
-                    Body="snap-x, snap-y and snap-both turn on mandatory snap points for an axis, snap-none turns them off, and snap-start / snap-center / snap-end choose where the snap points align. Put them on a ScrollViewer whose content is a Panel (for example a StackPanel); its children are the snap points. Avalonia's built-in snapping only reacts to touch gestures, so Tailwind.Avalonia also settles the offset on the nearest child shortly after wheel or scrollbar scrolling stops. Snapping is always mandatory (no Avalonia has no &quot;proximity&quot; strictness, so snapping is always mandatoryquot;proximityAvalonia has no &quot;proximity&quot; strictness, so snapping is always mandatoryquot;), and alignment applies to the whole scroller instead of each child as in CSS." />
+                    Body="snap-x, snap-y and snap-both turn on mandatory snap points for an axis, snap-none turns them off, and snap-start / snap-center / snap-end choose where the snap points align. Put them on a ScrollViewer whose content is a Panel (for example a StackPanel); its children are the snap points. Avalonia's built-in snapping only reacts to touch gestures, so Tailwind.Avalonia also settles the offset on the nearest child shortly after wheel or scrollbar scrolling stops. Snapping is always mandatory (Avalonia has no &quot;proximity&quot; strictness), and alignment applies to the whole scroller instead of each child as in CSS." />
                 <docs:DocsUtilityTable
                     x:Name="UtilityTable"
                     CollapsedRowCount="6" />
@@ -40,23 +40,34 @@
                 <StackPanel
                     Classes="docs-exampleStack">
                     <docs:DocsSection
-                        Heading="Horizontal snapping"
-                        Summary="Scroll the strip horizontally; it settles on a card boundary.">
+                        Heading="Snapping a scroller"
+                        Summary="Scroll the strip horizontally or the list vertically; each settles on a child boundary.">
                         <docs:DocsExample>
                             <docs:DocsExample.Snippets>
                                 <x:String>&lt;ScrollViewer tw:Tw.Class=&quot;snap-x snap-start&quot; /&gt;</x:String>
                                 <x:String>&lt;ScrollViewer tw:Tw.Class=&quot;snap-both snap-center&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
-                            <ScrollViewer Width="420" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" tw:Tw.Class="snap-x snap-start">
-                                <StackPanel Orientation="Horizontal" Spacing="12">
-                                    <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 1" /></Border>
-                                    <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 2" /></Border>
-                                    <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 3" /></Border>
-                                    <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 4" /></Border>
-                                    <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 5" /></Border>
-                                    <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 6" /></Border>
-                                </StackPanel>
-                            </ScrollViewer>
+                            <StackPanel Spacing="20">
+                                <ScrollViewer Width="420" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" tw:Tw.Class="snap-x snap-start">
+                                    <StackPanel Orientation="Horizontal" Spacing="12">
+                                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 1" /></Border>
+                                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 2" /></Border>
+                                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 3" /></Border>
+                                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 4" /></Border>
+                                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 5" /></Border>
+                                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 6" /></Border>
+                                    </StackPanel>
+                                </ScrollViewer>
+                                <ScrollViewer Width="260" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-both snap-center">
+                                    <StackPanel Spacing="12">
+                                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 1" /></Border>
+                                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 2" /></Border>
+                                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 3" /></Border>
+                                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 4" /></Border>
+                                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 5" /></Border>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>
                 </StackPanel>

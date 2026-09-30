@@ -55,19 +55,19 @@
                                 Width="460"
                                 HorizontalAlignment="Left">
                                 <Border
-                                    tw:Tw.Class="rotate-12 w-16 h-16 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="rotate-12 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="rotate-12" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="-rotate-45 w-16 h-16 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="-rotate-45 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="-rotate-45" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="rotate-45 origin-top-left w-16 h-16 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="rotate-45 origin-top-left w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="rotate-45 origin-top-left" />

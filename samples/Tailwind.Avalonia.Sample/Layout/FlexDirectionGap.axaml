@@ -54,22 +54,22 @@
                             <StackPanel
                                 tw:Tw.Class="flex-row gap-2">
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="1" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="2" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="3" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="4" />
                                 </Border>
@@ -77,22 +77,22 @@
                             <StackPanel
                                 tw:Tw.Class="flex-col gap-4">
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="1" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="2" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="3" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="4" />
                                 </Border>
@@ -100,32 +100,32 @@
                             <WrapPanel
                                 tw:Tw.Class="w-48 gap-x-2 gap-y-4">
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="1" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="2" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="3" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="4" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="5" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="w-14 h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="6" />
                                 </Border>
@@ -137,28 +137,28 @@
                                 <Border
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    tw:Tw.Class="h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="1" />
                                 </Border>
                                 <Border
                                     Grid.Row="0"
                                     Grid.Column="1"
-                                    tw:Tw.Class="h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="2" />
                                 </Border>
                                 <Border
                                     Grid.Row="1"
                                     Grid.Column="0"
-                                    tw:Tw.Class="h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="3" />
                                 </Border>
                                 <Border
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    tw:Tw.Class="h-10 rounded-md bg-sky-600 text-white p-2">
+                                    tw:Tw.Class="h-10 rounded-md bg-sky-600 p-2">
                                     <TextBlock
                                         Text="4" />
                                 </Border>

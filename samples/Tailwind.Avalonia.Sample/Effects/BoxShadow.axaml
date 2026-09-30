@@ -197,7 +197,7 @@
                         Summary="inset-shadow-* (and shadow-inner) draw the shadow inside the box and can be combined with shadow-* and ring-*.">
                         <docs:DocsExample>
                             <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-slate-100 rounded-xl inset-shadow-sm p-6&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;bg-slate-100 rounded-xl inset-shadow-sm&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;inset-shadow-2xs&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;inset-shadow-xs&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;shadow-inner&quot; /&gt;</x:String>

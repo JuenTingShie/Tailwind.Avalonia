@@ -19,5 +19,7 @@
        Path="tests/Tailwind.Avalonia.Tests/Tailwind.Avalonia.Tests.csproj"/>
     <Project
        Path="tests/Tailwind.Avalonia.PlatformTests/Tailwind.Avalonia.PlatformTests.csproj"/>
+    <Project
+       Path="tests/Tailwind.Avalonia.Sample.Tests/Tailwind.Avalonia.Sample.Tests.csproj"/>
   </Folder>
 </Solution>

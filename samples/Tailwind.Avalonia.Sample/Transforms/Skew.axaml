@@ -43,13 +43,13 @@
                                 Width="460"
                                 HorizontalAlignment="Left">
                                 <Border
-                                    tw:Tw.Class="skew-x-12 w-16 h-16 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="skew-x-12 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="skew-x-12" />
                                 </Border>
                                 <Border
-                                    tw:Tw.Class="-skew-y-6 w-16 h-16 rounded-md bg-sky-600 text-white p-1">
+                                    tw:Tw.Class="-skew-y-6 w-16 h-16 rounded-md bg-sky-600 p-1">
                                     <TextBlock
                                         FontSize="11"
                                         Text="-skew-y-6" />
