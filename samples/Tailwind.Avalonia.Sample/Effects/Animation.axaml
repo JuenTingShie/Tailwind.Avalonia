@@ -103,6 +103,35 @@
                             </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Spinning the other way"
+                        Summary="animate-spin always turns clockwise. To spin counter-clockwise, mirror a wrapper with -scale-x-100, the same idiom used with Tailwind CSS. The dot marks one edge so the direction is visible.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;Grid tw:Tw.Class=&quot;animate-spin&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;-scale-x-100&quot;&gt;&lt;Grid tw:Tw.Class=&quot;animate-spin&quot; /&gt;&lt;/Border&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Grid Width="48" Height="48" tw:Tw.Class="animate-spin">
+                                        <Ellipse tw:Tw.Class="fill-sky-500" />
+                                        <Ellipse Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
+                                    </Grid>
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-spin (clockwise)" />
+                                </StackPanel>
+                                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                                    <Border Width="48" Height="48" tw:Tw.Class="-scale-x-100">
+                                        <Grid tw:Tw.Class="animate-spin">
+                                            <Ellipse tw:Tw.Class="fill-rose-500" />
+                                            <Ellipse Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
+                                        </Grid>
+                                    </Border>
+                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="-scale-x-100 wrapper (counter-clockwise)" />
+                                </StackPanel>
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
