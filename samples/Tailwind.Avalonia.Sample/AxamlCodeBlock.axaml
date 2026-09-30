@@ -18,7 +18,8 @@
         </Style>
     </UserControl.Styles>
     <UserControl.Content>
-        <Grid>
+        <Grid
+            ColumnDefinitions="*,Auto">
             <ae:TextEditor
                 x:Name="Editor"
                 Background="Transparent"
@@ -32,6 +33,7 @@
                 WordWrap="True" />
             <Button
                 x:Name="CopyButton"
+                Grid.Column="1"
                 Classes="docs-copyButton"
                 Click="OnCopyButtonClick"
                 Content="Copy"
