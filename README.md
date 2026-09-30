@@ -61,91 +61,95 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 ### Spacing
 
-| Utility | Implemented | Notes         |
-| ------- | :---------: | ------------- |
-| padding |     ✅      | All platforms |
-| margin  |     ✅      | All platforms |
+| Utility       | Implemented | Notes                                                                                              |
+| ------------- | :---------: | -------------------------------------------------------------------------------------------------- |
+| padding       |     ✅      | All platforms; numeric scale and arbitrary values (no p-(--var))                                   |
+| margin        |     ✅      | All platforms; m-auto / mx-auto are not supported (use HorizontalAlignment)                        |
+| space-between |     ✅      | space-x-* / space-y-* set panel spacing like gap-*; -space-* and space-*-reverse are not supported |
 
 ### Sizing
 
-| Utility         | Implemented | Notes         |
-| --------------- | :---------: | ------------- |
-| width           |     ✅      | All platforms |
-| min-width       |     ✅      | All platforms |
-| max-width       |     ✅      | All platforms |
-| height          |     ✅      | All platforms |
-| min-height      |     ✅      | All platforms |
-| max-height      |     ✅      | All platforms |
-| size            |     ✅      | All platforms |
-| inline-size     |     ✅      | All platforms |
-| min-inline-size |     ✅      | All platforms |
-| max-inline-size |     ✅      | All platforms |
-| block-size      |     ✅      | All platforms |
-| min-block-size  |     ✅      | All platforms |
-| max-block-size  |     ✅      | All platforms |
+| Utility         | Implemented | Notes                                                                                                               |
+| --------------- | :---------: | ------------------------------------------------------------------------------------------------------------------- |
+| width           |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| min-width       |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| max-width       |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| height          |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| min-height      |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| max-height      |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| size            |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| inline-size     |     ✅      | All platforms                                                                                                       |
+| min-inline-size |     ✅      | All platforms                                                                                                       |
+| max-inline-size |     ✅      | All platforms                                                                                                       |
+| block-size      |     ✅      | All platforms                                                                                                       |
+| min-block-size  |     ✅      | All platforms                                                                                                       |
+| max-block-size  |     ✅      | All platforms                                                                                                       |
 
 ### Typography
 
-| Utility                   | Implemented | Notes                                                                                        |
-| ------------------------- | :---------: | -------------------------------------------------------------------------------------------- |
-| font-family               |     ✅      | font-sans / serif / mono fallback stacks                                                     |
-| font-size                 |     ✅      | All platforms                                                                                |
-| font-smoothing            |             | Not implemented: the text rendering mode is not a public AvaloniaProperty in Avalonia 12     |
-| font-style                |     ✅      | All platforms                                                                                |
-| font-weight               |     ✅      | All platforms                                                                                |
-| font-stretch              |     ✅      | All platforms; visible only if the font provides the width variant                           |
-| font-variant-numeric      |     ✅      | All platforms; visible only if the font provides the OpenType feature                        |
-| font-feature-settings     |     ✅      | font-features-[tag,tag=0]; visible only if the font provides the feature                     |
-| letter-spacing            |     ✅      | All platforms                                                                                |
-| line-clamp                |     ✅      | All platforms                                                                                |
-| line-height               |     ✅      | All platforms                                                                                |
-| list-style-image          |             | No Avalonia equivalent (no list markers)                                                     |
-| list-style-position       |             | No Avalonia equivalent (no list markers)                                                     |
-| list-style-type           |             | No Avalonia equivalent (no list markers)                                                     |
-| text-align                |     ✅      | All platforms                                                                                |
-| color                     |     ✅      | All platforms                                                                                |
-| text-decoration-line      |     ✅      | All platforms                                                                                |
-| text-decoration-color     |     ✅      | All platforms                                                                                |
-| text-decoration-style     |     ✅      | solid / dotted / dashed only; double and wavy have no Avalonia equivalent                    |
-| text-decoration-thickness |     ✅      | All platforms                                                                                |
-| text-underline-offset     |     ✅      | All platforms                                                                                |
-| text-transform            |             | No Avalonia equivalent                                                                       |
-| text-overflow             |     ✅      | All platforms                                                                                |
-| text-wrap                 |     ✅      | All platforms                                                                                |
-| text-indent               |             | No Avalonia equivalent                                                                       |
-| tab-size                  |             | No Avalonia equivalent                                                                       |
-| vertical-align            |             | No Avalonia equivalent for inline text                                                       |
-| white-space               |             | Partial: whitespace-nowrap / whitespace-normal only (see also text-wrap)                     |
-| word-break                |             | No Avalonia equivalent (only TextWrapping)                                                   |
-| overflow-wrap             |             | No Avalonia equivalent (only TextWrapping)                                                   |
-| hyphens                   |             | No Avalonia equivalent                                                                       |
-| content                   |             | Not applicable: no generated content                                                         |
+| Utility                   | Implemented | Notes                                                                                               |
+| ------------------------- | :---------: | --------------------------------------------------------------------------------------------------- |
+| font-family               |     ✅      | font-sans / serif / mono fallback stacks                                                            |
+| font-size                 |     ✅      | All platforms                                                                                       |
+| font-smoothing            |             | Not implemented: the text rendering mode is not a public AvaloniaProperty in Avalonia 12            |
+| font-style                |     ✅      | All platforms                                                                                       |
+| font-weight               |     ✅      | All platforms                                                                                       |
+| font-stretch              |     ✅      | All platforms; visible only if the font provides the width variant                                  |
+| font-variant-numeric      |     ✅      | All platforms; visible only if the font provides the OpenType feature                               |
+| font-feature-settings     |     ✅      | font-features-[tag,tag=0]; visible only if the font provides the feature                            |
+| letter-spacing            |     ✅      | All platforms                                                                                       |
+| line-clamp                |     ✅      | All platforms                                                                                       |
+| line-height               |     ✅      | All platforms                                                                                       |
+| list-style-image          |             | No Avalonia equivalent (no list markers)                                                            |
+| list-style-position       |             | No Avalonia equivalent (no list markers)                                                            |
+| list-style-type           |             | No Avalonia equivalent (no list markers)                                                            |
+| text-align                |     ✅      | All platforms                                                                                       |
+| color                     |     ✅      | All platforms                                                                                       |
+| text-decoration-line      |     ✅      | All platforms                                                                                       |
+| text-decoration-color     |     ✅      | All platforms                                                                                       |
+| text-decoration-style     |     ✅      | solid / dotted / dashed only; double and wavy have no Avalonia equivalent                           |
+| text-decoration-thickness |     ✅      | All platforms                                                                                       |
+| text-underline-offset     |     ✅      | All platforms                                                                                       |
+| text-transform            |             | No Avalonia equivalent                                                                              |
+| text-overflow             |     ✅      | All platforms                                                                                       |
+| text-wrap                 |     ✅      | text-wrap / text-nowrap / text-ellipsis / text-clip; text-balance and text-pretty are not supported |
+| text-indent               |             | No Avalonia equivalent                                                                              |
+| tab-size                  |             | No Avalonia equivalent                                                                              |
+| vertical-align            |             | No Avalonia equivalent for inline text                                                              |
+| white-space               |             | Partial: whitespace-nowrap / whitespace-normal only (see also text-wrap); pre-* are not supported   |
+| word-break                |             | No Avalonia equivalent (only TextWrapping)                                                          |
+| overflow-wrap             |             | No Avalonia equivalent (only TextWrapping)                                                          |
+| hyphens                   |             | No Avalonia equivalent                                                                              |
+| content                   |             | Not applicable: no generated content                                                                |
 
 ### Backgrounds
 
-| Utility               | Implemented | Notes                                                                       |
-| --------------------- | :---------: | --------------------------------------------------------------------------- |
-| background-attachment |             | No Avalonia equivalent                                                      |
-| background-clip       |             | No Avalonia equivalent                                                      |
-| background-color      |     ✅      | All platforms                                                               |
+| Utility               | Implemented | Notes                                                                                            |
+| --------------------- | :---------: | ------------------------------------------------------------------------------------------------ |
+| background-attachment |             | No Avalonia equivalent                                                                           |
+| background-clip       |             | No Avalonia equivalent                                                                           |
+| background-color      |     ✅      | All platforms                                                                                    |
 | background-image      |     ✅      | Gradients (bg-gradient-to-*) and images (bg-[url(avares://...)]); remote URLs are not downloaded |
-| background-origin     |             | No Avalonia equivalent: the Background always covers the border box         |
-| background-position   |     ✅      | bg-center / top / bottom / left / right and corners via ImageBrush alignment |
-| background-repeat     |     ✅      | bg-repeat / bg-no-repeat only (no repeat-x / -y / -round / -space)          |
-| background-size       |     ✅      | bg-cover / bg-contain / bg-auto via ImageBrush.Stretch                      |
+| background-origin     |             | No Avalonia equivalent: the Background always covers the border box                              |
+| background-position   |     ✅      | bg-center / top / bottom / left / right and corners via ImageBrush alignment                     |
+| background-repeat     |     ✅      | bg-repeat / bg-no-repeat only (no repeat-x / -y / -round / -space)                               |
+| background-size       |     ✅      | bg-cover / bg-contain / bg-auto via ImageBrush.Stretch                                           |
 
 ### Borders
 
-| Utility        | Implemented | Notes                                                               |
-| -------------- | :---------: | ------------------------------------------------------------------- |
-| border-radius  |     ✅      | All platforms                                                       |
-| border-width   |     ✅      | All platforms                                                       |
-| border-color   |     ✅      | All platforms                                                       |
-| border-style   |             | Wontfix (#58): Avalonia borders are always solid                    |
-| outline-width  |             | Not implemented: no outline primitive; ring-* covers the common use |
-| outline-color  |             | Not implemented: no outline primitive; ring-* covers the common use |
-| outline-style  |             | Not implemented: no outline primitive; ring-* covers the common use |
-| outline-offset |             | Not implemented: no outline primitive; ring-* covers the common use |
+| Utility        | Implemented | Notes                                                                              |
+| -------------- | :---------: | ---------------------------------------------------------------------------------- |
+| border-radius  |     ✅      | All platforms                                                                      |
+| border-width   |     ✅      | All platforms                                                                      |
+| border-color   |     ✅      | All platforms                                                                      |
+| border-style   |             | Wontfix (#58): Avalonia borders are always solid                                   |
+| outline-width  |             | Not implemented: no outline primitive; ring-* covers the common use                |
+| outline-color  |             | Not implemented: no outline primitive; ring-* covers the common use                |
+| outline-style  |             | Not implemented: no outline primitive; ring-* covers the common use                |
+| outline-offset |             | Not implemented: no outline primitive; ring-* covers the common use                |
+| divide-width   |             | Not implemented: no between-children borders (add borders to the children instead) |
+| divide-color   |             | Not implemented: no between-children borders (add borders to the children instead) |
+| divide-style   |             | Not implemented: no between-children borders; borders are always solid             |
 
 ### Effects
 
@@ -247,7 +251,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | scroll-padding    |             | No Avalonia equivalent                                                                                 |
 | scroll-snap-align |     ✅      | snap-start / center / end apply to the whole ScrollViewer, not each child                              |
 | scroll-snap-stop  |             | Not implemented: Avalonia sets snap points on the ScrollViewer, not per child, so CSS semantics differ |
-| scroll-snap-type  |     ✅      | snap-x / snap-y / snap-both / snap-none; always mandatory; also snaps after wheel/scrollbar scrolling |
+| scroll-snap-type  |     ✅      | snap-x / snap-y / snap-both / snap-none; always mandatory; also snaps after wheel/scrollbar scrolling  |
 | touch-action      |             | No Avalonia equivalent                                                                                 |
 | user-select       |             | No Avalonia equivalent (selection depends on the control type)                                         |
 | will-change       |             | Not applicable                                                                                         |
@@ -262,8 +266,9 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 ### Accessibility
 
-| Utility             | Implemented | Notes          |
-| ------------------- | :---------: | -------------- |
-| forced-color-adjust |             | Not applicable |
+| Utility                  | Implemented | Notes                                                                                   |
+| ------------------------ | :---------: | --------------------------------------------------------------------------------------- |
+| forced-color-adjust      |             | Not applicable                                                                          |
+| screen readers (sr-only) |             | Not implemented: no Avalonia equivalent for visually hidden, screen-reader-only content |
 
 Additionally, `hover:`, `pressed:`, `focus:`, `focus-visible:`, `checked:`, `disabled:`, `first:`, `last:`, `odd:`, and `even:` variants are supported for the color (`bg-`, `text-`, `border-`) and `opacity-*` utilities above — see [CHANGELOG.md](CHANGELOG.md).
