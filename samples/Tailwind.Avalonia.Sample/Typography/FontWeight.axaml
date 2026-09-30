@@ -51,10 +51,12 @@
                         tw:Tw.Class="font-normal"
                         Text="font-normal" />
                     <TextBlock
+                        docs:DocsCode.Show="True"
                         FontSize="20"
                         tw:Tw.Class="font-medium"
                         Text="font-medium" />
                     <TextBlock
+                        docs:DocsCode.Show="True"
                         FontSize="20"
                         tw:Tw.Class="font-semibold"
                         Text="font-semibold" />

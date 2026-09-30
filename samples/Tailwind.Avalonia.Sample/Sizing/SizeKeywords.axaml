@@ -45,20 +45,24 @@
                             Text="w-48" />
                     </Border>
                     <Border
+                        docs:DocsCode.Show="True"
                         tw:Tw.Class="w-48 w-auto h-8 rounded-md bg-sky-600 px-2">
                         <TextBlock
                             VerticalAlignment="Center"
                             FontSize="12"
                             Text="w-48 w-auto (auto wins, it comes last)" />
                     </Border>
-                    <Border
-                        docs:DocsCode.Show="True"
-                        tw:Tw.Class="size-10 rounded-full h-8 rounded-md bg-sky-600 px-2">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <Border
+                            docs:DocsCode.Show="True"
+                            tw:Tw.Class="size-10 rounded-full bg-sky-600" />
                         <TextBlock
                             VerticalAlignment="Center"
                             FontSize="12"
-                            Text="size-10" />
-                    </Border>
+                            Text="size-10 (40 × 40)" />
+                    </StackPanel>
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>

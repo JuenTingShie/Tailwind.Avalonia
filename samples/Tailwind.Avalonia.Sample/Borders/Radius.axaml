@@ -162,22 +162,22 @@
                     Spacing="6">
                     <TextBlock
                         Classes="docs-tableClass"
-                        Text="rounded-s-lg → LTR: top-left + bottom-left · RTL: top-right + bottom-right" />
+                        Text="rounded-s-lg -> LTR: top-left + bottom-left · RTL: top-right + bottom-right" />
                     <TextBlock
                         Classes="docs-tableClass"
-                        Text="rounded-e-lg → LTR: top-right + bottom-right · RTL: top-left + bottom-left" />
+                        Text="rounded-e-lg -> LTR: top-right + bottom-right · RTL: top-left + bottom-left" />
                     <TextBlock
                         Classes="docs-tableClass"
-                        Text="rounded-ss-lg → LTR: top-left · RTL: top-right" />
+                        Text="rounded-ss-lg -> LTR: top-left · RTL: top-right" />
                     <TextBlock
                         Classes="docs-tableClass"
-                        Text="rounded-se-lg → LTR: top-right · RTL: top-left" />
+                        Text="rounded-se-lg -> LTR: top-right · RTL: top-left" />
                     <TextBlock
                         Classes="docs-tableClass"
-                        Text="rounded-es-lg → LTR: bottom-left · RTL: bottom-right" />
+                        Text="rounded-es-lg -> LTR: bottom-left · RTL: bottom-right" />
                     <TextBlock
                         Classes="docs-tableClass"
-                        Text="rounded-ee-lg → LTR: bottom-right · RTL: bottom-left" />
+                        Text="rounded-ee-lg -> LTR: bottom-right · RTL: bottom-left" />
                 </StackPanel>
             </docs:DocsNote>
         </docs:DocsSection>

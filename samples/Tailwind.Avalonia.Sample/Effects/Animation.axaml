@@ -35,7 +35,7 @@
                     <StackPanel Spacing="12" HorizontalAlignment="Center">
                         <Grid Width="40" Height="40">
                             <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-rose-400 animate-ping" />
-                            <Ellipse Width="20" Height="20" tw:Tw.Class="fill-rose-500" />
+                            <Ellipse Width="20" Height="20" Fill="#F43F5E" />
                         </Grid>
                         <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-ping" />
                     </StackPanel>

@@ -8,7 +8,7 @@
         Section="Layout"
         Title="Overflow"
         Intro="Utilities for controlling how content that exceeds its container is drawn. They map to Avalonia&#x27;s ClipToBounds property."
-        Supported="overflow-hidden and overflow-clip set ClipToBounds to true, and overflow-visible sets it to false. Removing the class restores the control&#x27;s default. Avalonia panels and borders can only clip or not clip, so scroll and per-axis variants are not mapped.">
+        Supported="overflow-hidden and overflow-clip set ClipToBounds to true, and overflow-visible sets it to false. Removing the class restores the control&#x27;s default. Avalonia panels and borders can only clip or not clip; on a ScrollViewer, overflow-x-* and overflow-y-* set the scrollbar visibility of each axis, and overscroll-* controls scroll chaining.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="overflow-hidden" AxamlStyle="ClipToBounds: true" />
             <docs:UtilityReferenceRow ClassName="overflow-clip" AxamlStyle="ClipToBounds: true" />

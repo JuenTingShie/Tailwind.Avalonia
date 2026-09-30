@@ -6,7 +6,7 @@
     x:Class="Tailwind.Avalonia.Sample.Interactivity.MoreVariants">
     <docs:DocsPage
         Section="Interactivity"
-        Title="Disabled, checked and focus-visible variants"
+        Title="More variants"
         Intro="State variants that apply a color or opacity utility only while the control is in that state. They select on Avalonia&#x27;s :disabled, :checked and :focus-visible pseudo-classes."
         Supported="disabled:, checked: and focus-visible: work like hover:, pressed: and focus: and accept the same utilities: background, text and border colors and opacity. disabled: follows IsEnabled, checked: follows IsChecked on ToggleButton, CheckBox and RadioButton, and focus-visible: applies when the control has keyboard focus. When several states are active at once the later one in the list disabled, checked, focus-visible, focus, pressed, hover wins, so disabled beats hover. Other utilities, such as padding, are ignored in a variant with a warning. The variants are pseudo-class Styles, so they work on every target.">
         <docs:DocsPage.Utilities>

@@ -23,7 +23,7 @@
             <docs:DocsExample>
                 <StackPanel
                     Spacing="12"
-                    Width="320"
+                    Width="420"
                     HorizontalAlignment="Left">
                     <TextBox
                         docs:DocsCode.Show="True"

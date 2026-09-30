@@ -199,6 +199,7 @@
                     <StackPanel
                         Spacing="0">
                         <Border
+                            docs:DocsCode.Show="True"
                             tw:Tw.Class="bg-sky-400 w-60 p-4"
                             CornerRadius="12">
                             <TextBlock
@@ -232,14 +233,6 @@
                     Body="The visualized side-mapping demo below adds ScaleTransform only to cancel Avalonia&apos;s automatic RTL mirror for teaching. In the real RTL demo, layout logic is applied first, then Avalonia&apos;s mirror changes the final rendered side. Real app usage is the unmodified RTL rendering demo and the code examples below." />
                 <docs:DocsExample
                     CodeLabel="Actual usage">
-                    <docs:DocsExample.Snippets>
-                        <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="ms-8" /&gt;</x:String>
-                        <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="me-8" /&gt;</x:String>
-                        <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="msv-8" /&gt;</x:String>
-                        <x:String>&lt;Border FlowDirection="LeftToRight" tw:Tw.Class="mev-8" /&gt;</x:String>
-                        <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="msv-8" /&gt;</x:String>
-                        <x:String>&lt;Border FlowDirection="RightToLeft" tw:Tw.Class="mev-8" /&gt;</x:String>
-                    </docs:DocsExample.Snippets>
                     <StackPanel
                         Spacing="24">
                         <StackPanel
@@ -281,13 +274,17 @@
                                             <docs:MarginSpecimen
                                                 FlowDirection="RightToLeft"
                                                 Frame="h-20"
-                                                Box="bg-lime-500 ms-8" />
+                                                Box="bg-lime-500 ms-8"
+                                                ShowCode="True"
+                                                CodeAttributes="FlowDirection" />
                                         </docs:DirectionRow>
                                         <docs:DirectionRow Start="end -&gt;" End="&lt;- start">
                                             <docs:MarginSpecimen
                                                 FlowDirection="RightToLeft"
                                                 Frame="h-20"
-                                                Box="bg-cyan-500 me-8" />
+                                                Box="bg-cyan-500 me-8"
+                                                ShowCode="True"
+                                                CodeAttributes="FlowDirection" />
                                         </docs:DirectionRow>
                                     </StackPanel>
                                 </docs:DirectionCompare.RightToLeft>
@@ -370,11 +367,15 @@
                                         <docs:MarginSpecimen
                                             FlowDirection="LeftToRight"
                                             Frame="h-20"
-                                            Box="bg-lime-500 ms-8" />
+                                            Box="bg-lime-500 ms-8"
+                                            ShowCode="True"
+                                            CodeAttributes="FlowDirection" />
                                         <docs:MarginSpecimen
                                             FlowDirection="LeftToRight"
                                             Frame="h-20"
-                                            Box="bg-cyan-500 me-8" />
+                                            Box="bg-cyan-500 me-8"
+                                            ShowCode="True"
+                                            CodeAttributes="FlowDirection" />
                                     </StackPanel>
                                 </docs:DirectionCompare.LeftToRight>
                                 <docs:DirectionCompare.RightToLeft>
@@ -440,13 +441,17 @@
                                             <docs:MarginSpecimen
                                                 FlowDirection="LeftToRight"
                                                 Frame="h-20"
-                                                Box="bg-lime-500 msv-8" />
+                                                Box="bg-lime-500 msv-8"
+                                                ShowCode="True"
+                                                CodeAttributes="FlowDirection" />
                                         </docs:DirectionRow>
                                         <docs:DirectionRow Start="start -&gt;" End="&lt;- end">
                                             <docs:MarginSpecimen
                                                 FlowDirection="LeftToRight"
                                                 Frame="h-20"
-                                                Box="bg-cyan-500 mev-8" />
+                                                Box="bg-cyan-500 mev-8"
+                                                ShowCode="True"
+                                                CodeAttributes="FlowDirection" />
                                         </docs:DirectionRow>
                                     </StackPanel>
                                 </docs:DirectionCompare.LeftToRight>
@@ -458,13 +463,17 @@
                                             <docs:MarginSpecimen
                                                 FlowDirection="RightToLeft"
                                                 Frame="h-20"
-                                                Box="bg-lime-500 msv-8" />
+                                                Box="bg-lime-500 msv-8"
+                                                ShowCode="True"
+                                                CodeAttributes="FlowDirection" />
                                         </docs:DirectionRow>
                                         <docs:DirectionRow Start="end -&gt;" End="&lt;- start">
                                             <docs:MarginSpecimen
                                                 FlowDirection="RightToLeft"
                                                 Frame="h-20"
-                                                Box="bg-cyan-500 mev-8" />
+                                                Box="bg-cyan-500 mev-8"
+                                                ShowCode="True"
+                                                CodeAttributes="FlowDirection" />
                                         </docs:DirectionRow>
                                     </StackPanel>
                                 </docs:DirectionCompare.RightToLeft>
@@ -526,6 +535,7 @@
                             <StackPanel
                                 Spacing="0">
                                 <Border
+                                    docs:DocsCode.Show="True"
                                     tw:Tw.Class="bg-sky-400 w-60 p-4"
                                     CornerRadius="12">
                                     <TextBlock

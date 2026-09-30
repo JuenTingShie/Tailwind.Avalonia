@@ -1,4 +1,6 @@
 using System.Text.RegularExpressions;
+using Avalonia;
+using Avalonia.VisualTree;
 using Avalonia.Controls;
 using Avalonia.LogicalTree;
 using Tailwind.Avalonia.Sample.Docs;
@@ -135,4 +137,52 @@ public partial class SamplePageTests
 
     [GeneratedRegex("tw:Tw\\.Class=\"([^\"]*)\"")]
     private static partial Regex ClassAttribute();
+}
+
+public class SamplePageQualityTests
+{
+    // When one element in a row of demos prints its code, its siblings that carry classes are demos too.
+    [Theory]
+    [MemberData(nameof(SamplePageTests.Pages), MemberType = typeof(SamplePageTests))]
+    public void Siblings_Of_A_Shown_Element_Are_Shown_Too(string section, string page)
+    {
+        var problems = new List<string>();
+
+        SampleHeadless.Run(() =>
+        {
+            var view = SamplePageTests.Open(section, page);
+
+            foreach (var example in view.GetLogicalDescendants().OfType<DocsExample>())
+            {
+                if (example.Content is not ILogical content)
+                {
+                    continue;
+                }
+
+                var shown = content.GetSelfAndLogicalDescendants().OfType<global::Avalonia.AvaloniaObject>().Where(DocsCode.GetShow).ToList();
+
+                foreach (var parent in shown.Select(e => ((ILogical)e).LogicalParent).Distinct())
+                {
+                    if (parent is null)
+                    {
+                        continue;
+                    }
+
+                    var type = shown.First(e => ((ILogical)e).LogicalParent == parent).GetType();
+
+                    foreach (var sibling in parent.LogicalChildren.OfType<global::Avalonia.AvaloniaObject>())
+                    {
+                        if (sibling.GetType() == type && !DocsCode.GetShow(sibling) && Tw.GetClass(sibling) is { Length: > 0 } classes
+                            && !shown.Any(e => Tw.GetClass(e) == classes)
+                            && !(sibling is StyledElement styled && styled.Classes.Any(c => c.StartsWith("docs-", StringComparison.Ordinal))))
+                        {
+                            problems.Add($"{type.Name} [{classes}] sits next to shown demos but has no code");
+                        }
+                    }
+                }
+            }
+        });
+
+        Assert.True(problems.Count == 0, string.Join(Environment.NewLine, problems));
+    }
 }

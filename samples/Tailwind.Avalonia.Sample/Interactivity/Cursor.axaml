@@ -38,55 +38,55 @@
                     HorizontalAlignment="Left">
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-default w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-default w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-default" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-pointer w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-pointer w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-pointer" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-text w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-text w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-text" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-wait w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-wait w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-wait" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-crosshair w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-crosshair w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-crosshair" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-move w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-move w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-move" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-help w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-help w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-help" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-not-allowed w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-not-allowed w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-not-allowed" />
                     </Border>
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="cursor-none w-32 h-12 rounded-md bg-slate-700 p-2">
+                        tw:Tw.Class="cursor-none w-44 h-12 rounded-md bg-slate-700 p-2">
                         <TextBlock
                             Text="cursor-none" />
                     </Border>
