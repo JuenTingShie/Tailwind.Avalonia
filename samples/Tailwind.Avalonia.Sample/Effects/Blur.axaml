@@ -47,6 +47,7 @@
                                 <x:String>&lt;Border tw:Tw.Class=&quot;blur-sm&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;blur-md&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;blur-[3px]&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;blur-xs&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="28"

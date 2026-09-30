@@ -47,6 +47,7 @@
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;text-base tracking-tighter&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;text-base tracking-widest&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;text-base tracking-[6px]&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;tracking-normal&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
@@ -77,6 +78,7 @@
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 text-sm text-wrap leading-tight&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 text-sm text-wrap leading-loose&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;w-72 text-sm text-wrap leading-10&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;text-wrap leading-normal&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">

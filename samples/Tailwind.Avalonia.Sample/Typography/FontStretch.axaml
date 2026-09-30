@@ -46,6 +46,7 @@
                             <docs:DocsExample.Snippets>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-stretch-condensed&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-stretch-expanded&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-stretch-normal&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel Spacing="8">
                                 <TextBlock FontSize="20" tw:Tw.Class="font-stretch-condensed" Text="font-stretch-condensed" />

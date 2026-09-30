@@ -47,6 +47,12 @@
                                 <x:String>&lt;Border tw:Tw.Class=&quot;cursor-pointer&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;cursor-not-allowed&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;cursor-text&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-default&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-wait&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-crosshair&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-move&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-help&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;cursor-none&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="8"

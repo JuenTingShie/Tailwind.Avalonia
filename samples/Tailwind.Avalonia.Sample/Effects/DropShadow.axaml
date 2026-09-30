@@ -46,6 +46,8 @@
                             <docs:DocsExample.Snippets>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;drop-shadow-md&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;drop-shadow-xl&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;drop-shadow-sm&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;drop-shadow-2xl&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <Border
                                 tw:Tw.Class="bg-slate-200 rounded-lg p-8"

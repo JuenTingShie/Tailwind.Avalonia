@@ -48,6 +48,7 @@
                                 <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-rose-400 animate-ping&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;animate-pulse&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;animate-bounce&quot; /&gt;</x:String>
+                                <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-rose-500&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
                                 <StackPanel Spacing="12" HorizontalAlignment="Center">
@@ -111,6 +112,9 @@
                             <docs:DocsExample.Snippets>
                                 <x:String>&lt;Grid tw:Tw.Class=&quot;animate-spin&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;-scale-x-100&quot;&gt;&lt;Grid tw:Tw.Class=&quot;animate-spin&quot; /&gt;&lt;/Border&gt;</x:String>
+                                <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-sky-500&quot; /&gt;</x:String>
+                                <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-white&quot; /&gt;</x:String>
+                                <x:String>&lt;Ellipse tw:Tw.Class=&quot;fill-rose-500&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
                                 <StackPanel Spacing="12" HorizontalAlignment="Center">

@@ -47,6 +47,7 @@
                                 <x:String>&lt;Border tw:Tw.Class=&quot;self-end&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;justify-self-end&quot; /&gt;</x:String>
                                 <x:String>&lt;Border tw:Tw.Class=&quot;place-self-center&quot; /&gt;</x:String>
+                                <x:String>&lt;Border tw:Tw.Class=&quot;self-start&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <WrapPanel
                                 ItemSpacing="12"

@@ -46,6 +46,7 @@
                             <docs:DocsExample.Snippets>
                                 <x:String>&lt;Button tw:Tw.Class=&quot;pointer-events-auto&quot; /&gt;</x:String>
                                 <x:String>&lt;Button tw:Tw.Class=&quot;pointer-events-none&quot; /&gt;</x:String>
+                                <x:String>&lt;Button tw:Tw.Class=&quot;pointer-events-none opacity-60&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">

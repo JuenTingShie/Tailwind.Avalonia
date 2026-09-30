@@ -48,6 +48,9 @@
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-normal&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-bold&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-black&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-extralight&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-light&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-extrabold&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
@@ -99,6 +102,7 @@
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-bold text-2xl text-sky-300&quot; /&gt;</x:String>
                                 <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-normal font-black&quot; /&gt;</x:String>
                                 <x:String>&lt;Button tw:Tw.Class=&quot;font-semibold bg-emerald-500 px-4 py-2&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;font-light&quot; /&gt;</x:String>
                             </docs:DocsExample.Snippets>
                             <StackPanel
                                 Spacing="10">
