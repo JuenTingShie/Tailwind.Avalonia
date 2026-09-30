@@ -7,65 +7,40 @@
     <docs:DocsPage
         Section="Typography"
         Title="Line clamp"
-        Intro="Utilities for limiting how many lines of text are shown. They map to Avalonia&#x27;s MaxLines, TextTrimming and TextWrapping properties.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="line-clamp-&lt;n&gt; sets MaxLines to n, TextTrimming to CharacterEllipsis and TextWrapping to Wrap, so the text wraps and the last visible line ends with an ellipsis. line-clamp-none removes the limit again. Removing the class restores the defaults. The text needs a constrained width, for example w-72, to wrap in the first place. These are TextBlock properties, so other elements ignore the token with a warning. Text layout is done by Avalonia itself, so it behaves the same on desktop, browser and mobile targets." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="line-clamp-[n] · line-clamp-(&lt;custom-property&gt;)" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for limiting how many lines of text are shown. They map to Avalonia&#x27;s MaxLines, TextTrimming and TextWrapping properties."
+        Supported="line-clamp-&lt;n&gt; sets MaxLines to n, TextTrimming to CharacterEllipsis and TextWrapping to Wrap, so the text wraps and the last visible line ends with an ellipsis. line-clamp-none removes the limit again. Removing the class restores the defaults. The text needs a constrained width, for example w-72, to wrap in the first place. These are TextBlock properties, so other elements ignore the token with a warning. Text layout is done by Avalonia itself, so it behaves the same on desktop, browser and mobile targets.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="line-clamp-&lt;n&gt;" AxamlStyle="MaxLines: n; TextTrimming: CharacterEllipsis; TextWrapping: Wrap" />
+            <docs:UtilityReferenceRow ClassName="line-clamp-none" AxamlStyle="MaxLines: 0; TextTrimming: None" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="line-clamp-[n] · line-clamp-(&lt;custom-property&gt;)" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
+        <docs:DocsSection
+            Heading="Clamping to a number of lines"
+            Summary="Each paragraph is 18rem wide and carries the real class. The last one has no limit.">
+            <docs:DocsExample>
                 <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Clamping to a number of lines"
-                        Summary="Each paragraph is 18rem wide and carries the real class. The last one has no limit.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="14">
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-72 text-sm line-clamp-1"
-                                    Text="line-clamp-1: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-72 text-sm line-clamp-2"
-                                    Text="line-clamp-2: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-72 text-sm line-clamp-3"
-                                    Text="line-clamp-3: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-72 text-sm line-clamp-none"
-                                    Text="line-clamp-none: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+                    Spacing="14">
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-72 text-sm line-clamp-1"
+                        Text="line-clamp-1: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-72 text-sm line-clamp-2"
+                        Text="line-clamp-2: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-72 text-sm line-clamp-3"
+                        Text="line-clamp-3: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-72 text-sm line-clamp-none"
+                        Text="line-clamp-none: Line clamping shortens a long paragraph to a fixed number of lines and ends the last visible line with an ellipsis, so cards and lists keep an even height no matter how much text they hold." />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

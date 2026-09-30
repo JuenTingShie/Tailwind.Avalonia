@@ -7,82 +7,60 @@
     <docs:DocsPage
         Section="Sizing"
         Title="Size keywords"
-        Intro="Keyword sizes for width and height: full, auto, size-* and none. They map to Width, Height, MaxWidth, MaxHeight and the alignment properties.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="w-full and h-full let layout decide the size and set HorizontalAlignment or VerticalAlignment to Stretch, so the element fills its parent. w-auto and h-auto remove an explicit Width or Height. size-&lt;n&gt; sets Width and Height together using the spacing scale, and size-auto clears both. max-w-none and max-h-none lift a maximum. The last class on a property wins, so w-48 after w-full gives a fixed width and w-full after w-48 stretches. An explicit alignment class such as justify-self-center is kept over w-full. Fractions such as w-1/2, w-screen and w-fit are not mapped, since they depend on the parent&#x27;s size. All of these are ordinary layout properties available on every target." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="w-1/2 and other fractions · w-screen · w-fit / w-min / w-max · size-full · min-w-full" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Keyword sizes for width and height: full, auto, size-* and none. They map to Width, Height, MaxWidth, MaxHeight and the alignment properties."
+        Supported="w-full and h-full let layout decide the size and set HorizontalAlignment or VerticalAlignment to Stretch, so the element fills its parent. w-auto and h-auto remove an explicit Width or Height. size-&lt;n&gt; sets Width and Height together using the spacing scale, and size-auto clears both. max-w-none and max-h-none lift a maximum. The last class on a property wins, so w-48 after w-full gives a fixed width and w-full after w-48 stretches. An explicit alignment class such as justify-self-center is kept over w-full. Fractions such as w-1/2, w-screen and w-fit are not mapped, since they depend on the parent&#x27;s size. All of these are ordinary layout properties available on every target.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="w-full / h-full" AxamlStyle="Stretch alignment, Width/Height auto" />
+            <docs:UtilityReferenceRow ClassName="w-auto / h-auto" AxamlStyle="Width/Height: auto" />
+            <docs:UtilityReferenceRow ClassName="size-&lt;n&gt;" AxamlStyle="Width and Height: n * 4px" />
+            <docs:UtilityReferenceRow ClassName="size-auto" AxamlStyle="Width and Height: auto" />
+            <docs:UtilityReferenceRow ClassName="max-w-none / max-h-none" AxamlStyle="MaxWidth/MaxHeight: unlimited" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="w-1/2 and other fractions · w-screen · w-fit / w-min / w-max · size-full · min-w-full" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
+        <docs:DocsSection
+            Heading="Full, fixed, auto and size"
+            Summary="The bars sit inside a 20rem StackPanel. The first one fills it, the second has a fixed width, the third shows auto overriding a fixed width, and the last one uses size-10.">
+            <docs:DocsExample>
                 <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Full, fixed, auto and size"
-                        Summary="The bars sit inside a 20rem StackPanel. The first one fills it, the second has a fixed width, the third shows auto overriding a fixed width, and the last one uses size-10.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="8"
-                                Width="320"
-                                HorizontalAlignment="Left">
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-full h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        FontSize="12"
-                                        Text="w-full" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-48 h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        FontSize="12"
-                                        Text="w-48" />
-                                </Border>
-                                <Border
-                                    tw:Tw.Class="w-48 w-auto h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        FontSize="12"
-                                        Text="w-48 w-auto (auto wins, it comes last)" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="size-10 rounded-full h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        FontSize="12"
-                                        Text="size-10" />
-                                </Border>
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+                    Spacing="8"
+                    Width="320"
+                    HorizontalAlignment="Left">
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-full h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Text="w-full" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-48 h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Text="w-48" />
+                    </Border>
+                    <Border
+                        tw:Tw.Class="w-48 w-auto h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Text="w-48 w-auto (auto wins, it comes last)" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="size-10 rounded-full h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Text="size-10" />
+                    </Border>
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

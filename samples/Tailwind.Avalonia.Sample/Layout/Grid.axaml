@@ -7,52 +7,33 @@
     <docs:DocsPage
         Section="Layout"
         Title="Grid"
-        Intro="Utilities for placing children in a Grid. grid-cols-N and grid-rows-N create equal star tracks, while col-start, row-start, col-span and row-span set the attached Grid properties (1-based like CSS).">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="grid-cols-N and grid-rows-N replace the Grid ColumnDefinitions or RowDefinitions with N star tracks; other elements ignore them. col-start/row-start/col-span/row-span set Grid.Column, Grid.Row, Grid.ColumnSpan and Grid.RowSpan on any child. Removing a class restores the default. These are core Avalonia properties and work on desktop, Browser and mobile." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="grid-cols-[...] · grid-flow-* · auto-cols-* · order-*" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for placing children in a Grid. grid-cols-N and grid-rows-N create equal star tracks, while col-start, row-start, col-span and row-span set the attached Grid properties (1-based like CSS)."
+        Supported="grid-cols-N and grid-rows-N replace the Grid ColumnDefinitions or RowDefinitions with N star tracks; other elements ignore them. col-start/row-start/col-span/row-span set Grid.Column, Grid.Row, Grid.ColumnSpan and Grid.RowSpan on any child. Removing a class restores the default. These are core Avalonia properties and work on desktop, Browser and mobile.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="grid-cols-&lt;n&gt;" AxamlStyle="Grid.ColumnDefinitions: n star columns" />
+            <docs:UtilityReferenceRow ClassName="grid-rows-&lt;n&gt;" AxamlStyle="Grid.RowDefinitions: n star rows" />
+            <docs:UtilityReferenceRow ClassName="col-start-&lt;n&gt;" AxamlStyle="Grid.Column: n - 1" />
+            <docs:UtilityReferenceRow ClassName="row-start-&lt;n&gt;" AxamlStyle="Grid.Row: n - 1" />
+            <docs:UtilityReferenceRow ClassName="col-span-&lt;n&gt;" AxamlStyle="Grid.ColumnSpan: n" />
+            <docs:UtilityReferenceRow ClassName="row-span-&lt;n&gt;" AxamlStyle="Grid.RowSpan: n" />
+            <docs:UtilityReferenceRow ClassName="col-span-full" AxamlStyle="Grid.ColumnSpan: all columns" />
+            <docs:UtilityReferenceRow ClassName="row-span-full" AxamlStyle="Grid.RowSpan: all rows" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="grid-cols-[...] · grid-flow-* · auto-cols-* · order-*" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Columns, rows and spans"
-                        Summary="The grid below has three columns and two rows; the first cell spans two columns and the amber cell starts in column 2.">
-                        <docs:DocsExample>
-                            <Grid docs:DocsCode.Show="True" tw:Tw.Class="grid-cols-3 grid-rows-2 gap-2" Width="360" Height="120">
-                                <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-sky-500 col-span-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-span-2" /></Border>
-                                <Border tw:Tw.Class="bg-emerald-500" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="1" /></Border>
-                                <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-amber-500 col-start-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-start-2" /></Border>
-                                <Border tw:Tw.Class="bg-rose-500" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="3" /></Border>
-                            </Grid>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        <docs:DocsSection
+            Heading="Columns, rows and spans"
+            Summary="The grid below has three columns and two rows; the first cell spans two columns and the amber cell starts in column 2.">
+            <docs:DocsExample>
+                <Grid docs:DocsCode.Show="True" tw:Tw.Class="grid-cols-3 grid-rows-2 gap-2" Width="360" Height="120">
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-sky-500 col-span-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-span-2" /></Border>
+                    <Border tw:Tw.Class="bg-emerald-500" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="1" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-amber-500 col-start-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-start-2" /></Border>
+                    <Border tw:Tw.Class="bg-rose-500" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="3" /></Border>
+                </Grid>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

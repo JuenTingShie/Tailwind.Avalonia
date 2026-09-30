@@ -7,97 +7,80 @@
     <docs:DocsPage
         Section="Typography"
         Title="Text decoration"
-        Intro="Utilities for underlining, overlining or striking through text. They map to Avalonia&#x27;s TextDecorations property.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="underline, overline and line-through add a text decoration and can be combined, and no-underline clears every decoration set before it in the same class list. Removing the classes restores the default. TextDecorations is a TextBlock property, so elements without it ignore the token with a warning. Decoration rendering is done by Avalonia&#x27;s text engine, so it looks the same on desktop, browser and mobile targets." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="decoration-double / wavy · hover:underline" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for underlining, overlining or striking through text. They map to Avalonia&#x27;s TextDecorations property."
+        Supported="underline, overline and line-through add a text decoration and can be combined, and no-underline clears every decoration set before it in the same class list. Removing the classes restores the default. TextDecorations is a TextBlock property, so elements without it ignore the token with a warning. Decoration rendering is done by Avalonia&#x27;s text engine, so it looks the same on desktop, browser and mobile targets.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="underline" AxamlStyle="TextDecorations: Underline" />
+            <docs:UtilityReferenceRow ClassName="overline" AxamlStyle="TextDecorations: Overline" />
+            <docs:UtilityReferenceRow ClassName="line-through" AxamlStyle="TextDecorations: Strikethrough" />
+            <docs:UtilityReferenceRow ClassName="no-underline" AxamlStyle="TextDecorations: none" />
+            <docs:UtilityReferenceRow ClassName="decoration-&lt;0|1|2|4|8&gt;" AxamlStyle="TextDecoration.StrokeThickness (px)" />
+            <docs:UtilityReferenceRow ClassName="decoration-[&lt;px&gt;]" AxamlStyle="TextDecoration.StrokeThickness (px)" />
+            <docs:UtilityReferenceRow ClassName="decoration-&lt;color&gt;" AxamlStyle="TextDecoration.Stroke" />
+            <docs:UtilityReferenceRow ClassName="underline-offset-&lt;0|1|2|4|8&gt;" AxamlStyle="TextDecoration.StrokeOffset (px)" />
+            <docs:UtilityReferenceRow ClassName="decoration-solid / dotted / dashed" AxamlStyle="TextDecoration.StrokeDashArray" />
+            <docs:UtilityReferenceRow ClassName="decoration-auto / underline-offset-auto" AxamlStyle="font recommended metrics" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="decoration-double / wavy · hover:underline" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
+        <docs:DocsSection
+            Heading="Underline, overline and line-through"
+            Summary="Each TextBlock carries the real classes. The last one combines two decorations and the last shows no-underline clearing the underline before it.">
+            <docs:DocsExample>
                 <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Underline, overline and line-through"
-                        Summary="Each TextBlock carries the real classes. The last one combines two decorations and the last shows no-underline clearing the underline before it.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="10">
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    FontSize="18"
-                                    tw:Tw.Class="underline"
-                                    Text="underline" />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    FontSize="18"
-                                    tw:Tw.Class="overline"
-                                    Text="overline" />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    FontSize="18"
-                                    tw:Tw.Class="line-through"
-                                    Text="line-through" />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    FontSize="18"
-                                    tw:Tw.Class="underline line-through"
-                                    Text="underline line-through" />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    FontSize="18"
-                                    tw:Tw.Class="underline no-underline"
-                                    Text="underline no-underline" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-                    <docs:DocsSection
-                        Heading="Thickness, offset and color"
-                        Summary="decoration-N sets the line thickness, underline-offset-N moves it away from the text and decoration-color changes its color. They only take effect together with underline, overline or line-through.">
-                        <docs:DocsExample>
-                            <StackPanel Spacing="10">
-                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline decoration-4 decoration-sky-400" Text="underline decoration-4 decoration-sky-400" />
-                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline underline-offset-4 decoration-rose-500" Text="underline underline-offset-4 decoration-rose-500" />
-                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="line-through decoration-2 decoration-amber-400" Text="line-through decoration-2 decoration-amber-400" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="Line style"
-                        Summary="decoration-solid, decoration-dotted and decoration-dashed change the line pattern. double and wavy have no Avalonia equivalent. Combine with decoration-2 so the pattern is easy to see.">
-                        <docs:DocsExample>
-                            <StackPanel Spacing="10">
-                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-solid (default)" />
-                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline decoration-dotted decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-dotted" />
-                                <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline decoration-dashed decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-dashed" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+                    Spacing="10">
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        FontSize="18"
+                        tw:Tw.Class="underline"
+                        Text="underline" />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        FontSize="18"
+                        tw:Tw.Class="overline"
+                        Text="overline" />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        FontSize="18"
+                        tw:Tw.Class="line-through"
+                        Text="line-through" />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        FontSize="18"
+                        tw:Tw.Class="underline line-through"
+                        Text="underline line-through" />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        FontSize="18"
+                        tw:Tw.Class="underline no-underline"
+                        Text="underline no-underline" />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+        <docs:DocsSection
+            Heading="Thickness, offset and color"
+            Summary="decoration-N sets the line thickness, underline-offset-N moves it away from the text and decoration-color changes its color. They only take effect together with underline, overline or line-through.">
+            <docs:DocsExample>
+                <StackPanel Spacing="10">
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline decoration-4 decoration-sky-400" Text="underline decoration-4 decoration-sky-400" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline underline-offset-4 decoration-rose-500" Text="underline underline-offset-4 decoration-rose-500" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="line-through decoration-2 decoration-amber-400" Text="line-through decoration-2 decoration-amber-400" />
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Line style"
+            Summary="decoration-solid, decoration-dotted and decoration-dashed change the line pattern. double and wavy have no Avalonia equivalent. Combine with decoration-2 so the pattern is easy to see.">
+            <docs:DocsExample>
+                <StackPanel Spacing="10">
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-solid (default)" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline decoration-dotted decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-dotted" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="20" tw:Tw.Class="underline decoration-dashed decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-dashed" />
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

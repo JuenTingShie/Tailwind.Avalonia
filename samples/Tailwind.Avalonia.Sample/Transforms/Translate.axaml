@@ -7,74 +7,52 @@
     <docs:DocsPage
         Section="Transforms"
         Title="Translate"
-        Intro="Utilities for moving an element. They map to Avalonia&#x27;s RenderTransform.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="rotate-*, scale-*, translate-*, skew-* and origin-* build one RenderTransform (and RenderTransformOrigin) for the element. Several transform classes on one element combine, with the translation applied outermost as in CSS, so it is not rotated or scaled. rotate and skew take degrees (rotate-45, rotate-[30deg]), scale takes percentages (scale-150 is 1.5x), translate uses the spacing scale (translate-x-4 is 16px) and a leading minus reverses the sign. Like CSS transforms, RenderTransform does not change layout. It is available on every visual on every target." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="translate-x-full · translate-x-1/2 · translate-z-*" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for moving an element. They map to Avalonia&#x27;s RenderTransform."
+        Supported="rotate-*, scale-*, translate-*, skew-* and origin-* build one RenderTransform (and RenderTransformOrigin) for the element. Several transform classes on one element combine, with the translation applied outermost as in CSS, so it is not rotated or scaled. rotate and skew take degrees (rotate-45, rotate-[30deg]), scale takes percentages (scale-150 is 1.5x), translate uses the spacing scale (translate-x-4 is 16px) and a leading minus reverses the sign. Like CSS transforms, RenderTransform does not change layout. It is available on every visual on every target.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="translate-x-&lt;n&gt;" AxamlStyle="move horizontally by n * 4px" />
+            <docs:UtilityReferenceRow ClassName="translate-y-&lt;n&gt;" AxamlStyle="move vertically by n * 4px" />
+            <docs:UtilityReferenceRow ClassName="-translate-x-&lt;n&gt;" AxamlStyle="move left" />
+            <docs:UtilityReferenceRow ClassName="translate-&lt;n&gt;" AxamlStyle="move on both axes" />
+            <docs:UtilityReferenceRow ClassName="translate-x-[&lt;px&gt;]" AxamlStyle="arbitrary pixels" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="translate-x-full · translate-x-1/2 · translate-z-*" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Moving without changing layout"
-                        Summary="The transform moves only the drawing, not the layout, so the space each box occupies does not change.">
-                        <docs:DocsExample>
-                            <WrapPanel
-                                ItemSpacing="36"
-                                LineSpacing="36"
-                                Margin="24"
-                                Width="460"
-                                HorizontalAlignment="Left">
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="translate-x-4 w-16 h-16 rounded-md bg-sky-600 p-1">
-                                    <TextBlock
-                                        FontSize="11"
-                                        Text="translate-x-4" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="translate-y-4 w-16 h-16 rounded-md bg-sky-600 p-1">
-                                    <TextBlock
-                                        FontSize="11"
-                                        Text="translate-y-4" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="-translate-x-2 translate-y-2 w-16 h-16 rounded-md bg-sky-600 p-1">
-                                    <TextBlock
-                                        FontSize="11"
-                                        Text="-translate-x-2 translate-y-2" />
-                                </Border>
-                            </WrapPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        <docs:DocsSection
+            Heading="Moving without changing layout"
+            Summary="The transform moves only the drawing, not the layout, so the space each box occupies does not change.">
+            <docs:DocsExample>
+                <WrapPanel
+                    ItemSpacing="36"
+                    LineSpacing="36"
+                    Margin="24"
+                    Width="460"
+                    HorizontalAlignment="Left">
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="translate-x-4 w-16 h-16 rounded-md bg-sky-600 p-1">
+                        <TextBlock
+                            FontSize="11"
+                            Text="translate-x-4" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="translate-y-4 w-16 h-16 rounded-md bg-sky-600 p-1">
+                        <TextBlock
+                            FontSize="11"
+                            Text="translate-y-4" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="-translate-x-2 translate-y-2 w-16 h-16 rounded-md bg-sky-600 p-1">
+                        <TextBlock
+                            FontSize="11"
+                            Text="-translate-x-2 translate-y-2" />
+                    </Border>
+                </WrapPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

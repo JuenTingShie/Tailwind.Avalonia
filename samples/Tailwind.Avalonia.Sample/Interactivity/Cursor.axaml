@@ -7,106 +7,91 @@
     <docs:DocsPage
         Section="Interactivity"
         Title="Cursor"
-        Intro="Utilities for choosing the mouse pointer shown over an element. They map to Avalonia&#x27;s Cursor property with the standard cursor shapes.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="cursor-default, cursor-auto, cursor-pointer, cursor-text, cursor-wait, cursor-progress, cursor-crosshair, cursor-move, cursor-help, cursor-not-allowed, cursor-none, cursor-ew-resize and cursor-ns-resize set Cursor on any InputElement. The cursor is created when the class is applied because it needs the platform&#x27;s cursor service; if a target has none, the utility is ignored with a warning instead of throwing. Touch-only targets have no pointer, so the class has no visible effect there. Move the mouse over each box to see its pointer." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="cursor-grab · cursor-grabbing · cursor-zoom-in · cursor-[url(...)] · other resize cursors" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for choosing the mouse pointer shown over an element. They map to Avalonia&#x27;s Cursor property with the standard cursor shapes."
+        Supported="cursor-default, cursor-auto, cursor-pointer, cursor-text, cursor-wait, cursor-progress, cursor-crosshair, cursor-move, cursor-help, cursor-not-allowed, cursor-none, cursor-ew-resize and cursor-ns-resize set Cursor on any InputElement. The cursor is created when the class is applied because it needs the platform&#x27;s cursor service; if a target has none, the utility is ignored with a warning instead of throwing. Touch-only targets have no pointer, so the class has no visible effect there. Move the mouse over each box to see its pointer.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="cursor-default" AxamlStyle="Cursor: Arrow" />
+            <docs:UtilityReferenceRow ClassName="cursor-pointer" AxamlStyle="Cursor: Hand" />
+            <docs:UtilityReferenceRow ClassName="cursor-text" AxamlStyle="Cursor: IBeam" />
+            <docs:UtilityReferenceRow ClassName="cursor-wait" AxamlStyle="Cursor: Wait" />
+            <docs:UtilityReferenceRow ClassName="cursor-progress" AxamlStyle="Cursor: AppStarting" />
+            <docs:UtilityReferenceRow ClassName="cursor-crosshair" AxamlStyle="Cursor: Cross" />
+            <docs:UtilityReferenceRow ClassName="cursor-move" AxamlStyle="Cursor: SizeAll" />
+            <docs:UtilityReferenceRow ClassName="cursor-help" AxamlStyle="Cursor: Help" />
+            <docs:UtilityReferenceRow ClassName="cursor-not-allowed" AxamlStyle="Cursor: No" />
+            <docs:UtilityReferenceRow ClassName="cursor-none" AxamlStyle="Cursor: None" />
+            <docs:UtilityReferenceRow ClassName="cursor-ew-resize" AxamlStyle="Cursor: SizeWestEast" />
+            <docs:UtilityReferenceRow ClassName="cursor-ns-resize" AxamlStyle="Cursor: SizeNorthSouth" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="cursor-grab · cursor-grabbing · cursor-zoom-in · cursor-[url(...)] · other resize cursors" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Pointer shapes"
-                        Summary="Hover over each box to see its pointer. The screenshots and touch targets do not show a pointer, so this example is best tried with a mouse.">
-                        <docs:DocsExample>
-                            <WrapPanel
-                                ItemSpacing="8"
-                                LineSpacing="8"
-                                Width="420"
-                                HorizontalAlignment="Left">
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-default w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-default" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-pointer w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-pointer" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-text w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-text" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-wait w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-wait" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-crosshair w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-crosshair" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-move w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-move" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-help w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-help" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-not-allowed w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-not-allowed" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="cursor-none w-32 h-12 rounded-md bg-slate-700 p-2">
-                                    <TextBlock
-                                        Text="cursor-none" />
-                                </Border>
-                            </WrapPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        <docs:DocsSection
+            Heading="Pointer shapes"
+            Summary="Hover over each box to see its pointer. The screenshots and touch targets do not show a pointer, so this example is best tried with a mouse.">
+            <docs:DocsExample>
+                <WrapPanel
+                    ItemSpacing="8"
+                    LineSpacing="8"
+                    Width="420"
+                    HorizontalAlignment="Left">
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-default w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-default" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-pointer w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-pointer" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-text w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-text" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-wait w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-wait" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-crosshair w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-crosshair" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-move w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-move" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-help w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-help" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-not-allowed w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-not-allowed" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="cursor-none w-32 h-12 rounded-md bg-slate-700 p-2">
+                        <TextBlock
+                            Text="cursor-none" />
+                    </Border>
+                </WrapPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

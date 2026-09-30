@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Avalonia;
+using Avalonia.Collections;
+using Avalonia.Metadata;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 
@@ -14,9 +16,6 @@ namespace Tailwind.Avalonia.Sample.Docs;
 /// </summary>
 public class DocsUtilityTable : TemplatedControl
 {
-    public static readonly StyledProperty<IReadOnlyList<UtilityReferenceRow>?> RowsProperty =
-        AvaloniaProperty.Register<DocsUtilityTable, IReadOnlyList<UtilityReferenceRow>?>(nameof(Rows));
-
     public static readonly StyledProperty<int> CollapsedRowCountProperty =
         AvaloniaProperty.Register<DocsUtilityTable, int>(nameof(CollapsedRowCount), 5);
 
@@ -39,18 +38,22 @@ public class DocsUtilityTable : TemplatedControl
 
     static DocsUtilityTable()
     {
-        RowsProperty.Changed.AddClassHandler<DocsUtilityTable>((table, _) => table.Refresh());
         CollapsedRowCountProperty.Changed.AddClassHandler<DocsUtilityTable>((table, _) => table.Refresh());
     }
 
     /// <summary>
-    /// Full row set for the utility family.
+    /// Initializes the table and re-slices it whenever rows are added in AXAML.
     /// </summary>
-    public IReadOnlyList<UtilityReferenceRow>? Rows
+    public DocsUtilityTable()
     {
-        get => GetValue(RowsProperty);
-        set => SetValue(RowsProperty, value);
+        Rows.CollectionChanged += (_, _) => Refresh();
     }
+
+    /// <summary>
+    /// Full row set for the utility family, declared as AXAML children.
+    /// </summary>
+    [Content]
+    public AvaloniaList<UtilityReferenceRow> Rows { get; } = [];
 
     /// <summary>
     /// How many rows stay visible before the reader opts into the rest.
@@ -116,7 +119,7 @@ public class DocsUtilityTable : TemplatedControl
     // Recompute the rendered slice, the toggle label, and whether a toggle is warranted.
     private void Refresh()
     {
-        var allRows = Rows ?? [];
+        IReadOnlyList<UtilityReferenceRow> allRows = Rows;
         var collapsedCount = CollapsedRowCount < 0 ? 0 : CollapsedRowCount;
         var isCollapsible = allRows.Count > collapsedCount;
 

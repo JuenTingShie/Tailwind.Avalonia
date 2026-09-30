@@ -7,118 +7,100 @@
     <docs:DocsPage
         Section="Interactivity"
         Title="Pseudo-class variants"
-        Intro="Prefix a color or opacity utility with hover:, pressed:, or focus: to apply it only while the control is in that state. Variants compile down to real Avalonia :pointerover, :pressed, and :focus styles, not manual event handlers.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="hover:, pressed:, and focus: work on the bg-*, text-*, and border-* color utilities and on opacity-*. They map to Avalonia's :pointerover, :pressed, and :focus pseudo-classes. No other utility family accepts a variant prefix yet; a variant on an unsupported utility such as hover:p-4 logs the usual unrecognized-token warning." />
-            </StackPanel>
+        Intro="Prefix a color or opacity utility with hover:, pressed:, or focus: to apply it only while the control is in that state. Variants compile down to real Avalonia :pointerover, :pressed, and :focus styles, not manual event handlers."
+        Supported="hover:, pressed:, and focus: work on the bg-*, text-*, and border-* color utilities and on opacity-*. They map to Avalonia's :pointerover, :pressed, and :focus pseudo-classes. No other utility family accepts a variant prefix yet; a variant on an unsupported utility such as hover:p-4 logs the usual unrecognized-token warning.">
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
+        <docs:DocsSection
+            Heading="hover:"
+            Summary="The base bg-blue-500 applies at rest; hover:bg-blue-700 takes over while the pointer is over the control.">
+            <docs:DocsExample>
                 <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="hover:"
-                        Summary="The base bg-blue-500 applies at rest; hover:bg-blue-700 takes over while the pointer is over the control.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="14">
-                                <TextBlock
-                                    Classes="docs-hint"
-                                    Text="Move the pointer over the button." />
-                                <Button
-                                    docs:DocsCode.Show="True"
-                                    CornerRadius="10"
-                                    BorderThickness="0"
-                                    HorizontalAlignment="Left"
-                                    tw:Tw.Class="bg-blue-500 hover:bg-blue-700 text-white px-[18px] py-3.5"
-                                    Content="bg-blue-500 hover:bg-blue-700" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="pressed:"
-                        Summary="pressed:opacity-50 applies only while the pointer is held down over the control.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="14">
-                                <TextBlock
-                                    Classes="docs-hint"
-                                    Text="Click and hold the button." />
-                                <Button
-                                    docs:DocsCode.Show="True"
-                                    CornerRadius="10"
-                                    BorderThickness="0"
-                                    HorizontalAlignment="Left"
-                                    tw:Tw.Class="bg-emerald-500 opacity-100 pressed:opacity-50 text-slate-950 px-[18px] py-3.5"
-                                    Content="opacity-100 pressed:opacity-50" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="focus:"
-                        Summary="focus:border-sky-400 applies only while the control holds keyboard focus.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="14">
-                                <TextBlock
-                                    Classes="docs-hint"
-                                    Text="Click into the text box, or tab to it." />
-                                <TextBox
-                                    docs:DocsCode.Show="True"
-                                    CornerRadius="10"
-                                    BorderThickness="2"
-                                    HorizontalAlignment="Left"
-                                    tw:Tw.Class="bg-slate-900 border-slate-700 focus:border-sky-400 text-white w-80 px-3.5 py-2.5"
-                                    Text="focus:border-sky-400" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="Stacking multiple variants"
-                        Summary="A control can take more than one variant token at once. Hover the button, then also press it: pressed:bg-green-500 wins over hover:bg-red-500 while both states are active, because Pressed is declared after Hover and its style is added later.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="14">
-                                <TextBlock
-                                    Classes="docs-hint"
-                                    Text="Hover the button, then press and hold." />
-                                <Button
-                                    docs:DocsCode.Show="True"
-                                    CornerRadius="10"
-                                    BorderThickness="0"
-                                    HorizontalAlignment="Left"
-                                    tw:Tw.Class="bg-blue-500 hover:bg-red-500 pressed:bg-green-500 text-white px-[18px] py-3.5"
-                                    Content="hover:bg-red-500 pressed:bg-green-500" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="Unsupported utilities"
-                        Summary="Variant prefixes only recognize bg-*, text-*, border-*, and opacity-* remainders. A token like hover:p-4 is not silently dropped - it logs the same unrecognized-utility warning as any other unknown token, citing the full variant-prefixed token.">
-                        <docs:DocsNote
-                            Classes="gap muted"
-                            Title="Not implemented"
-                            Body="Spacing, sizing, and font-size utilities do not accept hover:, pressed:, or focus: prefixes yet.">
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="hover:p-4 · hover:w-24 · focus:text-sm" />
-                        </docs:DocsNote>
-                    </docs:DocsSection>
+                    Spacing="14">
+                    <TextBlock
+                        Classes="docs-hint"
+                        Text="Move the pointer over the button." />
+                    <Button
+                        docs:DocsCode.Show="True"
+                        CornerRadius="10"
+                        BorderThickness="0"
+                        HorizontalAlignment="Left"
+                        tw:Tw.Class="bg-blue-500 hover:bg-blue-700 text-white px-[18px] py-3.5"
+                        Content="bg-blue-500 hover:bg-blue-700" />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="pressed:"
+            Summary="pressed:opacity-50 applies only while the pointer is held down over the control.">
+            <docs:DocsExample>
+                <StackPanel
+                    Spacing="14">
+                    <TextBlock
+                        Classes="docs-hint"
+                        Text="Click and hold the button." />
+                    <Button
+                        docs:DocsCode.Show="True"
+                        CornerRadius="10"
+                        BorderThickness="0"
+                        HorizontalAlignment="Left"
+                        tw:Tw.Class="bg-emerald-500 opacity-100 pressed:opacity-50 text-slate-950 px-[18px] py-3.5"
+                        Content="opacity-100 pressed:opacity-50" />
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="focus:"
+            Summary="focus:border-sky-400 applies only while the control holds keyboard focus.">
+            <docs:DocsExample>
+                <StackPanel
+                    Spacing="14">
+                    <TextBlock
+                        Classes="docs-hint"
+                        Text="Click into the text box, or tab to it." />
+                    <TextBox
+                        docs:DocsCode.Show="True"
+                        CornerRadius="10"
+                        BorderThickness="2"
+                        HorizontalAlignment="Left"
+                        tw:Tw.Class="bg-slate-900 border-slate-700 focus:border-sky-400 text-white w-80 px-3.5 py-2.5"
+                        Text="focus:border-sky-400" />
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Stacking multiple variants"
+            Summary="A control can take more than one variant token at once. Hover the button, then also press it: pressed:bg-green-500 wins over hover:bg-red-500 while both states are active, because Pressed is declared after Hover and its style is added later.">
+            <docs:DocsExample>
+                <StackPanel
+                    Spacing="14">
+                    <TextBlock
+                        Classes="docs-hint"
+                        Text="Hover the button, then press and hold." />
+                    <Button
+                        docs:DocsCode.Show="True"
+                        CornerRadius="10"
+                        BorderThickness="0"
+                        HorizontalAlignment="Left"
+                        tw:Tw.Class="bg-blue-500 hover:bg-red-500 pressed:bg-green-500 text-white px-[18px] py-3.5"
+                        Content="hover:bg-red-500 pressed:bg-green-500" />
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Unsupported utilities"
+            Summary="Variant prefixes only recognize bg-*, text-*, border-*, and opacity-* remainders. A token like hover:p-4 is not silently dropped - it logs the same unrecognized-utility warning as any other unknown token, citing the full variant-prefixed token.">
+            <docs:DocsNote
+                Classes="gap muted"
+                Title="Not implemented"
+                Body="Spacing, sizing, and font-size utilities do not accept hover:, pressed:, or focus: prefixes yet.">
+                <TextBlock
+                    Classes="docs-tableClass"
+                    Text="hover:p-4 · hover:w-24 · focus:text-sm" />
+            </docs:DocsNote>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

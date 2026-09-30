@@ -7,69 +7,51 @@
     <docs:DocsPage
         Section="Effects"
         Title="Transitions"
-        Intro="Utilities for animating a property change instead of applying it instantly. They create Avalonia Transitions for the element.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="transition, transition-all, transition-colors, transition-opacity, transition-transform and transition-shadow choose what is animated. Colors covers Background, Foreground and BorderBrush, opacity covers Opacity, transform covers RenderTransform and shadow covers BoxShadow. duration-&lt;ms&gt; (or duration-[0.5s]) sets the length, 150ms by default, delay-&lt;ms&gt; delays the start, and ease-linear, ease-in, ease-out and ease-in-out set the easing, with ease-in-out as the default. transition-none removes them. Timing classes only matter together with a transition-* class. A transition animates whatever changes the value, for example a hover: variant or code that sets the property later, and it uses the property of the element&#x27;s own type, so the utilities apply to elements that have those properties. Removing the classes clears the transitions. Avalonia&#x27;s animation system is the same on every target. Hover over each button to see the difference." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="transition-[&lt;property&gt;] · transition-behavior · ease-[cubic-bezier(...)] · duration-initial · motion-safe: / motion-reduce:" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for animating a property change instead of applying it instantly. They create Avalonia Transitions for the element."
+        Supported="transition, transition-all, transition-colors, transition-opacity, transition-transform and transition-shadow choose what is animated. Colors covers Background, Foreground and BorderBrush, opacity covers Opacity, transform covers RenderTransform and shadow covers BoxShadow. duration-&lt;ms&gt; (or duration-[0.5s]) sets the length, 150ms by default, delay-&lt;ms&gt; delays the start, and ease-linear, ease-in, ease-out and ease-in-out set the easing, with ease-in-out as the default. transition-none removes them. Timing classes only matter together with a transition-* class. A transition animates whatever changes the value, for example a hover: variant or code that sets the property later, and it uses the property of the element&#x27;s own type, so the utilities apply to elements that have those properties. Removing the classes clears the transitions. Avalonia&#x27;s animation system is the same on every target. Hover over each button to see the difference.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="transition / transition-all" AxamlStyle="colors, opacity, transform and shadow" />
+            <docs:UtilityReferenceRow ClassName="transition-colors" AxamlStyle="Background, Foreground, BorderBrush" />
+            <docs:UtilityReferenceRow ClassName="transition-opacity" AxamlStyle="Opacity" />
+            <docs:UtilityReferenceRow ClassName="transition-transform" AxamlStyle="RenderTransform" />
+            <docs:UtilityReferenceRow ClassName="transition-shadow" AxamlStyle="BoxShadow" />
+            <docs:UtilityReferenceRow ClassName="transition-none" AxamlStyle="no transitions" />
+            <docs:UtilityReferenceRow ClassName="duration-&lt;ms&gt;" AxamlStyle="length, default 150ms" />
+            <docs:UtilityReferenceRow ClassName="delay-&lt;ms&gt;" AxamlStyle="start delay" />
+            <docs:UtilityReferenceRow ClassName="ease-linear / in / out / in-out" AxamlStyle="easing" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="transition-[&lt;property&gt;] · transition-behavior · ease-[cubic-bezier(...)] · duration-initial · motion-safe: / motion-reduce:" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
+        <docs:DocsSection
+            Heading="Colors, opacity and timing"
+            Summary="Hover over each button. The first button has no transition, so its color jumps.">
+            <docs:DocsExample>
                 <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Colors, opacity and timing"
-                        Summary="Hover over each button. The first button has no transition, so its color jumps.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="10"
-                                HorizontalAlignment="Left">
-                                <Button
-                                    Content="no transition: hover changes instantly"
-                                    tw:Tw.Class="bg-slate-600 text-white hover:bg-emerald-600" />
-                                <Button
-                                    docs:DocsCode.Show="True"
-                                    Content="transition-colors duration-500"
-                                    tw:Tw.Class="transition-colors duration-500 bg-slate-600 text-white hover:bg-emerald-600" />
-                                <Button
-                                    docs:DocsCode.Show="True"
-                                    Content="transition-colors duration-150 ease-linear"
-                                    tw:Tw.Class="transition-colors duration-150 ease-linear bg-slate-600 text-white hover:bg-rose-600" />
-                                <Button
-                                    docs:DocsCode.Show="True"
-                                    Content="transition-opacity duration-300"
-                                    tw:Tw.Class="transition-opacity duration-300 bg-sky-600 text-white opacity-100 hover:opacity-40" />
-                                <Button
-                                    docs:DocsCode.Show="True"
-                                    Content="transition delay-200 duration-500"
-                                    tw:Tw.Class="transition delay-200 duration-500 bg-amber-600 text-white hover:bg-amber-800" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+                    Spacing="10"
+                    HorizontalAlignment="Left">
+                    <Button
+                        Content="no transition: hover changes instantly"
+                        tw:Tw.Class="bg-slate-600 text-white hover:bg-emerald-600" />
+                    <Button
+                        docs:DocsCode.Show="True"
+                        Content="transition-colors duration-500"
+                        tw:Tw.Class="transition-colors duration-500 bg-slate-600 text-white hover:bg-emerald-600" />
+                    <Button
+                        docs:DocsCode.Show="True"
+                        Content="transition-colors duration-150 ease-linear"
+                        tw:Tw.Class="transition-colors duration-150 ease-linear bg-slate-600 text-white hover:bg-rose-600" />
+                    <Button
+                        docs:DocsCode.Show="True"
+                        Content="transition-opacity duration-300"
+                        tw:Tw.Class="transition-opacity duration-300 bg-sky-600 text-white opacity-100 hover:opacity-40" />
+                    <Button
+                        docs:DocsCode.Show="True"
+                        Content="transition delay-200 duration-500"
+                        tw:Tw.Class="transition delay-200 duration-500 bg-amber-600 text-white hover:bg-amber-800" />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

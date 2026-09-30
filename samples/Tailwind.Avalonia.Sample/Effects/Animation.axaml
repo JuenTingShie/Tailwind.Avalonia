@@ -7,120 +7,101 @@
     <docs:DocsPage
         Section="Effects"
         Title="Animation"
-        Intro="Utilities for the built-in Tailwind animations. They run Avalonia keyframe animations on the element.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="animate-spin rotates the element, animate-ping scales it up while fading out, animate-pulse fades it in and out, animate-bounce moves it up and down; animate-none stops the animation. An animation starts when the element enters the visual tree, stops when it leaves or the class is removed, and restores the values it was animating. It uses core Avalonia animations, so it works on every platform. duration-*, delay-* and ease-* in the same class list override the default timing (for example animate-spin duration-500). Bounce approximates the CSS easing with a single ease curve, and spin/ping/bounce temporarily own the element RenderTransform." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="animate-[...] · custom @keyframes · motion-reduce: · iteration count / direction" />
+        Intro="Utilities for the built-in Tailwind animations. They run Avalonia keyframe animations on the element."
+        Supported="animate-spin rotates the element, animate-ping scales it up while fading out, animate-pulse fades it in and out, animate-bounce moves it up and down; animate-none stops the animation. An animation starts when the element enters the visual tree, stops when it leaves or the class is removed, and restores the values it was animating. It uses core Avalonia animations, so it works on every platform. duration-*, delay-* and ease-* in the same class list override the default timing (for example animate-spin duration-500). Bounce approximates the CSS easing with a single ease curve, and spin/ping/bounce temporarily own the element RenderTransform.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="animate-spin" AxamlStyle="RotateTransform.Angle 0 to 360, 1s linear" />
+            <docs:UtilityReferenceRow ClassName="animate-ping" AxamlStyle="ScaleTransform 1 to 2 and Opacity 1 to 0, 1s" />
+            <docs:UtilityReferenceRow ClassName="animate-pulse" AxamlStyle="Opacity 1, 0.5, 1 over 2s" />
+            <docs:UtilityReferenceRow ClassName="animate-bounce" AxamlStyle="TranslateTransform.Y bounce, 1s" />
+            <docs:UtilityReferenceRow ClassName="animate-none" AxamlStyle="stops the animation" />
+            <docs:UtilityReferenceRow ClassName="duration-&lt;ms&gt; / duration-[&lt;time&gt;]" AxamlStyle="overrides the animation duration" />
+            <docs:UtilityReferenceRow ClassName="delay-&lt;ms&gt; / delay-[&lt;time&gt;]" AxamlStyle="delays the start of the animation" />
+            <docs:UtilityReferenceRow ClassName="ease-linear / ease-in / ease-out / ease-in-out" AxamlStyle="overrides the animation easing" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="animate-[...] · custom @keyframes · motion-reduce: · iteration count / direction" />
+        </docs:DocsPage.Gaps>
+
+        <docs:DocsSection
+            Heading="Spin, ping, pulse and bounce"
+            Summary="Each shape carries the real animate-* token.">
+            <docs:DocsExample>
+                <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin" />
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-spin" />
                     </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
-
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Spin, ping, pulse and bounce"
-                        Summary="Each shape carries the real animate-* token.">
-                        <docs:DocsExample>
-                            <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin" />
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-spin" />
-                                </StackPanel>
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Grid Width="40" Height="40">
-                                        <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-rose-400 animate-ping" />
-                                        <Ellipse docs:DocsCode.Show="True" Width="20" Height="20" tw:Tw.Class="fill-rose-500" />
-                                    </Grid>
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-ping" />
-                                </StackPanel>
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-emerald-500 animate-pulse" />
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-pulse" />
-                                </StackPanel>
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="20" tw:Tw.Class="bg-amber-500 animate-bounce" />
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-bounce" />
-                                </StackPanel>
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="Tuning the timing"
-                        Summary="duration-*, delay-* and ease-* change how fast an animation runs, when it starts and its easing. The three spinners differ only in their timing classes.">
-                        <docs:DocsExample>
-                            <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin" />
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="1s (default)" />
-                                </StackPanel>
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin duration-500" />
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-500" />
-                                </StackPanel>
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin duration-[3s] ease-in-out" />
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-[3s] ease-in-out" />
-                                </StackPanel>
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-emerald-500 animate-pulse duration-500 delay-300" />
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-500 delay-300" />
-                                </StackPanel>
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="Spinning the other way"
-                        Summary="animate-spin always turns clockwise. To spin counter-clockwise, mirror a wrapper with -scale-x-100, the same idiom used with Tailwind CSS. The dot marks one edge so the direction is visible.">
-                        <docs:DocsExample>
-                            <docs:DocsExample.Snippets>
-                                <x:String>&lt;Border tw:Tw.Class=&quot;-scale-x-100&quot;&gt;&lt;Grid tw:Tw.Class=&quot;animate-spin&quot; /&gt;&lt;/Border&gt;</x:String>
-                            </docs:DocsExample.Snippets>
-                            <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Grid docs:DocsCode.Show="True" Width="48" Height="48" tw:Tw.Class="animate-spin">
-                                        <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-sky-500" />
-                                        <Ellipse docs:DocsCode.Show="True" Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
-                                    </Grid>
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-spin (clockwise)" />
-                                </StackPanel>
-                                <StackPanel Spacing="12" HorizontalAlignment="Center">
-                                    <Border Width="48" Height="48" tw:Tw.Class="-scale-x-100">
-                                        <Grid tw:Tw.Class="animate-spin">
-                                            <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-rose-500" />
-                                            <Ellipse Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
-                                        </Grid>
-                                    </Border>
-                                    <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="-scale-x-100 wrapper (counter-clockwise)" />
-                                </StackPanel>
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Grid Width="40" Height="40">
+                            <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-rose-400 animate-ping" />
+                            <Ellipse docs:DocsCode.Show="True" Width="20" Height="20" tw:Tw.Class="fill-rose-500" />
+                        </Grid>
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-ping" />
+                    </StackPanel>
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-emerald-500 animate-pulse" />
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-pulse" />
+                    </StackPanel>
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="20" tw:Tw.Class="bg-amber-500 animate-bounce" />
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-bounce" />
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Tuning the timing"
+            Summary="duration-*, delay-* and ease-* change how fast an animation runs, when it starts and its easing. The three spinners differ only in their timing classes.">
+            <docs:DocsExample>
+                <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin" />
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="1s (default)" />
+                    </StackPanel>
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin duration-500" />
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-500" />
+                    </StackPanel>
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-sky-500 animate-spin duration-[3s] ease-in-out" />
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-[3s] ease-in-out" />
+                    </StackPanel>
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Border docs:DocsCode.Show="True" Width="40" Height="40" CornerRadius="8" tw:Tw.Class="bg-emerald-500 animate-pulse duration-500 delay-300" />
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="duration-500 delay-300" />
+                    </StackPanel>
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Spinning the other way"
+            Summary="animate-spin always turns clockwise. To spin counter-clockwise, mirror a wrapper with -scale-x-100, the same idiom used with Tailwind CSS. The dot marks one edge so the direction is visible.">
+            <docs:DocsExample>
+                <docs:DocsExample.Snippets>
+                    <x:String>&lt;Border tw:Tw.Class=&quot;-scale-x-100&quot;&gt;&lt;Grid tw:Tw.Class=&quot;animate-spin&quot; /&gt;&lt;/Border&gt;</x:String>
+                </docs:DocsExample.Snippets>
+                <StackPanel Orientation="Horizontal" Spacing="48" Margin="16">
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Grid docs:DocsCode.Show="True" Width="48" Height="48" tw:Tw.Class="animate-spin">
+                            <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-sky-500" />
+                            <Ellipse docs:DocsCode.Show="True" Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
+                        </Grid>
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="animate-spin (clockwise)" />
+                    </StackPanel>
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <Border Width="48" Height="48" tw:Tw.Class="-scale-x-100">
+                            <Grid tw:Tw.Class="animate-spin">
+                                <Ellipse docs:DocsCode.Show="True" tw:Tw.Class="fill-rose-500" />
+                                <Ellipse Width="10" Height="10" VerticalAlignment="Top" Margin="0,4,0,0" tw:Tw.Class="fill-white" />
+                            </Grid>
+                        </Border>
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="-scale-x-100 wrapper (counter-clockwise)" />
+                    </StackPanel>
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

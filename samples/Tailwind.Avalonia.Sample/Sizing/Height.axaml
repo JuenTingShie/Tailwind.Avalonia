@@ -7,341 +7,241 @@
     <docs:DocsPage
         Section="Sizing"
         Title="Height"
-        Intro="Utilities for controlling an element's height, minimum height, and maximum height. Sizing currently maps the numeric spacing scale and bracket arbitrary values onto Avalonia's Height, MinHeight, and MaxHeight.">
-        <StackPanel
-            Spacing="52">
+        Intro="Utilities for controlling an element's height, minimum height, and maximum height. Sizing currently maps the numeric spacing scale and bracket arbitrary values onto Avalonia's Height, MinHeight, and MaxHeight."
+        Supported="h-&lt;number&gt;, min-h-&lt;number&gt;, and max-h-&lt;number&gt; map the numeric spacing scale onto Height, MinHeight, and MaxHeight, as do bracket arbitrary values like h-[60px], min-h-[8rem], and max-h-[5em]. Percentages, viewport units, size-*, and responsive variants are still out of scope."
+        CollapsedRowCount="4"
+        GapsTitle="Official rows outside the current parser surface"
+        GapsBody="">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="h-&lt;number&gt;" AxamlStyle="&lt;Border Height=&quot;&lt;number&gt;&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="h-[&lt;value&gt;]" AxamlStyle="&lt;Border Height=&quot;&lt;parsed value&gt;&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="min-h-&lt;number&gt;" AxamlStyle="&lt;Border MinHeight=&quot;&lt;number&gt;&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="min-h-[&lt;value&gt;]" AxamlStyle="&lt;Border MinHeight=&quot;&lt;parsed value&gt;&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="max-h-&lt;number&gt;" AxamlStyle="&lt;Border MaxHeight=&quot;&lt;number&gt;&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="max-h-[&lt;value&gt;]" AxamlStyle="&lt;Border MaxHeight=&quot;&lt;parsed value&gt;&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="block-&lt;number&gt;" AxamlStyle="Height (alias of h-)" />
+            <docs:UtilityReferenceRow ClassName="min-block-&lt;number&gt;" AxamlStyle="MinHeight" />
+            <docs:UtilityReferenceRow ClassName="max-block-&lt;number&gt;" AxamlStyle="MaxHeight" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Title="percentages and fractions" Text="h-&lt;fraction&gt; · min-h-&lt;fraction&gt; · max-h-&lt;fraction&gt;" />
+            <docs:DocsGap Title="viewport units" Text="h-screen · h-dvh · h-lvh · h-svh · h-dvw · h-lvw · h-svw" />
+            <docs:DocsGap Title="viewport units on min and max" Text="min-h-screen · min-h-dvh · min-h-svh · max-h-screen · max-h-dvh · max-h-svh" />
+            <docs:DocsGap Title="keywords and resets" Text="min-h-full · max-h-full" />
+            <docs:DocsGap Title="combined dimensions" Text="size-full" />
+            <docs:DocsGap Title="custom properties and breakpoints" Text="h-(&lt;custom-property&gt;) · md:h-full · md:min-h-0 · md:max-h-96" />
+        </docs:DocsPage.Gaps>
+
+        <docs:DocsSection
+            Heading="Basic example"
+            Summary="Use h-&lt;number&gt; utilities like h-24 and h-64 to set a fixed height from the shared spacing scale.">
+            <docs:DocsExample>
+                <Border
+                    Classes="docs-inset"
+                    HorizontalAlignment="Left"
+                    tw:Tw.Class="p-5 w-[460px]">
+                    <Grid
+                        tw:Tw.Class="h-60"
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="20"
+                        VerticalAlignment="Bottom">
+                        <Border
+                            docs:DocsCode.Show="True"
+                            docs:DocsCode.Attributes="Width"
+                            Grid.Column="0"
+                            tw:Tw.Class="bg-sky-500 h-24"
+                            CornerRadius="10"
+                            Width="96"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            <docs:DocsChip OnColor="True" Text="h-24" />
+                        </Border>
+                        <Border
+                            docs:DocsCode.Show="True"
+                            docs:DocsCode.Attributes="Width"
+                            Grid.Column="1"
+                            tw:Tw.Class="bg-violet-500 h-40"
+                            CornerRadius="10"
+                            Width="96"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            <docs:DocsChip OnColor="True" Text="h-40" />
+                        </Border>
+                        <Border
+                            docs:DocsCode.Show="True"
+                            docs:DocsCode.Attributes="Width"
+                            Grid.Column="2"
+                            tw:Tw.Class="bg-emerald-500 h-64"
+                            CornerRadius="10"
+                            Width="96"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            <docs:DocsChip OnColor="True" Text="h-64" />
+                        </Border>
+                    </Grid>
+                </Border>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Setting a minimum height"
+            Summary="Use min-h-&lt;number&gt; when an element should never shrink below a spacing-scale height, even if a local Height value is smaller. Both bars below set Height=&quot;40&quot;.">
+            <docs:DocsExample>
+                <Border
+                    Classes="docs-inset"
+                    HorizontalAlignment="Left"
+                    tw:Tw.Class="p-5 w-[460px]">
+                    <Grid
+                        tw:Tw.Class="h-[220px]"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="20"
+                        VerticalAlignment="Bottom">
+                        <Border
+                            docs:DocsCode.Show="True"
+                            docs:DocsCode.Attributes="Width,Height"
+                            Grid.Column="0"
+                            tw:Tw.Class="bg-amber-500 min-h-24"
+                            CornerRadius="10"
+                            Width="112"
+                            Height="40"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            <docs:DocsChip OnColor="True" Text="min-h-24" />
+                        </Border>
+                        <Border
+                            docs:DocsCode.Show="True"
+                            docs:DocsCode.Attributes="Width,Height"
+                            Grid.Column="1"
+                            tw:Tw.Class="bg-orange-500 min-h-40"
+                            CornerRadius="10"
+                            Width="112"
+                            Height="40"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            <docs:DocsChip OnColor="True" Text="min-h-40" />
+                        </Border>
+                    </Grid>
+                </Border>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Setting a maximum height"
+            Summary="Use max-h-&lt;number&gt; when content should cap out at a spacing-scale height, even if a local Height value is larger. Both bars below set Height=&quot;220&quot;.">
+            <docs:DocsExample>
+                <Border
+                    Classes="docs-inset"
+                    HorizontalAlignment="Left"
+                    tw:Tw.Class="p-5 w-[460px]">
+                    <Grid
+                        tw:Tw.Class="h-[220px]"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="20"
+                        VerticalAlignment="Bottom">
+                        <Border
+                            docs:DocsCode.Show="True"
+                            docs:DocsCode.Attributes="Width,Height"
+                            Grid.Column="0"
+                            tw:Tw.Class="bg-rose-500 max-h-24"
+                            CornerRadius="10"
+                            Width="112"
+                            Height="220"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            <docs:DocsChip OnColor="True" Text="max-h-24" />
+                        </Border>
+                        <Border
+                            docs:DocsCode.Show="True"
+                            docs:DocsCode.Attributes="Width,Height"
+                            Grid.Column="1"
+                            tw:Tw.Class="bg-pink-500 max-h-40"
+                            CornerRadius="10"
+                            Width="112"
+                            Height="220"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            <docs:DocsChip OnColor="True" Text="max-h-40" />
+                        </Border>
+                    </Grid>
+                </Border>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Using a custom value"
+            Summary="Bracket syntax like h-[60px] takes a direct arbitrary value.">
             <StackPanel
-                Classes="docs-overviewStack">
+                Spacing="18">
                 <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="h-&lt;number&gt;, min-h-&lt;number&gt;, and max-h-&lt;number&gt; map the numeric spacing scale onto Height, MinHeight, and MaxHeight, as do bracket arbitrary values like h-[60px], min-h-[8rem], and max-h-[5em]. Percentages, viewport units, size-*, and responsive variants are still out of scope." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="4" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Official rows outside the current parser surface">
+                    Title="How arbitrary sizes resolve">
                     <StackPanel
-                        Spacing="14">
-                        <StackPanel
-                            Spacing="5">
-                            <TextBlock
-                                Classes="docs-miniTitle"
-                                Text="percentages and fractions" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="h-&lt;fraction&gt; · min-h-&lt;fraction&gt; · max-h-&lt;fraction&gt;" />
-                        </StackPanel>
-                        <StackPanel
-                            Spacing="5">
-                            <TextBlock
-                                Classes="docs-miniTitle"
-                                Text="viewport units" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="h-screen · h-dvh · h-lvh · h-svh · h-dvw · h-lvw · h-svw" />
-                        </StackPanel>
-                        <StackPanel
-                            Spacing="5">
-                            <TextBlock
-                                Classes="docs-miniTitle"
-                                Text="viewport units on min and max" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="min-h-screen · min-h-dvh · min-h-svh · max-h-screen · max-h-dvh · max-h-svh" />
-                        </StackPanel>
-                        <StackPanel
-                            Spacing="5">
-                            <TextBlock
-                                Classes="docs-miniTitle"
-                                Text="keywords and resets" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="min-h-full · max-h-full" />
-                        </StackPanel>
-                        <StackPanel
-                            Spacing="5">
-                            <TextBlock
-                                Classes="docs-miniTitle"
-                                Text="combined dimensions" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="size-full" />
-                        </StackPanel>
-                        <StackPanel
-                            Spacing="5">
-                            <TextBlock
-                                Classes="docs-miniTitle"
-                                Text="custom properties and breakpoints" />
-                            <TextBlock
-                                Classes="docs-tableClass"
-                                Text="h-(&lt;custom-property&gt;) · md:h-full · md:min-h-0 · md:max-h-96" />
-                        </StackPanel>
+                        Spacing="8">
+                        <TextBlock
+                            Classes="docs-tableClass"
+                            Text="px · rem · em · unitless" />
+                        <TextBlock
+                            Classes="docs-noteBody"
+                            Text="Arbitrary sizing values are parser-only and emit no generated package keys." />
+                        <TextBlock
+                            Classes="docs-noteBody"
+                            Text="rem and em resolve against a 16px base. Unitless values are treated as px." />
+                        <TextBlock
+                            Classes="docs-noteBody"
+                            Text="Only bracket syntax is parsed; h-(&lt;custom-property&gt;) stays unsupported." />
+                        <TextBlock
+                            Classes="docs-noteBody"
+                            Text="Percentages stay unsupported; a % token fails to parse and that token is dropped, while the rest of the class list still applies." />
                     </StackPanel>
                 </docs:DocsNote>
+                <docs:DocsExample>
+                    <Border
+                        Classes="docs-inset"
+                        HorizontalAlignment="Left"
+                        tw:Tw.Class="p-5 w-[460px]">
+                        <Grid
+                            tw:Tw.Class="h-60"
+                            ColumnDefinitions="*,*,*"
+                            ColumnSpacing="20"
+                            VerticalAlignment="Bottom">
+                            <Border
+                                docs:DocsCode.Show="True"
+                                docs:DocsCode.Attributes="Width"
+                                Grid.Column="0"
+                                tw:Tw.Class="bg-sky-500 h-[60px]"
+                                CornerRadius="10"
+                                Width="96"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom">
+                                <docs:DocsChip OnColor="True" Text="h-[60px]" />
+                            </Border>
+                            <Border
+                                docs:DocsCode.Show="True"
+                                docs:DocsCode.Attributes="Width,Height"
+                                Grid.Column="1"
+                                tw:Tw.Class="bg-violet-500 min-h-[8rem]"
+                                CornerRadius="10"
+                                Width="96"
+                                Height="40"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom">
+                                <docs:DocsChip OnColor="True" Text="min-h-[8rem]" />
+                            </Border>
+                            <Border
+                                docs:DocsCode.Show="True"
+                                docs:DocsCode.Attributes="Width,Height"
+                                Grid.Column="2"
+                                tw:Tw.Class="bg-emerald-500 max-h-[5em]"
+                                CornerRadius="10"
+                                Width="96"
+                                Height="220"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom">
+                                <docs:DocsChip OnColor="True" Text="max-h-[5em]" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </docs:DocsExample>
             </StackPanel>
-
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Basic example"
-                        Summary="Use h-&lt;number&gt; utilities like h-24 and h-64 to set a fixed height from the shared spacing scale.">
-                        <docs:DocsExample>
-                            <Border
-                                Classes="docs-inset"
-                                HorizontalAlignment="Left"
-                                tw:Tw.Class="p-5 w-[460px]">
-                                <Grid
-                                    tw:Tw.Class="h-60"
-                                    ColumnDefinitions="*,*,*"
-                                    ColumnSpacing="20"
-                                    VerticalAlignment="Bottom">
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        docs:DocsCode.Attributes="Width"
-                                        Grid.Column="0"
-                                        tw:Tw.Class="bg-sky-500 h-24"
-                                        CornerRadius="10"
-                                        Width="96"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom">
-                                        <TextBlock
-                                            Classes="docs-chip on-color"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="h-24" />
-                                    </Border>
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        docs:DocsCode.Attributes="Width"
-                                        Grid.Column="1"
-                                        tw:Tw.Class="bg-violet-500 h-40"
-                                        CornerRadius="10"
-                                        Width="96"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom">
-                                        <TextBlock
-                                            Classes="docs-chip on-color"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="h-40" />
-                                    </Border>
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        docs:DocsCode.Attributes="Width"
-                                        Grid.Column="2"
-                                        tw:Tw.Class="bg-emerald-500 h-64"
-                                        CornerRadius="10"
-                                        Width="96"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom">
-                                        <TextBlock
-                                            Classes="docs-chip on-color"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="h-64" />
-                                    </Border>
-                                </Grid>
-                            </Border>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="Setting a minimum height"
-                        Summary="Use min-h-&lt;number&gt; when an element should never shrink below a spacing-scale height, even if a local Height value is smaller. Both bars below set Height=&quot;40&quot;.">
-                        <docs:DocsExample>
-                            <Border
-                                Classes="docs-inset"
-                                HorizontalAlignment="Left"
-                                tw:Tw.Class="p-5 w-[460px]">
-                                <Grid
-                                    tw:Tw.Class="h-[220px]"
-                                    ColumnDefinitions="*,*"
-                                    ColumnSpacing="20"
-                                    VerticalAlignment="Bottom">
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        docs:DocsCode.Attributes="Width,Height"
-                                        Grid.Column="0"
-                                        tw:Tw.Class="bg-amber-500 min-h-24"
-                                        CornerRadius="10"
-                                        Width="112"
-                                        Height="40"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom">
-                                        <TextBlock
-                                            Classes="docs-chip on-color"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="min-h-24" />
-                                    </Border>
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        docs:DocsCode.Attributes="Width,Height"
-                                        Grid.Column="1"
-                                        tw:Tw.Class="bg-orange-500 min-h-40"
-                                        CornerRadius="10"
-                                        Width="112"
-                                        Height="40"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom">
-                                        <TextBlock
-                                            Classes="docs-chip on-color"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="min-h-40" />
-                                    </Border>
-                                </Grid>
-                            </Border>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="Setting a maximum height"
-                        Summary="Use max-h-&lt;number&gt; when content should cap out at a spacing-scale height, even if a local Height value is larger. Both bars below set Height=&quot;220&quot;.">
-                        <docs:DocsExample>
-                            <Border
-                                Classes="docs-inset"
-                                HorizontalAlignment="Left"
-                                tw:Tw.Class="p-5 w-[460px]">
-                                <Grid
-                                    tw:Tw.Class="h-[220px]"
-                                    ColumnDefinitions="*,*"
-                                    ColumnSpacing="20"
-                                    VerticalAlignment="Bottom">
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        docs:DocsCode.Attributes="Width,Height"
-                                        Grid.Column="0"
-                                        tw:Tw.Class="bg-rose-500 max-h-24"
-                                        CornerRadius="10"
-                                        Width="112"
-                                        Height="220"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom">
-                                        <TextBlock
-                                            Classes="docs-chip on-color"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="max-h-24" />
-                                    </Border>
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        docs:DocsCode.Attributes="Width,Height"
-                                        Grid.Column="1"
-                                        tw:Tw.Class="bg-pink-500 max-h-40"
-                                        CornerRadius="10"
-                                        Width="112"
-                                        Height="220"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom">
-                                        <TextBlock
-                                            Classes="docs-chip on-color"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="max-h-40" />
-                                    </Border>
-                                </Grid>
-                            </Border>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-
-                    <docs:DocsSection
-                        Heading="Using a custom value"
-                        Summary="Bracket syntax like h-[60px] takes a direct arbitrary value.">
-                        <StackPanel
-                            Spacing="18">
-                            <docs:DocsNote
-                                Title="How arbitrary sizes resolve">
-                                <StackPanel
-                                    Spacing="8">
-                                    <TextBlock
-                                        Classes="docs-tableClass"
-                                        Text="px · rem · em · unitless" />
-                                    <TextBlock
-                                        Classes="docs-noteBody"
-                                        Text="Arbitrary sizing values are parser-only and emit no generated package keys." />
-                                    <TextBlock
-                                        Classes="docs-noteBody"
-                                        Text="rem and em resolve against a 16px base. Unitless values are treated as px." />
-                                    <TextBlock
-                                        Classes="docs-noteBody"
-                                        Text="Only bracket syntax is parsed; h-(&lt;custom-property&gt;) stays unsupported." />
-                                    <TextBlock
-                                        Classes="docs-noteBody"
-                                        Text="Percentages stay unsupported; a % token fails to parse and that token is dropped, while the rest of the class list still applies." />
-                                </StackPanel>
-                            </docs:DocsNote>
-                            <docs:DocsExample>
-                                <Border
-                                    Classes="docs-inset"
-                                    HorizontalAlignment="Left"
-                                    tw:Tw.Class="p-5 w-[460px]">
-                                    <Grid
-                                        tw:Tw.Class="h-60"
-                                        ColumnDefinitions="*,*,*"
-                                        ColumnSpacing="20"
-                                        VerticalAlignment="Bottom">
-                                        <Border
-                                            docs:DocsCode.Show="True"
-                                            docs:DocsCode.Attributes="Width"
-                                            Grid.Column="0"
-                                            tw:Tw.Class="bg-sky-500 h-[60px]"
-                                            CornerRadius="10"
-                                            Width="96"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Bottom">
-                                            <TextBlock
-                                                Classes="docs-chip on-color"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                Text="h-[60px]" />
-                                        </Border>
-                                        <Border
-                                            docs:DocsCode.Show="True"
-                                            docs:DocsCode.Attributes="Width,Height"
-                                            Grid.Column="1"
-                                            tw:Tw.Class="bg-violet-500 min-h-[8rem]"
-                                            CornerRadius="10"
-                                            Width="96"
-                                            Height="40"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Bottom">
-                                            <TextBlock
-                                                Classes="docs-chip on-color"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                Text="min-h-[8rem]" />
-                                        </Border>
-                                        <Border
-                                            docs:DocsCode.Show="True"
-                                            docs:DocsCode.Attributes="Width,Height"
-                                            Grid.Column="2"
-                                            tw:Tw.Class="bg-emerald-500 max-h-[5em]"
-                                            CornerRadius="10"
-                                            Width="96"
-                                            Height="220"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Bottom">
-                                            <TextBlock
-                                                Classes="docs-chip on-color"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                Text="max-h-[5em]" />
-                                        </Border>
-                                    </Grid>
-                                </Border>
-                            </docs:DocsExample>
-                        </StackPanel>
-                    </docs:DocsSection>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>
