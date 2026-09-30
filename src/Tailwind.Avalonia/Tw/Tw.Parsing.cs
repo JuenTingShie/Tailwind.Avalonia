@@ -447,6 +447,19 @@ public partial class Tw
         return alignment is not null;
     }
 
+    private static bool TryParseInsetShadowUtility(string token, out BoxShadows shadows)
+    {
+        shadows = default;
+
+        if (token == "shadow-inner")
+        {
+            return BoxShadowScale.TryGetInsetShadows("inner", out shadows);
+        }
+
+        return token.StartsWith("inset-shadow-", StringComparison.Ordinal) &&
+            BoxShadowScale.TryGetInsetShadows(token["inset-shadow-".Length..], out shadows);
+    }
+
     private static bool TryParseBoxShadowUtility(string token, out BoxShadowUtility utility)
     {
         utility = default;

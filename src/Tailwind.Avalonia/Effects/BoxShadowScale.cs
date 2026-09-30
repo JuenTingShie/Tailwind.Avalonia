@@ -49,6 +49,41 @@ internal static class BoxShadowScale
         }
     }
 
+    // inset-shadow-2xs / xs / sm (Tailwind v4) and shadow-inner (v3) draw the shadow inside the box.
+    public static bool TryGetInsetShadows(string token, out BoxShadows shadows)
+    {
+        switch (token)
+        {
+            case "2xs":
+                shadows = new BoxShadows(Inset(0, 1, 0, 0.05));
+                return true;
+
+            case "xs":
+                shadows = new BoxShadows(Inset(0, 1, 1, 0.05));
+                return true;
+
+            case "sm":
+            case "inner":
+                shadows = new BoxShadows(Inset(0, 2, 4, 0.05));
+                return true;
+
+            case "none":
+                shadows = default;
+                return true;
+
+            default:
+                shadows = default;
+                return false;
+        }
+    }
+
+    private static BoxShadow Inset(double offsetX, double offsetY, double blur, double opacity)
+    {
+        var shadow = Layer(offsetX, offsetY, blur, 0, opacity);
+        shadow.IsInset = true;
+        return shadow;
+    }
+
     private static BoxShadow Layer(double offsetX, double offsetY, double blur, double spread, double opacity) => new()
     {
         OffsetX = offsetX,
