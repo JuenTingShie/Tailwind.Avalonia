@@ -134,15 +134,9 @@
                         <docs:DocsNote
                             Classes="gap muted"
                             Title="Official examples not implemented yet">
-                            <StackPanel
-                                Spacing="6">
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="text-sm md:text-base" />
-                                <TextBlock
-                                    Classes="docs-tableClass"
-                                    Text="text-base lg:text-2xl" />
-                            </StackPanel>
+                            <TextBlock
+                                Classes="docs-tableClass"
+                                Text="md:text-base · lg:text-2xl" />
                         </docs:DocsNote>
                     </docs:DocsSection>
                 </StackPanel>

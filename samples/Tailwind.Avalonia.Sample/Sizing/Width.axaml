@@ -58,7 +58,7 @@
                                 Text="keywords and resets" />
                             <TextBlock
                                 Classes="docs-tableClass"
-                                Text="w-auto · container" />
+                                Text="container" />
                         </StackPanel>
                         <StackPanel
                             Spacing="5">
@@ -67,7 +67,7 @@
                                 Text="combined dimensions" />
                             <TextBlock
                                 Classes="docs-tableClass"
-                                Text="size-16 · size-24 · size-40 · size-full · size-px" />
+                                Text="size-full" />
                         </StackPanel>
                         <StackPanel
                             Spacing="5">
