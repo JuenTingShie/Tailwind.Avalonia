@@ -24,7 +24,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | object-fit                  |     ✅      |
 | object-position             |             |
 | overflow                    |     ✅      |
-| overscroll-behavior         |             |
+| overscroll-behavior         |     ✅      |
 | position                    |             |
 | top / right / bottom / left |     ✅      |
 | visibility                  |             |
@@ -221,7 +221,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | rotate              |     ✅      |
 | scale               |     ✅      |
 | skew                |     ✅      |
-| transform           |             |
+| transform           |     ✅      |
 | transform-origin    |     ✅      |
 | transform-style     |             |
 | translate           |     ✅      |
@@ -234,7 +234,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | accent-color      |             |
 | appearance        |             |
 | caret-color       |     ✅      |
-| color-scheme      |             |
+| color-scheme      |     ✅      |
 | cursor            |     ✅      |
 | field-sizing      |             |
 | pointer-events    |     ✅      |

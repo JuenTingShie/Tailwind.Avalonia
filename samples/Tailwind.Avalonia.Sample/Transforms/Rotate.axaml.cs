@@ -14,6 +14,7 @@ public partial class Rotate : UserControl
         new("origin-center", "RenderTransformOrigin: 50% 50%"),
         new("origin-top-left", "RenderTransformOrigin: 0 0"),
         new("origin-<side>", "top, right, bottom, left and the corners"),
+        new("transform-none", "RenderTransform: identity"),
     ];
 
     /// <summary>
