@@ -1,6 +1,7 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ae="using:AvaloniaEdit"
     xmlns:sample="using:Tailwind.Avalonia.Sample"
     xmlns:tw="using:Tailwind.Avalonia">
     <Styles.Resources>
@@ -104,12 +105,12 @@
             Value="52" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile StackPanel.docs-pageLayout">
+        Selector=":is(UserControl).docs-mobile StackPanel.docs-pageLayout">
         <!-- Tw clears any property the new token list omits, so an override
              has to restate every token it still wants - here, the max width. -->
         <Setter
             Property="tw:Tw.Class"
-            Value="ml-3.5 mt-3 mr-3.5 mb-7 max-w-[1100px]" />
+            Value="ml-4 mt-4 mr-4 mb-8 max-w-[1100px]" />
         <Setter
             Property="Spacing"
             Value="30" />
@@ -131,7 +132,7 @@
             Value="44" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile StackPanel.docs-exampleStack">
+        Selector=":is(UserControl).docs-mobile StackPanel.docs-exampleStack">
         <Setter
             Property="Spacing"
             Value="28" />
@@ -177,7 +178,7 @@
             Value="48" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile TextBlock.docs-pageTitle">
+        Selector=":is(UserControl).docs-mobile TextBlock.docs-pageTitle">
         <Setter
             Property="FontSize"
             Value="30" />
@@ -214,7 +215,7 @@
             Value="Left" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile TextBlock.docs-lede">
+        Selector=":is(UserControl).docs-mobile TextBlock.docs-lede">
         <Setter
             Property="FontSize"
             Value="15" />
@@ -259,7 +260,7 @@
             Value="Left" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile TextBlock.docs-body">
+        Selector=":is(UserControl).docs-mobile TextBlock.docs-body">
         <Setter
             Property="FontSize"
             Value="14" />
@@ -287,7 +288,7 @@
             Value="Wrap" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile TextBlock.docs-sectionTitle">
+        Selector=":is(UserControl).docs-mobile TextBlock.docs-sectionTitle">
         <Setter
             Property="FontSize"
             Value="21" />
@@ -409,10 +410,23 @@
             Value="{StaticResource DocsMonoFontFamily}" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile sample|AxamlCodeBlock">
+        Selector=":is(UserControl).docs-mobile sample|AxamlCodeBlock">
         <Setter
             Property="FontSize"
-            Value="13" />
+            Value="12" />
+    </Style>
+    <!-- Every snippet is short, so line numbers only cost width on a phone. -->
+    <Style
+        Selector="sample|AxamlCodeBlock ae|TextEditor">
+        <Setter
+            Property="ShowLineNumbers"
+            Value="True" />
+    </Style>
+    <Style
+        Selector=":is(UserControl).docs-mobile sample|AxamlCodeBlock ae|TextEditor">
+        <Setter
+            Property="ShowLineNumbers"
+            Value="False" />
     </Style>
 
     <!-- ===================================================================
@@ -446,10 +460,10 @@
             Value="bg-slate-950 p-7" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile Border.docs-stage">
+        Selector=":is(UserControl).docs-mobile Border.docs-stage">
         <Setter
             Property="tw:Tw.Class"
-            Value="bg-slate-950 p-4" />
+            Value="bg-slate-950 p-3" />
     </Style>
 
     <!-- Code footer pinned under a preview. -->
@@ -463,10 +477,10 @@
             Value="0,1,0,0" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile Border.docs-codeFooter">
+        Selector=":is(UserControl).docs-mobile Border.docs-codeFooter">
         <Setter
             Property="tw:Tw.Class"
-            Value="bg-slate-900 border-slate-800 p-3.5" />
+            Value="bg-slate-900 border-slate-800 px-3 py-3" />
     </Style>
 
     <Style
@@ -485,7 +499,7 @@
             Value="18" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile Border.docs-note">
+        Selector=":is(UserControl).docs-mobile Border.docs-note">
         <Setter
             Property="Padding"
             Value="14" />
@@ -564,7 +578,7 @@
             Value="0,0,0,1" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile Border.docs-referenceHeader">
+        Selector=":is(UserControl).docs-mobile Border.docs-referenceHeader">
         <Setter
             Property="tw:Tw.Class"
             Value="bg-slate-900 border-slate-800 px-3.5 py-3" />
@@ -602,7 +616,7 @@
             Value="bg-slate-900 border-slate-700" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile Border.docs-referenceRow">
+        Selector=":is(UserControl).docs-mobile Border.docs-referenceRow">
         <Setter
             Property="Padding"
             Value="14,12" />
@@ -614,7 +628,7 @@
             Value="24" />
     </Style>
     <Style
-        Selector="UserControl.docs-mobile Grid.docs-referenceColumns">
+        Selector=":is(UserControl).docs-mobile Grid.docs-referenceColumns">
         <Setter
             Property="ColumnSpacing"
             Value="14" />

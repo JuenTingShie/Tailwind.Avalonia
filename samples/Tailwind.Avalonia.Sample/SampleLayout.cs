@@ -24,7 +24,10 @@ internal readonly record struct SampleLayout(bool IsNarrow, bool IsCompactDocs)
 
     public Thickness HeaderPadding => IsNarrow ? new Thickness(10, 0) : new Thickness(12, 0);
 
-    public Thickness ContentPadding => IsCompactDocs ? new Thickness(10) : new Thickness(18);
+    public Thickness ContentPadding => IsNarrow ? new Thickness(0) : IsCompactDocs ? new Thickness(10) : new Thickness(18);
+
+    /// <summary>Class on the shell while narrow; styles use it to drop the framed card around the page.</summary>
+    public const string NarrowShellClass = "shell-narrow";
 
     public static SampleLayout For(double width, double height)
     {

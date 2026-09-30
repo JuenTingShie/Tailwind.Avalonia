@@ -28,7 +28,6 @@
                 Foreground="{Binding $parent[UserControl].Foreground}"
                 HorizontalScrollBarVisibility="Disabled"
                 IsReadOnly="True"
-                ShowLineNumbers="True"
                 VerticalScrollBarVisibility="Disabled"
                 WordWrap="True" />
             <Button
