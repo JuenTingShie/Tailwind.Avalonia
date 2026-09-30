@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="font-[600] · hover:font-bold (font-sans / serif / mono are in Typography > Font family)" />
+                            Text="font-[600] · hover:font-bold (font families: see Typography > Font family)" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>

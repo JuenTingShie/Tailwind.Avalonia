@@ -30,7 +30,7 @@
                             Text="divide-x-* · divide-y-* · divide-x-reverse · divide-y-reverse (between children)" />
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="border-(length:&lt;custom-property&gt;) · md:border-t-4 (responsive) · hover:border-&lt;number&gt; · focus:border-&lt;number&gt; (border-width variants; border-color variants like focus:border-sky-400 are supported)" />
+                            Text="border-(length:&lt;custom-property&gt;) · md:border-t-4 (responsive) · hover:border-&lt;number&gt; · focus:border-&lt;number&gt; (width variants only; color variants work)" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>
