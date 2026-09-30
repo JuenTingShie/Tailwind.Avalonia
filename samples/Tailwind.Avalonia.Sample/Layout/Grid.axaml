@@ -25,13 +25,13 @@
 
         <docs:DocsSection
             Heading="Columns, rows and spans"
-            Summary="The grid below has three columns and two rows; the first cell spans two columns and the amber cell starts in column 2.">
+            Summary="The grid below has three columns and two rows. Avalonia&#x27;s Grid has no auto-placement, so every cell names its position: the first cell spans two columns, and in the second row the amber cell starts in column 2, leaving column 1 empty.">
             <docs:DocsExample>
                 <Grid docs:DocsCode.Show="True" tw:Tw.Class="grid-cols-3 grid-rows-2 gap-2" Width="360" Height="120">
                     <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-sky-500 col-span-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-span-2" /></Border>
-                    <Border tw:Tw.Class="bg-emerald-500" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="1" /></Border>
-                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-amber-500 col-start-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-start-2" /></Border>
-                    <Border tw:Tw.Class="bg-rose-500" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="3" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-emerald-500 col-start-3" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="col-start-3" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-amber-500 row-start-2 col-start-2" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="row-start-2 col-start-2" TextWrapping="Wrap" /></Border>
+                    <Border docs:DocsCode.Show="True" tw:Tw.Class="bg-rose-500 row-start-2 col-start-3" Padding="8"><TextBlock tw:Tw.Class="text-white font-bold text-sm" Text="row-start-2 col-start-3" TextWrapping="Wrap" /></Border>
                 </Grid>
             </docs:DocsExample>
         </docs:DocsSection>
