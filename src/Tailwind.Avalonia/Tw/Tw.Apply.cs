@@ -624,6 +624,7 @@ public partial class Tw
 
         ApplyKeywordUtilities(element, keywordValues);
         SyncAnimation(element, animationName, TimingFrom(transitionState));
+        SyncScrollSnap(element);
 
         ApplyVariantStyles(
             element,
