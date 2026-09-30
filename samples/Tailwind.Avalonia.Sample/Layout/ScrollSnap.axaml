@@ -23,30 +23,121 @@
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
-            Heading="Snapping a scroller"
-            Summary="Scroll the strip horizontally or the list vertically; each settles on a child boundary.">
+            Heading="Horizontal snapping"
+            Summary="snap-x turns on snapping for the horizontal axis. Scroll the strip with the wheel (Shift+wheel), the scrollbar or a touch drag; when scrolling stops it settles with a card at the start edge.">
             <docs:DocsExample>
-                <StackPanel Spacing="20">
-                    <ScrollViewer docs:DocsCode.Show="True" Width="420" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" tw:Tw.Class="snap-x snap-start">
-                        <StackPanel Orientation="Horizontal" Spacing="12">
-                            <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 1" /></Border>
-                            <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 2" /></Border>
-                            <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 3" /></Border>
-                            <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 4" /></Border>
-                            <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 5" /></Border>
-                            <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 6" /></Border>
-                        </StackPanel>
-                    </ScrollViewer>
-                    <ScrollViewer docs:DocsCode.Show="True" Width="260" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-both snap-center">
-                        <StackPanel Spacing="12">
-                            <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 1" /></Border>
-                            <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 2" /></Border>
-                            <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 3" /></Border>
-                            <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 4" /></Border>
-                            <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 5" /></Border>
-                        </StackPanel>
-                    </ScrollViewer>
+                <ScrollViewer docs:DocsCode.Show="True" Width="420" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" tw:Tw.Class="snap-x snap-start">
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 1" /></Border>
+                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 2" /></Border>
+                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 3" /></Border>
+                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 4" /></Border>
+                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 5" /></Border>
+                        <Border Width="180" Height="90" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Card 6" /></Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Vertical snapping"
+            Summary="snap-y does the same for the vertical axis.">
+            <docs:DocsExample>
+                <ScrollViewer docs:DocsCode.Show="True" Width="260" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-y snap-start">
+                    <StackPanel Spacing="12">
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 1" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 2" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 3" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 4" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 5" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 6" /></Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Snap alignment"
+            Summary="snap-start, snap-center and snap-end choose which edge of a child lines up with the viewport. In Avalonia the alignment applies to the whole scroller, not to each child.">
+            <docs:DocsExample>
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <StackPanel Spacing="8">
+                        <TextBlock Classes="docs-miniTitle" Text="snap-start" />
+                        <ScrollViewer docs:DocsCode.Show="True" Width="150" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-y snap-start">
+                            <StackPanel Spacing="12">
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 1" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 2" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 3" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 4" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 5" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 6" /></Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
+                    <StackPanel Spacing="8">
+                        <TextBlock Classes="docs-miniTitle" Text="snap-center" />
+                        <ScrollViewer docs:DocsCode.Show="True" Width="150" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-y snap-center">
+                            <StackPanel Spacing="12">
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 1" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 2" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 3" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 4" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 5" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 6" /></Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
+                    <StackPanel Spacing="8">
+                        <TextBlock Classes="docs-miniTitle" Text="snap-end" />
+                        <ScrollViewer docs:DocsCode.Show="True" Width="150" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-y snap-end">
+                            <StackPanel Spacing="12">
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 1" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 2" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 3" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 4" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 5" /></Border>
+                                <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 6" /></Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
                 </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Snapping on both axes"
+            Summary="snap-both snaps horizontally and vertically; here each cell settles in the middle of the viewport.">
+            <docs:DocsExample>
+                <ScrollViewer docs:DocsCode.Show="True" Width="300" Height="220" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-both snap-center">
+                    <Grid ColumnDefinitions="Auto,Auto,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                        <Border Grid.Row="0" Grid.Column="0" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="1,1" /></Border>
+                        <Border Grid.Row="0" Grid.Column="1" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="1,2" /></Border>
+                        <Border Grid.Row="0" Grid.Column="2" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="1,3" /></Border>
+                        <Border Grid.Row="1" Grid.Column="0" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="2,1" /></Border>
+                        <Border Grid.Row="1" Grid.Column="1" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="2,2" /></Border>
+                        <Border Grid.Row="1" Grid.Column="2" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="2,3" /></Border>
+                        <Border Grid.Row="2" Grid.Column="0" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="3,1" /></Border>
+                        <Border Grid.Row="2" Grid.Column="1" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="3,2" /></Border>
+                        <Border Grid.Row="2" Grid.Column="2" Width="150" Height="110" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="3,3" /></Border>
+                    </Grid>
+                </ScrollViewer>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Turning snapping off"
+            Summary="snap-none removes snapping, for example to override a snap class set by a style. The list stops wherever scrolling stops.">
+            <docs:DocsExample>
+                <ScrollViewer docs:DocsCode.Show="True" Width="260" Height="200" HorizontalAlignment="Left" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" tw:Tw.Class="snap-none">
+                    <StackPanel Spacing="12">
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-sky-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 1" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-emerald-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 2" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-amber-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 3" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-rose-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 4" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-violet-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 5" /></Border>
+                        <Border Height="80" CornerRadius="10" tw:Tw.Class="bg-teal-500"><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" tw:Tw.Class="text-white font-bold" Text="Row 6" /></Border>
+                    </StackPanel>
+                </ScrollViewer>
             </docs:DocsExample>
         </docs:DocsSection>
     </docs:DocsPage>
