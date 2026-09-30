@@ -7,78 +7,59 @@
     <docs:DocsPage
         Section="Layout"
         Title="Z-index"
-        Intro="Utilities for controlling the stacking order of overlapping elements. They map to Avalonia&#x27;s Visual.ZIndex property.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="z-0 to z-50, z-auto, z-&lt;integer&gt; and z-[integer] set ZIndex, so an element with a higher value is drawn above its siblings in the same panel. z-auto resets to 0, the last z class wins, and removing the class restores the default. ZIndex is an int property on Visual, so it works the same on desktop, browser and mobile targets, and it only orders siblings inside one parent, like a CSS stacking context." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="negative z-index (-z-10) · variants such as hover:z-10" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for controlling the stacking order of overlapping elements. They map to Avalonia&#x27;s Visual.ZIndex property."
+        Supported="z-0 to z-50, z-auto, z-&lt;integer&gt; and z-[integer] set ZIndex, so an element with a higher value is drawn above its siblings in the same panel. z-auto resets to 0, the last z class wins, and removing the class restores the default. ZIndex is an int property on Visual, so it works the same on desktop, browser and mobile targets, and it only orders siblings inside one parent, like a CSS stacking context.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="z-0" AxamlStyle="ZIndex: 0" />
+            <docs:UtilityReferenceRow ClassName="z-10" AxamlStyle="ZIndex: 10" />
+            <docs:UtilityReferenceRow ClassName="z-20" AxamlStyle="ZIndex: 20" />
+            <docs:UtilityReferenceRow ClassName="z-30" AxamlStyle="ZIndex: 30" />
+            <docs:UtilityReferenceRow ClassName="z-40" AxamlStyle="ZIndex: 40" />
+            <docs:UtilityReferenceRow ClassName="z-50" AxamlStyle="ZIndex: 50" />
+            <docs:UtilityReferenceRow ClassName="z-auto" AxamlStyle="ZIndex: 0" />
+            <docs:UtilityReferenceRow ClassName="z-[25]" AxamlStyle="ZIndex: 25" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="negative z-index (-z-10) · variants such as hover:z-10" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Stacking overlapping siblings"
-                        Summary="Three overlapping boxes sit in one Grid. They are declared red, sky, green, so without z classes the green box is on top. Here z-30 lifts the red box above the others and z-20 lifts the sky box above the green one.">
-                        <docs:DocsExample>
-                            <Grid
-                                Height="120"
-                                Width="220"
-                                HorizontalAlignment="Left">
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        tw:Tw.Class="z-30 bg-red-500 w-24 h-16 p-2 rounded-lg"
-                                        Margin="0,0,0,0"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top">
-                                        <TextBlock
-                                            Text="z-30" />
-                                    </Border>
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        tw:Tw.Class="z-20 bg-sky-600 w-24 h-16 p-2 rounded-lg"
-                                        Margin="40,20,0,0"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top">
-                                        <TextBlock
-                                            Text="z-20" />
-                                    </Border>
-                                    <Border
-                                        docs:DocsCode.Show="True"
-                                        tw:Tw.Class="z-10 bg-emerald-600 w-24 h-16 p-2 rounded-lg"
-                                        Margin="80,40,0,0"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top">
-                                        <TextBlock
-                                            Text="z-10" />
-                                    </Border>
-                            </Grid>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        <docs:DocsSection
+            Heading="Stacking overlapping siblings"
+            Summary="Three overlapping boxes sit in one Grid. They are declared red, sky, green, so without z classes the green box is on top. Here z-30 lifts the red box above the others and z-20 lifts the sky box above the green one.">
+            <docs:DocsExample>
+                <Grid
+                    Height="120"
+                    Width="220"
+                    HorizontalAlignment="Left">
+                        <Border
+                            docs:DocsCode.Show="True"
+                            tw:Tw.Class="z-30 bg-red-500 w-24 h-16 p-2 rounded-lg"
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <TextBlock
+                                Text="z-30" />
+                        </Border>
+                        <Border
+                            docs:DocsCode.Show="True"
+                            tw:Tw.Class="z-20 bg-sky-600 w-24 h-16 p-2 rounded-lg"
+                            Margin="40,20,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <TextBlock
+                                Text="z-20" />
+                        </Border>
+                        <Border
+                            docs:DocsCode.Show="True"
+                            tw:Tw.Class="z-10 bg-emerald-600 w-24 h-16 p-2 rounded-lg"
+                            Margin="80,40,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                            <TextBlock
+                                Text="z-10" />
+                        </Border>
+                </Grid>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

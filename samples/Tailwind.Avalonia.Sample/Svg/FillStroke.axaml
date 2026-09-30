@@ -7,52 +7,30 @@
     <docs:DocsPage
         Section="SVG"
         Title="Fill and stroke"
-        Intro="Utilities for painting Avalonia shapes. fill-* and stroke-* set the Fill and Stroke brushes, stroke-N sets StrokeThickness.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="fill-&lt;color&gt;, stroke-&lt;color&gt;, fill-none, stroke-none, stroke-0/1/2 and stroke-[px] apply to Shape controls (Ellipse, Rectangle, Path, Line, Polygon...). Other elements ignore the token with a warning. Core Avalonia properties, available on every platform." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="fill-current · stroke-current · fill-(--var) · stroke-dasharray" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for painting Avalonia shapes. fill-* and stroke-* set the Fill and Stroke brushes, stroke-N sets StrokeThickness."
+        Supported="fill-&lt;color&gt;, stroke-&lt;color&gt;, fill-none, stroke-none, stroke-0/1/2 and stroke-[px] apply to Shape controls (Ellipse, Rectangle, Path, Line, Polygon...). Other elements ignore the token with a warning. Core Avalonia properties, available on every platform.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="fill-&lt;color&gt;" AxamlStyle="Shape.Fill" />
+            <docs:UtilityReferenceRow ClassName="stroke-&lt;color&gt;" AxamlStyle="Shape.Stroke" />
+            <docs:UtilityReferenceRow ClassName="fill-none / stroke-none" AxamlStyle="transparent brush" />
+            <docs:UtilityReferenceRow ClassName="stroke-0 / 1 / 2" AxamlStyle="Shape.StrokeThickness" />
+            <docs:UtilityReferenceRow ClassName="stroke-[&lt;px&gt;]" AxamlStyle="Shape.StrokeThickness" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="fill-current · stroke-current · fill-(--var) · stroke-dasharray" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Fill and stroke"
-                        Summary="Each shape carries the real tokens.">
-                        <docs:DocsExample>
-                            <StackPanel Orientation="Horizontal" Spacing="24">
-                                <Ellipse docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-sky-500 stroke-sky-900 stroke-2" />
-                                <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" RadiusX="12" RadiusY="12" tw:Tw.Class="fill-none stroke-rose-500 stroke-[4px]" />
-                                <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-amber-400 stroke-none" />
-                                <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-emerald-500 stroke-slate-700 stroke-1" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+        <docs:DocsSection
+            Heading="Fill and stroke"
+            Summary="Each shape carries the real tokens.">
+            <docs:DocsExample>
+                <StackPanel Orientation="Horizontal" Spacing="24">
+                    <Ellipse docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-sky-500 stroke-sky-900 stroke-2" />
+                    <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" RadiusX="12" RadiusY="12" tw:Tw.Class="fill-none stroke-rose-500 stroke-[4px]" />
+                    <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-amber-400 stroke-none" />
+                    <Rectangle docs:DocsCode.Show="True" Width="80" Height="80" tw:Tw.Class="fill-emerald-500 stroke-slate-700 stroke-1" />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

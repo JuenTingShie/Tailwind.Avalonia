@@ -7,106 +7,82 @@
     <docs:DocsPage
         Section="Layout"
         Title="Self alignment"
-        Intro="Utilities for aligning one element inside its parent. They map to Avalonia&#x27;s HorizontalAlignment and VerticalAlignment.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="self-start, self-center, self-end and self-stretch set VerticalAlignment (CSS align-self, the block axis), justify-self-* set HorizontalAlignment (the inline axis) and place-self-* set both. start and end map to Top/Bottom and Left/Right. Removing a class restores the default and a later class overrides an earlier one on the same axis. The alignment properties exist on every layoutable element on every target." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="self-auto · self-baseline · justify-self-auto · items-* · justify-* · content-* on containers" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for aligning one element inside its parent. They map to Avalonia&#x27;s HorizontalAlignment and VerticalAlignment."
+        Supported="self-start, self-center, self-end and self-stretch set VerticalAlignment (CSS align-self, the block axis), justify-self-* set HorizontalAlignment (the inline axis) and place-self-* set both. start and end map to Top/Bottom and Left/Right. Removing a class restores the default and a later class overrides an earlier one on the same axis. The alignment properties exist on every layoutable element on every target.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="self-start / center / end / stretch" AxamlStyle="VerticalAlignment: Top / Center / Bottom / Stretch" />
+            <docs:UtilityReferenceRow ClassName="justify-self-start / center / end / stretch" AxamlStyle="HorizontalAlignment: Left / Center / Right / Stretch" />
+            <docs:UtilityReferenceRow ClassName="place-self-start / center / end / stretch" AxamlStyle="both axes" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="self-auto · self-baseline · justify-self-auto · items-* · justify-* · content-* on containers" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Aligning a child inside a fixed frame"
-                        Summary="Each dark frame is 14rem by 8rem and holds one small box carrying the real class.">
-                        <docs:DocsExample>
-                            <WrapPanel
-                                ItemSpacing="12"
-                                LineSpacing="12"
-                                Width="480"
-                                HorizontalAlignment="Left">
-                            <Border
-                                tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="self-start w-24 h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        FontSize="11"
-                                        VerticalAlignment="Center"
-                                        Text="self-start" />
-                                </Border>
-                            </Border>
-                            <Border
-                                tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
-                                <Border
-                                    tw:Tw.Class="self-center w-24 h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        FontSize="11"
-                                        VerticalAlignment="Center"
-                                        Text="self-center" />
-                                </Border>
-                            </Border>
-                            <Border
-                                tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="self-end w-24 h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        FontSize="11"
-                                        VerticalAlignment="Center"
-                                        Text="self-end" />
-                                </Border>
-                            </Border>
-                            <Border
-                                tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="justify-self-end w-24 h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        FontSize="11"
-                                        VerticalAlignment="Center"
-                                        Text="justify-self-end" />
-                                </Border>
-                            </Border>
-                            <Border
-                                tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="place-self-center w-24 h-8 rounded-md bg-sky-600 px-2">
-                                    <TextBlock
-                                        FontSize="11"
-                                        VerticalAlignment="Center"
-                                        Text="place-self-center" />
-                                </Border>
-                            </Border>
-                            </WrapPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        <docs:DocsSection
+            Heading="Aligning a child inside a fixed frame"
+            Summary="Each dark frame is 14rem by 8rem and holds one small box carrying the real class.">
+            <docs:DocsExample>
+                <WrapPanel
+                    ItemSpacing="12"
+                    LineSpacing="12"
+                    Width="480"
+                    HorizontalAlignment="Left">
+                <Border
+                    tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="self-start w-24 h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            FontSize="11"
+                            VerticalAlignment="Center"
+                            Text="self-start" />
+                    </Border>
+                </Border>
+                <Border
+                    tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
+                    <Border
+                        tw:Tw.Class="self-center w-24 h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            FontSize="11"
+                            VerticalAlignment="Center"
+                            Text="self-center" />
+                    </Border>
+                </Border>
+                <Border
+                    tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="self-end w-24 h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            FontSize="11"
+                            VerticalAlignment="Center"
+                            Text="self-end" />
+                    </Border>
+                </Border>
+                <Border
+                    tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="justify-self-end w-24 h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            FontSize="11"
+                            VerticalAlignment="Center"
+                            Text="justify-self-end" />
+                    </Border>
+                </Border>
+                <Border
+                    tw:Tw.Class="w-56 h-32 rounded-md bg-slate-700">
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="place-self-center w-24 h-8 rounded-md bg-sky-600 px-2">
+                        <TextBlock
+                            FontSize="11"
+                            VerticalAlignment="Center"
+                            Text="place-self-center" />
+                    </Border>
+                </Border>
+                </WrapPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

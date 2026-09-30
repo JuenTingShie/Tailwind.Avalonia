@@ -62,7 +62,8 @@ public static class DocsCode
 
     public static string Build(AvaloniaObject element)
     {
-        var builder = new StringBuilder("<").Append(element.GetType().Name);
+        var typeName = element is IDocsSnippetElement snippetElement ? snippetElement.SnippetTypeName : element.GetType().Name;
+        var builder = new StringBuilder("<").Append(typeName);
 
         foreach (var name in (GetAttributes(element) ?? string.Empty).Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
         {

@@ -7,65 +7,43 @@
     <docs:DocsPage
         Section="Typography"
         Title="Text overflow"
-        Intro="Utilities for controlling how text wraps and how it is trimmed when it does not fit. They map to Avalonia&#x27;s TextTrimming and TextWrapping properties.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="truncate sets TextTrimming to CharacterEllipsis and TextWrapping to NoWrap. text-ellipsis and text-clip set only the trimming, text-wrap and text-nowrap set only the wrapping. The last class per property wins, removing a class restores the default, and elements without these properties (for example Border) ignore the token with a warning. Trimming only shows when the text has a constrained width, for example w-64." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="text-balance · text-pretty · break-*" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for controlling how text wraps and how it is trimmed when it does not fit. They map to Avalonia&#x27;s TextTrimming and TextWrapping properties."
+        Supported="truncate sets TextTrimming to CharacterEllipsis and TextWrapping to NoWrap. text-ellipsis and text-clip set only the trimming, text-wrap and text-nowrap set only the wrapping. The last class per property wins, removing a class restores the default, and elements without these properties (for example Border) ignore the token with a warning. Trimming only shows when the text has a constrained width, for example w-64.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="truncate" AxamlStyle="TextTrimming: CharacterEllipsis; TextWrapping: NoWrap" />
+            <docs:UtilityReferenceRow ClassName="text-ellipsis" AxamlStyle="TextTrimming: CharacterEllipsis" />
+            <docs:UtilityReferenceRow ClassName="text-clip" AxamlStyle="TextTrimming: None" />
+            <docs:UtilityReferenceRow ClassName="text-wrap" AxamlStyle="TextWrapping: Wrap" />
+            <docs:UtilityReferenceRow ClassName="text-nowrap" AxamlStyle="TextWrapping: NoWrap" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="text-balance · text-pretty · break-*" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
+        <docs:DocsSection
+            Heading="Truncate, ellipsis, clip and wrap"
+            Summary="Each TextBlock below is 16rem wide and carries the real token. truncate and text-ellipsis end the line with an ellipsis, text-clip cuts it, and text-wrap wraps onto more lines.">
+            <docs:DocsExample>
                 <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Truncate, ellipsis, clip and wrap"
-                        Summary="Each TextBlock below is 16rem wide and carries the real token. truncate and text-ellipsis end the line with an ellipsis, text-clip cuts it, and text-wrap wraps onto more lines.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="10">
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-64 truncate"
-                                    Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-64 text-ellipsis"
-                                    Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-64 text-clip text-nowrap"
-                                    Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="w-64 text-wrap"
-                                    Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+                    Spacing="10">
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-64 truncate"
+                        Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-64 text-ellipsis"
+                        Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-64 text-clip text-nowrap"
+                        Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="w-64 text-wrap"
+                        Text="The quick brown fox jumps over the lazy dog and keeps running across the field." />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

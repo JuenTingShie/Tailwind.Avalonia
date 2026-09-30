@@ -7,52 +7,34 @@
     <docs:DocsPage
         Section="Typography"
         Title="Font variant numeric"
-        Intro="Utilities for numeric glyph variants. They map to OpenType features on FontFeatures.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="tabular-nums, proportional-nums, lining-nums, oldstyle-nums, slashed-zero, ordinal, diagonal-fractions and stacked-fractions combine into one FontFeatures list; normal-nums resets it. The API is available on every platform, but a variant only shows when the selected font provides that OpenType feature." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="font-variant-caps · font-variant-ligatures" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for numeric glyph variants. They map to OpenType features on FontFeatures."
+        Supported="tabular-nums, proportional-nums, lining-nums, oldstyle-nums, slashed-zero, ordinal, diagonal-fractions and stacked-fractions combine into one FontFeatures list; normal-nums resets it. The API is available on every platform, but a variant only shows when the selected font provides that OpenType feature.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="tabular-nums" AxamlStyle="tnum" />
+            <docs:UtilityReferenceRow ClassName="proportional-nums" AxamlStyle="pnum" />
+            <docs:UtilityReferenceRow ClassName="lining-nums" AxamlStyle="lnum" />
+            <docs:UtilityReferenceRow ClassName="oldstyle-nums" AxamlStyle="onum" />
+            <docs:UtilityReferenceRow ClassName="slashed-zero" AxamlStyle="zero" />
+            <docs:UtilityReferenceRow ClassName="ordinal" AxamlStyle="ordn" />
+            <docs:UtilityReferenceRow ClassName="diagonal-fractions" AxamlStyle="frac" />
+            <docs:UtilityReferenceRow ClassName="stacked-fractions" AxamlStyle="afrc" />
+            <docs:UtilityReferenceRow ClassName="normal-nums" AxamlStyle="reset" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="font-variant-caps · font-variant-ligatures" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Numeric variants"
-                        Summary="Effect depends on the font: fonts without the feature render the default digits.">
-                        <docs:DocsExample>
-                            <StackPanel Spacing="8">
-                                <TextBlock FontSize="22" Text="1111 8888 (default)" />
-                                <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="tabular-nums" Text="1111 8888 (tabular-nums)" />
-                                <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="tabular-nums slashed-zero" Text="0000 1234 (tabular-nums slashed-zero)" />
-                                <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="oldstyle-nums" Text="0123456789 (oldstyle-nums)" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+        <docs:DocsSection
+            Heading="Numeric variants"
+            Summary="Effect depends on the font: fonts without the feature render the default digits.">
+            <docs:DocsExample>
+                <StackPanel Spacing="8">
+                    <TextBlock FontSize="22" Text="1111 8888 (default)" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="tabular-nums" Text="1111 8888 (tabular-nums)" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="tabular-nums slashed-zero" Text="0000 1234 (tabular-nums slashed-zero)" />
+                    <TextBlock docs:DocsCode.Show="True" FontSize="22" tw:Tw.Class="oldstyle-nums" Text="0123456789 (oldstyle-nums)" />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

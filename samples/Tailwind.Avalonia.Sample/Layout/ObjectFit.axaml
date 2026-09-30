@@ -15,52 +15,30 @@
     <docs:DocsPage
         Section="Layout"
         Title="Object fit"
-        Intro="Utilities for controlling how an Image is resized inside its box. They map to Image.Stretch (and StretchDirection for scale-down).">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="object-contain, object-cover, object-fill and object-none set Image.Stretch; object-scale-down keeps Uniform stretch and limits it to shrinking. Elements without a Stretch property ignore the token with a warning. Core Avalonia behavior on every platform." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="object-position-* · object-[...]" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for controlling how an Image is resized inside its box. They map to Image.Stretch (and StretchDirection for scale-down)."
+        Supported="object-contain, object-cover, object-fill and object-none set Image.Stretch; object-scale-down keeps Uniform stretch and limits it to shrinking. Elements without a Stretch property ignore the token with a warning. Core Avalonia behavior on every platform.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="object-contain" AxamlStyle="Stretch: Uniform" />
+            <docs:UtilityReferenceRow ClassName="object-cover" AxamlStyle="Stretch: UniformToFill" />
+            <docs:UtilityReferenceRow ClassName="object-fill" AxamlStyle="Stretch: Fill" />
+            <docs:UtilityReferenceRow ClassName="object-none" AxamlStyle="Stretch: None" />
+            <docs:UtilityReferenceRow ClassName="object-scale-down" AxamlStyle="Stretch: Uniform, StretchDirection: DownOnly" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="object-position-* · object-[...]" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Fit modes"
-                        Summary="The same wide image is shown in a 120x80 box with each mode.">
-                        <docs:DocsExample>
-                            <StackPanel Orientation="Horizontal" Spacing="16">
-                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-contain" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-contain" /></StackPanel>
-                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-cover" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-cover" /></StackPanel>
-                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-fill" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-fill" /></StackPanel>
-                                <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-none" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-none" /></StackPanel>
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+        <docs:DocsSection
+            Heading="Fit modes"
+            Summary="The same wide image is shown in a 120x80 box with each mode.">
+            <docs:DocsExample>
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-contain" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-contain" /></StackPanel>
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-cover" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-cover" /></StackPanel>
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-fill" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-fill" /></StackPanel>
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="80" ClipToBounds="True"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-none" Width="120" Height="80" Source="{StaticResource SampleShapeImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-none" /></StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

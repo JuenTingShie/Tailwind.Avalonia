@@ -7,64 +7,39 @@
     <docs:DocsPage
         Section="Typography"
         Title="Font style"
-        Intro="Utilities for setting the style of text. italic and not-italic map to Avalonia&#x27;s FontStyle property.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="italic sets FontStyle to Italic and not-italic sets it back to Normal on the element that carries tw:Tw.Class - TextBlock, Button, and other controls that expose FontStyle. The last style class in the list wins, removing the class restores the default, and elements without a FontStyle property ignore the token with a warning. Italic rendering needs an italic (or synthesized oblique) face from the selected typeface." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="oblique · hover:italic" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for setting the style of text. italic and not-italic map to Avalonia&#x27;s FontStyle property."
+        Supported="italic sets FontStyle to Italic and not-italic sets it back to Normal on the element that carries tw:Tw.Class - TextBlock, Button, and other controls that expose FontStyle. The last style class in the list wins, removing the class restores the default, and elements without a FontStyle property ignore the token with a warning. Italic rendering needs an italic (or synthesized oblique) face from the selected typeface.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="italic" AxamlStyle="&lt;TextBlock FontStyle=&quot;Italic&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="not-italic" AxamlStyle="&lt;TextBlock FontStyle=&quot;Normal&quot; /&gt;" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="oblique · hover:italic" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
+        <docs:DocsSection
+            Heading="Italic and not-italic"
+            Summary="Use italic to slant text and not-italic to reset it, for example when an inherited or earlier class set italic. Each TextBlock below carries the real token.">
+            <docs:DocsExample>
                 <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Italic and not-italic"
-                        Summary="Use italic to slant text and not-italic to reset it, for example when an inherited or earlier class set italic. Each TextBlock below carries the real token.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="10">
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    FontSize="20"
-                                    tw:Tw.Class="not-italic"
-                                    Text="not-italic: upright text" />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    FontSize="20"
-                                    tw:Tw.Class="italic"
-                                    Text="italic: slanted text" />
-                                <TextBlock
-                                    docs:DocsCode.Show="True"
-                                    FontSize="20"
-                                    tw:Tw.Class="italic font-bold text-sky-300"
-                                    Text="italic font-bold text-sky-300" />
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+                    Spacing="10">
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        FontSize="20"
+                        tw:Tw.Class="not-italic"
+                        Text="not-italic: upright text" />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        FontSize="20"
+                        tw:Tw.Class="italic"
+                        Text="italic: slanted text" />
+                    <TextBlock
+                        docs:DocsCode.Show="True"
+                        FontSize="20"
+                        tw:Tw.Class="italic font-bold text-sky-300"
+                        Text="italic font-bold text-sky-300" />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

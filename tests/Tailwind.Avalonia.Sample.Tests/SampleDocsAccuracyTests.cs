@@ -60,7 +60,12 @@ public partial class SampleDocsAccuracyTests
 
             foreach (var table in view.GetLogicalDescendants().OfType<DocsUtilityTable>())
             {
-                foreach (var row in table.Rows ?? [])
+                if (table.Rows.Count == 0)
+                {
+                    rejected.Add("a utility table has no rows");
+                }
+
+                foreach (var row in table.Rows)
                 {
                     var token = Fill(row.ClassName);
 

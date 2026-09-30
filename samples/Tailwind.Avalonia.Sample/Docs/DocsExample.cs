@@ -87,27 +87,33 @@ public class DocsExample : ContentControl
     private bool generated;
 
     /// <summary>
-    /// Appends the snippets generated from preview elements marked with <see cref="DocsCode.ShowProperty"/>
-    /// once the example joins the tree, when its content has been fully built.
+    /// Appends the snippets generated from preview elements marked with <see cref="DocsCode.ShowProperty"/>.
+    /// This runs after the first measure of the preview, when every descendant exists, including helpers
+    /// that build their children in OnInitialized. Until a marked element appears it keeps checking.
     /// </summary>
-    protected override void OnAttachedToLogicalTree(global::Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs e)
+    protected override global::Avalonia.Size MeasureOverride(global::Avalonia.Size availableSize)
     {
-        base.OnAttachedToLogicalTree(e);
+        var size = base.MeasureOverride(availableSize);
 
-        if (generated)
+        if (!generated)
         {
-            return;
-        }
+            var found = DocsCode.Collect(Content);
 
-        generated = true;
-
-        foreach (var snippet in DocsCode.Collect(Content))
-        {
-            if (!Snippets.Contains(snippet))
+            if (found.Count > 0)
             {
-                Snippets.Add(snippet);
+                generated = true;
+
+                foreach (var snippet in found)
+                {
+                    if (!Snippets.Contains(snippet))
+                    {
+                        Snippets.Add(snippet);
+                    }
+                }
             }
         }
+
+        return size;
     }
 
     private void RefreshHasCode()

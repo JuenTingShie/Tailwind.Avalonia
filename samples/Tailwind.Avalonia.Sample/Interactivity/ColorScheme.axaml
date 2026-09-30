@@ -7,58 +7,34 @@
     <docs:DocsPage
         Section="Interactivity"
         Title="Color scheme"
-        Intro="Utilities for choosing the light or dark theme of a subtree. scheme-* sets RequestedThemeVariant.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="scheme-light, scheme-dark and scheme-normal set RequestedThemeVariant on the element that carries them, which is meaningful on ThemeVariantScope (and Window). Everything inside renders with that theme variant. Core Avalonia theming, available on every platform." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="dark: variant · scheme-light-dark" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for choosing the light or dark theme of a subtree. scheme-* sets RequestedThemeVariant."
+        Supported="scheme-light, scheme-dark and scheme-normal set RequestedThemeVariant on the element that carries them, which is meaningful on ThemeVariantScope (and Window). Everything inside renders with that theme variant. Core Avalonia theming, available on every platform.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="scheme-light" AxamlStyle="RequestedThemeVariant: Light" />
+            <docs:UtilityReferenceRow ClassName="scheme-dark" AxamlStyle="RequestedThemeVariant: Dark" />
+            <docs:UtilityReferenceRow ClassName="scheme-normal" AxamlStyle="RequestedThemeVariant: Default" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="dark: variant · scheme-light-dark" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Light and dark scopes"
-                        Summary="Both scopes sit in the same window but follow their own theme variant.">
-                        <docs:DocsExample>
-                            <StackPanel Orientation="Horizontal" Spacing="16">
-                                <ThemeVariantScope docs:DocsCode.Show="True" tw:Tw.Class="scheme-light">
-                                    <Border Padding="16" Background="{DynamicResource SystemRegionBrush}">
-                                        <StackPanel Spacing="8"><TextBlock Text="scheme-light" /><Button Content="Button" /></StackPanel>
-                                    </Border>
-                                </ThemeVariantScope>
-                                <ThemeVariantScope docs:DocsCode.Show="True" tw:Tw.Class="scheme-dark">
-                                    <Border Padding="16" Background="{DynamicResource SystemRegionBrush}">
-                                        <StackPanel Spacing="8"><TextBlock Text="scheme-dark" /><Button Content="Button" /></StackPanel>
-                                    </Border>
-                                </ThemeVariantScope>
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+        <docs:DocsSection
+            Heading="Light and dark scopes"
+            Summary="Both scopes sit in the same window but follow their own theme variant.">
+            <docs:DocsExample>
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <ThemeVariantScope docs:DocsCode.Show="True" tw:Tw.Class="scheme-light">
+                        <Border Padding="16" Background="{DynamicResource SystemRegionBrush}">
+                            <StackPanel Spacing="8"><TextBlock Text="scheme-light" /><Button Content="Button" /></StackPanel>
+                        </Border>
+                    </ThemeVariantScope>
+                    <ThemeVariantScope docs:DocsCode.Show="True" tw:Tw.Class="scheme-dark">
+                        <Border Padding="16" Background="{DynamicResource SystemRegionBrush}">
+                            <StackPanel Spacing="8"><TextBlock Text="scheme-dark" /><Button Content="Button" /></StackPanel>
+                        </Border>
+                    </ThemeVariantScope>
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

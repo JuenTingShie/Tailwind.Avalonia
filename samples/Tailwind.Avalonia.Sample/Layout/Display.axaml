@@ -7,67 +7,42 @@
     <docs:DocsPage
         Section="Layout"
         Title="Display"
-        Intro="Utilities for showing and hiding elements. hidden maps to Avalonia&#x27;s IsVisible property.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="hidden sets IsVisible to false, so the element no longer takes part in layout, like display: none. block sets IsVisible back to true, and the last of the two wins. Removing the class restores visibility. Avalonia has no separate layout-preserving visibility, so invisible and the other display values are not mapped." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="invisible · flex · grid · inline · inline-block · contents · sm:hidden" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for showing and hiding elements. hidden maps to Avalonia&#x27;s IsVisible property."
+        Supported="hidden sets IsVisible to false, so the element no longer takes part in layout, like display: none. block sets IsVisible back to true, and the last of the two wins. Removing the class restores visibility. Avalonia has no separate layout-preserving visibility, so invisible and the other display values are not mapped.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="hidden" AxamlStyle="IsVisible: false" />
+            <docs:UtilityReferenceRow ClassName="block" AxamlStyle="IsVisible: true" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="invisible · flex · grid · inline · inline-block · contents · sm:hidden" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
+        <docs:DocsSection
+            Heading="Hidden and block"
+            Summary="Three boxes carry a class each, but only two are visible: the one with hidden takes no space, and block shows the last one again.">
+            <docs:DocsExample>
                 <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Hidden and block"
-                        Summary="Three boxes carry a class each, but only two are visible: the one with hidden takes no space, and block shows the last one again.">
-                        <docs:DocsExample>
-                            <StackPanel
-                                Spacing="10">
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="hidden bg-red-500 p-3">
-                                    <TextBlock
-                                        Text="hidden: you cannot see this" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="block bg-sky-600 p-3">
-                                    <TextBlock
-                                        Text="block: visible" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="hidden block bg-emerald-600 p-3">
-                                    <TextBlock
-                                        Text="hidden block: the last one wins" />
-                                </Border>
-                            </StackPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
+                    Spacing="10">
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="hidden bg-red-500 p-3">
+                        <TextBlock
+                            Text="hidden: you cannot see this" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="block bg-sky-600 p-3">
+                        <TextBlock
+                            Text="block: visible" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="hidden block bg-emerald-600 p-3">
+                        <TextBlock
+                            Text="hidden block: the last one wins" />
+                    </Border>
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>

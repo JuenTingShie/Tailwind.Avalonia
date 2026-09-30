@@ -7,87 +7,69 @@
     <docs:DocsPage
         Section="Effects"
         Title="Blur"
-        Intro="Utilities for blurring an element. They map to Avalonia&#x27;s BlurEffect on Visual.Effect.">
-        <StackPanel
-            Spacing="52">
-            <StackPanel
-                Classes="docs-overviewStack">
-                <docs:DocsNote
-                    Classes="supported"
-                    Title="Implemented in this sample"
-                    Body="blur, blur-xs, blur-sm, blur-md, blur-lg, blur-xl, blur-2xl, blur-3xl and blur-[&lt;px&gt;] set a BlurEffect with the radius Tailwind uses (4, 8, 12, 16, 24, 40 and 64 px), and drop-shadow, drop-shadow-xs to drop-shadow-2xl set a DropShadowEffect that follows the drawn shape, with a single layer approximating Tailwind&#x27;s. Both are stored in Visual.Effect, so an element carries one effect and the last of a blur and a drop shadow wins. blur-none and removing the class clear it. Each element gets its own effect object because effects belong to the UI thread. The effect applies to the whole element including its children, as in CSS filters. Effects are drawn by Avalonia&#x27;s Skia renderer, which every target uses, but the other CSS filters (grayscale, brightness, sepia and so on) have no Avalonia equivalent and backdrop-blur is not included." />
-                <docs:DocsUtilityTable
-                    x:Name="UtilityTable"
-                    CollapsedRowCount="6" />
-                <docs:DocsNote
-                    Classes="gap"
-                    Title="Not implemented yet"
-                    Body="These forms sit outside the current parser surface.">
-                    <StackPanel
-                        Spacing="6">
-                        <TextBlock
-                            Classes="docs-tableClass"
-                            Text="backdrop-blur-* · grayscale · brightness · contrast · sepia · hue-rotate · invert · saturate · blur-(&lt;custom-property&gt;)" />
-                    </StackPanel>
-                </docs:DocsNote>
-            </StackPanel>
+        Intro="Utilities for blurring an element. They map to Avalonia&#x27;s BlurEffect on Visual.Effect."
+        Supported="blur, blur-xs, blur-sm, blur-md, blur-lg, blur-xl, blur-2xl, blur-3xl and blur-[&lt;px&gt;] set a BlurEffect with the radius Tailwind uses (4, 8, 12, 16, 24, 40 and 64 px), and drop-shadow, drop-shadow-xs to drop-shadow-2xl set a DropShadowEffect that follows the drawn shape, with a single layer approximating Tailwind&#x27;s. Both are stored in Visual.Effect, so an element carries one effect and the last of a blur and a drop shadow wins. blur-none and removing the class clear it. Each element gets its own effect object because effects belong to the UI thread. The effect applies to the whole element including its children, as in CSS filters. Effects are drawn by Avalonia&#x27;s Skia renderer, which every target uses, but the other CSS filters (grayscale, brightness, sepia and so on) have no Avalonia equivalent and backdrop-blur is not included.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="blur / blur-sm" AxamlStyle="BlurEffect radius 8" />
+            <docs:UtilityReferenceRow ClassName="blur-xs" AxamlStyle="radius 4" />
+            <docs:UtilityReferenceRow ClassName="blur-md" AxamlStyle="radius 12" />
+            <docs:UtilityReferenceRow ClassName="blur-lg" AxamlStyle="radius 16" />
+            <docs:UtilityReferenceRow ClassName="blur-xl" AxamlStyle="radius 24" />
+            <docs:UtilityReferenceRow ClassName="blur-2xl" AxamlStyle="radius 40" />
+            <docs:UtilityReferenceRow ClassName="blur-3xl" AxamlStyle="radius 64" />
+            <docs:UtilityReferenceRow ClassName="blur-none" AxamlStyle="radius 0" />
+            <docs:UtilityReferenceRow ClassName="blur-[&lt;px&gt;]" AxamlStyle="arbitrary radius" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Text="backdrop-blur-* · grayscale · brightness · contrast · sepia · hue-rotate · invert · saturate · blur-(&lt;custom-property&gt;)" />
+        </docs:DocsPage.Gaps>
 
-            <StackPanel
-                Spacing="22">
-                <TextBlock
-                    Classes="docs-eyebrow"
-                    Text="Examples" />
-                <StackPanel
-                    Classes="docs-exampleStack">
-                    <docs:DocsSection
-                        Heading="Blur radii"
-                        Summary="Each card is blurred by the radius in its class. The first card has no blur class.">
-                        <docs:DocsExample>
-                            <WrapPanel
-                                ItemSpacing="28"
-                                LineSpacing="28"
-                                Margin="12"
-                                Width="520"
-                                HorizontalAlignment="Left">
-                                <Border
-                                    tw:Tw.Class="bg-slate-600 w-28 h-16 rounded-lg p-2">
-                                    <TextBlock
-                                        FontWeight="Bold"
-                                        Text="none" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="blur-xs bg-sky-600 w-28 h-16 rounded-lg p-2">
-                                    <TextBlock
-                                        FontWeight="Bold"
-                                        Text="blur-xs" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="blur-sm bg-sky-600 w-28 h-16 rounded-lg p-2">
-                                    <TextBlock
-                                        FontWeight="Bold"
-                                        Text="blur-sm" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="blur-md bg-sky-600 w-28 h-16 rounded-lg p-2">
-                                    <TextBlock
-                                        FontWeight="Bold"
-                                        Text="blur-md" />
-                                </Border>
-                                <Border
-                                    docs:DocsCode.Show="True"
-                                    tw:Tw.Class="blur-[3px] bg-sky-600 w-28 h-16 rounded-lg p-2">
-                                    <TextBlock
-                                        FontWeight="Bold"
-                                        Text="blur-[3px]" />
-                                </Border>
-                            </WrapPanel>
-                        </docs:DocsExample>
-                    </docs:DocsSection>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        <docs:DocsSection
+            Heading="Blur radii"
+            Summary="Each card is blurred by the radius in its class. The first card has no blur class.">
+            <docs:DocsExample>
+                <WrapPanel
+                    ItemSpacing="28"
+                    LineSpacing="28"
+                    Margin="12"
+                    Width="520"
+                    HorizontalAlignment="Left">
+                    <Border
+                        tw:Tw.Class="bg-slate-600 w-28 h-16 rounded-lg p-2">
+                        <TextBlock
+                            FontWeight="Bold"
+                            Text="none" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="blur-xs bg-sky-600 w-28 h-16 rounded-lg p-2">
+                        <TextBlock
+                            FontWeight="Bold"
+                            Text="blur-xs" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="blur-sm bg-sky-600 w-28 h-16 rounded-lg p-2">
+                        <TextBlock
+                            FontWeight="Bold"
+                            Text="blur-sm" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="blur-md bg-sky-600 w-28 h-16 rounded-lg p-2">
+                        <TextBlock
+                            FontWeight="Bold"
+                            Text="blur-md" />
+                    </Border>
+                    <Border
+                        docs:DocsCode.Show="True"
+                        tw:Tw.Class="blur-[3px] bg-sky-600 w-28 h-16 rounded-lg p-2">
+                        <TextBlock
+                            FontWeight="Bold"
+                            Text="blur-[3px]" />
+                    </Border>
+                </WrapPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
     </docs:DocsPage>
 </UserControl>
