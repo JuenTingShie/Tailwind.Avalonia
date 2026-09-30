@@ -43,3 +43,19 @@ public class TwNumericVariantStretchTests
         Assert.Equal(expected, text.FontStretch);
     }
 }
+
+public class TwFontFeaturesArbitraryTests
+{
+    [Fact]
+    public void SetClass_FontFeatures_Arbitrary_Sets_Tags_And_Values()
+    {
+        var text = new TextBlock();
+
+        Tw.SetClass(text, "font-features-[smcp,liga=0] tabular-nums");
+
+        var features = text.FontFeatures!.ToDictionary(f => f.Tag!, f => f.Value);
+        Assert.Equal(1, features["smcp"]);
+        Assert.Equal(0, features["liga"]);
+        Assert.Equal(1, features["tnum"]);
+    }
+}
