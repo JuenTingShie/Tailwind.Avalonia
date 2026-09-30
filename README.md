@@ -202,14 +202,14 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 ### Transitions & Animation
 
-| Utility                    | Implemented | Notes                                                               |
-| -------------------------- | :---------: | ------------------------------------------------------------------- |
-| transition-property        |     ✅      | All platforms                                                       |
-| transition-behavior        |             | Not applicable: Avalonia transitions have no discrete-behavior mode |
-| transition-duration        |     ✅      | All platforms                                                       |
-| transition-timing-function |     ✅      | All platforms                                                       |
-| transition-delay           |     ✅      | All platforms                                                       |
-| animation                  |     ✅      | animate-spin / ping / pulse / bounce / none; Avalonia Animation, all platforms |
+| Utility                    | Implemented | Notes                                                                                                                  |
+| -------------------------- | :---------: | ---------------------------------------------------------------------------------------------------------------------- |
+| transition-property        |     ✅      | All platforms                                                                                                          |
+| transition-behavior        |             | Not applicable: Avalonia transitions have no discrete-behavior mode                                                    |
+| transition-duration        |     ✅      | All platforms                                                                                                          |
+| transition-timing-function |     ✅      | All platforms                                                                                                          |
+| transition-delay           |     ✅      | All platforms                                                                                                          |
+| animation                  |     ✅      | animate-spin / ping / pulse / bounce / none, tuned with duration-*, delay-*, ease-*; Avalonia Animation, all platforms |
 
 ### Transforms
 

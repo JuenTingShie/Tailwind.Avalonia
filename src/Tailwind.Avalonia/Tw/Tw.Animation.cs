@@ -19,6 +19,12 @@ public partial class Tw
 
     internal static string? GetActiveAnimation(AvaloniaObject element) => element.GetValue(AnimationRunnerProperty)?.Name;
 
+    // The animation as it would run now (defaults plus duration-*/delay-*/ease-* overrides); used by tests.
+    internal static Animation? GetAnimationDefinition(AvaloniaObject element) =>
+        element.GetValue(AnimationRunnerProperty) is { } runner && element is Visual visual
+            ? BuildAnimation(runner.Name, visual, runner.Timing)
+            : null;
+
     internal static Exception? GetAnimationError(AvaloniaObject element) => element.GetValue(AnimationRunnerProperty)?.LastError;
 
     internal static bool IsAnimationRunning(AvaloniaObject element) => element.GetValue(AnimationRunnerProperty)?.IsRunning == true;
@@ -43,11 +49,21 @@ public partial class Tw
         }
     }
 
-    private static void SyncAnimation(AvaloniaObject element, string? name)
+    // duration-*, delay-* and ease-* from the same class list override the animation's default timing.
+    private readonly record struct AnimationTiming(double? DurationMs, double? DelayMs, Easing? Easing);
+
+    private static AnimationTiming TimingFrom(TransitionState? state) => state is null
+        ? default
+        : new AnimationTiming(
+            state.HasDuration ? state.DurationMs : null,
+            state.HasDelay ? state.DelayMs : null,
+            state.HasEasing ? state.Easing : null);
+
+    private static void SyncAnimation(AvaloniaObject element, string? name, AnimationTiming timing)
     {
         var current = element.GetValue(AnimationRunnerProperty);
 
-        if (current?.Name == name)
+        if (current?.Name == name && (name is null || current.Timing == timing))
         {
             return;
         }
@@ -57,7 +73,7 @@ public partial class Tw
 
         if (name is not null && element is Visual visual)
         {
-            element.SetValue(AnimationRunnerProperty, new AnimationRunner(visual, name));
+            element.SetValue(AnimationRunnerProperty, new AnimationRunner(visual, name, timing));
         }
     }
 
@@ -67,10 +83,11 @@ public partial class Tw
         private CancellationTokenSource? cancellation;
         private bool ownsTransform;
 
-        public AnimationRunner(Visual visual, string name)
+        public AnimationRunner(Visual visual, string name, AnimationTiming timing)
         {
             this.visual = visual;
             Name = name;
+            Timing = timing;
             visual.AttachedToVisualTree += OnAttached;
             visual.DetachedFromVisualTree += OnDetached;
 
@@ -81,6 +98,8 @@ public partial class Tw
         }
 
         public string Name { get; }
+
+        public AnimationTiming Timing { get; }
 
         public bool IsRunning { get; private set; }
 
@@ -124,7 +143,7 @@ public partial class Tw
             {
                 while (!token.IsCancellationRequested)
                 {
-                    await BuildAnimation(Name, visual).RunAsync(visual, token);
+                    await BuildAnimation(Name, visual, Timing).RunAsync(visual, token);
                 }
             }
             catch (OperationCanceledException)
@@ -156,7 +175,29 @@ public partial class Tw
     // (about 11 days for a one second cycle); LoopAsync restarts the animation if it ever does.
     private static readonly IterationCount LongRunning = new(1_000_000);
 
-    private static Animation BuildAnimation(string name, Visual visual)
+    private static Animation BuildAnimation(string name, Visual visual, AnimationTiming timing)
+    {
+        var animation = BuildDefaultAnimation(name, visual);
+
+        if (timing.DurationMs is { } duration)
+        {
+            animation.Duration = TimeSpan.FromMilliseconds(Math.Max(duration, 1));
+        }
+
+        if (timing.DelayMs is { } delay)
+        {
+            animation.Delay = TimeSpan.FromMilliseconds(delay);
+        }
+
+        if (timing.Easing is { } easing)
+        {
+            animation.Easing = easing;
+        }
+
+        return animation;
+    }
+
+    private static Animation BuildDefaultAnimation(string name, Visual visual)
     {
         static KeyFrame Frame(double cue, params Setter[] setters)
         {

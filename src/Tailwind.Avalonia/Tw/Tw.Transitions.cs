@@ -31,8 +31,16 @@ public partial class Tw
         public double DelayMs { get; set; }
 
         public Easing Easing { get; set; } = EaseInOut;
+
+        // Whether the class list set the value explicitly; animate-* only overrides its defaults when it did.
+        public bool HasDuration { get; set; }
+
+        public bool HasDelay { get; set; }
+
+        public bool HasEasing { get; set; }
     }
 
+    private static readonly Easing EaseLinear = new LinearEasing();
     private static readonly Easing EaseIn = new SplineEasing(0.4, 0, 1, 1);
     private static readonly Easing EaseOut = new SplineEasing(0, 0, 0.2, 1);
     private static readonly Easing EaseInOut = new SplineEasing(0.4, 0, 0.2, 1);
@@ -78,28 +86,34 @@ public partial class Tw
                 state.Colors = state.Opacity = state.Transform = state.Shadow = false;
                 return true;
             case "ease-linear":
-                state.Easing = new LinearEasing();
+                state.Easing = EaseLinear;
+                state.HasEasing = true;
                 return true;
             case "ease-in":
                 state.Easing = EaseIn;
+                state.HasEasing = true;
                 return true;
             case "ease-out":
                 state.Easing = EaseOut;
+                state.HasEasing = true;
                 return true;
             case "ease-in-out":
                 state.Easing = EaseInOut;
+                state.HasEasing = true;
                 return true;
         }
 
         if (token.StartsWith("duration-", StringComparison.Ordinal) && TryParseMilliseconds(token["duration-".Length..], out var duration))
         {
             state.DurationMs = duration;
+            state.HasDuration = true;
             return true;
         }
 
         if (token.StartsWith("delay-", StringComparison.Ordinal) && TryParseMilliseconds(token["delay-".Length..], out var delay))
         {
             state.DelayMs = delay;
+            state.HasDelay = true;
             return true;
         }
 

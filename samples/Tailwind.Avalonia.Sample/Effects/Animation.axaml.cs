@@ -13,6 +13,9 @@ public partial class Animation : UserControl
         new("animate-pulse", "Opacity 1, 0.5, 1 over 2s"),
         new("animate-bounce", "TranslateTransform.Y bounce, 1s"),
         new("animate-none", "stops the animation"),
+        new("duration-<ms> / duration-[<time>]", "overrides the animation duration"),
+        new("delay-<ms> / delay-[<time>]", "delays the start of the animation"),
+        new("ease-linear / ease-in / ease-out / ease-in-out", "overrides the animation easing"),
     ];
 
     /// <summary>
