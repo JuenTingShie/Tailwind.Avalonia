@@ -16,6 +16,7 @@ public partial class TextDecoration : UserControl
         new("decoration-[<px>]", "TextDecoration.StrokeThickness (px)"),
         new("decoration-<color>", "TextDecoration.Stroke"),
         new("underline-offset-<0|1|2|4|8>", "TextDecoration.StrokeOffset (px)"),
+        new("decoration-solid / dotted / dashed", "TextDecoration.StrokeDashArray"),
         new("decoration-auto / underline-offset-auto", "font recommended metrics"),
     ];
 

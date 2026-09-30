@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="decoration-dotted / dashed / wavy / double · hover:underline" />
+                            Text="decoration-double / wavy · hover:underline" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>
@@ -86,6 +86,23 @@
                                 <TextBlock FontSize="20" tw:Tw.Class="underline decoration-4 decoration-sky-400" Text="underline decoration-4 decoration-sky-400" />
                                 <TextBlock FontSize="20" tw:Tw.Class="underline underline-offset-4 decoration-rose-500" Text="underline underline-offset-4 decoration-rose-500" />
                                 <TextBlock FontSize="20" tw:Tw.Class="line-through decoration-2 decoration-amber-400" Text="line-through decoration-2 decoration-amber-400" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+
+                    <docs:DocsSection
+                        Heading="Line style"
+                        Summary="decoration-solid, decoration-dotted and decoration-dashed change the line pattern. double and wavy have no Avalonia equivalent. Combine with decoration-2 so the pattern is easy to see.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-2&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-dotted decoration-2&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-dashed decoration-2&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Spacing="10">
+                                <TextBlock FontSize="20" tw:Tw.Class="underline decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-solid (default)" />
+                                <TextBlock FontSize="20" tw:Tw.Class="underline decoration-dotted decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-dotted" />
+                                <TextBlock FontSize="20" tw:Tw.Class="underline decoration-dashed decoration-2 decoration-sky-400 underline-offset-4" Text="decoration-dashed" />
                             </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>
