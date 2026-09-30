@@ -38,6 +38,7 @@ public partial class Tw
         BorderBrush,
         CaretBrush,
         SelectionBrush,
+        DecorationBrush,
     }
 
     private enum SizingTarget
@@ -121,6 +122,7 @@ public partial class Tw
             new("border-", BrushTarget.BorderBrush),
             new("caret-", BrushTarget.CaretBrush),
             new("selection-", BrushTarget.SelectionBrush),
+            new("decoration-", BrushTarget.DecorationBrush),
         };
     }
 
@@ -128,6 +130,12 @@ public partial class Tw
     {
         public static readonly SizingUtilityDescriptor[] All =
         {
+            new("min-inline-", SizingTarget.MinWidth),
+            new("max-inline-", SizingTarget.MaxWidth),
+            new("min-block-", SizingTarget.MinHeight),
+            new("max-block-", SizingTarget.MaxHeight),
+            new("inline-", SizingTarget.Width),
+            new("block-", SizingTarget.Height),
             new("min-w-", SizingTarget.MinWidth),
             new("max-w-", SizingTarget.MaxWidth),
             new("min-h-", SizingTarget.MinHeight),

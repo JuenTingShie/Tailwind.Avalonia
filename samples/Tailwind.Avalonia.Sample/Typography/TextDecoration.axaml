@@ -27,7 +27,7 @@
                         Spacing="6">
                         <TextBlock
                             Classes="docs-tableClass"
-                            Text="decoration-&lt;color&gt; · decoration-&lt;n&gt; · decoration-dotted / wavy · underline-offset-* · hover:underline" />
+                            Text="decoration-dotted / dashed / wavy / double · hover:underline" />
                     </StackPanel>
                 </docs:DocsNote>
             </StackPanel>
@@ -70,6 +70,22 @@
                                     FontSize="18"
                                     tw:Tw.Class="underline no-underline"
                                     Text="underline no-underline" />
+                            </StackPanel>
+                        </docs:DocsExample>
+                    </docs:DocsSection>
+                    <docs:DocsSection
+                        Heading="Thickness, offset and color"
+                        Summary="decoration-N sets the line thickness, underline-offset-N moves it away from the text and decoration-color changes its color. They only take effect together with underline, overline or line-through.">
+                        <docs:DocsExample>
+                            <docs:DocsExample.Snippets>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline decoration-4 decoration-sky-400&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;underline underline-offset-4 decoration-rose-500&quot; /&gt;</x:String>
+                                <x:String>&lt;TextBlock tw:Tw.Class=&quot;line-through decoration-2 decoration-amber-400&quot; /&gt;</x:String>
+                            </docs:DocsExample.Snippets>
+                            <StackPanel Spacing="10">
+                                <TextBlock FontSize="20" tw:Tw.Class="underline decoration-4 decoration-sky-400" Text="underline decoration-4 decoration-sky-400" />
+                                <TextBlock FontSize="20" tw:Tw.Class="underline underline-offset-4 decoration-rose-500" Text="underline underline-offset-4 decoration-rose-500" />
+                                <TextBlock FontSize="20" tw:Tw.Class="line-through decoration-2 decoration-amber-400" Text="line-through decoration-2 decoration-amber-400" />
                             </StackPanel>
                         </docs:DocsExample>
                     </docs:DocsSection>
