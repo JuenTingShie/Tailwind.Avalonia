@@ -27,8 +27,7 @@
             <docs:DocsGap Title="percentages and fractions" Text="h-&lt;fraction&gt; · min-h-&lt;fraction&gt; · max-h-&lt;fraction&gt;" />
             <docs:DocsGap Title="viewport units" Text="h-screen · h-dvh · h-lvh · h-svh · h-dvw · h-lvw · h-svw" />
             <docs:DocsGap Title="viewport units on min and max" Text="min-h-screen · min-h-dvh · min-h-svh · max-h-screen · max-h-dvh · max-h-svh" />
-            <docs:DocsGap Title="keywords and resets" Text="min-h-full · max-h-full" />
-            <docs:DocsGap Title="combined dimensions" Text="size-full" />
+            <docs:DocsGap Title="keywords and resets" Text="min-h-full" />
             <docs:DocsGap Title="custom properties and breakpoints" Text="h-(&lt;custom-property&gt;) · md:h-full · md:min-h-0 · md:max-h-96" />
         </docs:DocsPage.Gaps>
 

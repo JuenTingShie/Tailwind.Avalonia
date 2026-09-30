@@ -27,8 +27,8 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | overscroll-behavior         |     ✅      | ScrollViewer.IsScrollChainingEnabled                                                                       |
 | position                    |             | Partial: top/right/bottom/left position Canvas children; relative/absolute/fixed/sticky have no equivalent |
 | top / right / bottom / left |     ✅      | Canvas children only                                                                                       |
-| visibility                  |             | Not implemented: IsVisible collapses layout, so invisible cannot be mapped faithfully                      |
-| z-index                     |     ✅      | All platforms                                                                                              |
+| visibility                  |     ✅      | invisible = Opacity 0 + IsHitTestVisible false (keeps layout); visible undoes it; no collapse              |
+| z-index                     |     ✅      | z-<n>, -z-<n>, z-[<n>], z-auto                                                                             |
 
 ### Flexbox & Grid
 
@@ -73,11 +73,11 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | --------------- | :---------: | ------------------------------------------------------------------------------------------------------------------- |
 | width           |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
 | min-width       |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
-| max-width       |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| max-width       |     ✅      | Numeric scale, arbitrary values, none and full; no fractions, screen keywords or named sizes (max-w-md)             |
 | height          |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
 | min-height      |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
-| max-height      |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
-| size            |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions, screen/min/max/fit keywords or named sizes (max-w-md) |
+| max-height      |     ✅      | Numeric scale, arbitrary values, none and full; no fractions, screen keywords or named sizes (max-w-md)             |
+| size            |     ✅      | Numeric scale, arbitrary values, auto and full; no fractions or screen keywords                                     |
 | inline-size     |     ✅      | All platforms                                                                                                       |
 | min-inline-size |     ✅      | All platforms                                                                                                       |
 | max-inline-size |     ✅      | All platforms                                                                                                       |
@@ -90,16 +90,16 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | Utility                   | Implemented | Notes                                                                                               |
 | ------------------------- | :---------: | --------------------------------------------------------------------------------------------------- |
 | font-family               |     ✅      | font-sans / serif / mono fallback stacks                                                            |
-| font-size                 |     ✅      | All platforms                                                                                       |
+| font-size                 |     ✅      | Scale and arbitrary values; text-<size>/<line-height> sets both                                     |
 | font-smoothing            |             | Not implemented: the text rendering mode is not a public AvaloniaProperty in Avalonia 12            |
 | font-style                |     ✅      | All platforms                                                                                       |
-| font-weight               |     ✅      | All platforms                                                                                       |
+| font-weight               |     ✅      | Named weights and font-[1..1000]                                                                    |
 | font-stretch              |     ✅      | All platforms; visible only if the font provides the width variant                                  |
 | font-variant-numeric      |     ✅      | All platforms; visible only if the font provides the OpenType feature                               |
 | font-feature-settings     |     ✅      | font-features-[tag,tag=0]; visible only if the font provides the feature                            |
 | letter-spacing            |     ✅      | All platforms                                                                                       |
-| line-clamp                |     ✅      | All platforms                                                                                       |
-| line-height               |     ✅      | All platforms                                                                                       |
+| line-clamp                |     ✅      | line-clamp-<n>, line-clamp-[<n>], line-clamp-none                                                   |
+| line-height               |     ✅      | leading-<n> (spacing scale), leading-[<px                                                           |
 | list-style-image          |             | No Avalonia equivalent (no list markers)                                                            |
 | list-style-position       |             | No Avalonia equivalent (no list markers)                                                            |
 | list-style-type           |             | No Avalonia equivalent (no list markers)                                                            |
@@ -153,24 +153,24 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 ### Effects
 
-| Utility               | Implemented | Notes                                |
-| --------------------- | :---------: | ------------------------------------ |
-| box-shadow            |     ✅      | All platforms                        |
-| inset-shadow          |     ✅      | All platforms                        |
-| ring                  |     ✅      | All platforms                        |
-| text-shadow           |             | No Avalonia equivalent               |
-| opacity               |     ✅      | All platforms                        |
-| mix-blend-mode        |             | No Avalonia equivalent               |
-| background-blend-mode |             | No Avalonia equivalent               |
-| mask-clip             |             | No Avalonia equivalent for CSS masks |
-| mask-composite        |             | No Avalonia equivalent for CSS masks |
-| mask-image            |             | No Avalonia equivalent for CSS masks |
-| mask-mode             |             | No Avalonia equivalent for CSS masks |
-| mask-origin           |             | No Avalonia equivalent for CSS masks |
-| mask-position         |             | No Avalonia equivalent for CSS masks |
-| mask-repeat           |             | No Avalonia equivalent for CSS masks |
-| mask-size             |             | No Avalonia equivalent for CSS masks |
-| mask-type             |             | No Avalonia equivalent for CSS masks |
+| Utility               | Implemented | Notes                                         |
+| --------------------- | :---------: | --------------------------------------------- |
+| box-shadow            |     ✅      | All platforms                                 |
+| inset-shadow          |     ✅      | All platforms                                 |
+| ring                  |     ✅      | All platforms                                 |
+| text-shadow           |             | No Avalonia equivalent                        |
+| opacity               |     ✅      | opacity-<0-100> and opacity-[<fraction or %>] |
+| mix-blend-mode        |             | No Avalonia equivalent                        |
+| background-blend-mode |             | No Avalonia equivalent                        |
+| mask-clip             |             | No Avalonia equivalent for CSS masks          |
+| mask-composite        |             | No Avalonia equivalent for CSS masks          |
+| mask-image            |             | No Avalonia equivalent for CSS masks          |
+| mask-mode             |             | No Avalonia equivalent for CSS masks          |
+| mask-origin           |             | No Avalonia equivalent for CSS masks          |
+| mask-position         |             | No Avalonia equivalent for CSS masks          |
+| mask-repeat           |             | No Avalonia equivalent for CSS masks          |
+| mask-size             |             | No Avalonia equivalent for CSS masks          |
+| mask-type             |             | No Avalonia equivalent for CSS masks          |
 
 ### Filters
 
@@ -222,9 +222,9 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | backface-visibility |             | No Avalonia equivalent (2D transforms only)                           |
 | perspective         |             | No Avalonia equivalent (2D transforms only)                           |
 | perspective-origin  |             | No Avalonia equivalent (2D transforms only)                           |
-| rotate              |     ✅      | All platforms                                                         |
+| rotate              |     ✅      | Degrees; arbitrary values accept deg, rad, grad and turn              |
 | scale               |     ✅      | All platforms                                                         |
-| skew                |     ✅      | All platforms                                                         |
+| skew                |     ✅      | Degrees; arbitrary values accept deg, rad, grad and turn              |
 | transform           |     ✅      | transform-none only; transforms come from rotate/scale/skew/translate |
 | transform-origin    |     ✅      | All platforms                                                         |
 | transform-style     |             | No Avalonia equivalent (2D transforms only)                           |

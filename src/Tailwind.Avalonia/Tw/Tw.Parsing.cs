@@ -137,9 +137,17 @@ public partial class Tw
                 return true;
             }
 
-            if (descriptor.Target is SizingTarget.Width or SizingTarget.Height && scaleToken == "full")
+            if (descriptor.Target is SizingTarget.Width or SizingTarget.Height or SizingTarget.Size && scaleToken == "full")
             {
                 utility = new SizingUtility(descriptor.Target, double.NaN, Fill: true);
+                return true;
+            }
+
+            // max-w-full / max-h-full: an Avalonia child is already held to its parent's slot, so "no larger than the
+            // parent" is the same as no explicit maximum.
+            if (isMax && scaleToken == "full")
+            {
+                utility = new SizingUtility(descriptor.Target, double.PositiveInfinity);
                 return true;
             }
 
@@ -280,6 +288,18 @@ public partial class Tw
         if (sizeToken.Length == 0)
         {
             return false;
+        }
+
+        // text-<size>/<line-height> sets both (text-sm/6, text-lg/[28px], text-base/[1.5]). A size that is not a
+        // font size (text-sky-500/50) is left for the color parser.
+        var slash = sizeToken.LastIndexOf('/');
+
+        if (slash > 0 &&
+            TryParseScaleOrArbitraryPixels(sizeToken[..slash], FontSizeScale.TryGetPixels, static p => p >= 0, out var sizedPixels) &&
+            TryParseLineHeightValue(sizeToken[(slash + 1)..], out var lineHeight))
+        {
+            utility = new FontSizeUtility(sizedPixels, lineHeight);
+            return true;
         }
 
         // Try a scale-table token first (e.g. text-lg), then an arbitrary value (e.g. text-[14px]).
@@ -446,6 +466,31 @@ public partial class Tw
         {
             utility = new TextMetricUtility(known, true);
             return true;
+        }
+
+        return TryParseLineHeightValue(value, out utility);
+    }
+
+    // A line height value: a spacing-scale step (6 = 24px), an arbitrary length ([18px], [2rem]) or, as in CSS,
+    // a unitless or em value that multiplies the font size ([1.5], [1.2em]).
+    private static bool TryParseLineHeightValue(string value, out TextMetricUtility utility)
+    {
+        utility = default;
+
+        if (value.Length > 2 && value[0] == '[' && value[^1] == ']')
+        {
+            var inner = value[1..^1].Trim();
+            var isEm = inner.EndsWith("em", StringComparison.Ordinal) && !inner.EndsWith("rem", StringComparison.Ordinal);
+            var number = isEm ? inner[..^2] : inner;
+
+            if ((isEm || (number.Length > 0 && (char.IsDigit(number[^1]) || number[^1] == '.'))) &&
+                number.Length > 0 && number[^1] != '.' &&
+                double.TryParse(number, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out var multiplier) &&
+                double.IsFinite(multiplier))
+            {
+                utility = new TextMetricUtility(multiplier, true);
+                return true;
+            }
         }
 
         if (TryParseScaleOrArbitraryPixels(value, SpacingScale.TryGetPixels, static p => p >= 0, out var pixels))

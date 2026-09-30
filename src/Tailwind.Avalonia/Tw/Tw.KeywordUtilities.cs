@@ -261,10 +261,32 @@ public partial class Tw
             return true;
         }
 
+        // A leading dash negates a scale value (-z-10); arbitrary values carry their own sign (z-[-3]).
+        if (token.StartsWith("-z-", StringComparison.Ordinal) && !token.Contains('[') &&
+            TryParseZIndex(token["-z-".Length..], out var negativeZIndex) && negativeZIndex > 0)
+        {
+            assignments = [new KeywordAssignment("ZIndex", -negativeZIndex)];
+            return true;
+        }
+
+        // font-[<weight>] takes a numeric weight from 1 to 1000 (font-[600], font-[1000]).
+        if (token.StartsWith("font-[", StringComparison.Ordinal) && token.EndsWith(']') &&
+            int.TryParse(token["font-[".Length..^1], System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out var weight) &&
+            weight is >= 1 and <= 1000)
+        {
+            assignments = [new KeywordAssignment("FontWeight", (FontWeight)weight)];
+            return true;
+        }
+
         // line-clamp-<n> limits the visible lines and ends the last one with an ellipsis; line-clamp-none removes the limit.
         if (token.StartsWith("line-clamp-", StringComparison.Ordinal))
         {
             var value = token["line-clamp-".Length..];
+
+            if (value.Length > 2 && value[0] == '[' && value[^1] == ']')
+            {
+                value = value[1..^1];
+            }
 
             if (value == "none")
             {

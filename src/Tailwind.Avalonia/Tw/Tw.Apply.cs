@@ -37,6 +37,7 @@ public partial class Tw
         var hasFontSize = false;
         var hasCornerRadius = false;
         var hasOpacity = false;
+        bool? invisible = null;
         var hasTextAlignment = false;
         Dictionary<string, object>? keywordValues = null;
         var hasBoxShadow = false;
@@ -177,8 +178,8 @@ public partial class Tw
                         height = sizingUtility.Pixels;
                         hasWidth = true;
                         hasHeight = true;
-                        widthFill = false;
-                        heightFill = false;
+                        widthFill = sizingUtility.Fill;
+                        heightFill = sizingUtility.Fill;
                         break;
 
                     case SizingTarget.MinWidth:
@@ -227,6 +228,13 @@ public partial class Tw
             {
                 fontSize = fontSizeUtility.Pixels;
                 hasFontSize = true;
+
+                if (fontSizeUtility.LineHeight is { } pairedLineHeight)
+                {
+                    lineHeight = pairedLineHeight;
+                    hasLineHeight = true;
+                }
+
                 continue;
             }
 
@@ -365,6 +373,13 @@ public partial class Tw
                 continue;
             }
 
+            // invisible hides the element but keeps its place in layout (CSS visibility: hidden); visible undoes it.
+            if (token is "invisible" or "visible")
+            {
+                invisible = token == "invisible";
+                continue;
+            }
+
             if (TryParseOpacityUtility(token, out var opacityUtility))
             {
                 opacity = opacityUtility;
@@ -429,6 +444,17 @@ public partial class Tw
                     keywordValues["SelectionBrush"] = brushUtility.Brush;
                     break;
             }
+        }
+
+        // invisible: fully transparent and ignored by the pointer, but still measured and arranged. It wins over
+        // opacity-* and pointer-events-* in the same list, and over their state variants, as CSS visibility does.
+        if (invisible == true)
+        {
+            opacity = 0;
+            hasOpacity = true;
+            Array.Clear(opacityVariants);
+            keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+            keywordValues["IsHitTestVisible"] = false;
         }
 
         // Only elements that combine a base value with at least one hover:/pressed:/focus:

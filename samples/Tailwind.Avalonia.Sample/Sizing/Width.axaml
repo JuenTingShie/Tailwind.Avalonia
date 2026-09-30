@@ -28,7 +28,6 @@
             <docs:DocsGap Title="container scale" Text="w-3xs…w-2xl · min-w-3xs…min-w-2xl · max-w-3xs…max-w-7xl · max-w-prose" />
             <docs:DocsGap Title="viewport units" Text="w-screen · w-dvw · w-lvw · w-svw · w-dvh · w-lvh · w-svh" />
             <docs:DocsGap Title="keywords and resets" Text="container" />
-            <docs:DocsGap Title="combined dimensions" Text="size-full" />
             <docs:DocsGap Title="custom properties and breakpoints" Text="w-(&lt;custom-property&gt;) · md:w-full · md:min-w-0 · md:max-w-lg" />
         </docs:DocsPage.Gaps>
 

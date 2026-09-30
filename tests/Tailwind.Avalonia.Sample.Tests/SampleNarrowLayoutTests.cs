@@ -112,4 +112,16 @@ public class SampleNarrowLayoutTests
             Assert.Contains(":stacked", table.Classes);
         });
     }
+
+    [Fact]
+    public void Wide_Utility_Table_Keeps_A_Gap_Between_Columns()
+    {
+        SampleHeadless.Run(() =>
+        {
+            var view = SamplePageTests.Open("Layout", "Display");
+            var cell = view.GetVisualDescendants().OfType<TextBlock>().First(t => t.Classes.Contains("docs-tableClass"));
+            Assert.Equal(Dock.Left, DockPanel.GetDock(cell));
+            Assert.Equal(24, cell.Margin.Right);
+        });
+    }
 }

@@ -108,10 +108,13 @@ public class DocsUtilityTable : TemplatedControl
 
         foreach (var cell in this.GetVisualDescendants().OfType<TextBlock>())
         {
-            if ((cell.Classes.Contains("docs-tableClass") || cell.Classes.Contains("docs-referenceClassHeading")) && DockPanel.GetDock(cell) != dock)
+            var margin = stacked ? new Thickness(0, 0, 0, 4) : new Thickness(0, 0, 24, 0);
+
+            if ((cell.Classes.Contains("docs-tableClass") || cell.Classes.Contains("docs-referenceClassHeading")) &&
+                (DockPanel.GetDock(cell) != dock || cell.Margin != margin))
             {
                 DockPanel.SetDock(cell, dock);
-                cell.Margin = stacked ? new Thickness(0, 0, 0, 4) : new Thickness(0, 0, 24, 0);
+                cell.Margin = margin;
                 changed = true;
             }
         }
