@@ -3,6 +3,11 @@
 The sample is a docs site: one page per utility family, grouped into sections. It runs on desktop
 (`Tailwind.Avalonia.Sample.Desktop`) and in the browser (`Tailwind.Avalonia.Sample.Browser`).
 
+The side pane lists every page under its section heading. Type in the search box (or press
+Ctrl+K / Cmd+K) to filter by page or section name; Enter opens the first match and Esc clears the
+search. Each page ends with previous / next links in catalog order. The browser build bundles the
+Inter font so text looks the same as on desktop.
+
 ## Adding a page
 
 1. Create `<Section>/<Name>.axaml` (+ a code-behind that only calls `InitializeComponent()`).

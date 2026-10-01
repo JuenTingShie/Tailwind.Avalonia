@@ -47,7 +47,27 @@ public class DocsPage : TemplatedControl
     public static readonly DirectProperty<DocsPage, Control?> BodyProperty =
         AvaloniaProperty.RegisterDirect<DocsPage, Control?>(nameof(Body), o => o.Body);
 
+    public static readonly StyledProperty<Control?> FooterProperty =
+        AvaloniaProperty.Register<DocsPage, Control?>(nameof(Footer));
+
     private Control? body;
+    private ScrollViewer? scroller;
+
+    /// <summary>Shown after the examples; the shell puts the previous / next links here.</summary>
+    public Control? Footer
+    {
+        get => GetValue(FooterProperty);
+        set => SetValue(FooterProperty, value);
+    }
+
+    /// <summary>Scrolls the page back to its title.</summary>
+    public void ScrollToTop() => scroller?.ScrollToHome();
+
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        base.OnApplyTemplate(e);
+        scroller = e.NameScope.Find<ScrollViewer>("PART_Scroller");
+    }
 
     /// <summary>Category label shown above the page title.</summary>
     public string? Section
