@@ -241,12 +241,6 @@ public partial class Tw
             return false;
         }
 
-        if (token.Equals("rounded", StringComparison.Ordinal))
-        {
-            utility = new CornerRadiusUtility(CornerRadiusEdge.All, 4.0);
-            return true;
-        }
-
         foreach (var descriptor in CornerRadiusUtilityDescriptors.All)
         {
             if (!token.StartsWith(descriptor.Prefix, StringComparison.Ordinal))
@@ -454,11 +448,6 @@ public partial class Tw
         double? multiplier = value switch
         {
             "none" => 1,
-            "tight" => 1.25,
-            "snug" => 1.375,
-            "normal" => 1.5,
-            "relaxed" => 1.625,
-            "loose" => 2,
             _ => null,
         };
 
@@ -522,11 +511,6 @@ public partial class Tw
     private static bool TryParseInsetShadowUtility(string token, out BoxShadows shadows)
     {
         shadows = default;
-
-        if (token == "shadow-inner")
-        {
-            return BoxShadowScale.TryGetInsetShadows("inner", out shadows);
-        }
 
         return token.StartsWith("inset-shadow-", StringComparison.Ordinal) &&
             BoxShadowScale.TryGetInsetShadows(token["inset-shadow-".Length..], out shadows);

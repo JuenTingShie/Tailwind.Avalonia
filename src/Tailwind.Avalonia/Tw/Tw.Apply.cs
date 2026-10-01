@@ -88,6 +88,16 @@ public partial class Tw
 
         foreach (var rawToken in tokens)
         {
+            // placeholder: and selection: target pseudo-elements, which Avalonia exposes as plain brush properties:
+            // placeholder:text-* -> PlaceholderForeground, selection:bg-* -> SelectionBrush and
+            // selection:text-* -> SelectionForegroundBrush.
+            if (TryParsePseudoElementBrush(rawToken, out var pseudoProperty, out var pseudoBrush))
+            {
+                keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+                keywordValues[pseudoProperty] = pseudoBrush;
+                continue;
+            }
+
             if (TryParseVariantToken(rawToken, out var variantKind, out var variantRemainder))
             {
                 if (TryParseBrushUtility(variantRemainder, out var variantBrush))

@@ -11,7 +11,6 @@
         Supported="rounded-* maps the named scale (none, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, full), physical sides (rounded-t/r/b/l-*), physical corners (rounded-tl/tr/br/bl-*), and bracket arbitrary values like rounded-[6px] onto CornerRadius. Logical properties, custom properties, and responsive or hover/focus variants are still out of scope."
         GapsBody="These Tailwind border-radius rows remain outside the current parser surface.">
         <docs:DocsPage.Utilities>
-            <docs:UtilityReferenceRow ClassName="rounded" AxamlStyle="&lt;Border CornerRadius=&quot;4&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="rounded-none" AxamlStyle="&lt;Border CornerRadius=&quot;0&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="rounded-xs" AxamlStyle="&lt;Border CornerRadius=&quot;2&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="rounded-sm" AxamlStyle="&lt;Border CornerRadius=&quot;4&quot; /&gt;" />

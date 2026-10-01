@@ -8,10 +8,9 @@
         Section="Backgrounds"
         Title="Gradients"
         Intro="Utilities for linear color gradients. They build a LinearGradientBrush for the element&#x27;s Background."
-        Supported="bg-gradient-to-&lt;direction&gt; (or bg-linear-to-&lt;direction&gt;) picks the direction: t, tr, r, br, b, bl, l or tl. from-&lt;color&gt;, via-&lt;color&gt; and to-&lt;color&gt; set the start, middle and end colors and accept the same values as bg-*: palette colors, named colors, hex, and an opacity modifier. Stops are spread evenly (0, 0.5 and 1), a missing from or to is transparent, and the gradient needs a direction and at least one color. Avalonia has a single Background brush, so a gradient replaces any bg-&lt;color&gt; on the same element, and removing the classes clears it. Positioned stops (from-10%), radial and conic gradients and variants are not included. LinearGradientBrush is available on every target.">
+        Supported="bg-linear-to-&lt;direction&gt; picks the direction: t, tr, r, br, b, bl, l or tl. from-&lt;color&gt;, via-&lt;color&gt; and to-&lt;color&gt; set the start, middle and end colors and accept the same values as bg-*: palette colors, named colors, hex, and an opacity modifier. Stops are spread evenly (0, 0.5 and 1), a missing from or to is transparent, and the gradient needs a direction and at least one color. Avalonia has a single Background brush, so a gradient replaces any bg-&lt;color&gt; on the same element, and removing the classes clears it. Positioned stops (from-10%), radial and conic gradients and variants are not included. LinearGradientBrush is available on every target.">
         <docs:DocsPage.Utilities>
-            <docs:UtilityReferenceRow ClassName="bg-gradient-to-t / tr / r / br / b / bl / l / tl" AxamlStyle="LinearGradientBrush direction" />
-            <docs:UtilityReferenceRow ClassName="bg-linear-to-&lt;direction&gt;" AxamlStyle="same, Tailwind v4 spelling" />
+            <docs:UtilityReferenceRow ClassName="bg-linear-to-t / tr / r / br / b / bl / l / tl" AxamlStyle="LinearGradientBrush direction" />
             <docs:UtilityReferenceRow ClassName="from-&lt;color&gt;" AxamlStyle="first stop" />
             <docs:UtilityReferenceRow ClassName="via-&lt;color&gt;" AxamlStyle="middle stop" />
             <docs:UtilityReferenceRow ClassName="to-&lt;color&gt;" AxamlStyle="last stop" />
@@ -28,19 +27,19 @@
                     Spacing="10">
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="bg-gradient-to-r from-sky-500 to-indigo-600 w-72 h-14 rounded-lg" />
+                        tw:Tw.Class="bg-linear-to-r from-sky-500 to-indigo-600 w-72 h-14 rounded-lg" />
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="bg-gradient-to-b from-rose-500 via-amber-300 to-emerald-500 w-72 h-14 rounded-lg" />
+                        tw:Tw.Class="bg-linear-to-b from-rose-500 via-amber-300 to-emerald-500 w-72 h-14 rounded-lg" />
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="bg-gradient-to-br from-fuchsia-500 to-cyan-400 w-72 h-14 rounded-lg" />
+                        tw:Tw.Class="bg-linear-to-br from-fuchsia-500 to-cyan-400 w-72 h-14 rounded-lg" />
                     <Border
                         docs:DocsCode.Show="True"
                         tw:Tw.Class="bg-linear-to-t from-slate-900 to-slate-500 w-72 h-14 rounded-lg" />
                     <Border
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="bg-gradient-to-r from-[#ff0080] to-blue-500/50 w-72 h-14 rounded-lg" />
+                        tw:Tw.Class="bg-linear-to-r from-[#ff0080] to-blue-500/50 w-72 h-14 rounded-lg" />
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>

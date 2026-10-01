@@ -7,14 +7,15 @@
     <docs:DocsPage
         Section="Interactivity"
         Title="Caret and selection color"
-        Intro="Utilities for coloring the text caret and the text selection. They map to Avalonia&#x27;s CaretBrush and SelectionBrush properties."
-        Supported="caret-&lt;color&gt; sets CaretBrush and selection-&lt;color&gt; sets SelectionBrush. Both take the same color values as bg-* and text-*: palette colors (caret-red-500), named colors, hex values and arbitrary colors with an opacity modifier. CaretBrush exists on TextBox, SelectionBrush on TextBox and SelectableTextBlock, and other elements ignore the token with a warning. Removing the class restores the theme&#x27;s brush. Click into a box to see the caret and select text to see the selection. These are plain brush properties, so they work on every target.">
+        Intro="Utilities for coloring the text caret and the text selection. caret-* maps to CaretBrush, and the selection: variant maps to SelectionBrush and SelectionForegroundBrush."
+        Supported="caret-&lt;color&gt; sets CaretBrush. The selection: variant styles selected text: selection:bg-&lt;color&gt; sets SelectionBrush and selection:text-&lt;color&gt; sets SelectionForegroundBrush. They take the same color values as bg-* and text-*: palette colors, named colors, hex values and arbitrary colors with an opacity modifier. CaretBrush exists on TextBox; the selection brushes on TextBox and SelectableTextBlock; other elements ignore the token with a warning. Removing the class restores the theme&#x27;s brush. These are plain brush properties, so they work on every target.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="caret-&lt;color&gt;" AxamlStyle="CaretBrush" />
-            <docs:UtilityReferenceRow ClassName="selection-&lt;color&gt;" AxamlStyle="SelectionBrush" />
+            <docs:UtilityReferenceRow ClassName="selection:bg-&lt;color&gt;" AxamlStyle="SelectionBrush" />
+            <docs:UtilityReferenceRow ClassName="selection:text-&lt;color&gt;" AxamlStyle="SelectionForegroundBrush" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="accent-* · caret color on non-text controls · selection: variant" />
+            <docs:DocsGap Text="accent-* · caret color on non-text controls · selection: with non-color utilities" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
@@ -27,16 +28,16 @@
                     HorizontalAlignment="Left">
                     <TextBox
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="caret-red-500 selection-red-300"
-                        Text="caret-red-500 selection-red-300" />
+                        tw:Tw.Class="caret-red-500 selection:bg-red-300"
+                        Text="caret-red-500 selection:bg-red-300" />
                     <TextBox
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="caret-emerald-500 selection-emerald-300"
-                        Text="caret-emerald-500 selection-emerald-300" />
+                        tw:Tw.Class="caret-emerald-500 selection:bg-emerald-300"
+                        Text="caret-emerald-500 selection:bg-emerald-300" />
                     <SelectableTextBlock
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="selection-amber-400"
-                        Text="selection-amber-400: select this text with the mouse" />
+                        tw:Tw.Class="selection:bg-amber-400 selection:text-slate-950"
+                        Text="selection:bg-amber-400 selection:text-slate-950: select this text with the mouse" />
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>

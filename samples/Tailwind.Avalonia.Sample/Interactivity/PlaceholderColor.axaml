@@ -7,13 +7,13 @@
     <docs:DocsPage
         Section="Interactivity"
         Title="Placeholder color"
-        Intro="Utilities for the color of placeholder text. placeholder-&lt;color&gt; sets TextBox.PlaceholderForeground."
-        Supported="placeholder-&lt;color&gt; uses the Tailwind palette (with optional opacity) and sets PlaceholderForeground on TextBox. Other elements ignore it with a warning. Core Avalonia property, available on every platform.">
+        Intro="The placeholder: variant styles a text box&#x27;s placeholder. placeholder:text-&lt;color&gt; sets TextBox.PlaceholderForeground."
+        Supported="placeholder:text-&lt;color&gt; uses the Tailwind palette (with optional opacity) and sets PlaceholderForeground on TextBox. Other elements ignore it with a warning, and placeholder: only accepts text colors. Core Avalonia property, available on every platform.">
         <docs:DocsPage.Utilities>
-            <docs:UtilityReferenceRow ClassName="placeholder-&lt;color&gt;" AxamlStyle="TextBox.PlaceholderForeground" />
+            <docs:UtilityReferenceRow ClassName="placeholder:text-&lt;color&gt;" AxamlStyle="TextBox.PlaceholderForeground" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="placeholder: variant" />
+            <docs:DocsGap Text="placeholder:italic · placeholder: with non-color utilities" />
         </docs:DocsPage.Gaps>
 
         <docs:DocsSection
@@ -22,8 +22,8 @@
             <docs:DocsExample>
                 <StackPanel Spacing="10" Width="280">
                     <TextBox PlaceholderText="default placeholder" />
-                    <TextBox docs:DocsCode.Show="True" PlaceholderText="placeholder-rose-400" tw:Tw.Class="placeholder-rose-400" />
-                    <TextBox docs:DocsCode.Show="True" PlaceholderText="placeholder-emerald-500" tw:Tw.Class="placeholder-emerald-500" />
+                    <TextBox docs:DocsCode.Show="True" PlaceholderText="placeholder:text-rose-400" tw:Tw.Class="placeholder:text-rose-400" />
+                    <TextBox docs:DocsCode.Show="True" PlaceholderText="placeholder:text-emerald-500" tw:Tw.Class="placeholder:text-emerald-500" />
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>

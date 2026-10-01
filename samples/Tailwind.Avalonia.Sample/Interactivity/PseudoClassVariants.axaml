@@ -7,8 +7,8 @@
     <docs:DocsPage
         Section="Interactivity"
         Title="Pseudo-class variants"
-        Intro="Prefix a color or opacity utility with hover:, pressed:, or focus: to apply it only while the control is in that state. Variants compile down to real Avalonia :pointerover, :pressed, and :focus styles, not manual event handlers."
-        Supported="hover:, pressed:, and focus: work on the bg-*, text-*, and border-* color utilities and on opacity-*. They map to Avalonia's :pointerover, :pressed, and :focus pseudo-classes. No other utility family accepts a variant prefix yet; a variant on an unsupported utility such as hover:p-4 logs the usual unrecognized-token warning.">
+        Intro="Prefix a color or opacity utility with hover:, active:, or focus: to apply it only while the control is in that state. Variants compile down to real Avalonia :pointerover, :pressed, and :focus styles, not manual event handlers."
+        Supported="hover:, active:, and focus: work on the bg-*, text-*, and border-* color utilities and on opacity-*. They map to Avalonia's :pointerover, :pressed, and :focus pseudo-classes. No other utility family accepts a variant prefix yet; a variant on an unsupported utility such as hover:p-4 logs the usual unrecognized-token warning.">
 
         <docs:DocsSection
             Heading="hover:"
@@ -31,8 +31,8 @@
         </docs:DocsSection>
 
         <docs:DocsSection
-            Heading="pressed:"
-            Summary="pressed:opacity-50 applies only while the pointer is held down over the control.">
+            Heading="active:"
+            Summary="active:opacity-50 applies only while the pointer is held down over the control.">
             <docs:DocsExample>
                 <StackPanel
                     Spacing="14">
@@ -44,8 +44,8 @@
                         CornerRadius="10"
                         BorderThickness="0"
                         HorizontalAlignment="Left"
-                        tw:Tw.Class="bg-emerald-500 opacity-100 pressed:opacity-50 text-slate-950 px-[18px] py-3.5"
-                        Content="opacity-100 pressed:opacity-50" />
+                        tw:Tw.Class="bg-emerald-500 opacity-100 active:opacity-50 text-slate-950 px-[18px] py-3.5"
+                        Content="opacity-100 active:opacity-50" />
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>
@@ -72,7 +72,7 @@
 
         <docs:DocsSection
             Heading="Stacking multiple variants"
-            Summary="A control can take more than one variant token at once. Hover the button, then also press it: pressed:bg-green-500 wins over hover:bg-red-500 while both states are active, because Pressed is declared after Hover and its style is added later.">
+            Summary="A control can take more than one variant token at once. Hover the button, then also press it: active:bg-green-500 wins over hover:bg-red-500 while both states are active, because Pressed is declared after Hover and its style is added later.">
             <docs:DocsExample>
                 <StackPanel
                     Spacing="14">
@@ -84,8 +84,8 @@
                         CornerRadius="10"
                         BorderThickness="0"
                         HorizontalAlignment="Left"
-                        tw:Tw.Class="bg-blue-500 hover:bg-red-500 pressed:bg-green-500 text-white px-[18px] py-3.5"
-                        Content="hover:bg-red-500 pressed:bg-green-500" />
+                        tw:Tw.Class="bg-blue-500 hover:bg-red-500 active:bg-green-500 text-white px-[18px] py-3.5"
+                        Content="hover:bg-red-500 active:bg-green-500" />
                 </StackPanel>
             </docs:DocsExample>
         </docs:DocsSection>
@@ -96,7 +96,7 @@
             <docs:DocsNote
                 Classes="gap muted"
                 Title="Not implemented"
-                Body="Spacing, sizing, and font-size utilities do not accept hover:, pressed:, or focus: prefixes yet.">
+                Body="Spacing, sizing, and font-size utilities do not accept hover:, active:, or focus: prefixes yet.">
                 <TextBlock
                     Classes="docs-tableClass"
                     Text="hover:p-4 · hover:w-24 · focus:text-sm" />

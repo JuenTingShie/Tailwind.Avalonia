@@ -52,7 +52,7 @@ public class TwMiscInteractivityTests
         Assert.True(TailwindColorPalette.TryGetColor("slate-400", out var slate));
         var box = new TextBox();
 
-        Tw.SetClass(box, "placeholder-slate-400");
+        Tw.SetClass(box, "placeholder:text-slate-400");
 
         Assert.Equal(slate, Assert.IsAssignableFrom<ISolidColorBrush>(box.PlaceholderForeground).Color);
     }

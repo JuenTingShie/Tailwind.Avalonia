@@ -2,6 +2,21 @@
 
 All notable changes to this project are documented in this file.
 
+## Unreleased
+
+### Breaking — aligned with Tailwind CSS v4.3
+
+Classes that are not part of Tailwind v4.3 are no longer recognized (they log the usual unrecognized-token warning):
+
+- `pressed:` → use `active:` (still maps to Avalonia's `:pressed`).
+- `selection-<color>` → `selection:bg-<color>` (and new `selection:text-<color>` for SelectionForegroundBrush).
+- `placeholder-<color>` → `placeholder:text-<color>`.
+- `bg-gradient-to-*` → `bg-linear-to-*`.
+- `leading-tight` / `snug` / `normal` / `relaxed` / `loose` → `leading-<n>`, `leading-[<value>]` or `text-<size>/<n>` (`leading-none` stays).
+- Bare `rounded`, `blur`, `drop-shadow` → `rounded-sm`, `blur-sm`, `drop-shadow-sm` (v4 renamed them).
+- `shadow-inner` → `inset-shadow-sm`.
+- `psv-*`, `pev-*`, `msv-*`, `mev-*` (never Tailwind classes) → use `ps-*`/`pe-*`/`ms-*`/`me-*` or physical sides.
+
 ## 2.1.0 — 2026-08-27
 
 ### Added

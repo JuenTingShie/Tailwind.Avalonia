@@ -21,7 +21,6 @@ public class TwInsetShadowTests
     [InlineData("inset-shadow-2xs", 1, 0)]
     [InlineData("inset-shadow-xs", 1, 1)]
     [InlineData("inset-shadow-sm", 2, 4)]
-    [InlineData("shadow-inner", 2, 4)]
     public void SetClass_Applies_Inset_Shadow(string token, double offsetY, double blur)
     {
         var border = new Border();

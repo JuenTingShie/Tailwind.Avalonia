@@ -16,7 +16,7 @@ public partial class Tw
         Odd,
         Even,
         Hover,
-        Pressed,
+        Active,
         Focus,
         FocusVisible,
         Checked,
@@ -27,6 +27,44 @@ public partial class Tw
     // pseudo-classes are active at once (disabled beats checked beats focus beats hover).
     private const int VariantCount = 10;
 
+    private static bool TryParsePseudoElementBrush(string token, out string propertyName, out IBrush brush)
+    {
+        propertyName = string.Empty;
+        brush = null!;
+
+        var isPlaceholder = token.StartsWith("placeholder:", StringComparison.Ordinal);
+        var isSelection = token.StartsWith("selection:", StringComparison.Ordinal);
+
+        if (!isPlaceholder && !isSelection)
+        {
+            return false;
+        }
+
+        var remainder = token[(token.IndexOf(':') + 1)..];
+
+        if (!TryParseBrushUtility(remainder, out var utility))
+        {
+            return false;
+        }
+
+        string? property = (isPlaceholder, utility.Target) switch
+        {
+            (true, BrushTarget.Foreground) => "PlaceholderForeground",
+            (false, BrushTarget.Background) => "SelectionBrush",
+            (false, BrushTarget.Foreground) => "SelectionForegroundBrush",
+            _ => null,
+        };
+
+        if (property is null)
+        {
+            return false;
+        }
+
+        propertyName = property;
+        brush = utility.Brush;
+        return true;
+    }
+
     private static readonly (string Prefix, VariantKind Kind)[] VariantPrefixes =
     {
         ("first:", VariantKind.First),
@@ -34,7 +72,7 @@ public partial class Tw
         ("odd:", VariantKind.Odd),
         ("even:", VariantKind.Even),
         ("hover:", VariantKind.Hover),
-        ("pressed:", VariantKind.Pressed),
+        ("active:", VariantKind.Active),
         ("focus:", VariantKind.Focus),
         ("focus-visible:", VariantKind.FocusVisible),
         ("checked:", VariantKind.Checked),
@@ -55,7 +93,7 @@ public partial class Tw
     private static string PseudoClassFor(VariantKind kind) => kind switch
     {
         VariantKind.Hover => ":pointerover",
-        VariantKind.Pressed => ":pressed",
+        VariantKind.Active => ":pressed",
         VariantKind.Focus => ":focus",
         VariantKind.FocusVisible => ":focus-visible",
         VariantKind.Checked => ":checked",

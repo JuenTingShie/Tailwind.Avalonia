@@ -44,11 +44,6 @@ public class TwTextSpacingTests
 
     [Theory]
     [InlineData("leading-none", 16)]
-    [InlineData("leading-tight", 20)]
-    [InlineData("leading-snug", 22)]
-    [InlineData("leading-normal", 24)]
-    [InlineData("leading-relaxed", 26)]
-    [InlineData("leading-loose", 32)]
     public void SetClass_Leading_Keywords_Scale_With_Font_Size(string className, double expected)
     {
         var textBlock = new TextBlock();

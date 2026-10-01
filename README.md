@@ -129,7 +129,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | background-attachment |             | No Avalonia equivalent                                                                           |
 | background-clip       |             | No Avalonia equivalent                                                                           |
 | background-color      |     ✅      | All platforms                                                                                    |
-| background-image      |     ✅      | Gradients (bg-gradient-to-*) and images (bg-[url(avares://...)]); remote URLs are not downloaded |
+| background-image      |     ✅      | Gradients (bg-linear-to-*) and images (bg-[url(avares://...)]); remote URLs are not downloaded |
 | background-origin     |             | No Avalonia equivalent: the Background always covers the border box                              |
 | background-position   |     ✅      | bg-center / top / bottom / left / right and corners via ImageBrush alignment                     |
 | background-repeat     |     ✅      | bg-repeat / bg-no-repeat only (no repeat-x / -y / -round / -space)                               |
@@ -271,4 +271,4 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | forced-color-adjust      |             | Not applicable                                                                          |
 | screen readers (sr-only) |             | Not implemented: no Avalonia equivalent for visually hidden, screen-reader-only content |
 
-Additionally, `hover:`, `pressed:`, `focus:`, `focus-visible:`, `checked:`, `disabled:`, `first:`, `last:`, `odd:`, and `even:` variants are supported for the color (`bg-`, `text-`, `border-`) and `opacity-*` utilities above — see [CHANGELOG.md](CHANGELOG.md).
+Additionally, `hover:`, `active:`, `focus:`, `focus-visible:`, `checked:`, `disabled:`, `first:`, `last:`, `odd:`, and `even:` variants are supported for the color (`bg-`, `text-`, `border-`) and `opacity-*` utilities above — see [CHANGELOG.md](CHANGELOG.md). `placeholder:text-<color>` sets PlaceholderForeground, and `selection:bg-<color>` / `selection:text-<color>` set SelectionBrush / SelectionForegroundBrush.

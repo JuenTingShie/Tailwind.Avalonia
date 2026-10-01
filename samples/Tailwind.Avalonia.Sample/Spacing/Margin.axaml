@@ -8,8 +8,8 @@
     <docs:DocsPage
         Section="Spacing"
         Title="Margin"
-        Intro="Utilities for controlling an element&apos;s margin. Margin currently maps the numeric spacing scale, bracket arbitrary values, and negative variants onto Avalonia&apos;s Margin thickness, together with the logical and visual side aliases."
-        Supported="m-&lt;number&gt; sets margin on all sides; mx-*/my-* target an axis, mt/mr/mb/ml-* target one physical side, and the logical ms/me-*, mbs/mbe-*, and visual msv/mev-* variants map to inline/block or final-rendered sides. A leading minus sign, as in -mt-8, negates any of these, and bracket arbitrary values like m-[8px] take a direct value. Auto values, such as m-auto and its axis/logical variants, and custom properties are still out of scope."
+        Intro="Utilities for controlling an element&apos;s margin. Margin currently maps the numeric spacing scale, bracket arbitrary values, and negative variants onto Avalonia&apos;s Margin thickness, together with the logical side utilities."
+        Supported="m-&lt;number&gt; sets margin on all sides; mx-*/my-* target an axis, mt/mr/mb/ml-* target one physical side, and the logical ms/me-* (inline start/end) and mbs/mbe-* (block start/end) follow the flow direction. A leading minus sign, as in -mt-8, negates any of these, and bracket arbitrary values like m-[8px] take a direct value. Auto values, such as m-auto and its axis/logical variants, and custom properties are still out of scope."
         GapsBody="These Tailwind margin rows remain outside the current parser surface.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="m-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;&lt;number&gt;&quot; /&gt;" />
@@ -34,10 +34,6 @@
             <docs:UtilityReferenceRow ClassName="mbs-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;0,&lt;parsed&gt;,0,0&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="mbe-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;0,0,0,&lt;number&gt;&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="mbe-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;0,0,0,&lt;parsed&gt;&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="msv-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;&lt;number&gt;,0,0,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="msv-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;&lt;parsed&gt;,0,0,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="mev-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;0,0,&lt;number&gt;,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="mev-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;0,0,&lt;parsed&gt;,0&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="-m-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;-&lt;number&gt;&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="-m-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;-&lt;parsed value&gt;&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="-mx-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;-&lt;number&gt;,0,-&lt;number&gt;,0&quot; /&gt;" />
@@ -60,10 +56,6 @@
             <docs:UtilityReferenceRow ClassName="-mbs-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;0,-&lt;parsed&gt;,0,0&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="-mbe-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;0,0,0,-&lt;number&gt;&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="-mbe-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;0,0,0,-&lt;parsed&gt;&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="-msv-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;-&lt;number&gt;,0,0,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="-msv-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;-&lt;parsed&gt;,0,0,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="-mev-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;0,0,-&lt;number&gt;,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="-mev-[&lt;value&gt;]" AxamlStyle="&lt;Border Margin=&quot;0,0,-&lt;parsed&gt;,0&quot; /&gt;" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
             <docs:DocsGap Text="m-auto · mx-auto · my-auto · ms-auto · me-auto" />
@@ -224,7 +216,7 @@
 
         <docs:DocsSection
             Heading="Using logical properties"
-            Summary="Use ms-&lt;number&gt;, me-&lt;number&gt;, mbs-&lt;number&gt;, and mbe-&lt;number&gt; utilities when margin should follow the current text direction or writing mode. In Avalonia RTL, logical layout is resolved first from FlowDirection, then the final rendered result is mirrored, so the screen side can differ from the physical margin side. Use msv-&lt;number&gt; and mev-&lt;number&gt; when you want margin to stay on the final visual start or end side after Avalonia mirrors RTL content.">
+            Summary="Use ms-&lt;number&gt;, me-&lt;number&gt;, mbs-&lt;number&gt;, and mbe-&lt;number&gt; utilities when margin should follow the current text direction or writing mode. In Avalonia RTL, logical layout is resolved first from FlowDirection, then the final rendered result is mirrored, so the screen side can differ from the physical margin side.">
             <StackPanel
                 Spacing="18">
                 <docs:DocsNote
@@ -420,61 +412,6 @@
                                                 </Border>
                                             </Grid>
                                         </Border>
-                                    </StackPanel>
-                                </docs:DirectionCompare.RightToLeft>
-                            </docs:DirectionCompare>
-                        </StackPanel>
-                        <StackPanel
-                            Spacing="16">
-                            <TextBlock
-                                Classes="docs-miniTitle"
-                                Text="Visual start and end aliases" />
-                            <TextBlock
-                                Classes="docs-noteBody"
-                                Text="msv-8 follows the final rendered start side, and mev-8 follows the final rendered end side. In RTL they intentionally write physical left and right margin so Avalonia&apos;s mirror lands the spacing on the expected visual side." />
-                            <docs:DirectionCompare>
-                                <docs:DirectionCompare.LeftToRight>
-                                    <StackPanel
-                                        Orientation="Vertical"
-                                        Spacing="12">
-                                        <docs:DirectionRow Start="start -&gt;" End="&lt;- end">
-                                            <docs:MarginSpecimen
-                                                FlowDirection="LeftToRight"
-                                                Frame="h-20"
-                                                Box="bg-lime-500 msv-8"
-                                                ShowCode="True"
-                                                CodeAttributes="FlowDirection" />
-                                        </docs:DirectionRow>
-                                        <docs:DirectionRow Start="start -&gt;" End="&lt;- end">
-                                            <docs:MarginSpecimen
-                                                FlowDirection="LeftToRight"
-                                                Frame="h-20"
-                                                Box="bg-cyan-500 mev-8"
-                                                ShowCode="True"
-                                                CodeAttributes="FlowDirection" />
-                                        </docs:DirectionRow>
-                                    </StackPanel>
-                                </docs:DirectionCompare.LeftToRight>
-                                <docs:DirectionCompare.RightToLeft>
-                                    <StackPanel
-                                        Orientation="Vertical"
-                                        Spacing="12">
-                                        <docs:DirectionRow Start="end -&gt;" End="&lt;- start">
-                                            <docs:MarginSpecimen
-                                                FlowDirection="RightToLeft"
-                                                Frame="h-20"
-                                                Box="bg-lime-500 msv-8"
-                                                ShowCode="True"
-                                                CodeAttributes="FlowDirection" />
-                                        </docs:DirectionRow>
-                                        <docs:DirectionRow Start="end -&gt;" End="&lt;- start">
-                                            <docs:MarginSpecimen
-                                                FlowDirection="RightToLeft"
-                                                Frame="h-20"
-                                                Box="bg-cyan-500 mev-8"
-                                                ShowCode="True"
-                                                CodeAttributes="FlowDirection" />
-                                        </docs:DirectionRow>
                                     </StackPanel>
                                 </docs:DirectionCompare.RightToLeft>
                             </docs:DirectionCompare>

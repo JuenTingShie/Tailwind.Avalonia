@@ -21,7 +21,7 @@ public class TwCaretSelectionColorTests
     {
         var textBox = new TextBox();
 
-        Tw.SetClass(textBox, "selection-sky-500");
+        Tw.SetClass(textBox, "selection:bg-sky-500");
 
         Assert.NotNull(textBox.SelectionBrush);
     }
@@ -31,7 +31,7 @@ public class TwCaretSelectionColorTests
     {
         var textBox = new TextBox();
 
-        Tw.SetClass(textBox, "caret-white selection-emerald-600 bg-slate-800 text-white");
+        Tw.SetClass(textBox, "caret-white selection:bg-emerald-600 bg-slate-800 text-white");
 
         Assert.NotNull(textBox.CaretBrush);
         Assert.NotNull(textBox.SelectionBrush);
@@ -44,7 +44,7 @@ public class TwCaretSelectionColorTests
     {
         var textBlock = new SelectableTextBlock();
 
-        Tw.SetClass(textBlock, "selection-amber-400");
+        Tw.SetClass(textBlock, "selection:bg-amber-400");
 
         Assert.NotNull(textBlock.SelectionBrush);
     }
