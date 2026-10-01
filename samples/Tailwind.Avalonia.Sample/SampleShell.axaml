@@ -232,121 +232,105 @@
         </Style>
 
         <!-- ===================================================================
-             Navigation items. Colour lives in tw:Tw.Class, geometry stays in plain
-             setters: the per-strip styles below re-specify geometry, and routing
-             that through tw:Tw.Class would make each override replace (and so
-             clear) the colour tokens too.
+             Navigation list: one scrollable list of every page, grouped under
+             non-interactive section headings, filtered by the search box.
              =================================================================== -->
         <Style
-            Selector="TabStrip.navigation-strip TabStripItem">
+            Selector="TextBox.shell-search">
             <Setter
                 Property="tw:Tw.Class"
-                Value="bg-slate-900/70 text-slate-400 border-slate-800" />
-            <Setter
-                Property="MinWidth"
-                Value="0" />
-            <Setter
-                Property="Margin"
-                Value="0,0,0,8" />
-            <Setter
-                Property="Padding"
-                Value="16,14" />
-            <Setter
-                Property="FontSize"
-                Value="14" />
-            <Setter
-                Property="FontWeight"
-                Value="Medium" />
+                Value="bg-slate-900 border-slate-700 text-slate-100 placeholder:text-slate-500 focus:border-sky-400" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
             <Setter
                 Property="CornerRadius"
-                Value="14" />
-            <Setter
-                Property="HorizontalAlignment"
-                Value="Stretch" />
-            <Setter
-                Property="HorizontalContentAlignment"
-                Value="Left" />
-            <Setter
-                Property="Transitions">
-                <Transitions>
-                    <BrushTransition
-                        Property="Background"
-                        Duration="0:0:0.15" />
-                    <BrushTransition
-                        Property="Foreground"
-                        Duration="0:0:0.15" />
-                    <BrushTransition
-                        Property="BorderBrush"
-                        Duration="0:0:0.15" />
-                </Transitions>
-            </Setter>
-        </Style>
-        <Style
-            Selector="TabStrip.navigation-strip.section-strip TabStripItem">
+                Value="10" />
             <Setter
                 Property="Padding"
-                Value="18,16" />
+                Value="12,9" />
             <Setter
                 Property="FontSize"
-                Value="15" />
+                Value="14" />
         </Style>
-        <!-- Page rows read as children of the section above them: indented, a size
-             down, one radius step in. Their colour comes from the shared state
-             styles so a page row and a section row never disagree about the accent. -->
         <Style
-            Selector="TabStrip.navigation-strip.page-strip TabStripItem">
+            Selector="ListBox.shell-nav">
+            <Setter
+                Property="Background"
+                Value="Transparent" />
+            <Setter
+                Property="Padding"
+                Value="0" />
+        </Style>
+        <Style
+            Selector="ListBox.shell-nav ListBoxItem">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="text-slate-400" />
+            <Setter
+                Property="Padding"
+                Value="12,8" />
             <Setter
                 Property="Margin"
-                Value="12,0,0,8" />
+                Value="0,1" />
             <Setter
-                Property="Padding"
-                Value="14,12" />
-            <Setter
-                Property="FontSize"
-                Value="13" />
+                Property="MinHeight"
+                Value="0" />
             <Setter
                 Property="CornerRadius"
+                Value="8" />
+            <Setter
+                Property="FontSize"
+                Value="14" />
+        </Style>
+        <Style
+            Selector="ListBox.shell-nav ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter
+                Property="Background"
+                Value="#1E293B" />
+        </Style>
+        <Style
+            Selector="ListBox.shell-nav ListBoxItem:pointerover">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="text-slate-100" />
+        </Style>
+        <Style
+            Selector="ListBox.shell-nav ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter
+                Property="Background"
+                Value="#082F49" />
+        </Style>
+        <Style
+            Selector="ListBox.shell-nav ListBoxItem:selected">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="text-sky-200" />
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold" />
+        </Style>
+        <!-- Section headings sit in the same list but cannot be selected. -->
+        <Style
+            Selector="ListBox.shell-nav ListBoxItem.nav-header">
+            <Setter
+                Property="tw:Tw.Class"
+                Value="text-slate-500" />
+            <Setter
+                Property="Padding"
+                Value="12,16,12,4" />
+            <Setter
+                Property="FontSize"
                 Value="12" />
-        </Style>
-
-        <!-- State styles are declared after the per-strip styles on purpose:
-             Avalonia resolves competing setters by document order, so a style
-             placed below these would silently outrank hover and selection. -->
-        <Style
-            Selector="TabStrip.navigation-strip TabStripItem:pointerover">
             <Setter
-                Property="tw:Tw.Class"
-                Value="bg-slate-800/80 text-slate-100 border-slate-700" />
-        </Style>
-        <Style
-            Selector="TabStrip.navigation-strip TabStripItem:selected">
+                Property="FontWeight"
+                Value="SemiBold" />
             <Setter
-                Property="tw:Tw.Class"
-                Value="bg-sky-950/70 text-white border-sky-500" />
-        </Style>
-        <!-- The ring repeats the colours of the state it lands on, again because an
-             override replaces the whole token string: without the repeat, focusing a
-             selected row would drop it back to the unselected palette. -->
-        <Style
-            Selector="TabStrip.navigation-strip TabStripItem:focus-visible">
+                Property="IsHitTestVisible"
+                Value="False" />
             <Setter
-                Property="tw:Tw.Class"
-                Value="bg-slate-900/70 text-slate-100 border-sky-400" />
-            <Setter
-                Property="BorderThickness"
-                Value="1.5" />
-        </Style>
-        <Style
-            Selector="TabStrip.navigation-strip TabStripItem:selected:focus-visible">
-            <Setter
-                Property="tw:Tw.Class"
-                Value="bg-sky-950/70 text-white border-sky-400" />
-            <Setter
-                Property="BorderThickness"
-                Value="1.5" />
+                Property="Focusable"
+                Value="False" />
         </Style>
     </UserControl.Styles>
     <SplitView
@@ -362,84 +346,56 @@
                 Background="Transparent">
                 <Border
                     Classes="shell-paneSurface">
-                    <ScrollViewer
-                        HorizontalScrollBarVisibility="Disabled"
-                        VerticalScrollBarVisibility="Auto">
-                        <StackPanel
-                            tw:Tw.Class="m-4"
-                            Spacing="18">
-                            <Grid
-                                ColumnDefinitions="*,Auto"
-                                ColumnSpacing="12">
-                                <Button
-                                    x:Name="PaneCloseButton"
-                                    Classes="shell-toggle"
-                                    Grid.Column="1"
-                                    HorizontalAlignment="Right"
-                                    ToolTip.Tip="Hide navigation"
-                                    AutomationProperties.Name="Hide navigation"
-                                    VerticalAlignment="Top">
-                                    <PathIcon
-                                        tw:Tw.Class="w-[18px] h-[18px]"
-                                        Data="{StaticResource CloseIconGeometry}" />
-                                </Button>
-                            </Grid>
-
-                            <Border
-                                Classes="shell-navGroup">
-                                <StackPanel
-                                    Spacing="10">
+                    <Grid
+                        RowDefinitions="Auto,Auto,*"
+                        tw:Tw.Class="mx-3 mt-3">
+                        <Grid
+                            ColumnDefinitions="*,Auto"
+                            ColumnSpacing="10">
+                            <TextBlock
+                                Classes="shell-navLabel"
+                                VerticalAlignment="Center"
+                                Text="Tailwind.Avalonia" />
+                            <Button
+                                x:Name="PaneCloseButton"
+                                Classes="shell-toggle"
+                                Grid.Column="1"
+                                ToolTip.Tip="Hide navigation"
+                                AutomationProperties.Name="Hide navigation">
+                                <PathIcon
+                                    tw:Tw.Class="w-[18px] h-[18px]"
+                                    Data="{StaticResource CloseIconGeometry}" />
+                            </Button>
+                        </Grid>
+                        <TextBox
+                            x:Name="NavigationSearch"
+                            Grid.Row="1"
+                            Classes="shell-search"
+                            tw:Tw.Class="mt-3 mb-2"
+                            PlaceholderText="Search pages  (Ctrl+K)"
+                            AutomationProperties.Name="Search pages" />
+                        <ListBox
+                            x:Name="NavigationList"
+                            Grid.Row="2"
+                            Classes="shell-nav"
+                            SelectionMode="Single"
+                            AutomationProperties.Name="Pages">
+                            <!-- About sixty short rows: a plain StackPanel avoids virtualization
+                                 re-measuring while the overlay pane opens and closes. -->
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
                                     <TextBlock
-                                        Classes="shell-navLabel"
-                                        Text="Sections" />
-                                    <TabStrip
-                                        x:Name="SectionTabStrip"
-                                        Classes="navigation-strip section-strip">
-                                        <TabStrip.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel
-                                                    Orientation="Vertical" />
-                                            </ItemsPanelTemplate>
-                                        </TabStrip.ItemsPanel>
-                                        <TabStrip.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock
-                                                    Text="{ReflectionBinding Header}"
-                                                    TextWrapping="Wrap" />
-                                            </DataTemplate>
-                                        </TabStrip.ItemTemplate>
-                                    </TabStrip>
-                                </StackPanel>
-                            </Border>
-
-                            <Border
-                                Classes="shell-navGroup">
-                                <StackPanel
-                                    Spacing="10">
-                                    <TextBlock
-                                        Classes="shell-navLabel"
-                                        Text="Pages" />
-                                    <TabStrip
-                                        x:Name="PageTabStrip"
-                                        Classes="navigation-strip page-strip">
-                                        <TabStrip.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel
-                                                    Orientation="Vertical" />
-                                            </ItemsPanelTemplate>
-                                        </TabStrip.ItemsPanel>
-                                        <TabStrip.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock
-                                                    Text="{ReflectionBinding Header}"
-                                                    TextWrapping="Wrap" />
-                                            </DataTemplate>
-                                        </TabStrip.ItemTemplate>
-                                    </TabStrip>
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
-                    </ScrollViewer>
+                                        Text="{ReflectionBinding Header}"
+                                        TextWrapping="Wrap" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
                 </Border>
             </Grid>
         </SplitView.Pane>

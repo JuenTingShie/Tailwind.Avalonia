@@ -415,15 +415,9 @@
             Property="FontSize"
             Value="12" />
     </Style>
-    <!-- Every snippet is short, so line numbers only cost width on a phone. -->
+    <!-- Every snippet is a line or two, so line numbers would only cost width. -->
     <Style
         Selector="sample|AxamlCodeBlock ae|TextEditor">
-        <Setter
-            Property="ShowLineNumbers"
-            Value="True" />
-    </Style>
-    <Style
-        Selector=":is(UserControl).docs-mobile sample|AxamlCodeBlock ae|TextEditor">
         <Setter
             Property="ShowLineNumbers"
             Value="False" />
@@ -762,5 +756,36 @@
         <Setter
             Property="BorderThickness"
             Value="1.5" />
+    </Style>
+    <!-- Previous / next links at the end of a page. -->
+    <Style
+        Selector="Button.docs-pagerLink">
+        <Setter
+            Property="tw:Tw.Class"
+            Value="bg-slate-900 border-slate-800 px-5 py-4" />
+        <Setter
+            Property="BorderThickness"
+            Value="1" />
+        <Setter
+            Property="CornerRadius"
+            Value="14" />
+        <Setter
+            Property="Margin"
+            Value="0,8,0,0" />
+    </Style>
+    <Style
+        Selector="TextBlock.docs-pagerLabel">
+        <Setter
+            Property="tw:Tw.Class"
+            Value="text-slate-500 text-xs" />
+    </Style>
+    <Style
+        Selector="TextBlock.docs-pagerTitle">
+        <Setter
+            Property="tw:Tw.Class"
+            Value="text-sky-300 text-base" />
+        <Setter
+            Property="FontWeight"
+            Value="SemiBold" />
     </Style>
 </Styles>

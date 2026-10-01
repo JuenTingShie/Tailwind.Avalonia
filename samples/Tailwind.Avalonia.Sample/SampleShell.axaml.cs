@@ -7,6 +7,8 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Automation;
+using Avalonia.Layout;
 using Avalonia.Threading;
 
 namespace Tailwind.Avalonia.Sample;
@@ -24,10 +26,9 @@ public partial class SampleShell : UserControl
     private bool? lastNarrowLayout;
     private SampleShellPageDescriptor? shownPage;
     private SampleShellSectionDescriptor? shownSection;
-    private SampleShellSectionDescriptor? selectedSection;
 
     /// <summary>
-    /// Initializes the sample shell and selects the first docs section.
+    /// Initializes the sample shell and shows the first page.
     /// </summary>
     public SampleShell()
     {
@@ -38,13 +39,14 @@ public partial class SampleShell : UserControl
         PaneCloseButton.Click += NavigationToggleClicked;
         PaneToggleButton.Click += NavigationToggleClicked;
         NavigationSplitView.PropertyChanged += NavigationSplitViewPropertyChanged;
-        SectionTabStrip.SelectionChanged += SectionSelectionChanged;
-        PageTabStrip.SelectionChanged += PageSelectionChanged;
-        PageTabStrip.Tapped += PageTabStripTapped;
+        NavigationList.SelectionChanged += NavigationSelectionChanged;
+        NavigationList.ContainerPrepared += NavigationContainerPrepared;
+        NavigationSearch.TextChanged += (_, _) => RefreshNavigationItems();
+        NavigationSearch.KeyDown += NavigationSearchKeyDown;
         SizeChanged += SampleShellSizeChanged;
 
         sections = CreateSections();
-        SectionTabStrip.ItemsSource = sections;
+        RefreshNavigationItems();
 
         if (sections.Length == 0)
         {
@@ -57,77 +59,118 @@ public partial class SampleShell : UserControl
     // Navigation comes from SampleCatalog; kept here so tests and callers have one entry point.
     internal static SampleShellSectionDescriptor[] CreateSections() => SampleCatalog.CreateSections();
 
-    private void SectionSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    /// <summary>Every page in navigation order, used for the previous / next links.</summary>
+    private IEnumerable<(SampleShellSectionDescriptor Section, SampleShellPageDescriptor Page)> AllPages() =>
+        sections.SelectMany(section => section.Pages.Select(page => (section, page)));
+
+    // One flat list: a heading item per section followed by its pages, filtered by the search text
+    // (a section name match keeps all of its pages).
+    private void RefreshNavigationItems()
     {
-        if (isSynchronizingSelection)
+        var query = NavigationSearch.Text?.Trim() ?? string.Empty;
+        var items = new List<object>();
+
+        foreach (var section in sections)
         {
-            return;
+            var sectionMatches = query.Length == 0 || section.Header.Contains(query, StringComparison.OrdinalIgnoreCase);
+            var pages = section.Pages.Where(page => sectionMatches || page.Header.Contains(query, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            if (pages.Count == 0)
+            {
+                continue;
+            }
+
+            items.Add(new SampleNavigationHeading(section.Header));
+            items.AddRange(pages);
         }
 
-        if (SectionTabStrip is null || PageTabStrip is null || PageHost is null)
+        if (items.Count == 0)
         {
-            return;
+            items.Add(new SampleNavigationHeading("No matching pages"));
         }
 
-        if (sender is not TabStrip { SelectedItem: SampleShellSectionDescriptor section })
-        {
-            return;
-        }
+        isSynchronizingSelection = true;
 
-        PreviewSection(section);
+        try
+        {
+            NavigationList.ItemsSource = items;
+            NavigationList.SelectedItem = shownPage is not null && items.Contains(shownPage) ? shownPage : null;
+        }
+        finally
+        {
+            isSynchronizingSelection = false;
+        }
     }
 
-    // Remember active page per section and surface cached page view only when page row is chosen.
-    private void PageSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    private static void NavigationContainerPrepared(object? sender, ContainerPreparedEventArgs e)
     {
-        if (isSynchronizingSelection)
-        {
-            return;
-        }
-
-        if (PageTabStrip is null || PageHost is null)
-        {
-            return;
-        }
-
-        if (selectedSection is null || sender is not TabStrip { SelectedItem: SampleShellPageDescriptor page })
-        {
-            return;
-        }
-
-        selectedSection.SelectedPageIndex = PageTabStrip.SelectedIndex;
-        ShowPage(selectedSection, page);
+        var isHeading = e.Container.DataContext is SampleNavigationHeading;
+        e.Container.Classes.Set("nav-header", isHeading);
     }
 
-    // Fallback for tapping a page TabStripItem that Avalonia had already auto-selected
-    // (e.g. the sole page in a section): no value change means SelectionChanged never
-    // fires, so PageSelectionChanged alone would silently swallow the click.
-    private void PageTabStripTapped(object? sender, TappedEventArgs e)
+    private void NavigationSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
-        if (isSynchronizingSelection || selectedSection is null)
+        if (isSynchronizingSelection || NavigationList.SelectedItem is not SampleShellPageDescriptor page)
         {
             return;
         }
 
-        if (e.Source is not Control { DataContext: SampleShellPageDescriptor page } || ReferenceEquals(page, shownPage))
-        {
-            return;
-        }
-
-        selectedSection.SelectedPageIndex = FindPageIndex(selectedSection, page);
-        ShowPage(selectedSection, page);
+        var section = sections.First(s => s.Pages.Contains(page));
+        ShowPage(section, page);
     }
 
-    // Keep each page alive after first load so repeat tab switches only toggle visibility.
+    // Enter in the search box opens the first match; Escape clears the search.
+    private void NavigationSearchKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter && NavigationList.ItemsSource?.OfType<SampleShellPageDescriptor>().FirstOrDefault() is { } first)
+        {
+            NavigationList.SelectedItem = first;
+            e.Handled = true;
+        }
+        else if (e.Key == Key.Escape)
+        {
+            NavigationSearch.Text = string.Empty;
+            e.Handled = true;
+        }
+    }
+
+    // Ctrl+K (Cmd+K) jumps to the page search from anywhere in the shell.
+    private TopLevel? shortcutHost;
+
+    /// <inheritdoc />
+    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToVisualTree(e);
+        // Listen on the TopLevel so Ctrl+K also works when nothing inside the shell has focus.
+        shortcutHost = TopLevel.GetTopLevel(this);
+        shortcutHost?.AddHandler(KeyDownEvent, ShellKeyDown, RoutingStrategies.Tunnel);
+    }
+
+    /// <inheritdoc />
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        shortcutHost?.RemoveHandler(KeyDownEvent, ShellKeyDown);
+        shortcutHost = null;
+        base.OnDetachedFromVisualTree(e);
+    }
+
+    private void ShellKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.K && (e.KeyModifiers.HasFlag(KeyModifiers.Control) || e.KeyModifiers.HasFlag(KeyModifiers.Meta)))
+        {
+            SetPaneOpen(true);
+            NavigationSearch.Focus();
+            NavigationSearch.SelectAll();
+            e.Handled = true;
+        }
+    }
+
     /// <summary>Shows a page as if it had been picked in the navigation, and returns the hosted page control.</summary>
     internal Control Navigate(string sectionHeader, string pageHeader)
     {
         var section = sections.First(s => s.Header == sectionHeader);
         var page = section.Pages.First(p => p.Header == pageHeader);
-        PreviewSection(section);
-        section.SelectedPageIndex = FindPageIndex(section, page);
         ShowPage(section, page);
-        SynchronizeNavigationSelection(section);
         return pageCache[page];
     }
 
@@ -145,6 +188,17 @@ public partial class SampleShell : UserControl
         CurrentSectionText.Text = section.Header;
         CurrentPageText.Text = page.Header;
         UpdateEmptyState();
+
+        isSynchronizingSelection = true;
+
+        try
+        {
+            NavigationList.SelectedItem = NavigationList.ItemsSource?.OfType<object>().Contains(page) == true ? page : null;
+        }
+        finally
+        {
+            isSynchronizingSelection = false;
+        }
 
         // Auto-close only while the pane is a modal overlay. On wide layouts it is
         // pinned inline beside the content, so navigating there must not dismiss the
@@ -165,6 +219,7 @@ public partial class SampleShell : UserControl
 
         var createdPage = page.CreateView();
         createdPage.IsVisible = false;
+        AttachPager(createdPage, page);
         ApplyMobileDocsClass(createdPage);
         PageHost.Children.Add(createdPage);
         pageCache.Add(page, createdPage);
@@ -200,60 +255,8 @@ public partial class SampleShell : UserControl
         PageEmptyState.IsVisible = !hasVisiblePage;
     }
 
-    // Change visible page list for chosen section, but do not force content switch.
-    private void PreviewSection(SampleShellSectionDescriptor section)
-    {
-        selectedSection = section;
-        SynchronizeNavigationSelection(section);
-    }
 
-    private void SynchronizeNavigationSelection(SampleShellSectionDescriptor section)
-    {
-        isSynchronizingSelection = true;
 
-        try
-        {
-            PageTabStrip.ItemsSource = section.Pages;
-
-            if (!ReferenceEquals(SectionTabStrip.SelectedItem, section))
-            {
-                SectionTabStrip.SelectedItem = section;
-            }
-
-            if (shownPage is not null && FindPageIndex(section, shownPage) >= 0)
-            {
-                PageTabStrip.SelectedItem = shownPage;
-            }
-            else
-            {
-                PageTabStrip.SelectedIndex = -1;
-
-                // TabStrip re-selects the sole item once its container is realized
-                // for a single-item source; clear again after that layout pass.
-                if (section.Pages.Count == 1)
-                {
-                    Dispatcher.UIThread.Post(() => PageTabStrip.SelectedIndex = -1, DispatcherPriority.Loaded);
-                }
-            }
-        }
-        finally
-        {
-            isSynchronizingSelection = false;
-        }
-    }
-
-    private static int FindPageIndex(SampleShellSectionDescriptor section, SampleShellPageDescriptor page)
-    {
-        for (var index = 0; index < section.Pages.Count; index++)
-        {
-            if (ReferenceEquals(section.Pages[index], page))
-            {
-                return index;
-            }
-        }
-
-        return -1;
-    }
 
     // Toggle the navigation pane from either the content header or the pane itself.
     private void NavigationToggleClicked(object? sender, RoutedEventArgs e)
@@ -323,6 +326,63 @@ public partial class SampleShell : UserControl
         ToolTip.SetTip(PaneCloseButton, layout.IsNarrow ? "Close navigation" : "Hide navigation");
     }
 
+    // Previous / next links under every page, in navigation order, so a reader can walk the docs without
+    // reopening the navigation.
+    private void AttachPager(Control pageView, SampleShellPageDescriptor page)
+    {
+        if (pageView is not ContentControl { Content: Docs.DocsPage docsPage })
+        {
+            return;
+        }
+
+        var all = AllPages().ToList();
+        var index = all.FindIndex(entry => ReferenceEquals(entry.Page, page));
+        var pager = new Grid { ColumnDefinitions = new ColumnDefinitions("*,*"), ColumnSpacing = 12 };
+
+        if (index > 0)
+        {
+            pager.Children.Add(PagerLink(all[index - 1], "Previous", HorizontalAlignment.Left, 0));
+        }
+
+        if (index >= 0 && index < all.Count - 1)
+        {
+            pager.Children.Add(PagerLink(all[index + 1], "Next", HorizontalAlignment.Right, 1));
+        }
+
+        docsPage.Footer = pager;
+    }
+
+    private Button PagerLink((SampleShellSectionDescriptor Section, SampleShellPageDescriptor Page) target, string label, HorizontalAlignment alignment, int column)
+    {
+        var button = new Button
+        {
+            Classes = { "docs-pagerLink" },
+            HorizontalAlignment = HorizontalAlignment.Stretch,
+            HorizontalContentAlignment = alignment,
+            Content = new StackPanel
+            {
+                Spacing = 2,
+                Children =
+                {
+                    new TextBlock { Classes = { "docs-pagerLabel" }, Text = label, HorizontalAlignment = alignment },
+                    new TextBlock { Classes = { "docs-pagerTitle" }, Text = target.Page.Header, HorizontalAlignment = alignment },
+                },
+            },
+        };
+        AutomationProperties.SetName(button, $"{label}: {target.Page.Header}");
+        button.Click += (_, _) =>
+        {
+            ShowPage(target.Section, target.Page);
+
+            if (pageCache[target.Page] is ContentControl { Content: Docs.DocsPage nextPage })
+            {
+                nextPage.ScrollToTop();
+            }
+        };
+        Grid.SetColumn(button, column);
+        return button;
+    }
+
     // Chrome resync happens centrally in NavigationSplitViewPropertyChanged.
     private void SetPaneOpen(bool isOpen)
     {
@@ -340,19 +400,15 @@ public partial class SampleShell : UserControl
         }
 
         var initialSection = sections[0];
-        PreviewSection(initialSection);
 
-        if (initialSection.Pages.Count == 0)
+        if (initialSection.Pages.Count > 0)
         {
-            return;
+            ShowPage(initialSection, initialSection.Pages[0]);
         }
-
-        var initialPage = initialSection.Pages[0];
-        initialSection.SelectedPageIndex = 0;
-        ShowPage(initialSection, initialPage);
-        SynchronizeNavigationSelection(initialSection);
     }
 }
+
+internal sealed record SampleNavigationHeading(string Header);
 
 internal sealed class SampleShellSectionDescriptor(string header, params SampleShellPageDescriptor[] pages)
 {
