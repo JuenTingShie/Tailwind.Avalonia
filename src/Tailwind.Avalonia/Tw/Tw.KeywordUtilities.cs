@@ -77,9 +77,6 @@ public partial class Tw
         // SVG-style shape paint: fill-none / stroke-none clear the paint, stroke-<n> sets the outline thickness.
         Add("fill-none", "Fill", Brushes.Transparent);
         Add("stroke-none", "Stroke", Brushes.Transparent);
-        Add("stroke-0", "StrokeThickness", 0.0);
-        Add("stroke-1", "StrokeThickness", 1.0);
-        Add("stroke-2", "StrokeThickness", 2.0);
         // font-stretch-* maps to FontStretch; the rendered width depends on the font providing that face.
         Add("font-stretch-ultra-condensed", "FontStretch", FontStretch.UltraCondensed);
         Add("font-stretch-extra-condensed", "FontStretch", FontStretch.ExtraCondensed);
@@ -163,6 +160,7 @@ public partial class Tw
                 })),
             ];
 
+        table["drop-shadow-none"] = [new KeywordAssignment("Effect", (Func<object>)(() => new DropShadowEffect { BlurRadius = 0, OffsetX = 0, OffsetY = 0, Opacity = 0 }))];
         AddDropShadow("drop-shadow-xs", 1, 1, 0.05);
         AddDropShadow("drop-shadow-sm", 1, 2, 0.15);
         AddDropShadow("drop-shadow-md", 3, 3, 0.12);
@@ -229,6 +227,14 @@ public partial class Tw
             blurRadius >= 0)
         {
             assignments = [new KeywordAssignment("Effect", (Func<object>)(() => new BlurEffect { Radius = blurRadius }))];
+            return true;
+        }
+
+        // stroke-<number> sets the stroke width in pixels.
+        if (token.StartsWith("stroke-", StringComparison.Ordinal) &&
+            int.TryParse(token["stroke-".Length..], System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out var strokeWidth))
+        {
+            assignments = [new KeywordAssignment("StrokeThickness", (double)strokeWidth)];
             return true;
         }
 

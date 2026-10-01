@@ -45,7 +45,27 @@ internal static class SpacingScale
 
     private static readonly Dictionary<string, double> TokenToPixels = CreateLookup();
 
-    public static bool TryGetPixels(string token, out double pixels) => TokenToPixels.TryGetValue(token, out pixels);
+    // Tailwind v4 has no fixed spacing table: any non-negative multiple of 0.25 is a step of --spacing (4px), so
+    // p-13 and w-17 are valid. OrderedValues lists the common steps for docs and tests.
+    public static bool TryGetPixels(string token, out double pixels)
+    {
+        if (TokenToPixels.TryGetValue(token, out pixels))
+        {
+            return true;
+        }
+
+        pixels = default;
+
+        if (token.Length == 0 || token[^1] == '.' || token[0] == '.' ||
+            !double.TryParse(token, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out var steps) ||
+            !double.IsFinite(steps) || steps * 4 != Math.Floor(steps * 4))
+        {
+            return false;
+        }
+
+        pixels = steps * BaseUnit;
+        return true;
+    }
 
     public static string ToResourceSuffix(string token)
     {

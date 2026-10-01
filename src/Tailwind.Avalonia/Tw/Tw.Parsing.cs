@@ -299,7 +299,10 @@ public partial class Tw
         // Try a scale-table token first (e.g. text-lg), then an arbitrary value (e.g. text-[14px]).
         if (TryParseScaleOrArbitraryPixels(sizeToken, FontSizeScale.TryGetPixels, static p => p >= 0, out var pixels))
         {
-            utility = new FontSizeUtility(pixels);
+            // A named size brings its theme line height (text-sm is 14px on a 20px line); arbitrary sizes do not.
+            utility = FontSizeScale.TryGetLineHeight(sizeToken, out var themeLineHeight)
+                ? new FontSizeUtility(pixels, DefaultLineHeight: themeLineHeight)
+                : new FontSizeUtility(pixels);
             return true;
         }
 
@@ -357,9 +360,10 @@ public partial class Tw
             return true;
         }
 
-        if (rest is "0" or "1" or "2" or "4" or "8")
+        // decoration-<number> and underline-offset-<number> are that many pixels.
+        if (int.TryParse(rest, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out var metric))
         {
-            value = double.Parse(rest, System.Globalization.CultureInfo.InvariantCulture);
+            value = metric;
             return true;
         }
 

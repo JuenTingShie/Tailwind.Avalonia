@@ -14,10 +14,10 @@
             <docs:UtilityReferenceRow ClassName="overline" AxamlStyle="TextDecorations: Overline" />
             <docs:UtilityReferenceRow ClassName="line-through" AxamlStyle="TextDecorations: Strikethrough" />
             <docs:UtilityReferenceRow ClassName="no-underline" AxamlStyle="TextDecorations: none" />
-            <docs:UtilityReferenceRow ClassName="decoration-&lt;0|1|2|4|8&gt;" AxamlStyle="TextDecoration.StrokeThickness (px)" />
+            <docs:UtilityReferenceRow ClassName="decoration-&lt;number&gt;" AxamlStyle="TextDecoration.StrokeThickness (px)" />
             <docs:UtilityReferenceRow ClassName="decoration-[&lt;px&gt;]" AxamlStyle="TextDecoration.StrokeThickness (px)" />
             <docs:UtilityReferenceRow ClassName="decoration-&lt;color&gt;" AxamlStyle="TextDecoration.Stroke" />
-            <docs:UtilityReferenceRow ClassName="underline-offset-&lt;0|1|2|4|8&gt;" AxamlStyle="TextDecoration.StrokeOffset (px)" />
+            <docs:UtilityReferenceRow ClassName="underline-offset-&lt;number&gt;" AxamlStyle="TextDecoration.StrokeOffset (px)" />
             <docs:UtilityReferenceRow ClassName="decoration-solid / dotted / dashed" AxamlStyle="TextDecoration.StrokeDashArray" />
             <docs:UtilityReferenceRow ClassName="decoration-auto / underline-offset-auto" AxamlStyle="font recommended metrics" />
         </docs:DocsPage.Utilities>

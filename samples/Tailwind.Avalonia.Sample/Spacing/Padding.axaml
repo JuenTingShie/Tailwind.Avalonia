@@ -9,7 +9,7 @@
         Section="Spacing"
         Title="Padding"
         Intro="Utilities for controlling an element&apos;s padding. The parser folds the shared spacing scale and bracket arbitrary values into Avalonia&apos;s Padding thickness, including the logical inline and block edges."
-        Supported="p-&lt;number&gt; sets padding on all sides; px-*/py-* target an axis, pt/pr/pb/pl-* target one physical side, and the logical ps/pe-* (inline start/end) and pbs/pbe-* (block start/end) follow the flow direction. Bracket arbitrary values like p-[12px] take a direct value. Custom properties, such as p-(&lt;custom-property&gt;) and its per-side forms, are still out of scope."
+        Supported="p-&lt;number&gt; sets padding on all sides; px-*/py-* target an axis, pt/pr/pb/pl-* target one physical side, and the logical ps/pe-* (inline start/end) and pbs/pbe-* (block start/end) follow the flow direction. Bracket arbitrary values like p-[12px] take a direct value. Custom properties, such as p-(&lt;custom-property&gt;) and its per-side forms, are still out of scope. As in Tailwind v4, &lt;number&gt; is any multiple of 0.25 on the 4px spacing scale, so values like 13 or 17 work too."
         GapsBody="These Tailwind padding rows remain outside the current parser surface.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="p-&lt;number&gt;" AxamlStyle="&lt;Border Padding=&quot;&lt;number&gt;&quot; /&gt;" />
