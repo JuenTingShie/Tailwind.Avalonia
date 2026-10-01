@@ -9,7 +9,7 @@
         Section="Spacing"
         Title="Padding"
         Intro="Utilities for controlling an element&apos;s padding. The parser folds the shared spacing scale and bracket arbitrary values into Avalonia&apos;s Padding thickness, including the logical inline and block edges."
-        Supported="p-&lt;number&gt; sets padding on all sides; px-*/py-* target an axis, pt/pr/pb/pl-* target one physical side, and the logical ps/pe-*, pbs/pbe-*, and visual psv/pev-* variants map to inline/block or final-rendered sides. Bracket arbitrary values like p-[12px] take a direct value. Custom properties, such as p-(&lt;custom-property&gt;) and its per-side forms, are still out of scope."
+        Supported="p-&lt;number&gt; sets padding on all sides; px-*/py-* target an axis, pt/pr/pb/pl-* target one physical side, and the logical ps/pe-* (inline start/end) and pbs/pbe-* (block start/end) follow the flow direction. Bracket arbitrary values like p-[12px] take a direct value. Custom properties, such as p-(&lt;custom-property&gt;) and its per-side forms, are still out of scope."
         GapsBody="These Tailwind padding rows remain outside the current parser surface.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="p-&lt;number&gt;" AxamlStyle="&lt;Border Padding=&quot;&lt;number&gt;&quot; /&gt;" />
@@ -34,10 +34,6 @@
             <docs:UtilityReferenceRow ClassName="pbs-[&lt;value&gt;]" AxamlStyle="&lt;Border Padding=&quot;0,&lt;parsed&gt;,0,0&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="pbe-&lt;number&gt;" AxamlStyle="&lt;Border Padding=&quot;0,0,0,&lt;number&gt;&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="pbe-[&lt;value&gt;]" AxamlStyle="&lt;Border Padding=&quot;0,0,0,&lt;parsed&gt;&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="psv-&lt;number&gt;" AxamlStyle="&lt;Border Padding=&quot;&lt;number&gt;,0,0,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="psv-[&lt;value&gt;]" AxamlStyle="&lt;Border Padding=&quot;&lt;parsed&gt;,0,0,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="pev-&lt;number&gt;" AxamlStyle="&lt;Border Padding=&quot;0,0,&lt;number&gt;,0&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="pev-[&lt;value&gt;]" AxamlStyle="&lt;Border Padding=&quot;0,0,&lt;parsed&gt;,0&quot; /&gt;" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
             <docs:DocsGap Text="p-(&lt;custom-property&gt;) · px-(&lt;custom-property&gt;) · py-(&lt;custom-property&gt;) · pt-(&lt;custom-property&gt;) · pr-(&lt;custom-property&gt;) · pb-(&lt;custom-property&gt;) · pl-(&lt;custom-property&gt;)" />
@@ -106,7 +102,7 @@
 
         <docs:DocsSection
             Heading="Using logical properties"
-            Summary="Use ps-&lt;number&gt;, pe-&lt;number&gt;, pbs-&lt;number&gt;, and pbe-&lt;number&gt; utilities to map padding based on text direction and writing mode. In Avalonia RTL, logical layout is resolved first from FlowDirection, then the final rendered result is mirrored, so the screen side can differ from the physical thickness side. Use psv-&lt;number&gt; and pev-&lt;number&gt; when you want padding to stay on the final visual start or end side after Avalonia mirrors RTL content.">
+            Summary="Use ps-&lt;number&gt;, pe-&lt;number&gt;, pbs-&lt;number&gt;, and pbe-&lt;number&gt; utilities to map padding based on text direction and writing mode. In Avalonia RTL, logical layout is resolved first from FlowDirection, then the final rendered result is mirrored, so the screen side can differ from the physical thickness side.">
             <StackPanel
                 Spacing="18">
                 <docs:DocsNote
@@ -256,57 +252,6 @@
                                             FlowDirection="RightToLeft"
                                             tw:Tw.Class="pe-8"
                                             Mirrored="True" />
-                                    </StackPanel>
-                                </docs:DirectionCompare.RightToLeft>
-                            </docs:DirectionCompare>
-                        </StackPanel>
-                        <StackPanel
-                            Spacing="16">
-                            <TextBlock
-                                Classes="docs-miniTitle"
-                                Text="Visual start and end aliases" />
-                            <TextBlock
-                                Classes="docs-noteBody"
-                                Text="psv-8 follows the final rendered start side, and pev-8 follows the final rendered end side. In RTL they intentionally write physical left and right padding so Avalonia&apos;s mirror lands the spacing on the expected visual side." />
-                            <docs:DirectionCompare>
-                                <docs:DirectionCompare.LeftToRight>
-                                    <StackPanel
-                                        Orientation="Vertical"
-                                        Spacing="12">
-                                        <docs:DirectionRow Start="start -&gt;" End="&lt;- end">
-                                            <docs:PaddingSpecimen
-                                                docs:DocsCode.Show="True"
-                                                docs:DocsCode.Attributes="FlowDirection"
-                                                FlowDirection="LeftToRight"
-                                                tw:Tw.Class="psv-8" />
-                                        </docs:DirectionRow>
-                                        <docs:DirectionRow Start="start -&gt;" End="&lt;- end">
-                                            <docs:PaddingSpecimen
-                                                docs:DocsCode.Show="True"
-                                                docs:DocsCode.Attributes="FlowDirection"
-                                                FlowDirection="LeftToRight"
-                                                tw:Tw.Class="pev-8" />
-                                        </docs:DirectionRow>
-                                    </StackPanel>
-                                </docs:DirectionCompare.LeftToRight>
-                                <docs:DirectionCompare.RightToLeft>
-                                    <StackPanel
-                                        Orientation="Vertical"
-                                        Spacing="12">
-                                        <docs:DirectionRow Start="end -&gt;" End="&lt;- start">
-                                            <docs:PaddingSpecimen
-                                                docs:DocsCode.Show="True"
-                                                docs:DocsCode.Attributes="FlowDirection"
-                                                FlowDirection="RightToLeft"
-                                                tw:Tw.Class="psv-8" />
-                                        </docs:DirectionRow>
-                                        <docs:DirectionRow Start="end -&gt;" End="&lt;- start">
-                                            <docs:PaddingSpecimen
-                                                docs:DocsCode.Show="True"
-                                                docs:DocsCode.Attributes="FlowDirection"
-                                                FlowDirection="RightToLeft"
-                                                tw:Tw.Class="pev-8" />
-                                        </docs:DirectionRow>
                                     </StackPanel>
                                 </docs:DirectionCompare.RightToLeft>
                             </docs:DirectionCompare>

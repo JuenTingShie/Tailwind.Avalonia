@@ -85,16 +85,6 @@ public class TwTests
     }
 
     [Fact]
-    public void SetClass_Applies_Bare_Border_Radius_Utility()
-    {
-        var border = new Border();
-
-        Tw.SetClass(border, "rounded");
-
-        Assert.Equal(new CornerRadius(4), border.CornerRadius);
-    }
-
-    [Fact]
     public void SetClass_Applies_Named_Border_Radius_Utilities()
     {
         var border = new Border();
@@ -203,70 +193,6 @@ public class TwTests
     }
 
     [Fact]
-    public void SetClass_Uses_Physical_Left_For_Visual_Start_Padding()
-    {
-        var ltrChild = new Canvas();
-        var ltrBorder = new Border
-        {
-            Child = ltrChild,
-            FlowDirection = FlowDirection.LeftToRight,
-        };
-
-        var rtlChild = new Canvas();
-        var rtlBorder = new Border
-        {
-            Child = rtlChild,
-            FlowDirection = FlowDirection.RightToLeft,
-        };
-
-        Tw.SetClass(ltrBorder, "psv-6");
-        Tw.SetClass(rtlBorder, "psv-6");
-
-        Assert.Equal(new Thickness(24, 0, 0, 0), ltrBorder.Padding);
-        Assert.Equal(new Thickness(24, 0, 0, 0), rtlBorder.Padding);
-
-        ltrBorder.Measure(new Size(100, 20));
-        ltrBorder.Arrange(new Rect(0, 0, 100, 20));
-        rtlBorder.Measure(new Size(100, 20));
-        rtlBorder.Arrange(new Rect(0, 0, 100, 20));
-
-        Assert.Equal(new Rect(24, 0, 76, 20), ltrChild.Bounds);
-        Assert.Equal(new Rect(24, 0, 76, 20), rtlChild.Bounds);
-    }
-
-    [Fact]
-    public void SetClass_Uses_Physical_Right_For_Visual_End_Padding()
-    {
-        var ltrChild = new Canvas();
-        var ltrBorder = new Border
-        {
-            Child = ltrChild,
-            FlowDirection = FlowDirection.LeftToRight,
-        };
-
-        var rtlChild = new Canvas();
-        var rtlBorder = new Border
-        {
-            Child = rtlChild,
-            FlowDirection = FlowDirection.RightToLeft,
-        };
-
-        Tw.SetClass(ltrBorder, "pev-6");
-        Tw.SetClass(rtlBorder, "pev-6");
-
-        Assert.Equal(new Thickness(0, 0, 24, 0), ltrBorder.Padding);
-        Assert.Equal(new Thickness(0, 0, 24, 0), rtlBorder.Padding);
-
-        ltrBorder.Measure(new Size(100, 20));
-        ltrBorder.Arrange(new Rect(0, 0, 100, 20));
-        rtlBorder.Measure(new Size(100, 20));
-        rtlBorder.Arrange(new Rect(0, 0, 100, 20));
-
-        Assert.Equal(new Rect(0, 0, 76, 20), ltrChild.Bounds);
-        Assert.Equal(new Rect(0, 0, 76, 20), rtlChild.Bounds);
-    }
-
-    [Fact]
     public void SetClass_Applies_Block_Padding_Utilities_Independent_Of_FlowDirection()
     {
         var ltrBorder = new Border
@@ -284,86 +210,6 @@ public class TwTests
 
         Assert.Equal(new Thickness(0, 24, 0, 8), ltrBorder.Padding);
         Assert.Equal(new Thickness(0, 24, 0, 8), rtlBorder.Padding);
-    }
-
-    [Fact]
-    public void SetClass_Uses_Physical_Left_For_Visual_Start_Margin()
-    {
-        var ltrChild = new Border
-        {
-            FlowDirection = FlowDirection.LeftToRight,
-        };
-        var ltrHost = new Grid
-        {
-            Width = 100,
-            Height = 20,
-            Children = { ltrChild },
-        };
-
-        var rtlChild = new Border
-        {
-            FlowDirection = FlowDirection.RightToLeft,
-        };
-        var rtlHost = new Grid
-        {
-            Width = 100,
-            Height = 20,
-            Children = { rtlChild },
-        };
-
-        Tw.SetClass(ltrChild, "msv-6");
-        Tw.SetClass(rtlChild, "msv-6");
-
-        Assert.Equal(new Thickness(24, 0, 0, 0), ltrChild.Margin);
-        Assert.Equal(new Thickness(24, 0, 0, 0), rtlChild.Margin);
-
-        ltrHost.Measure(new Size(100, 20));
-        ltrHost.Arrange(new Rect(0, 0, 100, 20));
-        rtlHost.Measure(new Size(100, 20));
-        rtlHost.Arrange(new Rect(0, 0, 100, 20));
-
-        Assert.Equal(new Rect(24, 0, 76, 20), ltrChild.Bounds);
-        Assert.Equal(new Rect(24, 0, 76, 20), rtlChild.Bounds);
-    }
-
-    [Fact]
-    public void SetClass_Uses_Physical_Right_For_Visual_End_Margin()
-    {
-        var ltrChild = new Border
-        {
-            FlowDirection = FlowDirection.LeftToRight,
-        };
-        var ltrHost = new Grid
-        {
-            Width = 100,
-            Height = 20,
-            Children = { ltrChild },
-        };
-
-        var rtlChild = new Border
-        {
-            FlowDirection = FlowDirection.RightToLeft,
-        };
-        var rtlHost = new Grid
-        {
-            Width = 100,
-            Height = 20,
-            Children = { rtlChild },
-        };
-
-        Tw.SetClass(ltrChild, "mev-6");
-        Tw.SetClass(rtlChild, "mev-6");
-
-        Assert.Equal(new Thickness(0, 0, 24, 0), ltrChild.Margin);
-        Assert.Equal(new Thickness(0, 0, 24, 0), rtlChild.Margin);
-
-        ltrHost.Measure(new Size(100, 20));
-        ltrHost.Arrange(new Rect(0, 0, 100, 20));
-        rtlHost.Measure(new Size(100, 20));
-        rtlHost.Arrange(new Rect(0, 0, 100, 20));
-
-        Assert.Equal(new Rect(0, 0, 76, 20), ltrChild.Bounds);
-        Assert.Equal(new Rect(0, 0, 76, 20), rtlChild.Bounds);
     }
 
     [Fact]
@@ -732,11 +578,11 @@ public class TwTests
     }
 
     [Fact]
-    public void SetClass_Applies_Pressed_Variant_For_Opacity()
+    public void SetClass_Applies_Active_Variant_For_Opacity()
     {
         var border = new Border();
 
-        Tw.SetClass(border, "opacity-100 pressed:opacity-50");
+        Tw.SetClass(border, "opacity-100 active:opacity-50");
 
         border.ApplyStyling();
         Assert.Equal(1d, border.Opacity);
@@ -768,7 +614,7 @@ public class TwTests
 
         var border = new Border();
 
-        Tw.SetClass(border, "bg-blue-500 hover:bg-red-500 pressed:bg-green-500");
+        Tw.SetClass(border, "bg-blue-500 hover:bg-red-500 active:bg-green-500");
 
         ((IPseudoClasses)border.Classes).Add(":pointerover");
         ((IPseudoClasses)border.Classes).Add(":pressed");

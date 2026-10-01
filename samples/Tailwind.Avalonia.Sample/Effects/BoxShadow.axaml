@@ -22,7 +22,7 @@
             <docs:UtilityReferenceRow ClassName="shadow-none" AxamlStyle="&lt;Border BoxShadow=&quot;none&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="inset-shadow-2xs" AxamlStyle="&lt;Border BoxShadow=&quot;inset 0 1 0 0 #0D000000&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="inset-shadow-xs" AxamlStyle="&lt;Border BoxShadow=&quot;inset 0 1 1 0 #0D000000&quot; /&gt;" />
-            <docs:UtilityReferenceRow ClassName="inset-shadow-sm / shadow-inner" AxamlStyle="&lt;Border BoxShadow=&quot;inset 0 2 4 0 #0D000000&quot; /&gt;" />
+            <docs:UtilityReferenceRow ClassName="inset-shadow-sm" AxamlStyle="&lt;Border BoxShadow=&quot;inset 0 2 4 0 #0D000000&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="inset-shadow-none" AxamlStyle="removes the inset layer" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
@@ -180,7 +180,7 @@
 
         <docs:DocsSection
             Heading="Inset shadows"
-            Summary="inset-shadow-* (and shadow-inner) draw the shadow inside the box and can be combined with shadow-* and ring-*.">
+            Summary="inset-shadow-* draws the shadow inside the box and can be combined with shadow-* and ring-*.">
             <docs:DocsExample>
                 <Border
                     CornerRadius="14"
@@ -190,7 +190,7 @@
                         Spacing="16">
                         <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-2xs" />
                         <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-xs" />
-                        <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl shadow-inner" />
+                        <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl inset-shadow-sm" />
                         <Border docs:DocsCode.Show="True" Width="110" Height="70" tw:Tw.Class="bg-slate-100 rounded-xl shadow-md inset-shadow-sm" />
                     </StackPanel>
                 </Border>

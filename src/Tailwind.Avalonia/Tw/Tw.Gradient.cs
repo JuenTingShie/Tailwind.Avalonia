@@ -5,7 +5,7 @@ namespace Tailwind.Avalonia;
 
 public partial class Tw
 {
-    // bg-gradient-to-*, bg-linear-to-* and from-*, via-*, to-* collect into one LinearGradientBrush that replaces the
+    // bg-linear-to-* and from-*, via-*, to-* collect into one LinearGradientBrush that replaces the
     // element's Background, since Avalonia has a single Background brush instead of CSS's separate background-image.
     private sealed class GradientState
     {
@@ -63,7 +63,6 @@ public partial class Tw
     {
         var suffix = token switch
         {
-            _ when token.StartsWith("bg-gradient-to-", StringComparison.Ordinal) => token["bg-gradient-to-".Length..],
             _ when token.StartsWith("bg-linear-to-", StringComparison.Ordinal) => token["bg-linear-to-".Length..],
             _ => null,
         };

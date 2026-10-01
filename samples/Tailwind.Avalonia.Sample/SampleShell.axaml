@@ -119,7 +119,7 @@
              Chrome buttons
              =================================================================== -->
 
-        <!-- Hover and pressed dimming ride on the hover:/pressed: variant tokens so
+        <!-- Hover and pressed dimming ride on the hover:/active: variant tokens so
              the whole resting appearance of the button is one utility string. Only
              the pressed nudge and the focus ring need styles of their own, because
              RenderTransform and BorderThickness have no utility equivalent. -->
@@ -127,7 +127,7 @@
             Selector="Button.shell-toggle">
             <Setter
                 Property="tw:Tw.Class"
-                Value="bg-slate-800 border-slate-700 text-white w-[46px] h-[46px] p-0 hover:opacity-92 pressed:opacity-82" />
+                Value="bg-slate-800 border-slate-700 text-white w-[46px] h-[46px] p-0 hover:opacity-92 active:opacity-82" />
             <Setter
                 Property="BorderThickness"
                 Value="1" />
@@ -174,7 +174,7 @@
                  here next to the sky ring. Dropping one would clear that property. -->
             <Setter
                 Property="tw:Tw.Class"
-                Value="bg-slate-800 border-sky-400 text-white w-[46px] h-[46px] p-0 hover:opacity-92 pressed:opacity-82" />
+                Value="bg-slate-800 border-sky-400 text-white w-[46px] h-[46px] p-0 hover:opacity-92 active:opacity-82" />
             <Setter
                 Property="BorderThickness"
                 Value="1.5" />

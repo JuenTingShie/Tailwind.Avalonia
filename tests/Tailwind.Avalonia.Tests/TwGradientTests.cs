@@ -14,7 +14,7 @@ public class TwGradientTests
     {
         var border = new Border();
 
-        Tw.SetClass(border, "bg-gradient-to-r from-red-500 to-blue-500");
+        Tw.SetClass(border, "bg-linear-to-r from-red-500 to-blue-500");
 
         var brush = GradientOf(border);
         Assert.Equal(2, brush.GradientStops.Count);
@@ -28,7 +28,7 @@ public class TwGradientTests
     {
         var border = new Border();
 
-        Tw.SetClass(border, "bg-gradient-to-b from-red-500 via-white to-blue-500");
+        Tw.SetClass(border, "bg-linear-to-b from-red-500 via-white to-blue-500");
 
         var brush = GradientOf(border);
         Assert.Equal(3, brush.GradientStops.Count);
@@ -37,14 +37,14 @@ public class TwGradientTests
     }
 
     [Theory]
-    [InlineData("bg-gradient-to-r", 0, 0.5, 1, 0.5)]
-    [InlineData("bg-gradient-to-l", 1, 0.5, 0, 0.5)]
-    [InlineData("bg-gradient-to-t", 0.5, 1, 0.5, 0)]
-    [InlineData("bg-gradient-to-b", 0.5, 0, 0.5, 1)]
-    [InlineData("bg-gradient-to-tr", 0, 1, 1, 0)]
-    [InlineData("bg-gradient-to-br", 0, 0, 1, 1)]
-    [InlineData("bg-gradient-to-bl", 1, 0, 0, 1)]
-    [InlineData("bg-gradient-to-tl", 1, 1, 0, 0)]
+    [InlineData("bg-linear-to-r", 0, 0.5, 1, 0.5)]
+    [InlineData("bg-linear-to-l", 1, 0.5, 0, 0.5)]
+    [InlineData("bg-linear-to-t", 0.5, 1, 0.5, 0)]
+    [InlineData("bg-linear-to-b", 0.5, 0, 0.5, 1)]
+    [InlineData("bg-linear-to-tr", 0, 1, 1, 0)]
+    [InlineData("bg-linear-to-br", 0, 0, 1, 1)]
+    [InlineData("bg-linear-to-bl", 1, 0, 0, 1)]
+    [InlineData("bg-linear-to-tl", 1, 1, 0, 0)]
     [InlineData("bg-linear-to-r", 0, 0.5, 1, 0.5)]
     public void SetClass_Applies_Direction(string direction, double x1, double y1, double x2, double y2)
     {
@@ -62,7 +62,7 @@ public class TwGradientTests
     {
         var border = new Border();
 
-        Tw.SetClass(border, "bg-gradient-to-r from-red-500");
+        Tw.SetClass(border, "bg-linear-to-r from-red-500");
 
         var brush = GradientOf(border);
         Assert.Equal(Colors.Transparent, brush.GradientStops[1].Color);
@@ -73,7 +73,7 @@ public class TwGradientTests
     {
         var border = new Border();
 
-        Tw.SetClass(border, "bg-gradient-to-r from-[#ff0000] to-blue-500/50");
+        Tw.SetClass(border, "bg-linear-to-r from-[#ff0000] to-blue-500/50");
 
         var brush = GradientOf(border);
         Assert.Equal(Color.Parse("#ff0000"), brush.GradientStops[0].Color);
@@ -85,7 +85,7 @@ public class TwGradientTests
     {
         var border = new Border();
 
-        Tw.SetClass(border, "bg-red-500 bg-gradient-to-r from-white to-black");
+        Tw.SetClass(border, "bg-red-500 bg-linear-to-r from-white to-black");
 
         Assert.IsType<LinearGradientBrush>(border.Background);
     }
@@ -105,7 +105,7 @@ public class TwGradientTests
     {
         var border = new Border();
 
-        Tw.SetClass(border, "bg-gradient-to-r");
+        Tw.SetClass(border, "bg-linear-to-r");
 
         Assert.Null(border.Background);
     }
@@ -115,7 +115,7 @@ public class TwGradientTests
     {
         var border = new Border();
 
-        Tw.SetClass(border, "bg-gradient-to-r from-red-500 to-blue-500");
+        Tw.SetClass(border, "bg-linear-to-r from-red-500 to-blue-500");
         Tw.SetClass(border, null);
 
         Assert.Null(border.Background);
@@ -126,7 +126,7 @@ public class TwGradientTests
     {
         var border = new Border();
 
-        Tw.SetClass(border, "bg-gradient-to-r from-notacolor to-blue-500");
+        Tw.SetClass(border, "bg-linear-to-r from-notacolor to-blue-500");
 
         var brush = GradientOf(border);
         Assert.Equal(Colors.Transparent, brush.GradientStops[0].Color);

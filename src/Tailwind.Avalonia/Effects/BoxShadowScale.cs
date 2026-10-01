@@ -49,7 +49,7 @@ internal static class BoxShadowScale
         }
     }
 
-    // inset-shadow-2xs / xs / sm (Tailwind v4) and shadow-inner (v3) draw the shadow inside the box.
+    // inset-shadow-2xs / xs / sm draw the shadow inside the box.
     public static bool TryGetInsetShadows(string token, out BoxShadows shadows)
     {
         switch (token)
@@ -63,7 +63,6 @@ internal static class BoxShadowScale
                 return true;
 
             case "sm":
-            case "inner":
                 shadows = new BoxShadows(Inset(0, 2, 4, 0.05));
                 return true;
 

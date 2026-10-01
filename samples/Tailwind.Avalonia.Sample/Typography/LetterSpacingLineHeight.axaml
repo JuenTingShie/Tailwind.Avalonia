@@ -8,7 +8,7 @@
         Section="Typography"
         Title="Tracking and leading"
         Intro="Utilities for letter spacing (tracking-*) and line height (leading-*). They map to Avalonia&#x27;s TextBlock LetterSpacing and LineHeight properties."
-        Supported="tracking-* sets LetterSpacing and leading-* sets LineHeight in device-independent pixels. Named tracking values (tighter to widest, in em) and leading keywords (none to loose, as multiples of the font size) are resolved against the font size in the same class list, for example text-lg, or against the element&#x27;s current FontSize when the list has no size class. leading-&lt;n&gt; uses the spacing scale (leading-6 is 24px) and both accept arbitrary pixel values such as tracking-[3px] and leading-[18px]. Removing the class restores the default. Values are calculated when the class is applied and do not follow later FontSize changes.">
+        Supported="tracking-* sets LetterSpacing and leading-* sets LineHeight in device-independent pixels. Named tracking values (tighter to widest, in em) and leading-none (1 x the font size) are resolved against the font size in the same class list, for example text-lg, or against the element&#x27;s current FontSize when the list has no size class. leading-&lt;n&gt; uses the spacing scale (leading-6 is 24px) and both accept arbitrary pixel values such as tracking-[3px] and leading-[18px]. Removing the class restores the default. Values are calculated when the class is applied and do not follow later FontSize changes.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="tracking-tighter" AxamlStyle="LetterSpacing: -0.05em" />
             <docs:UtilityReferenceRow ClassName="tracking-tight" AxamlStyle="LetterSpacing: -0.025em" />
@@ -18,11 +18,6 @@
             <docs:UtilityReferenceRow ClassName="tracking-widest" AxamlStyle="LetterSpacing: 0.1em" />
             <docs:UtilityReferenceRow ClassName="tracking-[3px]" AxamlStyle="LetterSpacing: 3px" />
             <docs:UtilityReferenceRow ClassName="leading-none" AxamlStyle="LineHeight: 1 x font size" />
-            <docs:UtilityReferenceRow ClassName="leading-tight" AxamlStyle="LineHeight: 1.25 x font size" />
-            <docs:UtilityReferenceRow ClassName="leading-snug" AxamlStyle="LineHeight: 1.375 x font size" />
-            <docs:UtilityReferenceRow ClassName="leading-normal" AxamlStyle="LineHeight: 1.5 x font size" />
-            <docs:UtilityReferenceRow ClassName="leading-relaxed" AxamlStyle="LineHeight: 1.625 x font size" />
-            <docs:UtilityReferenceRow ClassName="leading-loose" AxamlStyle="LineHeight: 2 x font size" />
             <docs:UtilityReferenceRow ClassName="leading-6" AxamlStyle="LineHeight: 24px" />
             <docs:UtilityReferenceRow ClassName="leading-[18px]" AxamlStyle="LineHeight: 18px" />
             <docs:UtilityReferenceRow ClassName="leading-[&lt;number&gt;]" AxamlStyle="LineHeight: number x font size (leading-[1.5])" />
@@ -61,22 +56,22 @@
 
         <docs:DocsSection
             Heading="Line height"
-            Summary="Each paragraph is 18rem wide so it wraps. leading-10 is a fixed 40px, the keyword values scale with the text-sm font size.">
+            Summary="Each paragraph is 18rem wide so it wraps. leading-&lt;n&gt; uses the spacing scale: leading-5 is 20px, leading-6 24px, leading-8 32px and leading-10 40px.">
             <docs:DocsExample>
                 <StackPanel
                     Spacing="10">
                     <TextBlock
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="w-72 text-sm text-wrap leading-tight"
-                        Text="leading-tight: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                        tw:Tw.Class="w-72 text-sm text-wrap leading-5"
+                        Text="leading-5: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
                     <TextBlock
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="w-72 text-sm text-wrap leading-normal"
-                        Text="leading-normal: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                        tw:Tw.Class="w-72 text-sm text-wrap leading-6"
+                        Text="leading-6: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
                     <TextBlock
                         docs:DocsCode.Show="True"
-                        tw:Tw.Class="w-72 text-sm text-wrap leading-loose"
-                        Text="leading-loose: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
+                        tw:Tw.Class="w-72 text-sm text-wrap leading-8"
+                        Text="leading-8: Line height controls the space between lines of wrapped text, so a longer paragraph shows the difference clearly." />
                     <TextBlock
                         docs:DocsCode.Show="True"
                         tw:Tw.Class="w-72 text-sm text-wrap leading-10"
@@ -87,7 +82,7 @@
 
         <docs:DocsSection
             Heading="Custom line height"
-            Summary="As in CSS, a unitless or em value multiplies the font size: with text-sm (14px), leading-[1.5] and leading-[1.5em] are 21px. px and rem values are absolute. Tailwind v4 prefers this form and text-sm/6 over the named leading-tight family, which is kept here for older class lists.">
+            Summary="As in CSS, a unitless or em value multiplies the font size: with text-sm (14px), leading-[1.5] and leading-[1.5em] are 21px. px and rem values are absolute. Tailwind v4 removed the named leading-tight family, so use this form, the spacing scale or text-sm/6.">
             <docs:DocsExample>
                 <StackPanel
                     Spacing="10">

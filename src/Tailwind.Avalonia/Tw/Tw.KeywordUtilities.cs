@@ -144,7 +144,6 @@ public partial class Tw
         AddBlur("blur-none", 0);
         AddBlur("blur-xs", 4);
         AddBlur("blur-sm", 8);
-        AddBlur("blur", 8);
         AddBlur("blur-md", 12);
         AddBlur("blur-lg", 16);
         AddBlur("blur-xl", 24);
@@ -166,7 +165,6 @@ public partial class Tw
 
         AddDropShadow("drop-shadow-xs", 1, 1, 0.05);
         AddDropShadow("drop-shadow-sm", 1, 2, 0.15);
-        AddDropShadow("drop-shadow", 1, 2, 0.1);
         AddDropShadow("drop-shadow-md", 3, 3, 0.12);
         AddDropShadow("drop-shadow-lg", 4, 4, 0.15);
         AddDropShadow("drop-shadow-xl", 9, 7, 0.1);

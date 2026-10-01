@@ -8,12 +8,12 @@
         Section="Effects"
         Title="Opacity"
         Intro="Utilities for controlling the opacity of an element. opacity-&lt;0-100&gt; maps directly to Avalonia's Opacity property, expressed as the token's value divided by 100."
-        Supported="opacity-0 through opacity-100 set Avalonia's Opacity property to the token's integer value divided by 100. hover:, pressed:, and focus: variants apply an opacity-* token only in that pseudo-class state - opacity is the only non-color utility family variant prefixes work on."
+        Supported="opacity-0 through opacity-100 set Avalonia's Opacity property to the token's integer value divided by 100. hover:, active:, and focus: variants apply an opacity-* token only in that pseudo-class state - opacity is the only non-color utility family variant prefixes work on."
         GapsBody="These opacity forms sit outside the current parser surface.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="opacity-&lt;0-100&gt;" AxamlStyle="&lt;Control Opacity=&quot;&lt;value / 100&gt;&quot; /&gt;" />
             <docs:UtilityReferenceRow ClassName="hover:opacity-&lt;0-100&gt;" AxamlStyle="&lt;Control Opacity=&quot;&lt;value / 100&gt;&quot; /&gt; while :pointerover" />
-            <docs:UtilityReferenceRow ClassName="pressed:opacity-&lt;0-100&gt;" AxamlStyle="&lt;Control Opacity=&quot;&lt;value / 100&gt;&quot; /&gt; while :pressed" />
+            <docs:UtilityReferenceRow ClassName="active:opacity-&lt;0-100&gt;" AxamlStyle="&lt;Control Opacity=&quot;&lt;value / 100&gt;&quot; /&gt; while :pressed" />
             <docs:UtilityReferenceRow ClassName="focus:opacity-&lt;0-100&gt;" AxamlStyle="&lt;Control Opacity=&quot;&lt;value / 100&gt;&quot; /&gt; while :focus" />
             <docs:UtilityReferenceRow ClassName="opacity-[&lt;fraction&gt;]" AxamlStyle="Opacity: the fraction (.67) or percentage (35%) in brackets" />
         </docs:DocsPage.Utilities>
@@ -59,7 +59,7 @@
 
         <docs:DocsSection
             Heading="Variant prefixes"
-            Summary="opacity-* is the only non-color utility family that accepts hover:, pressed:, and focus: prefixes; spacing, sizing, and font-size utilities do not. See the Interactivity &gt; Pseudo-class variants page, which already demonstrates opacity-100 pressed:opacity-50 on a button; the two controls below show hover: and focus: doing the same.">
+            Summary="opacity-* is the only non-color utility family that accepts hover:, active:, and focus: prefixes; spacing, sizing, and font-size utilities do not. See the Interactivity &gt; Pseudo-class variants page, which already demonstrates opacity-100 active:opacity-50 on a button; the two controls below show hover: and focus: doing the same.">
             <docs:DocsExample>
                 <StackPanel
                     Orientation="Horizontal"
