@@ -9,7 +9,7 @@
         Section="Spacing"
         Title="Margin"
         Intro="Utilities for controlling an element&apos;s margin. Margin currently maps the numeric spacing scale, bracket arbitrary values, and negative variants onto Avalonia&apos;s Margin thickness, together with the logical side utilities."
-        Supported="m-&lt;number&gt; sets margin on all sides; mx-*/my-* target an axis, mt/mr/mb/ml-* target one physical side, and the logical ms/me-* (inline start/end) and mbs/mbe-* (block start/end) follow the flow direction. A leading minus sign, as in -mt-8, negates any of these, and bracket arbitrary values like m-[8px] take a direct value. Auto values, such as m-auto and its axis/logical variants, and custom properties are still out of scope."
+        Supported="m-&lt;number&gt; sets margin on all sides; mx-*/my-* target an axis, mt/mr/mb/ml-* target one physical side, and the logical ms/me-* (inline start/end) and mbs/mbe-* (block start/end) follow the flow direction. A leading minus sign, as in -mt-8, negates any of these, and bracket arbitrary values like m-[8px] take a direct value. Auto values, such as m-auto and its axis/logical variants, and custom properties are still out of scope. As in Tailwind v4, &lt;number&gt; is any multiple of 0.25 on the 4px spacing scale, so values like 13 or 17 work too."
         GapsBody="These Tailwind margin rows remain outside the current parser surface.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="m-&lt;number&gt;" AxamlStyle="&lt;Border Margin=&quot;&lt;number&gt;&quot; /&gt;" />

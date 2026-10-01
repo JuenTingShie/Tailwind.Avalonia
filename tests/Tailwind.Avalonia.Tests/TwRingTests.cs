@@ -115,7 +115,6 @@ public class TwRingTests
 
     [Theory]
     [InlineData("ring-")]
-    [InlineData("ring-3")]
     [InlineData("ring-[-2px]")]
     [InlineData("ring-notacolor")]
     public void SetClass_Ignores_Invalid_Ring_Tokens(string className)

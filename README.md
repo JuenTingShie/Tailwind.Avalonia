@@ -63,7 +63,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 | Utility       | Implemented | Notes                                                                                              |
 | ------------- | :---------: | -------------------------------------------------------------------------------------------------- |
-| padding       |     ✅      | All platforms; numeric scale and arbitrary values (no p-(--var))                                   |
+| padding       |     ✅      | Any multiple of 0.25 on the 4px spacing scale and arbitrary values (no p-(--var))                  |
 | margin        |     ✅      | All platforms; m-auto / mx-auto are not supported (use HorizontalAlignment)                        |
 | space-between |     ✅      | space-x-* / space-y-* set panel spacing like gap-*; -space-* and space-*-reverse are not supported |
 
@@ -90,7 +90,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | Utility                   | Implemented | Notes                                                                                               |
 | ------------------------- | :---------: | --------------------------------------------------------------------------------------------------- |
 | font-family               |     ✅      | font-sans / serif / mono fallback stacks                                                            |
-| font-size                 |     ✅      | Scale and arbitrary values; text-<size>/<line-height> sets both                                     |
+| font-size                 |     ✅      | Scale (with each size's v4 line height) and arbitrary values; text-<size>/<line-height> sets both   |
 | font-smoothing            |             | Not implemented: the text rendering mode is not a public AvaloniaProperty in Avalonia 12            |
 | font-style                |     ✅      | All platforms                                                                                       |
 | font-weight               |     ✅      | Named weights and font-[1..1000]                                                                    |
@@ -108,8 +108,8 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | text-decoration-line      |     ✅      | All platforms                                                                                       |
 | text-decoration-color     |     ✅      | All platforms                                                                                       |
 | text-decoration-style     |     ✅      | solid / dotted / dashed only; double and wavy have no Avalonia equivalent                           |
-| text-decoration-thickness |     ✅      | All platforms                                                                                       |
-| text-underline-offset     |     ✅      | All platforms                                                                                       |
+| text-decoration-thickness |     ✅      | decoration-<number>, decoration-[<px>], decoration-auto / from-font                                 |
+| text-underline-offset     |     ✅      | underline-offset-<number>, underline-offset-[<px>], underline-offset-auto                           |
 | text-transform            |             | No Avalonia equivalent                                                                              |
 | text-overflow             |     ✅      | All platforms                                                                                       |
 | text-wrap                 |     ✅      | text-wrap / text-nowrap / text-ellipsis / text-clip; text-balance and text-pretty are not supported |
@@ -124,16 +124,16 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 ### Backgrounds
 
-| Utility               | Implemented | Notes                                                                                            |
-| --------------------- | :---------: | ------------------------------------------------------------------------------------------------ |
-| background-attachment |             | No Avalonia equivalent                                                                           |
-| background-clip       |             | No Avalonia equivalent                                                                           |
-| background-color      |     ✅      | All platforms                                                                                    |
+| Utility               | Implemented | Notes                                                                                          |
+| --------------------- | :---------: | ---------------------------------------------------------------------------------------------- |
+| background-attachment |             | No Avalonia equivalent                                                                         |
+| background-clip       |             | No Avalonia equivalent                                                                         |
+| background-color      |     ✅      | All platforms                                                                                  |
 | background-image      |     ✅      | Gradients (bg-linear-to-*) and images (bg-[url(avares://...)]); remote URLs are not downloaded |
-| background-origin     |             | No Avalonia equivalent: the Background always covers the border box                              |
-| background-position   |     ✅      | bg-center / top / bottom / left / right and corners via ImageBrush alignment                     |
-| background-repeat     |     ✅      | bg-repeat / bg-no-repeat only (no repeat-x / -y / -round / -space)                               |
-| background-size       |     ✅      | bg-cover / bg-contain / bg-auto via ImageBrush.Stretch                                           |
+| background-origin     |             | No Avalonia equivalent: the Background always covers the border box                            |
+| background-position   |     ✅      | bg-center / top / bottom / left / right and corners via ImageBrush alignment                   |
+| background-repeat     |     ✅      | bg-repeat / bg-no-repeat only (no repeat-x / -y / -round / -space)                             |
+| background-size       |     ✅      | bg-cover / bg-contain / bg-auto via ImageBrush.Stretch                                         |
 
 ### Borders
 
@@ -153,24 +153,24 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 ### Effects
 
-| Utility               | Implemented | Notes                                         |
-| --------------------- | :---------: | --------------------------------------------- |
-| box-shadow            |     ✅      | All platforms                                 |
-| inset-shadow          |     ✅      | All platforms                                 |
-| ring                  |     ✅      | All platforms                                 |
-| text-shadow           |             | No Avalonia equivalent                        |
-| opacity               |     ✅      | opacity-<0-100> and opacity-[<fraction or %>] |
-| mix-blend-mode        |             | No Avalonia equivalent                        |
-| background-blend-mode |             | No Avalonia equivalent                        |
-| mask-clip             |             | No Avalonia equivalent for CSS masks          |
-| mask-composite        |             | No Avalonia equivalent for CSS masks          |
-| mask-image            |             | No Avalonia equivalent for CSS masks          |
-| mask-mode             |             | No Avalonia equivalent for CSS masks          |
-| mask-origin           |             | No Avalonia equivalent for CSS masks          |
-| mask-position         |             | No Avalonia equivalent for CSS masks          |
-| mask-repeat           |             | No Avalonia equivalent for CSS masks          |
-| mask-size             |             | No Avalonia equivalent for CSS masks          |
-| mask-type             |             | No Avalonia equivalent for CSS masks          |
+| Utility               | Implemented | Notes                                                                     |
+| --------------------- | :---------: | ------------------------------------------------------------------------- |
+| box-shadow            |     ✅      | All platforms                                                             |
+| inset-shadow          |     ✅      | All platforms                                                             |
+| ring                  |     ✅      | ring-<number>, ring-[<px>], ring-<color>; default color currentColor (v4) |
+| text-shadow           |             | No Avalonia equivalent                                                    |
+| opacity               |     ✅      | opacity-<0-100> and opacity-[<fraction or %>]                             |
+| mix-blend-mode        |             | No Avalonia equivalent                                                    |
+| background-blend-mode |             | No Avalonia equivalent                                                    |
+| mask-clip             |             | No Avalonia equivalent for CSS masks                                      |
+| mask-composite        |             | No Avalonia equivalent for CSS masks                                      |
+| mask-image            |             | No Avalonia equivalent for CSS masks                                      |
+| mask-mode             |             | No Avalonia equivalent for CSS masks                                      |
+| mask-origin           |             | No Avalonia equivalent for CSS masks                                      |
+| mask-position         |             | No Avalonia equivalent for CSS masks                                      |
+| mask-repeat           |             | No Avalonia equivalent for CSS masks                                      |
+| mask-size             |             | No Avalonia equivalent for CSS masks                                      |
+| mask-type             |             | No Avalonia equivalent for CSS masks                                      |
 
 ### Filters
 
@@ -258,11 +258,11 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 
 ### SVG
 
-| Utility      | Implemented | Notes               |
-| ------------ | :---------: | ------------------- |
-| fill         |     ✅      | Shape controls only |
-| stroke       |     ✅      | Shape controls only |
-| stroke-width |     ✅      | Shape controls only |
+| Utility      | Implemented | Notes                                                  |
+| ------------ | :---------: | ------------------------------------------------------ |
+| fill         |     ✅      | Shape controls only                                    |
+| stroke       |     ✅      | Shape controls only                                    |
+| stroke-width |     ✅      | stroke-<number> and stroke-[<px>]; Shape controls only |
 
 ### Accessibility
 

@@ -18,7 +18,7 @@ public class SpacingScaleTests
     [Fact]
     public void TryGetPixels_Returns_False_For_Unknown_Token()
     {
-        var success = SpacingScale.TryGetPixels("999", out _);
+        var success = SpacingScale.TryGetPixels("2.3", out _);
 
         Assert.False(success);
     }

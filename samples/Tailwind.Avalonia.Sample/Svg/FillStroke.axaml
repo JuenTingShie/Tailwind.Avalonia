@@ -8,12 +8,12 @@
         Section="SVG"
         Title="Fill and stroke"
         Intro="Utilities for painting Avalonia shapes. fill-* and stroke-* set the Fill and Stroke brushes, stroke-N sets StrokeThickness."
-        Supported="fill-&lt;color&gt;, stroke-&lt;color&gt;, fill-none, stroke-none, stroke-0/1/2 and stroke-[px] apply to Shape controls (Ellipse, Rectangle, Path, Line, Polygon...). Other elements ignore the token with a warning. Core Avalonia properties, available on every platform.">
+        Supported="fill-&lt;color&gt;, stroke-&lt;color&gt;, fill-none, stroke-none, stroke-&lt;number&gt; and stroke-[px] apply to Shape controls (Ellipse, Rectangle, Path, Line, Polygon...). Other elements ignore the token with a warning. Core Avalonia properties, available on every platform.">
         <docs:DocsPage.Utilities>
             <docs:UtilityReferenceRow ClassName="fill-&lt;color&gt;" AxamlStyle="Shape.Fill" />
             <docs:UtilityReferenceRow ClassName="stroke-&lt;color&gt;" AxamlStyle="Shape.Stroke" />
             <docs:UtilityReferenceRow ClassName="fill-none / stroke-none" AxamlStyle="transparent brush" />
-            <docs:UtilityReferenceRow ClassName="stroke-0 / 1 / 2" AxamlStyle="Shape.StrokeThickness" />
+            <docs:UtilityReferenceRow ClassName="stroke-&lt;number&gt;" AxamlStyle="Shape.StrokeThickness" />
             <docs:UtilityReferenceRow ClassName="stroke-[&lt;px&gt;]" AxamlStyle="Shape.StrokeThickness" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>

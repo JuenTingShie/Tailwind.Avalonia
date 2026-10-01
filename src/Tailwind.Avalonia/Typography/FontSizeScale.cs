@@ -19,6 +19,16 @@ internal static class FontSizeScale
         ("9xl", 128.0),
     };
 
+    // Each v4 text-<size> also sets a line height (--text-<size>--line-height). Values in px; the 5xl and larger
+    // sizes use a line height of 1 (the font size itself).
+    private static readonly Dictionary<string, double> LineHeights = new(StringComparer.Ordinal)
+    {
+        ["xs"] = 16, ["sm"] = 20, ["base"] = 24, ["lg"] = 28, ["xl"] = 28, ["2xl"] = 32, ["3xl"] = 36, ["4xl"] = 40,
+        ["5xl"] = 48, ["6xl"] = 60, ["7xl"] = 72, ["8xl"] = 96, ["9xl"] = 128,
+    };
+
+    public static bool TryGetLineHeight(string token, out double pixels) => LineHeights.TryGetValue(token, out pixels);
+
     private static readonly Dictionary<string, double> TokenToPixels = CreateLookup();
 
     public static bool TryGetPixels(string token, out double pixels) => TokenToPixels.TryGetValue(token, out pixels);

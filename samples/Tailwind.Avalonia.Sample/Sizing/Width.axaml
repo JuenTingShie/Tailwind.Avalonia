@@ -8,7 +8,7 @@
         Section="Sizing"
         Title="Width"
         Intro="Utilities for controlling an element's width, minimum width, and maximum width. Sizing currently maps the numeric spacing scale and bracket arbitrary values onto Avalonia's Width, MinWidth, and MaxWidth."
-        Supported="w-&lt;number&gt;, min-w-&lt;number&gt;, and max-w-&lt;number&gt; map the numeric spacing scale onto Width, MinWidth, and MaxWidth, as do bracket arbitrary values like w-[100px], min-w-[12.5rem], and max-w-[5em]. Percentages, the container scale, viewport units, size-*, and responsive variants are still out of scope."
+        Supported="w-&lt;number&gt;, min-w-&lt;number&gt;, and max-w-&lt;number&gt; map the numeric spacing scale onto Width, MinWidth, and MaxWidth, as do bracket arbitrary values like w-[100px], min-w-[12.5rem], and max-w-[5em]. Percentages, the container scale, viewport units, size-*, and responsive variants are still out of scope. As in Tailwind v4, &lt;number&gt; is any multiple of 0.25 on the 4px spacing scale, so values like 13 or 17 work too."
         CollapsedRowCount="4"
         GapsTitle="Official rows outside the current parser surface"
         GapsBody="">

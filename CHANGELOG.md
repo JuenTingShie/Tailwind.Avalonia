@@ -17,6 +17,14 @@ Classes that are not part of Tailwind v4.3 are no longer recognized (they log th
 - `shadow-inner` → `inset-shadow-sm`.
 - `psv-*`, `pev-*`, `msv-*`, `mev-*` (never Tailwind classes) → use `ps-*`/`pe-*`/`ms-*`/`me-*` or physical sides.
 
+Values now follow the v4 theme:
+
+- Named text sizes set their line height too (`text-sm` → 14px on a 20px line). `leading-*` or `text-<size>/<n>` overrides it in any order; `text-[<value>]` leaves it alone.
+- A ring without a color uses currentColor (the text color) instead of blue-500.
+- Spacing utilities accept any multiple of 0.25 (`p-13`, `w-17`), not only the v3 table.
+- `ring-<number>`, `decoration-<number>`, `underline-offset-<number>` and `stroke-<number>` accept any number.
+- Added `drop-shadow-none`.
+
 ## 2.1.0 — 2026-08-27
 
 ### Added

@@ -37,6 +37,7 @@ public partial class Tw
         var hasFontSize = false;
         var hasCornerRadius = false;
         var hasOpacity = false;
+        double? defaultLineHeight = null;
         bool? invisible = null;
         var hasTextAlignment = false;
         Dictionary<string, object>? keywordValues = null;
@@ -244,6 +245,8 @@ public partial class Tw
                     lineHeight = pairedLineHeight;
                     hasLineHeight = true;
                 }
+
+                defaultLineHeight = fontSizeUtility.DefaultLineHeight;
 
                 continue;
             }
@@ -456,6 +459,16 @@ public partial class Tw
             }
         }
 
+        // A named text size supplies the theme line height unless a leading-* or text-<size>/<n> class sets one,
+        // in any order (Tailwind reads it through --tw-leading, so leading-* always wins).
+        // Only where a LineHeight exists, so text-lg on a control without one warns about FontSize alone.
+        if (!hasLineHeight && defaultLineHeight is { } themeLineHeight &&
+            AvaloniaPropertyRegistry.Instance.FindRegistered(element, "LineHeight") is not null)
+        {
+            lineHeight = new TextMetricUtility(themeLineHeight, false);
+            hasLineHeight = true;
+        }
+
         // invisible: fully transparent and ignored by the pointer, but still measured and arranged. It wins over
         // opacity-* and pointer-events-* in the same list, and over their state variants, as CSS visibility does.
         if (invisible == true)
@@ -489,7 +502,7 @@ public partial class Tw
         // A ring (width plus color) is combined with any shadow-* utility into one BoxShadow value.
         if (ringState is { Width: not null } ring)
         {
-            boxShadow = ApplyRing(ring, hasBoxShadow, boxShadow);
+            boxShadow = ApplyRing(ring, ResolveCurrentColor(element, hasForeground ? foreground : null), hasBoxShadow, boxShadow);
             hasBoxShadow = true;
         }
 

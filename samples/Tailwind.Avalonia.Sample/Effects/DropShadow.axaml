@@ -16,6 +16,7 @@
             <docs:UtilityReferenceRow ClassName="drop-shadow-lg" AxamlStyle="offset 4, blur 4" />
             <docs:UtilityReferenceRow ClassName="drop-shadow-xl" AxamlStyle="offset 9, blur 7" />
             <docs:UtilityReferenceRow ClassName="drop-shadow-2xl" AxamlStyle="offset 25, blur 25" />
+            <docs:UtilityReferenceRow ClassName="drop-shadow-none" AxamlStyle="no shadow" />
         </docs:DocsPage.Utilities>
         <docs:DocsPage.Gaps>
             <docs:DocsGap Text="drop-shadow-&lt;color&gt; · drop-shadow-[&lt;value&gt;] · multi-layer shadows" />
