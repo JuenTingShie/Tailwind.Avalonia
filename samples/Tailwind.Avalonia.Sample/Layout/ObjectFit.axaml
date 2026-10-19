@@ -24,9 +24,6 @@
             <docs:UtilityReferenceRow ClassName="object-none" AxamlStyle="Stretch: None" />
             <docs:UtilityReferenceRow ClassName="object-scale-down" AxamlStyle="Stretch: Uniform, StretchDirection: DownOnly" />
         </docs:DocsPage.Utilities>
-        <docs:DocsPage.Gaps>
-            <docs:DocsGap Text="object-position-* · object-[...]" />
-        </docs:DocsPage.Gaps>
 
         <docs:DocsSection
             Heading="Fit modes"

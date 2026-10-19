@@ -1,0 +1,149 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:docs="using:Tailwind.Avalonia.Sample.Docs"
+    xmlns:tw="using:Tailwind.Avalonia"
+    x:Class="Tailwind.Avalonia.Sample.Layout.ObjectPosition">
+    <UserControl.Styles>
+        <Style Selector="StackPanel.cell:pointerover">
+            <Setter Property="ZIndex" Value="10" />
+        </Style>
+        <Style Selector="Panel.pos > Image.ghost">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="Panel.pos:pointerover > Image.ghost">
+            <Setter Property="Opacity" Value="0.45" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <!-- A wide 200x100 picture with a red strip on its left edge and a green one on its right edge, so the part of
+             it that stays visible when it is cropped is easy to see. -->
+        <DrawingImage x:Key="SamplePositionImage">
+            <DrawingGroup>
+                <GeometryDrawing Brush="#0ea5e9" Geometry="M0,0 L200,0 L200,100 L0,100 Z" />
+                <GeometryDrawing Brush="#f43f5e" Geometry="M0,0 L30,0 L30,100 L0,100 Z" />
+                <GeometryDrawing Brush="#22c55e" Geometry="M170,0 L200,0 L200,100 L170,100 Z" />
+                <GeometryDrawing Brush="#fbbf24" Geometry="M100,50 m-30,0 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0" />
+            </DrawingGroup>
+        </DrawingImage>
+    </UserControl.Resources>
+    <docs:DocsPage
+        Section="Layout"
+        Title="Object position"
+        Intro="Utilities for choosing where an Image&#x27;s bitmap sits inside its box. Avalonia&#x27;s Image always centers the bitmap, so the position is applied per axis with what Avalonia offers."
+        Supported="object-top-left, object-top, object-top-right, object-left, object-center, object-right, object-bottom-left, object-bottom, object-bottom-right and object-[&lt;x&gt;_&lt;y&gt;] with keywords and percentages. Where the bitmap overflows the box (object-cover, or object-none on a small box) the cropped window moves, and any percentage is exact. Where the bitmap is smaller than the box (object-contain, object-scale-down) the Image control is placed with HorizontalAlignment and VerticalAlignment, so a percentage snaps to the nearest of 0%, 50% and 100%. While a position other than object-center is active, Image.Source holds a thin wrapper around your image (bindings keep working, and removing the class restores the original). Image only: other elements ignore the token with a warning. Core Avalonia behavior on every platform.">
+        <docs:DocsPage.Utilities>
+            <docs:UtilityReferenceRow ClassName="object-top-left" AxamlStyle="Left / Top · crop window at the top-left" />
+            <docs:UtilityReferenceRow ClassName="object-top" AxamlStyle="Top · crop window at the top" />
+            <docs:UtilityReferenceRow ClassName="object-top-right" AxamlStyle="Right / Top · crop window at the top-right" />
+            <docs:UtilityReferenceRow ClassName="object-left" AxamlStyle="Left · crop window at the left" />
+            <docs:UtilityReferenceRow ClassName="object-center" AxamlStyle="Avalonia default (centered)" />
+            <docs:UtilityReferenceRow ClassName="object-right" AxamlStyle="Right · crop window at the right" />
+            <docs:UtilityReferenceRow ClassName="object-bottom-left" AxamlStyle="Left / Bottom · crop window at the bottom-left" />
+            <docs:UtilityReferenceRow ClassName="object-bottom" AxamlStyle="Bottom · crop window at the bottom" />
+            <docs:UtilityReferenceRow ClassName="object-bottom-right" AxamlStyle="Right / Bottom · crop window at the bottom-right" />
+            <docs:UtilityReferenceRow ClassName="object-[25%_75%]" AxamlStyle="Crop window at 25% / 75% · alignment snaps to the nearest of start, center, end" />
+        </docs:DocsPage.Utilities>
+        <docs:DocsPage.Gaps>
+            <docs:DocsGap Title="lengths" Text="object-[10px_20px] · object-[right_10px_bottom_5px]" />
+            <docs:DocsGap Title="custom properties" Text="object-(&lt;custom-property&gt;)" />
+        </docs:DocsPage.Gaps>
+
+        <docs:DocsSection
+            Heading="Basic example"
+            Summary="Hover over a box to see the full 200x100 image behind it. The box crops it with object-none; the position picks which part stays visible.">
+            <docs:DocsExample>
+                <Grid ColumnDefinitions="Auto,Auto,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="48" RowSpacing="20">
+                    <StackPanel Classes="cell" Grid.Row="0" Grid.Column="0" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-top-left" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-top-left" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                    <StackPanel Classes="cell" Grid.Row="0" Grid.Column="1" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-top" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-top" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                    <StackPanel Classes="cell" Grid.Row="0" Grid.Column="2" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-top-right" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-top-right" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Top" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                    <StackPanel Classes="cell" Grid.Row="1" Grid.Column="0" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-left" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-left" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Center" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                    <StackPanel Classes="cell" Grid.Row="1" Grid.Column="1" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-center" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-center" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                    <StackPanel Classes="cell" Grid.Row="1" Grid.Column="2" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-right" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-right" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Center" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                    <StackPanel Classes="cell" Grid.Row="2" Grid.Column="0" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-bottom-left" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-bottom-left" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Bottom" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                    <StackPanel Classes="cell" Grid.Row="2" Grid.Column="1" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-bottom" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-bottom" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                    <StackPanel Classes="cell" Grid.Row="2" Grid.Column="2" Spacing="6" HorizontalAlignment="Center">
+                        <TextBlock tw:Tw.Class="text-slate-500 text-xs" HorizontalAlignment="Center" Text="object-bottom-right" />
+                        <Panel Classes="pos" Width="80" Height="80" Background="Transparent">
+                            <Image docs:DocsCode.Show="True" tw:Tw.Class="object-none object-bottom-right" Source="{StaticResource SamplePositionImage}" />
+                            <Image Classes="ghost" Width="200" Height="100" Source="{StaticResource SamplePositionImage}" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsHitTestVisible="False" />
+                        </Panel>
+                    </StackPanel>
+                </Grid>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Fitted images (object-contain)"
+            Summary="The wide image is smaller than the 120x120 box, so the vertical position decides where the picture sits.">
+            <docs:DocsExample>
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="120"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-contain object-top" Source="{StaticResource SamplePositionImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-top" /></StackPanel>
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="120"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-contain object-center" Source="{StaticResource SamplePositionImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-center" /></StackPanel>
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="120" Height="120"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-contain object-bottom" Source="{StaticResource SamplePositionImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-bottom" /></StackPanel>
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+
+        <docs:DocsSection
+            Heading="Cropped images (object-cover)"
+            Summary="In a narrow 80x120 box the same image is cropped on both sides; the position chooses which strip stays visible.">
+            <docs:DocsExample>
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="80" Height="120"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-cover object-left" Source="{StaticResource SamplePositionImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-left" /></StackPanel>
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="80" Height="120"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-cover object-center" Source="{StaticResource SamplePositionImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-center" /></StackPanel>
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="80" Height="120"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-cover object-right" Source="{StaticResource SamplePositionImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-right" /></StackPanel>
+                    <StackPanel Spacing="4"><Border Background="#e2e8f0" Width="80" Height="120"><Image docs:DocsCode.Show="True" tw:Tw.Class="object-cover object-[25%_0%]" Source="{StaticResource SamplePositionImage}" /></Border><TextBlock tw:Tw.Class="text-slate-500 text-xs" Text="object-[25%_0%]" /></StackPanel>
+                </StackPanel>
+            </docs:DocsExample>
+        </docs:DocsSection>
+    </docs:DocsPage>
+</UserControl>

@@ -43,6 +43,7 @@ internal static class SampleCatalog
         Page("Layout",        "Position",                  static () => new Layout.Position()),
         Page("Layout",        "Grid",                      static () => new Layout.Grid()),
         Page("Layout",        "Object fit",                static () => new Layout.ObjectFit()),
+        Page("Layout",        "Object position",           static () => new Layout.ObjectPosition()),
         Page("Layout",        "Z-index",                   static () => new Layout.ZIndex()),
         Page("Transforms",    "Rotate",                    static () => new Transforms.Rotate()),
         Page("Transforms",    "Scale",                     static () => new Transforms.Scale()),
