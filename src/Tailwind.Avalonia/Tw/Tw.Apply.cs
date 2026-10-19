@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Collections;
+using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Logging;
 using Avalonia.Media;
@@ -41,6 +42,9 @@ public partial class Tw
         bool? invisible = null;
         var hasTextAlignment = false;
         Dictionary<string, object>? keywordValues = null;
+        ObjectPosition? objectPosition = null;
+        object? objectPositionHorizontal = null;
+        object? objectPositionVertical = null;
         var hasBoxShadow = false;
         TransformState? transformState = null;
         LayoutState? layoutState = null;
@@ -348,6 +352,21 @@ public partial class Tw
                 else if (!textDecorationLocations.Contains(decorationLocation.Value))
                 {
                     textDecorationLocations.Add(decorationLocation.Value);
+                }
+
+                continue;
+            }
+
+            // object-position is one CSS property, so the last object-<position> class wins as a whole. Its alignment
+            // half goes through the keyword values, in token order, so it composes with self-* / justify-self-*.
+            if (TryParseObjectPositionUtility(token, out var objectPositionUtility))
+            {
+                objectPosition = objectPositionUtility;
+
+                if (element is Image)
+                {
+                    keywordValues ??= new Dictionary<string, object>(StringComparer.Ordinal);
+                    AssignObjectPositionAlignment(keywordValues, objectPositionUtility, ref objectPositionHorizontal, ref objectPositionVertical);
                 }
 
                 continue;
@@ -674,6 +693,7 @@ public partial class Tw
         ApplyKeywordUtilities(element, keywordValues);
         SyncAnimation(element, animationName, TimingFrom(transitionState));
         SyncScrollSnap(element);
+        SyncObjectPosition(element, objectPosition);
 
         ApplyVariantStyles(
             element,

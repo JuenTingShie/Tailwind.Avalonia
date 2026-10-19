@@ -25,6 +25,10 @@ Values now follow the v4 theme:
 - `ring-<number>`, `decoration-<number>`, `underline-offset-<number>` and `stroke-<number>` accept any number.
 - Added `drop-shadow-none`.
 
+### Added
+
+- `object-position` utilities for `Image`: `object-top-left`, `object-top`, `object-top-right`, `object-left`, `object-center`, `object-right`, `object-bottom-left`, `object-bottom`, `object-bottom-right` and `object-[<x>_<y>]` with keywords and percentages (`object-[25%_75%]`, `object-[left_bottom]`). Avalonia's `Image` always centers its bitmap, so the position is applied per axis. Where the bitmap overflows the box (`object-cover`, `object-none` on a small box) the cropped window moves, and any percentage is exact. Where the bitmap is smaller than the box the `Image` control is placed with `HorizontalAlignment` / `VerticalAlignment`, so a percentage snaps to the nearest of 0%, 50% and 100%. Lengths (`object-[10px_20px]`) and `object-(<custom-property>)` are not supported, and a non-`Image` element ignores the utility with a warning. While a position other than `object-center` is active, `Image.Source` holds a thin wrapper around the original image (bindings keep working, and removing the class restores the original).
+
 ## 2.1.0 — 2026-08-27
 
 ### Added

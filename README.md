@@ -22,10 +22,10 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | clear                       |             | No Avalonia equivalent                                                                                     |
 | isolation                   |             | Not applicable: no stacking contexts beyond ZIndex                                                         |
 | object-fit                  |     ✅      | Image.Stretch                                                                                              |
-| object-position             |             | No Avalonia equivalent for Image                                                                           |
+| object-position             |     ➖      | Partial: Image only; crop window moves, fitted bitmap uses H/V alignment (% snaps to 0/50/100%); no lengths|
 | overflow                    |     ✅      | All platforms                                                                                              |
 | overscroll-behavior         |     ✅      | ScrollViewer.IsScrollChainingEnabled                                                                       |
-| position                    |             | Partial: top/right/bottom/left position Canvas children; relative/absolute/fixed/sticky have no equivalent |
+| position                    |     ➖      | Partial: top/right/bottom/left position Canvas children; relative/absolute/fixed/sticky have no equivalent |
 | top / right / bottom / left |     ✅      | Canvas children only                                                                                       |
 | visibility                  |     ✅      | invisible = Opacity 0 + IsHitTestVisible false (keeps layout); visible undoes it; no collapse              |
 | z-index                     |     ✅      | z-<n>, -z-<n>, z-[<n>], z-auto                                                                             |
@@ -116,7 +116,7 @@ Tracks the [Tailwind CSS v4.3](https://tailwindcss.com/docs) documentation's uti
 | text-indent               |             | No Avalonia equivalent                                                                              |
 | tab-size                  |             | No Avalonia equivalent                                                                              |
 | vertical-align            |             | No Avalonia equivalent for inline text                                                              |
-| white-space               |             | Partial: whitespace-nowrap / whitespace-normal only (see also text-wrap); pre-* are not supported   |
+| white-space               |     ➖      | Partial: whitespace-nowrap / whitespace-normal only (see also text-wrap); pre-* are not supported   |
 | word-break                |             | No Avalonia equivalent (only TextWrapping)                                                          |
 | overflow-wrap             |             | No Avalonia equivalent (only TextWrapping)                                                          |
 | hyphens                   |             | No Avalonia equivalent                                                                              |
